@@ -9,11 +9,11 @@ using Twilio.Converters;
 using Twilio.TwiML;
 using Twilio.TwiML.Fax;
 
-namespace Twilio.Tests.TwiML 
+namespace Twilio.Tests.TwiML
 {
 
     [TestFixture]
-    public class FaxResponseTest : TwilioTest 
+    public class FaxResponseTest : TwilioTest
     {
         [Test]
         public void TestEmptyElement()

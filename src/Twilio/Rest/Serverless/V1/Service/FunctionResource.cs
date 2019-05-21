@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// FunctionResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Serverless.V1.Service 
+namespace Twilio.Rest.Serverless.V1.Service
 {
 
-    public class FunctionResource : Resource 
+    public class FunctionResource : Resource
     {
         private static Request BuildReadRequest(ReadFunctionOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Read Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Function </returns> 
+        /// <returns> A single instance of Function </returns>
         public static ResourceSet<FunctionResource> Read(ReadFunctionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -55,8 +55,8 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Read Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Function </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FunctionResource>> ReadAsync(ReadFunctionOptions options, 
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FunctionResource>> ReadAsync(ReadFunctionOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -74,10 +74,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Function </returns> 
-        public static ResourceSet<FunctionResource> Read(string pathServiceSid, 
-                                                         int? pageSize = null, 
-                                                         long? limit = null, 
+        /// <returns> A single instance of Function </returns>
+        public static ResourceSet<FunctionResource> Read(string pathServiceSid,
+                                                         int? pageSize = null,
+                                                         long? limit = null,
                                                          ITwilioRestClient client = null)
         {
             var options = new ReadFunctionOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -92,10 +92,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Function </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FunctionResource>> ReadAsync(string pathServiceSid, 
-                                                                                                 int? pageSize = null, 
-                                                                                                 long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FunctionResource>> ReadAsync(string pathServiceSid,
+                                                                                                 int? pageSize = null,
+                                                                                                 long? limit = null,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadFunctionOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<FunctionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -127,7 +127,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<FunctionResource> NextPage(Page<FunctionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<FunctionResource> PreviousPage(Page<FunctionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Fetch Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Function </returns> 
+        /// <returns> A single instance of Function </returns>
         public static FunctionResource Fetch(FetchFunctionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -192,8 +192,8 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Fetch Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Function </returns> 
-        public static async System.Threading.Tasks.Task<FunctionResource> FetchAsync(FetchFunctionOptions options, 
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<FunctionResource> FetchAsync(FetchFunctionOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -208,7 +208,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> Function Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Function </returns> 
+        /// <returns> A single instance of Function </returns>
         public static FunctionResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchFunctionOptions(pathServiceSid, pathSid);
@@ -222,9 +222,9 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> Function Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Function </returns> 
-        public static async System.Threading.Tasks.Task<FunctionResource> FetchAsync(string pathServiceSid, 
-                                                                                     string pathSid, 
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<FunctionResource> FetchAsync(string pathServiceSid,
+                                                                                     string pathSid,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchFunctionOptions(pathServiceSid, pathSid);
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Create Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Function </returns> 
+        /// <returns> A single instance of Function </returns>
         public static FunctionResource Create(CreateFunctionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -262,8 +262,8 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Create Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Function </returns> 
-        public static async System.Threading.Tasks.Task<FunctionResource> CreateAsync(CreateFunctionOptions options, 
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<FunctionResource> CreateAsync(CreateFunctionOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="friendlyName"> A human-readable description of this Function. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Function </returns> 
+        /// <returns> A single instance of Function </returns>
         public static FunctionResource Create(string pathServiceSid, string friendlyName, ITwilioRestClient client = null)
         {
             var options = new CreateFunctionOptions(pathServiceSid, friendlyName);
@@ -292,9 +292,9 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="friendlyName"> A human-readable description of this Function. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Function </returns> 
-        public static async System.Threading.Tasks.Task<FunctionResource> CreateAsync(string pathServiceSid, 
-                                                                                      string friendlyName, 
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<FunctionResource> CreateAsync(string pathServiceSid,
+                                                                                      string friendlyName,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new CreateFunctionOptions(pathServiceSid, friendlyName);
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Update Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Function </returns> 
+        /// <returns> A single instance of Function </returns>
         public static FunctionResource Update(UpdateFunctionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -332,8 +332,8 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Update Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Function </returns> 
-        public static async System.Threading.Tasks.Task<FunctionResource> UpdateAsync(UpdateFunctionOptions options, 
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<FunctionResource> UpdateAsync(UpdateFunctionOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -349,10 +349,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathSid"> Function Sid. </param>
         /// <param name="friendlyName"> A human-readable description of this Function. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Function </returns> 
-        public static FunctionResource Update(string pathServiceSid, 
-                                              string pathSid, 
-                                              string friendlyName, 
+        /// <returns> A single instance of Function </returns>
+        public static FunctionResource Update(string pathServiceSid,
+                                              string pathSid,
+                                              string friendlyName,
                                               ITwilioRestClient client = null)
         {
             var options = new UpdateFunctionOptions(pathServiceSid, pathSid, friendlyName);
@@ -367,10 +367,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathSid"> Function Sid. </param>
         /// <param name="friendlyName"> A human-readable description of this Function. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Function </returns> 
-        public static async System.Threading.Tasks.Task<FunctionResource> UpdateAsync(string pathServiceSid, 
-                                                                                      string pathSid, 
-                                                                                      string friendlyName, 
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<FunctionResource> UpdateAsync(string pathServiceSid,
+                                                                                      string pathSid,
+                                                                                      string friendlyName,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateFunctionOptions(pathServiceSid, pathSid, friendlyName);
@@ -382,7 +382,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// Converts a JSON string into a FunctionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> FunctionResource object represented by the provided JSON </returns> 
+        /// <returns> FunctionResource object represented by the provided JSON </returns>
         public static FunctionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

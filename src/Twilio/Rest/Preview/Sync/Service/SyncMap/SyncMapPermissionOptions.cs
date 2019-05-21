@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncMap 
+namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch a specific Sync Map Permission.
     /// </summary>
-    public class FetchSyncMapPermissionOptions : IOptions<SyncMapPermissionResource> 
+    public class FetchSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
     {
         /// <summary>
         /// The service_sid
@@ -58,10 +58,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Sync Map Permission.
     /// </summary>
-    public class DeleteSyncMapPermissionOptions : IOptions<SyncMapPermissionResource> 
+    public class DeleteSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
     {
         /// <summary>
         /// The service_sid
@@ -102,10 +102,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Permissions applying to a Sync Map.
     /// </summary>
-    public class ReadSyncMapPermissionOptions : ReadOptions<SyncMapPermissionResource> 
+    public class ReadSyncMapPermissionOptions : ReadOptions<SyncMapPermissionResource>
     {
         /// <summary>
         /// The service_sid
@@ -145,10 +145,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update an identity's access to a specific Sync Map.
     /// </summary>
-    public class UpdateSyncMapPermissionOptions : IOptions<SyncMapPermissionResource> 
+    public class UpdateSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
     {
         /// <summary>
         /// Sync Service Instance SID.
@@ -184,11 +184,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="read"> Read access. </param>
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
-        public UpdateSyncMapPermissionOptions(string pathServiceSid, 
-                                              string pathMapSid, 
-                                              string pathIdentity, 
-                                              bool? read, 
-                                              bool? write, 
+        public UpdateSyncMapPermissionOptions(string pathServiceSid,
+                                              string pathMapSid,
+                                              string pathIdentity,
+                                              bool? read,
+                                              bool? write,
                                               bool? manage)
         {
             PathServiceSid = pathServiceSid;

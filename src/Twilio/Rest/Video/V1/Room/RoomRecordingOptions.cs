@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1.Room 
+namespace Twilio.Rest.Video.V1.Room
 {
 
     /// <summary>
     /// FetchRoomRecordingOptions
     /// </summary>
-    public class FetchRoomRecordingOptions : IOptions<RoomRecordingResource> 
+    public class FetchRoomRecordingOptions : IOptions<RoomRecordingResource>
     {
         /// <summary>
         /// The room_sid
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Video.V1.Room
     /// <summary>
     /// ReadRoomRecordingOptions
     /// </summary>
-    public class ReadRoomRecordingOptions : ReadOptions<RoomRecordingResource> 
+    public class ReadRoomRecordingOptions : ReadOptions<RoomRecordingResource>
     {
         /// <summary>
         /// The room_sid
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Video.V1.Room
     /// <summary>
     /// DeleteRoomRecordingOptions
     /// </summary>
-    public class DeleteRoomRecordingOptions : IOptions<RoomRecordingResource> 
+    public class DeleteRoomRecordingOptions : IOptions<RoomRecordingResource>
     {
         /// <summary>
         /// The room_sid

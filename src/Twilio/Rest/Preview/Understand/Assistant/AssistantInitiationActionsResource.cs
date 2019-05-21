@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// AssistantInitiationActionsResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Assistant 
+namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
-    public class AssistantInitiationActionsResource : Resource 
+    public class AssistantInitiationActionsResource : Resource
     {
         private static Request BuildFetchRequest(FetchAssistantInitiationActionsOptions options, ITwilioRestClient client)
         {
@@ -39,8 +39,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Fetch AssistantInitiationActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantInitiationActions </returns> 
-        public static AssistantInitiationActionsResource Fetch(FetchAssistantInitiationActionsOptions options, 
+        /// <returns> A single instance of AssistantInitiationActions </returns>
+        public static AssistantInitiationActionsResource Fetch(FetchAssistantInitiationActionsOptions options,
                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -54,8 +54,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Fetch AssistantInitiationActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns> 
-        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> FetchAsync(FetchAssistantInitiationActionsOptions options, 
+        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
+        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> FetchAsync(FetchAssistantInitiationActionsOptions options,
                                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantInitiationActions </returns> 
+        /// <returns> A single instance of AssistantInitiationActions </returns>
         public static AssistantInitiationActionsResource Fetch(string pathAssistantSid, ITwilioRestClient client = null)
         {
             var options = new FetchAssistantInitiationActionsOptions(pathAssistantSid);
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns> 
-        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> FetchAsync(string pathAssistantSid, 
+        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
+        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> FetchAsync(string pathAssistantSid,
                                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchAssistantInitiationActionsOptions(pathAssistantSid);
@@ -107,8 +107,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Update AssistantInitiationActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantInitiationActions </returns> 
-        public static AssistantInitiationActionsResource Update(UpdateAssistantInitiationActionsOptions options, 
+        /// <returns> A single instance of AssistantInitiationActions </returns>
+        public static AssistantInitiationActionsResource Update(UpdateAssistantInitiationActionsOptions options,
                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -122,8 +122,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Update AssistantInitiationActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns> 
-        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> UpdateAsync(UpdateAssistantInitiationActionsOptions options, 
+        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
+        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> UpdateAsync(UpdateAssistantInitiationActionsOptions options,
                                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -138,9 +138,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="initiationActions"> The initiation_actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantInitiationActions </returns> 
-        public static AssistantInitiationActionsResource Update(string pathAssistantSid, 
-                                                                object initiationActions = null, 
+        /// <returns> A single instance of AssistantInitiationActions </returns>
+        public static AssistantInitiationActionsResource Update(string pathAssistantSid,
+                                                                object initiationActions = null,
                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateAssistantInitiationActionsOptions(pathAssistantSid){InitiationActions = initiationActions};
@@ -154,9 +154,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="initiationActions"> The initiation_actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns> 
-        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> UpdateAsync(string pathAssistantSid, 
-                                                                                                        object initiationActions = null, 
+        /// <returns> Task that resolves to A single instance of AssistantInitiationActions </returns>
+        public static async System.Threading.Tasks.Task<AssistantInitiationActionsResource> UpdateAsync(string pathAssistantSid,
+                                                                                                        object initiationActions = null,
                                                                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateAssistantInitiationActionsOptions(pathAssistantSid){InitiationActions = initiationActions};
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// Converts a JSON string into a AssistantInitiationActionsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> AssistantInitiationActionsResource object represented by the provided JSON </returns> 
+        /// <returns> AssistantInitiationActionsResource object represented by the provided JSON </returns>
         public static AssistantInitiationActionsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

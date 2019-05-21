@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Insights.V1 
+namespace Twilio.Rest.Insights.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchCallSummaryOptions
     /// </summary>
-    public class FetchCallSummaryOptions : IOptions<CallSummaryResource> 
+    public class FetchCallSummaryOptions : IOptions<CallSummaryResource>
     {
         /// <summary>
         /// The call_sid

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Fetch an instance of a conference
     /// </summary>
-    public class FetchConferenceOptions : IOptions<ConferenceResource> 
+    public class FetchConferenceOptions : IOptions<ConferenceResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to fetch
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of conferences belonging to the account used to make the request
     /// </summary>
-    public class ReadConferenceOptions : ReadOptions<ConferenceResource> 
+    public class ReadConferenceOptions : ReadOptions<ConferenceResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to read
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// UpdateConferenceOptions
     /// </summary>
-    public class UpdateConferenceOptions : IOptions<ConferenceResource> 
+    public class UpdateConferenceOptions : IOptions<ConferenceResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to update

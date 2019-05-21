@@ -7,13 +7,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Hangup TwiML Verb
     /// </summary>
-    public class Hangup : TwiML 
+    public class Hangup : TwiML
     {
         /// <summary>
         /// Create a new Hangup

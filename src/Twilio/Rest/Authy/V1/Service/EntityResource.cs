@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// EntityResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Authy.V1.Service 
+namespace Twilio.Rest.Authy.V1.Service
 {
 
-    public class EntityResource : Resource 
+    public class EntityResource : Resource
     {
         private static Request BuildCreateRequest(CreateEntityOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="options"> Create Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Entity </returns> 
+        /// <returns> A single instance of Entity </returns>
         public static EntityResource Create(CreateEntityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="options"> Create Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Entity </returns> 
-        public static async System.Threading.Tasks.Task<EntityResource> CreateAsync(CreateEntityOptions options, 
+        /// <returns> Task that resolves to A single instance of Entity </returns>
+        public static async System.Threading.Tasks.Task<EntityResource> CreateAsync(CreateEntityOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="identity"> Unique identity of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Entity </returns> 
+        /// <returns> A single instance of Entity </returns>
         public static EntityResource Create(string pathServiceSid, string identity, ITwilioRestClient client = null)
         {
             var options = new CreateEntityOptions(pathServiceSid, identity);
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Authy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="identity"> Unique identity of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Entity </returns> 
-        public static async System.Threading.Tasks.Task<EntityResource> CreateAsync(string pathServiceSid, 
-                                                                                    string identity, 
+        /// <returns> Task that resolves to A single instance of Entity </returns>
+        public static async System.Threading.Tasks.Task<EntityResource> CreateAsync(string pathServiceSid,
+                                                                                    string identity,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateEntityOptions(pathServiceSid, identity);
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="options"> Delete Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Entity </returns> 
+        /// <returns> A single instance of Entity </returns>
         public static bool Delete(DeleteEntityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -123,8 +123,8 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="options"> Delete Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Entity </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEntityOptions options, 
+        /// <returns> Task that resolves to A single instance of Entity </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEntityOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Entity </returns> 
+        /// <returns> A single instance of Entity </returns>
         public static bool Delete(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
         {
             var options = new DeleteEntityOptions(pathServiceSid, pathIdentity);
@@ -153,9 +153,9 @@ namespace Twilio.Rest.Authy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Entity </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathIdentity, 
+        /// <returns> Task that resolves to A single instance of Entity </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathIdentity,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteEntityOptions(pathServiceSid, pathIdentity);
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="options"> Fetch Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Entity </returns> 
+        /// <returns> A single instance of Entity </returns>
         public static EntityResource Fetch(FetchEntityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -193,8 +193,8 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="options"> Fetch Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Entity </returns> 
-        public static async System.Threading.Tasks.Task<EntityResource> FetchAsync(FetchEntityOptions options, 
+        /// <returns> Task that resolves to A single instance of Entity </returns>
+        public static async System.Threading.Tasks.Task<EntityResource> FetchAsync(FetchEntityOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Entity </returns> 
+        /// <returns> A single instance of Entity </returns>
         public static EntityResource Fetch(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
         {
             var options = new FetchEntityOptions(pathServiceSid, pathIdentity);
@@ -223,9 +223,9 @@ namespace Twilio.Rest.Authy.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Entity </returns> 
-        public static async System.Threading.Tasks.Task<EntityResource> FetchAsync(string pathServiceSid, 
-                                                                                   string pathIdentity, 
+        /// <returns> Task that resolves to A single instance of Entity </returns>
+        public static async System.Threading.Tasks.Task<EntityResource> FetchAsync(string pathServiceSid,
+                                                                                   string pathIdentity,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchEntityOptions(pathServiceSid, pathIdentity);
@@ -249,7 +249,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="options"> Read Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Entity </returns> 
+        /// <returns> A single instance of Entity </returns>
         public static ResourceSet<EntityResource> Read(ReadEntityOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -265,8 +265,8 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="options"> Read Entity parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Entity </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<EntityResource>> ReadAsync(ReadEntityOptions options, 
+        /// <returns> Task that resolves to A single instance of Entity </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<EntityResource>> ReadAsync(ReadEntityOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -284,10 +284,10 @@ namespace Twilio.Rest.Authy.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Entity </returns> 
-        public static ResourceSet<EntityResource> Read(string pathServiceSid, 
-                                                       int? pageSize = null, 
-                                                       long? limit = null, 
+        /// <returns> A single instance of Entity </returns>
+        public static ResourceSet<EntityResource> Read(string pathServiceSid,
+                                                       int? pageSize = null,
+                                                       long? limit = null,
                                                        ITwilioRestClient client = null)
         {
             var options = new ReadEntityOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -302,10 +302,10 @@ namespace Twilio.Rest.Authy.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Entity </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<EntityResource>> ReadAsync(string pathServiceSid, 
-                                                                                               int? pageSize = null, 
-                                                                                               long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Entity </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<EntityResource>> ReadAsync(string pathServiceSid,
+                                                                                               int? pageSize = null,
+                                                                                               long? limit = null,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadEntityOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<EntityResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<EntityResource> NextPage(Page<EntityResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -357,7 +357,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<EntityResource> PreviousPage(Page<EntityResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -376,7 +376,7 @@ namespace Twilio.Rest.Authy.V1.Service
         /// Converts a JSON string into a EntityResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> EntityResource object represented by the provided JSON </returns> 
+        /// <returns> EntityResource object represented by the provided JSON </returns>
         public static EntityResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

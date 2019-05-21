@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Message;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.Message 
+namespace Twilio.Tests.Rest.Api.V2010.Account.Message
 {
 
     [TestFixture]
-    public class FeedbackTest : TwilioTest 
+    public class FeedbackTest : TwilioTest
     {
         [Test]
         public void TestCreateRequest()

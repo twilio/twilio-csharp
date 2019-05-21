@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Sync 
+namespace Twilio.Rest.Preview.Sync
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchServiceOptions
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource> 
+    public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The sid
@@ -46,10 +46,10 @@ namespace Twilio.Rest.Preview.Sync
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteServiceOptions
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource> 
+    public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The sid
@@ -78,10 +78,10 @@ namespace Twilio.Rest.Preview.Sync
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateServiceOptions
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource> 
+    public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The friendly_name
@@ -133,10 +133,10 @@ namespace Twilio.Rest.Preview.Sync
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadServiceOptions
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource> 
+    public class ReadServiceOptions : ReadOptions<ServiceResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -156,10 +156,10 @@ namespace Twilio.Rest.Preview.Sync
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateServiceOptions
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource> 
+    public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The sid

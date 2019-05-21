@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Trunking.V1.Trunk 
+namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
-    public class TerminatingSipDomainResource : Resource 
+    public class TerminatingSipDomainResource : Resource
     {
         private static Request BuildFetchRequest(FetchTerminatingSipDomainOptions options, ITwilioRestClient client)
         {
@@ -36,8 +36,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Fetch TerminatingSipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TerminatingSipDomain </returns> 
-        public static TerminatingSipDomainResource Fetch(FetchTerminatingSipDomainOptions options, 
+        /// <returns> A single instance of TerminatingSipDomain </returns>
+        public static TerminatingSipDomainResource Fetch(FetchTerminatingSipDomainOptions options,
                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -51,8 +51,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Fetch TerminatingSipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
-        public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> FetchAsync(FetchTerminatingSipDomainOptions options, 
+        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns>
+        public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> FetchAsync(FetchTerminatingSipDomainOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,9 +67,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk with the resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TerminatingSipDomain </returns> 
-        public static TerminatingSipDomainResource Fetch(string pathTrunkSid, 
-                                                         string pathSid, 
+        /// <returns> A single instance of TerminatingSipDomain </returns>
+        public static TerminatingSipDomainResource Fetch(string pathTrunkSid,
+                                                         string pathSid,
                                                          ITwilioRestClient client = null)
         {
             var options = new FetchTerminatingSipDomainOptions(pathTrunkSid, pathSid);
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk with the resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
-        public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> FetchAsync(string pathTrunkSid, 
-                                                                                                 string pathSid, 
+        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns>
+        public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> FetchAsync(string pathTrunkSid,
+                                                                                                 string pathSid,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchTerminatingSipDomainOptions(pathTrunkSid, pathSid);
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Delete TerminatingSipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TerminatingSipDomain </returns> 
+        /// <returns> A single instance of TerminatingSipDomain </returns>
         public static bool Delete(DeleteTerminatingSipDomainOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -123,8 +123,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Delete TerminatingSipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTerminatingSipDomainOptions options, 
+        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTerminatingSipDomainOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk with the resources to disassociate </param>
         /// <param name="pathSid"> The unique string that identifies the resource to disassociate </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TerminatingSipDomain </returns> 
+        /// <returns> A single instance of TerminatingSipDomain </returns>
         public static bool Delete(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteTerminatingSipDomainOptions(pathTrunkSid, pathSid);
@@ -153,9 +153,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk with the resources to disassociate </param>
         /// <param name="pathSid"> The unique string that identifies the resource to disassociate </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteTerminatingSipDomainOptions(pathTrunkSid, pathSid);
@@ -179,8 +179,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Create TerminatingSipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TerminatingSipDomain </returns> 
-        public static TerminatingSipDomainResource Create(CreateTerminatingSipDomainOptions options, 
+        /// <returns> A single instance of TerminatingSipDomain </returns>
+        public static TerminatingSipDomainResource Create(CreateTerminatingSipDomainOptions options,
                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -194,8 +194,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Create TerminatingSipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
-        public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> CreateAsync(CreateTerminatingSipDomainOptions options, 
+        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns>
+        public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> CreateAsync(CreateTerminatingSipDomainOptions options,
                                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -210,9 +210,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk to which we should route calls </param>
         /// <param name="sipDomainSid"> The SID of the SIP Domain to associate with the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TerminatingSipDomain </returns> 
-        public static TerminatingSipDomainResource Create(string pathTrunkSid, 
-                                                          string sipDomainSid, 
+        /// <returns> A single instance of TerminatingSipDomain </returns>
+        public static TerminatingSipDomainResource Create(string pathTrunkSid,
+                                                          string sipDomainSid,
                                                           ITwilioRestClient client = null)
         {
             var options = new CreateTerminatingSipDomainOptions(pathTrunkSid, sipDomainSid);
@@ -226,9 +226,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk to which we should route calls </param>
         /// <param name="sipDomainSid"> The SID of the SIP Domain to associate with the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
-        public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> CreateAsync(string pathTrunkSid, 
-                                                                                                  string sipDomainSid, 
+        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns>
+        public static async System.Threading.Tasks.Task<TerminatingSipDomainResource> CreateAsync(string pathTrunkSid,
+                                                                                                  string sipDomainSid,
                                                                                                   ITwilioRestClient client = null)
         {
             var options = new CreateTerminatingSipDomainOptions(pathTrunkSid, sipDomainSid);
@@ -252,8 +252,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Read TerminatingSipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TerminatingSipDomain </returns> 
-        public static ResourceSet<TerminatingSipDomainResource> Read(ReadTerminatingSipDomainOptions options, 
+        /// <returns> A single instance of TerminatingSipDomain </returns>
+        public static ResourceSet<TerminatingSipDomainResource> Read(ReadTerminatingSipDomainOptions options,
                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -269,8 +269,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Read TerminatingSipDomain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TerminatingSipDomainResource>> ReadAsync(ReadTerminatingSipDomainOptions options, 
+        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TerminatingSipDomainResource>> ReadAsync(ReadTerminatingSipDomainOptions options,
                                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -288,10 +288,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TerminatingSipDomain </returns> 
-        public static ResourceSet<TerminatingSipDomainResource> Read(string pathTrunkSid, 
-                                                                     int? pageSize = null, 
-                                                                     long? limit = null, 
+        /// <returns> A single instance of TerminatingSipDomain </returns>
+        public static ResourceSet<TerminatingSipDomainResource> Read(string pathTrunkSid,
+                                                                     int? pageSize = null,
+                                                                     long? limit = null,
                                                                      ITwilioRestClient client = null)
         {
             var options = new ReadTerminatingSipDomainOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
@@ -306,10 +306,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TerminatingSipDomainResource>> ReadAsync(string pathTrunkSid, 
-                                                                                                             int? pageSize = null, 
-                                                                                                             long? limit = null, 
+        /// <returns> Task that resolves to A single instance of TerminatingSipDomain </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TerminatingSipDomainResource>> ReadAsync(string pathTrunkSid,
+                                                                                                             int? pageSize = null,
+                                                                                                             long? limit = null,
                                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadTerminatingSipDomainOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
@@ -322,7 +322,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<TerminatingSipDomainResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -341,8 +341,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<TerminatingSipDomainResource> NextPage(Page<TerminatingSipDomainResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<TerminatingSipDomainResource> NextPage(Page<TerminatingSipDomainResource> page,
                                                                   ITwilioRestClient client)
         {
             var request = new Request(
@@ -362,8 +362,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<TerminatingSipDomainResource> PreviousPage(Page<TerminatingSipDomainResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<TerminatingSipDomainResource> PreviousPage(Page<TerminatingSipDomainResource> page,
                                                                       ITwilioRestClient client)
         {
             var request = new Request(
@@ -382,7 +382,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Converts a JSON string into a TerminatingSipDomainResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> TerminatingSipDomainResource object represented by the provided JSON </returns> 
+        /// <returns> TerminatingSipDomainResource object represented by the provided JSON </returns>
         public static TerminatingSipDomainResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

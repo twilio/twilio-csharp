@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Notify.V1 
+namespace Twilio.Rest.Notify.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadCredentialOptions
     /// </summary>
-    public class ReadCredentialOptions : ReadOptions<CredentialResource> 
+    public class ReadCredentialOptions : ReadOptions<CredentialResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -35,10 +35,10 @@ namespace Twilio.Rest.Notify.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateCredentialOptions
     /// </summary>
-    public class CreateCredentialOptions : IOptions<CredentialResource> 
+    public class CreateCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The Credential type
@@ -125,10 +125,10 @@ namespace Twilio.Rest.Notify.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchCredentialOptions
     /// </summary>
-    public class FetchCredentialOptions : IOptions<CredentialResource> 
+    public class FetchCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -156,10 +156,10 @@ namespace Twilio.Rest.Notify.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// UpdateCredentialOptions
     /// </summary>
-    public class UpdateCredentialOptions : IOptions<CredentialResource> 
+    public class UpdateCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -241,10 +241,10 @@ namespace Twilio.Rest.Notify.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteCredentialOptions
     /// </summary>
-    public class DeleteCredentialOptions : IOptions<CredentialResource> 
+    public class DeleteCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

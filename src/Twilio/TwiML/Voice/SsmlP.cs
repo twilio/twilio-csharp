@@ -7,13 +7,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Adding a Pause Between Paragraphs in Say
     /// </summary>
-    public class SsmlP : TwiML 
+    public class SsmlP : TwiML
     {
         /// <summary>
         /// Words to speak

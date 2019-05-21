@@ -12,15 +12,15 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Record TwiML Verb
     /// </summary>
-    public class Record : TwiML 
+    public class Record : TwiML
     {
-        public sealed class TrimEnum : StringEnum 
+        public sealed class TrimEnum : StringEnum
         {
             private TrimEnum(string value) : base(value) {}
             public TrimEnum() {}
@@ -33,7 +33,7 @@ namespace Twilio.TwiML.Voice
             public static readonly TrimEnum DoNotTrim = new TrimEnum("do-not-trim");
         }
 
-        public sealed class RecordingEventEnum : StringEnum 
+        public sealed class RecordingEventEnum : StringEnum
         {
             private RecordingEventEnum(string value) : base(value) {}
             public RecordingEventEnum() {}
@@ -111,17 +111,17 @@ namespace Twilio.TwiML.Voice
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="transcribe"> Transcribe the recording </param>
         /// <param name="transcribeCallback"> Transcribe callback URL </param>
-        public Record(Uri action = null, 
-                      Twilio.Http.HttpMethod method = null, 
-                      int? timeout = null, 
-                      string finishOnKey = null, 
-                      int? maxLength = null, 
-                      bool? playBeep = null, 
-                      Record.TrimEnum trim = null, 
-                      Uri recordingStatusCallback = null, 
-                      Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
-                      List<Record.RecordingEventEnum> recordingStatusCallbackEvent = null, 
-                      bool? transcribe = null, 
+        public Record(Uri action = null,
+                      Twilio.Http.HttpMethod method = null,
+                      int? timeout = null,
+                      string finishOnKey = null,
+                      int? maxLength = null,
+                      bool? playBeep = null,
+                      Record.TrimEnum trim = null,
+                      Uri recordingStatusCallback = null,
+                      Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                      List<Record.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                      bool? transcribe = null,
                       Uri transcribeCallback = null) : base("Record")
         {
             this.Action = action;

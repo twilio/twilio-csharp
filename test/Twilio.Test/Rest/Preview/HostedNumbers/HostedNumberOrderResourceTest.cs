@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.HostedNumbers;
 
-namespace Twilio.Tests.Rest.Preview.HostedNumbers 
+namespace Twilio.Tests.Rest.Preview.HostedNumbers
 {
 
     [TestFixture]
-    public class HostedNumberOrderTest : TwilioTest 
+    public class HostedNumberOrderTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

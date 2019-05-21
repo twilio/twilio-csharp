@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.BulkExports.Export;
 
-namespace Twilio.Tests.Rest.Preview.BulkExports.Export 
+namespace Twilio.Tests.Rest.Preview.BulkExports.Export
 {
 
     [TestFixture]
-    public class DayTest : TwilioTest 
+    public class DayTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

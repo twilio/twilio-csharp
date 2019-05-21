@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Message;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.Message 
+namespace Twilio.Tests.Rest.Api.V2010.Account.Message
 {
 
     [TestFixture]
-    public class MediaTest : TwilioTest 
+    public class MediaTest : TwilioTest
     {
         [Test]
         public void TestDeleteRequest()

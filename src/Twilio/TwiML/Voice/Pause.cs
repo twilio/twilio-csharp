@@ -8,13 +8,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Pause TwiML Verb
     /// </summary>
-    public class Pause : TwiML 
+    public class Pause : TwiML
     {
         /// <summary>
         /// Length in seconds to pause

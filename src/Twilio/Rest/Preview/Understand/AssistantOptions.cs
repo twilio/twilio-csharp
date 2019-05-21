@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand 
+namespace Twilio.Rest.Preview.Understand
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchAssistantOptions
     /// </summary>
-    public class FetchAssistantOptions : IOptions<AssistantResource> 
+    public class FetchAssistantOptions : IOptions<AssistantResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.
@@ -46,10 +46,10 @@ namespace Twilio.Rest.Preview.Understand
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadAssistantOptions
     /// </summary>
-    public class ReadAssistantOptions : ReadOptions<AssistantResource> 
+    public class ReadAssistantOptions : ReadOptions<AssistantResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -69,10 +69,10 @@ namespace Twilio.Rest.Preview.Understand
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateAssistantOptions
     /// </summary>
-    public class CreateAssistantOptions : IOptions<AssistantResource> 
+    public class CreateAssistantOptions : IOptions<AssistantResource>
     {
         /// <summary>
         /// A text description for the Assistant. It is non-unique and can up to 255 characters long.
@@ -160,10 +160,10 @@ namespace Twilio.Rest.Preview.Understand
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateAssistantOptions
     /// </summary>
-    public class UpdateAssistantOptions : IOptions<AssistantResource> 
+    public class UpdateAssistantOptions : IOptions<AssistantResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.
@@ -264,10 +264,10 @@ namespace Twilio.Rest.Preview.Understand
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteAssistantOptions
     /// </summary>
-    public class DeleteAssistantOptions : IOptions<AssistantResource> 
+    public class DeleteAssistantOptions : IOptions<AssistantResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.

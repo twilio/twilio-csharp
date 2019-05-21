@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// DefaultsResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant 
+namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
-    public class DefaultsResource : Resource 
+    public class DefaultsResource : Resource
     {
         private static Request BuildFetchRequest(FetchDefaultsOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Fetch Defaults parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Defaults </returns> 
+        /// <returns> A single instance of Defaults </returns>
         public static DefaultsResource Fetch(FetchDefaultsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Fetch Defaults parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Defaults </returns> 
-        public static async System.Threading.Tasks.Task<DefaultsResource> FetchAsync(FetchDefaultsOptions options, 
+        /// <returns> Task that resolves to A single instance of Defaults </returns>
+        public static async System.Threading.Tasks.Task<DefaultsResource> FetchAsync(FetchDefaultsOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Defaults </returns> 
+        /// <returns> A single instance of Defaults </returns>
         public static DefaultsResource Fetch(string pathAssistantSid, ITwilioRestClient client = null)
         {
             var options = new FetchDefaultsOptions(pathAssistantSid);
@@ -81,8 +81,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Defaults </returns> 
-        public static async System.Threading.Tasks.Task<DefaultsResource> FetchAsync(string pathAssistantSid, 
+        /// <returns> Task that resolves to A single instance of Defaults </returns>
+        public static async System.Threading.Tasks.Task<DefaultsResource> FetchAsync(string pathAssistantSid,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchDefaultsOptions(pathAssistantSid);
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Update Defaults parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Defaults </returns> 
+        /// <returns> A single instance of Defaults </returns>
         public static DefaultsResource Update(UpdateDefaultsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -120,8 +120,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Update Defaults parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Defaults </returns> 
-        public static async System.Threading.Tasks.Task<DefaultsResource> UpdateAsync(UpdateDefaultsOptions options, 
+        /// <returns> Task that resolves to A single instance of Defaults </returns>
+        public static async System.Threading.Tasks.Task<DefaultsResource> UpdateAsync(UpdateDefaultsOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -136,9 +136,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
         /// <param name="defaults"> A JSON string that describes the default task links. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Defaults </returns> 
-        public static DefaultsResource Update(string pathAssistantSid, 
-                                              object defaults = null, 
+        /// <returns> A single instance of Defaults </returns>
+        public static DefaultsResource Update(string pathAssistantSid,
+                                              object defaults = null,
                                               ITwilioRestClient client = null)
         {
             var options = new UpdateDefaultsOptions(pathAssistantSid){Defaults = defaults};
@@ -152,9 +152,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to update </param>
         /// <param name="defaults"> A JSON string that describes the default task links. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Defaults </returns> 
-        public static async System.Threading.Tasks.Task<DefaultsResource> UpdateAsync(string pathAssistantSid, 
-                                                                                      object defaults = null, 
+        /// <returns> Task that resolves to A single instance of Defaults </returns>
+        public static async System.Threading.Tasks.Task<DefaultsResource> UpdateAsync(string pathAssistantSid,
+                                                                                      object defaults = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateDefaultsOptions(pathAssistantSid){Defaults = defaults};
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// Converts a JSON string into a DefaultsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> DefaultsResource object represented by the provided JSON </returns> 
+        /// <returns> DefaultsResource object represented by the provided JSON </returns>
         public static DefaultsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

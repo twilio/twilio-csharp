@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Trunking.V1.Trunk 
+namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
-    public class OriginationUrlResource : Resource 
+    public class OriginationUrlResource : Resource
     {
         private static Request BuildFetchRequest(FetchOriginationUrlOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Fetch OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
+        /// <returns> A single instance of OriginationUrl </returns>
         public static OriginationUrlResource Fetch(FetchOriginationUrlOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Fetch OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<OriginationUrlResource> FetchAsync(FetchOriginationUrlOptions options, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> FetchAsync(FetchOriginationUrlOptions options,
                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the OriginationUrl </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
+        /// <returns> A single instance of OriginationUrl </returns>
         public static OriginationUrlResource Fetch(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchOriginationUrlOptions(pathTrunkSid, pathSid);
@@ -80,9 +80,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk from which to fetch the OriginationUrl </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<OriginationUrlResource> FetchAsync(string pathTrunkSid, 
-                                                                                           string pathSid, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> FetchAsync(string pathTrunkSid,
+                                                                                           string pathSid,
                                                                                            ITwilioRestClient client = null)
         {
             var options = new FetchOriginationUrlOptions(pathTrunkSid, pathSid);
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Delete OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
+        /// <returns> A single instance of OriginationUrl </returns>
         public static bool Delete(DeleteOriginationUrlOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -120,8 +120,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Delete OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteOriginationUrlOptions options, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteOriginationUrlOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the OriginationUrl </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
+        /// <returns> A single instance of OriginationUrl </returns>
         public static bool Delete(string pathTrunkSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteOriginationUrlOptions(pathTrunkSid, pathSid);
@@ -150,9 +150,9 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pathTrunkSid"> The SID of the Trunk from which to delete the OriginationUrl </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathTrunkSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteOriginationUrlOptions(pathTrunkSid, pathSid);
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Create OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
+        /// <returns> A single instance of OriginationUrl </returns>
         public static OriginationUrlResource Create(CreateOriginationUrlOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -190,8 +190,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Create OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<OriginationUrlResource> CreateAsync(CreateOriginationUrlOptions options, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> CreateAsync(CreateOriginationUrlOptions options,
                                                                                             ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -211,13 +211,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
-        public static OriginationUrlResource Create(string pathTrunkSid, 
-                                                    int? weight, 
-                                                    int? priority, 
-                                                    bool? enabled, 
-                                                    string friendlyName, 
-                                                    Uri sipUrl, 
+        /// <returns> A single instance of OriginationUrl </returns>
+        public static OriginationUrlResource Create(string pathTrunkSid,
+                                                    int? weight,
+                                                    int? priority,
+                                                    bool? enabled,
+                                                    string friendlyName,
+                                                    Uri sipUrl,
                                                     ITwilioRestClient client = null)
         {
             var options = new CreateOriginationUrlOptions(pathTrunkSid, weight, priority, enabled, friendlyName, sipUrl);
@@ -236,13 +236,13 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<OriginationUrlResource> CreateAsync(string pathTrunkSid, 
-                                                                                            int? weight, 
-                                                                                            int? priority, 
-                                                                                            bool? enabled, 
-                                                                                            string friendlyName, 
-                                                                                            Uri sipUrl, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> CreateAsync(string pathTrunkSid,
+                                                                                            int? weight,
+                                                                                            int? priority,
+                                                                                            bool? enabled,
+                                                                                            string friendlyName,
+                                                                                            Uri sipUrl,
                                                                                             ITwilioRestClient client = null)
         {
             var options = new CreateOriginationUrlOptions(pathTrunkSid, weight, priority, enabled, friendlyName, sipUrl);
@@ -266,8 +266,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Read OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
-        public static ResourceSet<OriginationUrlResource> Read(ReadOriginationUrlOptions options, 
+        /// <returns> A single instance of OriginationUrl </returns>
+        public static ResourceSet<OriginationUrlResource> Read(ReadOriginationUrlOptions options,
                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -283,8 +283,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Read OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<OriginationUrlResource>> ReadAsync(ReadOriginationUrlOptions options, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<OriginationUrlResource>> ReadAsync(ReadOriginationUrlOptions options,
                                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -302,10 +302,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
-        public static ResourceSet<OriginationUrlResource> Read(string pathTrunkSid, 
-                                                               int? pageSize = null, 
-                                                               long? limit = null, 
+        /// <returns> A single instance of OriginationUrl </returns>
+        public static ResourceSet<OriginationUrlResource> Read(string pathTrunkSid,
+                                                               int? pageSize = null,
+                                                               long? limit = null,
                                                                ITwilioRestClient client = null)
         {
             var options = new ReadOriginationUrlOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
@@ -320,10 +320,10 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<OriginationUrlResource>> ReadAsync(string pathTrunkSid, 
-                                                                                                       int? pageSize = null, 
-                                                                                                       long? limit = null, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<OriginationUrlResource>> ReadAsync(string pathTrunkSid,
+                                                                                                       int? pageSize = null,
+                                                                                                       long? limit = null,
                                                                                                        ITwilioRestClient client = null)
         {
             var options = new ReadOriginationUrlOptions(pathTrunkSid){PageSize = pageSize, Limit = limit};
@@ -336,7 +336,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<OriginationUrlResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -355,7 +355,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<OriginationUrlResource> NextPage(Page<OriginationUrlResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -375,7 +375,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<OriginationUrlResource> PreviousPage(Page<OriginationUrlResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -406,7 +406,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Update OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
+        /// <returns> A single instance of OriginationUrl </returns>
         public static OriginationUrlResource Update(UpdateOriginationUrlOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -420,8 +420,8 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// </summary>
         /// <param name="options"> Update OriginationUrl parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<OriginationUrlResource> UpdateAsync(UpdateOriginationUrlOptions options, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> UpdateAsync(UpdateOriginationUrlOptions options,
                                                                                             ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -442,14 +442,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OriginationUrl </returns> 
-        public static OriginationUrlResource Update(string pathTrunkSid, 
-                                                    string pathSid, 
-                                                    int? weight = null, 
-                                                    int? priority = null, 
-                                                    bool? enabled = null, 
-                                                    string friendlyName = null, 
-                                                    Uri sipUrl = null, 
+        /// <returns> A single instance of OriginationUrl </returns>
+        public static OriginationUrlResource Update(string pathTrunkSid,
+                                                    string pathSid,
+                                                    int? weight = null,
+                                                    int? priority = null,
+                                                    bool? enabled = null,
+                                                    string friendlyName = null,
+                                                    Uri sipUrl = null,
                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateOriginationUrlOptions(pathTrunkSid, pathSid){Weight = weight, Priority = priority, Enabled = enabled, FriendlyName = friendlyName, SipUrl = sipUrl};
@@ -469,14 +469,14 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OriginationUrl </returns> 
-        public static async System.Threading.Tasks.Task<OriginationUrlResource> UpdateAsync(string pathTrunkSid, 
-                                                                                            string pathSid, 
-                                                                                            int? weight = null, 
-                                                                                            int? priority = null, 
-                                                                                            bool? enabled = null, 
-                                                                                            string friendlyName = null, 
-                                                                                            Uri sipUrl = null, 
+        /// <returns> Task that resolves to A single instance of OriginationUrl </returns>
+        public static async System.Threading.Tasks.Task<OriginationUrlResource> UpdateAsync(string pathTrunkSid,
+                                                                                            string pathSid,
+                                                                                            int? weight = null,
+                                                                                            int? priority = null,
+                                                                                            bool? enabled = null,
+                                                                                            string friendlyName = null,
+                                                                                            Uri sipUrl = null,
                                                                                             ITwilioRestClient client = null)
         {
             var options = new UpdateOriginationUrlOptions(pathTrunkSid, pathSid){Weight = weight, Priority = priority, Enabled = enabled, FriendlyName = friendlyName, SipUrl = sipUrl};
@@ -488,7 +488,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// Converts a JSON string into a OriginationUrlResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> OriginationUrlResource object represented by the provided JSON </returns> 
+        /// <returns> OriginationUrlResource object represented by the provided JSON </returns>
         public static OriginationUrlResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

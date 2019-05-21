@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Conference 
+namespace Twilio.Rest.Api.V2010.Account.Conference
 {
 
     /// <summary>
     /// Fetch an instance of a participant
     /// </summary>
-    public class FetchParticipantOptions : IOptions<ParticipantResource> 
+    public class FetchParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     /// <summary>
     /// Update the properties of the participant
     /// </summary>
-    public class UpdateParticipantOptions : IOptions<ParticipantResource> 
+    public class UpdateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to update
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     /// <summary>
     /// CreateParticipantOptions
     /// </summary>
-    public class CreateParticipantOptions : IOptions<ParticipantResource> 
+    public class CreateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -530,7 +530,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     /// <summary>
     /// Kick a participant from a given conference
     /// </summary>
-    public class DeleteParticipantOptions : IOptions<ParticipantResource> 
+    public class DeleteParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -569,7 +569,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     /// <summary>
     /// Retrieve a list of participants belonging to the account used to make the request
     /// </summary>
-    public class ReadParticipantOptions : ReadOptions<ParticipantResource> 
+    public class ReadParticipantOptions : ReadOptions<ParticipantResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

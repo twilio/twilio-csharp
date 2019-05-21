@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Pricing.V2.Voice;
 
-namespace Twilio.Tests.Rest.Pricing.V2.Voice 
+namespace Twilio.Tests.Rest.Pricing.V2.Voice
 {
 
     [TestFixture]
-    public class CountryTest : TwilioTest 
+    public class CountryTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

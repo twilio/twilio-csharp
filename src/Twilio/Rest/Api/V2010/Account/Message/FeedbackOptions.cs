@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Message 
+namespace Twilio.Rest.Api.V2010.Account.Message
 {
 
     /// <summary>
     /// CreateFeedbackOptions
     /// </summary>
-    public class CreateFeedbackOptions : IOptions<FeedbackResource> 
+    public class CreateFeedbackOptions : IOptions<FeedbackResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource

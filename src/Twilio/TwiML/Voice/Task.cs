@@ -8,13 +8,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Task TwiML Noun
     /// </summary>
-    public class Task : TwiML 
+    public class Task : TwiML
     {
         /// <summary>
         /// TaskRouter task attributes

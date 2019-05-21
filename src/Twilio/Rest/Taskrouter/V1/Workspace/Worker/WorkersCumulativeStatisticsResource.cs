@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
 
-    public class WorkersCumulativeStatisticsResource : Resource 
+    public class WorkersCumulativeStatisticsResource : Resource
     {
         private static Request BuildFetchRequest(FetchWorkersCumulativeStatisticsOptions options, ITwilioRestClient client)
         {
@@ -36,8 +36,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="options"> Fetch WorkersCumulativeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkersCumulativeStatistics </returns> 
-        public static WorkersCumulativeStatisticsResource Fetch(FetchWorkersCumulativeStatisticsOptions options, 
+        /// <returns> A single instance of WorkersCumulativeStatistics </returns>
+        public static WorkersCumulativeStatisticsResource Fetch(FetchWorkersCumulativeStatisticsOptions options,
                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -51,8 +51,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="options"> Fetch WorkersCumulativeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkersCumulativeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkersCumulativeStatisticsResource> FetchAsync(FetchWorkersCumulativeStatisticsOptions options, 
+        /// <returns> Task that resolves to A single instance of WorkersCumulativeStatistics </returns>
+        public static async System.Threading.Tasks.Task<WorkersCumulativeStatisticsResource> FetchAsync(FetchWorkersCumulativeStatisticsOptions options,
                                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -70,12 +70,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
         /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkersCumulativeStatistics </returns> 
-        public static WorkersCumulativeStatisticsResource Fetch(string pathWorkspaceSid, 
-                                                                DateTime? endDate = null, 
-                                                                int? minutes = null, 
-                                                                DateTime? startDate = null, 
-                                                                string taskChannel = null, 
+        /// <returns> A single instance of WorkersCumulativeStatistics </returns>
+        public static WorkersCumulativeStatisticsResource Fetch(string pathWorkspaceSid,
+                                                                DateTime? endDate = null,
+                                                                int? minutes = null,
+                                                                DateTime? startDate = null,
+                                                                string taskChannel = null,
                                                                 ITwilioRestClient client = null)
         {
             var options = new FetchWorkersCumulativeStatisticsOptions(pathWorkspaceSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel};
@@ -92,12 +92,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
         /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkersCumulativeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkersCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid, 
-                                                                                                        DateTime? endDate = null, 
-                                                                                                        int? minutes = null, 
-                                                                                                        DateTime? startDate = null, 
-                                                                                                        string taskChannel = null, 
+        /// <returns> Task that resolves to A single instance of WorkersCumulativeStatistics </returns>
+        public static async System.Threading.Tasks.Task<WorkersCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid,
+                                                                                                        DateTime? endDate = null,
+                                                                                                        int? minutes = null,
+                                                                                                        DateTime? startDate = null,
+                                                                                                        string taskChannel = null,
                                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchWorkersCumulativeStatisticsOptions(pathWorkspaceSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel};
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// Converts a JSON string into a WorkersCumulativeStatisticsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> WorkersCumulativeStatisticsResource object represented by the provided JSON </returns> 
+        /// <returns> WorkersCumulativeStatisticsResource object represented by the provided JSON </returns>
         public static WorkersCumulativeStatisticsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

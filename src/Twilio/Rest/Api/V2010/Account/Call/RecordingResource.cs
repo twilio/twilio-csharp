@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.Call 
+namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
-    public class RecordingResource : Resource 
+    public class RecordingResource : Resource
     {
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             public static readonly StatusEnum Absent = new StatusEnum("absent");
         }
 
-        public sealed class SourceEnum : StringEnum 
+        public sealed class SourceEnum : StringEnum
         {
             private SourceEnum(string value) : base(value) {}
             public SourceEnum() {}
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Create Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
+        /// <returns> A single instance of Recording </returns>
         public static RecordingResource Create(CreateRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -86,8 +86,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Create Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<RecordingResource> CreateAsync(CreateRecordingOptions options, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<RecordingResource> CreateAsync(CreateRecordingOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -108,14 +108,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="trim"> Whether to trim the silence in the recording </param>
         /// <param name="recordingChannels"> The number of channels that the output recording will be configured with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
-        public static RecordingResource Create(string pathCallSid, 
-                                               string pathAccountSid = null, 
-                                               List<string> recordingStatusCallbackEvent = null, 
-                                               Uri recordingStatusCallback = null, 
-                                               Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
-                                               string trim = null, 
-                                               string recordingChannels = null, 
+        /// <returns> A single instance of Recording </returns>
+        public static RecordingResource Create(string pathCallSid,
+                                               string pathAccountSid = null,
+                                               List<string> recordingStatusCallbackEvent = null,
+                                               Uri recordingStatusCallback = null,
+                                               Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                                               string trim = null,
+                                               string recordingChannels = null,
                                                ITwilioRestClient client = null)
         {
             var options = new CreateRecordingOptions(pathCallSid){PathAccountSid = pathAccountSid, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, Trim = trim, RecordingChannels = recordingChannels};
@@ -135,14 +135,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="trim"> Whether to trim the silence in the recording </param>
         /// <param name="recordingChannels"> The number of channels that the output recording will be configured with </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<RecordingResource> CreateAsync(string pathCallSid, 
-                                                                                       string pathAccountSid = null, 
-                                                                                       List<string> recordingStatusCallbackEvent = null, 
-                                                                                       Uri recordingStatusCallback = null, 
-                                                                                       Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
-                                                                                       string trim = null, 
-                                                                                       string recordingChannels = null, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<RecordingResource> CreateAsync(string pathCallSid,
+                                                                                       string pathAccountSid = null,
+                                                                                       List<string> recordingStatusCallbackEvent = null,
+                                                                                       Uri recordingStatusCallback = null,
+                                                                                       Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                                                                                       string trim = null,
+                                                                                       string recordingChannels = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new CreateRecordingOptions(pathCallSid){PathAccountSid = pathAccountSid, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, Trim = trim, RecordingChannels = recordingChannels};
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Update Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
+        /// <returns> A single instance of Recording </returns>
         public static RecordingResource Update(UpdateRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -182,8 +182,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Update Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(UpdateRecordingOptions options, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(UpdateRecordingOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -202,12 +202,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to update </param>
         /// <param name="pauseBehavior"> Whether to record or not during the pause period. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
-        public static RecordingResource Update(string pathCallSid, 
-                                               string pathSid, 
-                                               RecordingResource.StatusEnum status, 
-                                               string pathAccountSid = null, 
-                                               string pauseBehavior = null, 
+        /// <returns> A single instance of Recording </returns>
+        public static RecordingResource Update(string pathCallSid,
+                                               string pathSid,
+                                               RecordingResource.StatusEnum status,
+                                               string pathAccountSid = null,
+                                               string pauseBehavior = null,
                                                ITwilioRestClient client = null)
         {
             var options = new UpdateRecordingOptions(pathCallSid, pathSid, status){PathAccountSid = pathAccountSid, PauseBehavior = pauseBehavior};
@@ -225,12 +225,12 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to update </param>
         /// <param name="pauseBehavior"> Whether to record or not during the pause period. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(string pathCallSid, 
-                                                                                       string pathSid, 
-                                                                                       RecordingResource.StatusEnum status, 
-                                                                                       string pathAccountSid = null, 
-                                                                                       string pauseBehavior = null, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(string pathCallSid,
+                                                                                       string pathSid,
+                                                                                       RecordingResource.StatusEnum status,
+                                                                                       string pathAccountSid = null,
+                                                                                       string pauseBehavior = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new UpdateRecordingOptions(pathCallSid, pathSid, status){PathAccountSid = pathAccountSid, PauseBehavior = pauseBehavior};
@@ -254,7 +254,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
+        /// <returns> A single instance of Recording </returns>
         public static RecordingResource Fetch(FetchRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -268,8 +268,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(FetchRecordingOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -285,10 +285,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
-        public static RecordingResource Fetch(string pathCallSid, 
-                                              string pathSid, 
-                                              string pathAccountSid = null, 
+        /// <returns> A single instance of Recording </returns>
+        public static RecordingResource Fetch(string pathCallSid,
+                                              string pathSid,
+                                              string pathAccountSid = null,
                                               ITwilioRestClient client = null)
         {
             var options = new FetchRecordingOptions(pathCallSid, pathSid){PathAccountSid = pathAccountSid};
@@ -303,10 +303,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathCallSid, 
-                                                                                      string pathSid, 
-                                                                                      string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathCallSid,
+                                                                                      string pathSid,
+                                                                                      string pathAccountSid = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new FetchRecordingOptions(pathCallSid, pathSid){PathAccountSid = pathAccountSid};
@@ -330,7 +330,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Delete Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
+        /// <returns> A single instance of Recording </returns>
         public static bool Delete(DeleteRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -344,8 +344,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Delete Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRecordingOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -361,10 +361,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
-        public static bool Delete(string pathCallSid, 
-                                  string pathSid, 
-                                  string pathAccountSid = null, 
+        /// <returns> A single instance of Recording </returns>
+        public static bool Delete(string pathCallSid,
+                                  string pathSid,
+                                  string pathAccountSid = null,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteRecordingOptions(pathCallSid, pathSid){PathAccountSid = pathAccountSid};
@@ -379,10 +379,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCallSid, 
-                                                                          string pathSid, 
-                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCallSid,
+                                                                          string pathSid,
+                                                                          string pathAccountSid = null,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteRecordingOptions(pathCallSid, pathSid){PathAccountSid = pathAccountSid};
@@ -406,7 +406,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
+        /// <returns> A single instance of Recording </returns>
         public static ResourceSet<RecordingResource> Read(ReadRecordingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -422,8 +422,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(ReadRecordingOptions options,
                                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -445,14 +445,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Recording </returns> 
-        public static ResourceSet<RecordingResource> Read(string pathCallSid, 
-                                                          string pathAccountSid = null, 
-                                                          DateTime? dateCreatedBefore = null, 
-                                                          DateTime? dateCreated = null, 
-                                                          DateTime? dateCreatedAfter = null, 
-                                                          int? pageSize = null, 
-                                                          long? limit = null, 
+        /// <returns> A single instance of Recording </returns>
+        public static ResourceSet<RecordingResource> Read(string pathCallSid,
+                                                          string pathAccountSid = null,
+                                                          DateTime? dateCreatedBefore = null,
+                                                          DateTime? dateCreated = null,
+                                                          DateTime? dateCreatedAfter = null,
+                                                          int? pageSize = null,
+                                                          long? limit = null,
                                                           ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(pathCallSid){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
@@ -471,14 +471,14 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Recording </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(string pathCallSid, 
-                                                                                                  string pathAccountSid = null, 
-                                                                                                  DateTime? dateCreatedBefore = null, 
-                                                                                                  DateTime? dateCreated = null, 
-                                                                                                  DateTime? dateCreatedAfter = null, 
-                                                                                                  int? pageSize = null, 
-                                                                                                  long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Recording </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<RecordingResource>> ReadAsync(string pathCallSid,
+                                                                                                  string pathAccountSid = null,
+                                                                                                  DateTime? dateCreatedBefore = null,
+                                                                                                  DateTime? dateCreated = null,
+                                                                                                  DateTime? dateCreatedAfter = null,
+                                                                                                  int? pageSize = null,
+                                                                                                  long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
             var options = new ReadRecordingOptions(pathCallSid){PathAccountSid = pathAccountSid, DateCreatedBefore = dateCreatedBefore, DateCreated = dateCreated, DateCreatedAfter = dateCreatedAfter, PageSize = pageSize, Limit = limit};
@@ -491,7 +491,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<RecordingResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -510,7 +510,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<RecordingResource> NextPage(Page<RecordingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -530,7 +530,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<RecordingResource> PreviousPage(Page<RecordingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -549,7 +549,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Converts a JSON string into a RecordingResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> RecordingResource object represented by the provided JSON </returns> 
+        /// <returns> RecordingResource object represented by the provided JSON </returns>
         public static RecordingResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

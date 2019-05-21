@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Monitor.V1 
+namespace Twilio.Rest.Monitor.V1
 {
 
     /// <summary>
     /// FetchEventOptions
     /// </summary>
-    public class FetchEventOptions : IOptions<EventResource> 
+    public class FetchEventOptions : IOptions<EventResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this event.
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Monitor.V1
     /// <summary>
     /// Returns a list of Events in this account, sorted by event-date.
     /// </summary>
-    public class ReadEventOptions : ReadOptions<EventResource> 
+    public class ReadEventOptions : ReadOptions<EventResource>
     {
         /// <summary>
         /// Only include Events initiated by this Actor

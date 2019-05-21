@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// FetchSigningKeyOptions
     /// </summary>
-    public class FetchSigningKeyOptions : IOptions<SigningKeyResource> 
+    public class FetchSigningKeyOptions : IOptions<SigningKeyResource>
     {
         /// <summary>
         /// The account_sid
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// UpdateSigningKeyOptions
     /// </summary>
-    public class UpdateSigningKeyOptions : IOptions<SigningKeyResource> 
+    public class UpdateSigningKeyOptions : IOptions<SigningKeyResource>
     {
         /// <summary>
         /// The account_sid
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// DeleteSigningKeyOptions
     /// </summary>
-    public class DeleteSigningKeyOptions : IOptions<SigningKeyResource> 
+    public class DeleteSigningKeyOptions : IOptions<SigningKeyResource>
     {
         /// <summary>
         /// The account_sid
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// ReadSigningKeyOptions
     /// </summary>
-    public class ReadSigningKeyOptions : ReadOptions<SigningKeyResource> 
+    public class ReadSigningKeyOptions : ReadOptions<SigningKeyResource>
     {
         /// <summary>
         /// The account_sid

@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// ChallengeResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Authy.V1.Service.Entity.Factor 
+namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
 {
 
-    public class ChallengeResource : Resource 
+    public class ChallengeResource : Resource
     {
-        public sealed class ChallengeStatusesEnum : StringEnum 
+        public sealed class ChallengeStatusesEnum : StringEnum
         {
             private ChallengeStatusesEnum(string value) : base(value) {}
             public ChallengeStatusesEnum() {}
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
             public static readonly ChallengeStatusesEnum Denied = new ChallengeStatusesEnum("denied");
         }
 
-        public sealed class ChallengeReasonsEnum : StringEnum 
+        public sealed class ChallengeReasonsEnum : StringEnum
         {
             private ChallengeReasonsEnum(string value) : base(value) {}
             public ChallengeReasonsEnum() {}
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
             public static readonly ChallengeReasonsEnum NotRequested = new ChallengeReasonsEnum("not_requested");
         }
 
-        public sealed class FactorTypesEnum : StringEnum 
+        public sealed class FactorTypesEnum : StringEnum
         {
             private FactorTypesEnum(string value) : base(value) {}
             public FactorTypesEnum() {}
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
             public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
         }
 
-        public sealed class FactorStrengthsEnum : StringEnum 
+        public sealed class FactorStrengthsEnum : StringEnum
         {
             private FactorStrengthsEnum(string value) : base(value) {}
             public FactorStrengthsEnum() {}
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// </summary>
         /// <param name="options"> Create Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns> 
+        /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Create(CreateChallengeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -114,8 +114,8 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// </summary>
         /// <param name="options"> Create Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns> 
-        public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(CreateChallengeOptions options, 
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(CreateChallengeOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -134,13 +134,13 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// <param name="details"> Public details provided to contextualize the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns> 
-        public static ChallengeResource Create(string pathServiceSid, 
-                                               string pathIdentity, 
-                                               string pathFactorSid, 
-                                               DateTime? expirationDate = null, 
-                                               string details = null, 
-                                               string hiddenDetails = null, 
+        /// <returns> A single instance of Challenge </returns>
+        public static ChallengeResource Create(string pathServiceSid,
+                                               string pathIdentity,
+                                               string pathFactorSid,
+                                               DateTime? expirationDate = null,
+                                               string details = null,
+                                               string hiddenDetails = null,
                                                ITwilioRestClient client = null)
         {
             var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails};
@@ -158,13 +158,13 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// <param name="details"> Public details provided to contextualize the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns> 
-        public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(string pathServiceSid, 
-                                                                                       string pathIdentity, 
-                                                                                       string pathFactorSid, 
-                                                                                       DateTime? expirationDate = null, 
-                                                                                       string details = null, 
-                                                                                       string hiddenDetails = null, 
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(string pathServiceSid,
+                                                                                       string pathIdentity,
+                                                                                       string pathFactorSid,
+                                                                                       DateTime? expirationDate = null,
+                                                                                       string details = null,
+                                                                                       string hiddenDetails = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails};
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// </summary>
         /// <param name="options"> Delete Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns> 
+        /// <returns> A single instance of Challenge </returns>
         public static bool Delete(DeleteChallengeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -202,8 +202,8 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// </summary>
         /// <param name="options"> Delete Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteChallengeOptions options, 
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteChallengeOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -220,11 +220,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// <param name="pathFactorSid"> Factor Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns> 
-        public static bool Delete(string pathServiceSid, 
-                                  string pathIdentity, 
-                                  string pathFactorSid, 
-                                  string pathSid, 
+        /// <returns> A single instance of Challenge </returns>
+        public static bool Delete(string pathServiceSid,
+                                  string pathIdentity,
+                                  string pathFactorSid,
+                                  string pathSid,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid);
@@ -240,11 +240,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// <param name="pathFactorSid"> Factor Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathIdentity, 
-                                                                          string pathFactorSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathIdentity,
+                                                                          string pathFactorSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid);
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// </summary>
         /// <param name="options"> Fetch Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns> 
+        /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Fetch(FetchChallengeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -282,8 +282,8 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// </summary>
         /// <param name="options"> Fetch Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns> 
-        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(FetchChallengeOptions options, 
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(FetchChallengeOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -300,11 +300,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// <param name="pathFactorSid"> Factor Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns> 
-        public static ChallengeResource Fetch(string pathServiceSid, 
-                                              string pathIdentity, 
-                                              string pathFactorSid, 
-                                              string pathSid, 
+        /// <returns> A single instance of Challenge </returns>
+        public static ChallengeResource Fetch(string pathServiceSid,
+                                              string pathIdentity,
+                                              string pathFactorSid,
+                                              string pathSid,
                                               ITwilioRestClient client = null)
         {
             var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid);
@@ -320,11 +320,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// <param name="pathFactorSid"> Factor Sid. </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns> 
-        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(string pathServiceSid, 
-                                                                                      string pathIdentity, 
-                                                                                      string pathFactorSid, 
-                                                                                      string pathSid, 
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(string pathServiceSid,
+                                                                                      string pathIdentity,
+                                                                                      string pathFactorSid,
+                                                                                      string pathSid,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid);
@@ -348,7 +348,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// </summary>
         /// <param name="options"> Update Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns> 
+        /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Update(UpdateChallengeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -362,8 +362,8 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// </summary>
         /// <param name="options"> Update Challenge parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns> 
-        public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(UpdateChallengeOptions options, 
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(UpdateChallengeOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -381,12 +381,12 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns> 
-        public static ChallengeResource Update(string pathServiceSid, 
-                                               string pathIdentity, 
-                                               string pathFactorSid, 
-                                               string pathSid, 
-                                               string authPayload = null, 
+        /// <returns> A single instance of Challenge </returns>
+        public static ChallengeResource Update(string pathServiceSid,
+                                               string pathIdentity,
+                                               string pathFactorSid,
+                                               string pathSid,
+                                               string authPayload = null,
                                                ITwilioRestClient client = null)
         {
             var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid){AuthPayload = authPayload};
@@ -403,12 +403,12 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns> 
-        public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(string pathServiceSid, 
-                                                                                       string pathIdentity, 
-                                                                                       string pathFactorSid, 
-                                                                                       string pathSid, 
-                                                                                       string authPayload = null, 
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(string pathServiceSid,
+                                                                                       string pathIdentity,
+                                                                                       string pathFactorSid,
+                                                                                       string pathSid,
+                                                                                       string authPayload = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid){AuthPayload = authPayload};
@@ -420,7 +420,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// Converts a JSON string into a ChallengeResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ChallengeResource object represented by the provided JSON </returns> 
+        /// <returns> ChallengeResource object represented by the provided JSON </returns>
         public static ChallengeResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

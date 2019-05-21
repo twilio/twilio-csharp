@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1 
+namespace Twilio.Rest.Video.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchRecordingSettingsOptions
     /// </summary>
-    public class FetchRecordingSettingsOptions : IOptions<RecordingSettingsResource> 
+    public class FetchRecordingSettingsOptions : IOptions<RecordingSettingsResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -32,10 +32,10 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateRecordingSettingsOptions
     /// </summary>
-    public class CreateRecordingSettingsOptions : IOptions<RecordingSettingsResource> 
+    public class CreateRecordingSettingsOptions : IOptions<RecordingSettingsResource>
     {
         /// <summary>
         /// Friendly name of the configuration to be shown in the console

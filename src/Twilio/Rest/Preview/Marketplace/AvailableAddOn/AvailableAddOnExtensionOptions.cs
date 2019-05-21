@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn 
+namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch an instance of an Extension for the Available Add-on.
     /// </summary>
-    public class FetchAvailableAddOnExtensionOptions : IOptions<AvailableAddOnExtensionResource> 
+    public class FetchAvailableAddOnExtensionOptions : IOptions<AvailableAddOnExtensionResource>
     {
         /// <summary>
         /// The available_add_on_sid
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of Extensions for the Available Add-on.
     /// </summary>
-    public class ReadAvailableAddOnExtensionOptions : ReadOptions<AvailableAddOnExtensionResource> 
+    public class ReadAvailableAddOnExtensionOptions : ReadOptions<AvailableAddOnExtensionResource>
     {
         /// <summary>
         /// The available_add_on_sid

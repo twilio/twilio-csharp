@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Fax.V1.Fax 
+namespace Twilio.Rest.Fax.V1.Fax
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch a specific fax media instance.
     /// </summary>
-    public class FetchFaxMediaOptions : IOptions<FaxMediaResource> 
+    public class FetchFaxMediaOptions : IOptions<FaxMediaResource>
     {
         /// <summary>
         /// The SID of the fax with the FaxMedia resource to fetch
@@ -50,10 +50,10 @@ namespace Twilio.Rest.Fax.V1.Fax
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all fax media instances for the specified fax.
     /// </summary>
-    public class ReadFaxMediaOptions : ReadOptions<FaxMediaResource> 
+    public class ReadFaxMediaOptions : ReadOptions<FaxMediaResource>
     {
         /// <summary>
         /// The SID of the fax with the FaxMedia resources to read
@@ -86,10 +86,10 @@ namespace Twilio.Rest.Fax.V1.Fax
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific fax media instance.
     /// </summary>
-    public class DeleteFaxMediaOptions : IOptions<FaxMediaResource> 
+    public class DeleteFaxMediaOptions : IOptions<FaxMediaResource>
     {
         /// <summary>
         /// The SID of the fax with the FaxMedia resource to delete

@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// CompositionHookResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Video.V1 
+namespace Twilio.Rest.Video.V1
 {
 
-    public class CompositionHookResource : Resource 
+    public class CompositionHookResource : Resource
     {
-        public sealed class FormatEnum : StringEnum 
+        public sealed class FormatEnum : StringEnum
         {
             private FormatEnum(string value) : base(value) {}
             public FormatEnum() {}
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Fetch CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
+        /// <returns> A single instance of CompositionHook </returns>
         public static CompositionHookResource Fetch(FetchCompositionHookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,8 +67,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Fetch CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
-        public static async System.Threading.Tasks.Task<CompositionHookResource> FetchAsync(FetchCompositionHookOptions options, 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
+        public static async System.Threading.Tasks.Task<CompositionHookResource> FetchAsync(FetchCompositionHookOptions options,
                                                                                             ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="pathSid"> The Composition Hook Sid that uniquely identifies the Composition Hook to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
+        /// <returns> A single instance of CompositionHook </returns>
         public static CompositionHookResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchCompositionHookOptions(pathSid);
@@ -95,8 +95,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="pathSid"> The Composition Hook Sid that uniquely identifies the Composition Hook to fetch. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
-        public static async System.Threading.Tasks.Task<CompositionHookResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
+        public static async System.Threading.Tasks.Task<CompositionHookResource> FetchAsync(string pathSid,
                                                                                             ITwilioRestClient client = null)
         {
             var options = new FetchCompositionHookOptions(pathSid);
@@ -120,8 +120,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Read CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
-        public static ResourceSet<CompositionHookResource> Read(ReadCompositionHookOptions options, 
+        /// <returns> A single instance of CompositionHook </returns>
+        public static ResourceSet<CompositionHookResource> Read(ReadCompositionHookOptions options,
                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -137,8 +137,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Read CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CompositionHookResource>> ReadAsync(ReadCompositionHookOptions options, 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CompositionHookResource>> ReadAsync(ReadCompositionHookOptions options,
                                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -161,13 +161,13 @@ namespace Twilio.Rest.Video.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
-        public static ResourceSet<CompositionHookResource> Read(bool? enabled = null, 
-                                                                DateTime? dateCreatedAfter = null, 
-                                                                DateTime? dateCreatedBefore = null, 
-                                                                string friendlyName = null, 
-                                                                int? pageSize = null, 
-                                                                long? limit = null, 
+        /// <returns> A single instance of CompositionHook </returns>
+        public static ResourceSet<CompositionHookResource> Read(bool? enabled = null,
+                                                                DateTime? dateCreatedAfter = null,
+                                                                DateTime? dateCreatedBefore = null,
+                                                                string friendlyName = null,
+                                                                int? pageSize = null,
+                                                                long? limit = null,
                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadCompositionHookOptions(){Enabled = enabled, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -187,13 +187,13 @@ namespace Twilio.Rest.Video.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CompositionHookResource>> ReadAsync(bool? enabled = null, 
-                                                                                                        DateTime? dateCreatedAfter = null, 
-                                                                                                        DateTime? dateCreatedBefore = null, 
-                                                                                                        string friendlyName = null, 
-                                                                                                        int? pageSize = null, 
-                                                                                                        long? limit = null, 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CompositionHookResource>> ReadAsync(bool? enabled = null,
+                                                                                                        DateTime? dateCreatedAfter = null,
+                                                                                                        DateTime? dateCreatedBefore = null,
+                                                                                                        string friendlyName = null,
+                                                                                                        int? pageSize = null,
+                                                                                                        long? limit = null,
                                                                                                         ITwilioRestClient client = null)
         {
             var options = new ReadCompositionHookOptions(){Enabled = enabled, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<CompositionHookResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<CompositionHookResource> NextPage(Page<CompositionHookResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -245,8 +245,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<CompositionHookResource> PreviousPage(Page<CompositionHookResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<CompositionHookResource> PreviousPage(Page<CompositionHookResource> page,
                                                                  ITwilioRestClient client)
         {
             var request = new Request(
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
+        /// <returns> A single instance of CompositionHook </returns>
         public static bool Delete(DeleteCompositionHookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -291,8 +291,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCompositionHookOptions options, 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCompositionHookOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -307,7 +307,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="pathSid"> The Recording Composition Hook Sid that uniquely identifies the Recording Composition Hook
         ///               to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
+        /// <returns> A single instance of CompositionHook </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteCompositionHookOptions(pathSid);
@@ -321,7 +321,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="pathSid"> The Recording Composition Hook Sid that uniquely identifies the Recording Composition Hook
         ///               to delete. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteCompositionHookOptions(pathSid);
@@ -345,7 +345,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Create CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
+        /// <returns> A single instance of CompositionHook </returns>
         public static CompositionHookResource Create(CreateCompositionHookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -359,8 +359,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Create CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
-        public static async System.Threading.Tasks.Task<CompositionHookResource> CreateAsync(CreateCompositionHookOptions options, 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
+        public static async System.Threading.Tasks.Task<CompositionHookResource> CreateAsync(CreateCompositionHookOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -385,17 +385,17 @@ namespace Twilio.Rest.Video.V1
         /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
         /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
-        public static CompositionHookResource Create(string friendlyName, 
-                                                     bool? enabled = null, 
-                                                     object videoLayout = null, 
-                                                     List<string> audioSources = null, 
-                                                     List<string> audioSourcesExcluded = null, 
-                                                     string resolution = null, 
-                                                     CompositionHookResource.FormatEnum format = null, 
-                                                     Uri statusCallback = null, 
-                                                     Twilio.Http.HttpMethod statusCallbackMethod = null, 
-                                                     bool? trim = null, 
+        /// <returns> A single instance of CompositionHook </returns>
+        public static CompositionHookResource Create(string friendlyName,
+                                                     bool? enabled = null,
+                                                     object videoLayout = null,
+                                                     List<string> audioSources = null,
+                                                     List<string> audioSourcesExcluded = null,
+                                                     string resolution = null,
+                                                     CompositionHookResource.FormatEnum format = null,
+                                                     Uri statusCallback = null,
+                                                     Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                     bool? trim = null,
                                                      ITwilioRestClient client = null)
         {
             var options = new CreateCompositionHookOptions(friendlyName){Enabled = enabled, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim};
@@ -419,17 +419,17 @@ namespace Twilio.Rest.Video.V1
         /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
         /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
-        public static async System.Threading.Tasks.Task<CompositionHookResource> CreateAsync(string friendlyName, 
-                                                                                             bool? enabled = null, 
-                                                                                             object videoLayout = null, 
-                                                                                             List<string> audioSources = null, 
-                                                                                             List<string> audioSourcesExcluded = null, 
-                                                                                             string resolution = null, 
-                                                                                             CompositionHookResource.FormatEnum format = null, 
-                                                                                             Uri statusCallback = null, 
-                                                                                             Twilio.Http.HttpMethod statusCallbackMethod = null, 
-                                                                                             bool? trim = null, 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
+        public static async System.Threading.Tasks.Task<CompositionHookResource> CreateAsync(string friendlyName,
+                                                                                             bool? enabled = null,
+                                                                                             object videoLayout = null,
+                                                                                             List<string> audioSources = null,
+                                                                                             List<string> audioSourcesExcluded = null,
+                                                                                             string resolution = null,
+                                                                                             CompositionHookResource.FormatEnum format = null,
+                                                                                             Uri statusCallback = null,
+                                                                                             Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                             bool? trim = null,
                                                                                              ITwilioRestClient client = null)
         {
             var options = new CreateCompositionHookOptions(friendlyName){Enabled = enabled, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Resolution = resolution, Format = format, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Trim = trim};
@@ -453,7 +453,7 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Update CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
+        /// <returns> A single instance of CompositionHook </returns>
         public static CompositionHookResource Update(UpdateCompositionHookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -467,8 +467,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Update CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
-        public static async System.Threading.Tasks.Task<CompositionHookResource> UpdateAsync(UpdateCompositionHookOptions options, 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
+        public static async System.Threading.Tasks.Task<CompositionHookResource> UpdateAsync(UpdateCompositionHookOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -495,18 +495,18 @@ namespace Twilio.Rest.Video.V1
         ///                      </param>
         /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionHook </returns> 
-        public static CompositionHookResource Update(string pathSid, 
-                                                     string friendlyName, 
-                                                     bool? enabled = null, 
-                                                     object videoLayout = null, 
-                                                     List<string> audioSources = null, 
-                                                     List<string> audioSourcesExcluded = null, 
-                                                     bool? trim = null, 
-                                                     CompositionHookResource.FormatEnum format = null, 
-                                                     string resolution = null, 
-                                                     Uri statusCallback = null, 
-                                                     Twilio.Http.HttpMethod statusCallbackMethod = null, 
+        /// <returns> A single instance of CompositionHook </returns>
+        public static CompositionHookResource Update(string pathSid,
+                                                     string friendlyName,
+                                                     bool? enabled = null,
+                                                     object videoLayout = null,
+                                                     List<string> audioSources = null,
+                                                     List<string> audioSourcesExcluded = null,
+                                                     bool? trim = null,
+                                                     CompositionHookResource.FormatEnum format = null,
+                                                     string resolution = null,
+                                                     Uri statusCallback = null,
+                                                     Twilio.Http.HttpMethod statusCallbackMethod = null,
                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateCompositionHookOptions(pathSid, friendlyName){Enabled = enabled, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Trim = trim, Format = format, Resolution = resolution, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
@@ -532,18 +532,18 @@ namespace Twilio.Rest.Video.V1
         ///                      </param>
         /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionHook </returns> 
-        public static async System.Threading.Tasks.Task<CompositionHookResource> UpdateAsync(string pathSid, 
-                                                                                             string friendlyName, 
-                                                                                             bool? enabled = null, 
-                                                                                             object videoLayout = null, 
-                                                                                             List<string> audioSources = null, 
-                                                                                             List<string> audioSourcesExcluded = null, 
-                                                                                             bool? trim = null, 
-                                                                                             CompositionHookResource.FormatEnum format = null, 
-                                                                                             string resolution = null, 
-                                                                                             Uri statusCallback = null, 
-                                                                                             Twilio.Http.HttpMethod statusCallbackMethod = null, 
+        /// <returns> Task that resolves to A single instance of CompositionHook </returns>
+        public static async System.Threading.Tasks.Task<CompositionHookResource> UpdateAsync(string pathSid,
+                                                                                             string friendlyName,
+                                                                                             bool? enabled = null,
+                                                                                             object videoLayout = null,
+                                                                                             List<string> audioSources = null,
+                                                                                             List<string> audioSourcesExcluded = null,
+                                                                                             bool? trim = null,
+                                                                                             CompositionHookResource.FormatEnum format = null,
+                                                                                             string resolution = null,
+                                                                                             Uri statusCallback = null,
+                                                                                             Twilio.Http.HttpMethod statusCallbackMethod = null,
                                                                                              ITwilioRestClient client = null)
         {
             var options = new UpdateCompositionHookOptions(pathSid, friendlyName){Enabled = enabled, VideoLayout = videoLayout, AudioSources = audioSources, AudioSourcesExcluded = audioSourcesExcluded, Trim = trim, Format = format, Resolution = resolution, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
@@ -555,7 +555,7 @@ namespace Twilio.Rest.Video.V1
         /// Converts a JSON string into a CompositionHookResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> CompositionHookResource object represented by the provided JSON </returns> 
+        /// <returns> CompositionHookResource object represented by the provided JSON </returns>
         public static CompositionHookResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

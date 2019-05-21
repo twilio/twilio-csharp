@@ -9,15 +9,15 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Notify.V1.Service 
+namespace Twilio.Rest.Notify.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchBindingOptions
     /// </summary>
-    public class FetchBindingOptions : IOptions<BindingResource> 
+    public class FetchBindingOptions : IOptions<BindingResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -51,10 +51,10 @@ namespace Twilio.Rest.Notify.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteBindingOptions
     /// </summary>
-    public class DeleteBindingOptions : IOptions<BindingResource> 
+    public class DeleteBindingOptions : IOptions<BindingResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from
@@ -88,10 +88,10 @@ namespace Twilio.Rest.Notify.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateBindingOptions
     /// </summary>
-    public class CreateBindingOptions : IOptions<BindingResource> 
+    public class CreateBindingOptions : IOptions<BindingResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under
@@ -133,9 +133,9 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
         /// <param name="bindingType"> The type of the Binding </param>
         /// <param name="address"> The channel-specific address </param>
-        public CreateBindingOptions(string pathServiceSid, 
-                                    string identity, 
-                                    BindingResource.BindingTypeEnum bindingType, 
+        public CreateBindingOptions(string pathServiceSid,
+                                    string identity,
+                                    BindingResource.BindingTypeEnum bindingType,
                                     string address)
         {
             PathServiceSid = pathServiceSid;
@@ -192,10 +192,10 @@ namespace Twilio.Rest.Notify.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadBindingOptions
     /// </summary>
-    public class ReadBindingOptions : ReadOptions<BindingResource> 
+    public class ReadBindingOptions : ReadOptions<BindingResource>
     {
         /// <summary>
         /// The SID of the Service to read the resource from

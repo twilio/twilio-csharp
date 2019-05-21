@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// VerificationResource
 /// </summary>
 
@@ -18,12 +18,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Verify.V2.Service 
+namespace Twilio.Rest.Verify.V2.Service
 {
 
-    public class VerificationResource : Resource 
+    public class VerificationResource : Resource
     {
-        public sealed class ChannelEnum : StringEnum 
+        public sealed class ChannelEnum : StringEnum
         {
             private ChannelEnum(string value) : base(value) {}
             public ChannelEnum() {}
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Verify.V2.Service
             public static readonly ChannelEnum Call = new ChannelEnum("call");
         }
 
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="options"> Create Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Verification </returns> 
+        /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(CreateVerificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -78,8 +78,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="options"> Create Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Verification </returns> 
-        public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(CreateVerificationOptions options, 
+        /// <returns> Task that resolves to A single instance of Verification </returns>
+        public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(CreateVerificationOptions options,
                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -101,16 +101,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Verification </returns> 
-        public static VerificationResource Create(string pathServiceSid, 
-                                                  string to, 
-                                                  string channel, 
-                                                  string customMessage = null, 
-                                                  string sendDigits = null, 
-                                                  string locale = null, 
-                                                  string customCode = null, 
-                                                  string amount = null, 
-                                                  string payee = null, 
+        /// <returns> A single instance of Verification </returns>
+        public static VerificationResource Create(string pathServiceSid,
+                                                  string to,
+                                                  string channel,
+                                                  string customMessage = null,
+                                                  string sendDigits = null,
+                                                  string locale = null,
+                                                  string customCode = null,
+                                                  string amount = null,
+                                                  string payee = null,
                                                   ITwilioRestClient client = null)
         {
             var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
@@ -131,16 +131,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Verification </returns> 
-        public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid, 
-                                                                                          string to, 
-                                                                                          string channel, 
-                                                                                          string customMessage = null, 
-                                                                                          string sendDigits = null, 
-                                                                                          string locale = null, 
-                                                                                          string customCode = null, 
-                                                                                          string amount = null, 
-                                                                                          string payee = null, 
+        /// <returns> Task that resolves to A single instance of Verification </returns>
+        public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid,
+                                                                                          string to,
+                                                                                          string channel,
+                                                                                          string customMessage = null,
+                                                                                          string sendDigits = null,
+                                                                                          string locale = null,
+                                                                                          string customCode = null,
+                                                                                          string amount = null,
+                                                                                          string payee = null,
                                                                                           ITwilioRestClient client = null)
         {
             var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="options"> Update Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Verification </returns> 
+        /// <returns> A single instance of Verification </returns>
         public static VerificationResource Update(UpdateVerificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -178,8 +178,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="options"> Update Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Verification </returns> 
-        public static async System.Threading.Tasks.Task<VerificationResource> UpdateAsync(UpdateVerificationOptions options, 
+        /// <returns> Task that resolves to A single instance of Verification </returns>
+        public static async System.Threading.Tasks.Task<VerificationResource> UpdateAsync(UpdateVerificationOptions options,
                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -195,10 +195,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Verification </returns> 
-        public static VerificationResource Update(string pathServiceSid, 
-                                                  string pathSid, 
-                                                  VerificationResource.StatusEnum status, 
+        /// <returns> A single instance of Verification </returns>
+        public static VerificationResource Update(string pathServiceSid,
+                                                  string pathSid,
+                                                  VerificationResource.StatusEnum status,
                                                   ITwilioRestClient client = null)
         {
             var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status);
@@ -213,10 +213,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Verification </returns> 
-        public static async System.Threading.Tasks.Task<VerificationResource> UpdateAsync(string pathServiceSid, 
-                                                                                          string pathSid, 
-                                                                                          VerificationResource.StatusEnum status, 
+        /// <returns> Task that resolves to A single instance of Verification </returns>
+        public static async System.Threading.Tasks.Task<VerificationResource> UpdateAsync(string pathServiceSid,
+                                                                                          string pathSid,
+                                                                                          VerificationResource.StatusEnum status,
                                                                                           ITwilioRestClient client = null)
         {
             var options = new UpdateVerificationOptions(pathServiceSid, pathSid, status);
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="options"> Fetch Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Verification </returns> 
+        /// <returns> A single instance of Verification </returns>
         public static VerificationResource Fetch(FetchVerificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -254,8 +254,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="options"> Fetch Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Verification </returns> 
-        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(FetchVerificationOptions options, 
+        /// <returns> Task that resolves to A single instance of Verification </returns>
+        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(FetchVerificationOptions options,
                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathServiceSid"> The SID of the verification Service to fetch the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Verification </returns> 
+        /// <returns> A single instance of Verification </returns>
         public static VerificationResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchVerificationOptions(pathServiceSid, pathSid);
@@ -284,9 +284,9 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathServiceSid"> The SID of the verification Service to fetch the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Verification </returns> 
-        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(string pathServiceSid, 
-                                                                                         string pathSid, 
+        /// <returns> Task that resolves to A single instance of Verification </returns>
+        public static async System.Threading.Tasks.Task<VerificationResource> FetchAsync(string pathServiceSid,
+                                                                                         string pathSid,
                                                                                          ITwilioRestClient client = null)
         {
             var options = new FetchVerificationOptions(pathServiceSid, pathSid);
@@ -298,7 +298,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Converts a JSON string into a VerificationResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> VerificationResource object represented by the provided JSON </returns> 
+        /// <returns> VerificationResource object represented by the provided JSON </returns>
         public static VerificationResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

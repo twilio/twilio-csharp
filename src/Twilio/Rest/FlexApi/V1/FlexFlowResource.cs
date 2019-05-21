@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.FlexApi.V1 
+namespace Twilio.Rest.FlexApi.V1
 {
 
-    public class FlexFlowResource : Resource 
+    public class FlexFlowResource : Resource
     {
-        public sealed class ChannelTypeEnum : StringEnum 
+        public sealed class ChannelTypeEnum : StringEnum
         {
             private ChannelTypeEnum(string value) : base(value) {}
             public ChannelTypeEnum() {}
@@ -37,7 +37,7 @@ namespace Twilio.Rest.FlexApi.V1
             public static readonly ChannelTypeEnum Line = new ChannelTypeEnum("line");
         }
 
-        public sealed class IntegrationTypeEnum : StringEnum 
+        public sealed class IntegrationTypeEnum : StringEnum
         {
             private IntegrationTypeEnum(string value) : base(value) {}
             public IntegrationTypeEnum() {}
@@ -67,7 +67,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Read FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
+        /// <returns> A single instance of FlexFlow </returns>
         public static ResourceSet<FlexFlowResource> Read(ReadFlexFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -83,8 +83,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Read FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FlexFlowResource>> ReadAsync(ReadFlexFlowOptions options, 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FlexFlowResource>> ReadAsync(ReadFlexFlowOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -102,10 +102,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
-        public static ResourceSet<FlexFlowResource> Read(string friendlyName = null, 
-                                                         int? pageSize = null, 
-                                                         long? limit = null, 
+        /// <returns> A single instance of FlexFlow </returns>
+        public static ResourceSet<FlexFlowResource> Read(string friendlyName = null,
+                                                         int? pageSize = null,
+                                                         long? limit = null,
                                                          ITwilioRestClient client = null)
         {
             var options = new ReadFlexFlowOptions(){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -120,10 +120,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FlexFlowResource>> ReadAsync(string friendlyName = null, 
-                                                                                                 int? pageSize = null, 
-                                                                                                 long? limit = null, 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FlexFlowResource>> ReadAsync(string friendlyName = null,
+                                                                                                 int? pageSize = null,
+                                                                                                 long? limit = null,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadFlexFlowOptions(){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -136,7 +136,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<FlexFlowResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -155,7 +155,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<FlexFlowResource> NextPage(Page<FlexFlowResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -175,7 +175,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<FlexFlowResource> PreviousPage(Page<FlexFlowResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -206,7 +206,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Fetch FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
+        /// <returns> A single instance of FlexFlow </returns>
         public static FlexFlowResource Fetch(FetchFlexFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -220,8 +220,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Fetch FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
-        public static async System.Threading.Tasks.Task<FlexFlowResource> FetchAsync(FetchFlexFlowOptions options, 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
+        public static async System.Threading.Tasks.Task<FlexFlowResource> FetchAsync(FetchFlexFlowOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -235,7 +235,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="pathSid"> The unique ID of the FlexFlow </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
+        /// <returns> A single instance of FlexFlow </returns>
         public static FlexFlowResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchFlexFlowOptions(pathSid);
@@ -248,8 +248,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="pathSid"> The unique ID of the FlexFlow </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
-        public static async System.Threading.Tasks.Task<FlexFlowResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
+        public static async System.Threading.Tasks.Task<FlexFlowResource> FetchAsync(string pathSid,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchFlexFlowOptions(pathSid);
@@ -273,7 +273,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Create FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
+        /// <returns> A single instance of FlexFlow </returns>
         public static FlexFlowResource Create(CreateFlexFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -287,8 +287,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Create FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
-        public static async System.Threading.Tasks.Task<FlexFlowResource> CreateAsync(CreateFlexFlowOptions options, 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
+        public static async System.Threading.Tasks.Task<FlexFlowResource> CreateAsync(CreateFlexFlowOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -316,22 +316,22 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationCreationOnMessage"> Flag for task creation </param>
         /// <param name="longLived"> Long Lived flag for new Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
-        public static FlexFlowResource Create(string friendlyName, 
-                                              string chatServiceSid, 
-                                              FlexFlowResource.ChannelTypeEnum channelType, 
-                                              string contactIdentity = null, 
-                                              bool? enabled = null, 
-                                              FlexFlowResource.IntegrationTypeEnum integrationType = null, 
-                                              string integrationFlowSid = null, 
-                                              Uri integrationUrl = null, 
-                                              string integrationWorkspaceSid = null, 
-                                              string integrationWorkflowSid = null, 
-                                              string integrationChannel = null, 
-                                              int? integrationTimeout = null, 
-                                              int? integrationPriority = null, 
-                                              bool? integrationCreationOnMessage = null, 
-                                              bool? longLived = null, 
+        /// <returns> A single instance of FlexFlow </returns>
+        public static FlexFlowResource Create(string friendlyName,
+                                              string chatServiceSid,
+                                              FlexFlowResource.ChannelTypeEnum channelType,
+                                              string contactIdentity = null,
+                                              bool? enabled = null,
+                                              FlexFlowResource.IntegrationTypeEnum integrationType = null,
+                                              string integrationFlowSid = null,
+                                              Uri integrationUrl = null,
+                                              string integrationWorkspaceSid = null,
+                                              string integrationWorkflowSid = null,
+                                              string integrationChannel = null,
+                                              int? integrationTimeout = null,
+                                              int? integrationPriority = null,
+                                              bool? integrationCreationOnMessage = null,
+                                              bool? longLived = null,
                                               ITwilioRestClient client = null)
         {
             var options = new CreateFlexFlowOptions(friendlyName, chatServiceSid, channelType){ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived};
@@ -358,22 +358,22 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationCreationOnMessage"> Flag for task creation </param>
         /// <param name="longLived"> Long Lived flag for new Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
-        public static async System.Threading.Tasks.Task<FlexFlowResource> CreateAsync(string friendlyName, 
-                                                                                      string chatServiceSid, 
-                                                                                      FlexFlowResource.ChannelTypeEnum channelType, 
-                                                                                      string contactIdentity = null, 
-                                                                                      bool? enabled = null, 
-                                                                                      FlexFlowResource.IntegrationTypeEnum integrationType = null, 
-                                                                                      string integrationFlowSid = null, 
-                                                                                      Uri integrationUrl = null, 
-                                                                                      string integrationWorkspaceSid = null, 
-                                                                                      string integrationWorkflowSid = null, 
-                                                                                      string integrationChannel = null, 
-                                                                                      int? integrationTimeout = null, 
-                                                                                      int? integrationPriority = null, 
-                                                                                      bool? integrationCreationOnMessage = null, 
-                                                                                      bool? longLived = null, 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
+        public static async System.Threading.Tasks.Task<FlexFlowResource> CreateAsync(string friendlyName,
+                                                                                      string chatServiceSid,
+                                                                                      FlexFlowResource.ChannelTypeEnum channelType,
+                                                                                      string contactIdentity = null,
+                                                                                      bool? enabled = null,
+                                                                                      FlexFlowResource.IntegrationTypeEnum integrationType = null,
+                                                                                      string integrationFlowSid = null,
+                                                                                      Uri integrationUrl = null,
+                                                                                      string integrationWorkspaceSid = null,
+                                                                                      string integrationWorkflowSid = null,
+                                                                                      string integrationChannel = null,
+                                                                                      int? integrationTimeout = null,
+                                                                                      int? integrationPriority = null,
+                                                                                      bool? integrationCreationOnMessage = null,
+                                                                                      bool? longLived = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new CreateFlexFlowOptions(friendlyName, chatServiceSid, channelType){ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived};
@@ -397,7 +397,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Update FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
+        /// <returns> A single instance of FlexFlow </returns>
         public static FlexFlowResource Update(UpdateFlexFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -411,8 +411,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Update FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
-        public static async System.Threading.Tasks.Task<FlexFlowResource> UpdateAsync(UpdateFlexFlowOptions options, 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
+        public static async System.Threading.Tasks.Task<FlexFlowResource> UpdateAsync(UpdateFlexFlowOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -441,23 +441,23 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationCreationOnMessage"> Flag for task creation </param>
         /// <param name="longLived"> Long Lived flag for new Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
-        public static FlexFlowResource Update(string pathSid, 
-                                              string friendlyName = null, 
-                                              string chatServiceSid = null, 
-                                              FlexFlowResource.ChannelTypeEnum channelType = null, 
-                                              string contactIdentity = null, 
-                                              bool? enabled = null, 
-                                              FlexFlowResource.IntegrationTypeEnum integrationType = null, 
-                                              string integrationFlowSid = null, 
-                                              Uri integrationUrl = null, 
-                                              string integrationWorkspaceSid = null, 
-                                              string integrationWorkflowSid = null, 
-                                              string integrationChannel = null, 
-                                              int? integrationTimeout = null, 
-                                              int? integrationPriority = null, 
-                                              bool? integrationCreationOnMessage = null, 
-                                              bool? longLived = null, 
+        /// <returns> A single instance of FlexFlow </returns>
+        public static FlexFlowResource Update(string pathSid,
+                                              string friendlyName = null,
+                                              string chatServiceSid = null,
+                                              FlexFlowResource.ChannelTypeEnum channelType = null,
+                                              string contactIdentity = null,
+                                              bool? enabled = null,
+                                              FlexFlowResource.IntegrationTypeEnum integrationType = null,
+                                              string integrationFlowSid = null,
+                                              Uri integrationUrl = null,
+                                              string integrationWorkspaceSid = null,
+                                              string integrationWorkflowSid = null,
+                                              string integrationChannel = null,
+                                              int? integrationTimeout = null,
+                                              int? integrationPriority = null,
+                                              bool? integrationCreationOnMessage = null,
+                                              bool? longLived = null,
                                               ITwilioRestClient client = null)
         {
             var options = new UpdateFlexFlowOptions(pathSid){FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived};
@@ -485,23 +485,23 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationCreationOnMessage"> Flag for task creation </param>
         /// <param name="longLived"> Long Lived flag for new Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
-        public static async System.Threading.Tasks.Task<FlexFlowResource> UpdateAsync(string pathSid, 
-                                                                                      string friendlyName = null, 
-                                                                                      string chatServiceSid = null, 
-                                                                                      FlexFlowResource.ChannelTypeEnum channelType = null, 
-                                                                                      string contactIdentity = null, 
-                                                                                      bool? enabled = null, 
-                                                                                      FlexFlowResource.IntegrationTypeEnum integrationType = null, 
-                                                                                      string integrationFlowSid = null, 
-                                                                                      Uri integrationUrl = null, 
-                                                                                      string integrationWorkspaceSid = null, 
-                                                                                      string integrationWorkflowSid = null, 
-                                                                                      string integrationChannel = null, 
-                                                                                      int? integrationTimeout = null, 
-                                                                                      int? integrationPriority = null, 
-                                                                                      bool? integrationCreationOnMessage = null, 
-                                                                                      bool? longLived = null, 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
+        public static async System.Threading.Tasks.Task<FlexFlowResource> UpdateAsync(string pathSid,
+                                                                                      string friendlyName = null,
+                                                                                      string chatServiceSid = null,
+                                                                                      FlexFlowResource.ChannelTypeEnum channelType = null,
+                                                                                      string contactIdentity = null,
+                                                                                      bool? enabled = null,
+                                                                                      FlexFlowResource.IntegrationTypeEnum integrationType = null,
+                                                                                      string integrationFlowSid = null,
+                                                                                      Uri integrationUrl = null,
+                                                                                      string integrationWorkspaceSid = null,
+                                                                                      string integrationWorkflowSid = null,
+                                                                                      string integrationChannel = null,
+                                                                                      int? integrationTimeout = null,
+                                                                                      int? integrationPriority = null,
+                                                                                      bool? integrationCreationOnMessage = null,
+                                                                                      bool? longLived = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateFlexFlowOptions(pathSid){FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived};
@@ -525,7 +525,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Delete FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
+        /// <returns> A single instance of FlexFlow </returns>
         public static bool Delete(DeleteFlexFlowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -539,8 +539,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Delete FlexFlow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFlexFlowOptions options, 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFlexFlowOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -554,7 +554,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="pathSid"> The unique ID of the FlexFlow </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FlexFlow </returns> 
+        /// <returns> A single instance of FlexFlow </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteFlexFlowOptions(pathSid);
@@ -567,7 +567,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="pathSid"> The unique ID of the FlexFlow </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FlexFlow </returns> 
+        /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteFlexFlowOptions(pathSid);
@@ -579,7 +579,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// Converts a JSON string into a FlexFlowResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> FlexFlowResource object represented by the provided JSON </returns> 
+        /// <returns> FlexFlowResource object represented by the provided JSON </returns>
         public static FlexFlowResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

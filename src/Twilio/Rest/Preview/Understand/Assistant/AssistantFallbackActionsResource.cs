@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// AssistantFallbackActionsResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Assistant 
+namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
-    public class AssistantFallbackActionsResource : Resource 
+    public class AssistantFallbackActionsResource : Resource
     {
         private static Request BuildFetchRequest(FetchAssistantFallbackActionsOptions options, ITwilioRestClient client)
         {
@@ -39,8 +39,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Fetch AssistantFallbackActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantFallbackActions </returns> 
-        public static AssistantFallbackActionsResource Fetch(FetchAssistantFallbackActionsOptions options, 
+        /// <returns> A single instance of AssistantFallbackActions </returns>
+        public static AssistantFallbackActionsResource Fetch(FetchAssistantFallbackActionsOptions options,
                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -54,8 +54,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Fetch AssistantFallbackActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantFallbackActions </returns> 
-        public static async System.Threading.Tasks.Task<AssistantFallbackActionsResource> FetchAsync(FetchAssistantFallbackActionsOptions options, 
+        /// <returns> Task that resolves to A single instance of AssistantFallbackActions </returns>
+        public static async System.Threading.Tasks.Task<AssistantFallbackActionsResource> FetchAsync(FetchAssistantFallbackActionsOptions options,
                                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantFallbackActions </returns> 
+        /// <returns> A single instance of AssistantFallbackActions </returns>
         public static AssistantFallbackActionsResource Fetch(string pathAssistantSid, ITwilioRestClient client = null)
         {
             var options = new FetchAssistantFallbackActionsOptions(pathAssistantSid);
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantFallbackActions </returns> 
-        public static async System.Threading.Tasks.Task<AssistantFallbackActionsResource> FetchAsync(string pathAssistantSid, 
+        /// <returns> Task that resolves to A single instance of AssistantFallbackActions </returns>
+        public static async System.Threading.Tasks.Task<AssistantFallbackActionsResource> FetchAsync(string pathAssistantSid,
                                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchAssistantFallbackActionsOptions(pathAssistantSid);
@@ -107,8 +107,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Update AssistantFallbackActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantFallbackActions </returns> 
-        public static AssistantFallbackActionsResource Update(UpdateAssistantFallbackActionsOptions options, 
+        /// <returns> A single instance of AssistantFallbackActions </returns>
+        public static AssistantFallbackActionsResource Update(UpdateAssistantFallbackActionsOptions options,
                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -122,8 +122,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Update AssistantFallbackActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantFallbackActions </returns> 
-        public static async System.Threading.Tasks.Task<AssistantFallbackActionsResource> UpdateAsync(UpdateAssistantFallbackActionsOptions options, 
+        /// <returns> Task that resolves to A single instance of AssistantFallbackActions </returns>
+        public static async System.Threading.Tasks.Task<AssistantFallbackActionsResource> UpdateAsync(UpdateAssistantFallbackActionsOptions options,
                                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -138,9 +138,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="fallbackActions"> The fallback_actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssistantFallbackActions </returns> 
-        public static AssistantFallbackActionsResource Update(string pathAssistantSid, 
-                                                              object fallbackActions = null, 
+        /// <returns> A single instance of AssistantFallbackActions </returns>
+        public static AssistantFallbackActionsResource Update(string pathAssistantSid,
+                                                              object fallbackActions = null,
                                                               ITwilioRestClient client = null)
         {
             var options = new UpdateAssistantFallbackActionsOptions(pathAssistantSid){FallbackActions = fallbackActions};
@@ -154,9 +154,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The assistant_sid </param>
         /// <param name="fallbackActions"> The fallback_actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssistantFallbackActions </returns> 
-        public static async System.Threading.Tasks.Task<AssistantFallbackActionsResource> UpdateAsync(string pathAssistantSid, 
-                                                                                                      object fallbackActions = null, 
+        /// <returns> Task that resolves to A single instance of AssistantFallbackActions </returns>
+        public static async System.Threading.Tasks.Task<AssistantFallbackActionsResource> UpdateAsync(string pathAssistantSid,
+                                                                                                      object fallbackActions = null,
                                                                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateAssistantFallbackActionsOptions(pathAssistantSid){FallbackActions = fallbackActions};
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// Converts a JSON string into a AssistantFallbackActionsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> AssistantFallbackActionsResource object represented by the provided JSON </returns> 
+        /// <returns> AssistantFallbackActionsResource object represented by the provided JSON </returns>
         public static AssistantFallbackActionsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

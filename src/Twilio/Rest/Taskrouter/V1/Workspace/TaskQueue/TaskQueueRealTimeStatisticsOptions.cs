@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
+namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
 {
 
     /// <summary>
     /// FetchTaskQueueRealTimeStatisticsOptions
     /// </summary>
-    public class FetchTaskQueueRealTimeStatisticsOptions : IOptions<TaskQueueRealTimeStatisticsResource> 
+    public class FetchTaskQueueRealTimeStatisticsOptions : IOptions<TaskQueueRealTimeStatisticsResource>
     {
         /// <summary>
         /// The workspace_sid

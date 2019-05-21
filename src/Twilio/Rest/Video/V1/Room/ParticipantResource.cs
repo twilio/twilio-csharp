@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Video.V1.Room 
+namespace Twilio.Rest.Video.V1.Room
 {
 
-    public class ParticipantResource : Resource 
+    public class ParticipantResource : Resource
     {
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns> 
+        /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Fetch(FetchParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -64,8 +64,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options, 
+        /// <returns> Task that resolves to A single instance of Participant </returns>
+        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(FetchParticipantOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
         /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns> 
+        /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Fetch(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchParticipantOptions(pathRoomSid, pathSid);
@@ -94,9 +94,9 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
         /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathRoomSid, 
-                                                                                        string pathSid, 
+        /// <returns> Task that resolves to A single instance of Participant </returns>
+        public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathRoomSid,
+                                                                                        string pathSid,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchParticipantOptions(pathRoomSid, pathSid);
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns> 
+        /// <returns> A single instance of Participant </returns>
         public static ResourceSet<ParticipantResource> Read(ReadParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -136,8 +136,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options, 
+        /// <returns> Task that resolves to A single instance of Participant </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(ReadParticipantOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -161,14 +161,14 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns> 
-        public static ResourceSet<ParticipantResource> Read(string pathRoomSid, 
-                                                            ParticipantResource.StatusEnum status = null, 
-                                                            string identity = null, 
-                                                            DateTime? dateCreatedAfter = null, 
-                                                            DateTime? dateCreatedBefore = null, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of Participant </returns>
+        public static ResourceSet<ParticipantResource> Read(string pathRoomSid,
+                                                            ParticipantResource.StatusEnum status = null,
+                                                            string identity = null,
+                                                            DateTime? dateCreatedAfter = null,
+                                                            DateTime? dateCreatedBefore = null,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathRoomSid){Status = status, Identity = identity, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
@@ -189,14 +189,14 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string pathRoomSid, 
-                                                                                                    ParticipantResource.StatusEnum status = null, 
-                                                                                                    string identity = null, 
-                                                                                                    DateTime? dateCreatedAfter = null, 
-                                                                                                    DateTime? dateCreatedBefore = null, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Participant </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ParticipantResource>> ReadAsync(string pathRoomSid,
+                                                                                                    ParticipantResource.StatusEnum status = null,
+                                                                                                    string identity = null,
+                                                                                                    DateTime? dateCreatedAfter = null,
+                                                                                                    DateTime? dateCreatedBefore = null,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadParticipantOptions(pathRoomSid){Status = status, Identity = identity, DateCreatedAfter = dateCreatedAfter, DateCreatedBefore = dateCreatedBefore, PageSize = pageSize, Limit = limit};
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<ParticipantResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<ParticipantResource> NextPage(Page<ParticipantResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<ParticipantResource> PreviousPage(Page<ParticipantResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -279,7 +279,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns> 
+        /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Update(UpdateParticipantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -293,8 +293,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// </summary>
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(UpdateParticipantOptions options, 
+        /// <returns> Task that resolves to A single instance of Participant </returns>
+        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(UpdateParticipantOptions options,
                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -310,10 +310,10 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
         /// <param name="status"> Set to `disconnected` to remove participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Participant </returns> 
-        public static ParticipantResource Update(string pathRoomSid, 
-                                                 string pathSid, 
-                                                 ParticipantResource.StatusEnum status = null, 
+        /// <returns> A single instance of Participant </returns>
+        public static ParticipantResource Update(string pathRoomSid,
+                                                 string pathSid,
+                                                 ParticipantResource.StatusEnum status = null,
                                                  ITwilioRestClient client = null)
         {
             var options = new UpdateParticipantOptions(pathRoomSid, pathSid){Status = status};
@@ -328,10 +328,10 @@ namespace Twilio.Rest.Video.V1.Room
         /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
         /// <param name="status"> Set to `disconnected` to remove participant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Participant </returns> 
-        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathRoomSid, 
-                                                                                         string pathSid, 
-                                                                                         ParticipantResource.StatusEnum status = null, 
+        /// <returns> Task that resolves to A single instance of Participant </returns>
+        public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathRoomSid,
+                                                                                         string pathSid,
+                                                                                         ParticipantResource.StatusEnum status = null,
                                                                                          ITwilioRestClient client = null)
         {
             var options = new UpdateParticipantOptions(pathRoomSid, pathSid){Status = status};
@@ -343,7 +343,7 @@ namespace Twilio.Rest.Video.V1.Room
         /// Converts a JSON string into a ParticipantResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ParticipantResource object represented by the provided JSON </returns> 
+        /// <returns> ParticipantResource object represented by the provided JSON </returns>
         public static ParticipantResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

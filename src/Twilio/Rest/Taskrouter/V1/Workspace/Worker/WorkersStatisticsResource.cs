@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
 
-    public class WorkersStatisticsResource : Resource 
+    public class WorkersStatisticsResource : Resource
     {
         private static Request BuildFetchRequest(FetchWorkersStatisticsOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="options"> Fetch WorkersStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkersStatistics </returns> 
+        /// <returns> A single instance of WorkersStatistics </returns>
         public static WorkersStatisticsResource Fetch(FetchWorkersStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// </summary>
         /// <param name="options"> Fetch WorkersStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkersStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(FetchWorkersStatisticsOptions options, 
+        /// <returns> Task that resolves to A single instance of WorkersStatistics </returns>
+        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(FetchWorkersStatisticsOptions options,
                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -74,15 +74,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkersStatistics </returns> 
-        public static WorkersStatisticsResource Fetch(string pathWorkspaceSid, 
-                                                      int? minutes = null, 
-                                                      DateTime? startDate = null, 
-                                                      DateTime? endDate = null, 
-                                                      string taskQueueSid = null, 
-                                                      string taskQueueName = null, 
-                                                      string friendlyName = null, 
-                                                      string taskChannel = null, 
+        /// <returns> A single instance of WorkersStatistics </returns>
+        public static WorkersStatisticsResource Fetch(string pathWorkspaceSid,
+                                                      int? minutes = null,
+                                                      DateTime? startDate = null,
+                                                      DateTime? endDate = null,
+                                                      string taskQueueSid = null,
+                                                      string taskQueueName = null,
+                                                      string friendlyName = null,
+                                                      string taskChannel = null,
                                                       ITwilioRestClient client = null)
         {
             var options = new FetchWorkersStatisticsOptions(pathWorkspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, FriendlyName = friendlyName, TaskChannel = taskChannel};
@@ -104,15 +104,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkersStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(string pathWorkspaceSid, 
-                                                                                              int? minutes = null, 
-                                                                                              DateTime? startDate = null, 
-                                                                                              DateTime? endDate = null, 
-                                                                                              string taskQueueSid = null, 
-                                                                                              string taskQueueName = null, 
-                                                                                              string friendlyName = null, 
-                                                                                              string taskChannel = null, 
+        /// <returns> Task that resolves to A single instance of WorkersStatistics </returns>
+        public static async System.Threading.Tasks.Task<WorkersStatisticsResource> FetchAsync(string pathWorkspaceSid,
+                                                                                              int? minutes = null,
+                                                                                              DateTime? startDate = null,
+                                                                                              DateTime? endDate = null,
+                                                                                              string taskQueueSid = null,
+                                                                                              string taskQueueName = null,
+                                                                                              string friendlyName = null,
+                                                                                              string taskChannel = null,
                                                                                               ITwilioRestClient client = null)
         {
             var options = new FetchWorkersStatisticsOptions(pathWorkspaceSid){Minutes = minutes, StartDate = startDate, EndDate = endDate, TaskQueueSid = taskQueueSid, TaskQueueName = taskQueueName, FriendlyName = friendlyName, TaskChannel = taskChannel};
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// Converts a JSON string into a WorkersStatisticsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> WorkersStatisticsResource object represented by the provided JSON </returns> 
+        /// <returns> WorkersStatisticsResource object represented by the provided JSON </returns>
         public static WorkersStatisticsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

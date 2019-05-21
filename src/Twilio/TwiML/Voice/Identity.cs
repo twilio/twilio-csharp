@@ -7,13 +7,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Identity TwiML Noun
     /// </summary>
-    public class Identity : TwiML 
+    public class Identity : TwiML
     {
         /// <summary>
         /// Identity of the client to dial

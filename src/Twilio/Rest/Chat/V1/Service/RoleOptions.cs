@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Chat.V1.Service 
+namespace Twilio.Rest.Chat.V1.Service
 {
 
     /// <summary>
     /// FetchRoleOptions
     /// </summary>
-    public class FetchRoleOptions : IOptions<RoleResource> 
+    public class FetchRoleOptions : IOptions<RoleResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Chat.V1.Service
     /// <summary>
     /// DeleteRoleOptions
     /// </summary>
-    public class DeleteRoleOptions : IOptions<RoleResource> 
+    public class DeleteRoleOptions : IOptions<RoleResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Chat.V1.Service
     /// <summary>
     /// CreateRoleOptions
     /// </summary>
-    public class CreateRoleOptions : IOptions<RoleResource> 
+    public class CreateRoleOptions : IOptions<RoleResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under
@@ -111,9 +111,9 @@ namespace Twilio.Rest.Chat.V1.Service
         /// <param name="friendlyName"> A string to describe the new resource </param>
         /// <param name="type"> The type of role </param>
         /// <param name="permission"> A permission the role should have </param>
-        public CreateRoleOptions(string pathServiceSid, 
-                                 string friendlyName, 
-                                 RoleResource.RoleTypeEnum type, 
+        public CreateRoleOptions(string pathServiceSid,
+                                 string friendlyName,
+                                 RoleResource.RoleTypeEnum type,
                                  List<string> permission)
         {
             PathServiceSid = pathServiceSid;
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Chat.V1.Service
     /// <summary>
     /// ReadRoleOptions
     /// </summary>
-    public class ReadRoleOptions : ReadOptions<RoleResource> 
+    public class ReadRoleOptions : ReadOptions<RoleResource>
     {
         /// <summary>
         /// The SID of the Service to read the resources from
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Chat.V1.Service
     /// <summary>
     /// UpdateRoleOptions
     /// </summary>
-    public class UpdateRoleOptions : IOptions<RoleResource> 
+    public class UpdateRoleOptions : IOptions<RoleResource>
     {
         /// <summary>
         /// The SID of the Service to update the resource from

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Pricing.V2.Voice 
+namespace Twilio.Rest.Pricing.V2.Voice
 {
 
     /// <summary>
     /// Fetch pricing information for a specific destination and, optionally, origination phone number.
     /// </summary>
-    public class FetchNumberOptions : IOptions<NumberResource> 
+    public class FetchNumberOptions : IOptions<NumberResource>
     {
         /// <summary>
         /// The destination number for which to fetch pricing information

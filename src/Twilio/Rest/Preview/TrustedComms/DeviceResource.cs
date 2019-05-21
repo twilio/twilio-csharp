@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// DeviceResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.TrustedComms 
+namespace Twilio.Rest.Preview.TrustedComms
 {
 
-    public class DeviceResource : Resource 
+    public class DeviceResource : Resource
     {
         private static Request BuildCreateRequest(CreateDeviceOptions options, ITwilioRestClient client)
         {
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// </summary>
         /// <param name="options"> Create Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Device </returns> 
+        /// <returns> A single instance of Device </returns>
         public static DeviceResource Create(CreateDeviceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -55,8 +55,8 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// </summary>
         /// <param name="options"> Create Device parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(CreateDeviceOptions options, 
+        /// <returns> Task that resolves to A single instance of Device </returns>
+        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(CreateDeviceOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <param name="phoneNumber"> The end user Phone Number </param>
         /// <param name="pushToken"> The Push Token for this Phone Number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Device </returns> 
+        /// <returns> A single instance of Device </returns>
         public static DeviceResource Create(string phoneNumber, string pushToken, ITwilioRestClient client = null)
         {
             var options = new CreateDeviceOptions(phoneNumber, pushToken);
@@ -87,9 +87,9 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <param name="phoneNumber"> The end user Phone Number </param>
         /// <param name="pushToken"> The Push Token for this Phone Number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Device </returns> 
-        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(string phoneNumber, 
-                                                                                    string pushToken, 
+        /// <returns> Task that resolves to A single instance of Device </returns>
+        public static async System.Threading.Tasks.Task<DeviceResource> CreateAsync(string phoneNumber,
+                                                                                    string pushToken,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateDeviceOptions(phoneNumber, pushToken);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// Converts a JSON string into a DeviceResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> DeviceResource object represented by the provided JSON </returns> 
+        /// <returns> DeviceResource object represented by the provided JSON </returns>
         public static DeviceResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

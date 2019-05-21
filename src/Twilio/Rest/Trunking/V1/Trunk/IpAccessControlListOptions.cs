@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Trunking.V1.Trunk 
+namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
     /// <summary>
     /// FetchIpAccessControlListOptions
     /// </summary>
-    public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
+    public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to fetch the IP Access Control List
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// Remove an associated IP Access Control List from a Trunk
     /// </summary>
-    public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
+    public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to delete the IP Access Control List
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// Associate an IP Access Control List with a Trunk
     /// </summary>
-    public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
+    public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource>
     {
         /// <summary>
         /// The SID of the Trunk to associate the IP Access Control List with
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// List all IP Access Control Lists for a Trunk
     /// </summary>
-    public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
+    public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to read the IP Access Control Lists

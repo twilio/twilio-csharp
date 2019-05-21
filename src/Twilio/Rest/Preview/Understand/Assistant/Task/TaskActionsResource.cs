@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// TaskActionsResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Assistant.Task 
+namespace Twilio.Rest.Preview.Understand.Assistant.Task
 {
 
-    public class TaskActionsResource : Resource 
+    public class TaskActionsResource : Resource
     {
         private static Request BuildFetchRequest(FetchTaskActionsOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Fetch TaskActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskActions </returns> 
+        /// <returns> A single instance of TaskActions </returns>
         public static TaskActionsResource Fetch(FetchTaskActionsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Fetch TaskActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskActions </returns> 
-        public static async System.Threading.Tasks.Task<TaskActionsResource> FetchAsync(FetchTaskActionsOptions options, 
+        /// <returns> Task that resolves to A single instance of TaskActions </returns>
+        public static async System.Threading.Tasks.Task<TaskActionsResource> FetchAsync(FetchTaskActionsOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         /// <param name="pathTaskSid"> The unique ID of the Task. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskActions </returns> 
+        /// <returns> A single instance of TaskActions </returns>
         public static TaskActionsResource Fetch(string pathAssistantSid, string pathTaskSid, ITwilioRestClient client = null)
         {
             var options = new FetchTaskActionsOptions(pathAssistantSid, pathTaskSid);
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathAssistantSid"> The unique ID of the parent Assistant. </param>
         /// <param name="pathTaskSid"> The unique ID of the Task. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskActions </returns> 
-        public static async System.Threading.Tasks.Task<TaskActionsResource> FetchAsync(string pathAssistantSid, 
-                                                                                        string pathTaskSid, 
+        /// <returns> Task that resolves to A single instance of TaskActions </returns>
+        public static async System.Threading.Tasks.Task<TaskActionsResource> FetchAsync(string pathAssistantSid,
+                                                                                        string pathTaskSid,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchTaskActionsOptions(pathAssistantSid, pathTaskSid);
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Update TaskActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskActions </returns> 
+        /// <returns> A single instance of TaskActions </returns>
         public static TaskActionsResource Update(UpdateTaskActionsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -123,8 +123,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Update TaskActions parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskActions </returns> 
-        public static async System.Threading.Tasks.Task<TaskActionsResource> UpdateAsync(UpdateTaskActionsOptions options, 
+        /// <returns> Task that resolves to A single instance of TaskActions </returns>
+        public static async System.Threading.Tasks.Task<TaskActionsResource> UpdateAsync(UpdateTaskActionsOptions options,
                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -140,10 +140,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathTaskSid"> The unique ID of the Task. </param>
         /// <param name="actions"> The JSON actions that instruct the Assistant how to perform this task. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskActions </returns> 
-        public static TaskActionsResource Update(string pathAssistantSid, 
-                                                 string pathTaskSid, 
-                                                 object actions = null, 
+        /// <returns> A single instance of TaskActions </returns>
+        public static TaskActionsResource Update(string pathAssistantSid,
+                                                 string pathTaskSid,
+                                                 object actions = null,
                                                  ITwilioRestClient client = null)
         {
             var options = new UpdateTaskActionsOptions(pathAssistantSid, pathTaskSid){Actions = actions};
@@ -158,10 +158,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathTaskSid"> The unique ID of the Task. </param>
         /// <param name="actions"> The JSON actions that instruct the Assistant how to perform this task. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskActions </returns> 
-        public static async System.Threading.Tasks.Task<TaskActionsResource> UpdateAsync(string pathAssistantSid, 
-                                                                                         string pathTaskSid, 
-                                                                                         object actions = null, 
+        /// <returns> Task that resolves to A single instance of TaskActions </returns>
+        public static async System.Threading.Tasks.Task<TaskActionsResource> UpdateAsync(string pathAssistantSid,
+                                                                                         string pathTaskSid,
+                                                                                         object actions = null,
                                                                                          ITwilioRestClient client = null)
         {
             var options = new UpdateTaskActionsOptions(pathAssistantSid, pathTaskSid){Actions = actions};
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// Converts a JSON string into a TaskActionsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> TaskActionsResource object represented by the provided JSON </returns> 
+        /// <returns> TaskActionsResource object represented by the provided JSON </returns>
         public static TaskActionsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// CompositionSettingsResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Video.V1 
+namespace Twilio.Rest.Video.V1
 {
 
-    public class CompositionSettingsResource : Resource 
+    public class CompositionSettingsResource : Resource
     {
         private static Request BuildFetchRequest(FetchCompositionSettingsOptions options, ITwilioRestClient client)
         {
@@ -39,8 +39,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Fetch CompositionSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionSettings </returns> 
-        public static CompositionSettingsResource Fetch(FetchCompositionSettingsOptions options, 
+        /// <returns> A single instance of CompositionSettings </returns>
+        public static CompositionSettingsResource Fetch(FetchCompositionSettingsOptions options,
                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -54,8 +54,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Fetch CompositionSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionSettings </returns> 
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(FetchCompositionSettingsOptions options, 
+        /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
+        public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(FetchCompositionSettingsOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Video.V1
         /// fetch
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionSettings </returns> 
+        /// <returns> A single instance of CompositionSettings </returns>
         public static CompositionSettingsResource Fetch(ITwilioRestClient client = null)
         {
             var options = new FetchCompositionSettingsOptions();
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Video.V1
         /// fetch
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionSettings </returns> 
+        /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
         public static async System.Threading.Tasks.Task<CompositionSettingsResource> FetchAsync(ITwilioRestClient client = null)
         {
             var options = new FetchCompositionSettingsOptions();
@@ -104,8 +104,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Create CompositionSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionSettings </returns> 
-        public static CompositionSettingsResource Create(CreateCompositionSettingsOptions options, 
+        /// <returns> A single instance of CompositionSettings </returns>
+        public static CompositionSettingsResource Create(CreateCompositionSettingsOptions options,
                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -119,8 +119,8 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         /// <param name="options"> Create CompositionSettings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionSettings </returns> 
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(CreateCompositionSettingsOptions options, 
+        /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
+        public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(CreateCompositionSettingsOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -143,13 +143,13 @@ namespace Twilio.Rest.Video.V1
         ///                         </param>
         /// <param name="encryptionEnabled"> true|false When set to true, all Compositions will be stored encrypted. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CompositionSettings </returns> 
-        public static CompositionSettingsResource Create(string friendlyName, 
-                                                         string awsCredentialsSid = null, 
-                                                         string encryptionKeySid = null, 
-                                                         Uri awsS3Url = null, 
-                                                         bool? awsStorageEnabled = null, 
-                                                         bool? encryptionEnabled = null, 
+        /// <returns> A single instance of CompositionSettings </returns>
+        public static CompositionSettingsResource Create(string friendlyName,
+                                                         string awsCredentialsSid = null,
+                                                         string encryptionKeySid = null,
+                                                         Uri awsS3Url = null,
+                                                         bool? awsStorageEnabled = null,
+                                                         bool? encryptionEnabled = null,
                                                          ITwilioRestClient client = null)
         {
             var options = new CreateCompositionSettingsOptions(friendlyName){AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled};
@@ -171,13 +171,13 @@ namespace Twilio.Rest.Video.V1
         ///                         </param>
         /// <param name="encryptionEnabled"> true|false When set to true, all Compositions will be stored encrypted. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CompositionSettings </returns> 
-        public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(string friendlyName, 
-                                                                                                 string awsCredentialsSid = null, 
-                                                                                                 string encryptionKeySid = null, 
-                                                                                                 Uri awsS3Url = null, 
-                                                                                                 bool? awsStorageEnabled = null, 
-                                                                                                 bool? encryptionEnabled = null, 
+        /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
+        public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(string friendlyName,
+                                                                                                 string awsCredentialsSid = null,
+                                                                                                 string encryptionKeySid = null,
+                                                                                                 Uri awsS3Url = null,
+                                                                                                 bool? awsStorageEnabled = null,
+                                                                                                 bool? encryptionEnabled = null,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new CreateCompositionSettingsOptions(friendlyName){AwsCredentialsSid = awsCredentialsSid, EncryptionKeySid = encryptionKeySid, AwsS3Url = awsS3Url, AwsStorageEnabled = awsStorageEnabled, EncryptionEnabled = encryptionEnabled};
@@ -189,7 +189,7 @@ namespace Twilio.Rest.Video.V1
         /// Converts a JSON string into a CompositionSettingsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> CompositionSettingsResource object represented by the provided JSON </returns> 
+        /// <returns> CompositionSettingsResource object represented by the provided JSON </returns>
         public static CompositionSettingsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

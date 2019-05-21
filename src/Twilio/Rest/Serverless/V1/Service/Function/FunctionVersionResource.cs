@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// FunctionVersionResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Serverless.V1.Service.Function 
+namespace Twilio.Rest.Serverless.V1.Service.Function
 {
 
-    public class FunctionVersionResource : Resource 
+    public class FunctionVersionResource : Resource
     {
-        public sealed class VisibilityEnum : StringEnum 
+        public sealed class VisibilityEnum : StringEnum
         {
             private VisibilityEnum(string value) : base(value) {}
             public VisibilityEnum() {}
@@ -54,8 +54,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         /// <param name="options"> Read FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersion </returns> 
-        public static ResourceSet<FunctionVersionResource> Read(ReadFunctionVersionOptions options, 
+        /// <returns> A single instance of FunctionVersion </returns>
+        public static ResourceSet<FunctionVersionResource> Read(ReadFunctionVersionOptions options,
                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -71,8 +71,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         /// <param name="options"> Read FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersion </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(ReadFunctionVersionOptions options, 
+        /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(ReadFunctionVersionOptions options,
                                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -91,11 +91,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersion </returns> 
-        public static ResourceSet<FunctionVersionResource> Read(string pathServiceSid, 
-                                                                string pathFunctionSid, 
-                                                                int? pageSize = null, 
-                                                                long? limit = null, 
+        /// <returns> A single instance of FunctionVersion </returns>
+        public static ResourceSet<FunctionVersionResource> Read(string pathServiceSid,
+                                                                string pathFunctionSid,
+                                                                int? pageSize = null,
+                                                                long? limit = null,
                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadFunctionVersionOptions(pathServiceSid, pathFunctionSid){PageSize = pageSize, Limit = limit};
@@ -111,11 +111,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersion </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(string pathServiceSid, 
-                                                                                                        string pathFunctionSid, 
-                                                                                                        int? pageSize = null, 
-                                                                                                        long? limit = null, 
+        /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FunctionVersionResource>> ReadAsync(string pathServiceSid,
+                                                                                                        string pathFunctionSid,
+                                                                                                        int? pageSize = null,
+                                                                                                        long? limit = null,
                                                                                                         ITwilioRestClient client = null)
         {
             var options = new ReadFunctionVersionOptions(pathServiceSid, pathFunctionSid){PageSize = pageSize, Limit = limit};
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<FunctionVersionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<FunctionVersionResource> NextPage(Page<FunctionVersionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -167,8 +167,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<FunctionVersionResource> PreviousPage(Page<FunctionVersionResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<FunctionVersionResource> PreviousPage(Page<FunctionVersionResource> page,
                                                                  ITwilioRestClient client)
         {
             var request = new Request(
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         /// <param name="options"> Fetch FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersion </returns> 
+        /// <returns> A single instance of FunctionVersion </returns>
         public static FunctionVersionResource Fetch(FetchFunctionVersionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -213,8 +213,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         /// <param name="options"> Fetch FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersion </returns> 
-        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(FetchFunctionVersionOptions options, 
+        /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
+        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(FetchFunctionVersionOptions options,
                                                                                             ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -230,10 +230,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="pathFunctionSid"> Function Sid. </param>
         /// <param name="pathSid"> Function Version Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersion </returns> 
-        public static FunctionVersionResource Fetch(string pathServiceSid, 
-                                                    string pathFunctionSid, 
-                                                    string pathSid, 
+        /// <returns> A single instance of FunctionVersion </returns>
+        public static FunctionVersionResource Fetch(string pathServiceSid,
+                                                    string pathFunctionSid,
+                                                    string pathSid,
                                                     ITwilioRestClient client = null)
         {
             var options = new FetchFunctionVersionOptions(pathServiceSid, pathFunctionSid, pathSid);
@@ -248,10 +248,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="pathFunctionSid"> Function Sid. </param>
         /// <param name="pathSid"> Function Version Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersion </returns> 
-        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(string pathServiceSid, 
-                                                                                            string pathFunctionSid, 
-                                                                                            string pathSid, 
+        /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
+        public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(string pathServiceSid,
+                                                                                            string pathFunctionSid,
+                                                                                            string pathSid,
                                                                                             ITwilioRestClient client = null)
         {
             var options = new FetchFunctionVersionOptions(pathServiceSid, pathFunctionSid, pathSid);
@@ -275,7 +275,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         /// <param name="options"> Create FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersion </returns> 
+        /// <returns> A single instance of FunctionVersion </returns>
         public static FunctionVersionResource Create(CreateFunctionVersionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -289,8 +289,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         /// <param name="options"> Create FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersion </returns> 
-        public static async System.Threading.Tasks.Task<FunctionVersionResource> CreateAsync(CreateFunctionVersionOptions options, 
+        /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
+        public static async System.Threading.Tasks.Task<FunctionVersionResource> CreateAsync(CreateFunctionVersionOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -307,11 +307,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="path"> The URL-friendly string by which this Function Version can be referenced. </param>
         /// <param name="visibility"> The access control which determines how the Function Version can be accessed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersion </returns> 
-        public static FunctionVersionResource Create(string pathServiceSid, 
-                                                     string pathFunctionSid, 
-                                                     string path, 
-                                                     FunctionVersionResource.VisibilityEnum visibility, 
+        /// <returns> A single instance of FunctionVersion </returns>
+        public static FunctionVersionResource Create(string pathServiceSid,
+                                                     string pathFunctionSid,
+                                                     string path,
+                                                     FunctionVersionResource.VisibilityEnum visibility,
                                                      ITwilioRestClient client = null)
         {
             var options = new CreateFunctionVersionOptions(pathServiceSid, pathFunctionSid, path, visibility);
@@ -327,11 +327,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="path"> The URL-friendly string by which this Function Version can be referenced. </param>
         /// <param name="visibility"> The access control which determines how the Function Version can be accessed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersion </returns> 
-        public static async System.Threading.Tasks.Task<FunctionVersionResource> CreateAsync(string pathServiceSid, 
-                                                                                             string pathFunctionSid, 
-                                                                                             string path, 
-                                                                                             FunctionVersionResource.VisibilityEnum visibility, 
+        /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
+        public static async System.Threading.Tasks.Task<FunctionVersionResource> CreateAsync(string pathServiceSid,
+                                                                                             string pathFunctionSid,
+                                                                                             string path,
+                                                                                             FunctionVersionResource.VisibilityEnum visibility,
                                                                                              ITwilioRestClient client = null)
         {
             var options = new CreateFunctionVersionOptions(pathServiceSid, pathFunctionSid, path, visibility);
@@ -343,7 +343,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// Converts a JSON string into a FunctionVersionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> FunctionVersionResource object represented by the provided JSON </returns> 
+        /// <returns> FunctionVersionResource object represented by the provided JSON </returns>
         public static FunctionVersionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

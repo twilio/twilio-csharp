@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.Understand.Assistant.FieldType;
 
-namespace Twilio.Tests.Rest.Preview.Understand.Assistant.FieldType 
+namespace Twilio.Tests.Rest.Preview.Understand.Assistant.FieldType
 {
 
     [TestFixture]
-    public class FieldValueTest : TwilioTest 
+    public class FieldValueTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

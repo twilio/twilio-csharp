@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant 
+namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchFieldTypeOptions
     /// </summary>
-    public class FetchFieldTypeOptions : IOptions<FieldTypeResource> 
+    public class FetchFieldTypeOptions : IOptions<FieldTypeResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the resource to fetch
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadFieldTypeOptions
     /// </summary>
-    public class ReadFieldTypeOptions : ReadOptions<FieldTypeResource> 
+    public class ReadFieldTypeOptions : ReadOptions<FieldTypeResource>
     {
         /// <summary>
         /// The SID of the Assistant with the FieldType resources to read
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateFieldTypeOptions
     /// </summary>
-    public class CreateFieldTypeOptions : IOptions<FieldTypeResource> 
+    public class CreateFieldTypeOptions : IOptions<FieldTypeResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the new resource
@@ -141,10 +141,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateFieldTypeOptions
     /// </summary>
-    public class UpdateFieldTypeOptions : IOptions<FieldTypeResource> 
+    public class UpdateFieldTypeOptions : IOptions<FieldTypeResource>
     {
         /// <summary>
         /// The SID of the Assistant with the FieldType resource to update
@@ -197,10 +197,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteFieldTypeOptions
     /// </summary>
-    public class DeleteFieldTypeOptions : IOptions<FieldTypeResource> 
+    public class DeleteFieldTypeOptions : IOptions<FieldTypeResource>
     {
         /// <summary>
         /// The SID of the Assistant with the FieldType resources to delete

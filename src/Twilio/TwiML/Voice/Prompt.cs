@@ -12,15 +12,15 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Prompt Twiml Verb
     /// </summary>
-    public class Prompt : TwiML 
+    public class Prompt : TwiML
     {
-        public sealed class ForEnum : StringEnum 
+        public sealed class ForEnum : StringEnum
         {
             private ForEnum(string value) : base(value) {}
             public ForEnum() {}
@@ -36,7 +36,7 @@ namespace Twilio.TwiML.Voice
             public static readonly ForEnum PaymentProcessing = new ForEnum("payment-processing");
         }
 
-        public sealed class ErrorTypeEnum : StringEnum 
+        public sealed class ErrorTypeEnum : StringEnum
         {
             private ErrorTypeEnum(string value) : base(value) {}
             public ErrorTypeEnum() {}
@@ -53,7 +53,7 @@ namespace Twilio.TwiML.Voice
             public static readonly ErrorTypeEnum InternalError = new ErrorTypeEnum("internal-error");
         }
 
-        public sealed class CardTypeEnum : StringEnum 
+        public sealed class CardTypeEnum : StringEnum
         {
             private CardTypeEnum(string value) : base(value) {}
             public CardTypeEnum() {}
@@ -97,9 +97,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="errorType"> Type of error </param>
         /// <param name="cardType"> Type of the credit card </param>
         /// <param name="attempt"> Current attempt count </param>
-        public Prompt(Prompt.ForEnum for_ = null, 
-                      List<Prompt.ErrorTypeEnum> errorType = null, 
-                      List<Prompt.CardTypeEnum> cardType = null, 
+        public Prompt(Prompt.ForEnum for_ = null,
+                      List<Prompt.ErrorTypeEnum> errorType = null,
+                      List<Prompt.CardTypeEnum> cardType = null,
                       List<int> attempt = null) : base("Prompt")
         {
             this.For_ = for_;
@@ -151,9 +151,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="voice"> Voice to use </param>
         /// <param name="loop"> Times to loop message </param>
         /// <param name="language"> Message langauge </param>
-        public Prompt Say(string message = null, 
-                          Say.VoiceEnum voice = null, 
-                          int? loop = null, 
+        public Prompt Say(string message = null,
+                          Say.VoiceEnum voice = null,
+                          int? loop = null,
                           Say.LanguageEnum language = null)
         {
             var newChild = new Say(message, voice, loop, language);

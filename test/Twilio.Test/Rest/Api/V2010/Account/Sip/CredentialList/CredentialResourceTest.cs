@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Sip.CredentialList;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.CredentialList 
+namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.CredentialList
 {
 
     [TestFixture]
-    public class CredentialTest : TwilioTest 
+    public class CredentialTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

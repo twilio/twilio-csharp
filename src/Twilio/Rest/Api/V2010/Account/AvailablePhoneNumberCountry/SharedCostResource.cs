@@ -16,10 +16,10 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
+namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 {
 
-    public class SharedCostResource : Resource 
+    public class SharedCostResource : Resource
     {
         private static Request BuildReadRequest(ReadSharedCostOptions options, ITwilioRestClient client)
         {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="options"> Read SharedCost parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SharedCost </returns> 
+        /// <returns> A single instance of SharedCost </returns>
         public static ResourceSet<SharedCostResource> Read(ReadSharedCostOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="options"> Read SharedCost parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SharedCost </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SharedCostResource>> ReadAsync(ReadSharedCostOptions options, 
+        /// <returns> Task that resolves to A single instance of SharedCost </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SharedCostResource>> ReadAsync(ReadSharedCostOptions options,
                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -95,29 +95,29 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SharedCost </returns> 
-        public static ResourceSet<SharedCostResource> Read(string pathCountryCode, 
-                                                           string pathAccountSid = null, 
-                                                           int? areaCode = null, 
-                                                           string contains = null, 
-                                                           bool? smsEnabled = null, 
-                                                           bool? mmsEnabled = null, 
-                                                           bool? voiceEnabled = null, 
-                                                           bool? excludeAllAddressRequired = null, 
-                                                           bool? excludeLocalAddressRequired = null, 
-                                                           bool? excludeForeignAddressRequired = null, 
-                                                           bool? beta = null, 
-                                                           Types.PhoneNumber nearNumber = null, 
-                                                           string nearLatLong = null, 
-                                                           int? distance = null, 
-                                                           string inPostalCode = null, 
-                                                           string inRegion = null, 
-                                                           string inRateCenter = null, 
-                                                           string inLata = null, 
-                                                           string inLocality = null, 
-                                                           bool? faxEnabled = null, 
-                                                           int? pageSize = null, 
-                                                           long? limit = null, 
+        /// <returns> A single instance of SharedCost </returns>
+        public static ResourceSet<SharedCostResource> Read(string pathCountryCode,
+                                                           string pathAccountSid = null,
+                                                           int? areaCode = null,
+                                                           string contains = null,
+                                                           bool? smsEnabled = null,
+                                                           bool? mmsEnabled = null,
+                                                           bool? voiceEnabled = null,
+                                                           bool? excludeAllAddressRequired = null,
+                                                           bool? excludeLocalAddressRequired = null,
+                                                           bool? excludeForeignAddressRequired = null,
+                                                           bool? beta = null,
+                                                           Types.PhoneNumber nearNumber = null,
+                                                           string nearLatLong = null,
+                                                           int? distance = null,
+                                                           string inPostalCode = null,
+                                                           string inRegion = null,
+                                                           string inRateCenter = null,
+                                                           string inLata = null,
+                                                           string inLocality = null,
+                                                           bool? faxEnabled = null,
+                                                           int? pageSize = null,
+                                                           long? limit = null,
                                                            ITwilioRestClient client = null)
         {
             var options = new ReadSharedCostOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, FaxEnabled = faxEnabled, PageSize = pageSize, Limit = limit};
@@ -155,29 +155,29 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SharedCost </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SharedCostResource>> ReadAsync(string pathCountryCode, 
-                                                                                                   string pathAccountSid = null, 
-                                                                                                   int? areaCode = null, 
-                                                                                                   string contains = null, 
-                                                                                                   bool? smsEnabled = null, 
-                                                                                                   bool? mmsEnabled = null, 
-                                                                                                   bool? voiceEnabled = null, 
-                                                                                                   bool? excludeAllAddressRequired = null, 
-                                                                                                   bool? excludeLocalAddressRequired = null, 
-                                                                                                   bool? excludeForeignAddressRequired = null, 
-                                                                                                   bool? beta = null, 
-                                                                                                   Types.PhoneNumber nearNumber = null, 
-                                                                                                   string nearLatLong = null, 
-                                                                                                   int? distance = null, 
-                                                                                                   string inPostalCode = null, 
-                                                                                                   string inRegion = null, 
-                                                                                                   string inRateCenter = null, 
-                                                                                                   string inLata = null, 
-                                                                                                   string inLocality = null, 
-                                                                                                   bool? faxEnabled = null, 
-                                                                                                   int? pageSize = null, 
-                                                                                                   long? limit = null, 
+        /// <returns> Task that resolves to A single instance of SharedCost </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SharedCostResource>> ReadAsync(string pathCountryCode,
+                                                                                                   string pathAccountSid = null,
+                                                                                                   int? areaCode = null,
+                                                                                                   string contains = null,
+                                                                                                   bool? smsEnabled = null,
+                                                                                                   bool? mmsEnabled = null,
+                                                                                                   bool? voiceEnabled = null,
+                                                                                                   bool? excludeAllAddressRequired = null,
+                                                                                                   bool? excludeLocalAddressRequired = null,
+                                                                                                   bool? excludeForeignAddressRequired = null,
+                                                                                                   bool? beta = null,
+                                                                                                   Types.PhoneNumber nearNumber = null,
+                                                                                                   string nearLatLong = null,
+                                                                                                   int? distance = null,
+                                                                                                   string inPostalCode = null,
+                                                                                                   string inRegion = null,
+                                                                                                   string inRateCenter = null,
+                                                                                                   string inLata = null,
+                                                                                                   string inLocality = null,
+                                                                                                   bool? faxEnabled = null,
+                                                                                                   int? pageSize = null,
+                                                                                                   long? limit = null,
                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadSharedCostOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, FaxEnabled = faxEnabled, PageSize = pageSize, Limit = limit};
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<SharedCostResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<SharedCostResource> NextPage(Page<SharedCostResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<SharedCostResource> PreviousPage(Page<SharedCostResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// Converts a JSON string into a SharedCostResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> SharedCostResource object represented by the provided JSON </returns> 
+        /// <returns> SharedCostResource object represented by the provided JSON </returns>
         public static SharedCostResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

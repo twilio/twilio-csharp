@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant 
+namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchDefaultsOptions
     /// </summary>
-    public class FetchDefaultsOptions : IOptions<DefaultsResource> 
+    public class FetchDefaultsOptions : IOptions<DefaultsResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the resource to fetch
@@ -46,10 +46,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateDefaultsOptions
     /// </summary>
-    public class UpdateDefaultsOptions : IOptions<DefaultsResource> 
+    public class UpdateDefaultsOptions : IOptions<DefaultsResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the resource to update

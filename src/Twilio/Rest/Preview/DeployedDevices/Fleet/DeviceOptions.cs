@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.DeployedDevices.Fleet 
+namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch information about a specific Device in the Fleet.
     /// </summary>
-    public class FetchDeviceOptions : IOptions<DeviceResource> 
+    public class FetchDeviceOptions : IOptions<DeviceResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Device from the Fleet, also removing it from associated Deployments.
     /// </summary>
-    public class DeleteDeviceOptions : IOptions<DeviceResource> 
+    public class DeleteDeviceOptions : IOptions<DeviceResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -90,11 +90,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Device in the Fleet, optionally giving it a unique name, friendly name, and assigning to a Deployment
     /// and/or human identity.
     /// </summary>
-    public class CreateDeviceOptions : IOptions<DeviceResource> 
+    public class CreateDeviceOptions : IOptions<DeviceResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -168,10 +168,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Devices belonging to the Fleet.
     /// </summary>
-    public class ReadDeviceOptions : ReadOptions<DeviceResource> 
+    public class ReadDeviceOptions : ReadOptions<DeviceResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -214,11 +214,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update the given properties of a specific Device in the Fleet, giving it a friendly name, assigning to a Deployment,
     /// or a human identity.
     /// </summary>
-    public class UpdateDeviceOptions : IOptions<DeviceResource> 
+    public class UpdateDeviceOptions : IOptions<DeviceResource>
     {
         /// <summary>
         /// The fleet_sid

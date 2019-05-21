@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// VariableResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Serverless.V1.Service.Environment 
+namespace Twilio.Rest.Serverless.V1.Service.Environment
 {
 
-    public class VariableResource : Resource 
+    public class VariableResource : Resource
     {
         private static Request BuildReadRequest(ReadVariableOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="options"> Read Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Variable </returns> 
+        /// <returns> A single instance of Variable </returns>
         public static ResourceSet<VariableResource> Read(ReadVariableOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -55,8 +55,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="options"> Read Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Variable </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<VariableResource>> ReadAsync(ReadVariableOptions options, 
+        /// <returns> Task that resolves to A single instance of Variable </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<VariableResource>> ReadAsync(ReadVariableOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -75,11 +75,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Variable </returns> 
-        public static ResourceSet<VariableResource> Read(string pathServiceSid, 
-                                                         string pathEnvironmentSid, 
-                                                         int? pageSize = null, 
-                                                         long? limit = null, 
+        /// <returns> A single instance of Variable </returns>
+        public static ResourceSet<VariableResource> Read(string pathServiceSid,
+                                                         string pathEnvironmentSid,
+                                                         int? pageSize = null,
+                                                         long? limit = null,
                                                          ITwilioRestClient client = null)
         {
             var options = new ReadVariableOptions(pathServiceSid, pathEnvironmentSid){PageSize = pageSize, Limit = limit};
@@ -95,11 +95,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Variable </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<VariableResource>> ReadAsync(string pathServiceSid, 
-                                                                                                 string pathEnvironmentSid, 
-                                                                                                 int? pageSize = null, 
-                                                                                                 long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Variable </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<VariableResource>> ReadAsync(string pathServiceSid,
+                                                                                                 string pathEnvironmentSid,
+                                                                                                 int? pageSize = null,
+                                                                                                 long? limit = null,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadVariableOptions(pathServiceSid, pathEnvironmentSid){PageSize = pageSize, Limit = limit};
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<VariableResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<VariableResource> NextPage(Page<VariableResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<VariableResource> PreviousPage(Page<VariableResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="options"> Fetch Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Variable </returns> 
+        /// <returns> A single instance of Variable </returns>
         public static VariableResource Fetch(FetchVariableOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -196,8 +196,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="options"> Fetch Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Variable </returns> 
-        public static async System.Threading.Tasks.Task<VariableResource> FetchAsync(FetchVariableOptions options, 
+        /// <returns> Task that resolves to A single instance of Variable </returns>
+        public static async System.Threading.Tasks.Task<VariableResource> FetchAsync(FetchVariableOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -213,10 +213,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="pathEnvironmentSid"> Environment Sid. </param>
         /// <param name="pathSid"> Variable Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Variable </returns> 
-        public static VariableResource Fetch(string pathServiceSid, 
-                                             string pathEnvironmentSid, 
-                                             string pathSid, 
+        /// <returns> A single instance of Variable </returns>
+        public static VariableResource Fetch(string pathServiceSid,
+                                             string pathEnvironmentSid,
+                                             string pathSid,
                                              ITwilioRestClient client = null)
         {
             var options = new FetchVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid);
@@ -231,10 +231,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="pathEnvironmentSid"> Environment Sid. </param>
         /// <param name="pathSid"> Variable Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Variable </returns> 
-        public static async System.Threading.Tasks.Task<VariableResource> FetchAsync(string pathServiceSid, 
-                                                                                     string pathEnvironmentSid, 
-                                                                                     string pathSid, 
+        /// <returns> Task that resolves to A single instance of Variable </returns>
+        public static async System.Threading.Tasks.Task<VariableResource> FetchAsync(string pathServiceSid,
+                                                                                     string pathEnvironmentSid,
+                                                                                     string pathSid,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid);
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="options"> Create Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Variable </returns> 
+        /// <returns> A single instance of Variable </returns>
         public static VariableResource Create(CreateVariableOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -272,8 +272,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="options"> Create Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Variable </returns> 
-        public static async System.Threading.Tasks.Task<VariableResource> CreateAsync(CreateVariableOptions options, 
+        /// <returns> Task that resolves to A single instance of Variable </returns>
+        public static async System.Threading.Tasks.Task<VariableResource> CreateAsync(CreateVariableOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -290,11 +290,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="key"> A string by which this Variable can be referenced. </param>
         /// <param name="value"> A string that contains the actual value of this Variable. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Variable </returns> 
-        public static VariableResource Create(string pathServiceSid, 
-                                              string pathEnvironmentSid, 
-                                              string key, 
-                                              string value, 
+        /// <returns> A single instance of Variable </returns>
+        public static VariableResource Create(string pathServiceSid,
+                                              string pathEnvironmentSid,
+                                              string key,
+                                              string value,
                                               ITwilioRestClient client = null)
         {
             var options = new CreateVariableOptions(pathServiceSid, pathEnvironmentSid, key, value);
@@ -310,11 +310,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="key"> A string by which this Variable can be referenced. </param>
         /// <param name="value"> A string that contains the actual value of this Variable. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Variable </returns> 
-        public static async System.Threading.Tasks.Task<VariableResource> CreateAsync(string pathServiceSid, 
-                                                                                      string pathEnvironmentSid, 
-                                                                                      string key, 
-                                                                                      string value, 
+        /// <returns> Task that resolves to A single instance of Variable </returns>
+        public static async System.Threading.Tasks.Task<VariableResource> CreateAsync(string pathServiceSid,
+                                                                                      string pathEnvironmentSid,
+                                                                                      string key,
+                                                                                      string value,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new CreateVariableOptions(pathServiceSid, pathEnvironmentSid, key, value);
@@ -338,7 +338,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="options"> Update Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Variable </returns> 
+        /// <returns> A single instance of Variable </returns>
         public static VariableResource Update(UpdateVariableOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -352,8 +352,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         /// <param name="options"> Update Variable parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Variable </returns> 
-        public static async System.Threading.Tasks.Task<VariableResource> UpdateAsync(UpdateVariableOptions options, 
+        /// <returns> Task that resolves to A single instance of Variable </returns>
+        public static async System.Threading.Tasks.Task<VariableResource> UpdateAsync(UpdateVariableOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -371,12 +371,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="key"> A string by which this Variable can be referenced. </param>
         /// <param name="value"> A string that contains the actual value of this Variable. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Variable </returns> 
-        public static VariableResource Update(string pathServiceSid, 
-                                              string pathEnvironmentSid, 
-                                              string pathSid, 
-                                              string key = null, 
-                                              string value = null, 
+        /// <returns> A single instance of Variable </returns>
+        public static VariableResource Update(string pathServiceSid,
+                                              string pathEnvironmentSid,
+                                              string pathSid,
+                                              string key = null,
+                                              string value = null,
                                               ITwilioRestClient client = null)
         {
             var options = new UpdateVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){Key = key, Value = value};
@@ -393,12 +393,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="key"> A string by which this Variable can be referenced. </param>
         /// <param name="value"> A string that contains the actual value of this Variable. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Variable </returns> 
-        public static async System.Threading.Tasks.Task<VariableResource> UpdateAsync(string pathServiceSid, 
-                                                                                      string pathEnvironmentSid, 
-                                                                                      string pathSid, 
-                                                                                      string key = null, 
-                                                                                      string value = null, 
+        /// <returns> Task that resolves to A single instance of Variable </returns>
+        public static async System.Threading.Tasks.Task<VariableResource> UpdateAsync(string pathServiceSid,
+                                                                                      string pathEnvironmentSid,
+                                                                                      string pathSid,
+                                                                                      string key = null,
+                                                                                      string value = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateVariableOptions(pathServiceSid, pathEnvironmentSid, pathSid){Key = key, Value = value};
@@ -410,7 +410,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// Converts a JSON string into a VariableResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> VariableResource object represented by the provided JSON </returns> 
+        /// <returns> VariableResource object represented by the provided JSON </returns>
         public static VariableResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

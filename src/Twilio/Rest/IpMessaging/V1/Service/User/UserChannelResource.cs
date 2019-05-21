@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.IpMessaging.V1.Service.User 
+namespace Twilio.Rest.IpMessaging.V1.Service.User
 {
 
-    public class UserChannelResource : Resource 
+    public class UserChannelResource : Resource
     {
-        public sealed class ChannelStatusEnum : StringEnum 
+        public sealed class ChannelStatusEnum : StringEnum
         {
             private ChannelStatusEnum(string value) : base(value) {}
             public ChannelStatusEnum() {}
@@ -51,7 +51,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// </summary>
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserChannel </returns> 
+        /// <returns> A single instance of UserChannel </returns>
         public static ResourceSet<UserChannelResource> Read(ReadUserChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,8 +67,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// </summary>
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options, 
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -87,11 +87,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserChannel </returns> 
-        public static ResourceSet<UserChannelResource> Read(string pathServiceSid, 
-                                                            string pathUserSid, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of UserChannel </returns>
+        public static ResourceSet<UserChannelResource> Read(string pathServiceSid,
+                                                            string pathUserSid,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){PageSize = pageSize, Limit = limit};
@@ -107,11 +107,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(string pathServiceSid, 
-                                                                                                    string pathUserSid, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(string pathServiceSid,
+                                                                                                    string pathUserSid,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){PageSize = pageSize, Limit = limit};
@@ -124,7 +124,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<UserChannelResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -143,7 +143,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<UserChannelResource> NextPage(Page<UserChannelResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -163,7 +163,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<UserChannelResource> PreviousPage(Page<UserChannelResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -182,7 +182,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         /// Converts a JSON string into a UserChannelResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> UserChannelResource object represented by the provided JSON </returns> 
+        /// <returns> UserChannelResource object represented by the provided JSON </returns>
         public static UserChannelResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
+namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 {
 
     /// <summary>
     /// ReadLocalOptions
     /// </summary>
-    public class ReadLocalOptions : ReadOptions<LocalResource> 
+    public class ReadLocalOptions : ReadOptions<LocalResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     /// <summary>
     /// CreateLocalOptions
     /// </summary>
-    public class CreateLocalOptions : IOptions<LocalResource> 
+    public class CreateLocalOptions : IOptions<LocalResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource

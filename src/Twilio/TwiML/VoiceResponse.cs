@@ -11,13 +11,13 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.TwiML.Voice;
 
-namespace Twilio.TwiML 
+namespace Twilio.TwiML
 {
 
     /// <summary>
     /// Response TwiML for Voice
     /// </summary>
-    public class VoiceResponse : TwiML 
+    public class VoiceResponse : TwiML
     {
         /// <summary>
         /// Create a new VoiceResponse
@@ -79,19 +79,19 @@ namespace Twilio.TwiML
         ///                      </param>
         /// <param name="ringTone"> Ringtone allows you to override the ringback tone that Twilio will play back to the caller
         ///                while executing the Dial </param>
-        public VoiceResponse Dial(string number = null, 
-                                  Uri action = null, 
-                                  Twilio.Http.HttpMethod method = null, 
-                                  int? timeout = null, 
-                                  bool? hangupOnStar = null, 
-                                  int? timeLimit = null, 
-                                  string callerId = null, 
-                                  Dial.RecordEnum record = null, 
-                                  Dial.TrimEnum trim = null, 
-                                  Uri recordingStatusCallback = null, 
-                                  Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
-                                  List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null, 
-                                  bool? answerOnBridge = null, 
+        public VoiceResponse Dial(string number = null,
+                                  Uri action = null,
+                                  Twilio.Http.HttpMethod method = null,
+                                  int? timeout = null,
+                                  bool? hangupOnStar = null,
+                                  int? timeLimit = null,
+                                  string callerId = null,
+                                  Dial.RecordEnum record = null,
+                                  Dial.TrimEnum trim = null,
+                                  Uri recordingStatusCallback = null,
+                                  Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                                  List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                                  bool? answerOnBridge = null,
                                   Dial.RingToneEnum ringTone = null)
         {
             var newChild = new Dial(
@@ -155,11 +155,11 @@ namespace Twilio.TwiML
         /// <param name="waitUrl"> Wait URL </param>
         /// <param name="waitUrlMethod"> Wait URL method </param>
         /// <param name="workflowSid"> TaskRouter Workflow SID </param>
-        public VoiceResponse Enqueue(string name = null, 
-                                     Uri action = null, 
-                                     Twilio.Http.HttpMethod method = null, 
-                                     Uri waitUrl = null, 
-                                     Twilio.Http.HttpMethod waitUrlMethod = null, 
+        public VoiceResponse Enqueue(string name = null,
+                                     Uri action = null,
+                                     Twilio.Http.HttpMethod method = null,
+                                     Uri waitUrl = null,
+                                     Twilio.Http.HttpMethod waitUrlMethod = null,
                                      string workflowSid = null)
         {
             var newChild = new Enqueue(name, action, method, waitUrl, waitUrlMethod, workflowSid);
@@ -198,21 +198,21 @@ namespace Twilio.TwiML
         /// <param name="bargeIn"> Stop playing media upon speech </param>
         /// <param name="debug"> Allow debug for gather </param>
         /// <param name="actionOnEmptyResult"> Force webhook to the action URL event if there is no input </param>
-        public VoiceResponse Gather(List<Gather.InputEnum> input = null, 
-                                    Uri action = null, 
-                                    Twilio.Http.HttpMethod method = null, 
-                                    int? timeout = null, 
-                                    string speechTimeout = null, 
-                                    int? maxSpeechTime = null, 
-                                    bool? profanityFilter = null, 
-                                    string finishOnKey = null, 
-                                    int? numDigits = null, 
-                                    Uri partialResultCallback = null, 
-                                    Twilio.Http.HttpMethod partialResultCallbackMethod = null, 
-                                    Gather.LanguageEnum language = null, 
-                                    string hints = null, 
-                                    bool? bargeIn = null, 
-                                    bool? debug = null, 
+        public VoiceResponse Gather(List<Gather.InputEnum> input = null,
+                                    Uri action = null,
+                                    Twilio.Http.HttpMethod method = null,
+                                    int? timeout = null,
+                                    string speechTimeout = null,
+                                    int? maxSpeechTime = null,
+                                    bool? profanityFilter = null,
+                                    string finishOnKey = null,
+                                    int? numDigits = null,
+                                    Uri partialResultCallback = null,
+                                    Twilio.Http.HttpMethod partialResultCallbackMethod = null,
+                                    Gather.LanguageEnum language = null,
+                                    string hints = null,
+                                    bool? bargeIn = null,
+                                    bool? debug = null,
                                     bool? actionOnEmptyResult = null)
         {
             var newChild = new Gather(
@@ -344,10 +344,10 @@ namespace Twilio.TwiML
         /// <param name="method"> Action URL method </param>
         /// <param name="reservationSid"> TaskRouter Reservation SID </param>
         /// <param name="postWorkActivitySid"> TaskRouter Activity SID </param>
-        public VoiceResponse Queue(string name = null, 
-                                   Uri url = null, 
-                                   Twilio.Http.HttpMethod method = null, 
-                                   string reservationSid = null, 
+        public VoiceResponse Queue(string name = null,
+                                   Uri url = null,
+                                   Twilio.Http.HttpMethod method = null,
+                                   string reservationSid = null,
                                    string postWorkActivitySid = null)
         {
             var newChild = new Queue(name, url, method, reservationSid, postWorkActivitySid);
@@ -381,17 +381,17 @@ namespace Twilio.TwiML
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="transcribe"> Transcribe the recording </param>
         /// <param name="transcribeCallback"> Transcribe callback URL </param>
-        public VoiceResponse Record(Uri action = null, 
-                                    Twilio.Http.HttpMethod method = null, 
-                                    int? timeout = null, 
-                                    string finishOnKey = null, 
-                                    int? maxLength = null, 
-                                    bool? playBeep = null, 
-                                    Record.TrimEnum trim = null, 
-                                    Uri recordingStatusCallback = null, 
-                                    Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
-                                    List<Record.RecordingEventEnum> recordingStatusCallbackEvent = null, 
-                                    bool? transcribe = null, 
+        public VoiceResponse Record(Uri action = null,
+                                    Twilio.Http.HttpMethod method = null,
+                                    int? timeout = null,
+                                    string finishOnKey = null,
+                                    int? maxLength = null,
+                                    bool? playBeep = null,
+                                    Record.TrimEnum trim = null,
+                                    Uri recordingStatusCallback = null,
+                                    Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                                    List<Record.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                                    bool? transcribe = null,
                                     Uri transcribeCallback = null)
         {
             var newChild = new Record(
@@ -475,9 +475,9 @@ namespace Twilio.TwiML
         /// <param name="voice"> Voice to use </param>
         /// <param name="loop"> Times to loop message </param>
         /// <param name="language"> Message langauge </param>
-        public VoiceResponse Say(string message = null, 
-                                 Say.VoiceEnum voice = null, 
-                                 int? loop = null, 
+        public VoiceResponse Say(string message = null,
+                                 Say.VoiceEnum voice = null,
+                                 int? loop = null,
                                  Say.LanguageEnum language = null)
         {
             var newChild = new Say(message, voice, loop, language);
@@ -505,11 +505,11 @@ namespace Twilio.TwiML
         /// <param name="action"> Action URL </param>
         /// <param name="method"> Action URL method </param>
         /// <param name="statusCallback"> Status callback URL </param>
-        public VoiceResponse Sms(string message = null, 
-                                 Types.PhoneNumber to = null, 
-                                 Types.PhoneNumber from = null, 
-                                 Uri action = null, 
-                                 Twilio.Http.HttpMethod method = null, 
+        public VoiceResponse Sms(string message = null,
+                                 Types.PhoneNumber to = null,
+                                 Types.PhoneNumber from = null,
+                                 Uri action = null,
+                                 Twilio.Http.HttpMethod method = null,
                                  Uri statusCallback = null)
         {
             var newChild = new Sms(message, to, from, action, method, statusCallback);
@@ -547,20 +547,20 @@ namespace Twilio.TwiML
         /// <param name="description"> Details regarding the payment </param>
         /// <param name="validCardTypes"> Comma separated accepted card types </param>
         /// <param name="language"> Language to use </param>
-        public VoiceResponse Pay(Pay.InputEnum input = null, 
-                                 Uri action = null, 
-                                 Uri statusCallback = null, 
-                                 Pay.StatusCallbackMethodEnum statusCallbackMethod = null, 
-                                 int? timeout = null, 
-                                 int? maxAttempts = null, 
-                                 bool? securityCode = null, 
-                                 string postalCode = null, 
-                                 string paymentConnector = null, 
-                                 Pay.TokenTypeEnum tokenType = null, 
-                                 string chargeAmount = null, 
-                                 string currency = null, 
-                                 string description = null, 
-                                 List<Pay.ValidCardTypesEnum> validCardTypes = null, 
+        public VoiceResponse Pay(Pay.InputEnum input = null,
+                                 Uri action = null,
+                                 Uri statusCallback = null,
+                                 Pay.StatusCallbackMethodEnum statusCallbackMethod = null,
+                                 int? timeout = null,
+                                 int? maxAttempts = null,
+                                 bool? securityCode = null,
+                                 string postalCode = null,
+                                 string paymentConnector = null,
+                                 Pay.TokenTypeEnum tokenType = null,
+                                 string chargeAmount = null,
+                                 string currency = null,
+                                 string description = null,
+                                 List<Pay.ValidCardTypesEnum> validCardTypes = null,
                                  Pay.LanguageEnum language = null)
         {
             var newChild = new Pay(
@@ -602,9 +602,9 @@ namespace Twilio.TwiML
         /// <param name="errorType"> Type of error </param>
         /// <param name="cardType"> Type of the credit card </param>
         /// <param name="attempt"> Current attempt count </param>
-        public VoiceResponse Prompt(Prompt.ForEnum for_ = null, 
-                                    List<Prompt.ErrorTypeEnum> errorType = null, 
-                                    List<Prompt.CardTypeEnum> cardType = null, 
+        public VoiceResponse Prompt(Prompt.ForEnum for_ = null,
+                                    List<Prompt.ErrorTypeEnum> errorType = null,
+                                    List<Prompt.CardTypeEnum> cardType = null,
                                     List<int> attempt = null)
         {
             var newChild = new Prompt(for_, errorType, cardType, attempt);

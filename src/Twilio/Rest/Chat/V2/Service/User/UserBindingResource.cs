@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Chat.V2.Service.User 
+namespace Twilio.Rest.Chat.V2.Service.User
 {
 
-    public class UserBindingResource : Resource 
+    public class UserBindingResource : Resource
     {
-        public sealed class BindingTypeEnum : StringEnum 
+        public sealed class BindingTypeEnum : StringEnum
         {
             private BindingTypeEnum(string value) : base(value) {}
             public BindingTypeEnum() {}
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Read UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserBinding </returns> 
+        /// <returns> A single instance of UserBinding </returns>
         public static ResourceSet<UserBindingResource> Read(ReadUserBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,8 +67,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Read UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserBinding </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserBindingResource>> ReadAsync(ReadUserBindingOptions options, 
+        /// <returns> Task that resolves to A single instance of UserBinding </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UserBindingResource>> ReadAsync(ReadUserBindingOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -88,12 +88,12 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserBinding </returns> 
-        public static ResourceSet<UserBindingResource> Read(string pathServiceSid, 
-                                                            string pathUserSid, 
-                                                            List<UserBindingResource.BindingTypeEnum> bindingType = null, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of UserBinding </returns>
+        public static ResourceSet<UserBindingResource> Read(string pathServiceSid,
+                                                            string pathUserSid,
+                                                            List<UserBindingResource.BindingTypeEnum> bindingType = null,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadUserBindingOptions(pathServiceSid, pathUserSid){BindingType = bindingType, PageSize = pageSize, Limit = limit};
@@ -110,12 +110,12 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserBinding </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserBindingResource>> ReadAsync(string pathServiceSid, 
-                                                                                                    string pathUserSid, 
-                                                                                                    List<UserBindingResource.BindingTypeEnum> bindingType = null, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of UserBinding </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UserBindingResource>> ReadAsync(string pathServiceSid,
+                                                                                                    string pathUserSid,
+                                                                                                    List<UserBindingResource.BindingTypeEnum> bindingType = null,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadUserBindingOptions(pathServiceSid, pathUserSid){BindingType = bindingType, PageSize = pageSize, Limit = limit};
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<UserBindingResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<UserBindingResource> NextPage(Page<UserBindingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<UserBindingResource> PreviousPage(Page<UserBindingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Fetch UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserBinding </returns> 
+        /// <returns> A single instance of UserBinding </returns>
         public static UserBindingResource Fetch(FetchUserBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -212,8 +212,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Fetch UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserBinding </returns> 
-        public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(FetchUserBindingOptions options, 
+        /// <returns> Task that resolves to A single instance of UserBinding </returns>
+        public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(FetchUserBindingOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -229,10 +229,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathUserSid"> The SID of the User for the binding </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserBinding </returns> 
-        public static UserBindingResource Fetch(string pathServiceSid, 
-                                                string pathUserSid, 
-                                                string pathSid, 
+        /// <returns> A single instance of UserBinding </returns>
+        public static UserBindingResource Fetch(string pathServiceSid,
+                                                string pathUserSid,
+                                                string pathSid,
                                                 ITwilioRestClient client = null)
         {
             var options = new FetchUserBindingOptions(pathServiceSid, pathUserSid, pathSid);
@@ -247,10 +247,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathUserSid"> The SID of the User for the binding </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserBinding </returns> 
-        public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(string pathServiceSid, 
-                                                                                        string pathUserSid, 
-                                                                                        string pathSid, 
+        /// <returns> Task that resolves to A single instance of UserBinding </returns>
+        public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(string pathServiceSid,
+                                                                                        string pathUserSid,
+                                                                                        string pathSid,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchUserBindingOptions(pathServiceSid, pathUserSid, pathSid);
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Delete UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserBinding </returns> 
+        /// <returns> A single instance of UserBinding </returns>
         public static bool Delete(DeleteUserBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -288,8 +288,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Delete UserBinding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserBinding </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserBindingOptions options, 
+        /// <returns> Task that resolves to A single instance of UserBinding </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserBindingOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathUserSid"> The SID of the User of the User Bindings to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserBinding </returns> 
+        /// <returns> A single instance of UserBinding </returns>
         public static bool Delete(string pathServiceSid, string pathUserSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteUserBindingOptions(pathServiceSid, pathUserSid, pathSid);
@@ -320,10 +320,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathUserSid"> The SID of the User of the User Bindings to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserBinding </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathUserSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of UserBinding </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathUserSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteUserBindingOptions(pathServiceSid, pathUserSid, pathSid);
@@ -335,7 +335,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// Converts a JSON string into a UserBindingResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> UserBindingResource object represented by the provided JSON </returns> 
+        /// <returns> UserBindingResource object represented by the provided JSON </returns>
         public static UserBindingResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

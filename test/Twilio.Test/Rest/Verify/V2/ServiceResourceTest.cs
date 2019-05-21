@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Verify.V2;
 
-namespace Twilio.Tests.Rest.Verify.V2 
+namespace Twilio.Tests.Rest.Verify.V2
 {
 
     [TestFixture]
-    public class ServiceTest : TwilioTest 
+    public class ServiceTest : TwilioTest
     {
         [Test]
         public void TestCreateRequest()

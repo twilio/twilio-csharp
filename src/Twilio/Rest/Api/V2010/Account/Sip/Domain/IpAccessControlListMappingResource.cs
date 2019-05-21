@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 {
 
-    public class IpAccessControlListMappingResource : Resource 
+    public class IpAccessControlListMappingResource : Resource
     {
         private static Request BuildFetchRequest(FetchIpAccessControlListMappingOptions options, ITwilioRestClient client)
         {
@@ -36,8 +36,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="options"> Fetch IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of IpAccessControlListMapping </returns> 
-        public static IpAccessControlListMappingResource Fetch(FetchIpAccessControlListMappingOptions options, 
+        /// <returns> A single instance of IpAccessControlListMapping </returns>
+        public static IpAccessControlListMappingResource Fetch(FetchIpAccessControlListMappingOptions options,
                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -51,8 +51,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="options"> Fetch IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
-        public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> FetchAsync(FetchIpAccessControlListMappingOptions options, 
+        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns>
+        public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> FetchAsync(FetchIpAccessControlListMappingOptions options,
                                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,10 +68,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to fetch. </param>
         /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of IpAccessControlListMapping </returns> 
-        public static IpAccessControlListMappingResource Fetch(string pathDomainSid, 
-                                                               string pathSid, 
-                                                               string pathAccountSid = null, 
+        /// <returns> A single instance of IpAccessControlListMapping </returns>
+        public static IpAccessControlListMappingResource Fetch(string pathDomainSid,
+                                                               string pathSid,
+                                                               string pathAccountSid = null,
                                                                ITwilioRestClient client = null)
         {
             var options = new FetchIpAccessControlListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
@@ -86,10 +86,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to fetch. </param>
         /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
-        public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> FetchAsync(string pathDomainSid, 
-                                                                                                       string pathSid, 
-                                                                                                       string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns>
+        public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> FetchAsync(string pathDomainSid,
+                                                                                                       string pathSid,
+                                                                                                       string pathAccountSid = null,
                                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchIpAccessControlListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
@@ -113,8 +113,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="options"> Create IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of IpAccessControlListMapping </returns> 
-        public static IpAccessControlListMappingResource Create(CreateIpAccessControlListMappingOptions options, 
+        /// <returns> A single instance of IpAccessControlListMapping </returns>
+        public static IpAccessControlListMappingResource Create(CreateIpAccessControlListMappingOptions options,
                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -128,8 +128,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="options"> Create IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
-        public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> CreateAsync(CreateIpAccessControlListMappingOptions options, 
+        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns>
+        public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> CreateAsync(CreateIpAccessControlListMappingOptions options,
                                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -145,10 +145,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="ipAccessControlListSid"> The unique id of the IP access control list to map to the SIP domain </param>
         /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of IpAccessControlListMapping </returns> 
-        public static IpAccessControlListMappingResource Create(string pathDomainSid, 
-                                                                string ipAccessControlListSid, 
-                                                                string pathAccountSid = null, 
+        /// <returns> A single instance of IpAccessControlListMapping </returns>
+        public static IpAccessControlListMappingResource Create(string pathDomainSid,
+                                                                string ipAccessControlListSid,
+                                                                string pathAccountSid = null,
                                                                 ITwilioRestClient client = null)
         {
             var options = new CreateIpAccessControlListMappingOptions(pathDomainSid, ipAccessControlListSid){PathAccountSid = pathAccountSid};
@@ -163,10 +163,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="ipAccessControlListSid"> The unique id of the IP access control list to map to the SIP domain </param>
         /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
-        public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> CreateAsync(string pathDomainSid, 
-                                                                                                        string ipAccessControlListSid, 
-                                                                                                        string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns>
+        public static async System.Threading.Tasks.Task<IpAccessControlListMappingResource> CreateAsync(string pathDomainSid,
+                                                                                                        string ipAccessControlListSid,
+                                                                                                        string pathAccountSid = null,
                                                                                                         ITwilioRestClient client = null)
         {
             var options = new CreateIpAccessControlListMappingOptions(pathDomainSid, ipAccessControlListSid){PathAccountSid = pathAccountSid};
@@ -190,8 +190,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="options"> Read IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of IpAccessControlListMapping </returns> 
-        public static ResourceSet<IpAccessControlListMappingResource> Read(ReadIpAccessControlListMappingOptions options, 
+        /// <returns> A single instance of IpAccessControlListMapping </returns>
+        public static ResourceSet<IpAccessControlListMappingResource> Read(ReadIpAccessControlListMappingOptions options,
                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -207,8 +207,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="options"> Read IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListMappingResource>> ReadAsync(ReadIpAccessControlListMappingOptions options, 
+        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListMappingResource>> ReadAsync(ReadIpAccessControlListMappingOptions options,
                                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -227,11 +227,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of IpAccessControlListMapping </returns> 
-        public static ResourceSet<IpAccessControlListMappingResource> Read(string pathDomainSid, 
-                                                                           string pathAccountSid = null, 
-                                                                           int? pageSize = null, 
-                                                                           long? limit = null, 
+        /// <returns> A single instance of IpAccessControlListMapping </returns>
+        public static ResourceSet<IpAccessControlListMappingResource> Read(string pathDomainSid,
+                                                                           string pathAccountSid = null,
+                                                                           int? pageSize = null,
+                                                                           long? limit = null,
                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadIpAccessControlListMappingOptions(pathDomainSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -247,11 +247,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListMappingResource>> ReadAsync(string pathDomainSid, 
-                                                                                                                   string pathAccountSid = null, 
-                                                                                                                   int? pageSize = null, 
-                                                                                                                   long? limit = null, 
+        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<IpAccessControlListMappingResource>> ReadAsync(string pathDomainSid,
+                                                                                                                   string pathAccountSid = null,
+                                                                                                                   int? pageSize = null,
+                                                                                                                   long? limit = null,
                                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadIpAccessControlListMappingOptions(pathDomainSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<IpAccessControlListMappingResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -283,8 +283,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<IpAccessControlListMappingResource> NextPage(Page<IpAccessControlListMappingResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<IpAccessControlListMappingResource> NextPage(Page<IpAccessControlListMappingResource> page,
                                                                         ITwilioRestClient client)
         {
             var request = new Request(
@@ -304,8 +304,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<IpAccessControlListMappingResource> PreviousPage(Page<IpAccessControlListMappingResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<IpAccessControlListMappingResource> PreviousPage(Page<IpAccessControlListMappingResource> page,
                                                                             ITwilioRestClient client)
         {
             var request = new Request(
@@ -336,7 +336,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="options"> Delete IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of IpAccessControlListMapping </returns> 
+        /// <returns> A single instance of IpAccessControlListMapping </returns>
         public static bool Delete(DeleteIpAccessControlListMappingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -350,8 +350,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         /// <param name="options"> Delete IpAccessControlListMapping parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIpAccessControlListMappingOptions options, 
+        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteIpAccessControlListMappingOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -367,10 +367,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to delete. </param>
         /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of IpAccessControlListMapping </returns> 
-        public static bool Delete(string pathDomainSid, 
-                                  string pathSid, 
-                                  string pathAccountSid = null, 
+        /// <returns> A single instance of IpAccessControlListMapping </returns>
+        public static bool Delete(string pathDomainSid,
+                                  string pathSid,
+                                  string pathAccountSid = null,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteIpAccessControlListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
@@ -385,10 +385,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// <param name="pathSid"> A 34 character string that uniquely identifies the resource to delete. </param>
         /// <param name="pathAccountSid"> The unique id of the Account that is responsible for this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid, 
-                                                                          string pathSid, 
-                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of IpAccessControlListMapping </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathDomainSid,
+                                                                          string pathSid,
+                                                                          string pathAccountSid = null,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteIpAccessControlListMappingOptions(pathDomainSid, pathSid){PathAccountSid = pathAccountSid};
@@ -400,7 +400,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// Converts a JSON string into a IpAccessControlListMappingResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> IpAccessControlListMappingResource object represented by the provided JSON </returns> 
+        /// <returns> IpAccessControlListMappingResource object represented by the provided JSON </returns>
         public static IpAccessControlListMappingResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

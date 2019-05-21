@@ -12,15 +12,15 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Conference TwiML Noun
     /// </summary>
-    public class Conference : TwiML 
+    public class Conference : TwiML
     {
-        public sealed class BeepEnum : StringEnum 
+        public sealed class BeepEnum : StringEnum
         {
             private BeepEnum(string value) : base(value) {}
             public BeepEnum() {}
@@ -35,7 +35,7 @@ namespace Twilio.TwiML.Voice
             public static readonly BeepEnum Onexit = new BeepEnum("onExit");
         }
 
-        public sealed class RecordEnum : StringEnum 
+        public sealed class RecordEnum : StringEnum
         {
             private RecordEnum(string value) : base(value) {}
             public RecordEnum() {}
@@ -48,7 +48,7 @@ namespace Twilio.TwiML.Voice
             public static readonly RecordEnum RecordFromStart = new RecordEnum("record-from-start");
         }
 
-        public sealed class RegionEnum : StringEnum 
+        public sealed class RegionEnum : StringEnum
         {
             private RegionEnum(string value) : base(value) {}
             public RegionEnum() {}
@@ -66,7 +66,7 @@ namespace Twilio.TwiML.Voice
             public static readonly RegionEnum De1 = new RegionEnum("de1");
         }
 
-        public sealed class EventEnum : StringEnum 
+        public sealed class EventEnum : StringEnum
         {
             private EventEnum(string value) : base(value) {}
             public EventEnum() {}
@@ -84,7 +84,7 @@ namespace Twilio.TwiML.Voice
             public static readonly EventEnum Speaker = new EventEnum("speaker");
         }
 
-        public sealed class TrimEnum : StringEnum 
+        public sealed class TrimEnum : StringEnum
         {
             private TrimEnum(string value) : base(value) {}
             public TrimEnum() {}
@@ -97,7 +97,7 @@ namespace Twilio.TwiML.Voice
             public static readonly TrimEnum DoNotTrim = new TrimEnum("do-not-trim");
         }
 
-        public sealed class RecordingEventEnum : StringEnum 
+        public sealed class RecordingEventEnum : StringEnum
         {
             private RecordingEventEnum(string value) : base(value) {}
             public RecordingEventEnum() {}
@@ -213,24 +213,24 @@ namespace Twilio.TwiML.Voice
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="eventCallbackUrl"> Event callback URL </param>
-        public Conference(string name = null, 
-                          bool? muted = null, 
-                          Conference.BeepEnum beep = null, 
-                          bool? startConferenceOnEnter = null, 
-                          bool? endConferenceOnExit = null, 
-                          Uri waitUrl = null, 
-                          Twilio.Http.HttpMethod waitMethod = null, 
-                          int? maxParticipants = null, 
-                          Conference.RecordEnum record = null, 
-                          Conference.RegionEnum region = null, 
-                          string whisper = null, 
-                          Conference.TrimEnum trim = null, 
-                          List<Conference.EventEnum> statusCallbackEvent = null, 
-                          Uri statusCallback = null, 
-                          Twilio.Http.HttpMethod statusCallbackMethod = null, 
-                          Uri recordingStatusCallback = null, 
-                          Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
-                          List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null, 
+        public Conference(string name = null,
+                          bool? muted = null,
+                          Conference.BeepEnum beep = null,
+                          bool? startConferenceOnEnter = null,
+                          bool? endConferenceOnExit = null,
+                          Uri waitUrl = null,
+                          Twilio.Http.HttpMethod waitMethod = null,
+                          int? maxParticipants = null,
+                          Conference.RecordEnum record = null,
+                          Conference.RegionEnum region = null,
+                          string whisper = null,
+                          Conference.TrimEnum trim = null,
+                          List<Conference.EventEnum> statusCallbackEvent = null,
+                          Uri statusCallback = null,
+                          Twilio.Http.HttpMethod statusCallbackMethod = null,
+                          Uri recordingStatusCallback = null,
+                          Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                          List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null,
                           Uri eventCallbackUrl = null) : base("Conference")
         {
             this.Name = name;

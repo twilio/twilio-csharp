@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Serverless.V1.Service.Environment;
 
-namespace Twilio.Tests.Rest.Serverless.V1.Service.Environment 
+namespace Twilio.Tests.Rest.Serverless.V1.Service.Environment
 {
 
     [TestFixture]
-    public class DeploymentTest : TwilioTest 
+    public class DeploymentTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Sip;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.Sip 
+namespace Twilio.Tests.Rest.Api.V2010.Account.Sip
 {
 
     [TestFixture]
-    public class DomainTest : TwilioTest 
+    public class DomainTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

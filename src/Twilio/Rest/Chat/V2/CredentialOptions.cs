@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Chat.V2 
+namespace Twilio.Rest.Chat.V2
 {
 
     /// <summary>
     /// ReadCredentialOptions
     /// </summary>
-    public class ReadCredentialOptions : ReadOptions<CredentialResource> 
+    public class ReadCredentialOptions : ReadOptions<CredentialResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Chat.V2
     /// <summary>
     /// CreateCredentialOptions
     /// </summary>
-    public class CreateCredentialOptions : IOptions<CredentialResource> 
+    public class CreateCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The type of push-notification service the credential is for
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Chat.V2
     /// <summary>
     /// FetchCredentialOptions
     /// </summary>
-    public class FetchCredentialOptions : IOptions<CredentialResource> 
+    public class FetchCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Chat.V2
     /// <summary>
     /// UpdateCredentialOptions
     /// </summary>
-    public class UpdateCredentialOptions : IOptions<CredentialResource> 
+    public class UpdateCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -234,7 +234,7 @@ namespace Twilio.Rest.Chat.V2
     /// <summary>
     /// DeleteCredentialOptions
     /// </summary>
-    public class DeleteCredentialOptions : IOptions<CredentialResource> 
+    public class DeleteCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Sync.Service 
+namespace Twilio.Rest.Preview.Sync.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchSyncMapOptions
     /// </summary>
-    public class FetchSyncMapOptions : IOptions<SyncMapResource> 
+    public class FetchSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
         /// The service_sid
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteSyncMapOptions
     /// </summary>
-    public class DeleteSyncMapOptions : IOptions<SyncMapResource> 
+    public class DeleteSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
         /// The service_sid
@@ -90,10 +90,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateSyncMapOptions
     /// </summary>
-    public class CreateSyncMapOptions : IOptions<SyncMapResource> 
+    public class CreateSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
         /// The service_sid
@@ -131,10 +131,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadSyncMapOptions
     /// </summary>
-    public class ReadSyncMapOptions : ReadOptions<SyncMapResource> 
+    public class ReadSyncMapOptions : ReadOptions<SyncMapResource>
     {
         /// <summary>
         /// The service_sid

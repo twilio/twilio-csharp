@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Video.V1.Room.Participant 
+namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
-    public class PublishedTrackResource : Resource 
+    public class PublishedTrackResource : Resource
     {
-        public sealed class KindEnum : StringEnum 
+        public sealed class KindEnum : StringEnum
         {
             private KindEnum(string value) : base(value) {}
             public KindEnum() {}
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="options"> Fetch PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PublishedTrack </returns> 
+        /// <returns> A single instance of PublishedTrack </returns>
         public static PublishedTrackResource Fetch(FetchPublishedTrackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -65,8 +65,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="options"> Fetch PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PublishedTrack </returns> 
-        public static async System.Threading.Tasks.Task<PublishedTrackResource> FetchAsync(FetchPublishedTrackOptions options, 
+        /// <returns> Task that resolves to A single instance of PublishedTrack </returns>
+        public static async System.Threading.Tasks.Task<PublishedTrackResource> FetchAsync(FetchPublishedTrackOptions options,
                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -82,10 +82,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PublishedTrack </returns> 
-        public static PublishedTrackResource Fetch(string pathRoomSid, 
-                                                   string pathParticipantSid, 
-                                                   string pathSid, 
+        /// <returns> A single instance of PublishedTrack </returns>
+        public static PublishedTrackResource Fetch(string pathRoomSid,
+                                                   string pathParticipantSid,
+                                                   string pathSid,
                                                    ITwilioRestClient client = null)
         {
             var options = new FetchPublishedTrackOptions(pathRoomSid, pathParticipantSid, pathSid);
@@ -100,10 +100,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PublishedTrack </returns> 
-        public static async System.Threading.Tasks.Task<PublishedTrackResource> FetchAsync(string pathRoomSid, 
-                                                                                           string pathParticipantSid, 
-                                                                                           string pathSid, 
+        /// <returns> Task that resolves to A single instance of PublishedTrack </returns>
+        public static async System.Threading.Tasks.Task<PublishedTrackResource> FetchAsync(string pathRoomSid,
+                                                                                           string pathParticipantSid,
+                                                                                           string pathSid,
                                                                                            ITwilioRestClient client = null)
         {
             var options = new FetchPublishedTrackOptions(pathRoomSid, pathParticipantSid, pathSid);
@@ -128,8 +128,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="options"> Read PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PublishedTrack </returns> 
-        public static ResourceSet<PublishedTrackResource> Read(ReadPublishedTrackOptions options, 
+        /// <returns> A single instance of PublishedTrack </returns>
+        public static ResourceSet<PublishedTrackResource> Read(ReadPublishedTrackOptions options,
                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -146,8 +146,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="options"> Read PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PublishedTrack </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<PublishedTrackResource>> ReadAsync(ReadPublishedTrackOptions options, 
+        /// <returns> Task that resolves to A single instance of PublishedTrack </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<PublishedTrackResource>> ReadAsync(ReadPublishedTrackOptions options,
                                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -167,11 +167,11 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PublishedTrack </returns> 
-        public static ResourceSet<PublishedTrackResource> Read(string pathRoomSid, 
-                                                               string pathParticipantSid, 
-                                                               int? pageSize = null, 
-                                                               long? limit = null, 
+        /// <returns> A single instance of PublishedTrack </returns>
+        public static ResourceSet<PublishedTrackResource> Read(string pathRoomSid,
+                                                               string pathParticipantSid,
+                                                               int? pageSize = null,
+                                                               long? limit = null,
                                                                ITwilioRestClient client = null)
         {
             var options = new ReadPublishedTrackOptions(pathRoomSid, pathParticipantSid){PageSize = pageSize, Limit = limit};
@@ -188,11 +188,11 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PublishedTrack </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<PublishedTrackResource>> ReadAsync(string pathRoomSid, 
-                                                                                                       string pathParticipantSid, 
-                                                                                                       int? pageSize = null, 
-                                                                                                       long? limit = null, 
+        /// <returns> Task that resolves to A single instance of PublishedTrack </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<PublishedTrackResource>> ReadAsync(string pathRoomSid,
+                                                                                                       string pathParticipantSid,
+                                                                                                       int? pageSize = null,
+                                                                                                       long? limit = null,
                                                                                                        ITwilioRestClient client = null)
         {
             var options = new ReadPublishedTrackOptions(pathRoomSid, pathParticipantSid){PageSize = pageSize, Limit = limit};
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<PublishedTrackResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<PublishedTrackResource> NextPage(Page<PublishedTrackResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<PublishedTrackResource> PreviousPage(Page<PublishedTrackResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -263,7 +263,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// Converts a JSON string into a PublishedTrackResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> PublishedTrackResource object represented by the provided JSON </returns> 
+        /// <returns> PublishedTrackResource object represented by the provided JSON </returns>
         public static PublishedTrackResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

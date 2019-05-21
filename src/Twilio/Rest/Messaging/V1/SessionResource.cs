@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// SessionResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Messaging.V1 
+namespace Twilio.Rest.Messaging.V1
 {
 
-    public class SessionResource : Resource 
+    public class SessionResource : Resource
     {
         private static Request BuildFetchRequest(FetchSessionOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Fetch Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
+        /// <returns> A single instance of Session </returns>
         public static SessionResource Fetch(FetchSessionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Fetch Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
-        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(FetchSessionOptions options, 
+        /// <returns> Task that resolves to A single instance of Session </returns>
+        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(FetchSessionOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
+        /// <returns> A single instance of Session </returns>
         public static SessionResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchSessionOptions(pathSid);
@@ -81,8 +81,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
-        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of Session </returns>
+        public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(string pathSid,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchSessionOptions(pathSid);
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Delete Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
+        /// <returns> A single instance of Session </returns>
         public static bool Delete(DeleteSessionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -120,8 +120,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Delete Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSessionOptions options, 
+        /// <returns> Task that resolves to A single instance of Session </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSessionOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
+        /// <returns> A single instance of Session </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteSessionOptions(pathSid);
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
+        /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteSessionOptions(pathSid);
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Create Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
+        /// <returns> A single instance of Session </returns>
         public static SessionResource Create(CreateSessionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -186,8 +186,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Create Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
-        public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(CreateSessionOptions options, 
+        /// <returns> Task that resolves to A single instance of Session </returns>
+        public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(CreateSessionOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -206,13 +206,13 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="createdBy"> Identity of the session's creator. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
-        public static SessionResource Create(string messagingServiceSid, 
-                                             string friendlyName = null, 
-                                             string attributes = null, 
-                                             DateTime? dateCreated = null, 
-                                             DateTime? dateUpdated = null, 
-                                             string createdBy = null, 
+        /// <returns> A single instance of Session </returns>
+        public static SessionResource Create(string messagingServiceSid,
+                                             string friendlyName = null,
+                                             string attributes = null,
+                                             DateTime? dateCreated = null,
+                                             DateTime? dateUpdated = null,
+                                             string createdBy = null,
                                              ITwilioRestClient client = null)
         {
             var options = new CreateSessionOptions(messagingServiceSid){FriendlyName = friendlyName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
@@ -230,13 +230,13 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="createdBy"> Identity of the session's creator. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
-        public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(string messagingServiceSid, 
-                                                                                     string friendlyName = null, 
-                                                                                     string attributes = null, 
-                                                                                     DateTime? dateCreated = null, 
-                                                                                     DateTime? dateUpdated = null, 
-                                                                                     string createdBy = null, 
+        /// <returns> Task that resolves to A single instance of Session </returns>
+        public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(string messagingServiceSid,
+                                                                                     string friendlyName = null,
+                                                                                     string attributes = null,
+                                                                                     DateTime? dateCreated = null,
+                                                                                     DateTime? dateUpdated = null,
+                                                                                     string createdBy = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new CreateSessionOptions(messagingServiceSid){FriendlyName = friendlyName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
@@ -260,7 +260,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Update Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
+        /// <returns> A single instance of Session </returns>
         public static SessionResource Update(UpdateSessionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -274,8 +274,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Update Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
-        public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(UpdateSessionOptions options, 
+        /// <returns> Task that resolves to A single instance of Session </returns>
+        public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(UpdateSessionOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -294,13 +294,13 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="createdBy"> Identity of the session's creator. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
-        public static SessionResource Update(string pathSid, 
-                                             string friendlyName = null, 
-                                             string attributes = null, 
-                                             DateTime? dateCreated = null, 
-                                             DateTime? dateUpdated = null, 
-                                             string createdBy = null, 
+        /// <returns> A single instance of Session </returns>
+        public static SessionResource Update(string pathSid,
+                                             string friendlyName = null,
+                                             string attributes = null,
+                                             DateTime? dateCreated = null,
+                                             DateTime? dateUpdated = null,
+                                             string createdBy = null,
                                              ITwilioRestClient client = null)
         {
             var options = new UpdateSessionOptions(pathSid){FriendlyName = friendlyName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
@@ -318,13 +318,13 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="createdBy"> Identity of the session's creator. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
-        public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathSid, 
-                                                                                     string friendlyName = null, 
-                                                                                     string attributes = null, 
-                                                                                     DateTime? dateCreated = null, 
-                                                                                     DateTime? dateUpdated = null, 
-                                                                                     string createdBy = null, 
+        /// <returns> Task that resolves to A single instance of Session </returns>
+        public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathSid,
+                                                                                     string friendlyName = null,
+                                                                                     string attributes = null,
+                                                                                     DateTime? dateCreated = null,
+                                                                                     DateTime? dateUpdated = null,
+                                                                                     string createdBy = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateSessionOptions(pathSid){FriendlyName = friendlyName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
@@ -348,7 +348,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Read Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
+        /// <returns> A single instance of Session </returns>
         public static ResourceSet<SessionResource> Read(ReadSessionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -364,8 +364,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Read Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(ReadSessionOptions options, 
+        /// <returns> Task that resolves to A single instance of Session </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(ReadSessionOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -382,9 +382,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Session </returns> 
-        public static ResourceSet<SessionResource> Read(int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Session </returns>
+        public static ResourceSet<SessionResource> Read(int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadSessionOptions(){PageSize = pageSize, Limit = limit};
@@ -398,9 +398,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Session </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Session </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SessionResource>> ReadAsync(int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadSessionOptions(){PageSize = pageSize, Limit = limit};
@@ -413,7 +413,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<SessionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -432,7 +432,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<SessionResource> NextPage(Page<SessionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -452,7 +452,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<SessionResource> PreviousPage(Page<SessionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -471,7 +471,7 @@ namespace Twilio.Rest.Messaging.V1
         /// Converts a JSON string into a SessionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> SessionResource object represented by the provided JSON </returns> 
+        /// <returns> SessionResource object represented by the provided JSON </returns>
         public static SessionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

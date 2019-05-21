@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class MessageResource : Resource 
+    public class MessageResource : Resource
     {
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly StatusEnum Accepted = new StatusEnum("accepted");
         }
 
-        public sealed class DirectionEnum : StringEnum 
+        public sealed class DirectionEnum : StringEnum
         {
             private DirectionEnum(string value) : base(value) {}
             public DirectionEnum() {}
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly DirectionEnum OutboundReply = new DirectionEnum("outbound-reply");
         }
 
-        public sealed class ContentRetentionEnum : StringEnum 
+        public sealed class ContentRetentionEnum : StringEnum
         {
             private ContentRetentionEnum(string value) : base(value) {}
             public ContentRetentionEnum() {}
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly ContentRetentionEnum Discard = new ContentRetentionEnum("discard");
         }
 
-        public sealed class AddressRetentionEnum : StringEnum 
+        public sealed class AddressRetentionEnum : StringEnum
         {
             private AddressRetentionEnum(string value) : base(value) {}
             public AddressRetentionEnum() {}
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly AddressRetentionEnum Discard = new AddressRetentionEnum("discard");
         }
 
-        public sealed class TrafficTypeEnum : StringEnum 
+        public sealed class TrafficTypeEnum : StringEnum
         {
             private TrafficTypeEnum(string value) : base(value) {}
             public TrafficTypeEnum() {}
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
+        /// <returns> A single instance of Message </returns>
         public static MessageResource Create(CreateMessageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -124,8 +124,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(CreateMessageOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -155,22 +155,22 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="interactiveData"> A JSON string that represents an interactive message </param>
         /// <param name="forceOptIn"> Whether to forcefully whitelist a from:to pair </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
-        public static MessageResource Create(Types.PhoneNumber to, 
-                                             string pathAccountSid = null, 
-                                             Types.PhoneNumber from = null, 
-                                             string messagingServiceSid = null, 
-                                             string body = null, 
-                                             List<Uri> mediaUrl = null, 
-                                             Uri statusCallback = null, 
-                                             string applicationSid = null, 
-                                             decimal? maxPrice = null, 
-                                             bool? provideFeedback = null, 
-                                             int? validityPeriod = null, 
-                                             bool? forceDelivery = null, 
-                                             bool? smartEncoded = null, 
-                                             string interactiveData = null, 
-                                             bool? forceOptIn = null, 
+        /// <returns> A single instance of Message </returns>
+        public static MessageResource Create(Types.PhoneNumber to,
+                                             string pathAccountSid = null,
+                                             Types.PhoneNumber from = null,
+                                             string messagingServiceSid = null,
+                                             string body = null,
+                                             List<Uri> mediaUrl = null,
+                                             Uri statusCallback = null,
+                                             string applicationSid = null,
+                                             decimal? maxPrice = null,
+                                             bool? provideFeedback = null,
+                                             int? validityPeriod = null,
+                                             bool? forceDelivery = null,
+                                             bool? smartEncoded = null,
+                                             string interactiveData = null,
+                                             bool? forceOptIn = null,
                                              ITwilioRestClient client = null)
         {
             var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, SmartEncoded = smartEncoded, InteractiveData = interactiveData, ForceOptIn = forceOptIn};
@@ -199,22 +199,22 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="interactiveData"> A JSON string that represents an interactive message </param>
         /// <param name="forceOptIn"> Whether to forcefully whitelist a from:to pair </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to, 
-                                                                                     string pathAccountSid = null, 
-                                                                                     Types.PhoneNumber from = null, 
-                                                                                     string messagingServiceSid = null, 
-                                                                                     string body = null, 
-                                                                                     List<Uri> mediaUrl = null, 
-                                                                                     Uri statusCallback = null, 
-                                                                                     string applicationSid = null, 
-                                                                                     decimal? maxPrice = null, 
-                                                                                     bool? provideFeedback = null, 
-                                                                                     int? validityPeriod = null, 
-                                                                                     bool? forceDelivery = null, 
-                                                                                     bool? smartEncoded = null, 
-                                                                                     string interactiveData = null, 
-                                                                                     bool? forceOptIn = null, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to,
+                                                                                     string pathAccountSid = null,
+                                                                                     Types.PhoneNumber from = null,
+                                                                                     string messagingServiceSid = null,
+                                                                                     string body = null,
+                                                                                     List<Uri> mediaUrl = null,
+                                                                                     Uri statusCallback = null,
+                                                                                     string applicationSid = null,
+                                                                                     decimal? maxPrice = null,
+                                                                                     bool? provideFeedback = null,
+                                                                                     int? validityPeriod = null,
+                                                                                     bool? forceDelivery = null,
+                                                                                     bool? smartEncoded = null,
+                                                                                     string interactiveData = null,
+                                                                                     bool? forceOptIn = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, SmartEncoded = smartEncoded, InteractiveData = interactiveData, ForceOptIn = forceOptIn};
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
+        /// <returns> A single instance of Message </returns>
         public static bool Delete(DeleteMessageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -252,8 +252,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMessageOptions options, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMessageOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
+        /// <returns> A single instance of Message </returns>
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteMessageOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -282,9 +282,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
-                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid,
+                                                                          string pathAccountSid = null,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteMessageOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -308,7 +308,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
+        /// <returns> A single instance of Message </returns>
         public static MessageResource Fetch(FetchMessageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -322,8 +322,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(FetchMessageOptions options, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(FetchMessageOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -338,7 +338,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
+        /// <returns> A single instance of Message </returns>
         public static MessageResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchMessageOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -352,9 +352,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathSid, 
-                                                                                    string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathSid,
+                                                                                    string pathAccountSid = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchMessageOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -378,7 +378,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
+        /// <returns> A single instance of Message </returns>
         public static ResourceSet<MessageResource> Read(ReadMessageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -394,8 +394,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(ReadMessageOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -418,15 +418,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
-        public static ResourceSet<MessageResource> Read(string pathAccountSid = null, 
-                                                        Types.PhoneNumber to = null, 
-                                                        Types.PhoneNumber from = null, 
-                                                        DateTime? dateSentBefore = null, 
-                                                        DateTime? dateSent = null, 
-                                                        DateTime? dateSentAfter = null, 
-                                                        int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Message </returns>
+        public static ResourceSet<MessageResource> Read(string pathAccountSid = null,
+                                                        Types.PhoneNumber to = null,
+                                                        Types.PhoneNumber from = null,
+                                                        DateTime? dateSentBefore = null,
+                                                        DateTime? dateSent = null,
+                                                        DateTime? dateSentAfter = null,
+                                                        int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadMessageOptions(){PathAccountSid = pathAccountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
@@ -446,15 +446,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string pathAccountSid = null, 
-                                                                                                Types.PhoneNumber to = null, 
-                                                                                                Types.PhoneNumber from = null, 
-                                                                                                DateTime? dateSentBefore = null, 
-                                                                                                DateTime? dateSent = null, 
-                                                                                                DateTime? dateSentAfter = null, 
-                                                                                                int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageResource>> ReadAsync(string pathAccountSid = null,
+                                                                                                Types.PhoneNumber to = null,
+                                                                                                Types.PhoneNumber from = null,
+                                                                                                DateTime? dateSentBefore = null,
+                                                                                                DateTime? dateSent = null,
+                                                                                                DateTime? dateSentAfter = null,
+                                                                                                int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadMessageOptions(){PathAccountSid = pathAccountSid, To = to, From = from, DateSentBefore = dateSentBefore, DateSent = dateSent, DateSentAfter = dateSentAfter, PageSize = pageSize, Limit = limit};
@@ -467,7 +467,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<MessageResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -486,7 +486,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<MessageResource> NextPage(Page<MessageResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -506,7 +506,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<MessageResource> PreviousPage(Page<MessageResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -537,7 +537,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
+        /// <returns> A single instance of Message </returns>
         public static MessageResource Update(UpdateMessageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -551,8 +551,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(UpdateMessageOptions options, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(UpdateMessageOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -568,10 +568,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="body"> The text of the message you want to send </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Message </returns> 
-        public static MessageResource Update(string pathSid, 
-                                             string body, 
-                                             string pathAccountSid = null, 
+        /// <returns> A single instance of Message </returns>
+        public static MessageResource Update(string pathSid,
+                                             string body,
+                                             string pathAccountSid = null,
                                              ITwilioRestClient client = null)
         {
             var options = new UpdateMessageOptions(pathSid, body){PathAccountSid = pathAccountSid};
@@ -586,10 +586,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="body"> The text of the message you want to send </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Message </returns> 
-        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathSid, 
-                                                                                     string body, 
-                                                                                     string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Message </returns>
+        public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathSid,
+                                                                                     string body,
+                                                                                     string pathAccountSid = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateMessageOptions(pathSid, body){PathAccountSid = pathAccountSid};
@@ -601,7 +601,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Converts a JSON string into a MessageResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> MessageResource object represented by the provided JSON </returns> 
+        /// <returns> MessageResource object represented by the provided JSON </returns>
         public static MessageResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

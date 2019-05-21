@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Voice.V1.DialingPermissions 
+namespace Twilio.Rest.Voice.V1.DialingPermissions
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve voice dialing country permissions identified by the given ISO country code
     /// </summary>
-    public class FetchCountryOptions : IOptions<CountryResource> 
+    public class FetchCountryOptions : IOptions<CountryResource>
     {
         /// <summary>
         /// The ISO country code
@@ -46,10 +46,10 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve all voice dialing country permissions for this account
     /// </summary>
-    public class ReadCountryOptions : ReadOptions<CountryResource> 
+    public class ReadCountryOptions : ReadOptions<CountryResource>
     {
         /// <summary>
         /// Filter to retrieve the country permissions by specifying the ISO country code

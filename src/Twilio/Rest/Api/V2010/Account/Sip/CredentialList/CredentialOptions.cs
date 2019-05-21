@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList 
+namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
 {
 
     /// <summary>
     /// Retrieve a list of credentials.
     /// </summary>
-    public class ReadCredentialOptions : ReadOptions<CredentialResource> 
+    public class ReadCredentialOptions : ReadOptions<CredentialResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
     /// <summary>
     /// Create a new credential resource.
     /// </summary>
-    public class CreateCredentialOptions : IOptions<CredentialResource> 
+    public class CreateCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
     /// <summary>
     /// Fetch a single credential.
     /// </summary>
-    public class FetchCredentialOptions : IOptions<CredentialResource> 
+    public class FetchCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
     /// <summary>
     /// Update a credential resource.
     /// </summary>
-    public class UpdateCredentialOptions : IOptions<CredentialResource> 
+    public class UpdateCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
     /// <summary>
     /// Delete a credential resource.
     /// </summary>
-    public class DeleteCredentialOptions : IOptions<CredentialResource> 
+    public class DeleteCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.

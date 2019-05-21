@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Serverless.V1.Service 
+namespace Twilio.Rest.Serverless.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Functions.
     /// </summary>
-    public class ReadFunctionOptions : ReadOptions<FunctionResource> 
+    public class ReadFunctionOptions : ReadOptions<FunctionResource>
     {
         /// <summary>
         /// Service Sid.
@@ -51,10 +51,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a specific Function.
     /// </summary>
-    public class FetchFunctionOptions : IOptions<FunctionResource> 
+    public class FetchFunctionOptions : IOptions<FunctionResource>
     {
         /// <summary>
         /// Service Sid.
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Function.
     /// </summary>
-    public class CreateFunctionOptions : IOptions<FunctionResource> 
+    public class CreateFunctionOptions : IOptions<FunctionResource>
     {
         /// <summary>
         /// Service Sid.
@@ -132,10 +132,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update a specific Function.
     /// </summary>
-    public class UpdateFunctionOptions : IOptions<FunctionResource> 
+    public class UpdateFunctionOptions : IOptions<FunctionResource>
     {
         /// <summary>
         /// Service Sid.

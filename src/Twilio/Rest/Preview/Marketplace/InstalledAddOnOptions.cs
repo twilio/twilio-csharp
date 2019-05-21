@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Marketplace 
+namespace Twilio.Rest.Preview.Marketplace
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Install an Add-on for the Account specified.
     /// </summary>
-    public class CreateInstalledAddOnOptions : IOptions<InstalledAddOnResource> 
+    public class CreateInstalledAddOnOptions : IOptions<InstalledAddOnResource>
     {
         /// <summary>
         /// A string that uniquely identifies the Add-on to install
@@ -80,10 +80,10 @@ namespace Twilio.Rest.Preview.Marketplace
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Remove an Add-on installation from your account
     /// </summary>
-    public class DeleteInstalledAddOnOptions : IOptions<InstalledAddOnResource> 
+    public class DeleteInstalledAddOnOptions : IOptions<InstalledAddOnResource>
     {
         /// <summary>
         /// The Installed Add-on Sid to delete
@@ -112,10 +112,10 @@ namespace Twilio.Rest.Preview.Marketplace
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch an instance of an Add-on currently installed on this Account.
     /// </summary>
-    public class FetchInstalledAddOnOptions : IOptions<InstalledAddOnResource> 
+    public class FetchInstalledAddOnOptions : IOptions<InstalledAddOnResource>
     {
         /// <summary>
         /// The unique Installed Add-on Sid
@@ -144,10 +144,10 @@ namespace Twilio.Rest.Preview.Marketplace
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update an Add-on installation for the Account specified.
     /// </summary>
-    public class UpdateInstalledAddOnOptions : IOptions<InstalledAddOnResource> 
+    public class UpdateInstalledAddOnOptions : IOptions<InstalledAddOnResource>
     {
         /// <summary>
         /// The sid
@@ -194,10 +194,10 @@ namespace Twilio.Rest.Preview.Marketplace
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of Add-ons currently installed on this Account.
     /// </summary>
-    public class ReadInstalledAddOnOptions : ReadOptions<InstalledAddOnResource> 
+    public class ReadInstalledAddOnOptions : ReadOptions<InstalledAddOnResource>
     {
         /// <summary>
         /// Generate the necessary parameters

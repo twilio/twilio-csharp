@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// StyleSheetResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Assistant 
+namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
-    public class StyleSheetResource : Resource 
+    public class StyleSheetResource : Resource
     {
         private static Request BuildFetchRequest(FetchStyleSheetOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Fetch StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StyleSheet </returns> 
+        /// <returns> A single instance of StyleSheet </returns>
         public static StyleSheetResource Fetch(FetchStyleSheetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Fetch StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StyleSheet </returns> 
-        public static async System.Threading.Tasks.Task<StyleSheetResource> FetchAsync(FetchStyleSheetOptions options, 
+        /// <returns> Task that resolves to A single instance of StyleSheet </returns>
+        public static async System.Threading.Tasks.Task<StyleSheetResource> FetchAsync(FetchStyleSheetOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StyleSheet </returns> 
+        /// <returns> A single instance of StyleSheet </returns>
         public static StyleSheetResource Fetch(string pathAssistantSid, ITwilioRestClient client = null)
         {
             var options = new FetchStyleSheetOptions(pathAssistantSid);
@@ -81,8 +81,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StyleSheet </returns> 
-        public static async System.Threading.Tasks.Task<StyleSheetResource> FetchAsync(string pathAssistantSid, 
+        /// <returns> Task that resolves to A single instance of StyleSheet </returns>
+        public static async System.Threading.Tasks.Task<StyleSheetResource> FetchAsync(string pathAssistantSid,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchStyleSheetOptions(pathAssistantSid);
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Update StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StyleSheet </returns> 
+        /// <returns> A single instance of StyleSheet </returns>
         public static StyleSheetResource Update(UpdateStyleSheetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -120,8 +120,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Update StyleSheet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StyleSheet </returns> 
-        public static async System.Threading.Tasks.Task<StyleSheetResource> UpdateAsync(UpdateStyleSheetOptions options, 
+        /// <returns> Task that resolves to A single instance of StyleSheet </returns>
+        public static async System.Threading.Tasks.Task<StyleSheetResource> UpdateAsync(UpdateStyleSheetOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -136,9 +136,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
         /// <param name="styleSheet"> The JSON Style sheet string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StyleSheet </returns> 
-        public static StyleSheetResource Update(string pathAssistantSid, 
-                                                object styleSheet = null, 
+        /// <returns> A single instance of StyleSheet </returns>
+        public static StyleSheetResource Update(string pathAssistantSid,
+                                                object styleSheet = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateStyleSheetOptions(pathAssistantSid){StyleSheet = styleSheet};
@@ -152,9 +152,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The unique ID of the Assistant </param>
         /// <param name="styleSheet"> The JSON Style sheet string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StyleSheet </returns> 
-        public static async System.Threading.Tasks.Task<StyleSheetResource> UpdateAsync(string pathAssistantSid, 
-                                                                                        object styleSheet = null, 
+        /// <returns> Task that resolves to A single instance of StyleSheet </returns>
+        public static async System.Threading.Tasks.Task<StyleSheetResource> UpdateAsync(string pathAssistantSid,
+                                                                                        object styleSheet = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateStyleSheetOptions(pathAssistantSid){StyleSheet = styleSheet};
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// Converts a JSON string into a StyleSheetResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> StyleSheetResource object represented by the provided JSON </returns> 
+        /// <returns> StyleSheetResource object represented by the provided JSON </returns>
         public static StyleSheetResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

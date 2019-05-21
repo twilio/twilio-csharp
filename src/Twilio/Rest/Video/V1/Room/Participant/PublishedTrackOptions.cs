@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1.Room.Participant 
+namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
     /// <summary>
     /// Returns a single Track resource represented by `TrackNameOrSid`.
     /// </summary>
-    public class FetchPublishedTrackOptions : IOptions<PublishedTrackResource> 
+    public class FetchPublishedTrackOptions : IOptions<PublishedTrackResource>
     {
         /// <summary>
         /// Unique Room identifier where this Track is published.
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     /// Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list
     /// resource.
     /// </summary>
-    public class ReadPublishedTrackOptions : ReadOptions<PublishedTrackResource> 
+    public class ReadPublishedTrackOptions : ReadOptions<PublishedTrackResource>
     {
         /// <summary>
         /// Unique Room identifier where this Track is published.

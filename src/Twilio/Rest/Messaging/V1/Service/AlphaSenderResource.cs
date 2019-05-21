@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// AlphaSenderResource
 /// </summary>
 
@@ -17,10 +17,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Messaging.V1.Service 
+namespace Twilio.Rest.Messaging.V1.Service
 {
 
-    public class AlphaSenderResource : Resource 
+    public class AlphaSenderResource : Resource
     {
         private static Request BuildCreateRequest(CreateAlphaSenderOptions options, ITwilioRestClient client)
         {
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Create AlphaSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AlphaSender </returns> 
+        /// <returns> A single instance of AlphaSender </returns>
         public static AlphaSenderResource Create(CreateAlphaSenderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Create AlphaSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AlphaSender </returns> 
-        public static async System.Threading.Tasks.Task<AlphaSenderResource> CreateAsync(CreateAlphaSenderOptions options, 
+        /// <returns> Task that resolves to A single instance of AlphaSender </returns>
+        public static async System.Threading.Tasks.Task<AlphaSenderResource> CreateAsync(CreateAlphaSenderOptions options,
                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="alphaSender"> An Alphanumeric Sender ID string, up to 11 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AlphaSender </returns> 
+        /// <returns> A single instance of AlphaSender </returns>
         public static AlphaSenderResource Create(string pathServiceSid, string alphaSender, ITwilioRestClient client = null)
         {
             var options = new CreateAlphaSenderOptions(pathServiceSid, alphaSender);
@@ -82,9 +82,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="alphaSender"> An Alphanumeric Sender ID string, up to 11 characters. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AlphaSender </returns> 
-        public static async System.Threading.Tasks.Task<AlphaSenderResource> CreateAsync(string pathServiceSid, 
-                                                                                         string alphaSender, 
+        /// <returns> Task that resolves to A single instance of AlphaSender </returns>
+        public static async System.Threading.Tasks.Task<AlphaSenderResource> CreateAsync(string pathServiceSid,
+                                                                                         string alphaSender,
                                                                                          ITwilioRestClient client = null)
         {
             var options = new CreateAlphaSenderOptions(pathServiceSid, alphaSender);
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Read AlphaSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AlphaSender </returns> 
+        /// <returns> A single instance of AlphaSender </returns>
         public static ResourceSet<AlphaSenderResource> Read(ReadAlphaSenderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -124,8 +124,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Read AlphaSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AlphaSender </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AlphaSenderResource>> ReadAsync(ReadAlphaSenderOptions options, 
+        /// <returns> Task that resolves to A single instance of AlphaSender </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AlphaSenderResource>> ReadAsync(ReadAlphaSenderOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -143,10 +143,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AlphaSender </returns> 
-        public static ResourceSet<AlphaSenderResource> Read(string pathServiceSid, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of AlphaSender </returns>
+        public static ResourceSet<AlphaSenderResource> Read(string pathServiceSid,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadAlphaSenderOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -161,10 +161,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AlphaSender </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AlphaSenderResource>> ReadAsync(string pathServiceSid, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of AlphaSender </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AlphaSenderResource>> ReadAsync(string pathServiceSid,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadAlphaSenderOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<AlphaSenderResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<AlphaSenderResource> NextPage(Page<AlphaSenderResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -216,7 +216,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<AlphaSenderResource> PreviousPage(Page<AlphaSenderResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Fetch AlphaSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AlphaSender </returns> 
+        /// <returns> A single instance of AlphaSender </returns>
         public static AlphaSenderResource Fetch(FetchAlphaSenderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -261,8 +261,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Fetch AlphaSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AlphaSender </returns> 
-        public static async System.Threading.Tasks.Task<AlphaSenderResource> FetchAsync(FetchAlphaSenderOptions options, 
+        /// <returns> Task that resolves to A single instance of AlphaSender </returns>
+        public static async System.Threading.Tasks.Task<AlphaSenderResource> FetchAsync(FetchAlphaSenderOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AlphaSender </returns> 
+        /// <returns> A single instance of AlphaSender </returns>
         public static AlphaSenderResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchAlphaSenderOptions(pathServiceSid, pathSid);
@@ -291,9 +291,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AlphaSender </returns> 
-        public static async System.Threading.Tasks.Task<AlphaSenderResource> FetchAsync(string pathServiceSid, 
-                                                                                        string pathSid, 
+        /// <returns> Task that resolves to A single instance of AlphaSender </returns>
+        public static async System.Threading.Tasks.Task<AlphaSenderResource> FetchAsync(string pathServiceSid,
+                                                                                        string pathSid,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchAlphaSenderOptions(pathServiceSid, pathSid);
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Delete AlphaSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AlphaSender </returns> 
+        /// <returns> A single instance of AlphaSender </returns>
         public static bool Delete(DeleteAlphaSenderOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -331,8 +331,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Delete AlphaSender parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AlphaSender </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAlphaSenderOptions options, 
+        /// <returns> Task that resolves to A single instance of AlphaSender </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAlphaSenderOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -347,7 +347,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AlphaSender </returns> 
+        /// <returns> A single instance of AlphaSender </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteAlphaSenderOptions(pathServiceSid, pathSid);
@@ -361,9 +361,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AlphaSender </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of AlphaSender </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteAlphaSenderOptions(pathServiceSid, pathSid);
@@ -375,7 +375,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// Converts a JSON string into a AlphaSenderResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> AlphaSenderResource object represented by the provided JSON </returns> 
+        /// <returns> AlphaSenderResource object represented by the provided JSON </returns>
         public static AlphaSenderResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Notify.V1.Service;
 
-namespace Twilio.Tests.Rest.Notify.V1.Service 
+namespace Twilio.Tests.Rest.Notify.V1.Service
 {
 
     [TestFixture]
-    public class NotificationTest : TwilioTest 
+    public class NotificationTest : TwilioTest
     {
         [Test]
         public void TestCreateRequest()

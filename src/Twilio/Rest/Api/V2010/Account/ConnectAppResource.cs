@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class ConnectAppResource : Resource 
+    public class ConnectAppResource : Resource
     {
-        public sealed class PermissionEnum : StringEnum 
+        public sealed class PermissionEnum : StringEnum
         {
             private PermissionEnum(string value) : base(value) {}
             public PermissionEnum() {}
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch ConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectApp </returns> 
+        /// <returns> A single instance of ConnectApp </returns>
         public static ConnectAppResource Fetch(FetchConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -64,8 +64,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch ConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<ConnectAppResource> FetchAsync(FetchConnectAppOptions options, 
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns>
+        public static async System.Threading.Tasks.Task<ConnectAppResource> FetchAsync(FetchConnectAppOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectApp </returns> 
+        /// <returns> A single instance of ConnectApp </returns>
         public static ConnectAppResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchConnectAppOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -94,9 +94,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<ConnectAppResource> FetchAsync(string pathSid, 
-                                                                                       string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns>
+        public static async System.Threading.Tasks.Task<ConnectAppResource> FetchAsync(string pathSid,
+                                                                                       string pathAccountSid = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchConnectAppOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update ConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectApp </returns> 
+        /// <returns> A single instance of ConnectApp </returns>
         public static ConnectAppResource Update(UpdateConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -134,8 +134,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update ConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<ConnectAppResource> UpdateAsync(UpdateConnectAppOptions options, 
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns>
+        public static async System.Threading.Tasks.Task<ConnectAppResource> UpdateAsync(UpdateConnectAppOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -158,17 +158,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="homepageUrl"> A public URL where users can obtain more information </param>
         /// <param name="permissions"> The set of permissions that your ConnectApp will request </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectApp </returns> 
-        public static ConnectAppResource Update(string pathSid, 
-                                                string pathAccountSid = null, 
-                                                Uri authorizeRedirectUrl = null, 
-                                                string companyName = null, 
-                                                Twilio.Http.HttpMethod deauthorizeCallbackMethod = null, 
-                                                Uri deauthorizeCallbackUrl = null, 
-                                                string description = null, 
-                                                string friendlyName = null, 
-                                                Uri homepageUrl = null, 
-                                                List<ConnectAppResource.PermissionEnum> permissions = null, 
+        /// <returns> A single instance of ConnectApp </returns>
+        public static ConnectAppResource Update(string pathSid,
+                                                string pathAccountSid = null,
+                                                Uri authorizeRedirectUrl = null,
+                                                string companyName = null,
+                                                Twilio.Http.HttpMethod deauthorizeCallbackMethod = null,
+                                                Uri deauthorizeCallbackUrl = null,
+                                                string description = null,
+                                                string friendlyName = null,
+                                                Uri homepageUrl = null,
+                                                List<ConnectAppResource.PermissionEnum> permissions = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateConnectAppOptions(pathSid){PathAccountSid = pathAccountSid, AuthorizeRedirectUrl = authorizeRedirectUrl, CompanyName = companyName, DeauthorizeCallbackMethod = deauthorizeCallbackMethod, DeauthorizeCallbackUrl = deauthorizeCallbackUrl, Description = description, FriendlyName = friendlyName, HomepageUrl = homepageUrl, Permissions = permissions};
@@ -190,17 +190,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="homepageUrl"> A public URL where users can obtain more information </param>
         /// <param name="permissions"> The set of permissions that your ConnectApp will request </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<ConnectAppResource> UpdateAsync(string pathSid, 
-                                                                                        string pathAccountSid = null, 
-                                                                                        Uri authorizeRedirectUrl = null, 
-                                                                                        string companyName = null, 
-                                                                                        Twilio.Http.HttpMethod deauthorizeCallbackMethod = null, 
-                                                                                        Uri deauthorizeCallbackUrl = null, 
-                                                                                        string description = null, 
-                                                                                        string friendlyName = null, 
-                                                                                        Uri homepageUrl = null, 
-                                                                                        List<ConnectAppResource.PermissionEnum> permissions = null, 
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns>
+        public static async System.Threading.Tasks.Task<ConnectAppResource> UpdateAsync(string pathSid,
+                                                                                        string pathAccountSid = null,
+                                                                                        Uri authorizeRedirectUrl = null,
+                                                                                        string companyName = null,
+                                                                                        Twilio.Http.HttpMethod deauthorizeCallbackMethod = null,
+                                                                                        Uri deauthorizeCallbackUrl = null,
+                                                                                        string description = null,
+                                                                                        string friendlyName = null,
+                                                                                        Uri homepageUrl = null,
+                                                                                        List<ConnectAppResource.PermissionEnum> permissions = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateConnectAppOptions(pathSid){PathAccountSid = pathAccountSid, AuthorizeRedirectUrl = authorizeRedirectUrl, CompanyName = companyName, DeauthorizeCallbackMethod = deauthorizeCallbackMethod, DeauthorizeCallbackUrl = deauthorizeCallbackUrl, Description = description, FriendlyName = friendlyName, HomepageUrl = homepageUrl, Permissions = permissions};
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read ConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectApp </returns> 
+        /// <returns> A single instance of ConnectApp </returns>
         public static ResourceSet<ConnectAppResource> Read(ReadConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -240,8 +240,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read ConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ConnectAppResource>> ReadAsync(ReadConnectAppOptions options, 
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ConnectAppResource>> ReadAsync(ReadConnectAppOptions options,
                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -259,10 +259,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectApp </returns> 
-        public static ResourceSet<ConnectAppResource> Read(string pathAccountSid = null, 
-                                                           int? pageSize = null, 
-                                                           long? limit = null, 
+        /// <returns> A single instance of ConnectApp </returns>
+        public static ResourceSet<ConnectAppResource> Read(string pathAccountSid = null,
+                                                           int? pageSize = null,
+                                                           long? limit = null,
                                                            ITwilioRestClient client = null)
         {
             var options = new ReadConnectAppOptions(){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -277,10 +277,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ConnectAppResource>> ReadAsync(string pathAccountSid = null, 
-                                                                                                   int? pageSize = null, 
-                                                                                                   long? limit = null, 
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ConnectAppResource>> ReadAsync(string pathAccountSid = null,
+                                                                                                   int? pageSize = null,
+                                                                                                   long? limit = null,
                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadConnectAppOptions(){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -293,7 +293,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<ConnectAppResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -312,7 +312,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<ConnectAppResource> NextPage(Page<ConnectAppResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -332,7 +332,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<ConnectAppResource> PreviousPage(Page<ConnectAppResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -363,7 +363,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Delete ConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectApp </returns> 
+        /// <returns> A single instance of ConnectApp </returns>
         public static bool Delete(DeleteConnectAppOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -377,8 +377,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Delete ConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteConnectAppOptions options, 
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteConnectAppOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -393,7 +393,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ConnectApp </returns> 
+        /// <returns> A single instance of ConnectApp </returns>
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteConnectAppOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -407,9 +407,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
-                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of ConnectApp </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid,
+                                                                          string pathAccountSid = null,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteConnectAppOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -421,7 +421,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Converts a JSON string into a ConnectAppResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ConnectAppResource object represented by the provided JSON </returns> 
+        /// <returns> ConnectAppResource object represented by the provided JSON </returns>
         public static ConnectAppResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

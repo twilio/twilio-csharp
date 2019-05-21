@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// SyncMapPermissionResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncMap 
+namespace Twilio.Rest.Preview.Sync.Service.SyncMap
 {
 
-    public class SyncMapPermissionResource : Resource 
+    public class SyncMapPermissionResource : Resource
     {
         private static Request BuildFetchRequest(FetchSyncMapPermissionOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="options"> Fetch SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMapPermission </returns> 
+        /// <returns> A single instance of SyncMapPermission </returns>
         public static SyncMapPermissionResource Fetch(FetchSyncMapPermissionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="options"> Fetch SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapPermissionResource> FetchAsync(FetchSyncMapPermissionOptions options, 
+        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
+        public static async System.Threading.Tasks.Task<SyncMapPermissionResource> FetchAsync(FetchSyncMapPermissionOptions options,
                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -70,10 +70,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMapPermission </returns> 
-        public static SyncMapPermissionResource Fetch(string pathServiceSid, 
-                                                      string pathMapSid, 
-                                                      string pathIdentity, 
+        /// <returns> A single instance of SyncMapPermission </returns>
+        public static SyncMapPermissionResource Fetch(string pathServiceSid,
+                                                      string pathMapSid,
+                                                      string pathIdentity,
                                                       ITwilioRestClient client = null)
         {
             var options = new FetchSyncMapPermissionOptions(pathServiceSid, pathMapSid, pathIdentity);
@@ -88,10 +88,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapPermissionResource> FetchAsync(string pathServiceSid, 
-                                                                                              string pathMapSid, 
-                                                                                              string pathIdentity, 
+        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
+        public static async System.Threading.Tasks.Task<SyncMapPermissionResource> FetchAsync(string pathServiceSid,
+                                                                                              string pathMapSid,
+                                                                                              string pathIdentity,
                                                                                               ITwilioRestClient client = null)
         {
             var options = new FetchSyncMapPermissionOptions(pathServiceSid, pathMapSid, pathIdentity);
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="options"> Delete SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMapPermission </returns> 
+        /// <returns> A single instance of SyncMapPermission </returns>
         public static bool Delete(DeleteSyncMapPermissionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -129,8 +129,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="options"> Delete SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncMapPermissionOptions options, 
+        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSyncMapPermissionOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -146,10 +146,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMapPermission </returns> 
-        public static bool Delete(string pathServiceSid, 
-                                  string pathMapSid, 
-                                  string pathIdentity, 
+        /// <returns> A single instance of SyncMapPermission </returns>
+        public static bool Delete(string pathServiceSid,
+                                  string pathMapSid,
+                                  string pathIdentity,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteSyncMapPermissionOptions(pathServiceSid, pathMapSid, pathIdentity);
@@ -164,10 +164,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathMapSid, 
-                                                                          string pathIdentity, 
+        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathMapSid,
+                                                                          string pathIdentity,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteSyncMapPermissionOptions(pathServiceSid, pathMapSid, pathIdentity);
@@ -191,8 +191,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="options"> Read SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMapPermission </returns> 
-        public static ResourceSet<SyncMapPermissionResource> Read(ReadSyncMapPermissionOptions options, 
+        /// <returns> A single instance of SyncMapPermission </returns>
+        public static ResourceSet<SyncMapPermissionResource> Read(ReadSyncMapPermissionOptions options,
                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -208,8 +208,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="options"> Read SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapPermissionResource>> ReadAsync(ReadSyncMapPermissionOptions options, 
+        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapPermissionResource>> ReadAsync(ReadSyncMapPermissionOptions options,
                                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -228,11 +228,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMapPermission </returns> 
-        public static ResourceSet<SyncMapPermissionResource> Read(string pathServiceSid, 
-                                                                  string pathMapSid, 
-                                                                  int? pageSize = null, 
-                                                                  long? limit = null, 
+        /// <returns> A single instance of SyncMapPermission </returns>
+        public static ResourceSet<SyncMapPermissionResource> Read(string pathServiceSid,
+                                                                  string pathMapSid,
+                                                                  int? pageSize = null,
+                                                                  long? limit = null,
                                                                   ITwilioRestClient client = null)
         {
             var options = new ReadSyncMapPermissionOptions(pathServiceSid, pathMapSid){PageSize = pageSize, Limit = limit};
@@ -248,11 +248,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapPermissionResource>> ReadAsync(string pathServiceSid, 
-                                                                                                          string pathMapSid, 
-                                                                                                          int? pageSize = null, 
-                                                                                                          long? limit = null, 
+        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SyncMapPermissionResource>> ReadAsync(string pathServiceSid,
+                                                                                                          string pathMapSid,
+                                                                                                          int? pageSize = null,
+                                                                                                          long? limit = null,
                                                                                                           ITwilioRestClient client = null)
         {
             var options = new ReadSyncMapPermissionOptions(pathServiceSid, pathMapSid){PageSize = pageSize, Limit = limit};
@@ -265,7 +265,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<SyncMapPermissionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -284,8 +284,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<SyncMapPermissionResource> NextPage(Page<SyncMapPermissionResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<SyncMapPermissionResource> NextPage(Page<SyncMapPermissionResource> page,
                                                                ITwilioRestClient client)
         {
             var request = new Request(
@@ -305,8 +305,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<SyncMapPermissionResource> PreviousPage(Page<SyncMapPermissionResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<SyncMapPermissionResource> PreviousPage(Page<SyncMapPermissionResource> page,
                                                                    ITwilioRestClient client)
         {
             var request = new Request(
@@ -337,8 +337,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="options"> Update SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMapPermission </returns> 
-        public static SyncMapPermissionResource Update(UpdateSyncMapPermissionOptions options, 
+        /// <returns> A single instance of SyncMapPermission </returns>
+        public static SyncMapPermissionResource Update(UpdateSyncMapPermissionOptions options,
                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -352,8 +352,8 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// </summary>
         /// <param name="options"> Update SyncMapPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapPermissionResource> UpdateAsync(UpdateSyncMapPermissionOptions options, 
+        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
+        public static async System.Threading.Tasks.Task<SyncMapPermissionResource> UpdateAsync(UpdateSyncMapPermissionOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -372,13 +372,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SyncMapPermission </returns> 
-        public static SyncMapPermissionResource Update(string pathServiceSid, 
-                                                       string pathMapSid, 
-                                                       string pathIdentity, 
-                                                       bool? read, 
-                                                       bool? write, 
-                                                       bool? manage, 
+        /// <returns> A single instance of SyncMapPermission </returns>
+        public static SyncMapPermissionResource Update(string pathServiceSid,
+                                                       string pathMapSid,
+                                                       string pathIdentity,
+                                                       bool? read,
+                                                       bool? write,
+                                                       bool? manage,
                                                        ITwilioRestClient client = null)
         {
             var options = new UpdateSyncMapPermissionOptions(pathServiceSid, pathMapSid, pathIdentity, read, write, manage);
@@ -396,13 +396,13 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns> 
-        public static async System.Threading.Tasks.Task<SyncMapPermissionResource> UpdateAsync(string pathServiceSid, 
-                                                                                               string pathMapSid, 
-                                                                                               string pathIdentity, 
-                                                                                               bool? read, 
-                                                                                               bool? write, 
-                                                                                               bool? manage, 
+        /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
+        public static async System.Threading.Tasks.Task<SyncMapPermissionResource> UpdateAsync(string pathServiceSid,
+                                                                                               string pathMapSid,
+                                                                                               string pathIdentity,
+                                                                                               bool? read,
+                                                                                               bool? write,
+                                                                                               bool? manage,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new UpdateSyncMapPermissionOptions(pathServiceSid, pathMapSid, pathIdentity, read, write, manage);
@@ -414,7 +414,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// Converts a JSON string into a SyncMapPermissionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> SyncMapPermissionResource object represented by the provided JSON </returns> 
+        /// <returns> SyncMapPermissionResource object represented by the provided JSON </returns>
         public static SyncMapPermissionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

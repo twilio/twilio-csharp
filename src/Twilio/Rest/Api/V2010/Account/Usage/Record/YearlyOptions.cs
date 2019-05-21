@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
+namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 {
 
     /// <summary>
     /// ReadYearlyOptions
     /// </summary>
-    public class ReadYearlyOptions : ReadOptions<YearlyResource> 
+    public class ReadYearlyOptions : ReadOptions<YearlyResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

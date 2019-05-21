@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.IpMessaging.V2.Service.Channel 
+namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 {
 
     /// <summary>
     /// FetchMemberOptions
     /// </summary>
-    public class FetchMemberOptions : IOptions<MemberResource> 
+    public class FetchMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -56,7 +56,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     /// <summary>
     /// CreateMemberOptions
     /// </summary>
-    public class CreateMemberOptions : IOptions<MemberResource> 
+    public class CreateMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under
@@ -156,7 +156,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     /// <summary>
     /// ReadMemberOptions
     /// </summary>
-    public class ReadMemberOptions : ReadOptions<MemberResource> 
+    public class ReadMemberOptions : ReadOptions<MemberResource>
     {
         /// <summary>
         /// The SID of the Service to read the resources from
@@ -206,7 +206,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     /// <summary>
     /// DeleteMemberOptions
     /// </summary>
-    public class DeleteMemberOptions : IOptions<MemberResource> 
+    public class DeleteMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from
@@ -247,7 +247,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     /// <summary>
     /// UpdateMemberOptions
     /// </summary>
-    public class UpdateMemberOptions : IOptions<MemberResource> 
+    public class UpdateMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under

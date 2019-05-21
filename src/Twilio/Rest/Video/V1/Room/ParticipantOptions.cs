@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1.Room 
+namespace Twilio.Rest.Video.V1.Room
 {
 
     /// <summary>
     /// FetchParticipantOptions
     /// </summary>
-    public class FetchParticipantOptions : IOptions<ParticipantResource> 
+    public class FetchParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// A system-generated 34-character string that uniquely identifies a Room.
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Video.V1.Room
     /// <summary>
     /// ReadParticipantOptions
     /// </summary>
-    public class ReadParticipantOptions : ReadOptions<ParticipantResource> 
+    public class ReadParticipantOptions : ReadOptions<ParticipantResource>
     {
         /// <summary>
         /// A system-generated 34-character string that uniquely identifies this Room.
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Video.V1.Room
     /// <summary>
     /// UpdateParticipantOptions
     /// </summary>
-    public class UpdateParticipantOptions : IOptions<ParticipantResource> 
+    public class UpdateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// A system-generated 34-character string that uniquely identifies a Room.

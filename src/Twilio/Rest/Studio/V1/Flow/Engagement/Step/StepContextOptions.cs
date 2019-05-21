@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step 
+namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
 {
 
     /// <summary>
     /// Retrieve the context for an Engagement Step.
     /// </summary>
-    public class FetchStepContextOptions : IOptions<StepContextResource> 
+    public class FetchStepContextOptions : IOptions<StepContextResource>
     {
         /// <summary>
         /// Flow Sid.

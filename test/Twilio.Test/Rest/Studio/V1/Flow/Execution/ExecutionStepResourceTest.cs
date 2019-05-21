@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Studio.V1.Flow.Execution;
 
-namespace Twilio.Tests.Rest.Studio.V1.Flow.Execution 
+namespace Twilio.Tests.Rest.Studio.V1.Flow.Execution
 {
 
     [TestFixture]
-    public class ExecutionStepTest : TwilioTest 
+    public class ExecutionStepTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

@@ -8,17 +8,17 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.TrustedComms 
+namespace Twilio.Rest.Preview.TrustedComms
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Registers a new Device and Push Token against Trusted Comms API. This works specially for iOS devices, which don't
     /// allow the SDK to know when there's an incoming call, nor the originating number.
     /// </summary>
-    public class CreateDeviceOptions : IOptions<DeviceResource> 
+    public class CreateDeviceOptions : IOptions<DeviceResource>
     {
         /// <summary>
         /// The end user Phone Number

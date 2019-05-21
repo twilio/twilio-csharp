@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Serverless.V1.Service.Function 
+namespace Twilio.Rest.Serverless.V1.Service.Function
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Function Versions.
     /// </summary>
-    public class ReadFunctionVersionOptions : ReadOptions<FunctionVersionResource> 
+    public class ReadFunctionVersionOptions : ReadOptions<FunctionVersionResource>
     {
         /// <summary>
         /// Service Sid.
@@ -57,10 +57,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a specific Function Version.
     /// </summary>
-    public class FetchFunctionVersionOptions : IOptions<FunctionVersionResource> 
+    public class FetchFunctionVersionOptions : IOptions<FunctionVersionResource>
     {
         /// <summary>
         /// Service Sid.
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Function Version.
     /// </summary>
-    public class CreateFunctionVersionOptions : IOptions<FunctionVersionResource> 
+    public class CreateFunctionVersionOptions : IOptions<FunctionVersionResource>
     {
         /// <summary>
         /// Service Sid.
@@ -130,9 +130,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// <param name="pathFunctionSid"> Function Sid. </param>
         /// <param name="path"> The URL-friendly string by which this Function Version can be referenced. </param>
         /// <param name="visibility"> The access control which determines how the Function Version can be accessed. </param>
-        public CreateFunctionVersionOptions(string pathServiceSid, 
-                                            string pathFunctionSid, 
-                                            string path, 
+        public CreateFunctionVersionOptions(string pathServiceSid,
+                                            string pathFunctionSid,
+                                            string path,
                                             FunctionVersionResource.VisibilityEnum visibility)
         {
             PathServiceSid = pathServiceSid;

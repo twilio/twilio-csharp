@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// CreateAddressOptions
     /// </summary>
-    public class CreateAddressOptions : IOptions<AddressResource> 
+    public class CreateAddressOptions : IOptions<AddressResource>
     {
         /// <summary>
         /// The SID of the Account that will be responsible for the new Address resource
@@ -66,11 +66,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="region"> The state or region of the new address </param>
         /// <param name="postalCode"> The postal code of the new address </param>
         /// <param name="isoCountry"> The ISO country code of the new address </param>
-        public CreateAddressOptions(string customerName, 
-                                    string street, 
-                                    string city, 
-                                    string region, 
-                                    string postalCode, 
+        public CreateAddressOptions(string customerName,
+                                    string street,
+                                    string city,
+                                    string region,
+                                    string postalCode,
                                     string isoCountry)
         {
             CustomerName = customerName;
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// DeleteAddressOptions
     /// </summary>
-    public class DeleteAddressOptions : IOptions<AddressResource> 
+    public class DeleteAddressOptions : IOptions<AddressResource>
     {
         /// <summary>
         /// The SID of the Account that is responsible for the resources to delete
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// FetchAddressOptions
     /// </summary>
-    public class FetchAddressOptions : IOptions<AddressResource> 
+    public class FetchAddressOptions : IOptions<AddressResource>
     {
         /// <summary>
         /// The SID of the Account that is responsible for this address
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// UpdateAddressOptions
     /// </summary>
-    public class UpdateAddressOptions : IOptions<AddressResource> 
+    public class UpdateAddressOptions : IOptions<AddressResource>
     {
         /// <summary>
         /// The SID of the Account that is responsible for the resource to update
@@ -310,7 +310,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// ReadAddressOptions
     /// </summary>
-    public class ReadAddressOptions : ReadOptions<AddressResource> 
+    public class ReadAddressOptions : ReadOptions<AddressResource>
     {
         /// <summary>
         /// The SID of the Account that is responsible for this address

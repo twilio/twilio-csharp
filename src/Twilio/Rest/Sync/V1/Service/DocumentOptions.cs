@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Sync.V1.Service 
+namespace Twilio.Rest.Sync.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchDocumentOptions
     /// </summary>
-    public class FetchDocumentOptions : IOptions<DocumentResource> 
+    public class FetchDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid
@@ -50,10 +50,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteDocumentOptions
     /// </summary>
-    public class DeleteDocumentOptions : IOptions<DocumentResource> 
+    public class DeleteDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateDocumentOptions
     /// </summary>
-    public class CreateDocumentOptions : IOptions<DocumentResource> 
+    public class CreateDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid
@@ -145,10 +145,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadDocumentOptions
     /// </summary>
-    public class ReadDocumentOptions : ReadOptions<DocumentResource> 
+    public class ReadDocumentOptions : ReadOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid
@@ -181,10 +181,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// UpdateDocumentOptions
     /// </summary>
-    public class UpdateDocumentOptions : IOptions<DocumentResource> 
+    public class UpdateDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid

@@ -9,15 +9,15 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Using Phonetic Pronunciation in Say
     /// </summary>
-    public class SsmlPhoneme : TwiML 
+    public class SsmlPhoneme : TwiML
     {
-        public sealed class AlphabetEnum : StringEnum 
+        public sealed class AlphabetEnum : StringEnum
         {
             private AlphabetEnum(string value) : base(value) {}
             public AlphabetEnum() {}

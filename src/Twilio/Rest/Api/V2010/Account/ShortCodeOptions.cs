@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Fetch an instance of a short code
     /// </summary>
-    public class FetchShortCodeOptions : IOptions<ShortCodeResource> 
+    public class FetchShortCodeOptions : IOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to fetch
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Update a short code with the following parameters
     /// </summary>
-    public class UpdateShortCodeOptions : IOptions<ShortCodeResource> 
+    public class UpdateShortCodeOptions : IOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to update
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of short-codes belonging to the account used to make the request
     /// </summary>
-    public class ReadShortCodeOptions : ReadOptions<ShortCodeResource> 
+    public class ReadShortCodeOptions : ReadOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to read

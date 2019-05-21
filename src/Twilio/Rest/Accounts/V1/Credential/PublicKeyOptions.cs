@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Accounts.V1.Credential 
+namespace Twilio.Rest.Accounts.V1.Credential
 {
 
     /// <summary>
     /// Retrieves a collection of Public Key Credentials belonging to the account used to make the request
     /// </summary>
-    public class ReadPublicKeyOptions : ReadOptions<PublicKeyResource> 
+    public class ReadPublicKeyOptions : ReadOptions<PublicKeyResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
     /// <summary>
     /// Create a new Public Key Credential
     /// </summary>
-    public class CreatePublicKeyOptions : IOptions<PublicKeyResource> 
+    public class CreatePublicKeyOptions : IOptions<PublicKeyResource>
     {
         /// <summary>
         /// A URL encoded representation of the public key
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
     /// <summary>
     /// Fetch the public key specified by the provided Credential Sid
     /// </summary>
-    public class FetchPublicKeyOptions : IOptions<PublicKeyResource> 
+    public class FetchPublicKeyOptions : IOptions<PublicKeyResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
     /// <summary>
     /// Modify the properties of a given Account
     /// </summary>
-    public class UpdatePublicKeyOptions : IOptions<PublicKeyResource> 
+    public class UpdatePublicKeyOptions : IOptions<PublicKeyResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
     /// <summary>
     /// Delete a Credential from your account
     /// </summary>
-    public class DeletePublicKeyOptions : IOptions<PublicKeyResource> 
+    public class DeletePublicKeyOptions : IOptions<PublicKeyResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

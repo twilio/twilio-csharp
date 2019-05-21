@@ -10,13 +10,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
 
-namespace Twilio.TwiML.Messaging 
+namespace Twilio.TwiML.Messaging
 {
 
     /// <summary>
     /// Message TwiML Verb
     /// </summary>
-    public class Message : TwiML 
+    public class Message : TwiML
     {
         /// <summary>
         /// Message Body
@@ -52,11 +52,11 @@ namespace Twilio.TwiML.Messaging
         /// <param name="action"> Action URL </param>
         /// <param name="method"> Action URL Method </param>
         /// <param name="statusCallback"> Status callback URL. Deprecated in favor of action. </param>
-        public Message(string body = null, 
-                       string to = null, 
-                       string from = null, 
-                       Uri action = null, 
-                       Twilio.Http.HttpMethod method = null, 
+        public Message(string body = null,
+                       string to = null,
+                       string from = null,
+                       Uri action = null,
+                       Twilio.Http.HttpMethod method = null,
                        Uri statusCallback = null) : base("Message")
         {
             this.BodyAttribute = body;

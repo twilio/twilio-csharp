@@ -9,15 +9,15 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Controlling How Special Types of Words Are Spoken in Say
     /// </summary>
-    public class SsmlSayAs : TwiML 
+    public class SsmlSayAs : TwiML
     {
-        public sealed class InterpretAsEnum : StringEnum 
+        public sealed class InterpretAsEnum : StringEnum
         {
             private InterpretAsEnum(string value) : base(value) {}
             public InterpretAsEnum() {}
@@ -41,7 +41,7 @@ namespace Twilio.TwiML.Voice
             public static readonly InterpretAsEnum Telephone = new InterpretAsEnum("telephone");
         }
 
-        public sealed class RoleEnum : StringEnum 
+        public sealed class RoleEnum : StringEnum
         {
             private RoleEnum(string value) : base(value) {}
             public RoleEnum() {}
@@ -82,8 +82,8 @@ namespace Twilio.TwiML.Voice
         /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
         /// <param name="interpret-As"> Specify the type of words are spoken </param>
         /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
-        public SsmlSayAs(string words = null, 
-                         SsmlSayAs.InterpretAsEnum interpretAs = null, 
+        public SsmlSayAs(string words = null,
+                         SsmlSayAs.InterpretAsEnum interpretAs = null,
                          SsmlSayAs.RoleEnum role = null) : base("say-as")
         {
             this.Words = words;

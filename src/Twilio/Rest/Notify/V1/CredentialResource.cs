@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// CredentialResource
 /// </summary>
 
@@ -18,12 +18,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Notify.V1 
+namespace Twilio.Rest.Notify.V1
 {
 
-    public class CredentialResource : Resource 
+    public class CredentialResource : Resource
     {
-        public sealed class PushServiceEnum : StringEnum 
+        public sealed class PushServiceEnum : StringEnum
         {
             private PushServiceEnum(string value) : base(value) {}
             public PushServiceEnum() {}
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Read Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
+        /// <returns> A single instance of Credential </returns>
         public static ResourceSet<CredentialResource> Read(ReadCredentialOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,8 +69,8 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Read Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(ReadCredentialOptions options, 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(ReadCredentialOptions options,
                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -87,9 +87,9 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
-        public static ResourceSet<CredentialResource> Read(int? pageSize = null, 
-                                                           long? limit = null, 
+        /// <returns> A single instance of Credential </returns>
+        public static ResourceSet<CredentialResource> Read(int? pageSize = null,
+                                                           long? limit = null,
                                                            ITwilioRestClient client = null)
         {
             var options = new ReadCredentialOptions(){PageSize = pageSize, Limit = limit};
@@ -103,9 +103,9 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(int? pageSize = null, 
-                                                                                                   long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CredentialResource>> ReadAsync(int? pageSize = null,
+                                                                                                   long? limit = null,
                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadCredentialOptions(){PageSize = pageSize, Limit = limit};
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<CredentialResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<CredentialResource> NextPage(Page<CredentialResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<CredentialResource> PreviousPage(Page<CredentialResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Create Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
+        /// <returns> A single instance of Credential </returns>
         public static CredentialResource Create(CreateCredentialOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -202,8 +202,8 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Create Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CreateCredentialOptions options, 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
+        public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CreateCredentialOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -225,14 +225,14 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="secret"> [FCM only] The `Server key` of your project from Firebase console under Settings / Cloud
         ///              messaging </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
-        public static CredentialResource Create(CredentialResource.PushServiceEnum type, 
-                                                string friendlyName = null, 
-                                                string certificate = null, 
-                                                string privateKey = null, 
-                                                bool? sandbox = null, 
-                                                string apiKey = null, 
-                                                string secret = null, 
+        /// <returns> A single instance of Credential </returns>
+        public static CredentialResource Create(CredentialResource.PushServiceEnum type,
+                                                string friendlyName = null,
+                                                string certificate = null,
+                                                string privateKey = null,
+                                                bool? sandbox = null,
+                                                string apiKey = null,
+                                                string secret = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new CreateCredentialOptions(type){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
@@ -253,14 +253,14 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="secret"> [FCM only] The `Server key` of your project from Firebase console under Settings / Cloud
         ///              messaging </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CredentialResource.PushServiceEnum type, 
-                                                                                        string friendlyName = null, 
-                                                                                        string certificate = null, 
-                                                                                        string privateKey = null, 
-                                                                                        bool? sandbox = null, 
-                                                                                        string apiKey = null, 
-                                                                                        string secret = null, 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
+        public static async System.Threading.Tasks.Task<CredentialResource> CreateAsync(CredentialResource.PushServiceEnum type,
+                                                                                        string friendlyName = null,
+                                                                                        string certificate = null,
+                                                                                        string privateKey = null,
+                                                                                        bool? sandbox = null,
+                                                                                        string apiKey = null,
+                                                                                        string secret = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new CreateCredentialOptions(type){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Fetch Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
+        /// <returns> A single instance of Credential </returns>
         public static CredentialResource Fetch(FetchCredentialOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -298,8 +298,8 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Fetch Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> FetchAsync(FetchCredentialOptions options, 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
+        public static async System.Threading.Tasks.Task<CredentialResource> FetchAsync(FetchCredentialOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
+        /// <returns> A single instance of Credential </returns>
         public static CredentialResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchCredentialOptions(pathSid);
@@ -326,8 +326,8 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
+        public static async System.Threading.Tasks.Task<CredentialResource> FetchAsync(string pathSid,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchCredentialOptions(pathSid);
@@ -351,7 +351,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Update Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
+        /// <returns> A single instance of Credential </returns>
         public static CredentialResource Update(UpdateCredentialOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -365,8 +365,8 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Update Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(UpdateCredentialOptions options, 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
+        public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(UpdateCredentialOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -388,14 +388,14 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="secret"> [FCM only] The `Server key` of your project from Firebase console under Settings / Cloud
         ///              messaging </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
-        public static CredentialResource Update(string pathSid, 
-                                                string friendlyName = null, 
-                                                string certificate = null, 
-                                                string privateKey = null, 
-                                                bool? sandbox = null, 
-                                                string apiKey = null, 
-                                                string secret = null, 
+        /// <returns> A single instance of Credential </returns>
+        public static CredentialResource Update(string pathSid,
+                                                string friendlyName = null,
+                                                string certificate = null,
+                                                string privateKey = null,
+                                                bool? sandbox = null,
+                                                string apiKey = null,
+                                                string secret = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateCredentialOptions(pathSid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
@@ -416,14 +416,14 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="secret"> [FCM only] The `Server key` of your project from Firebase console under Settings / Cloud
         ///              messaging </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(string pathSid, 
-                                                                                        string friendlyName = null, 
-                                                                                        string certificate = null, 
-                                                                                        string privateKey = null, 
-                                                                                        bool? sandbox = null, 
-                                                                                        string apiKey = null, 
-                                                                                        string secret = null, 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
+        public static async System.Threading.Tasks.Task<CredentialResource> UpdateAsync(string pathSid,
+                                                                                        string friendlyName = null,
+                                                                                        string certificate = null,
+                                                                                        string privateKey = null,
+                                                                                        bool? sandbox = null,
+                                                                                        string apiKey = null,
+                                                                                        string secret = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateCredentialOptions(pathSid){FriendlyName = friendlyName, Certificate = certificate, PrivateKey = privateKey, Sandbox = sandbox, ApiKey = apiKey, Secret = secret};
@@ -447,7 +447,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Delete Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
+        /// <returns> A single instance of Credential </returns>
         public static bool Delete(DeleteCredentialOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -461,8 +461,8 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="options"> Delete Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCredentialOptions options, 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCredentialOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -476,7 +476,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Credential </returns> 
+        /// <returns> A single instance of Credential </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteCredentialOptions(pathSid);
@@ -489,7 +489,7 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Credential </returns> 
+        /// <returns> Task that resolves to A single instance of Credential </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteCredentialOptions(pathSid);
@@ -501,7 +501,7 @@ namespace Twilio.Rest.Notify.V1
         /// Converts a JSON string into a CredentialResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> CredentialResource object represented by the provided JSON </returns> 
+        /// <returns> CredentialResource object represented by the provided JSON </returns>
         public static CredentialResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

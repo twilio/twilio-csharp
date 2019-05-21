@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn 
+namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch an instance of an Extension for the Assigned Add-on.
     /// </summary>
-    public class FetchAssignedAddOnExtensionOptions : IOptions<AssignedAddOnExtensionResource> 
+    public class FetchAssignedAddOnExtensionOptions : IOptions<AssignedAddOnExtensionResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -60,10 +60,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of Extensions for the Assigned Add-on.
     /// </summary>
-    public class ReadAssignedAddOnExtensionOptions : ReadOptions<AssignedAddOnExtensionResource> 
+    public class ReadAssignedAddOnExtensionOptions : ReadOptions<AssignedAddOnExtensionResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

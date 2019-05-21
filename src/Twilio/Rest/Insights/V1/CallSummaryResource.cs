@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// CallSummaryResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Insights.V1 
+namespace Twilio.Rest.Insights.V1
 {
 
-    public class CallSummaryResource : Resource 
+    public class CallSummaryResource : Resource
     {
-        public sealed class CallTypeEnum : StringEnum 
+        public sealed class CallTypeEnum : StringEnum
         {
             private CallTypeEnum(string value) : base(value) {}
             public CallTypeEnum() {}
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Insights.V1
             public static readonly CallTypeEnum Client = new CallTypeEnum("client");
         }
 
-        public sealed class CallStateEnum : StringEnum 
+        public sealed class CallStateEnum : StringEnum
         {
             private CallStateEnum(string value) : base(value) {}
             public CallStateEnum() {}
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Insights.V1
             public static readonly CallStateEnum Undialed = new CallStateEnum("undialed");
         }
 
-        public sealed class ProcessingStateEnum : StringEnum 
+        public sealed class ProcessingStateEnum : StringEnum
         {
             private ProcessingStateEnum(string value) : base(value) {}
             public ProcessingStateEnum() {}
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Insights.V1
             public static readonly ProcessingStateEnum Partial = new ProcessingStateEnum("partial");
         }
 
-        public sealed class DirectionEnum : StringEnum 
+        public sealed class DirectionEnum : StringEnum
         {
             private DirectionEnum(string value) : base(value) {}
             public DirectionEnum() {}
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Insights.V1
             public static readonly DirectionEnum TrunkingTerminating = new DirectionEnum("trunking_terminating");
         }
 
-        public sealed class DisconnectedByEnum : StringEnum 
+        public sealed class DisconnectedByEnum : StringEnum
         {
             private DisconnectedByEnum(string value) : base(value) {}
             public DisconnectedByEnum() {}
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Insights.V1
         /// </summary>
         /// <param name="options"> Fetch CallSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CallSummary </returns> 
+        /// <returns> A single instance of CallSummary </returns>
         public static CallSummaryResource Fetch(FetchCallSummaryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -131,8 +131,8 @@ namespace Twilio.Rest.Insights.V1
         /// </summary>
         /// <param name="options"> Fetch CallSummary parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CallSummary </returns> 
-        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(FetchCallSummaryOptions options, 
+        /// <returns> Task that resolves to A single instance of CallSummary </returns>
+        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(FetchCallSummaryOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -147,9 +147,9 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="processingState"> The processing_state </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CallSummary </returns> 
-        public static CallSummaryResource Fetch(string pathCallSid, 
-                                                CallSummaryResource.ProcessingStateEnum processingState = null, 
+        /// <returns> A single instance of CallSummary </returns>
+        public static CallSummaryResource Fetch(string pathCallSid,
+                                                CallSummaryResource.ProcessingStateEnum processingState = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new FetchCallSummaryOptions(pathCallSid){ProcessingState = processingState};
@@ -163,9 +163,9 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="pathCallSid"> The call_sid </param>
         /// <param name="processingState"> The processing_state </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CallSummary </returns> 
-        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(string pathCallSid, 
-                                                                                        CallSummaryResource.ProcessingStateEnum processingState = null, 
+        /// <returns> Task that resolves to A single instance of CallSummary </returns>
+        public static async System.Threading.Tasks.Task<CallSummaryResource> FetchAsync(string pathCallSid,
+                                                                                        CallSummaryResource.ProcessingStateEnum processingState = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchCallSummaryOptions(pathCallSid){ProcessingState = processingState};
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Insights.V1
         /// Converts a JSON string into a CallSummaryResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> CallSummaryResource object represented by the provided JSON </returns> 
+        /// <returns> CallSummaryResource object represented by the provided JSON </returns>
         public static CallSummaryResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Fetch an instance of a Transcription
     /// </summary>
-    public class FetchTranscriptionOptions : IOptions<TranscriptionResource> 
+    public class FetchTranscriptionOptions : IOptions<TranscriptionResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Delete a transcription from the account used to make the request
     /// </summary>
-    public class DeleteTranscriptionOptions : IOptions<TranscriptionResource> 
+    public class DeleteTranscriptionOptions : IOptions<TranscriptionResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of transcriptions belonging to the account used to make the request
     /// </summary>
-    public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource> 
+    public class ReadTranscriptionOptions : ReadOptions<TranscriptionResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

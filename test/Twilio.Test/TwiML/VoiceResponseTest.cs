@@ -9,11 +9,11 @@ using Twilio.Converters;
 using Twilio.TwiML;
 using Twilio.TwiML.Voice;
 
-namespace Twilio.Tests.TwiML 
+namespace Twilio.Tests.TwiML
 {
 
     [TestFixture]
-    public class VoiceResponseTest : TwilioTest 
+    public class VoiceResponseTest : TwilioTest
     {
         [Test]
         public void TestEmptyElement()

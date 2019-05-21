@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.IpMessaging.V1.Service.User 
+namespace Twilio.Rest.IpMessaging.V1.Service.User
 {
 
     /// <summary>
     /// List all Channels for a given User.
     /// </summary>
-    public class ReadUserChannelOptions : ReadOptions<UserChannelResource> 
+    public class ReadUserChannelOptions : ReadOptions<UserChannelResource>
     {
         /// <summary>
         /// The SID of the Service to read the resources from

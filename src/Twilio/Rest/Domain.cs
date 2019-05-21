@@ -5,10 +5,10 @@
 
 using Twilio.Types;
 
-namespace Twilio.Rest 
+namespace Twilio.Rest
 {
 
-    public sealed class Domain : StringEnum 
+    public sealed class Domain : StringEnum
     {
         private Domain(string value) : base(value) {}
         public Domain() {}

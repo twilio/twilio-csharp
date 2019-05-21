@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// ModelBuildResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant 
+namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
-    public class ModelBuildResource : Resource 
+    public class ModelBuildResource : Resource
     {
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Fetch ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
+        /// <returns> A single instance of ModelBuild </returns>
         public static ModelBuildResource Fetch(FetchModelBuildOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -70,8 +70,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Fetch ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ModelBuildResource> FetchAsync(FetchModelBuildOptions options, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<ModelBuildResource> FetchAsync(FetchModelBuildOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -86,7 +86,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
+        /// <returns> A single instance of ModelBuild </returns>
         public static ModelBuildResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchModelBuildOptions(pathAssistantSid, pathSid);
@@ -100,9 +100,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ModelBuildResource> FetchAsync(string pathAssistantSid, 
-                                                                                       string pathSid, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<ModelBuildResource> FetchAsync(string pathAssistantSid,
+                                                                                       string pathSid,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchModelBuildOptions(pathAssistantSid, pathSid);
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Read ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
+        /// <returns> A single instance of ModelBuild </returns>
         public static ResourceSet<ModelBuildResource> Read(ReadModelBuildOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -142,8 +142,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Read ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ModelBuildResource>> ReadAsync(ReadModelBuildOptions options, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ModelBuildResource>> ReadAsync(ReadModelBuildOptions options,
                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -161,10 +161,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
-        public static ResourceSet<ModelBuildResource> Read(string pathAssistantSid, 
-                                                           int? pageSize = null, 
-                                                           long? limit = null, 
+        /// <returns> A single instance of ModelBuild </returns>
+        public static ResourceSet<ModelBuildResource> Read(string pathAssistantSid,
+                                                           int? pageSize = null,
+                                                           long? limit = null,
                                                            ITwilioRestClient client = null)
         {
             var options = new ReadModelBuildOptions(pathAssistantSid){PageSize = pageSize, Limit = limit};
@@ -179,10 +179,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ModelBuildResource>> ReadAsync(string pathAssistantSid, 
-                                                                                                   int? pageSize = null, 
-                                                                                                   long? limit = null, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ModelBuildResource>> ReadAsync(string pathAssistantSid,
+                                                                                                   int? pageSize = null,
+                                                                                                   long? limit = null,
                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadModelBuildOptions(pathAssistantSid){PageSize = pageSize, Limit = limit};
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<ModelBuildResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -214,7 +214,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<ModelBuildResource> NextPage(Page<ModelBuildResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -234,7 +234,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<ModelBuildResource> PreviousPage(Page<ModelBuildResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -265,7 +265,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Create ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
+        /// <returns> A single instance of ModelBuild </returns>
         public static ModelBuildResource Create(CreateModelBuildOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -279,8 +279,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Create ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ModelBuildResource> CreateAsync(CreateModelBuildOptions options, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<ModelBuildResource> CreateAsync(CreateModelBuildOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -297,10 +297,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         ///                      application </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
-        public static ModelBuildResource Create(string pathAssistantSid, 
-                                                Uri statusCallback = null, 
-                                                string uniqueName = null, 
+        /// <returns> A single instance of ModelBuild </returns>
+        public static ModelBuildResource Create(string pathAssistantSid,
+                                                Uri statusCallback = null,
+                                                string uniqueName = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new CreateModelBuildOptions(pathAssistantSid){StatusCallback = statusCallback, UniqueName = uniqueName};
@@ -316,10 +316,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         ///                      application </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the new resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ModelBuildResource> CreateAsync(string pathAssistantSid, 
-                                                                                        Uri statusCallback = null, 
-                                                                                        string uniqueName = null, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<ModelBuildResource> CreateAsync(string pathAssistantSid,
+                                                                                        Uri statusCallback = null,
+                                                                                        string uniqueName = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new CreateModelBuildOptions(pathAssistantSid){StatusCallback = statusCallback, UniqueName = uniqueName};
@@ -343,7 +343,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Update ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
+        /// <returns> A single instance of ModelBuild </returns>
         public static ModelBuildResource Update(UpdateModelBuildOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -357,8 +357,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Update ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ModelBuildResource> UpdateAsync(UpdateModelBuildOptions options, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<ModelBuildResource> UpdateAsync(UpdateModelBuildOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -374,10 +374,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathSid"> The unique string that identifies the resource to update </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
-        public static ModelBuildResource Update(string pathAssistantSid, 
-                                                string pathSid, 
-                                                string uniqueName = null, 
+        /// <returns> A single instance of ModelBuild </returns>
+        public static ModelBuildResource Update(string pathAssistantSid,
+                                                string pathSid,
+                                                string uniqueName = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateModelBuildOptions(pathAssistantSid, pathSid){UniqueName = uniqueName};
@@ -392,10 +392,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathSid"> The unique string that identifies the resource to update </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<ModelBuildResource> UpdateAsync(string pathAssistantSid, 
-                                                                                        string pathSid, 
-                                                                                        string uniqueName = null, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<ModelBuildResource> UpdateAsync(string pathAssistantSid,
+                                                                                        string pathSid,
+                                                                                        string uniqueName = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateModelBuildOptions(pathAssistantSid, pathSid){UniqueName = uniqueName};
@@ -419,7 +419,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Delete ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
+        /// <returns> A single instance of ModelBuild </returns>
         public static bool Delete(DeleteModelBuildOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -433,8 +433,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Delete ModelBuild parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteModelBuildOptions options, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteModelBuildOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -449,7 +449,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ModelBuild </returns> 
+        /// <returns> A single instance of ModelBuild </returns>
         public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteModelBuildOptions(pathAssistantSid, pathSid);
@@ -463,9 +463,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resources to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ModelBuild </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of ModelBuild </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteModelBuildOptions(pathAssistantSid, pathSid);
@@ -477,7 +477,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// Converts a JSON string into a ModelBuildResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ModelBuildResource object represented by the provided JSON </returns> 
+        /// <returns> ModelBuildResource object represented by the provided JSON </returns>
         public static ModelBuildResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Authy.V1.Service.Entity.Factor 
+namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Challenge for the Factor
     /// </summary>
-    public class CreateChallengeOptions : IOptions<ChallengeResource> 
+    public class CreateChallengeOptions : IOptions<ChallengeResource>
     {
         /// <summary>
         /// Service Sid.
@@ -85,10 +85,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Challenge.
     /// </summary>
-    public class DeleteChallengeOptions : IOptions<ChallengeResource> 
+    public class DeleteChallengeOptions : IOptions<ChallengeResource>
     {
         /// <summary>
         /// Service Sid.
@@ -135,10 +135,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch a specific Challenge.
     /// </summary>
-    public class FetchChallengeOptions : IOptions<ChallengeResource> 
+    public class FetchChallengeOptions : IOptions<ChallengeResource>
     {
         /// <summary>
         /// Service Sid.
@@ -185,10 +185,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Verify a specific Challenge.
     /// </summary>
-    public class UpdateChallengeOptions : IOptions<ChallengeResource> 
+    public class UpdateChallengeOptions : IOptions<ChallengeResource>
     {
         /// <summary>
         /// Service Sid.

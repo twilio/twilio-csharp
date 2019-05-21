@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.IpMessaging.V2.Service.Channel 
+namespace Twilio.Rest.IpMessaging.V2.Service.Channel
 {
 
     /// <summary>
     /// FetchInviteOptions
     /// </summary>
-    public class FetchInviteOptions : IOptions<InviteResource> 
+    public class FetchInviteOptions : IOptions<InviteResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -56,7 +56,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     /// <summary>
     /// CreateInviteOptions
     /// </summary>
-    public class CreateInviteOptions : IOptions<InviteResource> 
+    public class CreateInviteOptions : IOptions<InviteResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under
@@ -111,7 +111,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     /// <summary>
     /// ReadInviteOptions
     /// </summary>
-    public class ReadInviteOptions : ReadOptions<InviteResource> 
+    public class ReadInviteOptions : ReadOptions<InviteResource>
     {
         /// <summary>
         /// The SID of the Service to read the resources from
@@ -161,7 +161,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
     /// <summary>
     /// DeleteInviteOptions
     /// </summary>
-    public class DeleteInviteOptions : IOptions<InviteResource> 
+    public class DeleteInviteOptions : IOptions<InviteResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from

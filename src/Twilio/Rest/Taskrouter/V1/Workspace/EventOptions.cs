@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace 
+namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
     /// <summary>
     /// FetchEventOptions
     /// </summary>
-    public class FetchEventOptions : IOptions<EventResource> 
+    public class FetchEventOptions : IOptions<EventResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// ReadEventOptions
     /// </summary>
-    public class ReadEventOptions : ReadOptions<EventResource> 
+    public class ReadEventOptions : ReadOptions<EventResource>
     {
         /// <summary>
         /// Filter events by those pertaining to a particular workspace

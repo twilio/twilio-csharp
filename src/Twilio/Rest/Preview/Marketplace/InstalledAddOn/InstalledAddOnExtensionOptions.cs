@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn 
+namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch an instance of an Extension for the Installed Add-on.
     /// </summary>
-    public class FetchInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource> 
+    public class FetchInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource>
     {
         /// <summary>
         /// The installed_add_on_sid
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update an Extension for an Add-on installation.
     /// </summary>
-    public class UpdateInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource> 
+    public class UpdateInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource>
     {
         /// <summary>
         /// The installed_add_on_sid
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of Extensions for the Installed Add-on.
     /// </summary>
-    public class ReadInstalledAddOnExtensionOptions : ReadOptions<InstalledAddOnExtensionResource> 
+    public class ReadInstalledAddOnExtensionOptions : ReadOptions<InstalledAddOnExtensionResource>
     {
         /// <summary>
         /// The installed_add_on_sid

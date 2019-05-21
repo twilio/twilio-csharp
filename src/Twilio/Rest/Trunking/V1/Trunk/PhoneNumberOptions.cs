@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Trunking.V1.Trunk 
+namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
     /// <summary>
     /// FetchPhoneNumberOptions
     /// </summary>
-    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to fetch the PhoneNumber resource
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// DeletePhoneNumberOptions
     /// </summary>
-    public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to delete the PhoneNumber resource
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// CreatePhoneNumberOptions
     /// </summary>
-    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Trunk to associate the phone number with
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// ReadPhoneNumberOptions
     /// </summary>
-    public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource> 
+    public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to read the PhoneNumber resources

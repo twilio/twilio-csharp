@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.IpMessaging.V2.Service 
+namespace Twilio.Rest.IpMessaging.V2.Service
 {
 
     /// <summary>
     /// FetchChannelOptions
     /// </summary>
-    public class FetchChannelOptions : IOptions<ChannelResource> 
+    public class FetchChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -50,7 +50,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     /// <summary>
     /// DeleteChannelOptions
     /// </summary>
-    public class DeleteChannelOptions : IOptions<ChannelResource> 
+    public class DeleteChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from
@@ -85,7 +85,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     /// <summary>
     /// CreateChannelOptions
     /// </summary>
-    public class CreateChannelOptions : IOptions<ChannelResource> 
+    public class CreateChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under
@@ -177,7 +177,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     /// <summary>
     /// ReadChannelOptions
     /// </summary>
-    public class ReadChannelOptions : ReadOptions<ChannelResource> 
+    public class ReadChannelOptions : ReadOptions<ChannelResource>
     {
         /// <summary>
         /// The SID of the Service to read the resources from
@@ -221,7 +221,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     /// <summary>
     /// UpdateChannelOptions
     /// </summary>
-    public class UpdateChannelOptions : IOptions<ChannelResource> 
+    public class UpdateChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
         /// The SID of the Service to update the resource from

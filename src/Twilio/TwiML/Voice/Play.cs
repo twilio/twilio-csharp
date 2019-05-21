@@ -10,13 +10,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Play TwiML Verb
     /// </summary>
-    public class Play : TwiML 
+    public class Play : TwiML
     {
         /// <summary>
         /// Media URL

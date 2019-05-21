@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Proxy.V1.Service;
 
-namespace Twilio.Tests.Rest.Proxy.V1.Service 
+namespace Twilio.Tests.Rest.Proxy.V1.Service
 {
 
     [TestFixture]
-    public class ShortCodeTest : TwilioTest 
+    public class ShortCodeTest : TwilioTest
     {
         [Test]
         public void TestCreateRequest()

@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.DeployedDevices.Fleet 
+namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch information about a specific Key credential in the Fleet.
     /// </summary>
-    public class FetchKeyOptions : IOptions<KeyResource> 
+    public class FetchKeyOptions : IOptions<KeyResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -52,11 +52,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Key credential from the Fleet, effectively disallowing any inbound client connections that are
     /// presenting it.
     /// </summary>
-    public class DeleteKeyOptions : IOptions<KeyResource> 
+    public class DeleteKeyOptions : IOptions<KeyResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Key credential in the Fleet, optionally giving it a friendly name and assigning to a Device.
     /// </summary>
-    public class CreateKeyOptions : IOptions<KeyResource> 
+    public class CreateKeyOptions : IOptions<KeyResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -141,10 +141,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Keys credentials belonging to the Fleet.
     /// </summary>
-    public class ReadKeyOptions : ReadOptions<KeyResource> 
+    public class ReadKeyOptions : ReadOptions<KeyResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -187,11 +187,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update the given properties of a specific Key credential in the Fleet, giving it a friendly name or assigning to a
     /// Device.
     /// </summary>
-    public class UpdateKeyOptions : IOptions<KeyResource> 
+    public class UpdateKeyOptions : IOptions<KeyResource>
     {
         /// <summary>
         /// The fleet_sid

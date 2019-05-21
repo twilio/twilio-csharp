@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.Message 
+namespace Twilio.Rest.Api.V2010.Account.Message
 {
 
-    public class FeedbackResource : Resource 
+    public class FeedbackResource : Resource
     {
-        public sealed class OutcomeEnum : StringEnum 
+        public sealed class OutcomeEnum : StringEnum
         {
             private OutcomeEnum(string value) : base(value) {}
             public OutcomeEnum() {}
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// </summary>
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Feedback </returns> 
+        /// <returns> A single instance of Feedback </returns>
         public static FeedbackResource Create(CreateFeedbackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -64,8 +64,8 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// </summary>
         /// <param name="options"> Create Feedback parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Feedback </returns> 
-        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options, 
+        /// <returns> Task that resolves to A single instance of Feedback </returns>
+        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(CreateFeedbackOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -81,10 +81,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="outcome"> Whether the feedback has arrived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Feedback </returns> 
-        public static FeedbackResource Create(string pathMessageSid, 
-                                              string pathAccountSid = null, 
-                                              FeedbackResource.OutcomeEnum outcome = null, 
+        /// <returns> A single instance of Feedback </returns>
+        public static FeedbackResource Create(string pathMessageSid,
+                                              string pathAccountSid = null,
+                                              FeedbackResource.OutcomeEnum outcome = null,
                                               ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackOptions(pathMessageSid){PathAccountSid = pathAccountSid, Outcome = outcome};
@@ -99,10 +99,10 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="outcome"> Whether the feedback has arrived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Feedback </returns> 
-        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string pathMessageSid, 
-                                                                                      string pathAccountSid = null, 
-                                                                                      FeedbackResource.OutcomeEnum outcome = null, 
+        /// <returns> Task that resolves to A single instance of Feedback </returns>
+        public static async System.Threading.Tasks.Task<FeedbackResource> CreateAsync(string pathMessageSid,
+                                                                                      string pathAccountSid = null,
+                                                                                      FeedbackResource.OutcomeEnum outcome = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new CreateFeedbackOptions(pathMessageSid){PathAccountSid = pathAccountSid, Outcome = outcome};
@@ -114,7 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// Converts a JSON string into a FeedbackResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> FeedbackResource object represented by the provided JSON </returns> 
+        /// <returns> FeedbackResource object represented by the provided JSON </returns>
         public static FeedbackResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1 
+namespace Twilio.Rest.Video.V1
 {
 
     /// <summary>
     /// Returns a single Recording Instance resource identified by a RecordingSid.
     /// </summary>
-    public class FetchRecordingOptions : IOptions<RecordingResource> 
+    public class FetchRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The Recording Sid that uniquely identifies the Recording to fetch.
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// List of all Track Recordings.
     /// </summary>
-    public class ReadRecordingOptions : ReadOptions<RecordingResource> 
+    public class ReadRecordingOptions : ReadOptions<RecordingResource>
     {
         /// <summary>
         /// Only show Recordings with the given status.
@@ -127,7 +127,7 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// Delete a Recording Instance resource identified by a RecordingSid.
     /// </summary>
-    public class DeleteRecordingOptions : IOptions<RecordingResource> 
+    public class DeleteRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The Recording Sid that uniquely identifies the Recording to delete.

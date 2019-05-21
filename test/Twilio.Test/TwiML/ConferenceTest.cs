@@ -8,11 +8,11 @@ using System;
 using Twilio.Converters;
 using Twilio.TwiML.Voice;
 
-namespace Twilio.Tests.TwiML 
+namespace Twilio.Tests.TwiML
 {
 
     [TestFixture]
-    public class ConferenceTest : TwilioTest 
+    public class ConferenceTest : TwilioTest
     {
         [Test]
         public void TestEmptyElement()

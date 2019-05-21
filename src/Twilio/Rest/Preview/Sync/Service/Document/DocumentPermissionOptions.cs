@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Sync.Service.Document 
+namespace Twilio.Rest.Preview.Sync.Service.Document
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch a specific Sync Document Permission.
     /// </summary>
-    public class FetchDocumentPermissionOptions : IOptions<DocumentPermissionResource> 
+    public class FetchDocumentPermissionOptions : IOptions<DocumentPermissionResource>
     {
         /// <summary>
         /// The service_sid
@@ -58,10 +58,10 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Sync Document Permission.
     /// </summary>
-    public class DeleteDocumentPermissionOptions : IOptions<DocumentPermissionResource> 
+    public class DeleteDocumentPermissionOptions : IOptions<DocumentPermissionResource>
     {
         /// <summary>
         /// The service_sid
@@ -102,10 +102,10 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Permissions applying to a Sync Document.
     /// </summary>
-    public class ReadDocumentPermissionOptions : ReadOptions<DocumentPermissionResource> 
+    public class ReadDocumentPermissionOptions : ReadOptions<DocumentPermissionResource>
     {
         /// <summary>
         /// The service_sid
@@ -145,10 +145,10 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update an identity's access to a specific Sync Document.
     /// </summary>
-    public class UpdateDocumentPermissionOptions : IOptions<DocumentPermissionResource> 
+    public class UpdateDocumentPermissionOptions : IOptions<DocumentPermissionResource>
     {
         /// <summary>
         /// Sync Service Instance SID.
@@ -184,11 +184,11 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// <param name="read"> Read access. </param>
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
-        public UpdateDocumentPermissionOptions(string pathServiceSid, 
-                                               string pathDocumentSid, 
-                                               string pathIdentity, 
-                                               bool? read, 
-                                               bool? write, 
+        public UpdateDocumentPermissionOptions(string pathServiceSid,
+                                               string pathDocumentSid,
+                                               string pathIdentity,
+                                               bool? read,
+                                               bool? write,
                                                bool? manage)
         {
             PathServiceSid = pathServiceSid;

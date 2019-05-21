@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// UsageResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Wireless.Sim 
+namespace Twilio.Rest.Preview.Wireless.Sim
 {
 
-    public class UsageResource : Resource 
+    public class UsageResource : Resource
     {
         private static Request BuildFetchRequest(FetchUsageOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         /// </summary>
         /// <param name="options"> Fetch Usage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Usage </returns> 
+        /// <returns> A single instance of Usage </returns>
         public static UsageResource Fetch(FetchUsageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         /// </summary>
         /// <param name="options"> Fetch Usage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Usage </returns> 
-        public static async System.Threading.Tasks.Task<UsageResource> FetchAsync(FetchUsageOptions options, 
+        /// <returns> Task that resolves to A single instance of Usage </returns>
+        public static async System.Threading.Tasks.Task<UsageResource> FetchAsync(FetchUsageOptions options,
                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -70,10 +70,10 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         /// <param name="end"> The end </param>
         /// <param name="start"> The start </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Usage </returns> 
-        public static UsageResource Fetch(string pathSimSid, 
-                                          string end = null, 
-                                          string start = null, 
+        /// <returns> A single instance of Usage </returns>
+        public static UsageResource Fetch(string pathSimSid,
+                                          string end = null,
+                                          string start = null,
                                           ITwilioRestClient client = null)
         {
             var options = new FetchUsageOptions(pathSimSid){End = end, Start = start};
@@ -88,10 +88,10 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         /// <param name="end"> The end </param>
         /// <param name="start"> The start </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Usage </returns> 
-        public static async System.Threading.Tasks.Task<UsageResource> FetchAsync(string pathSimSid, 
-                                                                                  string end = null, 
-                                                                                  string start = null, 
+        /// <returns> Task that resolves to A single instance of Usage </returns>
+        public static async System.Threading.Tasks.Task<UsageResource> FetchAsync(string pathSimSid,
+                                                                                  string end = null,
+                                                                                  string start = null,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new FetchUsageOptions(pathSimSid){End = end, Start = start};
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Preview.Wireless.Sim
         /// Converts a JSON string into a UsageResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> UsageResource object represented by the provided JSON </returns> 
+        /// <returns> UsageResource object represented by the provided JSON </returns>
         public static UsageResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -10,13 +10,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Queue TwiML Noun
     /// </summary>
-    public class Queue : TwiML 
+    public class Queue : TwiML
     {
         /// <summary>
         /// Queue name
@@ -47,10 +47,10 @@ namespace Twilio.TwiML.Voice
         /// <param name="method"> Action URL method </param>
         /// <param name="reservationSid"> TaskRouter Reservation SID </param>
         /// <param name="postWorkActivitySid"> TaskRouter Activity SID </param>
-        public Queue(string name = null, 
-                     Uri url = null, 
-                     Twilio.Http.HttpMethod method = null, 
-                     string reservationSid = null, 
+        public Queue(string name = null,
+                     Uri url = null,
+                     Twilio.Http.HttpMethod method = null,
+                     string reservationSid = null,
                      string postWorkActivitySid = null) : base("Queue")
         {
             this.Name = name;

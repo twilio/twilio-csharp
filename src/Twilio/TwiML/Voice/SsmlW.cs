@@ -8,13 +8,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Improving Pronunciation by Specifying Parts of Speech in Say
     /// </summary>
-    public class SsmlW : TwiML 
+    public class SsmlW : TwiML
     {
         /// <summary>
         /// Words to speak

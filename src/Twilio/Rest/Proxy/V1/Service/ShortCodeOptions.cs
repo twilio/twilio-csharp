@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Proxy.V1.Service 
+namespace Twilio.Rest.Proxy.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Add a Short Code to the Proxy Number Pool for the Service.
     /// </summary>
-    public class CreateShortCodeOptions : IOptions<ShortCodeResource> 
+    public class CreateShortCodeOptions : IOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the parent Service resource
@@ -55,10 +55,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific Short Code from a Service.
     /// </summary>
-    public class DeleteShortCodeOptions : IOptions<ShortCodeResource> 
+    public class DeleteShortCodeOptions : IOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the parent Service to delete the ShortCode resource from
@@ -92,10 +92,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
     /// </summary>
-    public class ReadShortCodeOptions : ReadOptions<ShortCodeResource> 
+    public class ReadShortCodeOptions : ReadOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the parent Service to read the resource from
@@ -128,10 +128,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch a specific Short Code.
     /// </summary>
-    public class FetchShortCodeOptions : IOptions<ShortCodeResource> 
+    public class FetchShortCodeOptions : IOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the parent Service to fetch the resource from
@@ -165,10 +165,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Update a specific Short Code.
     /// </summary>
-    public class UpdateShortCodeOptions : IOptions<ShortCodeResource> 
+    public class UpdateShortCodeOptions : IOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the Service to update the resource from

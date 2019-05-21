@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Fax.V1.Fax;
 
-namespace Twilio.Tests.Rest.Fax.V1.Fax 
+namespace Twilio.Tests.Rest.Fax.V1.Fax
 {
 
     [TestFixture]
-    public class FaxMediaTest : TwilioTest 
+    public class FaxMediaTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Trunking.V1 
+namespace Twilio.Rest.Trunking.V1
 {
 
     /// <summary>
     /// FetchTrunkOptions
     /// </summary>
-    public class FetchTrunkOptions : IOptions<TrunkResource> 
+    public class FetchTrunkOptions : IOptions<TrunkResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Trunking.V1
     /// <summary>
     /// DeleteTrunkOptions
     /// </summary>
-    public class DeleteTrunkOptions : IOptions<TrunkResource> 
+    public class DeleteTrunkOptions : IOptions<TrunkResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Trunking.V1
     /// <summary>
     /// CreateTrunkOptions
     /// </summary>
-    public class CreateTrunkOptions : IOptions<TrunkResource> 
+    public class CreateTrunkOptions : IOptions<TrunkResource>
     {
         /// <summary>
         /// A string to describe the resource
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Trunking.V1
     /// <summary>
     /// ReadTrunkOptions
     /// </summary>
-    public class ReadTrunkOptions : ReadOptions<TrunkResource> 
+    public class ReadTrunkOptions : ReadOptions<TrunkResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Trunking.V1
     /// <summary>
     /// UpdateTrunkOptions
     /// </summary>
-    public class UpdateTrunkOptions : IOptions<TrunkResource> 
+    public class UpdateTrunkOptions : IOptions<TrunkResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

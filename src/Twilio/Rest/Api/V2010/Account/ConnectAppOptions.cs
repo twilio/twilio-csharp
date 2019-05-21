@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Fetch an instance of a connect-app
     /// </summary>
-    public class FetchConnectAppOptions : IOptions<ConnectAppResource> 
+    public class FetchConnectAppOptions : IOptions<ConnectAppResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Update a connect-app with the specified parameters
     /// </summary>
-    public class UpdateConnectAppOptions : IOptions<ConnectAppResource> 
+    public class UpdateConnectAppOptions : IOptions<ConnectAppResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to update
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of connect-apps belonging to the account used to make the request
     /// </summary>
-    public class ReadConnectAppOptions : ReadOptions<ConnectAppResource> 
+    public class ReadConnectAppOptions : ReadOptions<ConnectAppResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Delete an instance of a connect-app
     /// </summary>
-    public class DeleteConnectAppOptions : IOptions<ConnectAppResource> 
+    public class DeleteConnectAppOptions : IOptions<ConnectAppResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch

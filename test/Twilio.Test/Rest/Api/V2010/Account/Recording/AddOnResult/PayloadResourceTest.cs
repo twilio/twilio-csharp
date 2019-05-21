@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Recording.AddOnResult;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult 
+namespace Twilio.Tests.Rest.Api.V2010.Account.Recording.AddOnResult
 {
 
     [TestFixture]
-    public class PayloadTest : TwilioTest 
+    public class PayloadTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

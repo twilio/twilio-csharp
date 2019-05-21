@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant.Task 
+namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Returns JSON actions for the Task.
     /// </summary>
-    public class FetchTaskActionsOptions : IOptions<TaskActionsResource> 
+    public class FetchTaskActionsOptions : IOptions<TaskActionsResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task for which the task actions to fetch were defined
@@ -53,10 +53,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Updates the actions of an Task identified by {TaskSid} or {TaskUniqueName}.
     /// </summary>
-    public class UpdateTaskActionsOptions : IOptions<TaskActionsResource> 
+    public class UpdateTaskActionsOptions : IOptions<TaskActionsResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task for which the task actions to update were defined

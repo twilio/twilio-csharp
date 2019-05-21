@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Call 
+namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
     /// FetchNotificationOptions
     /// </summary>
-    public class FetchNotificationOptions : IOptions<NotificationResource> 
+    public class FetchNotificationOptions : IOptions<NotificationResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// <summary>
     /// DeleteNotificationOptions
     /// </summary>
-    public class DeleteNotificationOptions : IOptions<NotificationResource> 
+    public class DeleteNotificationOptions : IOptions<NotificationResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// <summary>
     /// ReadNotificationOptions
     /// </summary>
-    public class ReadNotificationOptions : ReadOptions<NotificationResource> 
+    public class ReadNotificationOptions : ReadOptions<NotificationResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

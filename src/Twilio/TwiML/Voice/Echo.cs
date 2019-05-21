@@ -7,13 +7,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Echo TwiML Verb
     /// </summary>
-    public class Echo : TwiML 
+    public class Echo : TwiML
     {
         /// <summary>
         /// Create a new Echo

@@ -16,10 +16,10 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class TokenResource : Resource 
+    public class TokenResource : Resource
     {
         private static Request BuildCreateRequest(CreateTokenOptions options, ITwilioRestClient client)
         {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Create Token parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Token </returns> 
+        /// <returns> A single instance of Token </returns>
         public static TokenResource Create(CreateTokenOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -51,8 +51,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Create Token parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Token </returns> 
-        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(CreateTokenOptions options, 
+        /// <returns> Task that resolves to A single instance of Token </returns>
+        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(CreateTokenOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Token </returns> 
+        /// <returns> A single instance of Token </returns>
         public static TokenResource Create(string pathAccountSid = null, int? ttl = null, ITwilioRestClient client = null)
         {
             var options = new CreateTokenOptions(){PathAccountSid = pathAccountSid, Ttl = ttl};
@@ -81,9 +81,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Token </returns> 
-        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(string pathAccountSid = null, 
-                                                                                   int? ttl = null, 
+        /// <returns> Task that resolves to A single instance of Token </returns>
+        public static async System.Threading.Tasks.Task<TokenResource> CreateAsync(string pathAccountSid = null,
+                                                                                   int? ttl = null,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new CreateTokenOptions(){PathAccountSid = pathAccountSid, Ttl = ttl};
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Converts a JSON string into a TokenResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> TokenResource object represented by the provided JSON </returns> 
+        /// <returns> TokenResource object represented by the provided JSON </returns>
         public static TokenResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

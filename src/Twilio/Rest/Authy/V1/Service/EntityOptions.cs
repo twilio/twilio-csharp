@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Authy.V1.Service 
+namespace Twilio.Rest.Authy.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Entity for the Service
     /// </summary>
-    public class CreateEntityOptions : IOptions<EntityResource> 
+    public class CreateEntityOptions : IOptions<EntityResource>
     {
         /// <summary>
         /// Service Sid.
@@ -57,10 +57,10 @@ namespace Twilio.Rest.Authy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Entity.
     /// </summary>
-    public class DeleteEntityOptions : IOptions<EntityResource> 
+    public class DeleteEntityOptions : IOptions<EntityResource>
     {
         /// <summary>
         /// Service Sid.
@@ -95,10 +95,10 @@ namespace Twilio.Rest.Authy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch a specific Entity.
     /// </summary>
-    public class FetchEntityOptions : IOptions<EntityResource> 
+    public class FetchEntityOptions : IOptions<EntityResource>
     {
         /// <summary>
         /// Service Sid.
@@ -133,10 +133,10 @@ namespace Twilio.Rest.Authy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Entities for a Service.
     /// </summary>
-    public class ReadEntityOptions : ReadOptions<EntityResource> 
+    public class ReadEntityOptions : ReadOptions<EntityResource>
     {
         /// <summary>
         /// Service Sid.

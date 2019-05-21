@@ -9,15 +9,15 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Specifying Another Language for Specific Words in Say
     /// </summary>
-    public class SsmlLang : TwiML 
+    public class SsmlLang : TwiML
     {
-        public sealed class XmlLangEnum : StringEnum 
+        public sealed class XmlLangEnum : StringEnum
         {
             private XmlLangEnum(string value) : base(value) {}
             public XmlLangEnum() {}

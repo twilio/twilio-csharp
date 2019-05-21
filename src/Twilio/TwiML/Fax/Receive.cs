@@ -10,13 +10,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
 
-namespace Twilio.TwiML.Fax 
+namespace Twilio.TwiML.Fax
 {
 
     /// <summary>
     /// Receive TwiML Verb
     /// </summary>
-    public class Receive : TwiML 
+    public class Receive : TwiML
     {
         /// <summary>
         /// Receive action URL

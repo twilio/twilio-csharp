@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Serverless.V1.Service.Asset 
+namespace Twilio.Rest.Serverless.V1.Service.Asset
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Asset Versions.
     /// </summary>
-    public class ReadAssetVersionOptions : ReadOptions<AssetVersionResource> 
+    public class ReadAssetVersionOptions : ReadOptions<AssetVersionResource>
     {
         /// <summary>
         /// Service Sid.
@@ -57,10 +57,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a specific Asset Version.
     /// </summary>
-    public class FetchAssetVersionOptions : IOptions<AssetVersionResource> 
+    public class FetchAssetVersionOptions : IOptions<AssetVersionResource>
     {
         /// <summary>
         /// Service Sid.
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Asset Version.
     /// </summary>
-    public class CreateAssetVersionOptions : IOptions<AssetVersionResource> 
+    public class CreateAssetVersionOptions : IOptions<AssetVersionResource>
     {
         /// <summary>
         /// Service Sid.
@@ -130,9 +130,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         /// <param name="pathAssetSid"> Asset Sid. </param>
         /// <param name="path"> The URL-friendly string by which this Asset Version can be referenced. </param>
         /// <param name="visibility"> The access control which determines how the Asset Version can be accessed. </param>
-        public CreateAssetVersionOptions(string pathServiceSid, 
-                                         string pathAssetSid, 
-                                         string path, 
+        public CreateAssetVersionOptions(string pathServiceSid,
+                                         string pathAssetSid,
+                                         string path,
                                          AssetVersionResource.VisibilityEnum visibility)
         {
             PathServiceSid = pathServiceSid;

@@ -9,15 +9,15 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Emphasizing Words in Say
     /// </summary>
-    public class SsmlEmphasis : TwiML 
+    public class SsmlEmphasis : TwiML
     {
-        public sealed class LevelEnum : StringEnum 
+        public sealed class LevelEnum : StringEnum
         {
             private LevelEnum(string value) : base(value) {}
             public LevelEnum() {}

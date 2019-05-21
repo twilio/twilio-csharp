@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Sync.Service 
+namespace Twilio.Rest.Preview.Sync.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchSyncListOptions
     /// </summary>
-    public class FetchSyncListOptions : IOptions<SyncListResource> 
+    public class FetchSyncListOptions : IOptions<SyncListResource>
     {
         /// <summary>
         /// The service_sid
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteSyncListOptions
     /// </summary>
-    public class DeleteSyncListOptions : IOptions<SyncListResource> 
+    public class DeleteSyncListOptions : IOptions<SyncListResource>
     {
         /// <summary>
         /// The service_sid
@@ -90,10 +90,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateSyncListOptions
     /// </summary>
-    public class CreateSyncListOptions : IOptions<SyncListResource> 
+    public class CreateSyncListOptions : IOptions<SyncListResource>
     {
         /// <summary>
         /// The service_sid
@@ -131,10 +131,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadSyncListOptions
     /// </summary>
-    public class ReadSyncListOptions : ReadOptions<SyncListResource> 
+    public class ReadSyncListOptions : ReadOptions<SyncListResource>
     {
         /// <summary>
         /// The service_sid

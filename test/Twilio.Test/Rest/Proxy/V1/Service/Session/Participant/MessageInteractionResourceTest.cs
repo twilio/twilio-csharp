@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Proxy.V1.Service.Session.Participant;
 
-namespace Twilio.Tests.Rest.Proxy.V1.Service.Session.Participant 
+namespace Twilio.Tests.Rest.Proxy.V1.Service.Session.Participant
 {
 
     [TestFixture]
-    public class MessageInteractionTest : TwilioTest 
+    public class MessageInteractionTest : TwilioTest
     {
         [Test]
         public void TestCreateRequest()

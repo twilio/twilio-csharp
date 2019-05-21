@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// FieldValueResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType 
+namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
 {
 
-    public class FieldValueResource : Resource 
+    public class FieldValueResource : Resource
     {
         private static Request BuildFetchRequest(FetchFieldValueOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="options"> Fetch FieldValue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FieldValue </returns> 
+        /// <returns> A single instance of FieldValue </returns>
         public static FieldValueResource Fetch(FetchFieldValueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="options"> Fetch FieldValue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<FieldValueResource> FetchAsync(FetchFieldValueOptions options, 
+        /// <returns> Task that resolves to A single instance of FieldValue </returns>
+        public static async System.Threading.Tasks.Task<FieldValueResource> FetchAsync(FetchFieldValueOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -71,10 +71,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with  the Field Value to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FieldValue </returns> 
-        public static FieldValueResource Fetch(string pathAssistantSid, 
-                                               string pathFieldTypeSid, 
-                                               string pathSid, 
+        /// <returns> A single instance of FieldValue </returns>
+        public static FieldValueResource Fetch(string pathAssistantSid,
+                                               string pathFieldTypeSid,
+                                               string pathSid,
                                                ITwilioRestClient client = null)
         {
             var options = new FetchFieldValueOptions(pathAssistantSid, pathFieldTypeSid, pathSid);
@@ -90,10 +90,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with  the Field Value to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<FieldValueResource> FetchAsync(string pathAssistantSid, 
-                                                                                       string pathFieldTypeSid, 
-                                                                                       string pathSid, 
+        /// <returns> Task that resolves to A single instance of FieldValue </returns>
+        public static async System.Threading.Tasks.Task<FieldValueResource> FetchAsync(string pathAssistantSid,
+                                                                                       string pathFieldTypeSid,
+                                                                                       string pathSid,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchFieldValueOptions(pathAssistantSid, pathFieldTypeSid, pathSid);
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="options"> Read FieldValue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FieldValue </returns> 
+        /// <returns> A single instance of FieldValue </returns>
         public static ResourceSet<FieldValueResource> Read(ReadFieldValueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -133,8 +133,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="options"> Read FieldValue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FieldValueResource>> ReadAsync(ReadFieldValueOptions options, 
+        /// <returns> Task that resolves to A single instance of FieldValue </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FieldValueResource>> ReadAsync(ReadFieldValueOptions options,
                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -155,12 +155,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FieldValue </returns> 
-        public static ResourceSet<FieldValueResource> Read(string pathAssistantSid, 
-                                                           string pathFieldTypeSid, 
-                                                           string language = null, 
-                                                           int? pageSize = null, 
-                                                           long? limit = null, 
+        /// <returns> A single instance of FieldValue </returns>
+        public static ResourceSet<FieldValueResource> Read(string pathAssistantSid,
+                                                           string pathFieldTypeSid,
+                                                           string language = null,
+                                                           int? pageSize = null,
+                                                           long? limit = null,
                                                            ITwilioRestClient client = null)
         {
             var options = new ReadFieldValueOptions(pathAssistantSid, pathFieldTypeSid){Language = language, PageSize = pageSize, Limit = limit};
@@ -178,12 +178,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FieldValueResource>> ReadAsync(string pathAssistantSid, 
-                                                                                                   string pathFieldTypeSid, 
-                                                                                                   string language = null, 
-                                                                                                   int? pageSize = null, 
-                                                                                                   long? limit = null, 
+        /// <returns> Task that resolves to A single instance of FieldValue </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FieldValueResource>> ReadAsync(string pathAssistantSid,
+                                                                                                   string pathFieldTypeSid,
+                                                                                                   string language = null,
+                                                                                                   int? pageSize = null,
+                                                                                                   long? limit = null,
                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadFieldValueOptions(pathAssistantSid, pathFieldTypeSid){Language = language, PageSize = pageSize, Limit = limit};
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<FieldValueResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -215,7 +215,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<FieldValueResource> NextPage(Page<FieldValueResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -235,7 +235,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<FieldValueResource> PreviousPage(Page<FieldValueResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="options"> Create FieldValue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FieldValue </returns> 
+        /// <returns> A single instance of FieldValue </returns>
         public static FieldValueResource Create(CreateFieldValueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -280,8 +280,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="options"> Create FieldValue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<FieldValueResource> CreateAsync(CreateFieldValueOptions options, 
+        /// <returns> Task that resolves to A single instance of FieldValue </returns>
+        public static async System.Threading.Tasks.Task<FieldValueResource> CreateAsync(CreateFieldValueOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -300,12 +300,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <param name="value"> The Field Value data </param>
         /// <param name="synonymOf"> The string value that indicates which word the field value is a synonym of </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FieldValue </returns> 
-        public static FieldValueResource Create(string pathAssistantSid, 
-                                                string pathFieldTypeSid, 
-                                                string language, 
-                                                string value, 
-                                                string synonymOf = null, 
+        /// <returns> A single instance of FieldValue </returns>
+        public static FieldValueResource Create(string pathAssistantSid,
+                                                string pathFieldTypeSid,
+                                                string language,
+                                                string value,
+                                                string synonymOf = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new CreateFieldValueOptions(pathAssistantSid, pathFieldTypeSid, language, value){SynonymOf = synonymOf};
@@ -323,12 +323,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <param name="value"> The Field Value data </param>
         /// <param name="synonymOf"> The string value that indicates which word the field value is a synonym of </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<FieldValueResource> CreateAsync(string pathAssistantSid, 
-                                                                                        string pathFieldTypeSid, 
-                                                                                        string language, 
-                                                                                        string value, 
-                                                                                        string synonymOf = null, 
+        /// <returns> Task that resolves to A single instance of FieldValue </returns>
+        public static async System.Threading.Tasks.Task<FieldValueResource> CreateAsync(string pathAssistantSid,
+                                                                                        string pathFieldTypeSid,
+                                                                                        string language,
+                                                                                        string value,
+                                                                                        string synonymOf = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new CreateFieldValueOptions(pathAssistantSid, pathFieldTypeSid, language, value){SynonymOf = synonymOf};
@@ -352,7 +352,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="options"> Delete FieldValue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FieldValue </returns> 
+        /// <returns> A single instance of FieldValue </returns>
         public static bool Delete(DeleteFieldValueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -366,8 +366,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// </summary>
         /// <param name="options"> Delete FieldValue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFieldValueOptions options, 
+        /// <returns> Task that resolves to A single instance of FieldValue </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFieldValueOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -384,10 +384,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with the Field Value to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FieldValue </returns> 
-        public static bool Delete(string pathAssistantSid, 
-                                  string pathFieldTypeSid, 
-                                  string pathSid, 
+        /// <returns> A single instance of FieldValue </returns>
+        public static bool Delete(string pathAssistantSid,
+                                  string pathFieldTypeSid,
+                                  string pathSid,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteFieldValueOptions(pathAssistantSid, pathFieldTypeSid, pathSid);
@@ -403,10 +403,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// <param name="pathFieldTypeSid"> The SID of the Field Type associated with the Field Value to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FieldValue </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
-                                                                          string pathFieldTypeSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of FieldValue </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid,
+                                                                          string pathFieldTypeSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteFieldValueOptions(pathAssistantSid, pathFieldTypeSid, pathSid);
@@ -418,7 +418,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
         /// Converts a JSON string into a FieldValueResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> FieldValueResource object represented by the provided JSON </returns> 
+        /// <returns> FieldValueResource object represented by the provided JSON </returns>
         public static FieldValueResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
+namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch an instance of an Add-on installation currently assigned to this Number.
     /// </summary>
-    public class FetchAssignedAddOnOptions : IOptions<AssignedAddOnResource> 
+    public class FetchAssignedAddOnOptions : IOptions<AssignedAddOnResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -54,10 +54,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of Add-on installations currently assigned to this Number.
     /// </summary>
-    public class ReadAssignedAddOnOptions : ReadOptions<AssignedAddOnResource> 
+    public class ReadAssignedAddOnOptions : ReadOptions<AssignedAddOnResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -94,10 +94,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Assign an Add-on installation to the Number specified.
     /// </summary>
-    public class CreateAssignedAddOnOptions : IOptions<AssignedAddOnResource> 
+    public class CreateAssignedAddOnOptions : IOptions<AssignedAddOnResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -140,10 +140,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Remove the assignment of an Add-on installation from the Number specified.
     /// </summary>
-    public class DeleteAssignedAddOnOptions : IOptions<AssignedAddOnResource> 
+    public class DeleteAssignedAddOnOptions : IOptions<AssignedAddOnResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete

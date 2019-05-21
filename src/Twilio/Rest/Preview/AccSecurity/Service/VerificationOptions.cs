@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.AccSecurity.Service 
+namespace Twilio.Rest.Preview.AccSecurity.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Verification for a To number using a Service
     /// </summary>
-    public class CreateVerificationOptions : IOptions<VerificationResource> 
+    public class CreateVerificationOptions : IOptions<VerificationResource>
     {
         /// <summary>
         /// Service Sid.

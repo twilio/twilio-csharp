@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Pricing.V2.Voice 
+namespace Twilio.Rest.Pricing.V2.Voice
 {
 
     /// <summary>
     /// ReadCountryOptions
     /// </summary>
-    public class ReadCountryOptions : ReadOptions<CountryResource> 
+    public class ReadCountryOptions : ReadOptions<CountryResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
     /// <summary>
     /// Fetch a specific Country.
     /// </summary>
-    public class FetchCountryOptions : IOptions<CountryResource> 
+    public class FetchCountryOptions : IOptions<CountryResource>
     {
         /// <summary>
         /// The ISO country code of the pricing information to fetch

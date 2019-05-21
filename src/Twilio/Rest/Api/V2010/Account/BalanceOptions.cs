@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Fetch the balance for an Account based on Account Sid. Balance changes may not be reflected immediately. Child
     /// accounts do not contain balance information
     /// </summary>
-    public class FetchBalanceOptions : IOptions<BalanceResource> 
+    public class FetchBalanceOptions : IOptions<BalanceResource>
     {
         /// <summary>
         /// Account Sid.

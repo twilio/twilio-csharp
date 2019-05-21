@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Trunking.V1.Trunk 
+namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
     /// <summary>
     /// FetchCredentialListOptions
     /// </summary>
-    public class FetchCredentialListOptions : IOptions<CredentialListResource> 
+    public class FetchCredentialListOptions : IOptions<CredentialListResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to fetch the credential list
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// DeleteCredentialListOptions
     /// </summary>
-    public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
+    public class DeleteCredentialListOptions : IOptions<CredentialListResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to delete the credential list
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// CreateCredentialListOptions
     /// </summary>
-    public class CreateCredentialListOptions : IOptions<CredentialListResource> 
+    public class CreateCredentialListOptions : IOptions<CredentialListResource>
     {
         /// <summary>
         /// The SID of the Trunk to associate the credential list with
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// ReadCredentialListOptions
     /// </summary>
-    public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
+    public class ReadCredentialListOptions : ReadOptions<CredentialListResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to read the credential lists

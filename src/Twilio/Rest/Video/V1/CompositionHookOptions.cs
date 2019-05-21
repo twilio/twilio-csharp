@@ -9,16 +9,16 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1 
+namespace Twilio.Rest.Video.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Returns a single Composition Hook Instance resource identified by a CompositionHookSid.
     /// </summary>
-    public class FetchCompositionHookOptions : IOptions<CompositionHookResource> 
+    public class FetchCompositionHookOptions : IOptions<CompositionHookResource>
     {
         /// <summary>
         /// The Composition Hook Sid that uniquely identifies the Composition Hook to fetch.
@@ -47,10 +47,10 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// List of all Recording Composition Hooks.
     /// </summary>
-    public class ReadCompositionHookOptions : ReadOptions<CompositionHookResource> 
+    public class ReadCompositionHookOptions : ReadOptions<CompositionHookResource>
     {
         /// <summary>
         /// Only show Composition Hooks enabled or disabled.
@@ -107,10 +107,10 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a Recording Composition Hook Instance resource identified by a `CompositionHookSid`.
     /// </summary>
-    public class DeleteCompositionHookOptions : IOptions<CompositionHookResource> 
+    public class DeleteCompositionHookOptions : IOptions<CompositionHookResource>
     {
         /// <summary>
         /// The Recording Composition Hook Sid that uniquely identifies the Recording Composition Hook to delete.
@@ -140,10 +140,10 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateCompositionHookOptions
     /// </summary>
-    public class CreateCompositionHookOptions : IOptions<CompositionHookResource> 
+    public class CreateCompositionHookOptions : IOptions<CompositionHookResource>
     {
         /// <summary>
         /// Friendly name of the Composition Hook to be shown in the console.
@@ -260,10 +260,10 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateCompositionHookOptions
     /// </summary>
-    public class UpdateCompositionHookOptions : IOptions<CompositionHookResource> 
+    public class UpdateCompositionHookOptions : IOptions<CompositionHookResource>
     {
         /// <summary>
         /// A 34-character string that uniquely identifies the Composition Hook to update, specified as a path parameter.

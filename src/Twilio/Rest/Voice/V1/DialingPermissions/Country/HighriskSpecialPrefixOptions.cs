@@ -8,17 +8,17 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Voice.V1.DialingPermissions.Country 
+namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
     /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
     /// </summary>
-    public class ReadHighriskSpecialPrefixOptions : ReadOptions<HighriskSpecialPrefixResource> 
+    public class ReadHighriskSpecialPrefixOptions : ReadOptions<HighriskSpecialPrefixResource>
     {
         /// <summary>
         /// The ISO 3166-1 country code

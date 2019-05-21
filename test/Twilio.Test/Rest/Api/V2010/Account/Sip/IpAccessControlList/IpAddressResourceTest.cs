@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.IpAccessControlList 
+namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.IpAccessControlList
 {
 
     [TestFixture]
-    public class IpAddressTest : TwilioTest 
+    public class IpAddressTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

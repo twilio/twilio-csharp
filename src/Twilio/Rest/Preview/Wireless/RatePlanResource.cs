@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// RatePlanResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Wireless 
+namespace Twilio.Rest.Preview.Wireless
 {
 
-    public class RatePlanResource : Resource 
+    public class RatePlanResource : Resource
     {
         private static Request BuildReadRequest(ReadRatePlanOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Read RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
+        /// <returns> A single instance of RatePlan </returns>
         public static ResourceSet<RatePlanResource> Read(ReadRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -55,8 +55,8 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Read RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RatePlanResource>> ReadAsync(ReadRatePlanOptions options, 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<RatePlanResource>> ReadAsync(ReadRatePlanOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -73,9 +73,9 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
-        public static ResourceSet<RatePlanResource> Read(int? pageSize = null, 
-                                                         long? limit = null, 
+        /// <returns> A single instance of RatePlan </returns>
+        public static ResourceSet<RatePlanResource> Read(int? pageSize = null,
+                                                         long? limit = null,
                                                          ITwilioRestClient client = null)
         {
             var options = new ReadRatePlanOptions(){PageSize = pageSize, Limit = limit};
@@ -89,9 +89,9 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RatePlanResource>> ReadAsync(int? pageSize = null, 
-                                                                                                 long? limit = null, 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<RatePlanResource>> ReadAsync(int? pageSize = null,
+                                                                                                 long? limit = null,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadRatePlanOptions(){PageSize = pageSize, Limit = limit};
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<RatePlanResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<RatePlanResource> NextPage(Page<RatePlanResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<RatePlanResource> PreviousPage(Page<RatePlanResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Fetch RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
+        /// <returns> A single instance of RatePlan </returns>
         public static RatePlanResource Fetch(FetchRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -188,8 +188,8 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Fetch RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<RatePlanResource> FetchAsync(FetchRatePlanOptions options, 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
+        public static async System.Threading.Tasks.Task<RatePlanResource> FetchAsync(FetchRatePlanOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
+        /// <returns> A single instance of RatePlan </returns>
         public static RatePlanResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchRatePlanOptions(pathSid);
@@ -216,8 +216,8 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<RatePlanResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
+        public static async System.Threading.Tasks.Task<RatePlanResource> FetchAsync(string pathSid,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchRatePlanOptions(pathSid);
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Create RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
+        /// <returns> A single instance of RatePlan </returns>
         public static RatePlanResource Create(CreateRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -255,8 +255,8 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Create RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(CreateRatePlanOptions options, 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
+        public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(CreateRatePlanOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -279,17 +279,17 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="nationalRoamingEnabled"> The national_roaming_enabled </param>
         /// <param name="internationalRoaming"> The international_roaming </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
-        public static RatePlanResource Create(string uniqueName = null, 
-                                              string friendlyName = null, 
-                                              bool? dataEnabled = null, 
-                                              int? dataLimit = null, 
-                                              string dataMetering = null, 
-                                              bool? messagingEnabled = null, 
-                                              bool? voiceEnabled = null, 
-                                              bool? commandsEnabled = null, 
-                                              bool? nationalRoamingEnabled = null, 
-                                              List<string> internationalRoaming = null, 
+        /// <returns> A single instance of RatePlan </returns>
+        public static RatePlanResource Create(string uniqueName = null,
+                                              string friendlyName = null,
+                                              bool? dataEnabled = null,
+                                              int? dataLimit = null,
+                                              string dataMetering = null,
+                                              bool? messagingEnabled = null,
+                                              bool? voiceEnabled = null,
+                                              bool? commandsEnabled = null,
+                                              bool? nationalRoamingEnabled = null,
+                                              List<string> internationalRoaming = null,
                                               ITwilioRestClient client = null)
         {
             var options = new CreateRatePlanOptions(){UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, CommandsEnabled = commandsEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming};
@@ -311,17 +311,17 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="nationalRoamingEnabled"> The national_roaming_enabled </param>
         /// <param name="internationalRoaming"> The international_roaming </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(string uniqueName = null, 
-                                                                                      string friendlyName = null, 
-                                                                                      bool? dataEnabled = null, 
-                                                                                      int? dataLimit = null, 
-                                                                                      string dataMetering = null, 
-                                                                                      bool? messagingEnabled = null, 
-                                                                                      bool? voiceEnabled = null, 
-                                                                                      bool? commandsEnabled = null, 
-                                                                                      bool? nationalRoamingEnabled = null, 
-                                                                                      List<string> internationalRoaming = null, 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
+        public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(string uniqueName = null,
+                                                                                      string friendlyName = null,
+                                                                                      bool? dataEnabled = null,
+                                                                                      int? dataLimit = null,
+                                                                                      string dataMetering = null,
+                                                                                      bool? messagingEnabled = null,
+                                                                                      bool? voiceEnabled = null,
+                                                                                      bool? commandsEnabled = null,
+                                                                                      bool? nationalRoamingEnabled = null,
+                                                                                      List<string> internationalRoaming = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new CreateRatePlanOptions(){UniqueName = uniqueName, FriendlyName = friendlyName, DataEnabled = dataEnabled, DataLimit = dataLimit, DataMetering = dataMetering, MessagingEnabled = messagingEnabled, VoiceEnabled = voiceEnabled, CommandsEnabled = commandsEnabled, NationalRoamingEnabled = nationalRoamingEnabled, InternationalRoaming = internationalRoaming};
@@ -345,7 +345,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Update RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
+        /// <returns> A single instance of RatePlan </returns>
         public static RatePlanResource Update(UpdateRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -359,8 +359,8 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Update RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<RatePlanResource> UpdateAsync(UpdateRatePlanOptions options, 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
+        public static async System.Threading.Tasks.Task<RatePlanResource> UpdateAsync(UpdateRatePlanOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -376,10 +376,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
-        public static RatePlanResource Update(string pathSid, 
-                                              string uniqueName = null, 
-                                              string friendlyName = null, 
+        /// <returns> A single instance of RatePlan </returns>
+        public static RatePlanResource Update(string pathSid,
+                                              string uniqueName = null,
+                                              string friendlyName = null,
                                               ITwilioRestClient client = null)
         {
             var options = new UpdateRatePlanOptions(pathSid){UniqueName = uniqueName, FriendlyName = friendlyName};
@@ -394,10 +394,10 @@ namespace Twilio.Rest.Preview.Wireless
         /// <param name="uniqueName"> The unique_name </param>
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<RatePlanResource> UpdateAsync(string pathSid, 
-                                                                                      string uniqueName = null, 
-                                                                                      string friendlyName = null, 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
+        public static async System.Threading.Tasks.Task<RatePlanResource> UpdateAsync(string pathSid,
+                                                                                      string uniqueName = null,
+                                                                                      string friendlyName = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateRatePlanOptions(pathSid){UniqueName = uniqueName, FriendlyName = friendlyName};
@@ -421,7 +421,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Delete RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
+        /// <returns> A single instance of RatePlan </returns>
         public static bool Delete(DeleteRatePlanOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -435,8 +435,8 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="options"> Delete RatePlan parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRatePlanOptions options, 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRatePlanOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -450,7 +450,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of RatePlan </returns> 
+        /// <returns> A single instance of RatePlan </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteRatePlanOptions(pathSid);
@@ -463,7 +463,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of RatePlan </returns> 
+        /// <returns> Task that resolves to A single instance of RatePlan </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteRatePlanOptions(pathSid);
@@ -475,7 +475,7 @@ namespace Twilio.Rest.Preview.Wireless
         /// Converts a JSON string into a RatePlanResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> RatePlanResource object represented by the provided JSON </returns> 
+        /// <returns> RatePlanResource object represented by the provided JSON </returns>
         public static RatePlanResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

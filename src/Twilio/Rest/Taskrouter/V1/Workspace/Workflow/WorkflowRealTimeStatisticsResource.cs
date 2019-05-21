@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow 
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
 {
 
-    public class WorkflowRealTimeStatisticsResource : Resource 
+    public class WorkflowRealTimeStatisticsResource : Resource
     {
         private static Request BuildFetchRequest(FetchWorkflowRealTimeStatisticsOptions options, ITwilioRestClient client)
         {
@@ -36,8 +36,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// </summary>
         /// <param name="options"> Fetch WorkflowRealTimeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkflowRealTimeStatistics </returns> 
-        public static WorkflowRealTimeStatisticsResource Fetch(FetchWorkflowRealTimeStatisticsOptions options, 
+        /// <returns> A single instance of WorkflowRealTimeStatistics </returns>
+        public static WorkflowRealTimeStatisticsResource Fetch(FetchWorkflowRealTimeStatisticsOptions options,
                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -51,8 +51,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// </summary>
         /// <param name="options"> Fetch WorkflowRealTimeStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkflowRealTimeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowRealTimeStatisticsResource> FetchAsync(FetchWorkflowRealTimeStatisticsOptions options, 
+        /// <returns> Task that resolves to A single instance of WorkflowRealTimeStatistics </returns>
+        public static async System.Threading.Tasks.Task<WorkflowRealTimeStatisticsResource> FetchAsync(FetchWorkflowRealTimeStatisticsOptions options,
                                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,10 +68,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <param name="pathWorkflowSid"> The workflow_sid </param>
         /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of WorkflowRealTimeStatistics </returns> 
-        public static WorkflowRealTimeStatisticsResource Fetch(string pathWorkspaceSid, 
-                                                               string pathWorkflowSid, 
-                                                               string taskChannel = null, 
+        /// <returns> A single instance of WorkflowRealTimeStatistics </returns>
+        public static WorkflowRealTimeStatisticsResource Fetch(string pathWorkspaceSid,
+                                                               string pathWorkflowSid,
+                                                               string taskChannel = null,
                                                                ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowRealTimeStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){TaskChannel = taskChannel};
@@ -86,10 +86,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <param name="pathWorkflowSid"> The workflow_sid </param>
         /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of WorkflowRealTimeStatistics </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid, 
-                                                                                                       string pathWorkflowSid, 
-                                                                                                       string taskChannel = null, 
+        /// <returns> Task that resolves to A single instance of WorkflowRealTimeStatistics </returns>
+        public static async System.Threading.Tasks.Task<WorkflowRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid,
+                                                                                                       string pathWorkflowSid,
+                                                                                                       string taskChannel = null,
                                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowRealTimeStatisticsOptions(pathWorkspaceSid, pathWorkflowSid){TaskChannel = taskChannel};
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// Converts a JSON string into a WorkflowRealTimeStatisticsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> WorkflowRealTimeStatisticsResource object represented by the provided JSON </returns> 
+        /// <returns> WorkflowRealTimeStatisticsResource object represented by the provided JSON </returns>
         public static WorkflowRealTimeStatisticsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

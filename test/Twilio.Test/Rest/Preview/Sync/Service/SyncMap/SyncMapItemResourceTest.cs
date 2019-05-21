@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.Sync.Service.SyncMap;
 
-namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap 
+namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncMap
 {
 
     [TestFixture]
-    public class SyncMapItemTest : TwilioTest 
+    public class SyncMapItemTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

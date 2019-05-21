@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// DialogueResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant 
+namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
-    public class DialogueResource : Resource 
+    public class DialogueResource : Resource
     {
         private static Request BuildFetchRequest(FetchDialogueOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Fetch Dialogue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Dialogue </returns> 
+        /// <returns> A single instance of Dialogue </returns>
         public static DialogueResource Fetch(FetchDialogueOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         /// <param name="options"> Fetch Dialogue parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Dialogue </returns> 
-        public static async System.Threading.Tasks.Task<DialogueResource> FetchAsync(FetchDialogueOptions options, 
+        /// <returns> Task that resolves to A single instance of Dialogue </returns>
+        public static async System.Threading.Tasks.Task<DialogueResource> FetchAsync(FetchDialogueOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Dialogue </returns> 
+        /// <returns> A single instance of Dialogue </returns>
         public static DialogueResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchDialogueOptions(pathAssistantSid, pathSid);
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Dialogue </returns> 
-        public static async System.Threading.Tasks.Task<DialogueResource> FetchAsync(string pathAssistantSid, 
-                                                                                     string pathSid, 
+        /// <returns> Task that resolves to A single instance of Dialogue </returns>
+        public static async System.Threading.Tasks.Task<DialogueResource> FetchAsync(string pathAssistantSid,
+                                                                                     string pathSid,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchDialogueOptions(pathAssistantSid, pathSid);
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// Converts a JSON string into a DialogueResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> DialogueResource object represented by the provided JSON </returns> 
+        /// <returns> DialogueResource object represented by the provided JSON </returns>
         public static DialogueResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// TaskStatisticsResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant.Task 
+namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 {
 
-    public class TaskStatisticsResource : Resource 
+    public class TaskStatisticsResource : Resource
     {
         private static Request BuildFetchRequest(FetchTaskStatisticsOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// </summary>
         /// <param name="options"> Fetch TaskStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskStatistics </returns> 
+        /// <returns> A single instance of TaskStatistics </returns>
         public static TaskStatisticsResource Fetch(FetchTaskStatisticsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// </summary>
         /// <param name="options"> Fetch TaskStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskStatistics </returns> 
-        public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(FetchTaskStatisticsOptions options, 
+        /// <returns> Task that resolves to A single instance of TaskStatistics </returns>
+        public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(FetchTaskStatisticsOptions options,
                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,9 +69,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="pathTaskSid"> The SID of the Task that is associated with the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskStatistics </returns> 
-        public static TaskStatisticsResource Fetch(string pathAssistantSid, 
-                                                   string pathTaskSid, 
+        /// <returns> A single instance of TaskStatistics </returns>
+        public static TaskStatisticsResource Fetch(string pathAssistantSid,
+                                                   string pathTaskSid,
                                                    ITwilioRestClient client = null)
         {
             var options = new FetchTaskStatisticsOptions(pathAssistantSid, pathTaskSid);
@@ -85,9 +85,9 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// <param name="pathAssistantSid"> The SID of the Assistant that is the parent of the resource to fetch </param>
         /// <param name="pathTaskSid"> The SID of the Task that is associated with the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskStatistics </returns> 
-        public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(string pathAssistantSid, 
-                                                                                           string pathTaskSid, 
+        /// <returns> Task that resolves to A single instance of TaskStatistics </returns>
+        public static async System.Threading.Tasks.Task<TaskStatisticsResource> FetchAsync(string pathAssistantSid,
+                                                                                           string pathTaskSid,
                                                                                            ITwilioRestClient client = null)
         {
             var options = new FetchTaskStatisticsOptions(pathAssistantSid, pathTaskSid);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
         /// Converts a JSON string into a TaskStatisticsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> TaskStatisticsResource object represented by the provided JSON </returns> 
+        /// <returns> TaskStatisticsResource object represented by the provided JSON </returns>
         public static TaskStatisticsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

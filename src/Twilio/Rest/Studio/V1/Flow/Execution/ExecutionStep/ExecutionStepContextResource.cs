@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep 
+namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
 {
 
-    public class ExecutionStepContextResource : Resource 
+    public class ExecutionStepContextResource : Resource
     {
         private static Request BuildFetchRequest(FetchExecutionStepContextOptions options, ITwilioRestClient client)
         {
@@ -36,8 +36,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
         /// </summary>
         /// <param name="options"> Fetch ExecutionStepContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ExecutionStepContext </returns> 
-        public static ExecutionStepContextResource Fetch(FetchExecutionStepContextOptions options, 
+        /// <returns> A single instance of ExecutionStepContext </returns>
+        public static ExecutionStepContextResource Fetch(FetchExecutionStepContextOptions options,
                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -51,8 +51,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
         /// </summary>
         /// <param name="options"> Fetch ExecutionStepContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ExecutionStepContext </returns> 
-        public static async System.Threading.Tasks.Task<ExecutionStepContextResource> FetchAsync(FetchExecutionStepContextOptions options, 
+        /// <returns> Task that resolves to A single instance of ExecutionStepContext </returns>
+        public static async System.Threading.Tasks.Task<ExecutionStepContextResource> FetchAsync(FetchExecutionStepContextOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,10 +68,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
         /// <param name="pathExecutionSid"> Execution Sid. </param>
         /// <param name="pathStepSid"> Step Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ExecutionStepContext </returns> 
-        public static ExecutionStepContextResource Fetch(string pathFlowSid, 
-                                                         string pathExecutionSid, 
-                                                         string pathStepSid, 
+        /// <returns> A single instance of ExecutionStepContext </returns>
+        public static ExecutionStepContextResource Fetch(string pathFlowSid,
+                                                         string pathExecutionSid,
+                                                         string pathStepSid,
                                                          ITwilioRestClient client = null)
         {
             var options = new FetchExecutionStepContextOptions(pathFlowSid, pathExecutionSid, pathStepSid);
@@ -86,10 +86,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
         /// <param name="pathExecutionSid"> Execution Sid. </param>
         /// <param name="pathStepSid"> Step Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ExecutionStepContext </returns> 
-        public static async System.Threading.Tasks.Task<ExecutionStepContextResource> FetchAsync(string pathFlowSid, 
-                                                                                                 string pathExecutionSid, 
-                                                                                                 string pathStepSid, 
+        /// <returns> Task that resolves to A single instance of ExecutionStepContext </returns>
+        public static async System.Threading.Tasks.Task<ExecutionStepContextResource> FetchAsync(string pathFlowSid,
+                                                                                                 string pathExecutionSid,
+                                                                                                 string pathStepSid,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchExecutionStepContextOptions(pathFlowSid, pathExecutionSid, pathStepSid);
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
         /// Converts a JSON string into a ExecutionStepContextResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ExecutionStepContextResource object represented by the provided JSON </returns> 
+        /// <returns> ExecutionStepContextResource object represented by the provided JSON </returns>
         public static ExecutionStepContextResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

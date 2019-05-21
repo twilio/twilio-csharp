@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Studio.V1.Flow.Execution 
+namespace Twilio.Rest.Studio.V1.Flow.Execution
 {
 
     /// <summary>
     /// Retrieve the most recent context for an Execution.
     /// </summary>
-    public class FetchExecutionContextOptions : IOptions<ExecutionContextResource> 
+    public class FetchExecutionContextOptions : IOptions<ExecutionContextResource>
     {
         /// <summary>
         /// Flow Sid.

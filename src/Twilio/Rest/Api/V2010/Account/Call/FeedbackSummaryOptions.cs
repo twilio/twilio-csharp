@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Call 
+namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
     /// Create a FeedbackSummary resource for a call
     /// </summary>
-    public class CreateFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
+    public class CreateFeedbackSummaryOptions : IOptions<FeedbackSummaryResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// <summary>
     /// Fetch a FeedbackSummary resource from a call
     /// </summary>
-    public class FetchFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
+    public class FetchFeedbackSummaryOptions : IOptions<FeedbackSummaryResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// <summary>
     /// Delete a FeedbackSummary resource from a call
     /// </summary>
-    public class DeleteFeedbackSummaryOptions : IOptions<FeedbackSummaryResource> 
+    public class DeleteFeedbackSummaryOptions : IOptions<FeedbackSummaryResource>
     {
         /// <summary>
         /// The unique sid that identifies this account

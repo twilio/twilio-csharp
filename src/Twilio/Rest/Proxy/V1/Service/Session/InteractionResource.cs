@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// InteractionResource
 /// </summary>
 
@@ -18,12 +18,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Proxy.V1.Service.Session 
+namespace Twilio.Rest.Proxy.V1.Service.Session
 {
 
-    public class InteractionResource : Resource 
+    public class InteractionResource : Resource
     {
-        public sealed class TypeEnum : StringEnum 
+        public sealed class TypeEnum : StringEnum
         {
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
             public static readonly TypeEnum Unknown = new TypeEnum("unknown");
         }
 
-        public sealed class ResourceStatusEnum : StringEnum 
+        public sealed class ResourceStatusEnum : StringEnum
         {
             private ResourceStatusEnum(string value) : base(value) {}
             public ResourceStatusEnum() {}
@@ -85,7 +85,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="options"> Fetch Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Interaction </returns> 
+        /// <returns> A single instance of Interaction </returns>
         public static InteractionResource Fetch(FetchInteractionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -99,8 +99,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="options"> Fetch Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Interaction </returns> 
-        public static async System.Threading.Tasks.Task<InteractionResource> FetchAsync(FetchInteractionOptions options, 
+        /// <returns> Task that resolves to A single instance of Interaction </returns>
+        public static async System.Threading.Tasks.Task<InteractionResource> FetchAsync(FetchInteractionOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -116,10 +116,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pathSessionSid"> he SID of the parent Session of the resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Interaction </returns> 
-        public static InteractionResource Fetch(string pathServiceSid, 
-                                                string pathSessionSid, 
-                                                string pathSid, 
+        /// <returns> A single instance of Interaction </returns>
+        public static InteractionResource Fetch(string pathServiceSid,
+                                                string pathSessionSid,
+                                                string pathSid,
                                                 ITwilioRestClient client = null)
         {
             var options = new FetchInteractionOptions(pathServiceSid, pathSessionSid, pathSid);
@@ -134,10 +134,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pathSessionSid"> he SID of the parent Session of the resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Interaction </returns> 
-        public static async System.Threading.Tasks.Task<InteractionResource> FetchAsync(string pathServiceSid, 
-                                                                                        string pathSessionSid, 
-                                                                                        string pathSid, 
+        /// <returns> Task that resolves to A single instance of Interaction </returns>
+        public static async System.Threading.Tasks.Task<InteractionResource> FetchAsync(string pathServiceSid,
+                                                                                        string pathSessionSid,
+                                                                                        string pathSid,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchInteractionOptions(pathServiceSid, pathSessionSid, pathSid);
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="options"> Read Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Interaction </returns> 
+        /// <returns> A single instance of Interaction </returns>
         public static ResourceSet<InteractionResource> Read(ReadInteractionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -177,8 +177,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="options"> Read Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Interaction </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<InteractionResource>> ReadAsync(ReadInteractionOptions options, 
+        /// <returns> Task that resolves to A single instance of Interaction </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<InteractionResource>> ReadAsync(ReadInteractionOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -197,11 +197,11 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Interaction </returns> 
-        public static ResourceSet<InteractionResource> Read(string pathServiceSid, 
-                                                            string pathSessionSid, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of Interaction </returns>
+        public static ResourceSet<InteractionResource> Read(string pathServiceSid,
+                                                            string pathSessionSid,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadInteractionOptions(pathServiceSid, pathSessionSid){PageSize = pageSize, Limit = limit};
@@ -217,11 +217,11 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Interaction </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<InteractionResource>> ReadAsync(string pathServiceSid, 
-                                                                                                    string pathSessionSid, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Interaction </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<InteractionResource>> ReadAsync(string pathServiceSid,
+                                                                                                    string pathSessionSid,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadInteractionOptions(pathServiceSid, pathSessionSid){PageSize = pageSize, Limit = limit};
@@ -234,7 +234,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<InteractionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -253,7 +253,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<InteractionResource> NextPage(Page<InteractionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -273,7 +273,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<InteractionResource> PreviousPage(Page<InteractionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -304,7 +304,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="options"> Delete Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Interaction </returns> 
+        /// <returns> A single instance of Interaction </returns>
         public static bool Delete(DeleteInteractionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -318,8 +318,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         /// <param name="options"> Delete Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Interaction </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInteractionOptions options, 
+        /// <returns> Task that resolves to A single instance of Interaction </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInteractionOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -335,10 +335,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pathSessionSid"> he SID of the parent Session of the resource to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Interaction </returns> 
-        public static bool Delete(string pathServiceSid, 
-                                  string pathSessionSid, 
-                                  string pathSid, 
+        /// <returns> A single instance of Interaction </returns>
+        public static bool Delete(string pathServiceSid,
+                                  string pathSessionSid,
+                                  string pathSid,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteInteractionOptions(pathServiceSid, pathSessionSid, pathSid);
@@ -353,10 +353,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="pathSessionSid"> he SID of the parent Session of the resource to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Interaction </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathSessionSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Interaction </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathSessionSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteInteractionOptions(pathServiceSid, pathSessionSid, pathSid);
@@ -368,7 +368,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// Converts a JSON string into a InteractionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> InteractionResource object represented by the provided JSON </returns> 
+        /// <returns> InteractionResource object represented by the provided JSON </returns>
         public static InteractionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// DeploymentResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.DeployedDevices.Fleet 
+namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
 
-    public class DeploymentResource : Resource 
+    public class DeploymentResource : Resource
     {
         private static Request BuildFetchRequest(FetchDeploymentOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Fetch Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
+        /// <returns> A single instance of Deployment </returns>
         public static DeploymentResource Fetch(FetchDeploymentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Fetch Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<DeploymentResource> FetchAsync(FetchDeploymentOptions options, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<DeploymentResource> FetchAsync(FetchDeploymentOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
+        /// <returns> A single instance of Deployment </returns>
         public static DeploymentResource Fetch(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchDeploymentOptions(pathFleetSid, pathSid);
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<DeploymentResource> FetchAsync(string pathFleetSid, 
-                                                                                       string pathSid, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<DeploymentResource> FetchAsync(string pathFleetSid,
+                                                                                       string pathSid,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new FetchDeploymentOptions(pathFleetSid, pathSid);
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Delete Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
+        /// <returns> A single instance of Deployment </returns>
         public static bool Delete(DeleteDeploymentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -123,8 +123,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Delete Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDeploymentOptions options, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDeploymentOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
+        /// <returns> A single instance of Deployment </returns>
         public static bool Delete(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteDeploymentOptions(pathFleetSid, pathSid);
@@ -153,9 +153,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Deployment. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFleetSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFleetSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteDeploymentOptions(pathFleetSid, pathSid);
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Create Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
+        /// <returns> A single instance of Deployment </returns>
         public static DeploymentResource Create(CreateDeploymentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -195,8 +195,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Create Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<DeploymentResource> CreateAsync(CreateDeploymentOptions options, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<DeploymentResource> CreateAsync(CreateDeploymentOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -213,10 +213,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="friendlyName"> A human readable description for this Deployment. </param>
         /// <param name="syncServiceSid"> The unique identifier of the Sync service instance. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
-        public static DeploymentResource Create(string pathFleetSid, 
-                                                string friendlyName = null, 
-                                                string syncServiceSid = null, 
+        /// <returns> A single instance of Deployment </returns>
+        public static DeploymentResource Create(string pathFleetSid,
+                                                string friendlyName = null,
+                                                string syncServiceSid = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new CreateDeploymentOptions(pathFleetSid){FriendlyName = friendlyName, SyncServiceSid = syncServiceSid};
@@ -232,10 +232,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="friendlyName"> A human readable description for this Deployment. </param>
         /// <param name="syncServiceSid"> The unique identifier of the Sync service instance. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<DeploymentResource> CreateAsync(string pathFleetSid, 
-                                                                                        string friendlyName = null, 
-                                                                                        string syncServiceSid = null, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<DeploymentResource> CreateAsync(string pathFleetSid,
+                                                                                        string friendlyName = null,
+                                                                                        string syncServiceSid = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new CreateDeploymentOptions(pathFleetSid){FriendlyName = friendlyName, SyncServiceSid = syncServiceSid};
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Read Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
+        /// <returns> A single instance of Deployment </returns>
         public static ResourceSet<DeploymentResource> Read(ReadDeploymentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -275,8 +275,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Read Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DeploymentResource>> ReadAsync(ReadDeploymentOptions options, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DeploymentResource>> ReadAsync(ReadDeploymentOptions options,
                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -294,10 +294,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
-        public static ResourceSet<DeploymentResource> Read(string pathFleetSid, 
-                                                           int? pageSize = null, 
-                                                           long? limit = null, 
+        /// <returns> A single instance of Deployment </returns>
+        public static ResourceSet<DeploymentResource> Read(string pathFleetSid,
+                                                           int? pageSize = null,
+                                                           long? limit = null,
                                                            ITwilioRestClient client = null)
         {
             var options = new ReadDeploymentOptions(pathFleetSid){PageSize = pageSize, Limit = limit};
@@ -312,10 +312,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DeploymentResource>> ReadAsync(string pathFleetSid, 
-                                                                                                   int? pageSize = null, 
-                                                                                                   long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DeploymentResource>> ReadAsync(string pathFleetSid,
+                                                                                                   int? pageSize = null,
+                                                                                                   long? limit = null,
                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadDeploymentOptions(pathFleetSid){PageSize = pageSize, Limit = limit};
@@ -328,7 +328,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<DeploymentResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -347,7 +347,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<DeploymentResource> NextPage(Page<DeploymentResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -367,7 +367,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<DeploymentResource> PreviousPage(Page<DeploymentResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -399,7 +399,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Update Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
+        /// <returns> A single instance of Deployment </returns>
         public static DeploymentResource Update(UpdateDeploymentOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -414,8 +414,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Update Deployment parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<DeploymentResource> UpdateAsync(UpdateDeploymentOptions options, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<DeploymentResource> UpdateAsync(UpdateDeploymentOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -433,11 +433,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="friendlyName"> A human readable description for this Deployment. </param>
         /// <param name="syncServiceSid"> The unique identifier of the Sync service instance. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Deployment </returns> 
-        public static DeploymentResource Update(string pathFleetSid, 
-                                                string pathSid, 
-                                                string friendlyName = null, 
-                                                string syncServiceSid = null, 
+        /// <returns> A single instance of Deployment </returns>
+        public static DeploymentResource Update(string pathFleetSid,
+                                                string pathSid,
+                                                string friendlyName = null,
+                                                string syncServiceSid = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateDeploymentOptions(pathFleetSid, pathSid){FriendlyName = friendlyName, SyncServiceSid = syncServiceSid};
@@ -454,11 +454,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="friendlyName"> A human readable description for this Deployment. </param>
         /// <param name="syncServiceSid"> The unique identifier of the Sync service instance. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Deployment </returns> 
-        public static async System.Threading.Tasks.Task<DeploymentResource> UpdateAsync(string pathFleetSid, 
-                                                                                        string pathSid, 
-                                                                                        string friendlyName = null, 
-                                                                                        string syncServiceSid = null, 
+        /// <returns> Task that resolves to A single instance of Deployment </returns>
+        public static async System.Threading.Tasks.Task<DeploymentResource> UpdateAsync(string pathFleetSid,
+                                                                                        string pathSid,
+                                                                                        string friendlyName = null,
+                                                                                        string syncServiceSid = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateDeploymentOptions(pathFleetSid, pathSid){FriendlyName = friendlyName, SyncServiceSid = syncServiceSid};
@@ -470,7 +470,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Converts a JSON string into a DeploymentResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> DeploymentResource object represented by the provided JSON </returns> 
+        /// <returns> DeploymentResource object represented by the provided JSON </returns>
         public static DeploymentResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

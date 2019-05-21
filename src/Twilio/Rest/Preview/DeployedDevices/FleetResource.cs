@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// FleetResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.DeployedDevices 
+namespace Twilio.Rest.Preview.DeployedDevices
 {
 
-    public class FleetResource : Resource 
+    public class FleetResource : Resource
     {
         private static Request BuildFetchRequest(FetchFleetOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Fetch Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
+        /// <returns> A single instance of Fleet </returns>
         public static FleetResource Fetch(FetchFleetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Fetch Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
-        public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(FetchFleetOptions options, 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
+        public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(FetchFleetOptions options,
                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies the Fleet. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
+        /// <returns> A single instance of Fleet </returns>
         public static FleetResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchFleetOptions(pathSid);
@@ -81,8 +81,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies the Fleet. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
-        public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
+        public static async System.Threading.Tasks.Task<FleetResource> FetchAsync(string pathSid,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new FetchFleetOptions(pathSid);
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Delete Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
+        /// <returns> A single instance of Fleet </returns>
         public static bool Delete(DeleteFleetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -122,8 +122,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Delete Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFleetOptions options, 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFleetOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies the Fleet. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
+        /// <returns> A single instance of Fleet </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteFleetOptions(pathSid);
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies the Fleet. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteFleetOptions(pathSid);
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Create Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
+        /// <returns> A single instance of Fleet </returns>
         public static FleetResource Create(CreateFleetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -190,8 +190,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Create Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
-        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(CreateFleetOptions options, 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
+        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(CreateFleetOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="friendlyName"> A human readable description for this Fleet. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
+        /// <returns> A single instance of Fleet </returns>
         public static FleetResource Create(string friendlyName = null, ITwilioRestClient client = null)
         {
             var options = new CreateFleetOptions(){FriendlyName = friendlyName};
@@ -218,8 +218,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="friendlyName"> A human readable description for this Fleet. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
-        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(string friendlyName = null, 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
+        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(string friendlyName = null,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new CreateFleetOptions(){FriendlyName = friendlyName};
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Read Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
+        /// <returns> A single instance of Fleet </returns>
         public static ResourceSet<FleetResource> Read(ReadFleetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -259,8 +259,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Read Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(ReadFleetOptions options, 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(ReadFleetOptions options,
                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -277,9 +277,9 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
-        public static ResourceSet<FleetResource> Read(int? pageSize = null, 
-                                                      long? limit = null, 
+        /// <returns> A single instance of Fleet </returns>
+        public static ResourceSet<FleetResource> Read(int? pageSize = null,
+                                                      long? limit = null,
                                                       ITwilioRestClient client = null)
         {
             var options = new ReadFleetOptions(){PageSize = pageSize, Limit = limit};
@@ -293,9 +293,9 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(int? pageSize = null, 
-                                                                                              long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(int? pageSize = null,
+                                                                                              long? limit = null,
                                                                                               ITwilioRestClient client = null)
         {
             var options = new ReadFleetOptions(){PageSize = pageSize, Limit = limit};
@@ -308,7 +308,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<FleetResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -327,7 +327,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<FleetResource> NextPage(Page<FleetResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -347,7 +347,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<FleetResource> PreviousPage(Page<FleetResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -378,7 +378,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Update Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
+        /// <returns> A single instance of Fleet </returns>
         public static FleetResource Update(UpdateFleetOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -392,8 +392,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// </summary>
         /// <param name="options"> Update Fleet parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
-        public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(UpdateFleetOptions options, 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
+        public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(UpdateFleetOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -409,10 +409,10 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// <param name="friendlyName"> A human readable description for this Fleet. </param>
         /// <param name="defaultDeploymentSid"> A default Deployment SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Fleet </returns> 
-        public static FleetResource Update(string pathSid, 
-                                           string friendlyName = null, 
-                                           string defaultDeploymentSid = null, 
+        /// <returns> A single instance of Fleet </returns>
+        public static FleetResource Update(string pathSid,
+                                           string friendlyName = null,
+                                           string defaultDeploymentSid = null,
                                            ITwilioRestClient client = null)
         {
             var options = new UpdateFleetOptions(pathSid){FriendlyName = friendlyName, DefaultDeploymentSid = defaultDeploymentSid};
@@ -427,10 +427,10 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// <param name="friendlyName"> A human readable description for this Fleet. </param>
         /// <param name="defaultDeploymentSid"> A default Deployment SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Fleet </returns> 
-        public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(string pathSid, 
-                                                                                   string friendlyName = null, 
-                                                                                   string defaultDeploymentSid = null, 
+        /// <returns> Task that resolves to A single instance of Fleet </returns>
+        public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(string pathSid,
+                                                                                   string friendlyName = null,
+                                                                                   string defaultDeploymentSid = null,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new UpdateFleetOptions(pathSid){FriendlyName = friendlyName, DefaultDeploymentSid = defaultDeploymentSid};
@@ -442,7 +442,7 @@ namespace Twilio.Rest.Preview.DeployedDevices
         /// Converts a JSON string into a FleetResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> FleetResource object represented by the provided JSON </returns> 
+        /// <returns> FleetResource object represented by the provided JSON </returns>
         public static FleetResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

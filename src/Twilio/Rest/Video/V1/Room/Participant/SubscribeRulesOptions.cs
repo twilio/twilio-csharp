@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1.Room.Participant 
+namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Returns a list of Subscribe Rules for the Participant.
     /// </summary>
-    public class FetchSubscribeRulesOptions : IOptions<SubscribeRulesResource> 
+    public class FetchSubscribeRulesOptions : IOptions<SubscribeRulesResource>
     {
         /// <summary>
         /// Unique Room identifier where the Subscribe Rules apply
@@ -50,10 +50,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Update the Subscribe Rules for the Participant
     /// </summary>
-    public class UpdateSubscribeRulesOptions : IOptions<SubscribeRulesResource> 
+    public class UpdateSubscribeRulesOptions : IOptions<SubscribeRulesResource>
     {
         /// <summary>
         /// Unique Room identifier where the Subscribe Rules apply

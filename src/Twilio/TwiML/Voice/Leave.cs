@@ -7,13 +7,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Leave TwiML Verb
     /// </summary>
-    public class Leave : TwiML 
+    public class Leave : TwiML
     {
         /// <summary>
         /// Create a new Leave

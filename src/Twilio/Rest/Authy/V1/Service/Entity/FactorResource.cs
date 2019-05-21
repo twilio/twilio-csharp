@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// FactorResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Authy.V1.Service.Entity 
+namespace Twilio.Rest.Authy.V1.Service.Entity
 {
 
-    public class FactorResource : Resource 
+    public class FactorResource : Resource
     {
-        public sealed class FactorStatusesEnum : StringEnum 
+        public sealed class FactorStatusesEnum : StringEnum
         {
             private FactorStatusesEnum(string value) : base(value) {}
             public FactorStatusesEnum() {}
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
             public static readonly FactorStatusesEnum Verified = new FactorStatusesEnum("verified");
         }
 
-        public sealed class FactorTypesEnum : StringEnum 
+        public sealed class FactorTypesEnum : StringEnum
         {
             private FactorTypesEnum(string value) : base(value) {}
             public FactorTypesEnum() {}
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
             public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
         }
 
-        public sealed class FactorStrengthsEnum : StringEnum 
+        public sealed class FactorStrengthsEnum : StringEnum
         {
             private FactorStrengthsEnum(string value) : base(value) {}
             public FactorStrengthsEnum() {}
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Create Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
+        /// <returns> A single instance of Factor </returns>
         public static FactorResource Create(CreateFactorOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -98,8 +98,8 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Create Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(CreateFactorOptions options, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(CreateFactorOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -117,12 +117,12 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
-        public static FactorResource Create(string pathServiceSid, 
-                                            string pathIdentity, 
-                                            string binding, 
-                                            string friendlyName, 
-                                            FactorResource.FactorTypesEnum factorType, 
+        /// <returns> A single instance of Factor </returns>
+        public static FactorResource Create(string pathServiceSid,
+                                            string pathIdentity,
+                                            string binding,
+                                            string friendlyName,
+                                            FactorResource.FactorTypesEnum factorType,
                                             ITwilioRestClient client = null)
         {
             var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType);
@@ -139,12 +139,12 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(string pathServiceSid, 
-                                                                                    string pathIdentity, 
-                                                                                    string binding, 
-                                                                                    string friendlyName, 
-                                                                                    FactorResource.FactorTypesEnum factorType, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(string pathServiceSid,
+                                                                                    string pathIdentity,
+                                                                                    string binding,
+                                                                                    string friendlyName,
+                                                                                    FactorResource.FactorTypesEnum factorType,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType);
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Delete Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
+        /// <returns> A single instance of Factor </returns>
         public static bool Delete(DeleteFactorOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -182,8 +182,8 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Delete Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFactorOptions options, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFactorOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -199,10 +199,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
-        public static bool Delete(string pathServiceSid, 
-                                  string pathIdentity, 
-                                  string pathSid, 
+        /// <returns> A single instance of Factor </returns>
+        public static bool Delete(string pathServiceSid,
+                                  string pathIdentity,
+                                  string pathSid,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid);
@@ -217,10 +217,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathIdentity, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathIdentity,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid);
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Fetch Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
+        /// <returns> A single instance of Factor </returns>
         public static FactorResource Fetch(FetchFactorOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -258,8 +258,8 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Fetch Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<FactorResource> FetchAsync(FetchFactorOptions options, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<FactorResource> FetchAsync(FetchFactorOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -275,10 +275,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
-        public static FactorResource Fetch(string pathServiceSid, 
-                                           string pathIdentity, 
-                                           string pathSid, 
+        /// <returns> A single instance of Factor </returns>
+        public static FactorResource Fetch(string pathServiceSid,
+                                           string pathIdentity,
+                                           string pathSid,
                                            ITwilioRestClient client = null)
         {
             var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid);
@@ -293,10 +293,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<FactorResource> FetchAsync(string pathServiceSid, 
-                                                                                   string pathIdentity, 
-                                                                                   string pathSid, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<FactorResource> FetchAsync(string pathServiceSid,
+                                                                                   string pathIdentity,
+                                                                                   string pathSid,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid);
@@ -320,7 +320,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Read Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
+        /// <returns> A single instance of Factor </returns>
         public static ResourceSet<FactorResource> Read(ReadFactorOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -336,8 +336,8 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Read Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FactorResource>> ReadAsync(ReadFactorOptions options, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FactorResource>> ReadAsync(ReadFactorOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -356,11 +356,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
-        public static ResourceSet<FactorResource> Read(string pathServiceSid, 
-                                                       string pathIdentity, 
-                                                       int? pageSize = null, 
-                                                       long? limit = null, 
+        /// <returns> A single instance of Factor </returns>
+        public static ResourceSet<FactorResource> Read(string pathServiceSid,
+                                                       string pathIdentity,
+                                                       int? pageSize = null,
+                                                       long? limit = null,
                                                        ITwilioRestClient client = null)
         {
             var options = new ReadFactorOptions(pathServiceSid, pathIdentity){PageSize = pageSize, Limit = limit};
@@ -376,11 +376,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FactorResource>> ReadAsync(string pathServiceSid, 
-                                                                                               string pathIdentity, 
-                                                                                               int? pageSize = null, 
-                                                                                               long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FactorResource>> ReadAsync(string pathServiceSid,
+                                                                                               string pathIdentity,
+                                                                                               int? pageSize = null,
+                                                                                               long? limit = null,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadFactorOptions(pathServiceSid, pathIdentity){PageSize = pageSize, Limit = limit};
@@ -393,7 +393,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<FactorResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -412,7 +412,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<FactorResource> NextPage(Page<FactorResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -432,7 +432,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<FactorResource> PreviousPage(Page<FactorResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -463,7 +463,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Update Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
+        /// <returns> A single instance of Factor </returns>
         public static FactorResource Update(UpdateFactorOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -477,8 +477,8 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="options"> Update Factor parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<FactorResource> UpdateAsync(UpdateFactorOptions options, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<FactorResource> UpdateAsync(UpdateFactorOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -495,11 +495,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Factor </returns> 
-        public static FactorResource Update(string pathServiceSid, 
-                                            string pathIdentity, 
-                                            string pathSid, 
-                                            string authPayload = null, 
+        /// <returns> A single instance of Factor </returns>
+        public static FactorResource Update(string pathServiceSid,
+                                            string pathIdentity,
+                                            string pathSid,
+                                            string authPayload = null,
                                             ITwilioRestClient client = null)
         {
             var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
@@ -515,11 +515,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Factor </returns> 
-        public static async System.Threading.Tasks.Task<FactorResource> UpdateAsync(string pathServiceSid, 
-                                                                                    string pathIdentity, 
-                                                                                    string pathSid, 
-                                                                                    string authPayload = null, 
+        /// <returns> Task that resolves to A single instance of Factor </returns>
+        public static async System.Threading.Tasks.Task<FactorResource> UpdateAsync(string pathServiceSid,
+                                                                                    string pathIdentity,
+                                                                                    string pathSid,
+                                                                                    string authPayload = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
@@ -531,7 +531,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// Converts a JSON string into a FactorResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> FactorResource object represented by the provided JSON </returns> 
+        /// <returns> FactorResource object represented by the provided JSON </returns>
         public static FactorResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

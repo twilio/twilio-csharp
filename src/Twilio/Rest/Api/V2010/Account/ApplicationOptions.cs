@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Create a new application within your account
     /// </summary>
-    public class CreateApplicationOptions : IOptions<ApplicationResource> 
+    public class CreateApplicationOptions : IOptions<ApplicationResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Delete the application by the specified application sid
     /// </summary>
-    public class DeleteApplicationOptions : IOptions<ApplicationResource> 
+    public class DeleteApplicationOptions : IOptions<ApplicationResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Fetch the application specified by the provided sid
     /// </summary>
-    public class FetchApplicationOptions : IOptions<ApplicationResource> 
+    public class FetchApplicationOptions : IOptions<ApplicationResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of applications representing an application within the requesting account
     /// </summary>
-    public class ReadApplicationOptions : ReadOptions<ApplicationResource> 
+    public class ReadApplicationOptions : ReadOptions<ApplicationResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Updates the application's properties
     /// </summary>
-    public class UpdateApplicationOptions : IOptions<ApplicationResource> 
+    public class UpdateApplicationOptions : IOptions<ApplicationResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource

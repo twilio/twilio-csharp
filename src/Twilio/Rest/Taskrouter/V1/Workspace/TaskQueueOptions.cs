@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace 
+namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
     /// <summary>
     /// FetchTaskQueueOptions
     /// </summary>
-    public class FetchTaskQueueOptions : IOptions<TaskQueueResource> 
+    public class FetchTaskQueueOptions : IOptions<TaskQueueResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// UpdateTaskQueueOptions
     /// </summary>
-    public class UpdateTaskQueueOptions : IOptions<TaskQueueResource> 
+    public class UpdateTaskQueueOptions : IOptions<TaskQueueResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// ReadTaskQueueOptions
     /// </summary>
-    public class ReadTaskQueueOptions : ReadOptions<TaskQueueResource> 
+    public class ReadTaskQueueOptions : ReadOptions<TaskQueueResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// CreateTaskQueueOptions
     /// </summary>
-    public class CreateTaskQueueOptions : IOptions<TaskQueueResource> 
+    public class CreateTaskQueueOptions : IOptions<TaskQueueResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// DeleteTaskQueueOptions
     /// </summary>
-    public class DeleteTaskQueueOptions : IOptions<TaskQueueResource> 
+    public class DeleteTaskQueueOptions : IOptions<TaskQueueResource>
     {
         /// <summary>
         /// The workspace_sid

@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Sync.Service.SyncList 
+namespace Twilio.Rest.Preview.Sync.Service.SyncList
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch a specific Sync List Permission.
     /// </summary>
-    public class FetchSyncListPermissionOptions : IOptions<SyncListPermissionResource> 
+    public class FetchSyncListPermissionOptions : IOptions<SyncListPermissionResource>
     {
         /// <summary>
         /// The service_sid
@@ -58,10 +58,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Sync List Permission.
     /// </summary>
-    public class DeleteSyncListPermissionOptions : IOptions<SyncListPermissionResource> 
+    public class DeleteSyncListPermissionOptions : IOptions<SyncListPermissionResource>
     {
         /// <summary>
         /// The service_sid
@@ -102,10 +102,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Permissions applying to a Sync List.
     /// </summary>
-    public class ReadSyncListPermissionOptions : ReadOptions<SyncListPermissionResource> 
+    public class ReadSyncListPermissionOptions : ReadOptions<SyncListPermissionResource>
     {
         /// <summary>
         /// The service_sid
@@ -145,10 +145,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update an identity's access to a specific Sync List.
     /// </summary>
-    public class UpdateSyncListPermissionOptions : IOptions<SyncListPermissionResource> 
+    public class UpdateSyncListPermissionOptions : IOptions<SyncListPermissionResource>
     {
         /// <summary>
         /// Sync Service Instance SID.
@@ -184,11 +184,11 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// <param name="read"> Read access. </param>
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
-        public UpdateSyncListPermissionOptions(string pathServiceSid, 
-                                               string pathListSid, 
-                                               string pathIdentity, 
-                                               bool? read, 
-                                               bool? write, 
+        public UpdateSyncListPermissionOptions(string pathServiceSid,
+                                               string pathListSid,
+                                               string pathIdentity,
+                                               bool? read,
+                                               bool? write,
                                                bool? manage)
         {
             PathServiceSid = pathServiceSid;

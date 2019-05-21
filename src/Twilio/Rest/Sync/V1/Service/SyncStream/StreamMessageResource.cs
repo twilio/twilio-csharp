@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// StreamMessageResource
 /// </summary>
 
@@ -17,10 +17,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Sync.V1.Service.SyncStream 
+namespace Twilio.Rest.Sync.V1.Service.SyncStream
 {
 
-    public class StreamMessageResource : Resource 
+    public class StreamMessageResource : Resource
     {
         private static Request BuildCreateRequest(CreateStreamMessageOptions options, ITwilioRestClient client)
         {
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// </summary>
         /// <param name="options"> Create StreamMessage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StreamMessage </returns> 
+        /// <returns> A single instance of StreamMessage </returns>
         public static StreamMessageResource Create(CreateStreamMessageOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// </summary>
         /// <param name="options"> Create StreamMessage parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StreamMessage </returns> 
-        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(CreateStreamMessageOptions options, 
+        /// <returns> Task that resolves to A single instance of StreamMessage </returns>
+        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(CreateStreamMessageOptions options,
                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,10 +69,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <param name="pathStreamSid"> The stream_sid </param>
         /// <param name="data"> Stream Message body. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StreamMessage </returns> 
-        public static StreamMessageResource Create(string pathServiceSid, 
-                                                   string pathStreamSid, 
-                                                   object data, 
+        /// <returns> A single instance of StreamMessage </returns>
+        public static StreamMessageResource Create(string pathServiceSid,
+                                                   string pathStreamSid,
+                                                   object data,
                                                    ITwilioRestClient client = null)
         {
             var options = new CreateStreamMessageOptions(pathServiceSid, pathStreamSid, data);
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <param name="pathStreamSid"> The stream_sid </param>
         /// <param name="data"> Stream Message body. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StreamMessage </returns> 
-        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(string pathServiceSid, 
-                                                                                           string pathStreamSid, 
-                                                                                           object data, 
+        /// <returns> Task that resolves to A single instance of StreamMessage </returns>
+        public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(string pathServiceSid,
+                                                                                           string pathStreamSid,
+                                                                                           object data,
                                                                                            ITwilioRestClient client = null)
         {
             var options = new CreateStreamMessageOptions(pathServiceSid, pathStreamSid, data);
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// Converts a JSON string into a StreamMessageResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> StreamMessageResource object represented by the provided JSON </returns> 
+        /// <returns> StreamMessageResource object represented by the provided JSON </returns>
         public static StreamMessageResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

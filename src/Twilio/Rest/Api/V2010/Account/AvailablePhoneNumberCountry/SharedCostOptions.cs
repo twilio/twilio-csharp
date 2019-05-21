@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
+namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 {
 
     /// <summary>
     /// ReadSharedCostOptions
     /// </summary>
-    public class ReadSharedCostOptions : ReadOptions<SharedCostResource> 
+    public class ReadSharedCostOptions : ReadOptions<SharedCostResource>
     {
         /// <summary>
         /// The SID of the Account requesting the AvailablePhoneNumber resources

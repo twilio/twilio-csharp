@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Trunking.V1.Trunk 
+namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
     /// <summary>
     /// FetchOriginationUrlOptions
     /// </summary>
-    public class FetchOriginationUrlOptions : IOptions<OriginationUrlResource> 
+    public class FetchOriginationUrlOptions : IOptions<OriginationUrlResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to fetch the OriginationUrl
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// DeleteOriginationUrlOptions
     /// </summary>
-    public class DeleteOriginationUrlOptions : IOptions<OriginationUrlResource> 
+    public class DeleteOriginationUrlOptions : IOptions<OriginationUrlResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to delete the OriginationUrl
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// CreateOriginationUrlOptions
     /// </summary>
-    public class CreateOriginationUrlOptions : IOptions<OriginationUrlResource> 
+    public class CreateOriginationUrlOptions : IOptions<OriginationUrlResource>
     {
         /// <summary>
         /// The SID of the Trunk to associate the resource with
@@ -121,11 +121,11 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <param name="enabled"> Whether the URL is enabled </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="sipUrl"> The SIP address you want Twilio to route your Origination calls to </param>
-        public CreateOriginationUrlOptions(string pathTrunkSid, 
-                                           int? weight, 
-                                           int? priority, 
-                                           bool? enabled, 
-                                           string friendlyName, 
+        public CreateOriginationUrlOptions(string pathTrunkSid,
+                                           int? weight,
+                                           int? priority,
+                                           bool? enabled,
+                                           string friendlyName,
                                            Uri sipUrl)
         {
             PathTrunkSid = pathTrunkSid;
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// ReadOriginationUrlOptions
     /// </summary>
-    public class ReadOriginationUrlOptions : ReadOptions<OriginationUrlResource> 
+    public class ReadOriginationUrlOptions : ReadOptions<OriginationUrlResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to read the OriginationUrl
@@ -208,7 +208,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// UpdateOriginationUrlOptions
     /// </summary>
-    public class UpdateOriginationUrlOptions : IOptions<OriginationUrlResource> 
+    public class UpdateOriginationUrlOptions : IOptions<OriginationUrlResource>
     {
         /// <summary>
         /// The SID of the Trunk from which to update the OriginationUrl

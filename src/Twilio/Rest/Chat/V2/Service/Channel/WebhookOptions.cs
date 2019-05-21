@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Chat.V2.Service.Channel 
+namespace Twilio.Rest.Chat.V2.Service.Channel
 {
 
     /// <summary>
     /// ReadWebhookOptions
     /// </summary>
-    public class ReadWebhookOptions : ReadOptions<WebhookResource> 
+    public class ReadWebhookOptions : ReadOptions<WebhookResource>
     {
         /// <summary>
         /// The SID of the Service to read the resources from
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     /// <summary>
     /// FetchWebhookOptions
     /// </summary>
-    public class FetchWebhookOptions : IOptions<WebhookResource> 
+    public class FetchWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     /// <summary>
     /// CreateWebhookOptions
     /// </summary>
-    public class CreateWebhookOptions : IOptions<WebhookResource> 
+    public class CreateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     /// <summary>
     /// UpdateWebhookOptions
     /// </summary>
-    public class UpdateWebhookOptions : IOptions<WebhookResource> 
+    public class UpdateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// The SID of the Service to update the resource from
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
     /// <summary>
     /// DeleteWebhookOptions
     /// </summary>
-    public class DeleteWebhookOptions : IOptions<WebhookResource> 
+    public class DeleteWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from

@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// FormResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Authy.V1 
+namespace Twilio.Rest.Authy.V1
 {
 
-    public class FormResource : Resource 
+    public class FormResource : Resource
     {
-        public sealed class FormTypesEnum : StringEnum 
+        public sealed class FormTypesEnum : StringEnum
         {
             private FormTypesEnum(string value) : base(value) {}
             public FormTypesEnum() {}
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Authy.V1
         /// </summary>
         /// <param name="options"> Fetch Form parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Form </returns> 
+        /// <returns> A single instance of Form </returns>
         public static FormResource Fetch(FetchFormOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,8 +68,8 @@ namespace Twilio.Rest.Authy.V1
         /// </summary>
         /// <param name="options"> Fetch Form parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Form </returns> 
-        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FetchFormOptions options, 
+        /// <returns> Task that resolves to A single instance of Form </returns>
+        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FetchFormOptions options,
                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Authy.V1
         /// </summary>
         /// <param name="pathFormType"> The Type of this Form </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Form </returns> 
+        /// <returns> A single instance of Form </returns>
         public static FormResource Fetch(FormResource.FormTypesEnum pathFormType, ITwilioRestClient client = null)
         {
             var options = new FetchFormOptions(pathFormType);
@@ -96,8 +96,8 @@ namespace Twilio.Rest.Authy.V1
         /// </summary>
         /// <param name="pathFormType"> The Type of this Form </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Form </returns> 
-        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FormResource.FormTypesEnum pathFormType, 
+        /// <returns> Task that resolves to A single instance of Form </returns>
+        public static async System.Threading.Tasks.Task<FormResource> FetchAsync(FormResource.FormTypesEnum pathFormType,
                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchFormOptions(pathFormType);
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Authy.V1
         /// Converts a JSON string into a FormResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> FormResource object represented by the provided JSON </returns> 
+        /// <returns> FormResource object represented by the provided JSON </returns>
         public static FormResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.DeployedDevices.Fleet 
+namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch information about a specific Certificate credential in the Fleet.
     /// </summary>
-    public class FetchCertificateOptions : IOptions<CertificateResource> 
+    public class FetchCertificateOptions : IOptions<CertificateResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -52,11 +52,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Unregister a specific Certificate credential from the Fleet, effectively disallowing any inbound client connections
     /// that are presenting it.
     /// </summary>
-    public class DeleteCertificateOptions : IOptions<CertificateResource> 
+    public class DeleteCertificateOptions : IOptions<CertificateResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Enroll a new Certificate credential to the Fleet, optionally giving it a friendly name and assigning to a Device.
     /// </summary>
-    public class CreateCertificateOptions : IOptions<CertificateResource> 
+    public class CreateCertificateOptions : IOptions<CertificateResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -152,10 +152,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Certificate credentials belonging to the Fleet.
     /// </summary>
-    public class ReadCertificateOptions : ReadOptions<CertificateResource> 
+    public class ReadCertificateOptions : ReadOptions<CertificateResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -198,11 +198,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update the given properties of a specific Certificate credential in the Fleet, giving it a friendly name or
     /// assigning to a Device.
     /// </summary>
-    public class UpdateCertificateOptions : IOptions<CertificateResource> 
+    public class UpdateCertificateOptions : IOptions<CertificateResource>
     {
         /// <summary>
         /// The fleet_sid

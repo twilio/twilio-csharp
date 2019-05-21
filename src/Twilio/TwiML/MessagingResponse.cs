@@ -10,13 +10,13 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.TwiML.Messaging;
 
-namespace Twilio.TwiML 
+namespace Twilio.TwiML
 {
 
     /// <summary>
     /// Response TwiML for Messages
     /// </summary>
-    public class MessagingResponse : TwiML 
+    public class MessagingResponse : TwiML
     {
         /// <summary>
         /// Create a new MessagingResponse
@@ -45,11 +45,11 @@ namespace Twilio.TwiML
         /// <param name="action"> Action URL </param>
         /// <param name="method"> Action URL Method </param>
         /// <param name="statusCallback"> Status callback URL. Deprecated in favor of action. </param>
-        public MessagingResponse Message(string body = null, 
-                                         string to = null, 
-                                         string from = null, 
-                                         Uri action = null, 
-                                         Twilio.Http.HttpMethod method = null, 
+        public MessagingResponse Message(string body = null,
+                                         string to = null,
+                                         string from = null,
+                                         Uri action = null,
+                                         Twilio.Http.HttpMethod method = null,
                                          Uri statusCallback = null)
         {
             var newChild = new Message(body, to, from, action, method, statusCallback);

@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.BulkExports.Export 
+namespace Twilio.Rest.Preview.BulkExports.Export
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadDayOptions
     /// </summary>
-    public class ReadDayOptions : ReadOptions<DayResource> 
+    public class ReadDayOptions : ReadOptions<DayResource>
     {
         /// <summary>
         /// The resource_type

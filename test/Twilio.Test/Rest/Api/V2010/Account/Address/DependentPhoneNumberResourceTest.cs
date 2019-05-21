@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Address;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.Address 
+namespace Twilio.Tests.Rest.Api.V2010.Account.Address
 {
 
     [TestFixture]
-    public class DependentPhoneNumberTest : TwilioTest 
+    public class DependentPhoneNumberTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

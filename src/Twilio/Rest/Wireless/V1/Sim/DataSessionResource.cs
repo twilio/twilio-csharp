@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Wireless.V1.Sim 
+namespace Twilio.Rest.Wireless.V1.Sim
 {
 
-    public class DataSessionResource : Resource 
+    public class DataSessionResource : Resource
     {
         private static Request BuildReadRequest(ReadDataSessionOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="options"> Read DataSession parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DataSession </returns> 
+        /// <returns> A single instance of DataSession </returns>
         public static ResourceSet<DataSessionResource> Read(ReadDataSessionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="options"> Read DataSession parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DataSession </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DataSessionResource>> ReadAsync(ReadDataSessionOptions options, 
+        /// <returns> Task that resolves to A single instance of DataSession </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DataSessionResource>> ReadAsync(ReadDataSessionOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -73,12 +73,12 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DataSession </returns> 
-        public static ResourceSet<DataSessionResource> Read(string pathSimSid, 
-                                                            DateTime? end = null, 
-                                                            DateTime? start = null, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of DataSession </returns>
+        public static ResourceSet<DataSessionResource> Read(string pathSimSid,
+                                                            DateTime? end = null,
+                                                            DateTime? start = null,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadDataSessionOptions(pathSimSid){End = end, Start = start, PageSize = pageSize, Limit = limit};
@@ -95,12 +95,12 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DataSession </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DataSessionResource>> ReadAsync(string pathSimSid, 
-                                                                                                    DateTime? end = null, 
-                                                                                                    DateTime? start = null, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of DataSession </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DataSessionResource>> ReadAsync(string pathSimSid,
+                                                                                                    DateTime? end = null,
+                                                                                                    DateTime? start = null,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadDataSessionOptions(pathSimSid){End = end, Start = start, PageSize = pageSize, Limit = limit};
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<DataSessionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<DataSessionResource> NextPage(Page<DataSessionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<DataSessionResource> PreviousPage(Page<DataSessionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// Converts a JSON string into a DataSessionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> DataSessionResource object represented by the provided JSON </returns> 
+        /// <returns> DataSessionResource object represented by the provided JSON </returns>
         public static DataSessionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

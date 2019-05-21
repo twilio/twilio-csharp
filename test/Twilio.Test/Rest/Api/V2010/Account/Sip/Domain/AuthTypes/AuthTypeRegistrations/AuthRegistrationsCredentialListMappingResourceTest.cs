@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistrations;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistrations 
+namespace Twilio.Tests.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistrations
 {
 
     [TestFixture]
-    public class AuthRegistrationsCredentialListMappingTest : TwilioTest 
+    public class AuthRegistrationsCredentialListMappingTest : TwilioTest
     {
         [Test]
         public void TestCreateRequest()

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Message 
+namespace Twilio.Rest.Api.V2010.Account.Message
 {
 
     /// <summary>
     /// Delete media from your account. Once delete, you will no longer be billed
     /// </summary>
-    public class DeleteMediaOptions : IOptions<MediaResource> 
+    public class DeleteMediaOptions : IOptions<MediaResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to delete
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     /// <summary>
     /// Fetch a single media instance belonging to the account used to make the request
     /// </summary>
-    public class FetchMediaOptions : IOptions<MediaResource> 
+    public class FetchMediaOptions : IOptions<MediaResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to fetch
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     /// <summary>
     /// Retrieve a list of medias belonging to the account used to make the request
     /// </summary>
-    public class ReadMediaOptions : ReadOptions<MediaResource> 
+    public class ReadMediaOptions : ReadOptions<MediaResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to read

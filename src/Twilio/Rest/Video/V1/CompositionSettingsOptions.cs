@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1 
+namespace Twilio.Rest.Video.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchCompositionSettingsOptions
     /// </summary>
-    public class FetchCompositionSettingsOptions : IOptions<CompositionSettingsResource> 
+    public class FetchCompositionSettingsOptions : IOptions<CompositionSettingsResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -32,10 +32,10 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateCompositionSettingsOptions
     /// </summary>
-    public class CreateCompositionSettingsOptions : IOptions<CompositionSettingsResource> 
+    public class CreateCompositionSettingsOptions : IOptions<CompositionSettingsResource>
     {
         /// <summary>
         /// Friendly name of the configuration to be shown in the console

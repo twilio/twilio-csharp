@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Video.V1.Room;
 
-namespace Twilio.Tests.Rest.Video.V1.Room 
+namespace Twilio.Tests.Rest.Video.V1.Room
 {
 
     [TestFixture]
-    public class ParticipantTest : TwilioTest 
+    public class ParticipantTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

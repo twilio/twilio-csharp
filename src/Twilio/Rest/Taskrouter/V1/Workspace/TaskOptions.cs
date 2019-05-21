@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace 
+namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
     /// <summary>
     /// FetchTaskOptions
     /// </summary>
-    public class FetchTaskOptions : IOptions<TaskResource> 
+    public class FetchTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// UpdateTaskOptions
     /// </summary>
-    public class UpdateTaskOptions : IOptions<TaskResource> 
+    public class UpdateTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// DeleteTaskOptions
     /// </summary>
-    public class DeleteTaskOptions : IOptions<TaskResource> 
+    public class DeleteTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// ReadTaskOptions
     /// </summary>
-    public class ReadTaskOptions : ReadOptions<TaskResource> 
+    public class ReadTaskOptions : ReadOptions<TaskResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -281,7 +281,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// CreateTaskOptions
     /// </summary>
-    public class CreateTaskOptions : IOptions<TaskResource> 
+    public class CreateTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
         /// The workspace_sid

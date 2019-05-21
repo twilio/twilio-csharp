@@ -10,13 +10,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Enqueue TwiML Noun
     /// </summary>
-    public class Enqueue : TwiML 
+    public class Enqueue : TwiML
     {
         /// <summary>
         /// Friendly name
@@ -52,11 +52,11 @@ namespace Twilio.TwiML.Voice
         /// <param name="waitUrl"> Wait URL </param>
         /// <param name="waitUrlMethod"> Wait URL method </param>
         /// <param name="workflowSid"> TaskRouter Workflow SID </param>
-        public Enqueue(string name = null, 
-                       Uri action = null, 
-                       Twilio.Http.HttpMethod method = null, 
-                       Uri waitUrl = null, 
-                       Twilio.Http.HttpMethod waitUrlMethod = null, 
+        public Enqueue(string name = null,
+                       Uri action = null,
+                       Twilio.Http.HttpMethod method = null,
+                       Uri waitUrl = null,
+                       Twilio.Http.HttpMethod waitUrlMethod = null,
                        string workflowSid = null) : base("Enqueue")
         {
             this.Name = name;

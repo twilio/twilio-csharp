@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.IpMessaging.V1.Service.Channel 
+namespace Twilio.Rest.IpMessaging.V1.Service.Channel
 {
 
-    public class InviteResource : Resource 
+    public class InviteResource : Resource
     {
         private static Request BuildFetchRequest(FetchInviteOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="options"> Fetch Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Invite </returns> 
+        /// <returns> A single instance of Invite </returns>
         public static InviteResource Fetch(FetchInviteOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="options"> Fetch Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Invite </returns> 
-        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(FetchInviteOptions options, 
+        /// <returns> Task that resolves to A single instance of Invite </returns>
+        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(FetchInviteOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,10 +67,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Invite </returns> 
-        public static InviteResource Fetch(string pathServiceSid, 
-                                           string pathChannelSid, 
-                                           string pathSid, 
+        /// <returns> A single instance of Invite </returns>
+        public static InviteResource Fetch(string pathServiceSid,
+                                           string pathChannelSid,
+                                           string pathSid,
                                            ITwilioRestClient client = null)
         {
             var options = new FetchInviteOptions(pathServiceSid, pathChannelSid, pathSid);
@@ -85,10 +85,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Invite </returns> 
-        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(string pathServiceSid, 
-                                                                                   string pathChannelSid, 
-                                                                                   string pathSid, 
+        /// <returns> Task that resolves to A single instance of Invite </returns>
+        public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(string pathServiceSid,
+                                                                                   string pathChannelSid,
+                                                                                   string pathSid,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchInviteOptions(pathServiceSid, pathChannelSid, pathSid);
@@ -112,7 +112,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="options"> Create Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Invite </returns> 
+        /// <returns> A single instance of Invite </returns>
         public static InviteResource Create(CreateInviteOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -126,8 +126,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="options"> Create Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Invite </returns> 
-        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(CreateInviteOptions options, 
+        /// <returns> Task that resolves to A single instance of Invite </returns>
+        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(CreateInviteOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -144,11 +144,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
         /// <param name="roleSid"> The Role assigned to the new member </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Invite </returns> 
-        public static InviteResource Create(string pathServiceSid, 
-                                            string pathChannelSid, 
-                                            string identity, 
-                                            string roleSid = null, 
+        /// <returns> A single instance of Invite </returns>
+        public static InviteResource Create(string pathServiceSid,
+                                            string pathChannelSid,
+                                            string identity,
+                                            string roleSid = null,
                                             ITwilioRestClient client = null)
         {
             var options = new CreateInviteOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid};
@@ -164,11 +164,11 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
         /// <param name="roleSid"> The Role assigned to the new member </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Invite </returns> 
-        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(string pathServiceSid, 
-                                                                                    string pathChannelSid, 
-                                                                                    string identity, 
-                                                                                    string roleSid = null, 
+        /// <returns> Task that resolves to A single instance of Invite </returns>
+        public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(string pathServiceSid,
+                                                                                    string pathChannelSid,
+                                                                                    string identity,
+                                                                                    string roleSid = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateInviteOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid};
@@ -192,7 +192,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="options"> Read Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Invite </returns> 
+        /// <returns> A single instance of Invite </returns>
         public static ResourceSet<InviteResource> Read(ReadInviteOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -208,8 +208,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="options"> Read Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Invite </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(ReadInviteOptions options, 
+        /// <returns> Task that resolves to A single instance of Invite </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(ReadInviteOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -229,12 +229,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Invite </returns> 
-        public static ResourceSet<InviteResource> Read(string pathServiceSid, 
-                                                       string pathChannelSid, 
-                                                       List<string> identity = null, 
-                                                       int? pageSize = null, 
-                                                       long? limit = null, 
+        /// <returns> A single instance of Invite </returns>
+        public static ResourceSet<InviteResource> Read(string pathServiceSid,
+                                                       string pathChannelSid,
+                                                       List<string> identity = null,
+                                                       int? pageSize = null,
+                                                       long? limit = null,
                                                        ITwilioRestClient client = null)
         {
             var options = new ReadInviteOptions(pathServiceSid, pathChannelSid){Identity = identity, PageSize = pageSize, Limit = limit};
@@ -251,12 +251,12 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Invite </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(string pathServiceSid, 
-                                                                                               string pathChannelSid, 
-                                                                                               List<string> identity = null, 
-                                                                                               int? pageSize = null, 
-                                                                                               long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Invite </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<InviteResource>> ReadAsync(string pathServiceSid,
+                                                                                               string pathChannelSid,
+                                                                                               List<string> identity = null,
+                                                                                               int? pageSize = null,
+                                                                                               long? limit = null,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadInviteOptions(pathServiceSid, pathChannelSid){Identity = identity, PageSize = pageSize, Limit = limit};
@@ -269,7 +269,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<InviteResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -288,7 +288,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<InviteResource> NextPage(Page<InviteResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -308,7 +308,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<InviteResource> PreviousPage(Page<InviteResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -339,7 +339,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="options"> Delete Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Invite </returns> 
+        /// <returns> A single instance of Invite </returns>
         public static bool Delete(DeleteInviteOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -353,8 +353,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// </summary>
         /// <param name="options"> Delete Invite parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Invite </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInviteOptions options, 
+        /// <returns> Task that resolves to A single instance of Invite </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteInviteOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -370,10 +370,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="pathChannelSid"> The SID of the Channel the resource to delete belongs to </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Invite </returns> 
-        public static bool Delete(string pathServiceSid, 
-                                  string pathChannelSid, 
-                                  string pathSid, 
+        /// <returns> A single instance of Invite </returns>
+        public static bool Delete(string pathServiceSid,
+                                  string pathChannelSid,
+                                  string pathSid,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteInviteOptions(pathServiceSid, pathChannelSid, pathSid);
@@ -388,10 +388,10 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// <param name="pathChannelSid"> The SID of the Channel the resource to delete belongs to </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Invite </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathChannelSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Invite </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathChannelSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteInviteOptions(pathServiceSid, pathChannelSid, pathSid);
@@ -403,7 +403,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         /// Converts a JSON string into a InviteResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> InviteResource object represented by the provided JSON </returns> 
+        /// <returns> InviteResource object represented by the provided JSON </returns>
         public static InviteResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

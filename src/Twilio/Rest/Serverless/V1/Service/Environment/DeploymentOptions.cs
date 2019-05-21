@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Serverless.V1.Service.Environment 
+namespace Twilio.Rest.Serverless.V1.Service.Environment
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Deployments.
     /// </summary>
-    public class ReadDeploymentOptions : ReadOptions<DeploymentResource> 
+    public class ReadDeploymentOptions : ReadOptions<DeploymentResource>
     {
         /// <summary>
         /// Service Sid.
@@ -57,10 +57,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a specific Deployment.
     /// </summary>
-    public class FetchDeploymentOptions : IOptions<DeploymentResource> 
+    public class FetchDeploymentOptions : IOptions<DeploymentResource>
     {
         /// <summary>
         /// Service Sid.
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Deployment.
     /// </summary>
-    public class CreateDeploymentOptions : IOptions<DeploymentResource> 
+    public class CreateDeploymentOptions : IOptions<DeploymentResource>
     {
         /// <summary>
         /// Service Sid.

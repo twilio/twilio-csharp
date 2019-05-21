@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Studio.V1.Flow.Engagement 
+namespace Twilio.Rest.Studio.V1.Flow.Engagement
 {
 
-    public class EngagementContextResource : Resource 
+    public class EngagementContextResource : Resource
     {
         private static Request BuildFetchRequest(FetchEngagementContextOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         /// <param name="options"> Fetch EngagementContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of EngagementContext </returns> 
+        /// <returns> A single instance of EngagementContext </returns>
         public static EngagementContextResource Fetch(FetchEngagementContextOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         /// <param name="options"> Fetch EngagementContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of EngagementContext </returns> 
-        public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(FetchEngagementContextOptions options, 
+        /// <returns> Task that resolves to A single instance of EngagementContext </returns>
+        public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(FetchEngagementContextOptions options,
                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,9 +66,9 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of EngagementContext </returns> 
-        public static EngagementContextResource Fetch(string pathFlowSid, 
-                                                      string pathEngagementSid, 
+        /// <returns> A single instance of EngagementContext </returns>
+        public static EngagementContextResource Fetch(string pathFlowSid,
+                                                      string pathEngagementSid,
                                                       ITwilioRestClient client = null)
         {
             var options = new FetchEngagementContextOptions(pathFlowSid, pathEngagementSid);
@@ -82,9 +82,9 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of EngagementContext </returns> 
-        public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(string pathFlowSid, 
-                                                                                              string pathEngagementSid, 
+        /// <returns> Task that resolves to A single instance of EngagementContext </returns>
+        public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(string pathFlowSid,
+                                                                                              string pathEngagementSid,
                                                                                               ITwilioRestClient client = null)
         {
             var options = new FetchEngagementContextOptions(pathFlowSid, pathEngagementSid);
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// Converts a JSON string into a EngagementContextResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> EngagementContextResource object represented by the provided JSON </returns> 
+        /// <returns> EngagementContextResource object represented by the provided JSON </returns>
         public static EngagementContextResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

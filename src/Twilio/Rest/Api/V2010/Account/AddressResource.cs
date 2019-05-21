@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class AddressResource : Resource 
+    public class AddressResource : Resource
     {
         private static Request BuildCreateRequest(CreateAddressOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Create Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
+        /// <returns> A single instance of Address </returns>
         public static AddressResource Create(CreateAddressOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Create Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(CreateAddressOptions options, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(CreateAddressOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -74,17 +74,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the new address </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
-        public static AddressResource Create(string customerName, 
-                                             string street, 
-                                             string city, 
-                                             string region, 
-                                             string postalCode, 
-                                             string isoCountry, 
-                                             string pathAccountSid = null, 
-                                             string friendlyName = null, 
-                                             bool? emergencyEnabled = null, 
-                                             bool? autoCorrectAddress = null, 
+        /// <returns> A single instance of Address </returns>
+        public static AddressResource Create(string customerName,
+                                             string street,
+                                             string city,
+                                             string region,
+                                             string postalCode,
+                                             string isoCountry,
+                                             string pathAccountSid = null,
+                                             string friendlyName = null,
+                                             bool? emergencyEnabled = null,
+                                             bool? autoCorrectAddress = null,
                                              ITwilioRestClient client = null)
         {
             var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress};
@@ -106,17 +106,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the new address </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(string customerName, 
-                                                                                     string street, 
-                                                                                     string city, 
-                                                                                     string region, 
-                                                                                     string postalCode, 
-                                                                                     string isoCountry, 
-                                                                                     string pathAccountSid = null, 
-                                                                                     string friendlyName = null, 
-                                                                                     bool? emergencyEnabled = null, 
-                                                                                     bool? autoCorrectAddress = null, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<AddressResource> CreateAsync(string customerName,
+                                                                                     string street,
+                                                                                     string city,
+                                                                                     string region,
+                                                                                     string postalCode,
+                                                                                     string isoCountry,
+                                                                                     string pathAccountSid = null,
+                                                                                     string friendlyName = null,
+                                                                                     bool? emergencyEnabled = null,
+                                                                                     bool? autoCorrectAddress = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new CreateAddressOptions(customerName, street, city, region, postalCode, isoCountry){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress};
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Delete Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
+        /// <returns> A single instance of Address </returns>
         public static bool Delete(DeleteAddressOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -154,8 +154,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Delete Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAddressOptions options, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAddressOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -170,7 +170,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that is responsible for the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
+        /// <returns> A single instance of Address </returns>
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteAddressOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -184,9 +184,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that is responsible for the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
-                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid,
+                                                                          string pathAccountSid = null,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteAddressOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
+        /// <returns> A single instance of Address </returns>
         public static AddressResource Fetch(FetchAddressOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -224,8 +224,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(FetchAddressOptions options, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(FetchAddressOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that is responsible for this address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
+        /// <returns> A single instance of Address </returns>
         public static AddressResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchAddressOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -254,9 +254,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that is responsible for this address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(string pathSid, 
-                                                                                    string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<AddressResource> FetchAsync(string pathSid,
+                                                                                    string pathAccountSid = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchAddressOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -280,7 +280,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
+        /// <returns> A single instance of Address </returns>
         public static AddressResource Update(UpdateAddressOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -294,8 +294,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(UpdateAddressOptions options, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(UpdateAddressOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -318,17 +318,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the address </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
-        public static AddressResource Update(string pathSid, 
-                                             string pathAccountSid = null, 
-                                             string friendlyName = null, 
-                                             string customerName = null, 
-                                             string street = null, 
-                                             string city = null, 
-                                             string region = null, 
-                                             string postalCode = null, 
-                                             bool? emergencyEnabled = null, 
-                                             bool? autoCorrectAddress = null, 
+        /// <returns> A single instance of Address </returns>
+        public static AddressResource Update(string pathSid,
+                                             string pathAccountSid = null,
+                                             string friendlyName = null,
+                                             string customerName = null,
+                                             string street = null,
+                                             string city = null,
+                                             string region = null,
+                                             string postalCode = null,
+                                             bool? emergencyEnabled = null,
+                                             bool? autoCorrectAddress = null,
                                              ITwilioRestClient client = null)
         {
             var options = new UpdateAddressOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress};
@@ -350,17 +350,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="emergencyEnabled"> Whether to enable emergency calling on the address </param>
         /// <param name="autoCorrectAddress"> Whether we should automatically correct the address </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(string pathSid, 
-                                                                                     string pathAccountSid = null, 
-                                                                                     string friendlyName = null, 
-                                                                                     string customerName = null, 
-                                                                                     string street = null, 
-                                                                                     string city = null, 
-                                                                                     string region = null, 
-                                                                                     string postalCode = null, 
-                                                                                     bool? emergencyEnabled = null, 
-                                                                                     bool? autoCorrectAddress = null, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<AddressResource> UpdateAsync(string pathSid,
+                                                                                     string pathAccountSid = null,
+                                                                                     string friendlyName = null,
+                                                                                     string customerName = null,
+                                                                                     string street = null,
+                                                                                     string city = null,
+                                                                                     string region = null,
+                                                                                     string postalCode = null,
+                                                                                     bool? emergencyEnabled = null,
+                                                                                     bool? autoCorrectAddress = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateAddressOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, CustomerName = customerName, Street = street, City = city, Region = region, PostalCode = postalCode, EmergencyEnabled = emergencyEnabled, AutoCorrectAddress = autoCorrectAddress};
@@ -384,7 +384,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
+        /// <returns> A single instance of Address </returns>
         public static ResourceSet<AddressResource> Read(ReadAddressOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -400,8 +400,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read Address parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AddressResource>> ReadAsync(ReadAddressOptions options, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AddressResource>> ReadAsync(ReadAddressOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -422,13 +422,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Address </returns> 
-        public static ResourceSet<AddressResource> Read(string pathAccountSid = null, 
-                                                        string customerName = null, 
-                                                        string friendlyName = null, 
-                                                        string isoCountry = null, 
-                                                        int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Address </returns>
+        public static ResourceSet<AddressResource> Read(string pathAccountSid = null,
+                                                        string customerName = null,
+                                                        string friendlyName = null,
+                                                        string isoCountry = null,
+                                                        int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadAddressOptions(){PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
@@ -446,13 +446,13 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Address </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AddressResource>> ReadAsync(string pathAccountSid = null, 
-                                                                                                string customerName = null, 
-                                                                                                string friendlyName = null, 
-                                                                                                string isoCountry = null, 
-                                                                                                int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Address </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AddressResource>> ReadAsync(string pathAccountSid = null,
+                                                                                                string customerName = null,
+                                                                                                string friendlyName = null,
+                                                                                                string isoCountry = null,
+                                                                                                int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadAddressOptions(){PathAccountSid = pathAccountSid, CustomerName = customerName, FriendlyName = friendlyName, IsoCountry = isoCountry, PageSize = pageSize, Limit = limit};
@@ -465,7 +465,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<AddressResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -484,7 +484,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<AddressResource> NextPage(Page<AddressResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -504,7 +504,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<AddressResource> PreviousPage(Page<AddressResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -523,7 +523,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Converts a JSON string into a AddressResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> AddressResource object represented by the provided JSON </returns> 
+        /// <returns> AddressResource object represented by the provided JSON </returns>
         public static AddressResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

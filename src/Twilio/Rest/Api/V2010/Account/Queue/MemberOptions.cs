@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Queue 
+namespace Twilio.Rest.Api.V2010.Account.Queue
 {
 
     /// <summary>
     /// Fetch a specific member from the queue
     /// </summary>
-    public class FetchMemberOptions : IOptions<MemberResource> 
+    public class FetchMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to fetch
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
     /// <summary>
     /// Dequeue a member from a queue and have the member's call begin executing the TwiML document at that URL
     /// </summary>
-    public class UpdateMemberOptions : IOptions<MemberResource> 
+    public class UpdateMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to update
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
     /// <summary>
     /// Retrieve the members of the queue
     /// </summary>
-    public class ReadMemberOptions : ReadOptions<MemberResource> 
+    public class ReadMemberOptions : ReadOptions<MemberResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to read

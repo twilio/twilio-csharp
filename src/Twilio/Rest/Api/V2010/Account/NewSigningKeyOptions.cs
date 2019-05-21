@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Create a new Signing Key for the account making the request.
     /// </summary>
-    public class CreateNewSigningKeyOptions : IOptions<NewSigningKeyResource> 
+    public class CreateNewSigningKeyOptions : IOptions<NewSigningKeyResource>
     {
         /// <summary>
         /// The SID of the Account that will be responsible for the new Key resource

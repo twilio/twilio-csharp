@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Insights.V1;
 
-namespace Twilio.Tests.Rest.Insights.V1 
+namespace Twilio.Tests.Rest.Insights.V1
 {
 
     [TestFixture]
-    public class CallSummaryTest : TwilioTest 
+    public class CallSummaryTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

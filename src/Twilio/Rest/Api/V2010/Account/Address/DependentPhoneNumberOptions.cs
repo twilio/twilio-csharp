@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Address 
+namespace Twilio.Rest.Api.V2010.Account.Address
 {
 
     /// <summary>
     /// ReadDependentPhoneNumberOptions
     /// </summary>
-    public class ReadDependentPhoneNumberOptions : ReadOptions<DependentPhoneNumberResource> 
+    public class ReadDependentPhoneNumberOptions : ReadOptions<DependentPhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

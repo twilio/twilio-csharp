@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Messaging.V1.Service 
+namespace Twilio.Rest.Messaging.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreatePhoneNumberOptions
     /// </summary>
-    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The service_sid
@@ -55,10 +55,10 @@ namespace Twilio.Rest.Messaging.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeletePhoneNumberOptions
     /// </summary>
-    public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The service_sid
@@ -92,10 +92,10 @@ namespace Twilio.Rest.Messaging.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadPhoneNumberOptions
     /// </summary>
-    public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource> 
+    public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The service_sid
@@ -128,10 +128,10 @@ namespace Twilio.Rest.Messaging.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchPhoneNumberOptions
     /// </summary>
-    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The service_sid

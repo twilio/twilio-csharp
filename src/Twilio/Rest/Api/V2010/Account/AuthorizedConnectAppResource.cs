@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class AuthorizedConnectAppResource : Resource 
+    public class AuthorizedConnectAppResource : Resource
     {
-        public sealed class PermissionEnum : StringEnum 
+        public sealed class PermissionEnum : StringEnum
         {
             private PermissionEnum(string value) : base(value) {}
             public PermissionEnum() {}
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch AuthorizedConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AuthorizedConnectApp </returns> 
-        public static AuthorizedConnectAppResource Fetch(FetchAuthorizedConnectAppOptions options, 
+        /// <returns> A single instance of AuthorizedConnectApp </returns>
+        public static AuthorizedConnectAppResource Fetch(FetchAuthorizedConnectAppOptions options,
                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -65,8 +65,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch AuthorizedConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(FetchAuthorizedConnectAppOptions options, 
+        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns>
+        public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(FetchAuthorizedConnectAppOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -81,9 +81,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathConnectAppSid"> The SID of the Connect App to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AuthorizedConnectApp </returns> 
-        public static AuthorizedConnectAppResource Fetch(string pathConnectAppSid, 
-                                                         string pathAccountSid = null, 
+        /// <returns> A single instance of AuthorizedConnectApp </returns>
+        public static AuthorizedConnectAppResource Fetch(string pathConnectAppSid,
+                                                         string pathAccountSid = null,
                                                          ITwilioRestClient client = null)
         {
             var options = new FetchAuthorizedConnectAppOptions(pathConnectAppSid){PathAccountSid = pathAccountSid};
@@ -97,9 +97,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathConnectAppSid"> The SID of the Connect App to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(string pathConnectAppSid, 
-                                                                                                 string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns>
+        public static async System.Threading.Tasks.Task<AuthorizedConnectAppResource> FetchAsync(string pathConnectAppSid,
+                                                                                                 string pathAccountSid = null,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchAuthorizedConnectAppOptions(pathConnectAppSid){PathAccountSid = pathAccountSid};
@@ -123,8 +123,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read AuthorizedConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AuthorizedConnectApp </returns> 
-        public static ResourceSet<AuthorizedConnectAppResource> Read(ReadAuthorizedConnectAppOptions options, 
+        /// <returns> A single instance of AuthorizedConnectApp </returns>
+        public static ResourceSet<AuthorizedConnectAppResource> Read(ReadAuthorizedConnectAppOptions options,
                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -140,8 +140,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read AuthorizedConnectApp parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(ReadAuthorizedConnectAppOptions options, 
+        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(ReadAuthorizedConnectAppOptions options,
                                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -159,10 +159,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AuthorizedConnectApp </returns> 
-        public static ResourceSet<AuthorizedConnectAppResource> Read(string pathAccountSid = null, 
-                                                                     int? pageSize = null, 
-                                                                     long? limit = null, 
+        /// <returns> A single instance of AuthorizedConnectApp </returns>
+        public static ResourceSet<AuthorizedConnectAppResource> Read(string pathAccountSid = null,
+                                                                     int? pageSize = null,
+                                                                     long? limit = null,
                                                                      ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizedConnectAppOptions(){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -177,10 +177,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(string pathAccountSid = null, 
-                                                                                                             int? pageSize = null, 
-                                                                                                             long? limit = null, 
+        /// <returns> Task that resolves to A single instance of AuthorizedConnectApp </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AuthorizedConnectAppResource>> ReadAsync(string pathAccountSid = null,
+                                                                                                             int? pageSize = null,
+                                                                                                             long? limit = null,
                                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadAuthorizedConnectAppOptions(){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<AuthorizedConnectAppResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -212,8 +212,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<AuthorizedConnectAppResource> NextPage(Page<AuthorizedConnectAppResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<AuthorizedConnectAppResource> NextPage(Page<AuthorizedConnectAppResource> page,
                                                                   ITwilioRestClient client)
         {
             var request = new Request(
@@ -233,8 +233,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<AuthorizedConnectAppResource> PreviousPage(Page<AuthorizedConnectAppResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<AuthorizedConnectAppResource> PreviousPage(Page<AuthorizedConnectAppResource> page,
                                                                       ITwilioRestClient client)
         {
             var request = new Request(
@@ -253,7 +253,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Converts a JSON string into a AuthorizedConnectAppResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> AuthorizedConnectAppResource object represented by the provided JSON </returns> 
+        /// <returns> AuthorizedConnectAppResource object represented by the provided JSON </returns>
         public static AuthorizedConnectAppResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip 
+namespace Twilio.Rest.Api.V2010.Account.Sip
 {
 
     /// <summary>
     /// Retrieve a list of IpAccessControlLists that belong to the account used to make the request
     /// </summary>
-    public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource> 
+    public class ReadIpAccessControlListOptions : ReadOptions<IpAccessControlListResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Create a new IpAccessControlList resource
     /// </summary>
-    public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
+    public class CreateIpAccessControlListOptions : IOptions<IpAccessControlListResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Fetch a specific instance of an IpAccessControlList
     /// </summary>
-    public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
+    public class FetchIpAccessControlListOptions : IOptions<IpAccessControlListResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Rename an IpAccessControlList
     /// </summary>
-    public class UpdateIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
+    public class UpdateIpAccessControlListOptions : IOptions<IpAccessControlListResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Delete an IpAccessControlList from the requested account
     /// </summary>
-    public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource> 
+    public class DeleteIpAccessControlListOptions : IOptions<IpAccessControlListResource>
     {
         /// <summary>
         /// The unique sid that identifies this account

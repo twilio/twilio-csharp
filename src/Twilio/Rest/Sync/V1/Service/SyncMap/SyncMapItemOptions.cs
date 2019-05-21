@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Sync.V1.Service.SyncMap 
+namespace Twilio.Rest.Sync.V1.Service.SyncMap
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchSyncMapItemOptions
     /// </summary>
-    public class FetchSyncMapItemOptions : IOptions<SyncMapItemResource> 
+    public class FetchSyncMapItemOptions : IOptions<SyncMapItemResource>
     {
         /// <summary>
         /// The service_sid
@@ -56,10 +56,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteSyncMapItemOptions
     /// </summary>
-    public class DeleteSyncMapItemOptions : IOptions<SyncMapItemResource> 
+    public class DeleteSyncMapItemOptions : IOptions<SyncMapItemResource>
     {
         /// <summary>
         /// The service_sid
@@ -99,10 +99,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateSyncMapItemOptions
     /// </summary>
-    public class CreateSyncMapItemOptions : IOptions<SyncMapItemResource> 
+    public class CreateSyncMapItemOptions : IOptions<SyncMapItemResource>
     {
         /// <summary>
         /// The service_sid
@@ -186,10 +186,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadSyncMapItemOptions
     /// </summary>
-    public class ReadSyncMapItemOptions : ReadOptions<SyncMapItemResource> 
+    public class ReadSyncMapItemOptions : ReadOptions<SyncMapItemResource>
     {
         /// <summary>
         /// The service_sid
@@ -255,10 +255,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// UpdateSyncMapItemOptions
     /// </summary>
-    public class UpdateSyncMapItemOptions : IOptions<SyncMapItemResource> 
+    public class UpdateSyncMapItemOptions : IOptions<SyncMapItemResource>
     {
         /// <summary>
         /// The service_sid

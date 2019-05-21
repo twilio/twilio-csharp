@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// NotificationResource
 /// </summary>
 
@@ -18,12 +18,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Notify.V1.Service 
+namespace Twilio.Rest.Notify.V1.Service
 {
 
-    public class NotificationResource : Resource 
+    public class NotificationResource : Resource
     {
-        public sealed class PriorityEnum : StringEnum 
+        public sealed class PriorityEnum : StringEnum
         {
             private PriorityEnum(string value) : base(value) {}
             public PriorityEnum() {}
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         /// <param name="options"> Create Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns> 
+        /// <returns> A single instance of Notification </returns>
         public static NotificationResource Create(CreateNotificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,8 +66,8 @@ namespace Twilio.Rest.Notify.V1.Service
         /// </summary>
         /// <param name="options"> Create Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options, 
+        /// <returns> Task that resolves to A single instance of Notification </returns>
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(CreateNotificationOptions options,
                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -102,25 +102,25 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="alexa"> Deprecated </param>
         /// <param name="toBinding"> The destination address specified as a JSON string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns> 
-        public static NotificationResource Create(string pathServiceSid, 
-                                                  List<string> identity = null, 
-                                                  List<string> tag = null, 
-                                                  string body = null, 
-                                                  NotificationResource.PriorityEnum priority = null, 
-                                                  int? ttl = null, 
-                                                  string title = null, 
-                                                  string sound = null, 
-                                                  string action = null, 
-                                                  object data = null, 
-                                                  object apn = null, 
-                                                  object gcm = null, 
-                                                  object sms = null, 
-                                                  object facebookMessenger = null, 
-                                                  object fcm = null, 
-                                                  List<string> segment = null, 
-                                                  object alexa = null, 
-                                                  List<string> toBinding = null, 
+        /// <returns> A single instance of Notification </returns>
+        public static NotificationResource Create(string pathServiceSid,
+                                                  List<string> identity = null,
+                                                  List<string> tag = null,
+                                                  string body = null,
+                                                  NotificationResource.PriorityEnum priority = null,
+                                                  int? ttl = null,
+                                                  string title = null,
+                                                  string sound = null,
+                                                  string action = null,
+                                                  object data = null,
+                                                  object apn = null,
+                                                  object gcm = null,
+                                                  object sms = null,
+                                                  object facebookMessenger = null,
+                                                  object fcm = null,
+                                                  List<string> segment = null,
+                                                  object alexa = null,
+                                                  List<string> toBinding = null,
                                                   ITwilioRestClient client = null)
         {
             var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding};
@@ -154,25 +154,25 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="alexa"> Deprecated </param>
         /// <param name="toBinding"> The destination address specified as a JSON string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid, 
-                                                                                          List<string> identity = null, 
-                                                                                          List<string> tag = null, 
-                                                                                          string body = null, 
-                                                                                          NotificationResource.PriorityEnum priority = null, 
-                                                                                          int? ttl = null, 
-                                                                                          string title = null, 
-                                                                                          string sound = null, 
-                                                                                          string action = null, 
-                                                                                          object data = null, 
-                                                                                          object apn = null, 
-                                                                                          object gcm = null, 
-                                                                                          object sms = null, 
-                                                                                          object facebookMessenger = null, 
-                                                                                          object fcm = null, 
-                                                                                          List<string> segment = null, 
-                                                                                          object alexa = null, 
-                                                                                          List<string> toBinding = null, 
+        /// <returns> Task that resolves to A single instance of Notification </returns>
+        public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid,
+                                                                                          List<string> identity = null,
+                                                                                          List<string> tag = null,
+                                                                                          string body = null,
+                                                                                          NotificationResource.PriorityEnum priority = null,
+                                                                                          int? ttl = null,
+                                                                                          string title = null,
+                                                                                          string sound = null,
+                                                                                          string action = null,
+                                                                                          object data = null,
+                                                                                          object apn = null,
+                                                                                          object gcm = null,
+                                                                                          object sms = null,
+                                                                                          object facebookMessenger = null,
+                                                                                          object fcm = null,
+                                                                                          List<string> segment = null,
+                                                                                          object alexa = null,
+                                                                                          List<string> toBinding = null,
                                                                                           ITwilioRestClient client = null)
         {
             var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding};
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// Converts a JSON string into a NotificationResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> NotificationResource object represented by the provided JSON </returns> 
+        /// <returns> NotificationResource object represented by the provided JSON </returns>
         public static NotificationResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -9,16 +9,16 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.HostedNumbers 
+namespace Twilio.Rest.Preview.HostedNumbers
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch a specific AuthorizationDocument.
     /// </summary>
-    public class FetchAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource> 
+    public class FetchAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
     {
         /// <summary>
         /// AuthorizationDocument sid.
@@ -47,10 +47,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Updates a specific AuthorizationDocument.
     /// </summary>
-    public class UpdateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource> 
+    public class UpdateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
     {
         /// <summary>
         /// The sid
@@ -144,10 +144,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of AuthorizationDocuments belonging to the account initiating the request.
     /// </summary>
-    public class ReadAuthorizationDocumentOptions : ReadOptions<AuthorizationDocumentResource> 
+    public class ReadAuthorizationDocumentOptions : ReadOptions<AuthorizationDocumentResource>
     {
         /// <summary>
         /// Email.
@@ -186,10 +186,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create an AuthorizationDocument for authorizing the hosting of phone number capabilities on Twilio's platform.
     /// </summary>
-    public class CreateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource> 
+    public class CreateAuthorizationDocumentOptions : IOptions<AuthorizationDocumentResource>
     {
         /// <summary>
         /// A list of HostedNumberOrder sids.
@@ -224,10 +224,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
         /// <param name="email"> Email. </param>
         /// <param name="contactTitle"> Title of signee of this Authorization Document. </param>
         /// <param name="contactPhoneNumber"> Authorization Document's signee's phone number. </param>
-        public CreateAuthorizationDocumentOptions(List<string> hostedNumberOrderSids, 
-                                                  string addressSid, 
-                                                  string email, 
-                                                  string contactTitle, 
+        public CreateAuthorizationDocumentOptions(List<string> hostedNumberOrderSids,
+                                                  string addressSid,
+                                                  string email,
+                                                  string contactTitle,
                                                   string contactPhoneNumber)
         {
             HostedNumberOrderSids = hostedNumberOrderSids;

@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
+namespace Twilio.Tests.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 {
 
     [TestFixture]
-    public class SharedCostTest : TwilioTest 
+    public class SharedCostTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

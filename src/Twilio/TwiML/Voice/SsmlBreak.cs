@@ -9,15 +9,15 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Adding a Pause in Say
     /// </summary>
-    public class SsmlBreak : TwiML 
+    public class SsmlBreak : TwiML
     {
-        public sealed class StrengthEnum : StringEnum 
+        public sealed class StrengthEnum : StringEnum
         {
             private StrengthEnum(string value) : base(value) {}
             public StrengthEnum() {}

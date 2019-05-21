@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Fetch an instance of an authorized-connect-app
     /// </summary>
-    public class FetchAuthorizedConnectAppOptions : IOptions<AuthorizedConnectAppResource> 
+    public class FetchAuthorizedConnectAppOptions : IOptions<AuthorizedConnectAppResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of authorized-connect-apps belonging to the account used to make the request
     /// </summary>
-    public class ReadAuthorizedConnectAppOptions : ReadOptions<AuthorizedConnectAppResource> 
+    public class ReadAuthorizedConnectAppOptions : ReadOptions<AuthorizedConnectAppResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

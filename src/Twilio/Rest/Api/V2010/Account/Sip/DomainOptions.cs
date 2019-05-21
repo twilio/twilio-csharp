@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip 
+namespace Twilio.Rest.Api.V2010.Account.Sip
 {
 
     /// <summary>
     /// Retrieve a list of domains belonging to the account used to make the request
     /// </summary>
-    public class ReadDomainOptions : ReadOptions<DomainResource> 
+    public class ReadDomainOptions : ReadOptions<DomainResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Create a new Domain
     /// </summary>
-    public class CreateDomainOptions : IOptions<DomainResource> 
+    public class CreateDomainOptions : IOptions<DomainResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Fetch an instance of a Domain
     /// </summary>
-    public class FetchDomainOptions : IOptions<DomainResource> 
+    public class FetchDomainOptions : IOptions<DomainResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Update the attributes of a domain
     /// </summary>
-    public class UpdateDomainOptions : IOptions<DomainResource> 
+    public class UpdateDomainOptions : IOptions<DomainResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to update
@@ -296,7 +296,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Delete an instance of a Domain
     /// </summary>
-    public class DeleteDomainOptions : IOptions<DomainResource> 
+    public class DeleteDomainOptions : IOptions<DomainResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete

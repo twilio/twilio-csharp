@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Fetch an instance of a recording
     /// </summary>
-    public class FetchRecordingOptions : IOptions<RecordingResource> 
+    public class FetchRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Delete a recording from your account
     /// </summary>
-    public class DeleteRecordingOptions : IOptions<RecordingResource> 
+    public class DeleteRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of recordings belonging to the account used to make the request
     /// </summary>
-    public class ReadRecordingOptions : ReadOptions<RecordingResource> 
+    public class ReadRecordingOptions : ReadOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

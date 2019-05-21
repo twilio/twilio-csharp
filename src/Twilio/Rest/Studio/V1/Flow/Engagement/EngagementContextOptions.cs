@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Studio.V1.Flow.Engagement 
+namespace Twilio.Rest.Studio.V1.Flow.Engagement
 {
 
     /// <summary>
     /// Retrieve the most recent context for an Engagement.
     /// </summary>
-    public class FetchEngagementContextOptions : IOptions<EngagementContextResource> 
+    public class FetchEngagementContextOptions : IOptions<EngagementContextResource>
     {
         /// <summary>
         /// Flow Sid.

@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Chat.V1.Service.User;
 
-namespace Twilio.Tests.Rest.Chat.V1.Service.User 
+namespace Twilio.Tests.Rest.Chat.V1.Service.User
 {
 
     [TestFixture]
-    public class UserChannelTest : TwilioTest 
+    public class UserChannelTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

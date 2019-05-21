@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Lookups.V1 
+namespace Twilio.Rest.Lookups.V1
 {
 
-    public class PhoneNumberResource : Resource 
+    public class PhoneNumberResource : Resource
     {
-        public sealed class TypeEnum : StringEnum 
+        public sealed class TypeEnum : StringEnum
         {
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Lookups.V1
         /// </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
+        /// <returns> A single instance of PhoneNumber </returns>
         public static PhoneNumberResource Fetch(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -65,8 +65,8 @@ namespace Twilio.Rest.Lookups.V1
         /// </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -84,12 +84,12 @@ namespace Twilio.Rest.Lookups.V1
         /// <param name="addOns"> The unique_name of an Add-on you would like to invoke </param>
         /// <param name="addOnsData"> Data specific to the add-on you would like to invoke </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
-        public static PhoneNumberResource Fetch(Types.PhoneNumber pathPhoneNumber, 
-                                                string countryCode = null, 
-                                                List<string> type = null, 
-                                                List<string> addOns = null, 
-                                                Dictionary<string, object> addOnsData = null, 
+        /// <returns> A single instance of PhoneNumber </returns>
+        public static PhoneNumberResource Fetch(Types.PhoneNumber pathPhoneNumber,
+                                                string countryCode = null,
+                                                List<string> type = null,
+                                                List<string> addOns = null,
+                                                Dictionary<string, object> addOnsData = null,
                                                 ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathPhoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
@@ -106,12 +106,12 @@ namespace Twilio.Rest.Lookups.V1
         /// <param name="addOns"> The unique_name of an Add-on you would like to invoke </param>
         /// <param name="addOnsData"> Data specific to the add-on you would like to invoke </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(Types.PhoneNumber pathPhoneNumber, 
-                                                                                        string countryCode = null, 
-                                                                                        List<string> type = null, 
-                                                                                        List<string> addOns = null, 
-                                                                                        Dictionary<string, object> addOnsData = null, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(Types.PhoneNumber pathPhoneNumber,
+                                                                                        string countryCode = null,
+                                                                                        List<string> type = null,
+                                                                                        List<string> addOns = null,
+                                                                                        Dictionary<string, object> addOnsData = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathPhoneNumber){CountryCode = countryCode, Type = type, AddOns = addOns, AddOnsData = addOnsData};
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Lookups.V1
         /// Converts a JSON string into a PhoneNumberResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> PhoneNumberResource object represented by the provided JSON </returns> 
+        /// <returns> PhoneNumberResource object represented by the provided JSON </returns>
         public static PhoneNumberResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

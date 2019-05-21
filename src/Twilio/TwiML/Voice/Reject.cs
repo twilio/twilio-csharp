@@ -9,15 +9,15 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Reject TwiML Verb
     /// </summary>
-    public class Reject : TwiML 
+    public class Reject : TwiML
     {
-        public sealed class ReasonEnum : StringEnum 
+        public sealed class ReasonEnum : StringEnum
         {
             private ReasonEnum(string value) : base(value) {}
             public ReasonEnum() {}

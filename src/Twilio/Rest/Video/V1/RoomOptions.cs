@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1 
+namespace Twilio.Rest.Video.V1
 {
 
     /// <summary>
     /// FetchRoomOptions
     /// </summary>
-    public class FetchRoomOptions : IOptions<RoomResource> 
+    public class FetchRoomOptions : IOptions<RoomResource>
     {
         /// <summary>
         /// The Room Sid or name that uniquely identifies this resource.
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// CreateRoomOptions
     /// </summary>
-    public class CreateRoomOptions : IOptions<RoomResource> 
+    public class CreateRoomOptions : IOptions<RoomResource>
     {
         /// <summary>
         /// Use Twilio Network Traversal for TURN service.
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// ReadRoomOptions
     /// </summary>
-    public class ReadRoomOptions : ReadOptions<RoomResource> 
+    public class ReadRoomOptions : ReadOptions<RoomResource>
     {
         /// <summary>
         /// Only show Rooms with the given status.
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// UpdateRoomOptions
     /// </summary>
-    public class UpdateRoomOptions : IOptions<RoomResource> 
+    public class UpdateRoomOptions : IOptions<RoomResource>
     {
         /// <summary>
         /// The Room Sid or name that uniquely identifies this resource.

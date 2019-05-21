@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Studio.V1.Flow.Execution 
+namespace Twilio.Rest.Studio.V1.Flow.Execution
 {
 
-    public class ExecutionContextResource : Resource 
+    public class ExecutionContextResource : Resource
     {
         private static Request BuildFetchRequest(FetchExecutionContextOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
         /// </summary>
         /// <param name="options"> Fetch ExecutionContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ExecutionContext </returns> 
+        /// <returns> A single instance of ExecutionContext </returns>
         public static ExecutionContextResource Fetch(FetchExecutionContextOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
         /// </summary>
         /// <param name="options"> Fetch ExecutionContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ExecutionContext </returns> 
-        public static async System.Threading.Tasks.Task<ExecutionContextResource> FetchAsync(FetchExecutionContextOptions options, 
+        /// <returns> Task that resolves to A single instance of ExecutionContext </returns>
+        public static async System.Threading.Tasks.Task<ExecutionContextResource> FetchAsync(FetchExecutionContextOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,9 +66,9 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
         /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pathExecutionSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ExecutionContext </returns> 
-        public static ExecutionContextResource Fetch(string pathFlowSid, 
-                                                     string pathExecutionSid, 
+        /// <returns> A single instance of ExecutionContext </returns>
+        public static ExecutionContextResource Fetch(string pathFlowSid,
+                                                     string pathExecutionSid,
                                                      ITwilioRestClient client = null)
         {
             var options = new FetchExecutionContextOptions(pathFlowSid, pathExecutionSid);
@@ -82,9 +82,9 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
         /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pathExecutionSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ExecutionContext </returns> 
-        public static async System.Threading.Tasks.Task<ExecutionContextResource> FetchAsync(string pathFlowSid, 
-                                                                                             string pathExecutionSid, 
+        /// <returns> Task that resolves to A single instance of ExecutionContext </returns>
+        public static async System.Threading.Tasks.Task<ExecutionContextResource> FetchAsync(string pathFlowSid,
+                                                                                             string pathExecutionSid,
                                                                                              ITwilioRestClient client = null)
         {
             var options = new FetchExecutionContextOptions(pathFlowSid, pathExecutionSid);
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
         /// Converts a JSON string into a ExecutionContextResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ExecutionContextResource object represented by the provided JSON </returns> 
+        /// <returns> ExecutionContextResource object represented by the provided JSON </returns>
         public static ExecutionContextResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

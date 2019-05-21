@@ -8,13 +8,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Pronouncing Acronyms and Abbreviations in Say
     /// </summary>
-    public class SsmlSub : TwiML 
+    public class SsmlSub : TwiML
     {
         /// <summary>
         /// Words to be substituted

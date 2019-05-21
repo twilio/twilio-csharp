@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Assistant.FieldType 
+namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchFieldValueOptions
     /// </summary>
-    public class FetchFieldValueOptions : IOptions<FieldValueResource> 
+    public class FetchFieldValueOptions : IOptions<FieldValueResource>
     {
         /// <summary>
         /// The assistant_sid
@@ -58,10 +58,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadFieldValueOptions
     /// </summary>
-    public class ReadFieldValueOptions : ReadOptions<FieldValueResource> 
+    public class ReadFieldValueOptions : ReadOptions<FieldValueResource>
     {
         /// <summary>
         /// The assistant_sid
@@ -110,10 +110,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateFieldValueOptions
     /// </summary>
-    public class CreateFieldValueOptions : IOptions<FieldValueResource> 
+    public class CreateFieldValueOptions : IOptions<FieldValueResource>
     {
         /// <summary>
         /// The assistant_sid
@@ -180,10 +180,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteFieldValueOptions
     /// </summary>
-    public class DeleteFieldValueOptions : IOptions<FieldValueResource> 
+    public class DeleteFieldValueOptions : IOptions<FieldValueResource>
     {
         /// <summary>
         /// The assistant_sid

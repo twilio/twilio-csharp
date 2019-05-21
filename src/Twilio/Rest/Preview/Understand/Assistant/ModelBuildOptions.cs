@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Assistant 
+namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchModelBuildOptions
     /// </summary>
-    public class FetchModelBuildOptions : IOptions<ModelBuildResource> 
+    public class FetchModelBuildOptions : IOptions<ModelBuildResource>
     {
         /// <summary>
         /// The assistant_sid
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadModelBuildOptions
     /// </summary>
-    public class ReadModelBuildOptions : ReadOptions<ModelBuildResource> 
+    public class ReadModelBuildOptions : ReadOptions<ModelBuildResource>
     {
         /// <summary>
         /// The assistant_sid
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateModelBuildOptions
     /// </summary>
-    public class CreateModelBuildOptions : IOptions<ModelBuildResource> 
+    public class CreateModelBuildOptions : IOptions<ModelBuildResource>
     {
         /// <summary>
         /// The assistant_sid
@@ -139,10 +139,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateModelBuildOptions
     /// </summary>
-    public class UpdateModelBuildOptions : IOptions<ModelBuildResource> 
+    public class UpdateModelBuildOptions : IOptions<ModelBuildResource>
     {
         /// <summary>
         /// The assistant_sid
@@ -186,10 +186,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteModelBuildOptions
     /// </summary>
-    public class DeleteModelBuildOptions : IOptions<ModelBuildResource> 
+    public class DeleteModelBuildOptions : IOptions<ModelBuildResource>
     {
         /// <summary>
         /// The assistant_sid

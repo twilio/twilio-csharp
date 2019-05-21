@@ -8,13 +8,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Controling Volume, Speaking Rate, and Pitch in Say
     /// </summary>
-    public class SsmlProsody : TwiML 
+    public class SsmlProsody : TwiML
     {
         /// <summary>
         /// Words to speak
@@ -42,9 +42,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="rate"> Specify the rate, available values: x-slow, slow, medium, fast, x-fast, n% </param>
         /// <param name="pitch"> Specify the pitch, available values: default, x-low, low, medium, high, x-high, +n%, -n%
         ///             </param>
-        public SsmlProsody(string words = null, 
-                           string volume = null, 
-                           string rate = null, 
+        public SsmlProsody(string words = null,
+                           string volume = null,
+                           string rate = null,
                            string pitch = null) : base("prosody")
         {
             this.Words = words;

@@ -9,15 +9,15 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Say TwiML Verb
     /// </summary>
-    public class Say : TwiML 
+    public class Say : TwiML
     {
-        public sealed class VoiceEnum : StringEnum 
+        public sealed class VoiceEnum : StringEnum
         {
             private VoiceEnum(string value) : base(value) {}
             public VoiceEnum() {}
@@ -83,7 +83,7 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyAditi = new VoiceEnum("Polly.Aditi");
         }
 
-        public sealed class LanguageEnum : StringEnum 
+        public sealed class LanguageEnum : StringEnum
         {
             private LanguageEnum(string value) : base(value) {}
             public LanguageEnum() {}
@@ -144,9 +144,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="voice"> Voice to use </param>
         /// <param name="loop"> Times to loop message </param>
         /// <param name="language"> Message langauge </param>
-        public Say(string message = null, 
-                   Say.VoiceEnum voice = null, 
-                   int? loop = null, 
+        public Say(string message = null,
+                   Say.VoiceEnum voice = null,
+                   int? loop = null,
                    Say.LanguageEnum language = null) : base("Say")
         {
             this.Message = message;
@@ -366,8 +366,8 @@ namespace Twilio.TwiML.Voice
         /// <param name="words"> Words to be interpreted, the body of the TwiML Element. </param>
         /// <param name="interpret-As"> Specify the type of words are spoken </param>
         /// <param name="role"> Specify the format of the date when interpret-as is set to date </param>
-        public Say SsmlSayAs(string words = null, 
-                             SsmlSayAs.InterpretAsEnum interpretAs = null, 
+        public Say SsmlSayAs(string words = null,
+                             SsmlSayAs.InterpretAsEnum interpretAs = null,
                              SsmlSayAs.RoleEnum role = null)
         {
             var newChild = new SsmlSayAs(words, interpretAs, role);

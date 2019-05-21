@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Messaging.V1.Service 
+namespace Twilio.Rest.Messaging.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateAlphaSenderOptions
     /// </summary>
-    public class CreateAlphaSenderOptions : IOptions<AlphaSenderResource> 
+    public class CreateAlphaSenderOptions : IOptions<AlphaSenderResource>
     {
         /// <summary>
         /// The service_sid
@@ -55,10 +55,10 @@ namespace Twilio.Rest.Messaging.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadAlphaSenderOptions
     /// </summary>
-    public class ReadAlphaSenderOptions : ReadOptions<AlphaSenderResource> 
+    public class ReadAlphaSenderOptions : ReadOptions<AlphaSenderResource>
     {
         /// <summary>
         /// The service_sid
@@ -91,10 +91,10 @@ namespace Twilio.Rest.Messaging.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchAlphaSenderOptions
     /// </summary>
-    public class FetchAlphaSenderOptions : IOptions<AlphaSenderResource> 
+    public class FetchAlphaSenderOptions : IOptions<AlphaSenderResource>
     {
         /// <summary>
         /// The service_sid
@@ -128,10 +128,10 @@ namespace Twilio.Rest.Messaging.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteAlphaSenderOptions
     /// </summary>
-    public class DeleteAlphaSenderOptions : IOptions<AlphaSenderResource> 
+    public class DeleteAlphaSenderOptions : IOptions<AlphaSenderResource>
     {
         /// <summary>
         /// The service_sid

@@ -7,13 +7,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Sim TwiML Noun
     /// </summary>
-    public class Sim : TwiML 
+    public class Sim : TwiML
     {
         /// <summary>
         /// SIM SID

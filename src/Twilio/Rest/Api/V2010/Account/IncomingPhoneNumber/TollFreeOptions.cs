@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
+namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 {
 
     /// <summary>
     /// ReadTollFreeOptions
     /// </summary>
-    public class ReadTollFreeOptions : ReadOptions<TollFreeResource> 
+    public class ReadTollFreeOptions : ReadOptions<TollFreeResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
     /// <summary>
     /// CreateTollFreeOptions
     /// </summary>
-    public class CreateTollFreeOptions : IOptions<TollFreeResource> 
+    public class CreateTollFreeOptions : IOptions<TollFreeResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource

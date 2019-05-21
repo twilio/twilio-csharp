@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Studio.V1.Flow 
+namespace Twilio.Rest.Studio.V1.Flow
 {
 
     /// <summary>
     /// Retrieve a list of all Executions for the Flow.
     /// </summary>
-    public class ReadExecutionOptions : ReadOptions<ExecutionResource> 
+    public class ReadExecutionOptions : ReadOptions<ExecutionResource>
     {
         /// <summary>
         /// Flow Sid.
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// Retrieve an Execution
     /// </summary>
-    public class FetchExecutionOptions : IOptions<ExecutionResource> 
+    public class FetchExecutionOptions : IOptions<ExecutionResource>
     {
         /// <summary>
         /// Flow Sid.
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// Triggers a new Execution for the Flow
     /// </summary>
-    public class CreateExecutionOptions : IOptions<ExecutionResource> 
+    public class CreateExecutionOptions : IOptions<ExecutionResource>
     {
         /// <summary>
         /// Flow Sid.
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// Delete this Execution and all Steps relating to it.
     /// </summary>
-    public class DeleteExecutionOptions : IOptions<ExecutionResource> 
+    public class DeleteExecutionOptions : IOptions<ExecutionResource>
     {
         /// <summary>
         /// Flow Sid.

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip 
+namespace Twilio.Rest.Api.V2010.Account.Sip
 {
 
     /// <summary>
     /// Get All Credential Lists
     /// </summary>
-    public class ReadCredentialListOptions : ReadOptions<CredentialListResource> 
+    public class ReadCredentialListOptions : ReadOptions<CredentialListResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Create a Credential List
     /// </summary>
-    public class CreateCredentialListOptions : IOptions<CredentialListResource> 
+    public class CreateCredentialListOptions : IOptions<CredentialListResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -77,7 +77,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Get a Credential List
     /// </summary>
-    public class FetchCredentialListOptions : IOptions<CredentialListResource> 
+    public class FetchCredentialListOptions : IOptions<CredentialListResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Update a Credential List
     /// </summary>
-    public class UpdateCredentialListOptions : IOptions<CredentialListResource> 
+    public class UpdateCredentialListOptions : IOptions<CredentialListResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
     /// <summary>
     /// Delete a Credential List
     /// </summary>
-    public class DeleteCredentialListOptions : IOptions<CredentialListResource> 
+    public class DeleteCredentialListOptions : IOptions<CredentialListResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.

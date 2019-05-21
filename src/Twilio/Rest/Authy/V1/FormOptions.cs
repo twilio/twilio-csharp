@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Authy.V1 
+namespace Twilio.Rest.Authy.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch the forms for a specific Form Type.
     /// </summary>
-    public class FetchFormOptions : IOptions<FormResource> 
+    public class FetchFormOptions : IOptions<FormResource>
     {
         /// <summary>
         /// The Type of this Form

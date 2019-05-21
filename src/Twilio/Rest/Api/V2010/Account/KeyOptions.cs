@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// FetchKeyOptions
     /// </summary>
-    public class FetchKeyOptions : IOptions<KeyResource> 
+    public class FetchKeyOptions : IOptions<KeyResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// UpdateKeyOptions
     /// </summary>
-    public class UpdateKeyOptions : IOptions<KeyResource> 
+    public class UpdateKeyOptions : IOptions<KeyResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to update
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// DeleteKeyOptions
     /// </summary>
-    public class DeleteKeyOptions : IOptions<KeyResource> 
+    public class DeleteKeyOptions : IOptions<KeyResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// ReadKeyOptions
     /// </summary>
-    public class ReadKeyOptions : ReadOptions<KeyResource> 
+    public class ReadKeyOptions : ReadOptions<KeyResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

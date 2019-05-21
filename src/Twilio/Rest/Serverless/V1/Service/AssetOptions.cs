@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Serverless.V1.Service 
+namespace Twilio.Rest.Serverless.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Assets.
     /// </summary>
-    public class ReadAssetOptions : ReadOptions<AssetResource> 
+    public class ReadAssetOptions : ReadOptions<AssetResource>
     {
         /// <summary>
         /// Service Sid.
@@ -51,10 +51,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a specific Asset.
     /// </summary>
-    public class FetchAssetOptions : IOptions<AssetResource> 
+    public class FetchAssetOptions : IOptions<AssetResource>
     {
         /// <summary>
         /// Service Sid.
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Asset.
     /// </summary>
-    public class CreateAssetOptions : IOptions<AssetResource> 
+    public class CreateAssetOptions : IOptions<AssetResource>
     {
         /// <summary>
         /// Service Sid.
@@ -132,10 +132,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update a specific Asset.
     /// </summary>
-    public class UpdateAssetOptions : IOptions<AssetResource> 
+    public class UpdateAssetOptions : IOptions<AssetResource>
     {
         /// <summary>
         /// Service Sid.

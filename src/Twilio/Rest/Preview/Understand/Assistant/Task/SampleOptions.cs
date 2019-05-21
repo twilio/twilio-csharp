@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Assistant.Task 
+namespace Twilio.Rest.Preview.Understand.Assistant.Task
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchSampleOptions
     /// </summary>
-    public class FetchSampleOptions : IOptions<SampleResource> 
+    public class FetchSampleOptions : IOptions<SampleResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -58,10 +58,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadSampleOptions
     /// </summary>
-    public class ReadSampleOptions : ReadOptions<SampleResource> 
+    public class ReadSampleOptions : ReadOptions<SampleResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -110,10 +110,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateSampleOptions
     /// </summary>
-    public class CreateSampleOptions : IOptions<SampleResource> 
+    public class CreateSampleOptions : IOptions<SampleResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -180,10 +180,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateSampleOptions
     /// </summary>
-    public class UpdateSampleOptions : IOptions<SampleResource> 
+    public class UpdateSampleOptions : IOptions<SampleResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -251,10 +251,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteSampleOptions
     /// </summary>
-    public class DeleteSampleOptions : IOptions<SampleResource> 
+    public class DeleteSampleOptions : IOptions<SampleResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.

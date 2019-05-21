@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.IpMessaging.V2.Service.Channel;
 
-namespace Twilio.Tests.Rest.IpMessaging.V2.Service.Channel 
+namespace Twilio.Tests.Rest.IpMessaging.V2.Service.Channel
 {
 
     [TestFixture]
-    public class WebhookTest : TwilioTest 
+    public class WebhookTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

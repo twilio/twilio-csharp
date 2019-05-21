@@ -9,16 +9,16 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Serverless.V1.Service 
+namespace Twilio.Rest.Serverless.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Builds.
     /// </summary>
-    public class ReadBuildOptions : ReadOptions<BuildResource> 
+    public class ReadBuildOptions : ReadOptions<BuildResource>
     {
         /// <summary>
         /// Service Sid.
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a specific Build.
     /// </summary>
-    public class FetchBuildOptions : IOptions<BuildResource> 
+    public class FetchBuildOptions : IOptions<BuildResource>
     {
         /// <summary>
         /// Service Sid.
@@ -90,10 +90,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Build. At least one Function Version or Asset Version is required.
     /// </summary>
-    public class CreateBuildOptions : IOptions<BuildResource> 
+    public class CreateBuildOptions : IOptions<BuildResource>
     {
         /// <summary>
         /// Service Sid.

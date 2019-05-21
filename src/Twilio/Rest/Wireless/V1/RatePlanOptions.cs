@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Wireless.V1 
+namespace Twilio.Rest.Wireless.V1
 {
 
     /// <summary>
     /// ReadRatePlanOptions
     /// </summary>
-    public class ReadRatePlanOptions : ReadOptions<RatePlanResource> 
+    public class ReadRatePlanOptions : ReadOptions<RatePlanResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// FetchRatePlanOptions
     /// </summary>
-    public class FetchRatePlanOptions : IOptions<RatePlanResource> 
+    public class FetchRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
         /// The sid
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// CreateRatePlanOptions
     /// </summary>
-    public class CreateRatePlanOptions : IOptions<RatePlanResource> 
+    public class CreateRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
         /// A user-provided string that uniquely identifies this resource as an alternative to the Sid.
@@ -187,7 +187,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// UpdateRatePlanOptions
     /// </summary>
-    public class UpdateRatePlanOptions : IOptions<RatePlanResource> 
+    public class UpdateRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
         /// The sid
@@ -234,7 +234,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// DeleteRatePlanOptions
     /// </summary>
-    public class DeleteRatePlanOptions : IOptions<RatePlanResource> 
+    public class DeleteRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
         /// The sid

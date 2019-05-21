@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Update an incoming-phone-number instance.
     /// </summary>
-    public class UpdateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
+    public class UpdateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to update
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Fetch an incoming-phone-number belonging to the account used to make the request.
     /// </summary>
-    public class FetchIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
+    public class FetchIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Delete a phone-numbers belonging to the account used to make the request.
     /// </summary>
-    public class DeleteIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
+    public class DeleteIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -311,7 +311,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of incoming-phone-numbers belonging to the account used to make the request.
     /// </summary>
-    public class ReadIncomingPhoneNumberOptions : ReadOptions<IncomingPhoneNumberResource> 
+    public class ReadIncomingPhoneNumberOptions : ReadOptions<IncomingPhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -372,7 +372,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Purchase a phone-number for the account.
     /// </summary>
-    public class CreateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource> 
+    public class CreateIncomingPhoneNumberOptions : IOptions<IncomingPhoneNumberResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource

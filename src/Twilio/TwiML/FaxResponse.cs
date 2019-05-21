@@ -10,13 +10,13 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.TwiML.Fax;
 
-namespace Twilio.TwiML 
+namespace Twilio.TwiML
 {
 
     /// <summary>
     /// Response TwiML for Faxes
     /// </summary>
-    public class FaxResponse : TwiML 
+    public class FaxResponse : TwiML
     {
         /// <summary>
         /// Create a new FaxResponse

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// CreateValidationRequestOptions
     /// </summary>
-    public class CreateValidationRequestOptions : IOptions<ValidationRequestResource> 
+    public class CreateValidationRequestOptions : IOptions<ValidationRequestResource>
     {
         /// <summary>
         /// The SID of the Account responsible for the new Caller ID

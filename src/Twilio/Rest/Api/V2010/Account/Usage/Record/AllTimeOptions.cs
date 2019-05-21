@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
+namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 {
 
     /// <summary>
     /// ReadAllTimeOptions
     /// </summary>
-    public class ReadAllTimeOptions : ReadOptions<AllTimeResource> 
+    public class ReadAllTimeOptions : ReadOptions<AllTimeResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

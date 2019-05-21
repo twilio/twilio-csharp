@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Proxy.V1.Service.Session;
 
-namespace Twilio.Tests.Rest.Proxy.V1.Service.Session 
+namespace Twilio.Tests.Rest.Proxy.V1.Service.Session
 {
 
     [TestFixture]
-    public class ParticipantTest : TwilioTest 
+    public class ParticipantTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Send a message from the account used to make the request
     /// </summary>
-    public class CreateMessageOptions : IOptions<MessageResource> 
+    public class CreateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Deletes a message record from your account
     /// </summary>
-    public class DeleteMessageOptions : IOptions<MessageResource> 
+    public class DeleteMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Fetch a message belonging to the account used to make the request
     /// </summary>
-    public class FetchMessageOptions : IOptions<MessageResource> 
+    public class FetchMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -237,7 +237,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of messages belonging to the account used to make the request
     /// </summary>
-    public class ReadMessageOptions : ReadOptions<MessageResource> 
+    public class ReadMessageOptions : ReadOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -309,7 +309,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
     /// </summary>
-    public class UpdateMessageOptions : IOptions<MessageResource> 
+    public class UpdateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to update

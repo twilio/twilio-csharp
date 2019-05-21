@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Video.V1.Room.Participant 
+namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
-    public class SubscribedTrackResource : Resource 
+    public class SubscribedTrackResource : Resource
     {
-        public sealed class KindEnum : StringEnum 
+        public sealed class KindEnum : StringEnum
         {
             private KindEnum(string value) : base(value) {}
             public KindEnum() {}
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="options"> Fetch SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribedTrack </returns> 
+        /// <returns> A single instance of SubscribedTrack </returns>
         public static SubscribedTrackResource Fetch(FetchSubscribedTrackOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,8 +67,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="options"> Fetch SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns> 
-        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(FetchSubscribedTrackOptions options, 
+        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
+        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(FetchSubscribedTrackOptions options,
                                                                                             ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -85,10 +85,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribedTrack </returns> 
-        public static SubscribedTrackResource Fetch(string pathRoomSid, 
-                                                    string pathParticipantSid, 
-                                                    string pathSid, 
+        /// <returns> A single instance of SubscribedTrack </returns>
+        public static SubscribedTrackResource Fetch(string pathRoomSid,
+                                                    string pathParticipantSid,
+                                                    string pathSid,
                                                     ITwilioRestClient client = null)
         {
             var options = new FetchSubscribedTrackOptions(pathRoomSid, pathParticipantSid, pathSid);
@@ -104,10 +104,10 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns> 
-        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(string pathRoomSid, 
-                                                                                            string pathParticipantSid, 
-                                                                                            string pathSid, 
+        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
+        public static async System.Threading.Tasks.Task<SubscribedTrackResource> FetchAsync(string pathRoomSid,
+                                                                                            string pathParticipantSid,
+                                                                                            string pathSid,
                                                                                             ITwilioRestClient client = null)
         {
             var options = new FetchSubscribedTrackOptions(pathRoomSid, pathParticipantSid, pathSid);
@@ -131,8 +131,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="options"> Read SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribedTrack </returns> 
-        public static ResourceSet<SubscribedTrackResource> Read(ReadSubscribedTrackOptions options, 
+        /// <returns> A single instance of SubscribedTrack </returns>
+        public static ResourceSet<SubscribedTrackResource> Read(ReadSubscribedTrackOptions options,
                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -148,8 +148,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="options"> Read SubscribedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(ReadSubscribedTrackOptions options, 
+        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(ReadSubscribedTrackOptions options,
                                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -168,11 +168,11 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of SubscribedTrack </returns> 
-        public static ResourceSet<SubscribedTrackResource> Read(string pathRoomSid, 
-                                                                string pathParticipantSid, 
-                                                                int? pageSize = null, 
-                                                                long? limit = null, 
+        /// <returns> A single instance of SubscribedTrack </returns>
+        public static ResourceSet<SubscribedTrackResource> Read(string pathRoomSid,
+                                                                string pathParticipantSid,
+                                                                int? pageSize = null,
+                                                                long? limit = null,
                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadSubscribedTrackOptions(pathRoomSid, pathParticipantSid){PageSize = pageSize, Limit = limit};
@@ -188,11 +188,11 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(string pathRoomSid, 
-                                                                                                        string pathParticipantSid, 
-                                                                                                        int? pageSize = null, 
-                                                                                                        long? limit = null, 
+        /// <returns> Task that resolves to A single instance of SubscribedTrack </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SubscribedTrackResource>> ReadAsync(string pathRoomSid,
+                                                                                                        string pathParticipantSid,
+                                                                                                        int? pageSize = null,
+                                                                                                        long? limit = null,
                                                                                                         ITwilioRestClient client = null)
         {
             var options = new ReadSubscribedTrackOptions(pathRoomSid, pathParticipantSid){PageSize = pageSize, Limit = limit};
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<SubscribedTrackResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<SubscribedTrackResource> NextPage(Page<SubscribedTrackResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -244,8 +244,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<SubscribedTrackResource> PreviousPage(Page<SubscribedTrackResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<SubscribedTrackResource> PreviousPage(Page<SubscribedTrackResource> page,
                                                                  ITwilioRestClient client)
         {
             var request = new Request(
@@ -264,7 +264,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// Converts a JSON string into a SubscribedTrackResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> SubscribedTrackResource object represented by the provided JSON </returns> 
+        /// <returns> SubscribedTrackResource object represented by the provided JSON </returns>
         public static SubscribedTrackResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

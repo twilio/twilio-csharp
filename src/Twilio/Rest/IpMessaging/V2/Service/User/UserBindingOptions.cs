@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.IpMessaging.V2.Service.User 
+namespace Twilio.Rest.IpMessaging.V2.Service.User
 {
 
     /// <summary>
     /// ReadUserBindingOptions
     /// </summary>
-    public class ReadUserBindingOptions : ReadOptions<UserBindingResource> 
+    public class ReadUserBindingOptions : ReadOptions<UserBindingResource>
     {
         /// <summary>
         /// The SID of the Service to read the resource from
@@ -65,7 +65,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     /// <summary>
     /// FetchUserBindingOptions
     /// </summary>
-    public class FetchUserBindingOptions : IOptions<UserBindingResource> 
+    public class FetchUserBindingOptions : IOptions<UserBindingResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -106,7 +106,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     /// <summary>
     /// DeleteUserBindingOptions
     /// </summary>
-    public class DeleteUserBindingOptions : IOptions<UserBindingResource> 
+    public class DeleteUserBindingOptions : IOptions<UserBindingResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls 
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
 {
 
     /// <summary>
     /// Create a new IP Access Control List mapping
     /// </summary>
-    public class CreateAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource> 
+    public class CreateAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
     /// <summary>
     /// Retrieve a list of IP Access Control List mappings belonging to the domain used in the request
     /// </summary>
-    public class ReadAuthCallsIpAccessControlListMappingOptions : ReadOptions<AuthCallsIpAccessControlListMappingResource> 
+    public class ReadAuthCallsIpAccessControlListMappingOptions : ReadOptions<AuthCallsIpAccessControlListMappingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
     /// <summary>
     /// Fetch a specific instance of an IP Access Control List mapping
     /// </summary>
-    public class FetchAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource> 
+    public class FetchAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeCalls
     /// <summary>
     /// Delete an IP Access Control List mapping from the requested domain
     /// </summary>
-    public class DeleteAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource> 
+    public class DeleteAuthCallsIpAccessControlListMappingOptions : IOptions<AuthCallsIpAccessControlListMappingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete

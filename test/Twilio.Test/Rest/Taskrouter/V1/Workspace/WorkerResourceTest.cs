@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Taskrouter.V1.Workspace;
 
-namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace 
+namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
 {
 
     [TestFixture]
-    public class WorkerTest : TwilioTest 
+    public class WorkerTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Autopilot.V1.Assistant;
 
-namespace Twilio.Tests.Rest.Autopilot.V1.Assistant 
+namespace Twilio.Tests.Rest.Autopilot.V1.Assistant
 {
 
     [TestFixture]
-    public class DialogueTest : TwilioTest 
+    public class DialogueTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

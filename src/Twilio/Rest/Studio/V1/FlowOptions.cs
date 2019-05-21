@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Studio.V1 
+namespace Twilio.Rest.Studio.V1
 {
 
     /// <summary>
     /// Retrieve a list of all Flows.
     /// </summary>
-    public class ReadFlowOptions : ReadOptions<FlowResource> 
+    public class ReadFlowOptions : ReadOptions<FlowResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Studio.V1
     /// <summary>
     /// Retrieve a specific Flow.
     /// </summary>
-    public class FetchFlowOptions : IOptions<FlowResource> 
+    public class FetchFlowOptions : IOptions<FlowResource>
     {
         /// <summary>
         /// A string that uniquely identifies this Flow.
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Studio.V1
     /// <summary>
     /// Delete a specific Flow.
     /// </summary>
-    public class DeleteFlowOptions : IOptions<FlowResource> 
+    public class DeleteFlowOptions : IOptions<FlowResource>
     {
         /// <summary>
         /// A string that uniquely identifies this Flow.

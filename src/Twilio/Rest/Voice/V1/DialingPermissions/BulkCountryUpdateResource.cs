@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// BulkCountryUpdateResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Voice.V1.DialingPermissions 
+namespace Twilio.Rest.Voice.V1.DialingPermissions
 {
 
-    public class BulkCountryUpdateResource : Resource 
+    public class BulkCountryUpdateResource : Resource
     {
         private static Request BuildCreateRequest(CreateBulkCountryUpdateOptions options, ITwilioRestClient client)
         {
@@ -40,8 +40,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Create BulkCountryUpdate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of BulkCountryUpdate </returns> 
-        public static BulkCountryUpdateResource Create(CreateBulkCountryUpdateOptions options, 
+        /// <returns> A single instance of BulkCountryUpdate </returns>
+        public static BulkCountryUpdateResource Create(CreateBulkCountryUpdateOptions options,
                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -56,8 +56,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Create BulkCountryUpdate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns> 
-        public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(CreateBulkCountryUpdateOptions options, 
+        /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns>
+        public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(CreateBulkCountryUpdateOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of BulkCountryUpdate </returns> 
+        /// <returns> A single instance of BulkCountryUpdate </returns>
         public static BulkCountryUpdateResource Create(string updateRequest, ITwilioRestClient client = null)
         {
             var options = new CreateBulkCountryUpdateOptions(updateRequest);
@@ -86,8 +86,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns> 
-        public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(string updateRequest, 
+        /// <returns> Task that resolves to A single instance of BulkCountryUpdate </returns>
+        public static async System.Threading.Tasks.Task<BulkCountryUpdateResource> CreateAsync(string updateRequest,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new CreateBulkCountryUpdateOptions(updateRequest);
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// Converts a JSON string into a BulkCountryUpdateResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> BulkCountryUpdateResource object represented by the provided JSON </returns> 
+        /// <returns> BulkCountryUpdateResource object represented by the provided JSON </returns>
         public static BulkCountryUpdateResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

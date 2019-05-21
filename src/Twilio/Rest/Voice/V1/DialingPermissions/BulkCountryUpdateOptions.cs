@@ -8,17 +8,17 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Voice.V1.DialingPermissions 
+namespace Twilio.Rest.Voice.V1.DialingPermissions
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
     /// corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
     /// </summary>
-    public class CreateBulkCountryUpdateOptions : IOptions<BulkCountryUpdateResource> 
+    public class CreateBulkCountryUpdateOptions : IOptions<BulkCountryUpdateResource>
     {
         /// <summary>
         /// URL encoded JSON array of update objects

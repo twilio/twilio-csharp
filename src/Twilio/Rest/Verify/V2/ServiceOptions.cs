@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Verify.V2 
+namespace Twilio.Rest.Verify.V2
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Create a new Verification Service.
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource> 
+    public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// A string to describe the verification service
@@ -103,10 +103,10 @@ namespace Twilio.Rest.Verify.V2
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch specific Verification Service Instance.
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource> 
+    public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -134,10 +134,10 @@ namespace Twilio.Rest.Verify.V2
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific Verification Service Instance.
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource> 
+    public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -165,10 +165,10 @@ namespace Twilio.Rest.Verify.V2
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all Phone Verification Services for an account.
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource> 
+    public class ReadServiceOptions : ReadOptions<ServiceResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -187,10 +187,10 @@ namespace Twilio.Rest.Verify.V2
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Update a specific Phone Verification Service.
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource> 
+    public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

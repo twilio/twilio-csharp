@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Pricing.V1.Voice 
+namespace Twilio.Rest.Pricing.V1.Voice
 {
 
     /// <summary>
     /// FetchNumberOptions
     /// </summary>
-    public class FetchNumberOptions : IOptions<NumberResource> 
+    public class FetchNumberOptions : IOptions<NumberResource>
     {
         /// <summary>
         /// The phone number to fetch

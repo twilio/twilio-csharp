@@ -8,13 +8,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Room TwiML Noun
     /// </summary>
-    public class Room : TwiML 
+    public class Room : TwiML
     {
         /// <summary>
         /// Room name

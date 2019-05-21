@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList 
+namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
 {
 
     /// <summary>
     /// Read multiple IpAddress resources.
     /// </summary>
-    public class ReadIpAddressOptions : ReadOptions<IpAddressResource> 
+    public class ReadIpAddressOptions : ReadOptions<IpAddressResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
     /// <summary>
     /// Create a new IpAddress resource.
     /// </summary>
-    public class CreateIpAddressOptions : IOptions<IpAddressResource> 
+    public class CreateIpAddressOptions : IOptions<IpAddressResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
     /// <summary>
     /// Read one IpAddress resource.
     /// </summary>
-    public class FetchIpAddressOptions : IOptions<IpAddressResource> 
+    public class FetchIpAddressOptions : IOptions<IpAddressResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
     /// <summary>
     /// Update an IpAddress resource.
     /// </summary>
-    public class UpdateIpAddressOptions : IOptions<IpAddressResource> 
+    public class UpdateIpAddressOptions : IOptions<IpAddressResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.IpAccessControlList
     /// <summary>
     /// Delete an IpAddress resource.
     /// </summary>
-    public class DeleteIpAddressOptions : IOptions<IpAddressResource> 
+    public class DeleteIpAddressOptions : IOptions<IpAddressResource>
     {
         /// <summary>
         /// The unique sid that identifies this account

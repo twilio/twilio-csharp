@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Assistant 
+namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchTaskOptions
     /// </summary>
-    public class FetchTaskOptions : IOptions<TaskResource> 
+    public class FetchTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadTaskOptions
     /// </summary>
-    public class ReadTaskOptions : ReadOptions<TaskResource> 
+    public class ReadTaskOptions : ReadOptions<TaskResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateTaskOptions
     /// </summary>
-    public class CreateTaskOptions : IOptions<TaskResource> 
+    public class CreateTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -160,10 +160,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateTaskOptions
     /// </summary>
-    public class UpdateTaskOptions : IOptions<TaskResource> 
+    public class UpdateTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -234,10 +234,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteTaskOptions
     /// </summary>
-    public class DeleteTaskOptions : IOptions<TaskResource> 
+    public class DeleteTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.

@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// AssistantResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand 
+namespace Twilio.Rest.Preview.Understand
 {
 
-    public class AssistantResource : Resource 
+    public class AssistantResource : Resource
     {
         private static Request BuildFetchRequest(FetchAssistantOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Fetch Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
+        /// <returns> A single instance of Assistant </returns>
         public static AssistantResource Fetch(FetchAssistantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Fetch Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
-        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(FetchAssistantOptions options, 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
+        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(FetchAssistantOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
+        /// <returns> A single instance of Assistant </returns>
         public static AssistantResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchAssistantOptions(pathSid);
@@ -81,8 +81,8 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
-        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
+        public static async System.Threading.Tasks.Task<AssistantResource> FetchAsync(string pathSid,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new FetchAssistantOptions(pathSid);
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Read Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
+        /// <returns> A single instance of Assistant </returns>
         public static ResourceSet<AssistantResource> Read(ReadAssistantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -122,8 +122,8 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Read Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AssistantResource>> ReadAsync(ReadAssistantOptions options, 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AssistantResource>> ReadAsync(ReadAssistantOptions options,
                                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -140,9 +140,9 @@ namespace Twilio.Rest.Preview.Understand
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
-        public static ResourceSet<AssistantResource> Read(int? pageSize = null, 
-                                                          long? limit = null, 
+        /// <returns> A single instance of Assistant </returns>
+        public static ResourceSet<AssistantResource> Read(int? pageSize = null,
+                                                          long? limit = null,
                                                           ITwilioRestClient client = null)
         {
             var options = new ReadAssistantOptions(){PageSize = pageSize, Limit = limit};
@@ -156,9 +156,9 @@ namespace Twilio.Rest.Preview.Understand
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AssistantResource>> ReadAsync(int? pageSize = null, 
-                                                                                                  long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AssistantResource>> ReadAsync(int? pageSize = null,
+                                                                                                  long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
             var options = new ReadAssistantOptions(){PageSize = pageSize, Limit = limit};
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<AssistantResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<AssistantResource> NextPage(Page<AssistantResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<AssistantResource> PreviousPage(Page<AssistantResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Create Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
+        /// <returns> A single instance of Assistant </returns>
         public static AssistantResource Create(CreateAssistantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -255,8 +255,8 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Create Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
-        public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(CreateAssistantOptions options, 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
+        public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(CreateAssistantOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -283,15 +283,15 @@ namespace Twilio.Rest.Preview.Understand
         ///                         say something first. </param>
         /// <param name="styleSheet"> The JSON object that holds the style sheet for the assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
-        public static AssistantResource Create(string friendlyName = null, 
-                                               bool? logQueries = null, 
-                                               string uniqueName = null, 
-                                               Uri callbackUrl = null, 
-                                               string callbackEvents = null, 
-                                               object fallbackActions = null, 
-                                               object initiationActions = null, 
-                                               object styleSheet = null, 
+        /// <returns> A single instance of Assistant </returns>
+        public static AssistantResource Create(string friendlyName = null,
+                                               bool? logQueries = null,
+                                               string uniqueName = null,
+                                               Uri callbackUrl = null,
+                                               string callbackEvents = null,
+                                               object fallbackActions = null,
+                                               object initiationActions = null,
+                                               object styleSheet = null,
                                                ITwilioRestClient client = null)
         {
             var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions, StyleSheet = styleSheet};
@@ -317,15 +317,15 @@ namespace Twilio.Rest.Preview.Understand
         ///                         say something first. </param>
         /// <param name="styleSheet"> The JSON object that holds the style sheet for the assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
-        public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(string friendlyName = null, 
-                                                                                       bool? logQueries = null, 
-                                                                                       string uniqueName = null, 
-                                                                                       Uri callbackUrl = null, 
-                                                                                       string callbackEvents = null, 
-                                                                                       object fallbackActions = null, 
-                                                                                       object initiationActions = null, 
-                                                                                       object styleSheet = null, 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
+        public static async System.Threading.Tasks.Task<AssistantResource> CreateAsync(string friendlyName = null,
+                                                                                       bool? logQueries = null,
+                                                                                       string uniqueName = null,
+                                                                                       Uri callbackUrl = null,
+                                                                                       string callbackEvents = null,
+                                                                                       object fallbackActions = null,
+                                                                                       object initiationActions = null,
+                                                                                       object styleSheet = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new CreateAssistantOptions(){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions, StyleSheet = styleSheet};
@@ -349,7 +349,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Update Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
+        /// <returns> A single instance of Assistant </returns>
         public static AssistantResource Update(UpdateAssistantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -363,8 +363,8 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Update Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
-        public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(UpdateAssistantOptions options, 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
+        public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(UpdateAssistantOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -392,16 +392,16 @@ namespace Twilio.Rest.Preview.Understand
         ///                         say something first. </param>
         /// <param name="styleSheet"> The JSON object that holds the style sheet for the assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
-        public static AssistantResource Update(string pathSid, 
-                                               string friendlyName = null, 
-                                               bool? logQueries = null, 
-                                               string uniqueName = null, 
-                                               Uri callbackUrl = null, 
-                                               string callbackEvents = null, 
-                                               object fallbackActions = null, 
-                                               object initiationActions = null, 
-                                               object styleSheet = null, 
+        /// <returns> A single instance of Assistant </returns>
+        public static AssistantResource Update(string pathSid,
+                                               string friendlyName = null,
+                                               bool? logQueries = null,
+                                               string uniqueName = null,
+                                               Uri callbackUrl = null,
+                                               string callbackEvents = null,
+                                               object fallbackActions = null,
+                                               object initiationActions = null,
+                                               object styleSheet = null,
                                                ITwilioRestClient client = null)
         {
             var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions, StyleSheet = styleSheet};
@@ -428,16 +428,16 @@ namespace Twilio.Rest.Preview.Understand
         ///                         say something first. </param>
         /// <param name="styleSheet"> The JSON object that holds the style sheet for the assistant </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
-        public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(string pathSid, 
-                                                                                       string friendlyName = null, 
-                                                                                       bool? logQueries = null, 
-                                                                                       string uniqueName = null, 
-                                                                                       Uri callbackUrl = null, 
-                                                                                       string callbackEvents = null, 
-                                                                                       object fallbackActions = null, 
-                                                                                       object initiationActions = null, 
-                                                                                       object styleSheet = null, 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
+        public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(string pathSid,
+                                                                                       string friendlyName = null,
+                                                                                       bool? logQueries = null,
+                                                                                       string uniqueName = null,
+                                                                                       Uri callbackUrl = null,
+                                                                                       string callbackEvents = null,
+                                                                                       object fallbackActions = null,
+                                                                                       object initiationActions = null,
+                                                                                       object styleSheet = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, FallbackActions = fallbackActions, InitiationActions = initiationActions, StyleSheet = styleSheet};
@@ -461,7 +461,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Delete Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
+        /// <returns> A single instance of Assistant </returns>
         public static bool Delete(DeleteAssistantOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -475,8 +475,8 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="options"> Delete Assistant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssistantOptions options, 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssistantOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -490,7 +490,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Assistant </returns> 
+        /// <returns> A single instance of Assistant </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteAssistantOptions(pathSid);
@@ -503,7 +503,7 @@ namespace Twilio.Rest.Preview.Understand
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Assistant </returns> 
+        /// <returns> Task that resolves to A single instance of Assistant </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteAssistantOptions(pathSid);
@@ -515,7 +515,7 @@ namespace Twilio.Rest.Preview.Understand
         /// Converts a JSON string into a AssistantResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> AssistantResource object represented by the provided JSON </returns> 
+        /// <returns> AssistantResource object represented by the provided JSON </returns>
         public static AssistantResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

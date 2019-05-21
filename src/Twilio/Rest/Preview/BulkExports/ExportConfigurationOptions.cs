@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.BulkExports 
+namespace Twilio.Rest.Preview.BulkExports
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchExportConfigurationOptions
     /// </summary>
-    public class FetchExportConfigurationOptions : IOptions<ExportConfigurationResource> 
+    public class FetchExportConfigurationOptions : IOptions<ExportConfigurationResource>
     {
         /// <summary>
         /// The resource_type
@@ -46,10 +46,10 @@ namespace Twilio.Rest.Preview.BulkExports
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateExportConfigurationOptions
     /// </summary>
-    public class UpdateExportConfigurationOptions : IOptions<ExportConfigurationResource> 
+    public class UpdateExportConfigurationOptions : IOptions<ExportConfigurationResource>
     {
         /// <summary>
         /// The resource_type

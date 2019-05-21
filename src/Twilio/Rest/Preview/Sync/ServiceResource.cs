@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// ServiceResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Sync 
+namespace Twilio.Rest.Preview.Sync
 {
 
-    public class ServiceResource : Resource 
+    public class ServiceResource : Resource
     {
         private static Request BuildFetchRequest(FetchServiceOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(FetchServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid);
@@ -81,8 +81,8 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid);
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Delete Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static bool Delete(DeleteServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -120,8 +120,8 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Delete Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteServiceOptions(pathSid);
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
+        /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteServiceOptions(pathSid);
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(CreateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -186,8 +186,8 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -204,11 +204,11 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <param name="aclEnabled"> The acl_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName = null, 
-                                             Uri webhookUrl = null, 
-                                             bool? reachabilityWebhooksEnabled = null, 
-                                             bool? aclEnabled = null, 
+        /// <returns> A single instance of Service </returns>
+        public static ServiceResource Create(string friendlyName = null,
+                                             Uri webhookUrl = null,
+                                             bool? reachabilityWebhooksEnabled = null,
+                                             bool? aclEnabled = null,
                                              ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
@@ -224,11 +224,11 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <param name="aclEnabled"> The acl_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null, 
-                                                                                     Uri webhookUrl = null, 
-                                                                                     bool? reachabilityWebhooksEnabled = null, 
-                                                                                     bool? aclEnabled = null, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null,
+                                                                                     Uri webhookUrl = null,
+                                                                                     bool? reachabilityWebhooksEnabled = null,
+                                                                                     bool? aclEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
@@ -252,7 +252,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ResourceSet<ServiceResource> Read(ReadServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -268,8 +268,8 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -286,9 +286,9 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
-        public static ResourceSet<ServiceResource> Read(int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Service </returns>
+        public static ResourceSet<ServiceResource> Read(int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
@@ -302,9 +302,9 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<ServiceResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -336,7 +336,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -356,7 +356,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<ServiceResource> PreviousPage(Page<ServiceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -387,7 +387,7 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(UpdateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -401,8 +401,8 @@ namespace Twilio.Rest.Preview.Sync
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -420,12 +420,12 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <param name="aclEnabled"> The acl_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string pathSid, 
-                                             Uri webhookUrl = null, 
-                                             string friendlyName = null, 
-                                             bool? reachabilityWebhooksEnabled = null, 
-                                             bool? aclEnabled = null, 
+        /// <returns> A single instance of Service </returns>
+        public static ServiceResource Update(string pathSid,
+                                             Uri webhookUrl = null,
+                                             string friendlyName = null,
+                                             bool? reachabilityWebhooksEnabled = null,
+                                             bool? aclEnabled = null,
                                              ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
@@ -442,12 +442,12 @@ namespace Twilio.Rest.Preview.Sync
         /// <param name="reachabilityWebhooksEnabled"> The reachability_webhooks_enabled </param>
         /// <param name="aclEnabled"> The acl_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
-                                                                                     Uri webhookUrl = null, 
-                                                                                     string friendlyName = null, 
-                                                                                     bool? reachabilityWebhooksEnabled = null, 
-                                                                                     bool? aclEnabled = null, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
+                                                                                     Uri webhookUrl = null,
+                                                                                     string friendlyName = null,
+                                                                                     bool? reachabilityWebhooksEnabled = null,
+                                                                                     bool? aclEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
@@ -459,7 +459,7 @@ namespace Twilio.Rest.Preview.Sync
         /// Converts a JSON string into a ServiceResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ServiceResource object represented by the provided JSON </returns> 
+        /// <returns> ServiceResource object represented by the provided JSON </returns>
         public static ServiceResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

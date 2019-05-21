@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// WebhookResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Messaging.V1.Session 
+namespace Twilio.Rest.Messaging.V1.Session
 {
 
-    public class WebhookResource : Resource 
+    public class WebhookResource : Resource
     {
-        public sealed class TargetEnum : StringEnum 
+        public sealed class TargetEnum : StringEnum
         {
             private TargetEnum(string value) : base(value) {}
             public TargetEnum() {}
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Messaging.V1.Session
             public static readonly TargetEnum Studio = new TargetEnum("studio");
         }
 
-        public sealed class MethodEnum : StringEnum 
+        public sealed class MethodEnum : StringEnum
         {
             private MethodEnum(string value) : base(value) {}
             public MethodEnum() {}
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Read Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static ResourceSet<WebhookResource> Read(ReadWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -83,8 +83,8 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Read Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(ReadWebhookOptions options, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(ReadWebhookOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -102,10 +102,10 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
-        public static ResourceSet<WebhookResource> Read(string pathSessionSid, 
-                                                        int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Webhook </returns>
+        public static ResourceSet<WebhookResource> Read(string pathSessionSid,
+                                                        int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadWebhookOptions(pathSessionSid){PageSize = pageSize, Limit = limit};
@@ -120,10 +120,10 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(string pathSessionSid, 
-                                                                                                int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<WebhookResource>> ReadAsync(string pathSessionSid,
+                                                                                                int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadWebhookOptions(pathSessionSid){PageSize = pageSize, Limit = limit};
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<WebhookResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<WebhookResource> NextPage(Page<WebhookResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<WebhookResource> PreviousPage(Page<WebhookResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Fetch Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Fetch(FetchWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -220,8 +220,8 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Fetch Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="pathSessionSid"> The unique id of the Session for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Fetch(string pathSessionSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchWebhookOptions(pathSessionSid, pathSid);
@@ -250,9 +250,9 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="pathSessionSid"> The unique id of the Session for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(string pathSessionSid, 
-                                                                                    string pathSid, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(string pathSessionSid,
+                                                                                    string pathSid,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchWebhookOptions(pathSessionSid, pathSid);
@@ -276,7 +276,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Create Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Create(CreateWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -290,8 +290,8 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Create Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(CreateWebhookOptions options, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(CreateWebhookOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -316,18 +316,18 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="configurationBufferMessages"> The flag whether buffering should be applied to messages. </param>
         /// <param name="configurationBufferWindow"> The period of buffering messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
-        public static WebhookResource Create(string pathSessionSid, 
-                                             WebhookResource.TargetEnum target, 
-                                             string configurationUrl = null, 
-                                             WebhookResource.MethodEnum configurationMethod = null, 
-                                             List<string> configurationFilters = null, 
-                                             List<string> configurationTriggers = null, 
-                                             string configurationFlowSid = null, 
-                                             int? configurationRetryCount = null, 
-                                             int? configurationReplayAfter = null, 
-                                             bool? configurationBufferMessages = null, 
-                                             int? configurationBufferWindow = null, 
+        /// <returns> A single instance of Webhook </returns>
+        public static WebhookResource Create(string pathSessionSid,
+                                             WebhookResource.TargetEnum target,
+                                             string configurationUrl = null,
+                                             WebhookResource.MethodEnum configurationMethod = null,
+                                             List<string> configurationFilters = null,
+                                             List<string> configurationTriggers = null,
+                                             string configurationFlowSid = null,
+                                             int? configurationRetryCount = null,
+                                             int? configurationReplayAfter = null,
+                                             bool? configurationBufferMessages = null,
+                                             int? configurationBufferWindow = null,
                                              ITwilioRestClient client = null)
         {
             var options = new CreateWebhookOptions(pathSessionSid, target){ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount, ConfigurationReplayAfter = configurationReplayAfter, ConfigurationBufferMessages = configurationBufferMessages, ConfigurationBufferWindow = configurationBufferWindow};
@@ -351,18 +351,18 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="configurationBufferMessages"> The flag whether buffering should be applied to messages. </param>
         /// <param name="configurationBufferWindow"> The period of buffering messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(string pathSessionSid, 
-                                                                                     WebhookResource.TargetEnum target, 
-                                                                                     string configurationUrl = null, 
-                                                                                     WebhookResource.MethodEnum configurationMethod = null, 
-                                                                                     List<string> configurationFilters = null, 
-                                                                                     List<string> configurationTriggers = null, 
-                                                                                     string configurationFlowSid = null, 
-                                                                                     int? configurationRetryCount = null, 
-                                                                                     int? configurationReplayAfter = null, 
-                                                                                     bool? configurationBufferMessages = null, 
-                                                                                     int? configurationBufferWindow = null, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(string pathSessionSid,
+                                                                                     WebhookResource.TargetEnum target,
+                                                                                     string configurationUrl = null,
+                                                                                     WebhookResource.MethodEnum configurationMethod = null,
+                                                                                     List<string> configurationFilters = null,
+                                                                                     List<string> configurationTriggers = null,
+                                                                                     string configurationFlowSid = null,
+                                                                                     int? configurationRetryCount = null,
+                                                                                     int? configurationReplayAfter = null,
+                                                                                     bool? configurationBufferMessages = null,
+                                                                                     int? configurationBufferWindow = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new CreateWebhookOptions(pathSessionSid, target){ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount, ConfigurationReplayAfter = configurationReplayAfter, ConfigurationBufferMessages = configurationBufferMessages, ConfigurationBufferWindow = configurationBufferWindow};
@@ -386,7 +386,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Update Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Update(UpdateWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -400,8 +400,8 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Update Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -424,17 +424,17 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="configurationBufferMessages"> The flag whether buffering should be applied to messages. </param>
         /// <param name="configurationBufferWindow"> The period of buffering messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
-        public static WebhookResource Update(string pathSessionSid, 
-                                             string pathSid, 
-                                             string configurationUrl = null, 
-                                             WebhookResource.MethodEnum configurationMethod = null, 
-                                             List<string> configurationFilters = null, 
-                                             List<string> configurationTriggers = null, 
-                                             string configurationFlowSid = null, 
-                                             int? configurationRetryCount = null, 
-                                             bool? configurationBufferMessages = null, 
-                                             int? configurationBufferWindow = null, 
+        /// <returns> A single instance of Webhook </returns>
+        public static WebhookResource Update(string pathSessionSid,
+                                             string pathSid,
+                                             string configurationUrl = null,
+                                             WebhookResource.MethodEnum configurationMethod = null,
+                                             List<string> configurationFilters = null,
+                                             List<string> configurationTriggers = null,
+                                             string configurationFlowSid = null,
+                                             int? configurationRetryCount = null,
+                                             bool? configurationBufferMessages = null,
+                                             int? configurationBufferWindow = null,
                                              ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(pathSessionSid, pathSid){ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount, ConfigurationBufferMessages = configurationBufferMessages, ConfigurationBufferWindow = configurationBufferWindow};
@@ -456,17 +456,17 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="configurationBufferMessages"> The flag whether buffering should be applied to messages. </param>
         /// <param name="configurationBufferWindow"> The period of buffering messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string pathSessionSid, 
-                                                                                     string pathSid, 
-                                                                                     string configurationUrl = null, 
-                                                                                     WebhookResource.MethodEnum configurationMethod = null, 
-                                                                                     List<string> configurationFilters = null, 
-                                                                                     List<string> configurationTriggers = null, 
-                                                                                     string configurationFlowSid = null, 
-                                                                                     int? configurationRetryCount = null, 
-                                                                                     bool? configurationBufferMessages = null, 
-                                                                                     int? configurationBufferWindow = null, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string pathSessionSid,
+                                                                                     string pathSid,
+                                                                                     string configurationUrl = null,
+                                                                                     WebhookResource.MethodEnum configurationMethod = null,
+                                                                                     List<string> configurationFilters = null,
+                                                                                     List<string> configurationTriggers = null,
+                                                                                     string configurationFlowSid = null,
+                                                                                     int? configurationRetryCount = null,
+                                                                                     bool? configurationBufferMessages = null,
+                                                                                     int? configurationBufferWindow = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(pathSessionSid, pathSid){ConfigurationUrl = configurationUrl, ConfigurationMethod = configurationMethod, ConfigurationFilters = configurationFilters, ConfigurationTriggers = configurationTriggers, ConfigurationFlowSid = configurationFlowSid, ConfigurationRetryCount = configurationRetryCount, ConfigurationBufferMessages = configurationBufferMessages, ConfigurationBufferWindow = configurationBufferWindow};
@@ -490,7 +490,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Delete Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static bool Delete(DeleteWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -504,8 +504,8 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// </summary>
         /// <param name="options"> Delete Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWebhookOptions options, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWebhookOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -520,7 +520,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="pathSessionSid"> The unique id of the Session for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static bool Delete(string pathSessionSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteWebhookOptions(pathSessionSid, pathSid);
@@ -534,9 +534,9 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <param name="pathSessionSid"> The unique id of the Session for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSessionSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSessionSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteWebhookOptions(pathSessionSid, pathSid);
@@ -548,7 +548,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// Converts a JSON string into a WebhookResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> WebhookResource object represented by the provided JSON </returns> 
+        /// <returns> WebhookResource object represented by the provided JSON </returns>
         public static WebhookResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 {
 
     /// <summary>
     /// Fetch an IpAccessControlListMapping resource.
     /// </summary>
-    public class FetchIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
+    public class FetchIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
     /// <summary>
     /// Create a new IpAccessControlListMapping resource.
     /// </summary>
-    public class CreateIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
+    public class CreateIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
     /// <summary>
     /// Retrieve a list of IpAccessControlListMapping resources.
     /// </summary>
-    public class ReadIpAccessControlListMappingOptions : ReadOptions<IpAccessControlListMappingResource> 
+    public class ReadIpAccessControlListMappingOptions : ReadOptions<IpAccessControlListMappingResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
     /// <summary>
     /// Delete an IpAccessControlListMapping resource.
     /// </summary>
-    public class DeleteIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource> 
+    public class DeleteIpAccessControlListMappingOptions : IOptions<IpAccessControlListMappingResource>
     {
         /// <summary>
         /// The unique id of the Account that is responsible for this resource.

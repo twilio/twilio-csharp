@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class BalanceResource : Resource 
+    public class BalanceResource : Resource
     {
         private static Request BuildFetchRequest(FetchBalanceOptions options, ITwilioRestClient client)
         {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch Balance parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Balance </returns> 
+        /// <returns> A single instance of Balance </returns>
         public static BalanceResource Fetch(FetchBalanceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch Balance parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Balance </returns> 
-        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(FetchBalanceOptions options, 
+        /// <returns> Task that resolves to A single instance of Balance </returns>
+        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(FetchBalanceOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathAccountSid"> Account Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Balance </returns> 
+        /// <returns> A single instance of Balance </returns>
         public static BalanceResource Fetch(string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchBalanceOptions(){PathAccountSid = pathAccountSid};
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="pathAccountSid"> Account Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Balance </returns> 
-        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Balance </returns>
+        public static async System.Threading.Tasks.Task<BalanceResource> FetchAsync(string pathAccountSid = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchBalanceOptions(){PathAccountSid = pathAccountSid};
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Converts a JSON string into a BalanceResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> BalanceResource object represented by the provided JSON </returns> 
+        /// <returns> BalanceResource object represented by the provided JSON </returns>
         public static BalanceResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

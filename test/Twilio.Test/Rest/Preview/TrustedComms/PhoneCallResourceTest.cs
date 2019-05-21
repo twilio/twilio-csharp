@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.TrustedComms;
 
-namespace Twilio.Tests.Rest.Preview.TrustedComms 
+namespace Twilio.Tests.Rest.Preview.TrustedComms
 {
 
     [TestFixture]
-    public class PhoneCallTest : TwilioTest 
+    public class PhoneCallTest : TwilioTest
     {
         [Test]
         public void TestCreateRequest()

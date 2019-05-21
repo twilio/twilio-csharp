@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
+namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 {
 
-    public class TollFreeResource : Resource 
+    public class TollFreeResource : Resource
     {
-        public sealed class AddressRequirementEnum : StringEnum 
+        public sealed class AddressRequirementEnum : StringEnum
         {
             private AddressRequirementEnum(string value) : base(value) {}
             public AddressRequirementEnum() {}
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Read TollFree parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TollFree </returns> 
+        /// <returns> A single instance of TollFree </returns>
         public static ResourceSet<TollFreeResource> Read(ReadTollFreeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,8 +68,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Read TollFree parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TollFree </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TollFreeResource>> ReadAsync(ReadTollFreeOptions options, 
+        /// <returns> Task that resolves to A single instance of TollFree </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TollFreeResource>> ReadAsync(ReadTollFreeOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -92,14 +92,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TollFree </returns> 
-        public static ResourceSet<TollFreeResource> Read(string pathAccountSid = null, 
-                                                         bool? beta = null, 
-                                                         string friendlyName = null, 
-                                                         Types.PhoneNumber phoneNumber = null, 
-                                                         string origin = null, 
-                                                         int? pageSize = null, 
-                                                         long? limit = null, 
+        /// <returns> A single instance of TollFree </returns>
+        public static ResourceSet<TollFreeResource> Read(string pathAccountSid = null,
+                                                         bool? beta = null,
+                                                         string friendlyName = null,
+                                                         Types.PhoneNumber phoneNumber = null,
+                                                         string origin = null,
+                                                         int? pageSize = null,
+                                                         long? limit = null,
                                                          ITwilioRestClient client = null)
         {
             var options = new ReadTollFreeOptions(){PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
@@ -119,14 +119,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TollFree </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TollFreeResource>> ReadAsync(string pathAccountSid = null, 
-                                                                                                 bool? beta = null, 
-                                                                                                 string friendlyName = null, 
-                                                                                                 Types.PhoneNumber phoneNumber = null, 
-                                                                                                 string origin = null, 
-                                                                                                 int? pageSize = null, 
-                                                                                                 long? limit = null, 
+        /// <returns> Task that resolves to A single instance of TollFree </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TollFreeResource>> ReadAsync(string pathAccountSid = null,
+                                                                                                 bool? beta = null,
+                                                                                                 string friendlyName = null,
+                                                                                                 Types.PhoneNumber phoneNumber = null,
+                                                                                                 string origin = null,
+                                                                                                 int? pageSize = null,
+                                                                                                 long? limit = null,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadTollFreeOptions(){PathAccountSid = pathAccountSid, Beta = beta, FriendlyName = friendlyName, PhoneNumber = phoneNumber, Origin = origin, PageSize = pageSize, Limit = limit};
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<TollFreeResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<TollFreeResource> NextPage(Page<TollFreeResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<TollFreeResource> PreviousPage(Page<TollFreeResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Create TollFree parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TollFree </returns> 
+        /// <returns> A single instance of TollFree </returns>
         public static TollFreeResource Create(CreateTollFreeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -223,8 +223,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Create TollFree parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TollFree </returns> 
-        public static async System.Threading.Tasks.Task<TollFreeResource> CreateAsync(CreateTollFreeOptions options, 
+        /// <returns> Task that resolves to A single instance of TollFree </returns>
+        public static async System.Threading.Tasks.Task<TollFreeResource> CreateAsync(CreateTollFreeOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -256,26 +256,26 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="identitySid"> The SID of the Identity resource to associate with the new phone number </param>
         /// <param name="addressSid"> The SID of the Address resource associated with the phone number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TollFree </returns> 
-        public static TollFreeResource Create(Types.PhoneNumber phoneNumber, 
-                                              string pathAccountSid = null, 
-                                              string apiVersion = null, 
-                                              string friendlyName = null, 
-                                              string smsApplicationSid = null, 
-                                              Twilio.Http.HttpMethod smsFallbackMethod = null, 
-                                              Uri smsFallbackUrl = null, 
-                                              Twilio.Http.HttpMethod smsMethod = null, 
-                                              Uri smsUrl = null, 
-                                              Uri statusCallback = null, 
-                                              Twilio.Http.HttpMethod statusCallbackMethod = null, 
-                                              string voiceApplicationSid = null, 
-                                              bool? voiceCallerIdLookup = null, 
-                                              Twilio.Http.HttpMethod voiceFallbackMethod = null, 
-                                              Uri voiceFallbackUrl = null, 
-                                              Twilio.Http.HttpMethod voiceMethod = null, 
-                                              Uri voiceUrl = null, 
-                                              string identitySid = null, 
-                                              string addressSid = null, 
+        /// <returns> A single instance of TollFree </returns>
+        public static TollFreeResource Create(Types.PhoneNumber phoneNumber,
+                                              string pathAccountSid = null,
+                                              string apiVersion = null,
+                                              string friendlyName = null,
+                                              string smsApplicationSid = null,
+                                              Twilio.Http.HttpMethod smsFallbackMethod = null,
+                                              Uri smsFallbackUrl = null,
+                                              Twilio.Http.HttpMethod smsMethod = null,
+                                              Uri smsUrl = null,
+                                              Uri statusCallback = null,
+                                              Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                              string voiceApplicationSid = null,
+                                              bool? voiceCallerIdLookup = null,
+                                              Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                              Uri voiceFallbackUrl = null,
+                                              Twilio.Http.HttpMethod voiceMethod = null,
+                                              Uri voiceUrl = null,
+                                              string identitySid = null,
+                                              string addressSid = null,
                                               ITwilioRestClient client = null)
         {
             var options = new CreateTollFreeOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid, AddressSid = addressSid};
@@ -306,26 +306,26 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="identitySid"> The SID of the Identity resource to associate with the new phone number </param>
         /// <param name="addressSid"> The SID of the Address resource associated with the phone number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TollFree </returns> 
-        public static async System.Threading.Tasks.Task<TollFreeResource> CreateAsync(Types.PhoneNumber phoneNumber, 
-                                                                                      string pathAccountSid = null, 
-                                                                                      string apiVersion = null, 
-                                                                                      string friendlyName = null, 
-                                                                                      string smsApplicationSid = null, 
-                                                                                      Twilio.Http.HttpMethod smsFallbackMethod = null, 
-                                                                                      Uri smsFallbackUrl = null, 
-                                                                                      Twilio.Http.HttpMethod smsMethod = null, 
-                                                                                      Uri smsUrl = null, 
-                                                                                      Uri statusCallback = null, 
-                                                                                      Twilio.Http.HttpMethod statusCallbackMethod = null, 
-                                                                                      string voiceApplicationSid = null, 
-                                                                                      bool? voiceCallerIdLookup = null, 
-                                                                                      Twilio.Http.HttpMethod voiceFallbackMethod = null, 
-                                                                                      Uri voiceFallbackUrl = null, 
-                                                                                      Twilio.Http.HttpMethod voiceMethod = null, 
-                                                                                      Uri voiceUrl = null, 
-                                                                                      string identitySid = null, 
-                                                                                      string addressSid = null, 
+        /// <returns> Task that resolves to A single instance of TollFree </returns>
+        public static async System.Threading.Tasks.Task<TollFreeResource> CreateAsync(Types.PhoneNumber phoneNumber,
+                                                                                      string pathAccountSid = null,
+                                                                                      string apiVersion = null,
+                                                                                      string friendlyName = null,
+                                                                                      string smsApplicationSid = null,
+                                                                                      Twilio.Http.HttpMethod smsFallbackMethod = null,
+                                                                                      Uri smsFallbackUrl = null,
+                                                                                      Twilio.Http.HttpMethod smsMethod = null,
+                                                                                      Uri smsUrl = null,
+                                                                                      Uri statusCallback = null,
+                                                                                      Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                      string voiceApplicationSid = null,
+                                                                                      bool? voiceCallerIdLookup = null,
+                                                                                      Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                                                                      Uri voiceFallbackUrl = null,
+                                                                                      Twilio.Http.HttpMethod voiceMethod = null,
+                                                                                      Uri voiceUrl = null,
+                                                                                      string identitySid = null,
+                                                                                      string addressSid = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new CreateTollFreeOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid, AddressSid = addressSid};
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// Converts a JSON string into a TollFreeResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> TollFreeResource object represented by the provided JSON </returns> 
+        /// <returns> TollFreeResource object represented by the provided JSON </returns>
         public static TollFreeResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

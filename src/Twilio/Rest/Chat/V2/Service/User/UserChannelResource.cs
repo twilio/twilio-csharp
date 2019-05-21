@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Chat.V2.Service.User 
+namespace Twilio.Rest.Chat.V2.Service.User
 {
 
-    public class UserChannelResource : Resource 
+    public class UserChannelResource : Resource
     {
-        public sealed class ChannelStatusEnum : StringEnum 
+        public sealed class ChannelStatusEnum : StringEnum
         {
             private ChannelStatusEnum(string value) : base(value) {}
             public ChannelStatusEnum() {}
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
             public static readonly ChannelStatusEnum NotParticipating = new ChannelStatusEnum("not_participating");
         }
 
-        public sealed class NotificationLevelEnum : StringEnum 
+        public sealed class NotificationLevelEnum : StringEnum
         {
             private NotificationLevelEnum(string value) : base(value) {}
             public NotificationLevelEnum() {}
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserChannel </returns> 
+        /// <returns> A single instance of UserChannel </returns>
         public static ResourceSet<UserChannelResource> Read(ReadUserChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -80,8 +80,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Read UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options, 
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(ReadUserChannelOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -100,11 +100,11 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserChannel </returns> 
-        public static ResourceSet<UserChannelResource> Read(string pathServiceSid, 
-                                                            string pathUserSid, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of UserChannel </returns>
+        public static ResourceSet<UserChannelResource> Read(string pathServiceSid,
+                                                            string pathUserSid,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){PageSize = pageSize, Limit = limit};
@@ -120,11 +120,11 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(string pathServiceSid, 
-                                                                                                    string pathUserSid, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UserChannelResource>> ReadAsync(string pathServiceSid,
+                                                                                                    string pathUserSid,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadUserChannelOptions(pathServiceSid, pathUserSid){PageSize = pageSize, Limit = limit};
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<UserChannelResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<UserChannelResource> NextPage(Page<UserChannelResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -176,7 +176,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<UserChannelResource> PreviousPage(Page<UserChannelResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Fetch UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserChannel </returns> 
+        /// <returns> A single instance of UserChannel </returns>
         public static UserChannelResource Fetch(FetchUserChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -221,8 +221,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Fetch UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(FetchUserChannelOptions options, 
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(FetchUserChannelOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -238,10 +238,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resource from </param>
         /// <param name="pathChannelSid"> The SID of the Channel that has the User Channel to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserChannel </returns> 
-        public static UserChannelResource Fetch(string pathServiceSid, 
-                                                string pathUserSid, 
-                                                string pathChannelSid, 
+        /// <returns> A single instance of UserChannel </returns>
+        public static UserChannelResource Fetch(string pathServiceSid,
+                                                string pathUserSid,
+                                                string pathChannelSid,
                                                 ITwilioRestClient client = null)
         {
             var options = new FetchUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid);
@@ -256,10 +256,10 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resource from </param>
         /// <param name="pathChannelSid"> The SID of the Channel that has the User Channel to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(string pathServiceSid, 
-                                                                                        string pathUserSid, 
-                                                                                        string pathChannelSid, 
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<UserChannelResource> FetchAsync(string pathServiceSid,
+                                                                                        string pathUserSid,
+                                                                                        string pathChannelSid,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid);
@@ -283,7 +283,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Update UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserChannel </returns> 
+        /// <returns> A single instance of UserChannel </returns>
         public static UserChannelResource Update(UpdateUserChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -297,8 +297,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="options"> Update UserChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(UpdateUserChannelOptions options, 
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(UpdateUserChannelOptions options,
                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -315,11 +315,11 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
         /// <param name="notificationLevel"> The push notification level to assign to the User Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UserChannel </returns> 
-        public static UserChannelResource Update(string pathServiceSid, 
-                                                 string pathUserSid, 
-                                                 string pathChannelSid, 
-                                                 UserChannelResource.NotificationLevelEnum notificationLevel, 
+        /// <returns> A single instance of UserChannel </returns>
+        public static UserChannelResource Update(string pathServiceSid,
+                                                 string pathUserSid,
+                                                 string pathChannelSid,
+                                                 UserChannelResource.NotificationLevelEnum notificationLevel,
                                                  ITwilioRestClient client = null)
         {
             var options = new UpdateUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid, notificationLevel);
@@ -335,11 +335,11 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
         /// <param name="notificationLevel"> The push notification level to assign to the User Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UserChannel </returns> 
-        public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(string pathServiceSid, 
-                                                                                         string pathUserSid, 
-                                                                                         string pathChannelSid, 
-                                                                                         UserChannelResource.NotificationLevelEnum notificationLevel, 
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(string pathServiceSid,
+                                                                                         string pathUserSid,
+                                                                                         string pathChannelSid,
+                                                                                         UserChannelResource.NotificationLevelEnum notificationLevel,
                                                                                          ITwilioRestClient client = null)
         {
             var options = new UpdateUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid, notificationLevel);
@@ -351,7 +351,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// Converts a JSON string into a UserChannelResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> UserChannelResource object represented by the provided JSON </returns> 
+        /// <returns> UserChannelResource object represented by the provided JSON </returns>
         public static UserChannelResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

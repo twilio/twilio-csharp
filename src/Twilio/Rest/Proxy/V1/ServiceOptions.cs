@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Proxy.V1 
+namespace Twilio.Rest.Proxy.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch a specific Service.
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource> 
+    public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -44,10 +44,10 @@ namespace Twilio.Rest.Proxy.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all Services for Twilio Proxy.
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource> 
+    public class ReadServiceOptions : ReadOptions<ServiceResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -66,10 +66,10 @@ namespace Twilio.Rest.Proxy.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Create a new Service for Twilio Proxy
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource> 
+    public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// An application-defined string that uniquely identifies the resource
@@ -165,10 +165,10 @@ namespace Twilio.Rest.Proxy.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific Service.
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource> 
+    public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -196,10 +196,10 @@ namespace Twilio.Rest.Proxy.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Update a specific Service.
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource> 
+    public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

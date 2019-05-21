@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// WebhookResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Messaging.V1 
+namespace Twilio.Rest.Messaging.V1
 {
 
-    public class WebhookResource : Resource 
+    public class WebhookResource : Resource
     {
-        public sealed class TargetEnum : StringEnum 
+        public sealed class TargetEnum : StringEnum
         {
             private TargetEnum(string value) : base(value) {}
             public TargetEnum() {}
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Fetch Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Fetch(FetchWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,8 +67,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Fetch Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(FetchWebhookOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -81,7 +81,7 @@ namespace Twilio.Rest.Messaging.V1
         /// fetch
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Fetch(ITwilioRestClient client = null)
         {
             var options = new FetchWebhookOptions();
@@ -93,7 +93,7 @@ namespace Twilio.Rest.Messaging.V1
         /// fetch
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(ITwilioRestClient client = null)
         {
             var options = new FetchWebhookOptions();
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Update Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
+        /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Update(UpdateWebhookOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -131,8 +131,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Update Webhook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(UpdateWebhookOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -152,14 +152,14 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="postWebhookRetryCount"> The number of retries in case of post-event webhook request failures. </param>
         /// <param name="target"> The routing target of the webhook. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Webhook </returns> 
-        public static WebhookResource Update(string webhookMethod = null, 
-                                             List<string> webhookFilters = null, 
-                                             string preWebhookUrl = null, 
-                                             string postWebhookUrl = null, 
-                                             int? preWebhookRetryCount = null, 
-                                             int? postWebhookRetryCount = null, 
-                                             WebhookResource.TargetEnum target = null, 
+        /// <returns> A single instance of Webhook </returns>
+        public static WebhookResource Update(string webhookMethod = null,
+                                             List<string> webhookFilters = null,
+                                             string preWebhookUrl = null,
+                                             string postWebhookUrl = null,
+                                             int? preWebhookRetryCount = null,
+                                             int? postWebhookRetryCount = null,
+                                             WebhookResource.TargetEnum target = null,
                                              ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(){WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, PreWebhookRetryCount = preWebhookRetryCount, PostWebhookRetryCount = postWebhookRetryCount, Target = target};
@@ -178,14 +178,14 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="postWebhookRetryCount"> The number of retries in case of post-event webhook request failures. </param>
         /// <param name="target"> The routing target of the webhook. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Webhook </returns> 
-        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string webhookMethod = null, 
-                                                                                     List<string> webhookFilters = null, 
-                                                                                     string preWebhookUrl = null, 
-                                                                                     string postWebhookUrl = null, 
-                                                                                     int? preWebhookRetryCount = null, 
-                                                                                     int? postWebhookRetryCount = null, 
-                                                                                     WebhookResource.TargetEnum target = null, 
+        /// <returns> Task that resolves to A single instance of Webhook </returns>
+        public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string webhookMethod = null,
+                                                                                     List<string> webhookFilters = null,
+                                                                                     string preWebhookUrl = null,
+                                                                                     string postWebhookUrl = null,
+                                                                                     int? preWebhookRetryCount = null,
+                                                                                     int? postWebhookRetryCount = null,
+                                                                                     WebhookResource.TargetEnum target = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateWebhookOptions(){WebhookMethod = webhookMethod, WebhookFilters = webhookFilters, PreWebhookUrl = preWebhookUrl, PostWebhookUrl = postWebhookUrl, PreWebhookRetryCount = preWebhookRetryCount, PostWebhookRetryCount = postWebhookRetryCount, Target = target};
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Messaging.V1
         /// Converts a JSON string into a WebhookResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> WebhookResource object represented by the provided JSON </returns> 
+        /// <returns> WebhookResource object represented by the provided JSON </returns>
         public static WebhookResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

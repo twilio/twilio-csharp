@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.FlexApi.V1 
+namespace Twilio.Rest.FlexApi.V1
 {
 
     /// <summary>
     /// FetchConfigurationOptions
     /// </summary>
-    public class FetchConfigurationOptions : IOptions<ConfigurationResource> 
+    public class FetchConfigurationOptions : IOptions<ConfigurationResource>
     {
         /// <summary>
         /// Pinned UI version
@@ -39,7 +39,7 @@ namespace Twilio.Rest.FlexApi.V1
     /// <summary>
     /// CreateConfigurationOptions
     /// </summary>
-    public class CreateConfigurationOptions : IOptions<ConfigurationResource> 
+    public class CreateConfigurationOptions : IOptions<ConfigurationResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -54,7 +54,7 @@ namespace Twilio.Rest.FlexApi.V1
     /// <summary>
     /// UpdateConfigurationOptions
     /// </summary>
-    public class UpdateConfigurationOptions : IOptions<ConfigurationResource> 
+    public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
     {
         /// <summary>
         /// Generate the necessary parameters

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep 
+namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
 {
 
     /// <summary>
     /// Retrieve the context for an Execution Step.
     /// </summary>
-    public class FetchExecutionStepContextOptions : IOptions<ExecutionStepContextResource> 
+    public class FetchExecutionStepContextOptions : IOptions<ExecutionStepContextResource>
     {
         /// <summary>
         /// Flow Sid.

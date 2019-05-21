@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// SettingsResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Voice.V1.DialingPermissions 
+namespace Twilio.Rest.Voice.V1.DialingPermissions
 {
 
-    public class SettingsResource : Resource 
+    public class SettingsResource : Resource
     {
         private static Request BuildFetchRequest(FetchSettingsOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Fetch Settings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Settings </returns> 
+        /// <returns> A single instance of Settings </returns>
         public static SettingsResource Fetch(FetchSettingsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Fetch Settings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Settings </returns> 
-        public static async System.Threading.Tasks.Task<SettingsResource> FetchAsync(FetchSettingsOptions options, 
+        /// <returns> Task that resolves to A single instance of Settings </returns>
+        public static async System.Threading.Tasks.Task<SettingsResource> FetchAsync(FetchSettingsOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// Retrieve voice dialing permissions inheritance for this sub-account
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Settings </returns> 
+        /// <returns> A single instance of Settings </returns>
         public static SettingsResource Fetch(ITwilioRestClient client = null)
         {
             var options = new FetchSettingsOptions();
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// Retrieve voice dialing permissions inheritance for this sub-account
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Settings </returns> 
+        /// <returns> Task that resolves to A single instance of Settings </returns>
         public static async System.Threading.Tasks.Task<SettingsResource> FetchAsync(ITwilioRestClient client = null)
         {
             var options = new FetchSettingsOptions();
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Update Settings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Settings </returns> 
+        /// <returns> A single instance of Settings </returns>
         public static SettingsResource Update(UpdateSettingsOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -117,8 +117,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Update Settings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Settings </returns> 
-        public static async System.Threading.Tasks.Task<SettingsResource> UpdateAsync(UpdateSettingsOptions options, 
+        /// <returns> Task that resolves to A single instance of Settings </returns>
+        public static async System.Threading.Tasks.Task<SettingsResource> UpdateAsync(UpdateSettingsOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// <param name="dialingPermissionsInheritance"> `true` for this sub-account to inherit voice dialing permissions from
         ///                                     the Master Project; otherwise `false` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Settings </returns> 
+        /// <returns> A single instance of Settings </returns>
         public static SettingsResource Update(bool? dialingPermissionsInheritance = null, ITwilioRestClient client = null)
         {
             var options = new UpdateSettingsOptions(){DialingPermissionsInheritance = dialingPermissionsInheritance};
@@ -147,8 +147,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// <param name="dialingPermissionsInheritance"> `true` for this sub-account to inherit voice dialing permissions from
         ///                                     the Master Project; otherwise `false` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Settings </returns> 
-        public static async System.Threading.Tasks.Task<SettingsResource> UpdateAsync(bool? dialingPermissionsInheritance = null, 
+        /// <returns> Task that resolves to A single instance of Settings </returns>
+        public static async System.Threading.Tasks.Task<SettingsResource> UpdateAsync(bool? dialingPermissionsInheritance = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateSettingsOptions(){DialingPermissionsInheritance = dialingPermissionsInheritance};
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// Converts a JSON string into a SettingsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> SettingsResource object represented by the provided JSON </returns> 
+        /// <returns> SettingsResource object represented by the provided JSON </returns>
         public static SettingsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

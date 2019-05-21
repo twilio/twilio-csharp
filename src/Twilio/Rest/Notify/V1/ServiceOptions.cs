@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Notify.V1 
+namespace Twilio.Rest.Notify.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateServiceOptions
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource> 
+    public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// A string to describe the resource
@@ -139,10 +139,10 @@ namespace Twilio.Rest.Notify.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteServiceOptions
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource> 
+    public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -170,10 +170,10 @@ namespace Twilio.Rest.Notify.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchServiceOptions
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource> 
+    public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -201,10 +201,10 @@ namespace Twilio.Rest.Notify.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadServiceOptions
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource> 
+    public class ReadServiceOptions : ReadOptions<ServiceResource>
     {
         /// <summary>
         /// The string that identifies the Service resources to read
@@ -233,10 +233,10 @@ namespace Twilio.Rest.Notify.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// UpdateServiceOptions
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource> 
+    public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

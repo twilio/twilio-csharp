@@ -9,16 +9,16 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Messaging.V1.Session 
+namespace Twilio.Rest.Messaging.V1.Session
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadWebhookOptions
     /// </summary>
-    public class ReadWebhookOptions : ReadOptions<WebhookResource> 
+    public class ReadWebhookOptions : ReadOptions<WebhookResource>
     {
         /// <summary>
         /// The unique id of the Session for this webhook.
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Messaging.V1.Session
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchWebhookOptions
     /// </summary>
-    public class FetchWebhookOptions : IOptions<WebhookResource> 
+    public class FetchWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// The unique id of the Session for this webhook.
@@ -90,10 +90,10 @@ namespace Twilio.Rest.Messaging.V1.Session
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateWebhookOptions
     /// </summary>
-    public class CreateWebhookOptions : IOptions<WebhookResource> 
+    public class CreateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// The unique id of the Session for this webhook.
@@ -216,10 +216,10 @@ namespace Twilio.Rest.Messaging.V1.Session
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateWebhookOptions
     /// </summary>
-    public class UpdateWebhookOptions : IOptions<WebhookResource> 
+    public class UpdateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// The unique id of the Session for this webhook.
@@ -328,10 +328,10 @@ namespace Twilio.Rest.Messaging.V1.Session
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteWebhookOptions
     /// </summary>
-    public class DeleteWebhookOptions : IOptions<WebhookResource> 
+    public class DeleteWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// The unique id of the Session for this webhook.

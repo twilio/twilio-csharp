@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Studio.V1.Flow 
+namespace Twilio.Rest.Studio.V1.Flow
 {
 
     /// <summary>
     /// Retrieve a list of all Engagements for the Flow.
     /// </summary>
-    public class ReadEngagementOptions : ReadOptions<EngagementResource> 
+    public class ReadEngagementOptions : ReadOptions<EngagementResource>
     {
         /// <summary>
         /// Flow Sid.
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// Retrieve an Engagement
     /// </summary>
-    public class FetchEngagementOptions : IOptions<EngagementResource> 
+    public class FetchEngagementOptions : IOptions<EngagementResource>
     {
         /// <summary>
         /// Flow Sid.
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// Triggers a new Engagement for the Flow
     /// </summary>
-    public class CreateEngagementOptions : IOptions<EngagementResource> 
+    public class CreateEngagementOptions : IOptions<EngagementResource>
     {
         /// <summary>
         /// Flow Sid.
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Studio.V1.Flow
     /// <summary>
     /// Delete this Engagement and all Steps relating to it.
     /// </summary>
-    public class DeleteEngagementOptions : IOptions<EngagementResource> 
+    public class DeleteEngagementOptions : IOptions<EngagementResource>
     {
         /// <summary>
         /// Flow Sid.

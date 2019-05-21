@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
+namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 {
 
     /// <summary>
     /// ReadDailyOptions
     /// </summary>
-    public class ReadDailyOptions : ReadOptions<DailyResource> 
+    public class ReadDailyOptions : ReadOptions<DailyResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

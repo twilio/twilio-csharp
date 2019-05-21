@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// ServiceResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Serverless.V1 
+namespace Twilio.Rest.Serverless.V1
 {
 
-    public class ServiceResource : Resource 
+    public class ServiceResource : Resource
     {
         private static Request BuildReadRequest(ReadServiceOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ResourceSet<ServiceResource> Read(ReadServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -55,8 +55,8 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -73,9 +73,9 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
-        public static ResourceSet<ServiceResource> Read(int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Service </returns>
+        public static ResourceSet<ServiceResource> Read(int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
@@ -89,9 +89,9 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<ServiceResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<ServiceResource> PreviousPage(Page<ServiceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(FetchServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -188,8 +188,8 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid);
@@ -216,8 +216,8 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid);
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(CreateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -255,8 +255,8 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -272,10 +272,10 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="friendlyName"> A human-readable description of this Service. </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a Function invocation context. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string uniqueName, 
-                                             string friendlyName, 
-                                             bool? includeCredentials = null, 
+        /// <returns> A single instance of Service </returns>
+        public static ServiceResource Create(string uniqueName,
+                                             string friendlyName,
+                                             bool? includeCredentials = null,
                                              ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(uniqueName, friendlyName){IncludeCredentials = includeCredentials};
@@ -290,10 +290,10 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="friendlyName"> A human-readable description of this Service. </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a Function invocation context. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string uniqueName, 
-                                                                                     string friendlyName, 
-                                                                                     bool? includeCredentials = null, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string uniqueName,
+                                                                                     string friendlyName,
+                                                                                     bool? includeCredentials = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(uniqueName, friendlyName){IncludeCredentials = includeCredentials};
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(UpdateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -331,8 +331,8 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -348,10 +348,10 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="includeCredentials"> Whether to inject Account credentials into a Function invocation context. </param>
         /// <param name="friendlyName"> A human-readable description of this Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string pathSid, 
-                                             bool? includeCredentials = null, 
-                                             string friendlyName = null, 
+        /// <returns> A single instance of Service </returns>
+        public static ServiceResource Update(string pathSid,
+                                             bool? includeCredentials = null,
+                                             string friendlyName = null,
                                              ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){IncludeCredentials = includeCredentials, FriendlyName = friendlyName};
@@ -366,10 +366,10 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="includeCredentials"> Whether to inject Account credentials into a Function invocation context. </param>
         /// <param name="friendlyName"> A human-readable description of this Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
-                                                                                     bool? includeCredentials = null, 
-                                                                                     string friendlyName = null, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
+                                                                                     bool? includeCredentials = null,
+                                                                                     string friendlyName = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){IncludeCredentials = includeCredentials, FriendlyName = friendlyName};
@@ -381,7 +381,7 @@ namespace Twilio.Rest.Serverless.V1
         /// Converts a JSON string into a ServiceResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ServiceResource object represented by the provided JSON </returns> 
+        /// <returns> ServiceResource object represented by the provided JSON </returns>
         public static ServiceResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

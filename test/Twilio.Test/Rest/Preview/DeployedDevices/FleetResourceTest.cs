@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.DeployedDevices;
 
-namespace Twilio.Tests.Rest.Preview.DeployedDevices 
+namespace Twilio.Tests.Rest.Preview.DeployedDevices
 {
 
     [TestFixture]
-    public class FleetTest : TwilioTest 
+    public class FleetTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

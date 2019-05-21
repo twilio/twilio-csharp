@@ -9,17 +9,17 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Proxy.V1.Service.Session.Participant 
+namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Create a new message Interaction to send directly from your system to one
     /// [Participant](https://www.twilio.com/docs/proxy/api/participant).  The `inbound` properties for the Interaction will
     /// always be empty.
     /// </summary>
-    public class CreateMessageInteractionOptions : IOptions<MessageInteractionResource> 
+    public class CreateMessageInteractionOptions : IOptions<MessageInteractionResource>
     {
         /// <summary>
         /// The SID of the parent Service resource
@@ -78,10 +78,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchMessageInteractionOptions
     /// </summary>
-    public class FetchMessageInteractionOptions : IOptions<MessageInteractionResource> 
+    public class FetchMessageInteractionOptions : IOptions<MessageInteractionResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -107,9 +107,9 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pathSessionSid"> The SID of the parent Session </param>
         /// <param name="pathParticipantSid"> The SID of the Participant resource </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchMessageInteractionOptions(string pathServiceSid, 
-                                              string pathSessionSid, 
-                                              string pathParticipantSid, 
+        public FetchMessageInteractionOptions(string pathServiceSid,
+                                              string pathSessionSid,
+                                              string pathParticipantSid,
                                               string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -130,10 +130,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadMessageInteractionOptions
     /// </summary>
-    public class ReadMessageInteractionOptions : ReadOptions<MessageInteractionResource> 
+    public class ReadMessageInteractionOptions : ReadOptions<MessageInteractionResource>
     {
         /// <summary>
         /// The SID of the Service to read the resource from

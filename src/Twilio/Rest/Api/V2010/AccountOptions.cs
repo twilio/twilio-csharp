@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010 
+namespace Twilio.Rest.Api.V2010
 {
 
     /// <summary>
     /// Create a new Twilio Subaccount from the account making the request
     /// </summary>
-    public class CreateAccountOptions : IOptions<AccountResource> 
+    public class CreateAccountOptions : IOptions<AccountResource>
     {
         /// <summary>
         /// A human readable description of the account
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010
     /// <summary>
     /// Fetch the account specified by the provided Account Sid
     /// </summary>
-    public class FetchAccountOptions : IOptions<AccountResource> 
+    public class FetchAccountOptions : IOptions<AccountResource>
     {
         /// <summary>
         /// Fetch by unique Account Sid
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Api.V2010
     /// <summary>
     /// Retrieves a collection of Accounts belonging to the account used to make the request
     /// </summary>
-    public class ReadAccountOptions : ReadOptions<AccountResource> 
+    public class ReadAccountOptions : ReadOptions<AccountResource>
     {
         /// <summary>
         /// FriendlyName to filter on
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010
     /// <summary>
     /// Modify the properties of a given Account
     /// </summary>
-    public class UpdateAccountOptions : IOptions<AccountResource> 
+    public class UpdateAccountOptions : IOptions<AccountResource>
     {
         /// <summary>
         /// Update by unique Account Sid

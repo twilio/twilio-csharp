@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Trunking.V1.Trunk 
+namespace Twilio.Rest.Trunking.V1.Trunk
 {
 
     /// <summary>
     /// Fetch the details of an associated SIP Domain
     /// </summary>
-    public class FetchTerminatingSipDomainOptions : IOptions<TerminatingSipDomainResource> 
+    public class FetchTerminatingSipDomainOptions : IOptions<TerminatingSipDomainResource>
     {
         /// <summary>
         /// The SID of the Trunk with the resource to fetch
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// Disassociate a SIP Domain from the Trunk
     /// </summary>
-    public class DeleteTerminatingSipDomainOptions : IOptions<TerminatingSipDomainResource> 
+    public class DeleteTerminatingSipDomainOptions : IOptions<TerminatingSipDomainResource>
     {
         /// <summary>
         /// The SID of the Trunk with the resources to disassociate
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// Associate a SIP Domain with the Trunk
     /// </summary>
-    public class CreateTerminatingSipDomainOptions : IOptions<TerminatingSipDomainResource> 
+    public class CreateTerminatingSipDomainOptions : IOptions<TerminatingSipDomainResource>
     {
         /// <summary>
         /// The SID of the Trunk to which we should route calls
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     /// <summary>
     /// List SIP Domains associated with the Trunk
     /// </summary>
-    public class ReadTerminatingSipDomainOptions : ReadOptions<TerminatingSipDomainResource> 
+    public class ReadTerminatingSipDomainOptions : ReadOptions<TerminatingSipDomainResource>
     {
         /// <summary>
         /// The SID of the Trunk with the resources to read

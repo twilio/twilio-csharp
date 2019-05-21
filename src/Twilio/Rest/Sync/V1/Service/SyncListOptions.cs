@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Sync.V1.Service 
+namespace Twilio.Rest.Sync.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchSyncListOptions
     /// </summary>
-    public class FetchSyncListOptions : IOptions<SyncListResource> 
+    public class FetchSyncListOptions : IOptions<SyncListResource>
     {
         /// <summary>
         /// The service_sid
@@ -50,10 +50,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteSyncListOptions
     /// </summary>
-    public class DeleteSyncListOptions : IOptions<SyncListResource> 
+    public class DeleteSyncListOptions : IOptions<SyncListResource>
     {
         /// <summary>
         /// The service_sid
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateSyncListOptions
     /// </summary>
-    public class CreateSyncListOptions : IOptions<SyncListResource> 
+    public class CreateSyncListOptions : IOptions<SyncListResource>
     {
         /// <summary>
         /// The service_sid
@@ -145,10 +145,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// UpdateSyncListOptions
     /// </summary>
-    public class UpdateSyncListOptions : IOptions<SyncListResource> 
+    public class UpdateSyncListOptions : IOptions<SyncListResource>
     {
         /// <summary>
         /// The service_sid
@@ -200,10 +200,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadSyncListOptions
     /// </summary>
-    public class ReadSyncListOptions : ReadOptions<SyncListResource> 
+    public class ReadSyncListOptions : ReadOptions<SyncListResource>
     {
         /// <summary>
         /// The service_sid

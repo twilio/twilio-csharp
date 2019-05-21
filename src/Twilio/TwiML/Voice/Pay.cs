@@ -12,15 +12,15 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Pay Twiml Verb
     /// </summary>
-    public class Pay : TwiML 
+    public class Pay : TwiML
     {
-        public sealed class InputEnum : StringEnum 
+        public sealed class InputEnum : StringEnum
         {
             private InputEnum(string value) : base(value) {}
             public InputEnum() {}
@@ -32,7 +32,7 @@ namespace Twilio.TwiML.Voice
             public static readonly InputEnum Dtmf = new InputEnum("dtmf");
         }
 
-        public sealed class StatusCallbackMethodEnum : StringEnum 
+        public sealed class StatusCallbackMethodEnum : StringEnum
         {
             private StatusCallbackMethodEnum(string value) : base(value) {}
             public StatusCallbackMethodEnum() {}
@@ -45,7 +45,7 @@ namespace Twilio.TwiML.Voice
             public static readonly StatusCallbackMethodEnum Post = new StatusCallbackMethodEnum("POST");
         }
 
-        public sealed class TokenTypeEnum : StringEnum 
+        public sealed class TokenTypeEnum : StringEnum
         {
             private TokenTypeEnum(string value) : base(value) {}
             public TokenTypeEnum() {}
@@ -58,7 +58,7 @@ namespace Twilio.TwiML.Voice
             public static readonly TokenTypeEnum Reusable = new TokenTypeEnum("reusable");
         }
 
-        public sealed class ValidCardTypesEnum : StringEnum 
+        public sealed class ValidCardTypesEnum : StringEnum
         {
             private ValidCardTypesEnum(string value) : base(value) {}
             public ValidCardTypesEnum() {}
@@ -78,7 +78,7 @@ namespace Twilio.TwiML.Voice
             public static readonly ValidCardTypesEnum Enroute = new ValidCardTypesEnum("enroute");
         }
 
-        public sealed class LanguageEnum : StringEnum 
+        public sealed class LanguageEnum : StringEnum
         {
             private LanguageEnum(string value) : base(value) {}
             public LanguageEnum() {}
@@ -184,20 +184,20 @@ namespace Twilio.TwiML.Voice
         /// <param name="description"> Details regarding the payment </param>
         /// <param name="validCardTypes"> Comma separated accepted card types </param>
         /// <param name="language"> Language to use </param>
-        public Pay(Pay.InputEnum input = null, 
-                   Uri action = null, 
-                   Uri statusCallback = null, 
-                   Pay.StatusCallbackMethodEnum statusCallbackMethod = null, 
-                   int? timeout = null, 
-                   int? maxAttempts = null, 
-                   bool? securityCode = null, 
-                   string postalCode = null, 
-                   string paymentConnector = null, 
-                   Pay.TokenTypeEnum tokenType = null, 
-                   string chargeAmount = null, 
-                   string currency = null, 
-                   string description = null, 
-                   List<Pay.ValidCardTypesEnum> validCardTypes = null, 
+        public Pay(Pay.InputEnum input = null,
+                   Uri action = null,
+                   Uri statusCallback = null,
+                   Pay.StatusCallbackMethodEnum statusCallbackMethod = null,
+                   int? timeout = null,
+                   int? maxAttempts = null,
+                   bool? securityCode = null,
+                   string postalCode = null,
+                   string paymentConnector = null,
+                   Pay.TokenTypeEnum tokenType = null,
+                   string chargeAmount = null,
+                   string currency = null,
+                   string description = null,
+                   List<Pay.ValidCardTypesEnum> validCardTypes = null,
                    Pay.LanguageEnum language = null) : base("Pay")
         {
             this.Input = input;
@@ -304,9 +304,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="errorType"> Type of error </param>
         /// <param name="cardType"> Type of the credit card </param>
         /// <param name="attempt"> Current attempt count </param>
-        public Pay Prompt(Prompt.ForEnum for_ = null, 
-                          List<Prompt.ErrorTypeEnum> errorType = null, 
-                          List<Prompt.CardTypeEnum> cardType = null, 
+        public Pay Prompt(Prompt.ForEnum for_ = null,
+                          List<Prompt.ErrorTypeEnum> errorType = null,
+                          List<Prompt.CardTypeEnum> cardType = null,
                           List<int> attempt = null)
         {
             var newChild = new Prompt(for_, errorType, cardType, attempt);

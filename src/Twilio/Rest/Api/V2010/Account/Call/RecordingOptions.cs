@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Call 
+namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
     /// Create a recording for the call
     /// </summary>
-    public class CreateRecordingOptions : IOptions<RecordingResource> 
+    public class CreateRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// Changes the status of the recording to paused, stopped, or in-progress. Note: Pass `Twilio.CURRENT` instead of
     /// recording sid to reference current active recording.
     /// </summary>
-    public class UpdateRecordingOptions : IOptions<RecordingResource> 
+    public class UpdateRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to update
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// <summary>
     /// Fetch an instance of a recording for a call
     /// </summary>
-    public class FetchRecordingOptions : IOptions<RecordingResource> 
+    public class FetchRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// <summary>
     /// Delete a recording from your account
     /// </summary>
-    public class DeleteRecordingOptions : IOptions<RecordingResource> 
+    public class DeleteRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -232,7 +232,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// <summary>
     /// Retrieve a list of recordings belonging to the call used to make the request
     /// </summary>
-    public class ReadRecordingOptions : ReadOptions<RecordingResource> 
+    public class ReadRecordingOptions : ReadOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

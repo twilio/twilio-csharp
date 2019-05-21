@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Proxy.V1.Service 
+namespace Twilio.Rest.Proxy.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Add a Phone Number to a Service's Proxy Number Pool.
     /// </summary>
-    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The SID of the resource's parent Service
@@ -71,10 +71,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific Phone Number from a Service.
     /// </summary>
-    public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The SID of the parent Service resource of the PhoneNumber resource to delete
@@ -108,10 +108,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
     /// </summary>
-    public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource> 
+    public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The SID of the parent Service resource of the PhoneNumber resource to read
@@ -144,10 +144,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch a specific Phone Number.
     /// </summary>
-    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The SID of the parent Service resource of the PhoneNumber resource to fetch
@@ -181,10 +181,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Update a specific Proxy Number.
     /// </summary>
-    public class UpdatePhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class UpdatePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The SID of the parent Service resource of the PhoneNumber resource to update

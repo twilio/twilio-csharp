@@ -10,13 +10,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Sms TwiML Noun
     /// </summary>
-    public class Sms : TwiML 
+    public class Sms : TwiML
     {
         /// <summary>
         /// Message body
@@ -52,11 +52,11 @@ namespace Twilio.TwiML.Voice
         /// <param name="action"> Action URL </param>
         /// <param name="method"> Action URL method </param>
         /// <param name="statusCallback"> Status callback URL </param>
-        public Sms(string message = null, 
-                   Types.PhoneNumber to = null, 
-                   Types.PhoneNumber from = null, 
-                   Uri action = null, 
-                   Twilio.Http.HttpMethod method = null, 
+        public Sms(string message = null,
+                   Types.PhoneNumber to = null,
+                   Types.PhoneNumber from = null,
+                   Uri action = null,
+                   Twilio.Http.HttpMethod method = null,
                    Uri statusCallback = null) : base("Sms")
         {
             this.Message = message;

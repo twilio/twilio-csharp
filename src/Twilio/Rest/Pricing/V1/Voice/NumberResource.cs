@@ -16,10 +16,10 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Pricing.V1.Voice 
+namespace Twilio.Rest.Pricing.V1.Voice
 {
 
-    public class NumberResource : Resource 
+    public class NumberResource : Resource
     {
         private static Request BuildFetchRequest(FetchNumberOptions options, ITwilioRestClient client)
         {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// </summary>
         /// <param name="options"> Fetch Number parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Number </returns> 
+        /// <returns> A single instance of Number </returns>
         public static NumberResource Fetch(FetchNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -51,8 +51,8 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// </summary>
         /// <param name="options"> Fetch Number parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Number </returns> 
-        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options, 
+        /// <returns> Task that resolves to A single instance of Number </returns>
+        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// </summary>
         /// <param name="pathNumber"> The phone number to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Number </returns> 
+        /// <returns> A single instance of Number </returns>
         public static NumberResource Fetch(Types.PhoneNumber pathNumber, ITwilioRestClient client = null)
         {
             var options = new FetchNumberOptions(pathNumber);
@@ -79,8 +79,8 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// </summary>
         /// <param name="pathNumber"> The phone number to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Number </returns> 
-        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber pathNumber, 
+        /// <returns> Task that resolves to A single instance of Number </returns>
+        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber pathNumber,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchNumberOptions(pathNumber);
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
         /// Converts a JSON string into a NumberResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> NumberResource object represented by the provided JSON </returns> 
+        /// <returns> NumberResource object represented by the provided JSON </returns>
         public static NumberResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

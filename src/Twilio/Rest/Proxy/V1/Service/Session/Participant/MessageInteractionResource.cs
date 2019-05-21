@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// MessageInteractionResource
 /// </summary>
 
@@ -18,12 +18,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Proxy.V1.Service.Session.Participant 
+namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
 {
 
-    public class MessageInteractionResource : Resource 
+    public class MessageInteractionResource : Resource
     {
-        public sealed class TypeEnum : StringEnum 
+        public sealed class TypeEnum : StringEnum
         {
             private TypeEnum(string value) : base(value) {}
             public TypeEnum() {}
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
             public static readonly TypeEnum Unknown = new TypeEnum("unknown");
         }
 
-        public sealed class ResourceStatusEnum : StringEnum 
+        public sealed class ResourceStatusEnum : StringEnum
         {
             private ResourceStatusEnum(string value) : base(value) {}
             public ResourceStatusEnum() {}
@@ -87,8 +87,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         /// <param name="options"> Create MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of MessageInteraction </returns> 
-        public static MessageInteractionResource Create(CreateMessageInteractionOptions options, 
+        /// <returns> A single instance of MessageInteraction </returns>
+        public static MessageInteractionResource Create(CreateMessageInteractionOptions options,
                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -104,8 +104,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         /// <param name="options"> Create MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of MessageInteraction </returns> 
-        public static async System.Threading.Tasks.Task<MessageInteractionResource> CreateAsync(CreateMessageInteractionOptions options, 
+        /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
+        public static async System.Threading.Tasks.Task<MessageInteractionResource> CreateAsync(CreateMessageInteractionOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -125,12 +125,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="body"> Message body </param>
         /// <param name="mediaUrl"> Reserved </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of MessageInteraction </returns> 
-        public static MessageInteractionResource Create(string pathServiceSid, 
-                                                        string pathSessionSid, 
-                                                        string pathParticipantSid, 
-                                                        string body = null, 
-                                                        List<Uri> mediaUrl = null, 
+        /// <returns> A single instance of MessageInteraction </returns>
+        public static MessageInteractionResource Create(string pathServiceSid,
+                                                        string pathSessionSid,
+                                                        string pathParticipantSid,
+                                                        string body = null,
+                                                        List<Uri> mediaUrl = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new CreateMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid){Body = body, MediaUrl = mediaUrl};
@@ -149,12 +149,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="body"> Message body </param>
         /// <param name="mediaUrl"> Reserved </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of MessageInteraction </returns> 
-        public static async System.Threading.Tasks.Task<MessageInteractionResource> CreateAsync(string pathServiceSid, 
-                                                                                                string pathSessionSid, 
-                                                                                                string pathParticipantSid, 
-                                                                                                string body = null, 
-                                                                                                List<Uri> mediaUrl = null, 
+        /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
+        public static async System.Threading.Tasks.Task<MessageInteractionResource> CreateAsync(string pathServiceSid,
+                                                                                                string pathSessionSid,
+                                                                                                string pathParticipantSid,
+                                                                                                string body = null,
+                                                                                                List<Uri> mediaUrl = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new CreateMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid){Body = body, MediaUrl = mediaUrl};
@@ -178,8 +178,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         /// <param name="options"> Fetch MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of MessageInteraction </returns> 
-        public static MessageInteractionResource Fetch(FetchMessageInteractionOptions options, 
+        /// <returns> A single instance of MessageInteraction </returns>
+        public static MessageInteractionResource Fetch(FetchMessageInteractionOptions options,
                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -193,8 +193,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         /// <param name="options"> Fetch MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of MessageInteraction </returns> 
-        public static async System.Threading.Tasks.Task<MessageInteractionResource> FetchAsync(FetchMessageInteractionOptions options, 
+        /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
+        public static async System.Threading.Tasks.Task<MessageInteractionResource> FetchAsync(FetchMessageInteractionOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -211,11 +211,11 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pathParticipantSid"> The SID of the Participant resource </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of MessageInteraction </returns> 
-        public static MessageInteractionResource Fetch(string pathServiceSid, 
-                                                       string pathSessionSid, 
-                                                       string pathParticipantSid, 
-                                                       string pathSid, 
+        /// <returns> A single instance of MessageInteraction </returns>
+        public static MessageInteractionResource Fetch(string pathServiceSid,
+                                                       string pathSessionSid,
+                                                       string pathParticipantSid,
+                                                       string pathSid,
                                                        ITwilioRestClient client = null)
         {
             var options = new FetchMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid, pathSid);
@@ -231,11 +231,11 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pathParticipantSid"> The SID of the Participant resource </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of MessageInteraction </returns> 
-        public static async System.Threading.Tasks.Task<MessageInteractionResource> FetchAsync(string pathServiceSid, 
-                                                                                               string pathSessionSid, 
-                                                                                               string pathParticipantSid, 
-                                                                                               string pathSid, 
+        /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
+        public static async System.Threading.Tasks.Task<MessageInteractionResource> FetchAsync(string pathServiceSid,
+                                                                                               string pathSessionSid,
+                                                                                               string pathParticipantSid,
+                                                                                               string pathSid,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new FetchMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid, pathSid);
@@ -259,8 +259,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         /// <param name="options"> Read MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of MessageInteraction </returns> 
-        public static ResourceSet<MessageInteractionResource> Read(ReadMessageInteractionOptions options, 
+        /// <returns> A single instance of MessageInteraction </returns>
+        public static ResourceSet<MessageInteractionResource> Read(ReadMessageInteractionOptions options,
                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -276,8 +276,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         /// <param name="options"> Read MessageInteraction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of MessageInteraction </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageInteractionResource>> ReadAsync(ReadMessageInteractionOptions options, 
+        /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageInteractionResource>> ReadAsync(ReadMessageInteractionOptions options,
                                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -297,12 +297,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of MessageInteraction </returns> 
-        public static ResourceSet<MessageInteractionResource> Read(string pathServiceSid, 
-                                                                   string pathSessionSid, 
-                                                                   string pathParticipantSid, 
-                                                                   int? pageSize = null, 
-                                                                   long? limit = null, 
+        /// <returns> A single instance of MessageInteraction </returns>
+        public static ResourceSet<MessageInteractionResource> Read(string pathServiceSid,
+                                                                   string pathSessionSid,
+                                                                   string pathParticipantSid,
+                                                                   int? pageSize = null,
+                                                                   long? limit = null,
                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid){PageSize = pageSize, Limit = limit};
@@ -319,12 +319,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of MessageInteraction </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MessageInteractionResource>> ReadAsync(string pathServiceSid, 
-                                                                                                           string pathSessionSid, 
-                                                                                                           string pathParticipantSid, 
-                                                                                                           int? pageSize = null, 
-                                                                                                           long? limit = null, 
+        /// <returns> Task that resolves to A single instance of MessageInteraction </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MessageInteractionResource>> ReadAsync(string pathServiceSid,
+                                                                                                           string pathSessionSid,
+                                                                                                           string pathParticipantSid,
+                                                                                                           int? pageSize = null,
+                                                                                                           long? limit = null,
                                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadMessageInteractionOptions(pathServiceSid, pathSessionSid, pathParticipantSid){PageSize = pageSize, Limit = limit};
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<MessageInteractionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -356,8 +356,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<MessageInteractionResource> NextPage(Page<MessageInteractionResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<MessageInteractionResource> NextPage(Page<MessageInteractionResource> page,
                                                                 ITwilioRestClient client)
         {
             var request = new Request(
@@ -377,8 +377,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<MessageInteractionResource> PreviousPage(Page<MessageInteractionResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<MessageInteractionResource> PreviousPage(Page<MessageInteractionResource> page,
                                                                     ITwilioRestClient client)
         {
             var request = new Request(
@@ -397,7 +397,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         /// Converts a JSON string into a MessageInteractionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> MessageInteractionResource object represented by the provided JSON </returns> 
+        /// <returns> MessageInteractionResource object represented by the provided JSON </returns>
         public static MessageInteractionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

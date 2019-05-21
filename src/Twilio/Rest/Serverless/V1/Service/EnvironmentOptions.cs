@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Serverless.V1.Service 
+namespace Twilio.Rest.Serverless.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Environments.
     /// </summary>
-    public class ReadEnvironmentOptions : ReadOptions<EnvironmentResource> 
+    public class ReadEnvironmentOptions : ReadOptions<EnvironmentResource>
     {
         /// <summary>
         /// Service Sid.
@@ -51,10 +51,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a specific Environment.
     /// </summary>
-    public class FetchEnvironmentOptions : IOptions<EnvironmentResource> 
+    public class FetchEnvironmentOptions : IOptions<EnvironmentResource>
     {
         /// <summary>
         /// Service Sid.
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Environment.
     /// </summary>
-    public class CreateEnvironmentOptions : IOptions<EnvironmentResource> 
+    public class CreateEnvironmentOptions : IOptions<EnvironmentResource>
     {
         /// <summary>
         /// Service Sid.

@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Chat.V2.Service.Channel 
+namespace Twilio.Rest.Chat.V2.Service.Channel
 {
 
-    public class MemberResource : Resource 
+    public class MemberResource : Resource
     {
-        public sealed class WebhookEnabledTypeEnum : StringEnum 
+        public sealed class WebhookEnabledTypeEnum : StringEnum
         {
             private WebhookEnabledTypeEnum(string value) : base(value) {}
             public WebhookEnabledTypeEnum() {}
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Fetch Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
+        /// <returns> A single instance of Member </returns>
         public static MemberResource Fetch(FetchMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -64,8 +64,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Fetch Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(FetchMemberOptions options, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(FetchMemberOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -81,10 +81,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
-        public static MemberResource Fetch(string pathServiceSid, 
-                                           string pathChannelSid, 
-                                           string pathSid, 
+        /// <returns> A single instance of Member </returns>
+        public static MemberResource Fetch(string pathServiceSid,
+                                           string pathChannelSid,
+                                           string pathSid,
                                            ITwilioRestClient client = null)
         {
             var options = new FetchMemberOptions(pathServiceSid, pathChannelSid, pathSid);
@@ -99,10 +99,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string pathServiceSid, 
-                                                                                   string pathChannelSid, 
-                                                                                   string pathSid, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string pathServiceSid,
+                                                                                   string pathChannelSid,
+                                                                                   string pathSid,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchMemberOptions(pathServiceSid, pathChannelSid, pathSid);
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Create Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
+        /// <returns> A single instance of Member </returns>
         public static MemberResource Create(CreateMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -140,8 +140,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Create Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(CreateMemberOptions options, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(CreateMemberOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -164,16 +164,16 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
-        public static MemberResource Create(string pathServiceSid, 
-                                            string pathChannelSid, 
-                                            string identity, 
-                                            string roleSid = null, 
-                                            int? lastConsumedMessageIndex = null, 
-                                            DateTime? lastConsumptionTimestamp = null, 
-                                            DateTime? dateCreated = null, 
-                                            DateTime? dateUpdated = null, 
-                                            string attributes = null, 
+        /// <returns> A single instance of Member </returns>
+        public static MemberResource Create(string pathServiceSid,
+                                            string pathChannelSid,
+                                            string identity,
+                                            string roleSid = null,
+                                            int? lastConsumedMessageIndex = null,
+                                            DateTime? lastConsumptionTimestamp = null,
+                                            DateTime? dateCreated = null,
+                                            DateTime? dateUpdated = null,
+                                            string attributes = null,
                                             ITwilioRestClient client = null)
         {
             var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
@@ -195,16 +195,16 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string pathServiceSid, 
-                                                                                    string pathChannelSid, 
-                                                                                    string identity, 
-                                                                                    string roleSid = null, 
-                                                                                    int? lastConsumedMessageIndex = null, 
-                                                                                    DateTime? lastConsumptionTimestamp = null, 
-                                                                                    DateTime? dateCreated = null, 
-                                                                                    DateTime? dateUpdated = null, 
-                                                                                    string attributes = null, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string pathServiceSid,
+                                                                                    string pathChannelSid,
+                                                                                    string identity,
+                                                                                    string roleSid = null,
+                                                                                    int? lastConsumedMessageIndex = null,
+                                                                                    DateTime? lastConsumptionTimestamp = null,
+                                                                                    DateTime? dateCreated = null,
+                                                                                    DateTime? dateUpdated = null,
+                                                                                    string attributes = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Read Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
+        /// <returns> A single instance of Member </returns>
         public static ResourceSet<MemberResource> Read(ReadMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -244,8 +244,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Read Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ReadMemberOptions options, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ReadMemberOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -265,12 +265,12 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
-        public static ResourceSet<MemberResource> Read(string pathServiceSid, 
-                                                       string pathChannelSid, 
-                                                       List<string> identity = null, 
-                                                       int? pageSize = null, 
-                                                       long? limit = null, 
+        /// <returns> A single instance of Member </returns>
+        public static ResourceSet<MemberResource> Read(string pathServiceSid,
+                                                       string pathChannelSid,
+                                                       List<string> identity = null,
+                                                       int? pageSize = null,
+                                                       long? limit = null,
                                                        ITwilioRestClient client = null)
         {
             var options = new ReadMemberOptions(pathServiceSid, pathChannelSid){Identity = identity, PageSize = pageSize, Limit = limit};
@@ -287,12 +287,12 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(string pathServiceSid, 
-                                                                                               string pathChannelSid, 
-                                                                                               List<string> identity = null, 
-                                                                                               int? pageSize = null, 
-                                                                                               long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(string pathServiceSid,
+                                                                                               string pathChannelSid,
+                                                                                               List<string> identity = null,
+                                                                                               int? pageSize = null,
+                                                                                               long? limit = null,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadMemberOptions(pathServiceSid, pathChannelSid){Identity = identity, PageSize = pageSize, Limit = limit};
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<MemberResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -324,7 +324,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<MemberResource> NextPage(Page<MemberResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -344,7 +344,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<MemberResource> PreviousPage(Page<MemberResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -375,7 +375,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Delete Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
+        /// <returns> A single instance of Member </returns>
         public static bool Delete(DeleteMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -389,8 +389,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Delete Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMemberOptions options, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteMemberOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -406,10 +406,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathChannelSid"> The unique ID of the channel the message to delete belongs to </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
-        public static bool Delete(string pathServiceSid, 
-                                  string pathChannelSid, 
-                                  string pathSid, 
+        /// <returns> A single instance of Member </returns>
+        public static bool Delete(string pathServiceSid,
+                                  string pathChannelSid,
+                                  string pathSid,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid);
@@ -424,10 +424,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="pathChannelSid"> The unique ID of the channel the message to delete belongs to </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathChannelSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathChannelSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid);
@@ -451,7 +451,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Update Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
+        /// <returns> A single instance of Member </returns>
         public static MemberResource Update(UpdateMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -465,8 +465,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// </summary>
         /// <param name="options"> Update Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(UpdateMemberOptions options, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(UpdateMemberOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -490,16 +490,16 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
-        public static MemberResource Update(string pathServiceSid, 
-                                            string pathChannelSid, 
-                                            string pathSid, 
-                                            string roleSid = null, 
-                                            int? lastConsumedMessageIndex = null, 
-                                            DateTime? lastConsumptionTimestamp = null, 
-                                            DateTime? dateCreated = null, 
-                                            DateTime? dateUpdated = null, 
-                                            string attributes = null, 
+        /// <returns> A single instance of Member </returns>
+        public static MemberResource Update(string pathServiceSid,
+                                            string pathChannelSid,
+                                            string pathSid,
+                                            string roleSid = null,
+                                            int? lastConsumedMessageIndex = null,
+                                            DateTime? lastConsumptionTimestamp = null,
+                                            DateTime? dateCreated = null,
+                                            DateTime? dateUpdated = null,
+                                            string attributes = null,
                                             ITwilioRestClient client = null)
         {
             var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
@@ -522,16 +522,16 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathServiceSid, 
-                                                                                    string pathChannelSid, 
-                                                                                    string pathSid, 
-                                                                                    string roleSid = null, 
-                                                                                    int? lastConsumedMessageIndex = null, 
-                                                                                    DateTime? lastConsumptionTimestamp = null, 
-                                                                                    DateTime? dateCreated = null, 
-                                                                                    DateTime? dateUpdated = null, 
-                                                                                    string attributes = null, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathServiceSid,
+                                                                                    string pathChannelSid,
+                                                                                    string pathSid,
+                                                                                    string roleSid = null,
+                                                                                    int? lastConsumedMessageIndex = null,
+                                                                                    DateTime? lastConsumptionTimestamp = null,
+                                                                                    DateTime? dateCreated = null,
+                                                                                    DateTime? dateUpdated = null,
+                                                                                    string attributes = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
@@ -543,7 +543,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// Converts a JSON string into a MemberResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> MemberResource object represented by the provided JSON </returns> 
+        /// <returns> MemberResource object represented by the provided JSON </returns>
         public static MemberResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

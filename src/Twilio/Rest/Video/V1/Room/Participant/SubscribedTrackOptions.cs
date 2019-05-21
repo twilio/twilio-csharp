@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1.Room.Participant 
+namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
     /// <summary>
     /// Returns a single Track resource represented by `TrackSid`.  Note: This is one resource with the Video API that
     /// requires a Sid, as Track Name on the subscriber side is not guaranteed to be unique.
     /// </summary>
-    public class FetchSubscribedTrackOptions : IOptions<SubscribedTrackResource> 
+    public class FetchSubscribedTrackOptions : IOptions<SubscribedTrackResource>
     {
         /// <summary>
         /// Unique Room identifier where this Track is subscribed.
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     /// <summary>
     /// Returns a list of tracks that are subscribed for the participant.
     /// </summary>
-    public class ReadSubscribedTrackOptions : ReadOptions<SubscribedTrackResource> 
+    public class ReadSubscribedTrackOptions : ReadOptions<SubscribedTrackResource>
     {
         /// <summary>
         /// Unique Room identifier where the Tracks are subscribed.

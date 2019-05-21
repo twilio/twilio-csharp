@@ -8,13 +8,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Parameter TwiML Noun
     /// </summary>
-    public class Parameter : TwiML 
+    public class Parameter : TwiML
     {
         /// <summary>
         /// The name of the custom parameter

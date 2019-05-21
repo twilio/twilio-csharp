@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Voice.V1.DialingPermissions 
+namespace Twilio.Rest.Voice.V1.DialingPermissions
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve voice dialing permissions inheritance for this sub-account
     /// </summary>
-    public class FetchSettingsOptions : IOptions<SettingsResource> 
+    public class FetchSettingsOptions : IOptions<SettingsResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -32,10 +32,10 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update voice dialing permissions inheritance for this sub-account
     /// </summary>
-    public class UpdateSettingsOptions : IOptions<SettingsResource> 
+    public class UpdateSettingsOptions : IOptions<SettingsResource>
     {
         /// <summary>
         /// `true` for this sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`

@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument 
+namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of dependent HostedNumberOrders belonging to the AuthorizationDocument.
     /// </summary>
-    public class ReadDependentHostedNumberOrderOptions : ReadOptions<DependentHostedNumberOrderResource> 
+    public class ReadDependentHostedNumberOrderOptions : ReadOptions<DependentHostedNumberOrderResource>
     {
         /// <summary>
         /// The signing_document_sid

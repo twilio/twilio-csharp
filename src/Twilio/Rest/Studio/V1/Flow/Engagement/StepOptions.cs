@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Studio.V1.Flow.Engagement 
+namespace Twilio.Rest.Studio.V1.Flow.Engagement
 {
 
     /// <summary>
     /// Retrieve a list of all Steps for an Engagement.
     /// </summary>
-    public class ReadStepOptions : ReadOptions<StepResource> 
+    public class ReadStepOptions : ReadOptions<StepResource>
     {
         /// <summary>
         /// Flow Sid.
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
     /// <summary>
     /// Retrieve a Step.
     /// </summary>
-    public class FetchStepOptions : IOptions<StepResource> 
+    public class FetchStepOptions : IOptions<StepResource>
     {
         /// <summary>
         /// Flow Sid.

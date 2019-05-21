@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Messaging.V1.Session 
+namespace Twilio.Rest.Messaging.V1.Session
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateParticipantOptions
     /// </summary>
-    public class CreateParticipantOptions : IOptions<ParticipantResource> 
+    public class CreateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The unique id of the Session for this participant.
@@ -100,10 +100,10 @@ namespace Twilio.Rest.Messaging.V1.Session
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateParticipantOptions
     /// </summary>
-    public class UpdateParticipantOptions : IOptions<ParticipantResource> 
+    public class UpdateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The unique id of the Session for this participant.
@@ -165,10 +165,10 @@ namespace Twilio.Rest.Messaging.V1.Session
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchParticipantOptions
     /// </summary>
-    public class FetchParticipantOptions : IOptions<ParticipantResource> 
+    public class FetchParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The unique id of the Session for this participant.
@@ -203,10 +203,10 @@ namespace Twilio.Rest.Messaging.V1.Session
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadParticipantOptions
     /// </summary>
-    public class ReadParticipantOptions : ReadOptions<ParticipantResource> 
+    public class ReadParticipantOptions : ReadOptions<ParticipantResource>
     {
         /// <summary>
         /// The unique id of the Session for this participant.
@@ -240,10 +240,10 @@ namespace Twilio.Rest.Messaging.V1.Session
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteParticipantOptions
     /// </summary>
-    public class DeleteParticipantOptions : IOptions<ParticipantResource> 
+    public class DeleteParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The unique id of the Session for this participant.

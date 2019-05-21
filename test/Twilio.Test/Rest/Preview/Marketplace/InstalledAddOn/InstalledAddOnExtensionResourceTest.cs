@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.Marketplace.InstalledAddOn;
 
-namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn 
+namespace Twilio.Tests.Rest.Preview.Marketplace.InstalledAddOn
 {
 
     [TestFixture]
-    public class InstalledAddOnExtensionTest : TwilioTest 
+    public class InstalledAddOnExtensionTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

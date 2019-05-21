@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.FlexApi.V1;
 
-namespace Twilio.Tests.Rest.FlexApi.V1 
+namespace Twilio.Tests.Rest.FlexApi.V1
 {
 
     [TestFixture]
-    public class FlexFlowTest : TwilioTest 
+    public class FlexFlowTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

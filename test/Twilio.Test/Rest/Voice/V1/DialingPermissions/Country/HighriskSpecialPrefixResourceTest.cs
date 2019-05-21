@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Voice.V1.DialingPermissions.Country;
 
-namespace Twilio.Tests.Rest.Voice.V1.DialingPermissions.Country 
+namespace Twilio.Tests.Rest.Voice.V1.DialingPermissions.Country
 {
 
     [TestFixture]
-    public class HighriskSpecialPrefixTest : TwilioTest 
+    public class HighriskSpecialPrefixTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

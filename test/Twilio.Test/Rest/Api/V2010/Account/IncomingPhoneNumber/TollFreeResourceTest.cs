@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.IncomingPhoneNumber 
+namespace Twilio.Tests.Rest.Api.V2010.Account.IncomingPhoneNumber
 {
 
     [TestFixture]
-    public class TollFreeTest : TwilioTest 
+    public class TollFreeTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()

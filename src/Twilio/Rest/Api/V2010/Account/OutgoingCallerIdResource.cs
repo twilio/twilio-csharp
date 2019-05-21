@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class OutgoingCallerIdResource : Resource 
+    public class OutgoingCallerIdResource : Resource
     {
         private static Request BuildFetchRequest(FetchOutgoingCallerIdOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch OutgoingCallerId parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OutgoingCallerId </returns> 
+        /// <returns> A single instance of OutgoingCallerId </returns>
         public static OutgoingCallerIdResource Fetch(FetchOutgoingCallerIdOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch OutgoingCallerId parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns> 
-        public static async System.Threading.Tasks.Task<OutgoingCallerIdResource> FetchAsync(FetchOutgoingCallerIdOptions options, 
+        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns>
+        public static async System.Threading.Tasks.Task<OutgoingCallerIdResource> FetchAsync(FetchOutgoingCallerIdOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,9 +66,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OutgoingCallerId </returns> 
-        public static OutgoingCallerIdResource Fetch(string pathSid, 
-                                                     string pathAccountSid = null, 
+        /// <returns> A single instance of OutgoingCallerId </returns>
+        public static OutgoingCallerIdResource Fetch(string pathSid,
+                                                     string pathAccountSid = null,
                                                      ITwilioRestClient client = null)
         {
             var options = new FetchOutgoingCallerIdOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -82,9 +82,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns> 
-        public static async System.Threading.Tasks.Task<OutgoingCallerIdResource> FetchAsync(string pathSid, 
-                                                                                             string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns>
+        public static async System.Threading.Tasks.Task<OutgoingCallerIdResource> FetchAsync(string pathSid,
+                                                                                             string pathAccountSid = null,
                                                                                              ITwilioRestClient client = null)
         {
             var options = new FetchOutgoingCallerIdOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update OutgoingCallerId parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OutgoingCallerId </returns> 
+        /// <returns> A single instance of OutgoingCallerId </returns>
         public static OutgoingCallerIdResource Update(UpdateOutgoingCallerIdOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -122,8 +122,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update OutgoingCallerId parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns> 
-        public static async System.Threading.Tasks.Task<OutgoingCallerIdResource> UpdateAsync(UpdateOutgoingCallerIdOptions options, 
+        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns>
+        public static async System.Threading.Tasks.Task<OutgoingCallerIdResource> UpdateAsync(UpdateOutgoingCallerIdOptions options,
                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -139,10 +139,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OutgoingCallerId </returns> 
-        public static OutgoingCallerIdResource Update(string pathSid, 
-                                                      string pathAccountSid = null, 
-                                                      string friendlyName = null, 
+        /// <returns> A single instance of OutgoingCallerId </returns>
+        public static OutgoingCallerIdResource Update(string pathSid,
+                                                      string pathAccountSid = null,
+                                                      string friendlyName = null,
                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateOutgoingCallerIdOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
@@ -157,10 +157,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns> 
-        public static async System.Threading.Tasks.Task<OutgoingCallerIdResource> UpdateAsync(string pathSid, 
-                                                                                              string pathAccountSid = null, 
-                                                                                              string friendlyName = null, 
+        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns>
+        public static async System.Threading.Tasks.Task<OutgoingCallerIdResource> UpdateAsync(string pathSid,
+                                                                                              string pathAccountSid = null,
+                                                                                              string friendlyName = null,
                                                                                               ITwilioRestClient client = null)
         {
             var options = new UpdateOutgoingCallerIdOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Delete OutgoingCallerId parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OutgoingCallerId </returns> 
+        /// <returns> A single instance of OutgoingCallerId </returns>
         public static bool Delete(DeleteOutgoingCallerIdOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -198,8 +198,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Delete OutgoingCallerId parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteOutgoingCallerIdOptions options, 
+        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteOutgoingCallerIdOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -214,7 +214,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OutgoingCallerId </returns> 
+        /// <returns> A single instance of OutgoingCallerId </returns>
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteOutgoingCallerIdOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -228,9 +228,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
-                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid,
+                                                                          string pathAccountSid = null,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteOutgoingCallerIdOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -254,8 +254,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read OutgoingCallerId parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OutgoingCallerId </returns> 
-        public static ResourceSet<OutgoingCallerIdResource> Read(ReadOutgoingCallerIdOptions options, 
+        /// <returns> A single instance of OutgoingCallerId </returns>
+        public static ResourceSet<OutgoingCallerIdResource> Read(ReadOutgoingCallerIdOptions options,
                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -271,8 +271,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read OutgoingCallerId parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<OutgoingCallerIdResource>> ReadAsync(ReadOutgoingCallerIdOptions options, 
+        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<OutgoingCallerIdResource>> ReadAsync(ReadOutgoingCallerIdOptions options,
                                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -292,12 +292,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of OutgoingCallerId </returns> 
-        public static ResourceSet<OutgoingCallerIdResource> Read(string pathAccountSid = null, 
-                                                                 Types.PhoneNumber phoneNumber = null, 
-                                                                 string friendlyName = null, 
-                                                                 int? pageSize = null, 
-                                                                 long? limit = null, 
+        /// <returns> A single instance of OutgoingCallerId </returns>
+        public static ResourceSet<OutgoingCallerIdResource> Read(string pathAccountSid = null,
+                                                                 Types.PhoneNumber phoneNumber = null,
+                                                                 string friendlyName = null,
+                                                                 int? pageSize = null,
+                                                                 long? limit = null,
                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadOutgoingCallerIdOptions(){PathAccountSid = pathAccountSid, PhoneNumber = phoneNumber, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -314,12 +314,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<OutgoingCallerIdResource>> ReadAsync(string pathAccountSid = null, 
-                                                                                                         Types.PhoneNumber phoneNumber = null, 
-                                                                                                         string friendlyName = null, 
-                                                                                                         int? pageSize = null, 
-                                                                                                         long? limit = null, 
+        /// <returns> Task that resolves to A single instance of OutgoingCallerId </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<OutgoingCallerIdResource>> ReadAsync(string pathAccountSid = null,
+                                                                                                         Types.PhoneNumber phoneNumber = null,
+                                                                                                         string friendlyName = null,
+                                                                                                         int? pageSize = null,
+                                                                                                         long? limit = null,
                                                                                                          ITwilioRestClient client = null)
         {
             var options = new ReadOutgoingCallerIdOptions(){PathAccountSid = pathAccountSid, PhoneNumber = phoneNumber, FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -332,7 +332,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<OutgoingCallerIdResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -351,7 +351,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<OutgoingCallerIdResource> NextPage(Page<OutgoingCallerIdResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -371,8 +371,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<OutgoingCallerIdResource> PreviousPage(Page<OutgoingCallerIdResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<OutgoingCallerIdResource> PreviousPage(Page<OutgoingCallerIdResource> page,
                                                                   ITwilioRestClient client)
         {
             var request = new Request(
@@ -391,7 +391,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Converts a JSON string into a OutgoingCallerIdResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> OutgoingCallerIdResource object represented by the provided JSON </returns> 
+        /// <returns> OutgoingCallerIdResource object represented by the provided JSON </returns>
         public static OutgoingCallerIdResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

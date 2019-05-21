@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Trunking.V1.Trunk;
 
-namespace Twilio.Tests.Rest.Trunking.V1.Trunk 
+namespace Twilio.Tests.Rest.Trunking.V1.Trunk
 {
 
     [TestFixture]
-    public class CredentialListTest : TwilioTest 
+    public class CredentialListTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

@@ -9,13 +9,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
 
-namespace Twilio.TwiML.Messaging 
+namespace Twilio.TwiML.Messaging
 {
 
     /// <summary>
     /// Media TwiML Noun
     /// </summary>
-    public class Media : TwiML 
+    public class Media : TwiML
     {
         /// <summary>
         /// Media URL

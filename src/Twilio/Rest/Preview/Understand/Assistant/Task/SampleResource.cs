@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// SampleResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Assistant.Task 
+namespace Twilio.Rest.Preview.Understand.Assistant.Task
 {
 
-    public class SampleResource : Resource 
+    public class SampleResource : Resource
     {
         private static Request BuildFetchRequest(FetchSampleOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Fetch Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
+        /// <returns> A single instance of Sample </returns>
         public static SampleResource Fetch(FetchSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Fetch Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<SampleResource> FetchAsync(FetchSampleOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<SampleResource> FetchAsync(FetchSampleOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -70,10 +70,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
-        public static SampleResource Fetch(string pathAssistantSid, 
-                                           string pathTaskSid, 
-                                           string pathSid, 
+        /// <returns> A single instance of Sample </returns>
+        public static SampleResource Fetch(string pathAssistantSid,
+                                           string pathTaskSid,
+                                           string pathSid,
                                            ITwilioRestClient client = null)
         {
             var options = new FetchSampleOptions(pathAssistantSid, pathTaskSid, pathSid);
@@ -88,10 +88,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<SampleResource> FetchAsync(string pathAssistantSid, 
-                                                                                   string pathTaskSid, 
-                                                                                   string pathSid, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<SampleResource> FetchAsync(string pathAssistantSid,
+                                                                                   string pathTaskSid,
+                                                                                   string pathSid,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchSampleOptions(pathAssistantSid, pathTaskSid, pathSid);
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Read Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
+        /// <returns> A single instance of Sample </returns>
         public static ResourceSet<SampleResource> Read(ReadSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -131,8 +131,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Read Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SampleResource>> ReadAsync(ReadSampleOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SampleResource>> ReadAsync(ReadSampleOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -152,12 +152,12 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
-        public static ResourceSet<SampleResource> Read(string pathAssistantSid, 
-                                                       string pathTaskSid, 
-                                                       string language = null, 
-                                                       int? pageSize = null, 
-                                                       long? limit = null, 
+        /// <returns> A single instance of Sample </returns>
+        public static ResourceSet<SampleResource> Read(string pathAssistantSid,
+                                                       string pathTaskSid,
+                                                       string language = null,
+                                                       int? pageSize = null,
+                                                       long? limit = null,
                                                        ITwilioRestClient client = null)
         {
             var options = new ReadSampleOptions(pathAssistantSid, pathTaskSid){Language = language, PageSize = pageSize, Limit = limit};
@@ -174,12 +174,12 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SampleResource>> ReadAsync(string pathAssistantSid, 
-                                                                                               string pathTaskSid, 
-                                                                                               string language = null, 
-                                                                                               int? pageSize = null, 
-                                                                                               long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SampleResource>> ReadAsync(string pathAssistantSid,
+                                                                                               string pathTaskSid,
+                                                                                               string language = null,
+                                                                                               int? pageSize = null,
+                                                                                               long? limit = null,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadSampleOptions(pathAssistantSid, pathTaskSid){Language = language, PageSize = pageSize, Limit = limit};
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<SampleResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<SampleResource> NextPage(Page<SampleResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -231,7 +231,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<SampleResource> PreviousPage(Page<SampleResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -262,7 +262,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Create Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
+        /// <returns> A single instance of Sample </returns>
         public static SampleResource Create(CreateSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -276,8 +276,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Create Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<SampleResource> CreateAsync(CreateSampleOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<SampleResource> CreateAsync(CreateSampleOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -297,12 +297,12 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="sourceChannel"> The communication channel the sample was captured. It can be: voice, sms, chat, alexa,
         ///                     google-assistant, or slack. If not included the value will be null </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
-        public static SampleResource Create(string pathAssistantSid, 
-                                            string pathTaskSid, 
-                                            string language, 
-                                            string taggedText, 
-                                            string sourceChannel = null, 
+        /// <returns> A single instance of Sample </returns>
+        public static SampleResource Create(string pathAssistantSid,
+                                            string pathTaskSid,
+                                            string language,
+                                            string taggedText,
+                                            string sourceChannel = null,
                                             ITwilioRestClient client = null)
         {
             var options = new CreateSampleOptions(pathAssistantSid, pathTaskSid, language, taggedText){SourceChannel = sourceChannel};
@@ -321,12 +321,12 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="sourceChannel"> The communication channel the sample was captured. It can be: voice, sms, chat, alexa,
         ///                     google-assistant, or slack. If not included the value will be null </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<SampleResource> CreateAsync(string pathAssistantSid, 
-                                                                                    string pathTaskSid, 
-                                                                                    string language, 
-                                                                                    string taggedText, 
-                                                                                    string sourceChannel = null, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<SampleResource> CreateAsync(string pathAssistantSid,
+                                                                                    string pathTaskSid,
+                                                                                    string language,
+                                                                                    string taggedText,
+                                                                                    string sourceChannel = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateSampleOptions(pathAssistantSid, pathTaskSid, language, taggedText){SourceChannel = sourceChannel};
@@ -350,7 +350,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Update Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
+        /// <returns> A single instance of Sample </returns>
         public static SampleResource Update(UpdateSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -364,8 +364,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Update Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<SampleResource> UpdateAsync(UpdateSampleOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<SampleResource> UpdateAsync(UpdateSampleOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -386,13 +386,13 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="sourceChannel"> The communication channel the sample was captured. It can be: voice, sms, chat, alexa,
         ///                     google-assistant, or slack. If not included the value will be null </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
-        public static SampleResource Update(string pathAssistantSid, 
-                                            string pathTaskSid, 
-                                            string pathSid, 
-                                            string language = null, 
-                                            string taggedText = null, 
-                                            string sourceChannel = null, 
+        /// <returns> A single instance of Sample </returns>
+        public static SampleResource Update(string pathAssistantSid,
+                                            string pathTaskSid,
+                                            string pathSid,
+                                            string language = null,
+                                            string taggedText = null,
+                                            string sourceChannel = null,
                                             ITwilioRestClient client = null)
         {
             var options = new UpdateSampleOptions(pathAssistantSid, pathTaskSid, pathSid){Language = language, TaggedText = taggedText, SourceChannel = sourceChannel};
@@ -412,13 +412,13 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="sourceChannel"> The communication channel the sample was captured. It can be: voice, sms, chat, alexa,
         ///                     google-assistant, or slack. If not included the value will be null </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<SampleResource> UpdateAsync(string pathAssistantSid, 
-                                                                                    string pathTaskSid, 
-                                                                                    string pathSid, 
-                                                                                    string language = null, 
-                                                                                    string taggedText = null, 
-                                                                                    string sourceChannel = null, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<SampleResource> UpdateAsync(string pathAssistantSid,
+                                                                                    string pathTaskSid,
+                                                                                    string pathSid,
+                                                                                    string language = null,
+                                                                                    string taggedText = null,
+                                                                                    string sourceChannel = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateSampleOptions(pathAssistantSid, pathTaskSid, pathSid){Language = language, TaggedText = taggedText, SourceChannel = sourceChannel};
@@ -442,7 +442,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Delete Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
+        /// <returns> A single instance of Sample </returns>
         public static bool Delete(DeleteSampleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -456,8 +456,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// </summary>
         /// <param name="options"> Delete Sample parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSampleOptions options, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSampleOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -473,10 +473,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sample </returns> 
-        public static bool Delete(string pathAssistantSid, 
-                                  string pathTaskSid, 
-                                  string pathSid, 
+        /// <returns> A single instance of Sample </returns>
+        public static bool Delete(string pathAssistantSid,
+                                  string pathTaskSid,
+                                  string pathSid,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteSampleOptions(pathAssistantSid, pathTaskSid, pathSid);
@@ -491,10 +491,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// <param name="pathTaskSid"> The unique ID of the Task associated with this Sample. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sample </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
-                                                                          string pathTaskSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Sample </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid,
+                                                                          string pathTaskSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteSampleOptions(pathAssistantSid, pathTaskSid, pathSid);
@@ -506,7 +506,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         /// Converts a JSON string into a SampleResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> SampleResource object represented by the provided JSON </returns> 
+        /// <returns> SampleResource object represented by the provided JSON </returns>
         public static SampleResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

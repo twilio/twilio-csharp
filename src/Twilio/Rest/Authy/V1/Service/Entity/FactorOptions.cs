@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Authy.V1.Service.Entity 
+namespace Twilio.Rest.Authy.V1.Service.Entity
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Factor for the Entity
     /// </summary>
-    public class CreateFactorOptions : IOptions<FactorResource> 
+    public class CreateFactorOptions : IOptions<FactorResource>
     {
         /// <summary>
         /// Service Sid.
@@ -48,10 +48,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="binding"> A unique binding for this Factor </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
-        public CreateFactorOptions(string pathServiceSid, 
-                                   string pathIdentity, 
-                                   string binding, 
-                                   string friendlyName, 
+        public CreateFactorOptions(string pathServiceSid,
+                                   string pathIdentity,
+                                   string binding,
+                                   string friendlyName,
                                    FactorResource.FactorTypesEnum factorType)
         {
             PathServiceSid = pathServiceSid;
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Factor.
     /// </summary>
-    public class DeleteFactorOptions : IOptions<FactorResource> 
+    public class DeleteFactorOptions : IOptions<FactorResource>
     {
         /// <summary>
         /// Service Sid.
@@ -133,10 +133,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch a specific Factor.
     /// </summary>
-    public class FetchFactorOptions : IOptions<FactorResource> 
+    public class FetchFactorOptions : IOptions<FactorResource>
     {
         /// <summary>
         /// Service Sid.
@@ -177,10 +177,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Factors for an Entity.
     /// </summary>
-    public class ReadFactorOptions : ReadOptions<FactorResource> 
+    public class ReadFactorOptions : ReadOptions<FactorResource>
     {
         /// <summary>
         /// Service Sid.
@@ -220,10 +220,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.
     /// </summary>
-    public class UpdateFactorOptions : IOptions<FactorResource> 
+    public class UpdateFactorOptions : IOptions<FactorResource>
     {
         /// <summary>
         /// Service Sid.

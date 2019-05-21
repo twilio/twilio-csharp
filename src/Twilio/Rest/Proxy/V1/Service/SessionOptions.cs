@@ -9,15 +9,15 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Proxy.V1.Service 
+namespace Twilio.Rest.Proxy.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch a specific Session.
     /// </summary>
-    public class FetchSessionOptions : IOptions<SessionResource> 
+    public class FetchSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -51,10 +51,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all Sessions for the Service.
     /// </summary>
-    public class ReadSessionOptions : ReadOptions<SessionResource> 
+    public class ReadSessionOptions : ReadOptions<SessionResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Create a new Session
     /// </summary>
-    public class CreateSessionOptions : IOptions<SessionResource> 
+    public class CreateSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
         /// The SID of the parent Service resource
@@ -173,10 +173,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific Session.
     /// </summary>
-    public class DeleteSessionOptions : IOptions<SessionResource> 
+    public class DeleteSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from
@@ -210,10 +210,10 @@ namespace Twilio.Rest.Proxy.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Update a specific Session.
     /// </summary>
-    public class UpdateSessionOptions : IOptions<SessionResource> 
+    public class UpdateSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
         /// The SID of the Service to update the resource from

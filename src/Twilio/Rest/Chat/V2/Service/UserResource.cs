@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Chat.V2.Service 
+namespace Twilio.Rest.Chat.V2.Service
 {
 
-    public class UserResource : Resource 
+    public class UserResource : Resource
     {
-        public sealed class WebhookEnabledTypeEnum : StringEnum 
+        public sealed class WebhookEnabledTypeEnum : StringEnum
         {
             private WebhookEnabledTypeEnum(string value) : base(value) {}
             public WebhookEnabledTypeEnum() {}
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
+        /// <returns> A single instance of User </returns>
         public static UserResource Fetch(FetchUserOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -64,8 +64,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(FetchUserOptions options,
                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
+        /// <returns> A single instance of User </returns>
         public static UserResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchUserOptions(pathServiceSid, pathSid);
@@ -94,9 +94,9 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathServiceSid, 
-                                                                                 string pathSid, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathServiceSid,
+                                                                                 string pathSid,
                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchUserOptions(pathServiceSid, pathSid);
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
+        /// <returns> A single instance of User </returns>
         public static bool Delete(DeleteUserOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -134,8 +134,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserOptions options, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
+        /// <returns> A single instance of User </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteUserOptions(pathServiceSid, pathSid);
@@ -164,9 +164,9 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteUserOptions(pathServiceSid, pathSid);
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
+        /// <returns> A single instance of User </returns>
         public static UserResource Create(CreateUserOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -204,8 +204,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(CreateUserOptions options,
                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -223,12 +223,12 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the new resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
-        public static UserResource Create(string pathServiceSid, 
-                                          string identity, 
-                                          string roleSid = null, 
-                                          string attributes = null, 
-                                          string friendlyName = null, 
+        /// <returns> A single instance of User </returns>
+        public static UserResource Create(string pathServiceSid,
+                                          string identity,
+                                          string roleSid = null,
+                                          string attributes = null,
+                                          string friendlyName = null,
                                           ITwilioRestClient client = null)
         {
             var options = new CreateUserOptions(pathServiceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
@@ -245,12 +245,12 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the new resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathServiceSid, 
-                                                                                  string identity, 
-                                                                                  string roleSid = null, 
-                                                                                  string attributes = null, 
-                                                                                  string friendlyName = null, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathServiceSid,
+                                                                                  string identity,
+                                                                                  string roleSid = null,
+                                                                                  string attributes = null,
+                                                                                  string friendlyName = null,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new CreateUserOptions(pathServiceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
@@ -274,7 +274,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
+        /// <returns> A single instance of User </returns>
         public static ResourceSet<UserResource> Read(ReadUserOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -290,8 +290,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ReadUserOptions options, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(ReadUserOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -309,10 +309,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
-        public static ResourceSet<UserResource> Read(string pathServiceSid, 
-                                                     int? pageSize = null, 
-                                                     long? limit = null, 
+        /// <returns> A single instance of User </returns>
+        public static ResourceSet<UserResource> Read(string pathServiceSid,
+                                                     int? pageSize = null,
+                                                     long? limit = null,
                                                      ITwilioRestClient client = null)
         {
             var options = new ReadUserOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -327,10 +327,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(string pathServiceSid, 
-                                                                                             int? pageSize = null, 
-                                                                                             long? limit = null, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UserResource>> ReadAsync(string pathServiceSid,
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadUserOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -343,7 +343,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<UserResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -362,7 +362,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<UserResource> NextPage(Page<UserResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -382,7 +382,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<UserResource> PreviousPage(Page<UserResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -413,7 +413,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Update User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
+        /// <returns> A single instance of User </returns>
         public static UserResource Update(UpdateUserOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -427,8 +427,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Update User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(UpdateUserOptions options, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(UpdateUserOptions options,
                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -446,12 +446,12 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of User </returns> 
-        public static UserResource Update(string pathServiceSid, 
-                                          string pathSid, 
-                                          string roleSid = null, 
-                                          string attributes = null, 
-                                          string friendlyName = null, 
+        /// <returns> A single instance of User </returns>
+        public static UserResource Update(string pathServiceSid,
+                                          string pathSid,
+                                          string roleSid = null,
+                                          string attributes = null,
+                                          string friendlyName = null,
                                           ITwilioRestClient client = null)
         {
             var options = new UpdateUserOptions(pathServiceSid, pathSid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
@@ -468,12 +468,12 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of User </returns> 
-        public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string pathServiceSid, 
-                                                                                  string pathSid, 
-                                                                                  string roleSid = null, 
-                                                                                  string attributes = null, 
-                                                                                  string friendlyName = null, 
+        /// <returns> Task that resolves to A single instance of User </returns>
+        public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string pathServiceSid,
+                                                                                  string pathSid,
+                                                                                  string roleSid = null,
+                                                                                  string attributes = null,
+                                                                                  string friendlyName = null,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new UpdateUserOptions(pathServiceSid, pathSid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
@@ -485,7 +485,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// Converts a JSON string into a UserResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> UserResource object represented by the provided JSON </returns> 
+        /// <returns> UserResource object represented by the provided JSON </returns>
         public static UserResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

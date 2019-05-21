@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// ExportResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.BulkExports 
+namespace Twilio.Rest.Preview.BulkExports
 {
 
-    public class ExportResource : Resource 
+    public class ExportResource : Resource
     {
         private static Request BuildFetchRequest(FetchExportOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.BulkExports
         /// </summary>
         /// <param name="options"> Fetch Export parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Export </returns> 
+        /// <returns> A single instance of Export </returns>
         public static ExportResource Fetch(FetchExportOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.BulkExports
         /// </summary>
         /// <param name="options"> Fetch Export parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Export </returns> 
-        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(FetchExportOptions options, 
+        /// <returns> Task that resolves to A single instance of Export </returns>
+        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(FetchExportOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Preview.BulkExports
         /// </summary>
         /// <param name="pathResourceType"> The resource_type </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Export </returns> 
+        /// <returns> A single instance of Export </returns>
         public static ExportResource Fetch(string pathResourceType, ITwilioRestClient client = null)
         {
             var options = new FetchExportOptions(pathResourceType);
@@ -81,8 +81,8 @@ namespace Twilio.Rest.Preview.BulkExports
         /// </summary>
         /// <param name="pathResourceType"> The resource_type </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Export </returns> 
-        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(string pathResourceType, 
+        /// <returns> Task that resolves to A single instance of Export </returns>
+        public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(string pathResourceType,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchExportOptions(pathResourceType);
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Preview.BulkExports
         /// Converts a JSON string into a ExportResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ExportResource object represented by the provided JSON </returns> 
+        /// <returns> ExportResource object represented by the provided JSON </returns>
         public static ExportResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

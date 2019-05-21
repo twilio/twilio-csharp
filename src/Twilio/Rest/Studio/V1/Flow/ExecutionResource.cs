@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Studio.V1.Flow 
+namespace Twilio.Rest.Studio.V1.Flow
 {
 
-    public class ExecutionResource : Resource 
+    public class ExecutionResource : Resource
     {
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="options"> Read Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Execution </returns> 
+        /// <returns> A single instance of Execution </returns>
         public static ResourceSet<ExecutionResource> Read(ReadExecutionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,8 +66,8 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="options"> Read Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Execution </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ExecutionResource>> ReadAsync(ReadExecutionOptions options, 
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ExecutionResource>> ReadAsync(ReadExecutionOptions options,
                                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -87,12 +87,12 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Execution </returns> 
-        public static ResourceSet<ExecutionResource> Read(string pathFlowSid, 
-                                                          DateTime? dateCreatedFrom = null, 
-                                                          DateTime? dateCreatedTo = null, 
-                                                          int? pageSize = null, 
-                                                          long? limit = null, 
+        /// <returns> A single instance of Execution </returns>
+        public static ResourceSet<ExecutionResource> Read(string pathFlowSid,
+                                                          DateTime? dateCreatedFrom = null,
+                                                          DateTime? dateCreatedTo = null,
+                                                          int? pageSize = null,
+                                                          long? limit = null,
                                                           ITwilioRestClient client = null)
         {
             var options = new ReadExecutionOptions(pathFlowSid){DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
@@ -109,12 +109,12 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Execution </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ExecutionResource>> ReadAsync(string pathFlowSid, 
-                                                                                                  DateTime? dateCreatedFrom = null, 
-                                                                                                  DateTime? dateCreatedTo = null, 
-                                                                                                  int? pageSize = null, 
-                                                                                                  long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ExecutionResource>> ReadAsync(string pathFlowSid,
+                                                                                                  DateTime? dateCreatedFrom = null,
+                                                                                                  DateTime? dateCreatedTo = null,
+                                                                                                  int? pageSize = null,
+                                                                                                  long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
             var options = new ReadExecutionOptions(pathFlowSid){DateCreatedFrom = dateCreatedFrom, DateCreatedTo = dateCreatedTo, PageSize = pageSize, Limit = limit};
@@ -127,7 +127,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<ExecutionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<ExecutionResource> NextPage(Page<ExecutionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<ExecutionResource> PreviousPage(Page<ExecutionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="options"> Fetch Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Execution </returns> 
+        /// <returns> A single instance of Execution </returns>
         public static ExecutionResource Fetch(FetchExecutionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -211,8 +211,8 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="options"> Fetch Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Execution </returns> 
-        public static async System.Threading.Tasks.Task<ExecutionResource> FetchAsync(FetchExecutionOptions options, 
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<ExecutionResource> FetchAsync(FetchExecutionOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pathSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Execution </returns> 
+        /// <returns> A single instance of Execution </returns>
         public static ExecutionResource Fetch(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchExecutionOptions(pathFlowSid, pathSid);
@@ -241,9 +241,9 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pathSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Execution </returns> 
-        public static async System.Threading.Tasks.Task<ExecutionResource> FetchAsync(string pathFlowSid, 
-                                                                                      string pathSid, 
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<ExecutionResource> FetchAsync(string pathFlowSid,
+                                                                                      string pathSid,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new FetchExecutionOptions(pathFlowSid, pathSid);
@@ -267,7 +267,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="options"> Create Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Execution </returns> 
+        /// <returns> A single instance of Execution </returns>
         public static ExecutionResource Create(CreateExecutionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -281,8 +281,8 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="options"> Create Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Execution </returns> 
-        public static async System.Threading.Tasks.Task<ExecutionResource> CreateAsync(CreateExecutionOptions options, 
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<ExecutionResource> CreateAsync(CreateExecutionOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -301,11 +301,11 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="parameters"> JSON data that will be added to your flow's context and can accessed as variables inside
         ///                  your flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Execution </returns> 
-        public static ExecutionResource Create(string pathFlowSid, 
-                                               Types.PhoneNumber to, 
-                                               Types.PhoneNumber from, 
-                                               object parameters = null, 
+        /// <returns> A single instance of Execution </returns>
+        public static ExecutionResource Create(string pathFlowSid,
+                                               Types.PhoneNumber to,
+                                               Types.PhoneNumber from,
+                                               object parameters = null,
                                                ITwilioRestClient client = null)
         {
             var options = new CreateExecutionOptions(pathFlowSid, to, from){Parameters = parameters};
@@ -323,11 +323,11 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="parameters"> JSON data that will be added to your flow's context and can accessed as variables inside
         ///                  your flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Execution </returns> 
-        public static async System.Threading.Tasks.Task<ExecutionResource> CreateAsync(string pathFlowSid, 
-                                                                                       Types.PhoneNumber to, 
-                                                                                       Types.PhoneNumber from, 
-                                                                                       object parameters = null, 
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<ExecutionResource> CreateAsync(string pathFlowSid,
+                                                                                       Types.PhoneNumber to,
+                                                                                       Types.PhoneNumber from,
+                                                                                       object parameters = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new CreateExecutionOptions(pathFlowSid, to, from){Parameters = parameters};
@@ -351,7 +351,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="options"> Delete Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Execution </returns> 
+        /// <returns> A single instance of Execution </returns>
         public static bool Delete(DeleteExecutionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -365,8 +365,8 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="options"> Delete Execution parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Execution </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteExecutionOptions options, 
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteExecutionOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -381,7 +381,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pathSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Execution </returns> 
+        /// <returns> A single instance of Execution </returns>
         public static bool Delete(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteExecutionOptions(pathFlowSid, pathSid);
@@ -395,9 +395,9 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <param name="pathFlowSid"> Flow Sid. </param>
         /// <param name="pathSid"> Execution Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Execution </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFlowSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFlowSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteExecutionOptions(pathFlowSid, pathSid);
@@ -409,7 +409,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// Converts a JSON string into a ExecutionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ExecutionResource object represented by the provided JSON </returns> 
+        /// <returns> ExecutionResource object represented by the provided JSON </returns>
         public static ExecutionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

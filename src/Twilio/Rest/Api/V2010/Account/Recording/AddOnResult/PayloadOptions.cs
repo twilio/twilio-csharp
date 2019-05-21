@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult 
+namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
 {
 
     /// <summary>
     /// Fetch an instance of a result payload
     /// </summary>
-    public class FetchPayloadOptions : IOptions<PayloadResource> 
+    public class FetchPayloadOptions : IOptions<PayloadResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
     /// <summary>
     /// Retrieve a list of payloads belonging to the AddOnResult
     /// </summary>
-    public class ReadPayloadOptions : ReadOptions<PayloadResource> 
+    public class ReadPayloadOptions : ReadOptions<PayloadResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording.AddOnResult
     /// <summary>
     /// Delete a payload from the result along with all associated Data
     /// </summary>
-    public class DeletePayloadOptions : IOptions<PayloadResource> 
+    public class DeletePayloadOptions : IOptions<PayloadResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete

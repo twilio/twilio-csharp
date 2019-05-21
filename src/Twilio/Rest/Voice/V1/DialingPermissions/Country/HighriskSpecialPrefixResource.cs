@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// HighriskSpecialPrefixResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Voice.V1.DialingPermissions.Country 
+namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
 {
 
-    public class HighriskSpecialPrefixResource : Resource 
+    public class HighriskSpecialPrefixResource : Resource
     {
         private static Request BuildReadRequest(ReadHighriskSpecialPrefixOptions options, ITwilioRestClient client)
         {
@@ -40,8 +40,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// </summary>
         /// <param name="options"> Read HighriskSpecialPrefix parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of HighriskSpecialPrefix </returns> 
-        public static ResourceSet<HighriskSpecialPrefixResource> Read(ReadHighriskSpecialPrefixOptions options, 
+        /// <returns> A single instance of HighriskSpecialPrefix </returns>
+        public static ResourceSet<HighriskSpecialPrefixResource> Read(ReadHighriskSpecialPrefixOptions options,
                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -58,8 +58,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// </summary>
         /// <param name="options"> Read HighriskSpecialPrefix parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of HighriskSpecialPrefix </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(ReadHighriskSpecialPrefixOptions options, 
+        /// <returns> Task that resolves to A single instance of HighriskSpecialPrefix </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(ReadHighriskSpecialPrefixOptions options,
                                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -78,10 +78,10 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of HighriskSpecialPrefix </returns> 
-        public static ResourceSet<HighriskSpecialPrefixResource> Read(string pathIsoCode, 
-                                                                      int? pageSize = null, 
-                                                                      long? limit = null, 
+        /// <returns> A single instance of HighriskSpecialPrefix </returns>
+        public static ResourceSet<HighriskSpecialPrefixResource> Read(string pathIsoCode,
+                                                                      int? pageSize = null,
+                                                                      long? limit = null,
                                                                       ITwilioRestClient client = null)
         {
             var options = new ReadHighriskSpecialPrefixOptions(pathIsoCode){PageSize = pageSize, Limit = limit};
@@ -97,10 +97,10 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of HighriskSpecialPrefix </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(string pathIsoCode, 
-                                                                                                              int? pageSize = null, 
-                                                                                                              long? limit = null, 
+        /// <returns> Task that resolves to A single instance of HighriskSpecialPrefix </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<HighriskSpecialPrefixResource>> ReadAsync(string pathIsoCode,
+                                                                                                              int? pageSize = null,
+                                                                                                              long? limit = null,
                                                                                                               ITwilioRestClient client = null)
         {
             var options = new ReadHighriskSpecialPrefixOptions(pathIsoCode){PageSize = pageSize, Limit = limit};
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<HighriskSpecialPrefixResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -132,8 +132,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<HighriskSpecialPrefixResource> NextPage(Page<HighriskSpecialPrefixResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<HighriskSpecialPrefixResource> NextPage(Page<HighriskSpecialPrefixResource> page,
                                                                    ITwilioRestClient client)
         {
             var request = new Request(
@@ -153,8 +153,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<HighriskSpecialPrefixResource> PreviousPage(Page<HighriskSpecialPrefixResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<HighriskSpecialPrefixResource> PreviousPage(Page<HighriskSpecialPrefixResource> page,
                                                                        ITwilioRestClient client)
         {
             var request = new Request(
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         /// Converts a JSON string into a HighriskSpecialPrefixResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> HighriskSpecialPrefixResource object represented by the provided JSON </returns> 
+        /// <returns> HighriskSpecialPrefixResource object represented by the provided JSON </returns>
         public static HighriskSpecialPrefixResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

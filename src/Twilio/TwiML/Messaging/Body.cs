@@ -7,13 +7,13 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 
-namespace Twilio.TwiML.Messaging 
+namespace Twilio.TwiML.Messaging
 {
 
     /// <summary>
     /// Body TwiML Noun
     /// </summary>
-    public class Body : TwiML 
+    public class Body : TwiML
     {
         /// <summary>
         /// Message Body

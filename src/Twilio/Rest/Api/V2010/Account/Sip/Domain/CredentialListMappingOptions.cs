@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain 
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
 {
 
     /// <summary>
     /// Create a CredentialListMapping resource for an account.
     /// </summary>
-    public class CreateCredentialListMappingOptions : IOptions<CredentialListMappingResource> 
+    public class CreateCredentialListMappingOptions : IOptions<CredentialListMappingResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
     /// <summary>
     /// Read multiple CredentialListMapping resources from an account.
     /// </summary>
-    public class ReadCredentialListMappingOptions : ReadOptions<CredentialListMappingResource> 
+    public class ReadCredentialListMappingOptions : ReadOptions<CredentialListMappingResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
     /// <summary>
     /// Fetch a single CredentialListMapping resource from an account.
     /// </summary>
-    public class FetchCredentialListMappingOptions : IOptions<CredentialListMappingResource> 
+    public class FetchCredentialListMappingOptions : IOptions<CredentialListMappingResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
     /// <summary>
     /// Delete a CredentialListMapping resource from an account.
     /// </summary>
-    public class DeleteCredentialListMappingOptions : IOptions<CredentialListMappingResource> 
+    public class DeleteCredentialListMappingOptions : IOptions<CredentialListMappingResource>
     {
         /// <summary>
         /// The unique sid that identifies this account

@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.Wireless;
 
-namespace Twilio.Tests.Rest.Preview.Wireless 
+namespace Twilio.Tests.Rest.Preview.Wireless
 {
 
     [TestFixture]
-    public class CommandTest : TwilioTest 
+    public class CommandTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

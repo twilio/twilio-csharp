@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// CountryResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Voice.V1.DialingPermissions 
+namespace Twilio.Rest.Voice.V1.DialingPermissions
 {
 
-    public class CountryResource : Resource 
+    public class CountryResource : Resource
     {
         private static Request BuildFetchRequest(FetchCountryOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Fetch Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Country </returns> 
+        /// <returns> A single instance of Country </returns>
         public static CountryResource Fetch(FetchCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Fetch Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Country </returns> 
-        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(FetchCountryOptions options, 
+        /// <returns> Task that resolves to A single instance of Country </returns>
+        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(FetchCountryOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="pathIsoCode"> The ISO country code </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Country </returns> 
+        /// <returns> A single instance of Country </returns>
         public static CountryResource Fetch(string pathIsoCode, ITwilioRestClient client = null)
         {
             var options = new FetchCountryOptions(pathIsoCode);
@@ -81,8 +81,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="pathIsoCode"> The ISO country code </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Country </returns> 
-        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string pathIsoCode, 
+        /// <returns> Task that resolves to A single instance of Country </returns>
+        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string pathIsoCode,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchCountryOptions(pathIsoCode);
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Read Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Country </returns> 
+        /// <returns> A single instance of Country </returns>
         public static ResourceSet<CountryResource> Read(ReadCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -122,8 +122,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="options"> Read Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Country </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ReadCountryOptions options, 
+        /// <returns> Task that resolves to A single instance of Country </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ReadCountryOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -149,15 +149,15 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Country </returns> 
-        public static ResourceSet<CountryResource> Read(string isoCode = null, 
-                                                        string continent = null, 
-                                                        string countryCode = null, 
-                                                        bool? lowRiskNumbersEnabled = null, 
-                                                        bool? highRiskSpecialNumbersEnabled = null, 
-                                                        bool? highRiskTollfraudNumbersEnabled = null, 
-                                                        int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Country </returns>
+        public static ResourceSet<CountryResource> Read(string isoCode = null,
+                                                        string continent = null,
+                                                        string countryCode = null,
+                                                        bool? lowRiskNumbersEnabled = null,
+                                                        bool? highRiskSpecialNumbersEnabled = null,
+                                                        bool? highRiskTollfraudNumbersEnabled = null,
+                                                        int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadCountryOptions(){IsoCode = isoCode, Continent = continent, CountryCode = countryCode, LowRiskNumbersEnabled = lowRiskNumbersEnabled, HighRiskSpecialNumbersEnabled = highRiskSpecialNumbersEnabled, HighRiskTollfraudNumbersEnabled = highRiskTollfraudNumbersEnabled, PageSize = pageSize, Limit = limit};
@@ -180,15 +180,15 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Country </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(string isoCode = null, 
-                                                                                                string continent = null, 
-                                                                                                string countryCode = null, 
-                                                                                                bool? lowRiskNumbersEnabled = null, 
-                                                                                                bool? highRiskSpecialNumbersEnabled = null, 
-                                                                                                bool? highRiskTollfraudNumbersEnabled = null, 
-                                                                                                int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Country </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(string isoCode = null,
+                                                                                                string continent = null,
+                                                                                                string countryCode = null,
+                                                                                                bool? lowRiskNumbersEnabled = null,
+                                                                                                bool? highRiskSpecialNumbersEnabled = null,
+                                                                                                bool? highRiskTollfraudNumbersEnabled = null,
+                                                                                                int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadCountryOptions(){IsoCode = isoCode, Continent = continent, CountryCode = countryCode, LowRiskNumbersEnabled = lowRiskNumbersEnabled, HighRiskSpecialNumbersEnabled = highRiskSpecialNumbersEnabled, HighRiskTollfraudNumbersEnabled = highRiskTollfraudNumbersEnabled, PageSize = pageSize, Limit = limit};
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<CountryResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -220,7 +220,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<CountryResource> NextPage(Page<CountryResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<CountryResource> PreviousPage(Page<CountryResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         /// Converts a JSON string into a CountryResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> CountryResource object represented by the provided JSON </returns> 
+        /// <returns> CountryResource object represented by the provided JSON </returns>
         public static CountryResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

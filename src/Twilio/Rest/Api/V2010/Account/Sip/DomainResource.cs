@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip 
+namespace Twilio.Rest.Api.V2010.Account.Sip
 {
 
-    public class DomainResource : Resource 
+    public class DomainResource : Resource
     {
         private static Request BuildReadRequest(ReadDomainOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Read Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
+        /// <returns> A single instance of Domain </returns>
         public static ResourceSet<DomainResource> Read(ReadDomainOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Read Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DomainResource>> ReadAsync(ReadDomainOptions options, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DomainResource>> ReadAsync(ReadDomainOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -71,10 +71,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
-        public static ResourceSet<DomainResource> Read(string pathAccountSid = null, 
-                                                       int? pageSize = null, 
-                                                       long? limit = null, 
+        /// <returns> A single instance of Domain </returns>
+        public static ResourceSet<DomainResource> Read(string pathAccountSid = null,
+                                                       int? pageSize = null,
+                                                       long? limit = null,
                                                        ITwilioRestClient client = null)
         {
             var options = new ReadDomainOptions(){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DomainResource>> ReadAsync(string pathAccountSid = null, 
-                                                                                               int? pageSize = null, 
-                                                                                               long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DomainResource>> ReadAsync(string pathAccountSid = null,
+                                                                                               int? pageSize = null,
+                                                                                               long? limit = null,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadDomainOptions(){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<DomainResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<DomainResource> NextPage(Page<DomainResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -144,7 +144,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<DomainResource> PreviousPage(Page<DomainResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Create Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
+        /// <returns> A single instance of Domain </returns>
         public static DomainResource Create(CreateDomainOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -189,8 +189,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Create Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(CreateDomainOptions options, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(CreateDomainOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -213,17 +213,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceStatusCallbackMethod"> The HTTP method we should use to call `voice_status_callback_url` </param>
         /// <param name="sipRegistration"> Whether SIP registration is allowed </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
-        public static DomainResource Create(string domainName, 
-                                            string pathAccountSid = null, 
-                                            string friendlyName = null, 
-                                            Uri voiceUrl = null, 
-                                            Twilio.Http.HttpMethod voiceMethod = null, 
-                                            Uri voiceFallbackUrl = null, 
-                                            Twilio.Http.HttpMethod voiceFallbackMethod = null, 
-                                            Uri voiceStatusCallbackUrl = null, 
-                                            Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, 
-                                            bool? sipRegistration = null, 
+        /// <returns> A single instance of Domain </returns>
+        public static DomainResource Create(string domainName,
+                                            string pathAccountSid = null,
+                                            string friendlyName = null,
+                                            Uri voiceUrl = null,
+                                            Twilio.Http.HttpMethod voiceMethod = null,
+                                            Uri voiceFallbackUrl = null,
+                                            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                            Uri voiceStatusCallbackUrl = null,
+                                            Twilio.Http.HttpMethod voiceStatusCallbackMethod = null,
+                                            bool? sipRegistration = null,
                                             ITwilioRestClient client = null)
         {
             var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, SipRegistration = sipRegistration};
@@ -245,17 +245,17 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceStatusCallbackMethod"> The HTTP method we should use to call `voice_status_callback_url` </param>
         /// <param name="sipRegistration"> Whether SIP registration is allowed </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(string domainName, 
-                                                                                    string pathAccountSid = null, 
-                                                                                    string friendlyName = null, 
-                                                                                    Uri voiceUrl = null, 
-                                                                                    Twilio.Http.HttpMethod voiceMethod = null, 
-                                                                                    Uri voiceFallbackUrl = null, 
-                                                                                    Twilio.Http.HttpMethod voiceFallbackMethod = null, 
-                                                                                    Uri voiceStatusCallbackUrl = null, 
-                                                                                    Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, 
-                                                                                    bool? sipRegistration = null, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(string domainName,
+                                                                                    string pathAccountSid = null,
+                                                                                    string friendlyName = null,
+                                                                                    Uri voiceUrl = null,
+                                                                                    Twilio.Http.HttpMethod voiceMethod = null,
+                                                                                    Uri voiceFallbackUrl = null,
+                                                                                    Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                                                                    Uri voiceStatusCallbackUrl = null,
+                                                                                    Twilio.Http.HttpMethod voiceStatusCallbackMethod = null,
+                                                                                    bool? sipRegistration = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, SipRegistration = sipRegistration};
@@ -279,7 +279,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Fetch Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
+        /// <returns> A single instance of Domain </returns>
         public static DomainResource Fetch(FetchDomainOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -293,8 +293,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Fetch Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<DomainResource> FetchAsync(FetchDomainOptions options, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<DomainResource> FetchAsync(FetchDomainOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -309,7 +309,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
+        /// <returns> A single instance of Domain </returns>
         public static DomainResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchDomainOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -323,9 +323,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<DomainResource> FetchAsync(string pathSid, 
-                                                                                   string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<DomainResource> FetchAsync(string pathSid,
+                                                                                   string pathAccountSid = null,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchDomainOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -349,7 +349,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Update Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
+        /// <returns> A single instance of Domain </returns>
         public static DomainResource Update(UpdateDomainOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -363,8 +363,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Update Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(UpdateDomainOptions options, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(UpdateDomainOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -388,18 +388,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sipRegistration"> Whether SIP registration is allowed </param>
         /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
-        public static DomainResource Update(string pathSid, 
-                                            string pathAccountSid = null, 
-                                            string friendlyName = null, 
-                                            Twilio.Http.HttpMethod voiceFallbackMethod = null, 
-                                            Uri voiceFallbackUrl = null, 
-                                            Twilio.Http.HttpMethod voiceMethod = null, 
-                                            Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, 
-                                            Uri voiceStatusCallbackUrl = null, 
-                                            Uri voiceUrl = null, 
-                                            bool? sipRegistration = null, 
-                                            string domainName = null, 
+        /// <returns> A single instance of Domain </returns>
+        public static DomainResource Update(string pathSid,
+                                            string pathAccountSid = null,
+                                            string friendlyName = null,
+                                            Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                            Uri voiceFallbackUrl = null,
+                                            Twilio.Http.HttpMethod voiceMethod = null,
+                                            Twilio.Http.HttpMethod voiceStatusCallbackMethod = null,
+                                            Uri voiceStatusCallbackUrl = null,
+                                            Uri voiceUrl = null,
+                                            bool? sipRegistration = null,
+                                            string domainName = null,
                                             ITwilioRestClient client = null)
         {
             var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl, SipRegistration = sipRegistration, DomainName = domainName};
@@ -422,18 +422,18 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="sipRegistration"> Whether SIP registration is allowed </param>
         /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(string pathSid, 
-                                                                                    string pathAccountSid = null, 
-                                                                                    string friendlyName = null, 
-                                                                                    Twilio.Http.HttpMethod voiceFallbackMethod = null, 
-                                                                                    Uri voiceFallbackUrl = null, 
-                                                                                    Twilio.Http.HttpMethod voiceMethod = null, 
-                                                                                    Twilio.Http.HttpMethod voiceStatusCallbackMethod = null, 
-                                                                                    Uri voiceStatusCallbackUrl = null, 
-                                                                                    Uri voiceUrl = null, 
-                                                                                    bool? sipRegistration = null, 
-                                                                                    string domainName = null, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(string pathSid,
+                                                                                    string pathAccountSid = null,
+                                                                                    string friendlyName = null,
+                                                                                    Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                                                                    Uri voiceFallbackUrl = null,
+                                                                                    Twilio.Http.HttpMethod voiceMethod = null,
+                                                                                    Twilio.Http.HttpMethod voiceStatusCallbackMethod = null,
+                                                                                    Uri voiceStatusCallbackUrl = null,
+                                                                                    Uri voiceUrl = null,
+                                                                                    bool? sipRegistration = null,
+                                                                                    string domainName = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl, SipRegistration = sipRegistration, DomainName = domainName};
@@ -457,7 +457,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Delete Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
+        /// <returns> A single instance of Domain </returns>
         public static bool Delete(DeleteDomainOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -471,8 +471,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         /// <param name="options"> Delete Domain parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDomainOptions options, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDomainOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -487,7 +487,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Domain </returns> 
+        /// <returns> A single instance of Domain </returns>
         public static bool Delete(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new DeleteDomainOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -501,9 +501,9 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Domain </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, 
-                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Domain </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid,
+                                                                          string pathAccountSid = null,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteDomainOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -515,7 +515,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Converts a JSON string into a DomainResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> DomainResource object represented by the provided JSON </returns> 
+        /// <returns> DomainResource object represented by the provided JSON </returns>
         public static DomainResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

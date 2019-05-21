@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// CreateNewKeyOptions
     /// </summary>
-    public class CreateNewKeyOptions : IOptions<NewKeyResource> 
+    public class CreateNewKeyOptions : IOptions<NewKeyResource>
     {
         /// <summary>
         /// The SID of the Account that will be responsible for the new Key resource

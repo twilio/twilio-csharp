@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
 
     /// <summary>
     /// ReadReservationOptions
     /// </summary>
-    public class ReadReservationOptions : ReadOptions<ReservationResource> 
+    public class ReadReservationOptions : ReadOptions<ReservationResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     /// <summary>
     /// FetchReservationOptions
     /// </summary>
-    public class FetchReservationOptions : IOptions<ReservationResource> 
+    public class FetchReservationOptions : IOptions<ReservationResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     /// <summary>
     /// UpdateReservationOptions
     /// </summary>
-    public class UpdateReservationOptions : IOptions<ReservationResource> 
+    public class UpdateReservationOptions : IOptions<ReservationResource>
     {
         /// <summary>
         /// The workspace_sid

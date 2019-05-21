@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.DeployedDevices.Fleet 
+namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch information about a specific Deployment in the Fleet.
     /// </summary>
-    public class FetchDeploymentOptions : IOptions<DeploymentResource> 
+    public class FetchDeploymentOptions : IOptions<DeploymentResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Deployment from the Fleet, leaving associated devices effectively undeployed.
     /// </summary>
-    public class DeleteDeploymentOptions : IOptions<DeploymentResource> 
+    public class DeleteDeploymentOptions : IOptions<DeploymentResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -90,11 +90,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Deployment in the Fleet, optionally giving it a friendly name and linking to a specific Twilio Sync
     /// service instance.
     /// </summary>
-    public class CreateDeploymentOptions : IOptions<DeploymentResource> 
+    public class CreateDeploymentOptions : IOptions<DeploymentResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -141,10 +141,10 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Deployments belonging to the Fleet.
     /// </summary>
-    public class ReadDeploymentOptions : ReadOptions<DeploymentResource> 
+    public class ReadDeploymentOptions : ReadOptions<DeploymentResource>
     {
         /// <summary>
         /// The fleet_sid
@@ -178,11 +178,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update the given properties of a specific Deployment credential in the Fleet, giving it a friendly name or linking
     /// to a specific Twilio Sync service instance.
     /// </summary>
-    public class UpdateDeploymentOptions : IOptions<DeploymentResource> 
+    public class UpdateDeploymentOptions : IOptions<DeploymentResource>
     {
         /// <summary>
         /// The fleet_sid

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Wireless.V1 
+namespace Twilio.Rest.Wireless.V1
 {
 
     /// <summary>
     /// Fetch a Command instance from your account.
     /// </summary>
-    public class FetchCommandOptions : IOptions<CommandResource> 
+    public class FetchCommandOptions : IOptions<CommandResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// Retrieve a list of Commands from your account.
     /// </summary>
-    public class ReadCommandOptions : ReadOptions<CommandResource> 
+    public class ReadCommandOptions : ReadOptions<CommandResource>
     {
         /// <summary>
         /// Only return Commands to or from this SIM.
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// Send a Command to a Sim.
     /// </summary>
-    public class CreateCommandOptions : IOptions<CommandResource> 
+    public class CreateCommandOptions : IOptions<CommandResource>
     {
         /// <summary>
         /// The message body of the Command or a Base64 encoded byte string in binary mode.
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// Delete a Command instance from your account.
     /// </summary>
-    public class DeleteCommandOptions : IOptions<CommandResource> 
+    public class DeleteCommandOptions : IOptions<CommandResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.

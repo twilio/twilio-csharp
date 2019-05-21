@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.Address 
+namespace Twilio.Rest.Api.V2010.Account.Address
 {
 
-    public class DependentPhoneNumberResource : Resource 
+    public class DependentPhoneNumberResource : Resource
     {
-        public sealed class AddressRequirementEnum : StringEnum 
+        public sealed class AddressRequirementEnum : StringEnum
         {
             private AddressRequirementEnum(string value) : base(value) {}
             public AddressRequirementEnum() {}
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
             public static readonly AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
         }
 
-        public sealed class EmergencyStatusEnum : StringEnum 
+        public sealed class EmergencyStatusEnum : StringEnum
         {
             private EmergencyStatusEnum(string value) : base(value) {}
             public EmergencyStatusEnum() {}
@@ -65,8 +65,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// </summary>
         /// <param name="options"> Read DependentPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DependentPhoneNumber </returns> 
-        public static ResourceSet<DependentPhoneNumberResource> Read(ReadDependentPhoneNumberOptions options, 
+        /// <returns> A single instance of DependentPhoneNumber </returns>
+        public static ResourceSet<DependentPhoneNumberResource> Read(ReadDependentPhoneNumberOptions options,
                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// </summary>
         /// <param name="options"> Read DependentPhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DependentPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ReadDependentPhoneNumberOptions options, 
+        /// <returns> Task that resolves to A single instance of DependentPhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(ReadDependentPhoneNumberOptions options,
                                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -102,11 +102,11 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DependentPhoneNumber </returns> 
-        public static ResourceSet<DependentPhoneNumberResource> Read(string pathAddressSid, 
-                                                                     string pathAccountSid = null, 
-                                                                     int? pageSize = null, 
-                                                                     long? limit = null, 
+        /// <returns> A single instance of DependentPhoneNumber </returns>
+        public static ResourceSet<DependentPhoneNumberResource> Read(string pathAddressSid,
+                                                                     string pathAccountSid = null,
+                                                                     int? pageSize = null,
+                                                                     long? limit = null,
                                                                      ITwilioRestClient client = null)
         {
             var options = new ReadDependentPhoneNumberOptions(pathAddressSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -122,11 +122,11 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DependentPhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(string pathAddressSid, 
-                                                                                                             string pathAccountSid = null, 
-                                                                                                             int? pageSize = null, 
-                                                                                                             long? limit = null, 
+        /// <returns> Task that resolves to A single instance of DependentPhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DependentPhoneNumberResource>> ReadAsync(string pathAddressSid,
+                                                                                                             string pathAccountSid = null,
+                                                                                                             int? pageSize = null,
+                                                                                                             long? limit = null,
                                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadDependentPhoneNumberOptions(pathAddressSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<DependentPhoneNumberResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -158,8 +158,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<DependentPhoneNumberResource> NextPage(Page<DependentPhoneNumberResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<DependentPhoneNumberResource> NextPage(Page<DependentPhoneNumberResource> page,
                                                                   ITwilioRestClient client)
         {
             var request = new Request(
@@ -179,8 +179,8 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<DependentPhoneNumberResource> PreviousPage(Page<DependentPhoneNumberResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<DependentPhoneNumberResource> PreviousPage(Page<DependentPhoneNumberResource> page,
                                                                       ITwilioRestClient client)
         {
             var request = new Request(
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
         /// Converts a JSON string into a DependentPhoneNumberResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> DependentPhoneNumberResource object represented by the provided JSON </returns> 
+        /// <returns> DependentPhoneNumberResource object represented by the provided JSON </returns>
         public static DependentPhoneNumberResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

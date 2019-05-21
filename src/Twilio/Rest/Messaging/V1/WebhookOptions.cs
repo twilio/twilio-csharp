@@ -9,16 +9,16 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Messaging.V1 
+namespace Twilio.Rest.Messaging.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchWebhookOptions
     /// </summary>
-    public class FetchWebhookOptions : IOptions<WebhookResource> 
+    public class FetchWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -33,10 +33,10 @@ namespace Twilio.Rest.Messaging.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateWebhookOptions
     /// </summary>
-    public class UpdateWebhookOptions : IOptions<WebhookResource> 
+    public class UpdateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
         /// The HTTP method to be used when sending a webhook request.

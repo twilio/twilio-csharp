@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Queue 
+namespace Twilio.Rest.Api.V2010.Account.Queue
 {
 
-    public class MemberResource : Resource 
+    public class MemberResource : Resource
     {
         private static Request BuildFetchRequest(FetchMemberOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         /// <param name="options"> Fetch Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
+        /// <returns> A single instance of Member </returns>
         public static MemberResource Fetch(FetchMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         /// <param name="options"> Fetch Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(FetchMemberOptions options, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(FetchMemberOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,10 +67,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
-        public static MemberResource Fetch(string pathQueueSid, 
-                                           string pathCallSid, 
-                                           string pathAccountSid = null, 
+        /// <returns> A single instance of Member </returns>
+        public static MemberResource Fetch(string pathQueueSid,
+                                           string pathCallSid,
+                                           string pathAccountSid = null,
                                            ITwilioRestClient client = null)
         {
             var options = new FetchMemberOptions(pathQueueSid, pathCallSid){PathAccountSid = pathAccountSid};
@@ -85,10 +85,10 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="pathCallSid"> The Call SID of the resource(s) to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string pathQueueSid, 
-                                                                                   string pathCallSid, 
-                                                                                   string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string pathQueueSid,
+                                                                                   string pathCallSid,
+                                                                                   string pathAccountSid = null,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchMemberOptions(pathQueueSid, pathCallSid){PathAccountSid = pathAccountSid};
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         /// <param name="options"> Update Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
+        /// <returns> A single instance of Member </returns>
         public static MemberResource Update(UpdateMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -126,8 +126,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         /// <param name="options"> Update Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(UpdateMemberOptions options, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(UpdateMemberOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -145,12 +145,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
         /// <param name="method"> How to pass the update request data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
-        public static MemberResource Update(string pathQueueSid, 
-                                            string pathCallSid, 
-                                            Uri url, 
-                                            string pathAccountSid = null, 
-                                            Twilio.Http.HttpMethod method = null, 
+        /// <returns> A single instance of Member </returns>
+        public static MemberResource Update(string pathQueueSid,
+                                            string pathCallSid,
+                                            Uri url,
+                                            string pathAccountSid = null,
+                                            Twilio.Http.HttpMethod method = null,
                                             ITwilioRestClient client = null)
         {
             var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url){PathAccountSid = pathAccountSid, Method = method};
@@ -167,12 +167,12 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to update </param>
         /// <param name="method"> How to pass the update request data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathQueueSid, 
-                                                                                    string pathCallSid, 
-                                                                                    Uri url, 
-                                                                                    string pathAccountSid = null, 
-                                                                                    Twilio.Http.HttpMethod method = null, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathQueueSid,
+                                                                                    string pathCallSid,
+                                                                                    Uri url,
+                                                                                    string pathAccountSid = null,
+                                                                                    Twilio.Http.HttpMethod method = null,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new UpdateMemberOptions(pathQueueSid, pathCallSid, url){PathAccountSid = pathAccountSid, Method = method};
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         /// <param name="options"> Read Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
+        /// <returns> A single instance of Member </returns>
         public static ResourceSet<MemberResource> Read(ReadMemberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -212,8 +212,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         /// <param name="options"> Read Member parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ReadMemberOptions options, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(ReadMemberOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -232,11 +232,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Member </returns> 
-        public static ResourceSet<MemberResource> Read(string pathQueueSid, 
-                                                       string pathAccountSid = null, 
-                                                       int? pageSize = null, 
-                                                       long? limit = null, 
+        /// <returns> A single instance of Member </returns>
+        public static ResourceSet<MemberResource> Read(string pathQueueSid,
+                                                       string pathAccountSid = null,
+                                                       int? pageSize = null,
+                                                       long? limit = null,
                                                        ITwilioRestClient client = null)
         {
             var options = new ReadMemberOptions(pathQueueSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -252,11 +252,11 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Member </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(string pathQueueSid, 
-                                                                                               string pathAccountSid = null, 
-                                                                                               int? pageSize = null, 
-                                                                                               long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Member </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MemberResource>> ReadAsync(string pathQueueSid,
+                                                                                               string pathAccountSid = null,
+                                                                                               int? pageSize = null,
+                                                                                               long? limit = null,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new ReadMemberOptions(pathQueueSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -269,7 +269,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<MemberResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -288,7 +288,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<MemberResource> NextPage(Page<MemberResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -308,7 +308,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<MemberResource> PreviousPage(Page<MemberResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -327,7 +327,7 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
         /// Converts a JSON string into a MemberResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> MemberResource object represented by the provided JSON </returns> 
+        /// <returns> MemberResource object represented by the provided JSON </returns>
         public static MemberResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

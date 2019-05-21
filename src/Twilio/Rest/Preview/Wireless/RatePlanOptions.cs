@@ -9,16 +9,16 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Wireless 
+namespace Twilio.Rest.Preview.Wireless
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadRatePlanOptions
     /// </summary>
-    public class ReadRatePlanOptions : ReadOptions<RatePlanResource> 
+    public class ReadRatePlanOptions : ReadOptions<RatePlanResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -38,10 +38,10 @@ namespace Twilio.Rest.Preview.Wireless
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchRatePlanOptions
     /// </summary>
-    public class FetchRatePlanOptions : IOptions<RatePlanResource> 
+    public class FetchRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
         /// The sid
@@ -70,10 +70,10 @@ namespace Twilio.Rest.Preview.Wireless
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateRatePlanOptions
     /// </summary>
-    public class CreateRatePlanOptions : IOptions<RatePlanResource> 
+    public class CreateRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
         /// The unique_name
@@ -187,10 +187,10 @@ namespace Twilio.Rest.Preview.Wireless
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateRatePlanOptions
     /// </summary>
-    public class UpdateRatePlanOptions : IOptions<RatePlanResource> 
+    public class UpdateRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
         /// The sid
@@ -237,10 +237,10 @@ namespace Twilio.Rest.Preview.Wireless
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteRatePlanOptions
     /// </summary>
-    public class DeleteRatePlanOptions : IOptions<RatePlanResource> 
+    public class DeleteRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
         /// The sid

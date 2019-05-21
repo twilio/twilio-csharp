@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Proxy.V1.Service.Session 
+namespace Twilio.Rest.Proxy.V1.Service.Session
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch a specific Participant.
     /// </summary>
-    public class FetchParticipantOptions : IOptions<ParticipantResource> 
+    public class FetchParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The SID of the parent Service of the resource to fetch
@@ -56,10 +56,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all Participants in a Session.
     /// </summary>
-    public class ReadParticipantOptions : ReadOptions<ParticipantResource> 
+    public class ReadParticipantOptions : ReadOptions<ParticipantResource>
     {
         /// <summary>
         /// The SID of the parent Service of the resource to read
@@ -98,10 +98,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Add a new Participant to the Session
     /// </summary>
-    public class CreateParticipantOptions : IOptions<ParticipantResource> 
+    public class CreateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The SID of the parent Service resource
@@ -173,12 +173,12 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific Participant. This is a soft-delete. The participant remains associated with the session and cannot
     /// be re-added. Participants are only permanently deleted when the
     /// [Session](https://www.twilio.com/docs/proxy/api/session) is deleted.
     /// </summary>
-    public class DeleteParticipantOptions : IOptions<ParticipantResource> 
+    public class DeleteParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
         /// The SID of the parent Service of the resource to delete

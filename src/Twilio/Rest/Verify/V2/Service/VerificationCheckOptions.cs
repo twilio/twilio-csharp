@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Verify.V2.Service 
+namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// challenge a specific Verification Check.
     /// </summary>
-    public class CreateVerificationCheckOptions : IOptions<VerificationCheckResource> 
+    public class CreateVerificationCheckOptions : IOptions<VerificationCheckResource>
     {
         /// <summary>
         /// The SID of the verification Service to create the resource under

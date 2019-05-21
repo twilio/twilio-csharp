@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.FlexApi.V1 
+namespace Twilio.Rest.FlexApi.V1
 {
 
     /// <summary>
     /// ReadFlexFlowOptions
     /// </summary>
-    public class ReadFlexFlowOptions : ReadOptions<FlexFlowResource> 
+    public class ReadFlexFlowOptions : ReadOptions<FlexFlowResource>
     {
         /// <summary>
         /// Human readable description of this FlexFlow
@@ -44,7 +44,7 @@ namespace Twilio.Rest.FlexApi.V1
     /// <summary>
     /// FetchFlexFlowOptions
     /// </summary>
-    public class FetchFlexFlowOptions : IOptions<FlexFlowResource> 
+    public class FetchFlexFlowOptions : IOptions<FlexFlowResource>
     {
         /// <summary>
         /// The unique ID of the FlexFlow
@@ -73,7 +73,7 @@ namespace Twilio.Rest.FlexApi.V1
     /// <summary>
     /// CreateFlexFlowOptions
     /// </summary>
-    public class CreateFlexFlowOptions : IOptions<FlexFlowResource> 
+    public class CreateFlexFlowOptions : IOptions<FlexFlowResource>
     {
         /// <summary>
         /// Human readable description of this FlexFlow
@@ -142,8 +142,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="friendlyName"> Human readable description of this FlexFlow </param>
         /// <param name="chatServiceSid"> Service Sid. </param>
         /// <param name="channelType"> Channel type </param>
-        public CreateFlexFlowOptions(string friendlyName, 
-                                     string chatServiceSid, 
+        public CreateFlexFlowOptions(string friendlyName,
+                                     string chatServiceSid,
                                      FlexFlowResource.ChannelTypeEnum channelType)
         {
             FriendlyName = friendlyName;
@@ -239,7 +239,7 @@ namespace Twilio.Rest.FlexApi.V1
     /// <summary>
     /// UpdateFlexFlowOptions
     /// </summary>
-    public class UpdateFlexFlowOptions : IOptions<FlexFlowResource> 
+    public class UpdateFlexFlowOptions : IOptions<FlexFlowResource>
     {
         /// <summary>
         /// The unique ID of the FlexFlow
@@ -403,7 +403,7 @@ namespace Twilio.Rest.FlexApi.V1
     /// <summary>
     /// DeleteFlexFlowOptions
     /// </summary>
-    public class DeleteFlexFlowOptions : IOptions<FlexFlowResource> 
+    public class DeleteFlexFlowOptions : IOptions<FlexFlowResource>
     {
         /// <summary>
         /// The unique ID of the FlexFlow

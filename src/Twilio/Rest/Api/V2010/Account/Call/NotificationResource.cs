@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.Call 
+namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
-    public class NotificationResource : Resource 
+    public class NotificationResource : Resource
     {
         private static Request BuildFetchRequest(FetchNotificationOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Fetch Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns> 
+        /// <returns> A single instance of Notification </returns>
         public static NotificationResource Fetch(FetchNotificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Fetch Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(FetchNotificationOptions options, 
+        /// <returns> Task that resolves to A single instance of Notification </returns>
+        public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(FetchNotificationOptions options,
                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,10 +67,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns> 
-        public static NotificationResource Fetch(string pathCallSid, 
-                                                 string pathSid, 
-                                                 string pathAccountSid = null, 
+        /// <returns> A single instance of Notification </returns>
+        public static NotificationResource Fetch(string pathCallSid,
+                                                 string pathSid,
+                                                 string pathAccountSid = null,
                                                  ITwilioRestClient client = null)
         {
             var options = new FetchNotificationOptions(pathCallSid, pathSid){PathAccountSid = pathAccountSid};
@@ -85,10 +85,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(string pathCallSid, 
-                                                                                         string pathSid, 
-                                                                                         string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Notification </returns>
+        public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(string pathCallSid,
+                                                                                         string pathSid,
+                                                                                         string pathAccountSid = null,
                                                                                          ITwilioRestClient client = null)
         {
             var options = new FetchNotificationOptions(pathCallSid, pathSid){PathAccountSid = pathAccountSid};
@@ -112,7 +112,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Delete Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns> 
+        /// <returns> A single instance of Notification </returns>
         public static bool Delete(DeleteNotificationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -126,8 +126,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Delete Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteNotificationOptions options, 
+        /// <returns> Task that resolves to A single instance of Notification </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteNotificationOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -143,10 +143,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns> 
-        public static bool Delete(string pathCallSid, 
-                                  string pathSid, 
-                                  string pathAccountSid = null, 
+        /// <returns> A single instance of Notification </returns>
+        public static bool Delete(string pathCallSid,
+                                  string pathSid,
+                                  string pathAccountSid = null,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteNotificationOptions(pathCallSid, pathSid){PathAccountSid = pathAccountSid};
@@ -161,10 +161,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCallSid, 
-                                                                          string pathSid, 
-                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of Notification </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathCallSid,
+                                                                          string pathSid,
+                                                                          string pathAccountSid = null,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteNotificationOptions(pathCallSid, pathSid){PathAccountSid = pathAccountSid};
@@ -188,8 +188,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Read Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns> 
-        public static ResourceSet<NotificationResource> Read(ReadNotificationOptions options, 
+        /// <returns> A single instance of Notification </returns>
+        public static ResourceSet<NotificationResource> Read(ReadNotificationOptions options,
                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -205,8 +205,8 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="options"> Read Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(ReadNotificationOptions options, 
+        /// <returns> Task that resolves to A single instance of Notification </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(ReadNotificationOptions options,
                                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -229,15 +229,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Notification </returns> 
-        public static ResourceSet<NotificationResource> Read(string pathCallSid, 
-                                                             string pathAccountSid = null, 
-                                                             int? log = null, 
-                                                             DateTime? messageDateBefore = null, 
-                                                             DateTime? messageDate = null, 
-                                                             DateTime? messageDateAfter = null, 
-                                                             int? pageSize = null, 
-                                                             long? limit = null, 
+        /// <returns> A single instance of Notification </returns>
+        public static ResourceSet<NotificationResource> Read(string pathCallSid,
+                                                             string pathAccountSid = null,
+                                                             int? log = null,
+                                                             DateTime? messageDateBefore = null,
+                                                             DateTime? messageDate = null,
+                                                             DateTime? messageDateAfter = null,
+                                                             int? pageSize = null,
+                                                             long? limit = null,
                                                              ITwilioRestClient client = null)
         {
             var options = new ReadNotificationOptions(pathCallSid){PathAccountSid = pathAccountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
@@ -257,15 +257,15 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Notification </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(string pathCallSid, 
-                                                                                                     string pathAccountSid = null, 
-                                                                                                     int? log = null, 
-                                                                                                     DateTime? messageDateBefore = null, 
-                                                                                                     DateTime? messageDate = null, 
-                                                                                                     DateTime? messageDateAfter = null, 
-                                                                                                     int? pageSize = null, 
-                                                                                                     long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Notification </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<NotificationResource>> ReadAsync(string pathCallSid,
+                                                                                                     string pathAccountSid = null,
+                                                                                                     int? log = null,
+                                                                                                     DateTime? messageDateBefore = null,
+                                                                                                     DateTime? messageDate = null,
+                                                                                                     DateTime? messageDateAfter = null,
+                                                                                                     int? pageSize = null,
+                                                                                                     long? limit = null,
                                                                                                      ITwilioRestClient client = null)
         {
             var options = new ReadNotificationOptions(pathCallSid){PathAccountSid = pathAccountSid, Log = log, MessageDateBefore = messageDateBefore, MessageDate = messageDate, MessageDateAfter = messageDateAfter, PageSize = pageSize, Limit = limit};
@@ -278,7 +278,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<NotificationResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -297,7 +297,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<NotificationResource> NextPage(Page<NotificationResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<NotificationResource> PreviousPage(Page<NotificationResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -336,7 +336,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Converts a JSON string into a NotificationResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> NotificationResource object represented by the provided JSON </returns> 
+        /// <returns> NotificationResource object represented by the provided JSON </returns>
         public static NotificationResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

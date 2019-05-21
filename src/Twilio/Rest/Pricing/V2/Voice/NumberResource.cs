@@ -16,10 +16,10 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Pricing.V2.Voice 
+namespace Twilio.Rest.Pricing.V2.Voice
 {
 
-    public class NumberResource : Resource 
+    public class NumberResource : Resource
     {
         private static Request BuildFetchRequest(FetchNumberOptions options, ITwilioRestClient client)
         {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
         /// </summary>
         /// <param name="options"> Fetch Number parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Number </returns> 
+        /// <returns> A single instance of Number </returns>
         public static NumberResource Fetch(FetchNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -51,8 +51,8 @@ namespace Twilio.Rest.Pricing.V2.Voice
         /// </summary>
         /// <param name="options"> Fetch Number parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Number </returns> 
-        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options, 
+        /// <returns> Task that resolves to A single instance of Number </returns>
+        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(FetchNumberOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,9 +67,9 @@ namespace Twilio.Rest.Pricing.V2.Voice
         /// <param name="pathDestinationNumber"> The destination number for which to fetch pricing information </param>
         /// <param name="originationNumber"> The origination number for which to fetch pricing information </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Number </returns> 
-        public static NumberResource Fetch(Types.PhoneNumber pathDestinationNumber, 
-                                           Types.PhoneNumber originationNumber = null, 
+        /// <returns> A single instance of Number </returns>
+        public static NumberResource Fetch(Types.PhoneNumber pathDestinationNumber,
+                                           Types.PhoneNumber originationNumber = null,
                                            ITwilioRestClient client = null)
         {
             var options = new FetchNumberOptions(pathDestinationNumber){OriginationNumber = originationNumber};
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Pricing.V2.Voice
         /// <param name="pathDestinationNumber"> The destination number for which to fetch pricing information </param>
         /// <param name="originationNumber"> The origination number for which to fetch pricing information </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Number </returns> 
-        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber pathDestinationNumber, 
-                                                                                   Types.PhoneNumber originationNumber = null, 
+        /// <returns> Task that resolves to A single instance of Number </returns>
+        public static async System.Threading.Tasks.Task<NumberResource> FetchAsync(Types.PhoneNumber pathDestinationNumber,
+                                                                                   Types.PhoneNumber originationNumber = null,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new FetchNumberOptions(pathDestinationNumber){OriginationNumber = originationNumber};
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Pricing.V2.Voice
         /// Converts a JSON string into a NumberResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> NumberResource object represented by the provided JSON </returns> 
+        /// <returns> NumberResource object represented by the provided JSON </returns>
         public static NumberResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

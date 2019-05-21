@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Proxy.V1.Service.Session 
+namespace Twilio.Rest.Proxy.V1.Service.Session
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of Interactions for a given [Session](https://www.twilio.com/docs/proxy/api/session).
     /// </summary>
-    public class FetchInteractionOptions : IOptions<InteractionResource> 
+    public class FetchInteractionOptions : IOptions<InteractionResource>
     {
         /// <summary>
         /// The SID of the parent Service of the resource to fetch
@@ -56,10 +56,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all Interactions for a Session.
     /// </summary>
-    public class ReadInteractionOptions : ReadOptions<InteractionResource> 
+    public class ReadInteractionOptions : ReadOptions<InteractionResource>
     {
         /// <summary>
         /// The SID of the parent Service to read the resource from
@@ -98,10 +98,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific Interaction.
     /// </summary>
-    public class DeleteInteractionOptions : IOptions<InteractionResource> 
+    public class DeleteInteractionOptions : IOptions<InteractionResource>
     {
         /// <summary>
         /// The SID of the parent Service of the resource to delete

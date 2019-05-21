@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.IpMessaging.V2.Service 
+namespace Twilio.Rest.IpMessaging.V2.Service
 {
 
-    public class BindingResource : Resource 
+    public class BindingResource : Resource
     {
-        public sealed class BindingTypeEnum : StringEnum 
+        public sealed class BindingTypeEnum : StringEnum
         {
             private BindingTypeEnum(string value) : base(value) {}
             public BindingTypeEnum() {}
@@ -51,7 +51,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="options"> Read Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Binding </returns> 
+        /// <returns> A single instance of Binding </returns>
         public static ResourceSet<BindingResource> Read(ReadBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,8 +67,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="options"> Read Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options, 
+        /// <returns> Task that resolves to A single instance of Binding </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(ReadBindingOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -88,12 +88,12 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Binding </returns> 
-        public static ResourceSet<BindingResource> Read(string pathServiceSid, 
-                                                        List<BindingResource.BindingTypeEnum> bindingType = null, 
-                                                        List<string> identity = null, 
-                                                        int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Binding </returns>
+        public static ResourceSet<BindingResource> Read(string pathServiceSid,
+                                                        List<BindingResource.BindingTypeEnum> bindingType = null,
+                                                        List<string> identity = null,
+                                                        int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadBindingOptions(pathServiceSid){BindingType = bindingType, Identity = identity, PageSize = pageSize, Limit = limit};
@@ -110,12 +110,12 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(string pathServiceSid, 
-                                                                                                List<BindingResource.BindingTypeEnum> bindingType = null, 
-                                                                                                List<string> identity = null, 
-                                                                                                int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Binding </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<BindingResource>> ReadAsync(string pathServiceSid,
+                                                                                                List<BindingResource.BindingTypeEnum> bindingType = null,
+                                                                                                List<string> identity = null,
+                                                                                                int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadBindingOptions(pathServiceSid){BindingType = bindingType, Identity = identity, PageSize = pageSize, Limit = limit};
@@ -128,7 +128,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<BindingResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -147,7 +147,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<BindingResource> NextPage(Page<BindingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -167,7 +167,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<BindingResource> PreviousPage(Page<BindingResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -198,7 +198,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="options"> Fetch Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Binding </returns> 
+        /// <returns> A single instance of Binding </returns>
         public static BindingResource Fetch(FetchBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -212,8 +212,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="options"> Fetch Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options, 
+        /// <returns> Task that resolves to A single instance of Binding </returns>
+        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(FetchBindingOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -228,7 +228,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Binding </returns> 
+        /// <returns> A single instance of Binding </returns>
         public static BindingResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchBindingOptions(pathServiceSid, pathSid);
@@ -242,9 +242,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(string pathServiceSid, 
-                                                                                    string pathSid, 
+        /// <returns> Task that resolves to A single instance of Binding </returns>
+        public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(string pathServiceSid,
+                                                                                    string pathSid,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchBindingOptions(pathServiceSid, pathSid);
@@ -268,7 +268,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="options"> Delete Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Binding </returns> 
+        /// <returns> A single instance of Binding </returns>
         public static bool Delete(DeleteBindingOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -282,8 +282,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="options"> Delete Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBindingOptions options, 
+        /// <returns> Task that resolves to A single instance of Binding </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBindingOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -298,7 +298,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Binding </returns> 
+        /// <returns> A single instance of Binding </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteBindingOptions(pathServiceSid, pathSid);
@@ -312,9 +312,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Binding </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Binding </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteBindingOptions(pathServiceSid, pathSid);
@@ -326,7 +326,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// Converts a JSON string into a BindingResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> BindingResource object represented by the provided JSON </returns> 
+        /// <returns> BindingResource object represented by the provided JSON </returns>
         public static BindingResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

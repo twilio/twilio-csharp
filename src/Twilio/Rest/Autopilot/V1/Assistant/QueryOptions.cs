@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant 
+namespace Twilio.Rest.Autopilot.V1.Assistant
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchQueryOptions
     /// </summary>
-    public class FetchQueryOptions : IOptions<QueryResource> 
+    public class FetchQueryOptions : IOptions<QueryResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the resource to fetch
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadQueryOptions
     /// </summary>
-    public class ReadQueryOptions : ReadOptions<QueryResource> 
+    public class ReadQueryOptions : ReadOptions<QueryResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the resources to read
@@ -116,10 +116,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateQueryOptions
     /// </summary>
-    public class CreateQueryOptions : IOptions<QueryResource> 
+    public class CreateQueryOptions : IOptions<QueryResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the new resource
@@ -188,10 +188,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateQueryOptions
     /// </summary>
-    public class UpdateQueryOptions : IOptions<QueryResource> 
+    public class UpdateQueryOptions : IOptions<QueryResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the resource to update
@@ -244,10 +244,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteQueryOptions
     /// </summary>
-    public class DeleteQueryOptions : IOptions<QueryResource> 
+    public class DeleteQueryOptions : IOptions<QueryResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the resources to delete

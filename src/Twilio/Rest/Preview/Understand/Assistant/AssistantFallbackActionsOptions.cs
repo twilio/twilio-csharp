@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Assistant 
+namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchAssistantFallbackActionsOptions
     /// </summary>
-    public class FetchAssistantFallbackActionsOptions : IOptions<AssistantFallbackActionsResource> 
+    public class FetchAssistantFallbackActionsOptions : IOptions<AssistantFallbackActionsResource>
     {
         /// <summary>
         /// The assistant_sid
@@ -46,10 +46,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateAssistantFallbackActionsOptions
     /// </summary>
-    public class UpdateAssistantFallbackActionsOptions : IOptions<AssistantFallbackActionsResource> 
+    public class UpdateAssistantFallbackActionsOptions : IOptions<AssistantFallbackActionsResource>
     {
         /// <summary>
         /// The assistant_sid

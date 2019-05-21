@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn;
 
-namespace Twilio.Tests.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn 
+namespace Twilio.Tests.Rest.Api.V2010.Account.IncomingPhoneNumber.AssignedAddOn
 {
 
     [TestFixture]
-    public class AssignedAddOnExtensionTest : TwilioTest 
+    public class AssignedAddOnExtensionTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

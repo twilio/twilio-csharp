@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
+namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 {
 
-    public class AllTimeResource : Resource 
+    public class AllTimeResource : Resource
     {
-        public sealed class CategoryEnum : StringEnum 
+        public sealed class CategoryEnum : StringEnum
         {
             private CategoryEnum(string value) : base(value) {}
             public CategoryEnum() {}
@@ -291,7 +291,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// </summary>
         /// <param name="options"> Read AllTime parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AllTime </returns> 
+        /// <returns> A single instance of AllTime </returns>
         public static ResourceSet<AllTimeResource> Read(ReadAllTimeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -307,8 +307,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// </summary>
         /// <param name="options"> Read AllTime parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AllTime </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AllTimeResource>> ReadAsync(ReadAllTimeOptions options, 
+        /// <returns> Task that resolves to A single instance of AllTime </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AllTimeResource>> ReadAsync(ReadAllTimeOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -330,14 +330,14 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AllTime </returns> 
-        public static ResourceSet<AllTimeResource> Read(string pathAccountSid = null, 
-                                                        AllTimeResource.CategoryEnum category = null, 
-                                                        DateTime? startDate = null, 
-                                                        DateTime? endDate = null, 
-                                                        bool? includeSubaccounts = null, 
-                                                        int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of AllTime </returns>
+        public static ResourceSet<AllTimeResource> Read(string pathAccountSid = null,
+                                                        AllTimeResource.CategoryEnum category = null,
+                                                        DateTime? startDate = null,
+                                                        DateTime? endDate = null,
+                                                        bool? includeSubaccounts = null,
+                                                        int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadAllTimeOptions(){PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
@@ -356,14 +356,14 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AllTime </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AllTimeResource>> ReadAsync(string pathAccountSid = null, 
-                                                                                                AllTimeResource.CategoryEnum category = null, 
-                                                                                                DateTime? startDate = null, 
-                                                                                                DateTime? endDate = null, 
-                                                                                                bool? includeSubaccounts = null, 
-                                                                                                int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of AllTime </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AllTimeResource>> ReadAsync(string pathAccountSid = null,
+                                                                                                AllTimeResource.CategoryEnum category = null,
+                                                                                                DateTime? startDate = null,
+                                                                                                DateTime? endDate = null,
+                                                                                                bool? includeSubaccounts = null,
+                                                                                                int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadAllTimeOptions(){PathAccountSid = pathAccountSid, Category = category, StartDate = startDate, EndDate = endDate, IncludeSubaccounts = includeSubaccounts, PageSize = pageSize, Limit = limit};
@@ -376,7 +376,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<AllTimeResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -395,7 +395,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<AllTimeResource> NextPage(Page<AllTimeResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -415,7 +415,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<AllTimeResource> PreviousPage(Page<AllTimeResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -434,7 +434,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage.Record
         /// Converts a JSON string into a AllTimeResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> AllTimeResource object represented by the provided JSON </returns> 
+        /// <returns> AllTimeResource object represented by the provided JSON </returns>
         public static AllTimeResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

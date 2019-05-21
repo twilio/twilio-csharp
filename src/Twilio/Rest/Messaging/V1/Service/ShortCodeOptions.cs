@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Messaging.V1.Service 
+namespace Twilio.Rest.Messaging.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateShortCodeOptions
     /// </summary>
-    public class CreateShortCodeOptions : IOptions<ShortCodeResource> 
+    public class CreateShortCodeOptions : IOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under
@@ -55,10 +55,10 @@ namespace Twilio.Rest.Messaging.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteShortCodeOptions
     /// </summary>
-    public class DeleteShortCodeOptions : IOptions<ShortCodeResource> 
+    public class DeleteShortCodeOptions : IOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from
@@ -92,10 +92,10 @@ namespace Twilio.Rest.Messaging.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadShortCodeOptions
     /// </summary>
-    public class ReadShortCodeOptions : ReadOptions<ShortCodeResource> 
+    public class ReadShortCodeOptions : ReadOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the Service to read the resource from
@@ -128,10 +128,10 @@ namespace Twilio.Rest.Messaging.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchShortCodeOptions
     /// </summary>
-    public class FetchShortCodeOptions : IOptions<ShortCodeResource> 
+    public class FetchShortCodeOptions : IOptions<ShortCodeResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from

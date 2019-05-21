@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// CertificateResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.DeployedDevices.Fleet 
+namespace Twilio.Rest.Preview.DeployedDevices.Fleet
 {
 
-    public class CertificateResource : Resource 
+    public class CertificateResource : Resource
     {
         private static Request BuildFetchRequest(FetchCertificateOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Fetch Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
+        /// <returns> A single instance of Certificate </returns>
         public static CertificateResource Fetch(FetchCertificateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Fetch Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<CertificateResource> FetchAsync(FetchCertificateOptions options, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<CertificateResource> FetchAsync(FetchCertificateOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Certificate. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
+        /// <returns> A single instance of Certificate </returns>
         public static CertificateResource Fetch(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchCertificateOptions(pathFleetSid, pathSid);
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Certificate. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<CertificateResource> FetchAsync(string pathFleetSid, 
-                                                                                        string pathSid, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<CertificateResource> FetchAsync(string pathFleetSid,
+                                                                                        string pathSid,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchCertificateOptions(pathFleetSid, pathSid);
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Delete Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
+        /// <returns> A single instance of Certificate </returns>
         public static bool Delete(DeleteCertificateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -125,8 +125,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Delete Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCertificateOptions options, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteCertificateOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Certificate. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
+        /// <returns> A single instance of Certificate </returns>
         public static bool Delete(string pathFleetSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteCertificateOptions(pathFleetSid, pathSid);
@@ -157,9 +157,9 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pathFleetSid"> The fleet_sid </param>
         /// <param name="pathSid"> A string that uniquely identifies the Certificate. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFleetSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFleetSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteCertificateOptions(pathFleetSid, pathSid);
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Create Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
+        /// <returns> A single instance of Certificate </returns>
         public static CertificateResource Create(CreateCertificateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -197,8 +197,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Create Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<CertificateResource> CreateAsync(CreateCertificateOptions options, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<CertificateResource> CreateAsync(CreateCertificateOptions options,
                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -215,11 +215,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="friendlyName"> The human readable description for this Certificate. </param>
         /// <param name="deviceSid"> The unique identifier of a Device to be authenticated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
-        public static CertificateResource Create(string pathFleetSid, 
-                                                 string certificateData, 
-                                                 string friendlyName = null, 
-                                                 string deviceSid = null, 
+        /// <returns> A single instance of Certificate </returns>
+        public static CertificateResource Create(string pathFleetSid,
+                                                 string certificateData,
+                                                 string friendlyName = null,
+                                                 string deviceSid = null,
                                                  ITwilioRestClient client = null)
         {
             var options = new CreateCertificateOptions(pathFleetSid, certificateData){FriendlyName = friendlyName, DeviceSid = deviceSid};
@@ -235,11 +235,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="friendlyName"> The human readable description for this Certificate. </param>
         /// <param name="deviceSid"> The unique identifier of a Device to be authenticated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<CertificateResource> CreateAsync(string pathFleetSid, 
-                                                                                         string certificateData, 
-                                                                                         string friendlyName = null, 
-                                                                                         string deviceSid = null, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<CertificateResource> CreateAsync(string pathFleetSid,
+                                                                                         string certificateData,
+                                                                                         string friendlyName = null,
+                                                                                         string deviceSid = null,
                                                                                          ITwilioRestClient client = null)
         {
             var options = new CreateCertificateOptions(pathFleetSid, certificateData){FriendlyName = friendlyName, DeviceSid = deviceSid};
@@ -263,7 +263,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Read Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
+        /// <returns> A single instance of Certificate </returns>
         public static ResourceSet<CertificateResource> Read(ReadCertificateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -279,8 +279,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Read Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CertificateResource>> ReadAsync(ReadCertificateOptions options, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CertificateResource>> ReadAsync(ReadCertificateOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -299,11 +299,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
-        public static ResourceSet<CertificateResource> Read(string pathFleetSid, 
-                                                            string deviceSid = null, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of Certificate </returns>
+        public static ResourceSet<CertificateResource> Read(string pathFleetSid,
+                                                            string deviceSid = null,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadCertificateOptions(pathFleetSid){DeviceSid = deviceSid, PageSize = pageSize, Limit = limit};
@@ -319,11 +319,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CertificateResource>> ReadAsync(string pathFleetSid, 
-                                                                                                    string deviceSid = null, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CertificateResource>> ReadAsync(string pathFleetSid,
+                                                                                                    string deviceSid = null,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadCertificateOptions(pathFleetSid){DeviceSid = deviceSid, PageSize = pageSize, Limit = limit};
@@ -336,7 +336,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<CertificateResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -355,7 +355,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<CertificateResource> NextPage(Page<CertificateResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -375,7 +375,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<CertificateResource> PreviousPage(Page<CertificateResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -407,7 +407,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Update Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
+        /// <returns> A single instance of Certificate </returns>
         public static CertificateResource Update(UpdateCertificateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -422,8 +422,8 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// </summary>
         /// <param name="options"> Update Certificate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<CertificateResource> UpdateAsync(UpdateCertificateOptions options, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<CertificateResource> UpdateAsync(UpdateCertificateOptions options,
                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -441,11 +441,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="friendlyName"> The human readable description for this Certificate. </param>
         /// <param name="deviceSid"> The unique identifier of a Device to be authenticated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Certificate </returns> 
-        public static CertificateResource Update(string pathFleetSid, 
-                                                 string pathSid, 
-                                                 string friendlyName = null, 
-                                                 string deviceSid = null, 
+        /// <returns> A single instance of Certificate </returns>
+        public static CertificateResource Update(string pathFleetSid,
+                                                 string pathSid,
+                                                 string friendlyName = null,
+                                                 string deviceSid = null,
                                                  ITwilioRestClient client = null)
         {
             var options = new UpdateCertificateOptions(pathFleetSid, pathSid){FriendlyName = friendlyName, DeviceSid = deviceSid};
@@ -462,11 +462,11 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// <param name="friendlyName"> The human readable description for this Certificate. </param>
         /// <param name="deviceSid"> The unique identifier of a Device to be authenticated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Certificate </returns> 
-        public static async System.Threading.Tasks.Task<CertificateResource> UpdateAsync(string pathFleetSid, 
-                                                                                         string pathSid, 
-                                                                                         string friendlyName = null, 
-                                                                                         string deviceSid = null, 
+        /// <returns> Task that resolves to A single instance of Certificate </returns>
+        public static async System.Threading.Tasks.Task<CertificateResource> UpdateAsync(string pathFleetSid,
+                                                                                         string pathSid,
+                                                                                         string friendlyName = null,
+                                                                                         string deviceSid = null,
                                                                                          ITwilioRestClient client = null)
         {
             var options = new UpdateCertificateOptions(pathFleetSid, pathSid){FriendlyName = friendlyName, DeviceSid = deviceSid};
@@ -478,7 +478,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         /// Converts a JSON string into a CertificateResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> CertificateResource object represented by the provided JSON </returns> 
+        /// <returns> CertificateResource object represented by the provided JSON </returns>
         public static CertificateResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -12,15 +12,15 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Dial TwiML Verb
     /// </summary>
-    public class Dial : TwiML 
+    public class Dial : TwiML
     {
-        public sealed class TrimEnum : StringEnum 
+        public sealed class TrimEnum : StringEnum
         {
             private TrimEnum(string value) : base(value) {}
             public TrimEnum() {}
@@ -33,7 +33,7 @@ namespace Twilio.TwiML.Voice
             public static readonly TrimEnum DoNotTrim = new TrimEnum("do-not-trim");
         }
 
-        public sealed class RecordEnum : StringEnum 
+        public sealed class RecordEnum : StringEnum
         {
             private RecordEnum(string value) : base(value) {}
             public RecordEnum() {}
@@ -49,7 +49,7 @@ namespace Twilio.TwiML.Voice
             public static readonly RecordEnum RecordFromRingingDual = new RecordEnum("record-from-ringing-dual");
         }
 
-        public sealed class RecordingEventEnum : StringEnum 
+        public sealed class RecordingEventEnum : StringEnum
         {
             private RecordingEventEnum(string value) : base(value) {}
             public RecordingEventEnum() {}
@@ -63,7 +63,7 @@ namespace Twilio.TwiML.Voice
             public static readonly RecordingEventEnum Absent = new RecordingEventEnum("absent");
         }
 
-        public sealed class RingToneEnum : StringEnum 
+        public sealed class RingToneEnum : StringEnum
         {
             private RingToneEnum(string value) : base(value) {}
             public RingToneEnum() {}
@@ -190,19 +190,19 @@ namespace Twilio.TwiML.Voice
         ///                      </param>
         /// <param name="ringTone"> Ringtone allows you to override the ringback tone that Twilio will play back to the caller
         ///                while executing the Dial </param>
-        public Dial(string number = null, 
-                    Uri action = null, 
-                    Twilio.Http.HttpMethod method = null, 
-                    int? timeout = null, 
-                    bool? hangupOnStar = null, 
-                    int? timeLimit = null, 
-                    string callerId = null, 
-                    Dial.RecordEnum record = null, 
-                    Dial.TrimEnum trim = null, 
-                    Uri recordingStatusCallback = null, 
-                    Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
-                    List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null, 
-                    bool? answerOnBridge = null, 
+        public Dial(string number = null,
+                    Uri action = null,
+                    Twilio.Http.HttpMethod method = null,
+                    int? timeout = null,
+                    bool? hangupOnStar = null,
+                    int? timeLimit = null,
+                    string callerId = null,
+                    Dial.RecordEnum record = null,
+                    Dial.TrimEnum trim = null,
+                    Uri recordingStatusCallback = null,
+                    Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                    List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
+                    bool? answerOnBridge = null,
                     Dial.RingToneEnum ringTone = null) : base("Dial")
         {
             this.NumberAttribute = number;
@@ -310,11 +310,11 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackEvent"> Events to trigger status callback </param>
         /// <param name="statusCallback"> Status Callback URL </param>
         /// <param name="statusCallbackMethod"> Status Callback URL Method </param>
-        public Dial Client(string identity = null, 
-                           Uri url = null, 
-                           Twilio.Http.HttpMethod method = null, 
-                           List<Client.EventEnum> statusCallbackEvent = null, 
-                           Uri statusCallback = null, 
+        public Dial Client(string identity = null,
+                           Uri url = null,
+                           Twilio.Http.HttpMethod method = null,
+                           List<Client.EventEnum> statusCallbackEvent = null,
+                           Uri statusCallback = null,
                            Twilio.Http.HttpMethod statusCallbackMethod = null)
         {
             var newChild = new Client(
@@ -362,24 +362,24 @@ namespace Twilio.TwiML.Voice
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="eventCallbackUrl"> Event callback URL </param>
-        public Dial Conference(string name = null, 
-                               bool? muted = null, 
-                               Conference.BeepEnum beep = null, 
-                               bool? startConferenceOnEnter = null, 
-                               bool? endConferenceOnExit = null, 
-                               Uri waitUrl = null, 
-                               Twilio.Http.HttpMethod waitMethod = null, 
-                               int? maxParticipants = null, 
-                               Conference.RecordEnum record = null, 
-                               Conference.RegionEnum region = null, 
-                               string whisper = null, 
-                               Conference.TrimEnum trim = null, 
-                               List<Conference.EventEnum> statusCallbackEvent = null, 
-                               Uri statusCallback = null, 
-                               Twilio.Http.HttpMethod statusCallbackMethod = null, 
-                               Uri recordingStatusCallback = null, 
-                               Twilio.Http.HttpMethod recordingStatusCallbackMethod = null, 
-                               List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null, 
+        public Dial Conference(string name = null,
+                               bool? muted = null,
+                               Conference.BeepEnum beep = null,
+                               bool? startConferenceOnEnter = null,
+                               bool? endConferenceOnExit = null,
+                               Uri waitUrl = null,
+                               Twilio.Http.HttpMethod waitMethod = null,
+                               int? maxParticipants = null,
+                               Conference.RecordEnum record = null,
+                               Conference.RegionEnum region = null,
+                               string whisper = null,
+                               Conference.TrimEnum trim = null,
+                               List<Conference.EventEnum> statusCallbackEvent = null,
+                               Uri statusCallback = null,
+                               Twilio.Http.HttpMethod statusCallbackMethod = null,
+                               Uri recordingStatusCallback = null,
+                               Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                               List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null,
                                Uri eventCallbackUrl = null)
         {
             var newChild = new Conference(
@@ -428,12 +428,12 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackEvent"> Events to call status callback </param>
         /// <param name="statusCallback"> Status callback URL </param>
         /// <param name="statusCallbackMethod"> Status callback URL method </param>
-        public Dial Number(Types.PhoneNumber phoneNumber = null, 
-                           string sendDigits = null, 
-                           Uri url = null, 
-                           Twilio.Http.HttpMethod method = null, 
-                           List<Number.EventEnum> statusCallbackEvent = null, 
-                           Uri statusCallback = null, 
+        public Dial Number(Types.PhoneNumber phoneNumber = null,
+                           string sendDigits = null,
+                           Uri url = null,
+                           Twilio.Http.HttpMethod method = null,
+                           List<Number.EventEnum> statusCallbackEvent = null,
+                           Uri statusCallback = null,
                            Twilio.Http.HttpMethod statusCallbackMethod = null)
         {
             var newChild = new Number(
@@ -468,10 +468,10 @@ namespace Twilio.TwiML.Voice
         /// <param name="method"> Action URL method </param>
         /// <param name="reservationSid"> TaskRouter Reservation SID </param>
         /// <param name="postWorkActivitySid"> TaskRouter Activity SID </param>
-        public Dial Queue(string name = null, 
-                          Uri url = null, 
-                          Twilio.Http.HttpMethod method = null, 
-                          string reservationSid = null, 
+        public Dial Queue(string name = null,
+                          Uri url = null,
+                          Twilio.Http.HttpMethod method = null,
+                          string reservationSid = null,
                           string postWorkActivitySid = null)
         {
             var newChild = new Queue(name, url, method, reservationSid, postWorkActivitySid);
@@ -523,13 +523,13 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackEvent"> Status callback events </param>
         /// <param name="statusCallback"> Status callback URL </param>
         /// <param name="statusCallbackMethod"> Status callback URL method </param>
-        public Dial Sip(Uri sipUrl = null, 
-                        string username = null, 
-                        string password = null, 
-                        Uri url = null, 
-                        Twilio.Http.HttpMethod method = null, 
-                        List<Sip.EventEnum> statusCallbackEvent = null, 
-                        Uri statusCallback = null, 
+        public Dial Sip(Uri sipUrl = null,
+                        string username = null,
+                        string password = null,
+                        Uri url = null,
+                        Twilio.Http.HttpMethod method = null,
+                        List<Sip.EventEnum> statusCallbackEvent = null,
+                        Uri statusCallback = null,
                         Twilio.Http.HttpMethod statusCallbackMethod = null)
         {
             var newChild = new Sip(

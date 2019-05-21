@@ -9,16 +9,16 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Video.V1 
+namespace Twilio.Rest.Video.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Returns a single Composition Instance resource identified by a CompositionSid.
     /// </summary>
-    public class FetchCompositionOptions : IOptions<CompositionResource> 
+    public class FetchCompositionOptions : IOptions<CompositionResource>
     {
         /// <summary>
         /// The Composition Sid that uniquely identifies the Composition to fetch.
@@ -47,10 +47,10 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// List of all Recording Compositions.
     /// </summary>
-    public class ReadCompositionOptions : ReadOptions<CompositionResource> 
+    public class ReadCompositionOptions : ReadOptions<CompositionResource>
     {
         /// <summary>
         /// Only show Compositions with the given status.
@@ -107,10 +107,10 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a Recording Composition Instance resource identified by a `CompositionSid`.
     /// </summary>
-    public class DeleteCompositionOptions : IOptions<CompositionResource> 
+    public class DeleteCompositionOptions : IOptions<CompositionResource>
     {
         /// <summary>
         /// The Recording Composition Sid that uniquely identifies the Recording Composition to delete.
@@ -140,10 +140,10 @@ namespace Twilio.Rest.Video.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateCompositionOptions
     /// </summary>
-    public class CreateCompositionOptions : IOptions<CompositionResource> 
+    public class CreateCompositionOptions : IOptions<CompositionResource>
     {
         /// <summary>
         /// Twilio Room SID.

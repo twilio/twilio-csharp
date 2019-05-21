@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace 
+namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
-    public class WorkflowResource : Resource 
+    public class WorkflowResource : Resource
     {
         private static Request BuildFetchRequest(FetchWorkflowOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Fetch Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
+        /// <returns> A single instance of Workflow </returns>
         public static WorkflowResource Fetch(FetchWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Fetch Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowResource> FetchAsync(FetchWorkflowOptions options, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<WorkflowResource> FetchAsync(FetchWorkflowOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
+        /// <returns> A single instance of Workflow </returns>
         public static WorkflowResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowOptions(pathWorkspaceSid, pathSid);
@@ -80,9 +80,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowResource> FetchAsync(string pathWorkspaceSid, 
-                                                                                     string pathSid, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<WorkflowResource> FetchAsync(string pathWorkspaceSid,
+                                                                                     string pathSid,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchWorkflowOptions(pathWorkspaceSid, pathSid);
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Update Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
+        /// <returns> A single instance of Workflow </returns>
         public static WorkflowResource Update(UpdateWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -120,8 +120,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Update Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowResource> UpdateAsync(UpdateWorkflowOptions options, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<WorkflowResource> UpdateAsync(UpdateWorkflowOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -145,14 +145,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///                              confirmation response from your application after assigning a Task to a worker.
         ///                              </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
-        public static WorkflowResource Update(string pathWorkspaceSid, 
-                                              string pathSid, 
-                                              string friendlyName = null, 
-                                              Uri assignmentCallbackUrl = null, 
-                                              Uri fallbackAssignmentCallbackUrl = null, 
-                                              string configuration = null, 
-                                              int? taskReservationTimeout = null, 
+        /// <returns> A single instance of Workflow </returns>
+        public static WorkflowResource Update(string pathWorkspaceSid,
+                                              string pathSid,
+                                              string friendlyName = null,
+                                              Uri assignmentCallbackUrl = null,
+                                              Uri fallbackAssignmentCallbackUrl = null,
+                                              string configuration = null,
+                                              int? taskReservationTimeout = null,
                                               ITwilioRestClient client = null)
         {
             var options = new UpdateWorkflowOptions(pathWorkspaceSid, pathSid){FriendlyName = friendlyName, AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, Configuration = configuration, TaskReservationTimeout = taskReservationTimeout};
@@ -175,14 +175,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///                              confirmation response from your application after assigning a Task to a worker.
         ///                              </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowResource> UpdateAsync(string pathWorkspaceSid, 
-                                                                                      string pathSid, 
-                                                                                      string friendlyName = null, 
-                                                                                      Uri assignmentCallbackUrl = null, 
-                                                                                      Uri fallbackAssignmentCallbackUrl = null, 
-                                                                                      string configuration = null, 
-                                                                                      int? taskReservationTimeout = null, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<WorkflowResource> UpdateAsync(string pathWorkspaceSid,
+                                                                                      string pathSid,
+                                                                                      string friendlyName = null,
+                                                                                      Uri assignmentCallbackUrl = null,
+                                                                                      Uri fallbackAssignmentCallbackUrl = null,
+                                                                                      string configuration = null,
+                                                                                      int? taskReservationTimeout = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new UpdateWorkflowOptions(pathWorkspaceSid, pathSid){FriendlyName = friendlyName, AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, Configuration = configuration, TaskReservationTimeout = taskReservationTimeout};
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Delete Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
+        /// <returns> A single instance of Workflow </returns>
         public static bool Delete(DeleteWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -220,8 +220,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Delete Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWorkflowOptions options, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteWorkflowOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
+        /// <returns> A single instance of Workflow </returns>
         public static bool Delete(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteWorkflowOptions(pathWorkspaceSid, pathSid);
@@ -250,9 +250,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pathWorkspaceSid"> The workspace_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteWorkflowOptions(pathWorkspaceSid, pathSid);
@@ -276,7 +276,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Read Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
+        /// <returns> A single instance of Workflow </returns>
         public static ResourceSet<WorkflowResource> Read(ReadWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -292,8 +292,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Read Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkflowResource>> ReadAsync(ReadWorkflowOptions options, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkflowResource>> ReadAsync(ReadWorkflowOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -312,11 +312,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
-        public static ResourceSet<WorkflowResource> Read(string pathWorkspaceSid, 
-                                                         string friendlyName = null, 
-                                                         int? pageSize = null, 
-                                                         long? limit = null, 
+        /// <returns> A single instance of Workflow </returns>
+        public static ResourceSet<WorkflowResource> Read(string pathWorkspaceSid,
+                                                         string friendlyName = null,
+                                                         int? pageSize = null,
+                                                         long? limit = null,
                                                          ITwilioRestClient client = null)
         {
             var options = new ReadWorkflowOptions(pathWorkspaceSid){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -332,11 +332,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<WorkflowResource>> ReadAsync(string pathWorkspaceSid, 
-                                                                                                 string friendlyName = null, 
-                                                                                                 int? pageSize = null, 
-                                                                                                 long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<WorkflowResource>> ReadAsync(string pathWorkspaceSid,
+                                                                                                 string friendlyName = null,
+                                                                                                 int? pageSize = null,
+                                                                                                 long? limit = null,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadWorkflowOptions(pathWorkspaceSid){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
@@ -349,7 +349,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<WorkflowResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -368,7 +368,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<WorkflowResource> NextPage(Page<WorkflowResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -388,7 +388,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<WorkflowResource> PreviousPage(Page<WorkflowResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -419,7 +419,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Create Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
+        /// <returns> A single instance of Workflow </returns>
         public static WorkflowResource Create(CreateWorkflowOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -433,8 +433,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="options"> Create Workflow parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowResource> CreateAsync(CreateWorkflowOptions options, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<WorkflowResource> CreateAsync(CreateWorkflowOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -457,13 +457,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///                              confirmation response from your application after assigning a Task to a worker.
         ///                              </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Workflow </returns> 
-        public static WorkflowResource Create(string pathWorkspaceSid, 
-                                              string friendlyName, 
-                                              string configuration, 
-                                              Uri assignmentCallbackUrl = null, 
-                                              Uri fallbackAssignmentCallbackUrl = null, 
-                                              int? taskReservationTimeout = null, 
+        /// <returns> A single instance of Workflow </returns>
+        public static WorkflowResource Create(string pathWorkspaceSid,
+                                              string friendlyName,
+                                              string configuration,
+                                              Uri assignmentCallbackUrl = null,
+                                              Uri fallbackAssignmentCallbackUrl = null,
+                                              int? taskReservationTimeout = null,
                                               ITwilioRestClient client = null)
         {
             var options = new CreateWorkflowOptions(pathWorkspaceSid, friendlyName, configuration){AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, TaskReservationTimeout = taskReservationTimeout};
@@ -485,13 +485,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         ///                              confirmation response from your application after assigning a Task to a worker.
         ///                              </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Workflow </returns> 
-        public static async System.Threading.Tasks.Task<WorkflowResource> CreateAsync(string pathWorkspaceSid, 
-                                                                                      string friendlyName, 
-                                                                                      string configuration, 
-                                                                                      Uri assignmentCallbackUrl = null, 
-                                                                                      Uri fallbackAssignmentCallbackUrl = null, 
-                                                                                      int? taskReservationTimeout = null, 
+        /// <returns> Task that resolves to A single instance of Workflow </returns>
+        public static async System.Threading.Tasks.Task<WorkflowResource> CreateAsync(string pathWorkspaceSid,
+                                                                                      string friendlyName,
+                                                                                      string configuration,
+                                                                                      Uri assignmentCallbackUrl = null,
+                                                                                      Uri fallbackAssignmentCallbackUrl = null,
+                                                                                      int? taskReservationTimeout = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new CreateWorkflowOptions(pathWorkspaceSid, friendlyName, configuration){AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, TaskReservationTimeout = taskReservationTimeout};
@@ -503,7 +503,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// Converts a JSON string into a WorkflowResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> WorkflowResource object represented by the provided JSON </returns> 
+        /// <returns> WorkflowResource object represented by the provided JSON </returns>
         public static WorkflowResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

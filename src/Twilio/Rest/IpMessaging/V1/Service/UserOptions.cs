@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.IpMessaging.V1.Service 
+namespace Twilio.Rest.IpMessaging.V1.Service
 {
 
     /// <summary>
     /// FetchUserOptions
     /// </summary>
-    public class FetchUserOptions : IOptions<UserResource> 
+    public class FetchUserOptions : IOptions<UserResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -49,7 +49,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     /// <summary>
     /// DeleteUserOptions
     /// </summary>
-    public class DeleteUserOptions : IOptions<UserResource> 
+    public class DeleteUserOptions : IOptions<UserResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from
@@ -84,7 +84,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     /// <summary>
     /// CreateUserOptions
     /// </summary>
-    public class CreateUserOptions : IOptions<UserResource> 
+    public class CreateUserOptions : IOptions<UserResource>
     {
         /// <summary>
         /// The SID of the Service to create the new resource under
@@ -151,7 +151,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     /// <summary>
     /// ReadUserOptions
     /// </summary>
-    public class ReadUserOptions : ReadOptions<UserResource> 
+    public class ReadUserOptions : ReadOptions<UserResource>
     {
         /// <summary>
         /// The SID of the Service to read the resources from
@@ -185,7 +185,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     /// <summary>
     /// UpdateUserOptions
     /// </summary>
-    public class UpdateUserOptions : IOptions<UserResource> 
+    public class UpdateUserOptions : IOptions<UserResource>
     {
         /// <summary>
         /// The SID of the Service to update the resource from

@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Sync.V1.Service 
+namespace Twilio.Rest.Sync.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch a specific Stream.
     /// </summary>
-    public class FetchSyncStreamOptions : IOptions<SyncStreamResource> 
+    public class FetchSyncStreamOptions : IOptions<SyncStreamResource>
     {
         /// <summary>
         /// Service Instance SID or unique name.
@@ -50,10 +50,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific Stream.
     /// </summary>
-    public class DeleteSyncStreamOptions : IOptions<SyncStreamResource> 
+    public class DeleteSyncStreamOptions : IOptions<SyncStreamResource>
     {
         /// <summary>
         /// Service Instance SID or unique name.
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Create a new Stream.
     /// </summary>
-    public class CreateSyncStreamOptions : IOptions<SyncStreamResource> 
+    public class CreateSyncStreamOptions : IOptions<SyncStreamResource>
     {
         /// <summary>
         /// The service_sid
@@ -136,10 +136,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Update a specific Stream.
     /// </summary>
-    public class UpdateSyncStreamOptions : IOptions<SyncStreamResource> 
+    public class UpdateSyncStreamOptions : IOptions<SyncStreamResource>
     {
         /// <summary>
         /// The service_sid
@@ -182,10 +182,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all Streams in a Service Instance.
     /// </summary>
-    public class ReadSyncStreamOptions : ReadOptions<SyncStreamResource> 
+    public class ReadSyncStreamOptions : ReadOptions<SyncStreamResource>
     {
         /// <summary>
         /// Service Instance SID or unique name.

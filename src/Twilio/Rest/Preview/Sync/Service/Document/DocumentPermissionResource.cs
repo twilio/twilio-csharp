@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// DocumentPermissionResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Sync.Service.Document 
+namespace Twilio.Rest.Preview.Sync.Service.Document
 {
 
-    public class DocumentPermissionResource : Resource 
+    public class DocumentPermissionResource : Resource
     {
         private static Request BuildFetchRequest(FetchDocumentPermissionOptions options, ITwilioRestClient client)
         {
@@ -39,8 +39,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="options"> Fetch DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DocumentPermission </returns> 
-        public static DocumentPermissionResource Fetch(FetchDocumentPermissionOptions options, 
+        /// <returns> A single instance of DocumentPermission </returns>
+        public static DocumentPermissionResource Fetch(FetchDocumentPermissionOptions options,
                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -54,8 +54,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="options"> Fetch DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DocumentPermission </returns> 
-        public static async System.Threading.Tasks.Task<DocumentPermissionResource> FetchAsync(FetchDocumentPermissionOptions options, 
+        /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
+        public static async System.Threading.Tasks.Task<DocumentPermissionResource> FetchAsync(FetchDocumentPermissionOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -71,10 +71,10 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DocumentPermission </returns> 
-        public static DocumentPermissionResource Fetch(string pathServiceSid, 
-                                                       string pathDocumentSid, 
-                                                       string pathIdentity, 
+        /// <returns> A single instance of DocumentPermission </returns>
+        public static DocumentPermissionResource Fetch(string pathServiceSid,
+                                                       string pathDocumentSid,
+                                                       string pathIdentity,
                                                        ITwilioRestClient client = null)
         {
             var options = new FetchDocumentPermissionOptions(pathServiceSid, pathDocumentSid, pathIdentity);
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DocumentPermission </returns> 
-        public static async System.Threading.Tasks.Task<DocumentPermissionResource> FetchAsync(string pathServiceSid, 
-                                                                                               string pathDocumentSid, 
-                                                                                               string pathIdentity, 
+        /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
+        public static async System.Threading.Tasks.Task<DocumentPermissionResource> FetchAsync(string pathServiceSid,
+                                                                                               string pathDocumentSid,
+                                                                                               string pathIdentity,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new FetchDocumentPermissionOptions(pathServiceSid, pathDocumentSid, pathIdentity);
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="options"> Delete DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DocumentPermission </returns> 
+        /// <returns> A single instance of DocumentPermission </returns>
         public static bool Delete(DeleteDocumentPermissionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -130,8 +130,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="options"> Delete DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DocumentPermission </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDocumentPermissionOptions options, 
+        /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteDocumentPermissionOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -147,10 +147,10 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DocumentPermission </returns> 
-        public static bool Delete(string pathServiceSid, 
-                                  string pathDocumentSid, 
-                                  string pathIdentity, 
+        /// <returns> A single instance of DocumentPermission </returns>
+        public static bool Delete(string pathServiceSid,
+                                  string pathDocumentSid,
+                                  string pathIdentity,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteDocumentPermissionOptions(pathServiceSid, pathDocumentSid, pathIdentity);
@@ -165,10 +165,10 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
         /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DocumentPermission </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathDocumentSid, 
-                                                                          string pathIdentity, 
+        /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathDocumentSid,
+                                                                          string pathIdentity,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteDocumentPermissionOptions(pathServiceSid, pathDocumentSid, pathIdentity);
@@ -192,8 +192,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="options"> Read DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DocumentPermission </returns> 
-        public static ResourceSet<DocumentPermissionResource> Read(ReadDocumentPermissionOptions options, 
+        /// <returns> A single instance of DocumentPermission </returns>
+        public static ResourceSet<DocumentPermissionResource> Read(ReadDocumentPermissionOptions options,
                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -209,8 +209,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="options"> Read DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DocumentPermission </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DocumentPermissionResource>> ReadAsync(ReadDocumentPermissionOptions options, 
+        /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DocumentPermissionResource>> ReadAsync(ReadDocumentPermissionOptions options,
                                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -229,11 +229,11 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DocumentPermission </returns> 
-        public static ResourceSet<DocumentPermissionResource> Read(string pathServiceSid, 
-                                                                   string pathDocumentSid, 
-                                                                   int? pageSize = null, 
-                                                                   long? limit = null, 
+        /// <returns> A single instance of DocumentPermission </returns>
+        public static ResourceSet<DocumentPermissionResource> Read(string pathServiceSid,
+                                                                   string pathDocumentSid,
+                                                                   int? pageSize = null,
+                                                                   long? limit = null,
                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadDocumentPermissionOptions(pathServiceSid, pathDocumentSid){PageSize = pageSize, Limit = limit};
@@ -249,11 +249,11 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DocumentPermission </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DocumentPermissionResource>> ReadAsync(string pathServiceSid, 
-                                                                                                           string pathDocumentSid, 
-                                                                                                           int? pageSize = null, 
-                                                                                                           long? limit = null, 
+        /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DocumentPermissionResource>> ReadAsync(string pathServiceSid,
+                                                                                                           string pathDocumentSid,
+                                                                                                           int? pageSize = null,
+                                                                                                           long? limit = null,
                                                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadDocumentPermissionOptions(pathServiceSid, pathDocumentSid){PageSize = pageSize, Limit = limit};
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<DocumentPermissionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -285,8 +285,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<DocumentPermissionResource> NextPage(Page<DocumentPermissionResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<DocumentPermissionResource> NextPage(Page<DocumentPermissionResource> page,
                                                                 ITwilioRestClient client)
         {
             var request = new Request(
@@ -306,8 +306,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<DocumentPermissionResource> PreviousPage(Page<DocumentPermissionResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<DocumentPermissionResource> PreviousPage(Page<DocumentPermissionResource> page,
                                                                     ITwilioRestClient client)
         {
             var request = new Request(
@@ -338,8 +338,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="options"> Update DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DocumentPermission </returns> 
-        public static DocumentPermissionResource Update(UpdateDocumentPermissionOptions options, 
+        /// <returns> A single instance of DocumentPermission </returns>
+        public static DocumentPermissionResource Update(UpdateDocumentPermissionOptions options,
                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -353,8 +353,8 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// </summary>
         /// <param name="options"> Update DocumentPermission parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DocumentPermission </returns> 
-        public static async System.Threading.Tasks.Task<DocumentPermissionResource> UpdateAsync(UpdateDocumentPermissionOptions options, 
+        /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
+        public static async System.Threading.Tasks.Task<DocumentPermissionResource> UpdateAsync(UpdateDocumentPermissionOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -373,13 +373,13 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DocumentPermission </returns> 
-        public static DocumentPermissionResource Update(string pathServiceSid, 
-                                                        string pathDocumentSid, 
-                                                        string pathIdentity, 
-                                                        bool? read, 
-                                                        bool? write, 
-                                                        bool? manage, 
+        /// <returns> A single instance of DocumentPermission </returns>
+        public static DocumentPermissionResource Update(string pathServiceSid,
+                                                        string pathDocumentSid,
+                                                        string pathIdentity,
+                                                        bool? read,
+                                                        bool? write,
+                                                        bool? manage,
                                                         ITwilioRestClient client = null)
         {
             var options = new UpdateDocumentPermissionOptions(pathServiceSid, pathDocumentSid, pathIdentity, read, write, manage);
@@ -397,13 +397,13 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// <param name="write"> Write access. </param>
         /// <param name="manage"> Manage access. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DocumentPermission </returns> 
-        public static async System.Threading.Tasks.Task<DocumentPermissionResource> UpdateAsync(string pathServiceSid, 
-                                                                                                string pathDocumentSid, 
-                                                                                                string pathIdentity, 
-                                                                                                bool? read, 
-                                                                                                bool? write, 
-                                                                                                bool? manage, 
+        /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
+        public static async System.Threading.Tasks.Task<DocumentPermissionResource> UpdateAsync(string pathServiceSid,
+                                                                                                string pathDocumentSid,
+                                                                                                string pathIdentity,
+                                                                                                bool? read,
+                                                                                                bool? write,
+                                                                                                bool? manage,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new UpdateDocumentPermissionOptions(pathServiceSid, pathDocumentSid, pathIdentity, read, write, manage);
@@ -415,7 +415,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
         /// Converts a JSON string into a DocumentPermissionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> DocumentPermissionResource object represented by the provided JSON </returns> 
+        /// <returns> DocumentPermissionResource object represented by the provided JSON </returns>
         public static DocumentPermissionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

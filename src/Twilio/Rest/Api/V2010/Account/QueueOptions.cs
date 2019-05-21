@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Fetch an instance of a queue identified by the QueueSid
     /// </summary>
-    public class FetchQueueOptions : IOptions<QueueResource> 
+    public class FetchQueueOptions : IOptions<QueueResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to fetch
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Update the queue with the new parameters
     /// </summary>
-    public class UpdateQueueOptions : IOptions<QueueResource> 
+    public class UpdateQueueOptions : IOptions<QueueResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to update
@@ -98,7 +98,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Remove an empty queue
     /// </summary>
-    public class DeleteQueueOptions : IOptions<QueueResource> 
+    public class DeleteQueueOptions : IOptions<QueueResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to delete
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of queues belonging to the account used to make the request
     /// </summary>
-    public class ReadQueueOptions : ReadOptions<QueueResource> 
+    public class ReadQueueOptions : ReadOptions<QueueResource>
     {
         /// <summary>
         /// The unique id of the Account responsible for creating this Call
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Create a queue
     /// </summary>
-    public class CreateQueueOptions : IOptions<QueueResource> 
+    public class CreateQueueOptions : IOptions<QueueResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource

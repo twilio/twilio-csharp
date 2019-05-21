@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// CurrentCallResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.TrustedComms 
+namespace Twilio.Rest.Preview.TrustedComms
 {
 
-    public class CurrentCallResource : Resource 
+    public class CurrentCallResource : Resource
     {
         private static Request BuildFetchRequest(FetchCurrentCallOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// </summary>
         /// <param name="options"> Fetch CurrentCall parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CurrentCall </returns> 
+        /// <returns> A single instance of CurrentCall </returns>
         public static CurrentCallResource Fetch(FetchCurrentCallOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// </summary>
         /// <param name="options"> Fetch CurrentCall parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CurrentCall </returns> 
-        public static async System.Threading.Tasks.Task<CurrentCallResource> FetchAsync(FetchCurrentCallOptions options, 
+        /// <returns> Task that resolves to A single instance of CurrentCall </returns>
+        public static async System.Threading.Tasks.Task<CurrentCallResource> FetchAsync(FetchCurrentCallOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <param name="from"> The originating Phone Number </param>
         /// <param name="to"> The terminating Phone Number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of CurrentCall </returns> 
+        /// <returns> A single instance of CurrentCall </returns>
         public static CurrentCallResource Fetch(string from = null, string to = null, ITwilioRestClient client = null)
         {
             var options = new FetchCurrentCallOptions(){From = from, To = to};
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <param name="from"> The originating Phone Number </param>
         /// <param name="to"> The terminating Phone Number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of CurrentCall </returns> 
-        public static async System.Threading.Tasks.Task<CurrentCallResource> FetchAsync(string from = null, 
-                                                                                        string to = null, 
+        /// <returns> Task that resolves to A single instance of CurrentCall </returns>
+        public static async System.Threading.Tasks.Task<CurrentCallResource> FetchAsync(string from = null,
+                                                                                        string to = null,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchCurrentCallOptions(){From = from, To = to};
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// Converts a JSON string into a CurrentCallResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> CurrentCallResource object represented by the provided JSON </returns> 
+        /// <returns> CurrentCallResource object represented by the provided JSON </returns>
         public static CurrentCallResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

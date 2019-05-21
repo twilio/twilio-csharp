@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Authy.V1.Service.Entity;
 
-namespace Twilio.Tests.Rest.Authy.V1.Service.Entity 
+namespace Twilio.Tests.Rest.Authy.V1.Service.Entity
 {
 
     [TestFixture]
-    public class FactorTest : TwilioTest 
+    public class FactorTest : TwilioTest
     {
         [Test]
         public void TestCreateRequest()

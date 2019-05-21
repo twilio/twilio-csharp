@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
+namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
 {
 
-    public class TaskQueueStatisticsResource : Resource 
+    public class TaskQueueStatisticsResource : Resource
     {
         private static Request BuildFetchRequest(FetchTaskQueueStatisticsOptions options, ITwilioRestClient client)
         {
@@ -36,8 +36,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="options"> Fetch TaskQueueStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskQueueStatistics </returns> 
-        public static TaskQueueStatisticsResource Fetch(FetchTaskQueueStatisticsOptions options, 
+        /// <returns> A single instance of TaskQueueStatistics </returns>
+        public static TaskQueueStatisticsResource Fetch(FetchTaskQueueStatisticsOptions options,
                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -51,8 +51,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="options"> Fetch TaskQueueStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns> 
-        public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(FetchTaskQueueStatisticsOptions options, 
+        /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns>
+        public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(FetchTaskQueueStatisticsOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -73,14 +73,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
         ///                       given threshold in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskQueueStatistics </returns> 
-        public static TaskQueueStatisticsResource Fetch(string pathWorkspaceSid, 
-                                                        string pathTaskQueueSid, 
-                                                        DateTime? endDate = null, 
-                                                        int? minutes = null, 
-                                                        DateTime? startDate = null, 
-                                                        string taskChannel = null, 
-                                                        string splitByWaitTime = null, 
+        /// <returns> A single instance of TaskQueueStatistics </returns>
+        public static TaskQueueStatisticsResource Fetch(string pathWorkspaceSid,
+                                                        string pathTaskQueueSid,
+                                                        DateTime? endDate = null,
+                                                        int? minutes = null,
+                                                        DateTime? startDate = null,
+                                                        string taskChannel = null,
+                                                        string splitByWaitTime = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new FetchTaskQueueStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
@@ -100,14 +100,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
         ///                       given threshold in seconds. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns> 
-        public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(string pathWorkspaceSid, 
-                                                                                                string pathTaskQueueSid, 
-                                                                                                DateTime? endDate = null, 
-                                                                                                int? minutes = null, 
-                                                                                                DateTime? startDate = null, 
-                                                                                                string taskChannel = null, 
-                                                                                                string splitByWaitTime = null, 
+        /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns>
+        public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(string pathWorkspaceSid,
+                                                                                                string pathTaskQueueSid,
+                                                                                                DateTime? endDate = null,
+                                                                                                int? minutes = null,
+                                                                                                DateTime? startDate = null,
+                                                                                                string taskChannel = null,
+                                                                                                string splitByWaitTime = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new FetchTaskQueueStatisticsOptions(pathWorkspaceSid, pathTaskQueueSid){EndDate = endDate, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime};
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// Converts a JSON string into a TaskQueueStatisticsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> TaskQueueStatisticsResource object represented by the provided JSON </returns> 
+        /// <returns> TaskQueueStatisticsResource object represented by the provided JSON </returns>
         public static TaskQueueStatisticsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

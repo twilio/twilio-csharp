@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Wireless.V1.Sim 
+namespace Twilio.Rest.Wireless.V1.Sim
 {
 
     /// <summary>
     /// ReadUsageRecordOptions
     /// </summary>
-    public class ReadUsageRecordOptions : ReadOptions<UsageRecordResource> 
+    public class ReadUsageRecordOptions : ReadOptions<UsageRecordResource>
     {
         /// <summary>
         /// The sim_sid

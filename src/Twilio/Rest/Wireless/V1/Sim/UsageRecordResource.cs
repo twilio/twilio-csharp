@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Wireless.V1.Sim 
+namespace Twilio.Rest.Wireless.V1.Sim
 {
 
-    public class UsageRecordResource : Resource 
+    public class UsageRecordResource : Resource
     {
-        public sealed class GranularityEnum : StringEnum 
+        public sealed class GranularityEnum : StringEnum
         {
             private GranularityEnum(string value) : base(value) {}
             public GranularityEnum() {}
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="options"> Read UsageRecord parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UsageRecord </returns> 
+        /// <returns> A single instance of UsageRecord </returns>
         public static ResourceSet<UsageRecordResource> Read(ReadUsageRecordOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,8 +67,8 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="options"> Read UsageRecord parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UsageRecord </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UsageRecordResource>> ReadAsync(ReadUsageRecordOptions options, 
+        /// <returns> Task that resolves to A single instance of UsageRecord </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UsageRecordResource>> ReadAsync(ReadUsageRecordOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -89,13 +89,13 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of UsageRecord </returns> 
-        public static ResourceSet<UsageRecordResource> Read(string pathSimSid, 
-                                                            DateTime? end = null, 
-                                                            DateTime? start = null, 
-                                                            UsageRecordResource.GranularityEnum granularity = null, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of UsageRecord </returns>
+        public static ResourceSet<UsageRecordResource> Read(string pathSimSid,
+                                                            DateTime? end = null,
+                                                            DateTime? start = null,
+                                                            UsageRecordResource.GranularityEnum granularity = null,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadUsageRecordOptions(pathSimSid){End = end, Start = start, Granularity = granularity, PageSize = pageSize, Limit = limit};
@@ -113,13 +113,13 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of UsageRecord </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<UsageRecordResource>> ReadAsync(string pathSimSid, 
-                                                                                                    DateTime? end = null, 
-                                                                                                    DateTime? start = null, 
-                                                                                                    UsageRecordResource.GranularityEnum granularity = null, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of UsageRecord </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UsageRecordResource>> ReadAsync(string pathSimSid,
+                                                                                                    DateTime? end = null,
+                                                                                                    DateTime? start = null,
+                                                                                                    UsageRecordResource.GranularityEnum granularity = null,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadUsageRecordOptions(pathSimSid){End = end, Start = start, Granularity = granularity, PageSize = pageSize, Limit = limit};
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<UsageRecordResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<UsageRecordResource> NextPage(Page<UsageRecordResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<UsageRecordResource> PreviousPage(Page<UsageRecordResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// Converts a JSON string into a UsageRecordResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> UsageRecordResource object represented by the provided JSON </returns> 
+        /// <returns> UsageRecordResource object represented by the provided JSON </returns>
         public static UsageRecordResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

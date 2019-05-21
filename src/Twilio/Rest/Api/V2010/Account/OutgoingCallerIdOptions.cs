@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Fetch an outgoing-caller-id belonging to the account used to make the request
     /// </summary>
-    public class FetchOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
+    public class FetchOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Updates the caller-id
     /// </summary>
-    public class UpdateOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
+    public class UpdateOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to update
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Delete the caller-id specified from the account
     /// </summary>
-    public class DeleteOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource> 
+    public class DeleteOutgoingCallerIdOptions : IOptions<OutgoingCallerIdResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieve a list of outgoing-caller-ids belonging to the account used to make the request
     /// </summary>
-    public class ReadOutgoingCallerIdOptions : ReadOptions<OutgoingCallerIdResource> 
+    public class ReadOutgoingCallerIdOptions : ReadOptions<OutgoingCallerIdResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

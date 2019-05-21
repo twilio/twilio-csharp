@@ -8,14 +8,14 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Conference 
+namespace Twilio.Rest.Api.V2010.Account.Conference
 {
 
     /// <summary>
     /// Changes the status of the recording to paused, stopped, or in-progress. Note: To use `Twilio.CURRENT`, pass it as
     /// recording sid.
     /// </summary>
-    public class UpdateRecordingOptions : IOptions<RecordingResource> 
+    public class UpdateRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to update
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     /// <summary>
     /// Fetch an instance of a recording for a call
     /// </summary>
-    public class FetchRecordingOptions : IOptions<RecordingResource> 
+    public class FetchRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     /// <summary>
     /// Delete a recording from your account
     /// </summary>
-    public class DeleteRecordingOptions : IOptions<RecordingResource> 
+    public class DeleteRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
     /// <summary>
     /// Retrieve a list of recordings belonging to the call used to make the request
     /// </summary>
-    public class ReadRecordingOptions : ReadOptions<RecordingResource> 
+    public class ReadRecordingOptions : ReadOptions<RecordingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

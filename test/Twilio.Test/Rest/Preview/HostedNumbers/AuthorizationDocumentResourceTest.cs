@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Preview.HostedNumbers;
 
-namespace Twilio.Tests.Rest.Preview.HostedNumbers 
+namespace Twilio.Tests.Rest.Preview.HostedNumbers
 {
 
     [TestFixture]
-    public class AuthorizationDocumentTest : TwilioTest 
+    public class AuthorizationDocumentTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

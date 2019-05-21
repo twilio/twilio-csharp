@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Usage.Record 
+namespace Twilio.Rest.Api.V2010.Account.Usage.Record
 {
 
     /// <summary>
     /// ReadThisMonthOptions
     /// </summary>
-    public class ReadThisMonthOptions : ReadOptions<ThisMonthResource> 
+    public class ReadThisMonthOptions : ReadOptions<ThisMonthResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

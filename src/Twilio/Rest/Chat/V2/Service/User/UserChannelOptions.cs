@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Chat.V2.Service.User 
+namespace Twilio.Rest.Chat.V2.Service.User
 {
 
     /// <summary>
     /// List all Channels for a given User.
     /// </summary>
-    public class ReadUserChannelOptions : ReadOptions<UserChannelResource> 
+    public class ReadUserChannelOptions : ReadOptions<UserChannelResource>
     {
         /// <summary>
         /// The SID of the Service to read the resources from
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
     /// <summary>
     /// FetchUserChannelOptions
     /// </summary>
-    public class FetchUserChannelOptions : IOptions<UserChannelResource> 
+    public class FetchUserChannelOptions : IOptions<UserChannelResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the User Channel resource from
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
     /// <summary>
     /// UpdateUserChannelOptions
     /// </summary>
-    public class UpdateUserChannelOptions : IOptions<UserChannelResource> 
+    public class UpdateUserChannelOptions : IOptions<UserChannelResource>
     {
         /// <summary>
         /// The SID of the Service to update the resource from
@@ -121,9 +121,9 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
         /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
         /// <param name="notificationLevel"> The push notification level to assign to the User Channel </param>
-        public UpdateUserChannelOptions(string pathServiceSid, 
-                                        string pathUserSid, 
-                                        string pathChannelSid, 
+        public UpdateUserChannelOptions(string pathServiceSid,
+                                        string pathUserSid,
+                                        string pathChannelSid,
                                         UserChannelResource.NotificationLevelEnum notificationLevel)
         {
             PathServiceSid = pathServiceSid;

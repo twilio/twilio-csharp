@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Chat.V2.Service 
+namespace Twilio.Rest.Chat.V2.Service
 {
 
-    public class RoleResource : Resource 
+    public class RoleResource : Resource
     {
-        public sealed class RoleTypeEnum : StringEnum 
+        public sealed class RoleTypeEnum : StringEnum
         {
             private RoleTypeEnum(string value) : base(value) {}
             public RoleTypeEnum() {}
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Fetch Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
+        /// <returns> A single instance of Role </returns>
         public static RoleResource Fetch(FetchRoleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -64,8 +64,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Fetch Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<RoleResource> FetchAsync(FetchRoleOptions options, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<RoleResource> FetchAsync(FetchRoleOptions options,
                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
+        /// <returns> A single instance of Role </returns>
         public static RoleResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchRoleOptions(pathServiceSid, pathSid);
@@ -94,9 +94,9 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<RoleResource> FetchAsync(string pathServiceSid, 
-                                                                                 string pathSid, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<RoleResource> FetchAsync(string pathServiceSid,
+                                                                                 string pathSid,
                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchRoleOptions(pathServiceSid, pathSid);
@@ -120,7 +120,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Delete Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
+        /// <returns> A single instance of Role </returns>
         public static bool Delete(DeleteRoleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -134,8 +134,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Delete Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRoleOptions options, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteRoleOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
+        /// <returns> A single instance of Role </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteRoleOptions(pathServiceSid, pathSid);
@@ -164,9 +164,9 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteRoleOptions(pathServiceSid, pathSid);
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Create Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
+        /// <returns> A single instance of Role </returns>
         public static RoleResource Create(CreateRoleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -204,8 +204,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Create Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<RoleResource> CreateAsync(CreateRoleOptions options, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<RoleResource> CreateAsync(CreateRoleOptions options,
                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -222,11 +222,11 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="type"> The type of role </param>
         /// <param name="permission"> A permission the role should have </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
-        public static RoleResource Create(string pathServiceSid, 
-                                          string friendlyName, 
-                                          RoleResource.RoleTypeEnum type, 
-                                          List<string> permission, 
+        /// <returns> A single instance of Role </returns>
+        public static RoleResource Create(string pathServiceSid,
+                                          string friendlyName,
+                                          RoleResource.RoleTypeEnum type,
+                                          List<string> permission,
                                           ITwilioRestClient client = null)
         {
             var options = new CreateRoleOptions(pathServiceSid, friendlyName, type, permission);
@@ -242,11 +242,11 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="type"> The type of role </param>
         /// <param name="permission"> A permission the role should have </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<RoleResource> CreateAsync(string pathServiceSid, 
-                                                                                  string friendlyName, 
-                                                                                  RoleResource.RoleTypeEnum type, 
-                                                                                  List<string> permission, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<RoleResource> CreateAsync(string pathServiceSid,
+                                                                                  string friendlyName,
+                                                                                  RoleResource.RoleTypeEnum type,
+                                                                                  List<string> permission,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new CreateRoleOptions(pathServiceSid, friendlyName, type, permission);
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Read Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
+        /// <returns> A single instance of Role </returns>
         public static ResourceSet<RoleResource> Read(ReadRoleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -286,8 +286,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Read Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RoleResource>> ReadAsync(ReadRoleOptions options, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<RoleResource>> ReadAsync(ReadRoleOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -305,10 +305,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
-        public static ResourceSet<RoleResource> Read(string pathServiceSid, 
-                                                     int? pageSize = null, 
-                                                     long? limit = null, 
+        /// <returns> A single instance of Role </returns>
+        public static ResourceSet<RoleResource> Read(string pathServiceSid,
+                                                     int? pageSize = null,
+                                                     long? limit = null,
                                                      ITwilioRestClient client = null)
         {
             var options = new ReadRoleOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -323,10 +323,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<RoleResource>> ReadAsync(string pathServiceSid, 
-                                                                                             int? pageSize = null, 
-                                                                                             long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<RoleResource>> ReadAsync(string pathServiceSid,
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadRoleOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -339,7 +339,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<RoleResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -358,7 +358,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<RoleResource> NextPage(Page<RoleResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -378,7 +378,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<RoleResource> PreviousPage(Page<RoleResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -409,7 +409,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Update Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
+        /// <returns> A single instance of Role </returns>
         public static RoleResource Update(UpdateRoleOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -423,8 +423,8 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         /// <param name="options"> Update Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<RoleResource> UpdateAsync(UpdateRoleOptions options, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<RoleResource> UpdateAsync(UpdateRoleOptions options,
                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -440,10 +440,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="permission"> A permission the role should have </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Role </returns> 
-        public static RoleResource Update(string pathServiceSid, 
-                                          string pathSid, 
-                                          List<string> permission, 
+        /// <returns> A single instance of Role </returns>
+        public static RoleResource Update(string pathServiceSid,
+                                          string pathSid,
+                                          List<string> permission,
                                           ITwilioRestClient client = null)
         {
             var options = new UpdateRoleOptions(pathServiceSid, pathSid, permission);
@@ -458,10 +458,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="permission"> A permission the role should have </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Role </returns> 
-        public static async System.Threading.Tasks.Task<RoleResource> UpdateAsync(string pathServiceSid, 
-                                                                                  string pathSid, 
-                                                                                  List<string> permission, 
+        /// <returns> Task that resolves to A single instance of Role </returns>
+        public static async System.Threading.Tasks.Task<RoleResource> UpdateAsync(string pathServiceSid,
+                                                                                  string pathSid,
+                                                                                  List<string> permission,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new UpdateRoleOptions(pathServiceSid, pathSid, permission);
@@ -473,7 +473,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// Converts a JSON string into a RoleResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> RoleResource object represented by the provided JSON </returns> 
+        /// <returns> RoleResource object represented by the provided JSON </returns>
         public static RoleResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

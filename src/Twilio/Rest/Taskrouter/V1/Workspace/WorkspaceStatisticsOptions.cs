@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace 
+namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
     /// <summary>
     /// FetchWorkspaceStatisticsOptions
     /// </summary>
-    public class FetchWorkspaceStatisticsOptions : IOptions<WorkspaceStatisticsResource> 
+    public class FetchWorkspaceStatisticsOptions : IOptions<WorkspaceStatisticsResource>
     {
         /// <summary>
         /// The workspace_sid

@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// BuildResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Serverless.V1.Service 
+namespace Twilio.Rest.Serverless.V1.Service
 {
 
-    public class BuildResource : Resource 
+    public class BuildResource : Resource
     {
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Read Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns> 
+        /// <returns> A single instance of Build </returns>
         public static ResourceSet<BuildResource> Read(ReadBuildOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -70,8 +70,8 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Read Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(ReadBuildOptions options, 
+        /// <returns> Task that resolves to A single instance of Build </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(ReadBuildOptions options,
                                                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -89,10 +89,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns> 
-        public static ResourceSet<BuildResource> Read(string pathServiceSid, 
-                                                      int? pageSize = null, 
-                                                      long? limit = null, 
+        /// <returns> A single instance of Build </returns>
+        public static ResourceSet<BuildResource> Read(string pathServiceSid,
+                                                      int? pageSize = null,
+                                                      long? limit = null,
                                                       ITwilioRestClient client = null)
         {
             var options = new ReadBuildOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -107,10 +107,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(string pathServiceSid, 
-                                                                                              int? pageSize = null, 
-                                                                                              long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Build </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<BuildResource>> ReadAsync(string pathServiceSid,
+                                                                                              int? pageSize = null,
+                                                                                              long? limit = null,
                                                                                               ITwilioRestClient client = null)
         {
             var options = new ReadBuildOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<BuildResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<BuildResource> NextPage(Page<BuildResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<BuildResource> PreviousPage(Page<BuildResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns> 
+        /// <returns> A single instance of Build </returns>
         public static BuildResource Fetch(FetchBuildOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -207,8 +207,8 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns> 
-        public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(FetchBuildOptions options, 
+        /// <returns> Task that resolves to A single instance of Build </returns>
+        public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(FetchBuildOptions options,
                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> Build Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns> 
+        /// <returns> A single instance of Build </returns>
         public static BuildResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchBuildOptions(pathServiceSid, pathSid);
@@ -237,9 +237,9 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathSid"> Build Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns> 
-        public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(string pathServiceSid, 
-                                                                                  string pathSid, 
+        /// <returns> Task that resolves to A single instance of Build </returns>
+        public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(string pathServiceSid,
+                                                                                  string pathSid,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new FetchBuildOptions(pathServiceSid, pathSid);
@@ -263,7 +263,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Create Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns> 
+        /// <returns> A single instance of Build </returns>
         public static BuildResource Create(CreateBuildOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -277,8 +277,8 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         /// <param name="options"> Create Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns> 
-        public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(CreateBuildOptions options, 
+        /// <returns> Task that resolves to A single instance of Build </returns>
+        public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(CreateBuildOptions options,
                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -295,11 +295,11 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="functionVersions"> List of Function Version Sids. </param>
         /// <param name="dependencies"> List of Dependencies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Build </returns> 
-        public static BuildResource Create(string pathServiceSid, 
-                                           List<string> assetVersions = null, 
-                                           List<string> functionVersions = null, 
-                                           string dependencies = null, 
+        /// <returns> A single instance of Build </returns>
+        public static BuildResource Create(string pathServiceSid,
+                                           List<string> assetVersions = null,
+                                           List<string> functionVersions = null,
+                                           string dependencies = null,
                                            ITwilioRestClient client = null)
         {
             var options = new CreateBuildOptions(pathServiceSid){AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies};
@@ -315,11 +315,11 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="functionVersions"> List of Function Version Sids. </param>
         /// <param name="dependencies"> List of Dependencies. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Build </returns> 
-        public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(string pathServiceSid, 
-                                                                                   List<string> assetVersions = null, 
-                                                                                   List<string> functionVersions = null, 
-                                                                                   string dependencies = null, 
+        /// <returns> Task that resolves to A single instance of Build </returns>
+        public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(string pathServiceSid,
+                                                                                   List<string> assetVersions = null,
+                                                                                   List<string> functionVersions = null,
+                                                                                   string dependencies = null,
                                                                                    ITwilioRestClient client = null)
         {
             var options = new CreateBuildOptions(pathServiceSid){AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies};
@@ -331,7 +331,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// Converts a JSON string into a BuildResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> BuildResource object represented by the provided JSON </returns> 
+        /// <returns> BuildResource object represented by the provided JSON </returns>
         public static BuildResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

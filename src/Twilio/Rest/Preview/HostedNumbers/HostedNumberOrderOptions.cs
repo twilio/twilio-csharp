@@ -9,16 +9,16 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.HostedNumbers 
+namespace Twilio.Rest.Preview.HostedNumbers
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch a specific HostedNumberOrder.
     /// </summary>
-    public class FetchHostedNumberOrderOptions : IOptions<HostedNumberOrderResource> 
+    public class FetchHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
     {
         /// <summary>
         /// HostedNumberOrder sid.
@@ -47,10 +47,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Cancel the HostedNumberOrder (only available when the status is in `received`).
     /// </summary>
-    public class DeleteHostedNumberOrderOptions : IOptions<HostedNumberOrderResource> 
+    public class DeleteHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
     {
         /// <summary>
         /// HostedNumberOrder sid.
@@ -79,10 +79,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Updates a specific HostedNumberOrder.
     /// </summary>
-    public class UpdateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource> 
+    public class UpdateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
     {
         /// <summary>
         /// The sid
@@ -202,10 +202,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of HostedNumberOrders belonging to the account initiating the request.
     /// </summary>
-    public class ReadHostedNumberOrderOptions : ReadOptions<HostedNumberOrderResource> 
+    public class ReadHostedNumberOrderOptions : ReadOptions<HostedNumberOrderResource>
     {
         /// <summary>
         /// The Status of this HostedNumberOrder.
@@ -271,10 +271,10 @@ namespace Twilio.Rest.Preview.HostedNumbers
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Host a phone number's capability on Twilio's platform.
     /// </summary>
-    public class CreateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource> 
+    public class CreateHostedNumberOrderOptions : IOptions<HostedNumberOrderResource>
     {
         /// <summary>
         /// An E164 formatted phone number.

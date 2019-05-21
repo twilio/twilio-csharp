@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class ShortCodeResource : Resource 
+    public class ShortCodeResource : Resource
     {
         private static Request BuildFetchRequest(FetchShortCodeOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ShortCode </returns> 
+        /// <returns> A single instance of ShortCode </returns>
         public static ShortCodeResource Fetch(FetchShortCodeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Fetch ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(FetchShortCodeOptions options, 
+        /// <returns> Task that resolves to A single instance of ShortCode </returns>
+        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(FetchShortCodeOptions options,
                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies this resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ShortCode </returns> 
+        /// <returns> A single instance of ShortCode </returns>
         public static ShortCodeResource Fetch(string pathSid, string pathAccountSid = null, ITwilioRestClient client = null)
         {
             var options = new FetchShortCodeOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -80,9 +80,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathSid"> The unique string that identifies this resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(string pathSid, 
-                                                                                      string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of ShortCode </returns>
+        public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(string pathSid,
+                                                                                      string pathAccountSid = null,
                                                                                       ITwilioRestClient client = null)
         {
             var options = new FetchShortCodeOptions(pathSid){PathAccountSid = pathAccountSid};
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ShortCode </returns> 
+        /// <returns> A single instance of ShortCode </returns>
         public static ShortCodeResource Update(UpdateShortCodeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -120,8 +120,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Update ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(UpdateShortCodeOptions options, 
+        /// <returns> Task that resolves to A single instance of ShortCode </returns>
+        public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(UpdateShortCodeOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -142,15 +142,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
         /// <param name="smsFallbackMethod"> HTTP method Twilio will use with sms_fallback_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ShortCode </returns> 
-        public static ShortCodeResource Update(string pathSid, 
-                                               string pathAccountSid = null, 
-                                               string friendlyName = null, 
-                                               string apiVersion = null, 
-                                               Uri smsUrl = null, 
-                                               Twilio.Http.HttpMethod smsMethod = null, 
-                                               Uri smsFallbackUrl = null, 
-                                               Twilio.Http.HttpMethod smsFallbackMethod = null, 
+        /// <returns> A single instance of ShortCode </returns>
+        public static ShortCodeResource Update(string pathSid,
+                                               string pathAccountSid = null,
+                                               string friendlyName = null,
+                                               string apiVersion = null,
+                                               Uri smsUrl = null,
+                                               Twilio.Http.HttpMethod smsMethod = null,
+                                               Uri smsFallbackUrl = null,
+                                               Twilio.Http.HttpMethod smsFallbackMethod = null,
                                                ITwilioRestClient client = null)
         {
             var options = new UpdateShortCodeOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
@@ -170,15 +170,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsFallbackUrl"> URL Twilio will request if an error occurs in executing TwiML </param>
         /// <param name="smsFallbackMethod"> HTTP method Twilio will use with sms_fallback_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(string pathSid, 
-                                                                                       string pathAccountSid = null, 
-                                                                                       string friendlyName = null, 
-                                                                                       string apiVersion = null, 
-                                                                                       Uri smsUrl = null, 
-                                                                                       Twilio.Http.HttpMethod smsMethod = null, 
-                                                                                       Uri smsFallbackUrl = null, 
-                                                                                       Twilio.Http.HttpMethod smsFallbackMethod = null, 
+        /// <returns> Task that resolves to A single instance of ShortCode </returns>
+        public static async System.Threading.Tasks.Task<ShortCodeResource> UpdateAsync(string pathSid,
+                                                                                       string pathAccountSid = null,
+                                                                                       string friendlyName = null,
+                                                                                       string apiVersion = null,
+                                                                                       Uri smsUrl = null,
+                                                                                       Twilio.Http.HttpMethod smsMethod = null,
+                                                                                       Uri smsFallbackUrl = null,
+                                                                                       Twilio.Http.HttpMethod smsFallbackMethod = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new UpdateShortCodeOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ApiVersion = apiVersion, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod};
@@ -202,7 +202,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ShortCode </returns> 
+        /// <returns> A single instance of ShortCode </returns>
         public static ResourceSet<ShortCodeResource> Read(ReadShortCodeOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -218,8 +218,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Read ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(ReadShortCodeOptions options, 
+        /// <returns> Task that resolves to A single instance of ShortCode </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(ReadShortCodeOptions options,
                                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -239,12 +239,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of ShortCode </returns> 
-        public static ResourceSet<ShortCodeResource> Read(string pathAccountSid = null, 
-                                                          string friendlyName = null, 
-                                                          string shortCode = null, 
-                                                          int? pageSize = null, 
-                                                          long? limit = null, 
+        /// <returns> A single instance of ShortCode </returns>
+        public static ResourceSet<ShortCodeResource> Read(string pathAccountSid = null,
+                                                          string friendlyName = null,
+                                                          string shortCode = null,
+                                                          int? pageSize = null,
+                                                          long? limit = null,
                                                           ITwilioRestClient client = null)
         {
             var options = new ReadShortCodeOptions(){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ShortCode = shortCode, PageSize = pageSize, Limit = limit};
@@ -261,12 +261,12 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of ShortCode </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(string pathAccountSid = null, 
-                                                                                                  string friendlyName = null, 
-                                                                                                  string shortCode = null, 
-                                                                                                  int? pageSize = null, 
-                                                                                                  long? limit = null, 
+        /// <returns> Task that resolves to A single instance of ShortCode </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ShortCodeResource>> ReadAsync(string pathAccountSid = null,
+                                                                                                  string friendlyName = null,
+                                                                                                  string shortCode = null,
+                                                                                                  int? pageSize = null,
+                                                                                                  long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
             var options = new ReadShortCodeOptions(){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, ShortCode = shortCode, PageSize = pageSize, Limit = limit};
@@ -279,7 +279,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<ShortCodeResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -298,7 +298,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<ShortCodeResource> NextPage(Page<ShortCodeResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<ShortCodeResource> PreviousPage(Page<ShortCodeResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -337,7 +337,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Converts a JSON string into a ShortCodeResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ShortCodeResource object represented by the provided JSON </returns> 
+        /// <returns> ShortCodeResource object represented by the provided JSON </returns>
         public static ShortCodeResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

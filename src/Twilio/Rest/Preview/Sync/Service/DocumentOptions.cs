@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Sync.Service 
+namespace Twilio.Rest.Preview.Sync.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchDocumentOptions
     /// </summary>
-    public class FetchDocumentOptions : IOptions<DocumentResource> 
+    public class FetchDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid
@@ -52,10 +52,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteDocumentOptions
     /// </summary>
-    public class DeleteDocumentOptions : IOptions<DocumentResource> 
+    public class DeleteDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid
@@ -90,10 +90,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateDocumentOptions
     /// </summary>
-    public class CreateDocumentOptions : IOptions<DocumentResource> 
+    public class CreateDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid
@@ -140,10 +140,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadDocumentOptions
     /// </summary>
-    public class ReadDocumentOptions : ReadOptions<DocumentResource> 
+    public class ReadDocumentOptions : ReadOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid
@@ -177,10 +177,10 @@ namespace Twilio.Rest.Preview.Sync.Service
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateDocumentOptions
     /// </summary>
-    public class UpdateDocumentOptions : IOptions<DocumentResource> 
+    public class UpdateDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
         /// The service_sid

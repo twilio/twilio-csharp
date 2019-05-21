@@ -16,10 +16,10 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
+namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 {
 
-    public class MachineToMachineResource : Resource 
+    public class MachineToMachineResource : Resource
     {
         private static Request BuildReadRequest(ReadMachineToMachineOptions options, ITwilioRestClient client)
         {
@@ -37,8 +37,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="options"> Read MachineToMachine parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of MachineToMachine </returns> 
-        public static ResourceSet<MachineToMachineResource> Read(ReadMachineToMachineOptions options, 
+        /// <returns> A single instance of MachineToMachine </returns>
+        public static ResourceSet<MachineToMachineResource> Read(ReadMachineToMachineOptions options,
                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -54,8 +54,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="options"> Read MachineToMachine parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of MachineToMachine </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MachineToMachineResource>> ReadAsync(ReadMachineToMachineOptions options, 
+        /// <returns> Task that resolves to A single instance of MachineToMachine </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MachineToMachineResource>> ReadAsync(ReadMachineToMachineOptions options,
                                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -96,29 +96,29 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of MachineToMachine </returns> 
-        public static ResourceSet<MachineToMachineResource> Read(string pathCountryCode, 
-                                                                 string pathAccountSid = null, 
-                                                                 int? areaCode = null, 
-                                                                 string contains = null, 
-                                                                 bool? smsEnabled = null, 
-                                                                 bool? mmsEnabled = null, 
-                                                                 bool? voiceEnabled = null, 
-                                                                 bool? excludeAllAddressRequired = null, 
-                                                                 bool? excludeLocalAddressRequired = null, 
-                                                                 bool? excludeForeignAddressRequired = null, 
-                                                                 bool? beta = null, 
-                                                                 Types.PhoneNumber nearNumber = null, 
-                                                                 string nearLatLong = null, 
-                                                                 int? distance = null, 
-                                                                 string inPostalCode = null, 
-                                                                 string inRegion = null, 
-                                                                 string inRateCenter = null, 
-                                                                 string inLata = null, 
-                                                                 string inLocality = null, 
-                                                                 bool? faxEnabled = null, 
-                                                                 int? pageSize = null, 
-                                                                 long? limit = null, 
+        /// <returns> A single instance of MachineToMachine </returns>
+        public static ResourceSet<MachineToMachineResource> Read(string pathCountryCode,
+                                                                 string pathAccountSid = null,
+                                                                 int? areaCode = null,
+                                                                 string contains = null,
+                                                                 bool? smsEnabled = null,
+                                                                 bool? mmsEnabled = null,
+                                                                 bool? voiceEnabled = null,
+                                                                 bool? excludeAllAddressRequired = null,
+                                                                 bool? excludeLocalAddressRequired = null,
+                                                                 bool? excludeForeignAddressRequired = null,
+                                                                 bool? beta = null,
+                                                                 Types.PhoneNumber nearNumber = null,
+                                                                 string nearLatLong = null,
+                                                                 int? distance = null,
+                                                                 string inPostalCode = null,
+                                                                 string inRegion = null,
+                                                                 string inRateCenter = null,
+                                                                 string inLata = null,
+                                                                 string inLocality = null,
+                                                                 bool? faxEnabled = null,
+                                                                 int? pageSize = null,
+                                                                 long? limit = null,
                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadMachineToMachineOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, FaxEnabled = faxEnabled, PageSize = pageSize, Limit = limit};
@@ -156,29 +156,29 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of MachineToMachine </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<MachineToMachineResource>> ReadAsync(string pathCountryCode, 
-                                                                                                         string pathAccountSid = null, 
-                                                                                                         int? areaCode = null, 
-                                                                                                         string contains = null, 
-                                                                                                         bool? smsEnabled = null, 
-                                                                                                         bool? mmsEnabled = null, 
-                                                                                                         bool? voiceEnabled = null, 
-                                                                                                         bool? excludeAllAddressRequired = null, 
-                                                                                                         bool? excludeLocalAddressRequired = null, 
-                                                                                                         bool? excludeForeignAddressRequired = null, 
-                                                                                                         bool? beta = null, 
-                                                                                                         Types.PhoneNumber nearNumber = null, 
-                                                                                                         string nearLatLong = null, 
-                                                                                                         int? distance = null, 
-                                                                                                         string inPostalCode = null, 
-                                                                                                         string inRegion = null, 
-                                                                                                         string inRateCenter = null, 
-                                                                                                         string inLata = null, 
-                                                                                                         string inLocality = null, 
-                                                                                                         bool? faxEnabled = null, 
-                                                                                                         int? pageSize = null, 
-                                                                                                         long? limit = null, 
+        /// <returns> Task that resolves to A single instance of MachineToMachine </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<MachineToMachineResource>> ReadAsync(string pathCountryCode,
+                                                                                                         string pathAccountSid = null,
+                                                                                                         int? areaCode = null,
+                                                                                                         string contains = null,
+                                                                                                         bool? smsEnabled = null,
+                                                                                                         bool? mmsEnabled = null,
+                                                                                                         bool? voiceEnabled = null,
+                                                                                                         bool? excludeAllAddressRequired = null,
+                                                                                                         bool? excludeLocalAddressRequired = null,
+                                                                                                         bool? excludeForeignAddressRequired = null,
+                                                                                                         bool? beta = null,
+                                                                                                         Types.PhoneNumber nearNumber = null,
+                                                                                                         string nearLatLong = null,
+                                                                                                         int? distance = null,
+                                                                                                         string inPostalCode = null,
+                                                                                                         string inRegion = null,
+                                                                                                         string inRateCenter = null,
+                                                                                                         string inLata = null,
+                                                                                                         string inLocality = null,
+                                                                                                         bool? faxEnabled = null,
+                                                                                                         int? pageSize = null,
+                                                                                                         long? limit = null,
                                                                                                          ITwilioRestClient client = null)
         {
             var options = new ReadMachineToMachineOptions(pathCountryCode){PathAccountSid = pathAccountSid, AreaCode = areaCode, Contains = contains, SmsEnabled = smsEnabled, MmsEnabled = mmsEnabled, VoiceEnabled = voiceEnabled, ExcludeAllAddressRequired = excludeAllAddressRequired, ExcludeLocalAddressRequired = excludeLocalAddressRequired, ExcludeForeignAddressRequired = excludeForeignAddressRequired, Beta = beta, NearNumber = nearNumber, NearLatLong = nearLatLong, Distance = distance, InPostalCode = inPostalCode, InRegion = inRegion, InRateCenter = inRateCenter, InLata = inLata, InLocality = inLocality, FaxEnabled = faxEnabled, PageSize = pageSize, Limit = limit};
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<MachineToMachineResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<MachineToMachineResource> NextPage(Page<MachineToMachineResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -230,8 +230,8 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<MachineToMachineResource> PreviousPage(Page<MachineToMachineResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<MachineToMachineResource> PreviousPage(Page<MachineToMachineResource> page,
                                                                   ITwilioRestClient client)
         {
             var request = new Request(
@@ -250,7 +250,7 @@ namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
         /// Converts a JSON string into a MachineToMachineResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> MachineToMachineResource object represented by the provided JSON </returns> 
+        /// <returns> MachineToMachineResource object represented by the provided JSON </returns>
         public static MachineToMachineResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

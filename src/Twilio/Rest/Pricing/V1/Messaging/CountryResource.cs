@@ -16,10 +16,10 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Pricing.V1.Messaging 
+namespace Twilio.Rest.Pricing.V1.Messaging
 {
 
-    public class CountryResource : Resource 
+    public class CountryResource : Resource
     {
         private static Request BuildReadRequest(ReadCountryOptions options, ITwilioRestClient client)
         {
@@ -37,7 +37,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// </summary>
         /// <param name="options"> Read Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Country </returns> 
+        /// <returns> A single instance of Country </returns>
         public static ResourceSet<CountryResource> Read(ReadCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// </summary>
         /// <param name="options"> Read Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Country </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ReadCountryOptions options, 
+        /// <returns> Task that resolves to A single instance of Country </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(ReadCountryOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -71,9 +71,9 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Country </returns> 
-        public static ResourceSet<CountryResource> Read(int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Country </returns>
+        public static ResourceSet<CountryResource> Read(int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadCountryOptions(){PageSize = pageSize, Limit = limit};
@@ -87,9 +87,9 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Country </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Country </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<CountryResource>> ReadAsync(int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadCountryOptions(){PageSize = pageSize, Limit = limit};
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<CountryResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<CountryResource> NextPage(Page<CountryResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -141,7 +141,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<CountryResource> PreviousPage(Page<CountryResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// </summary>
         /// <param name="options"> Fetch Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Country </returns> 
+        /// <returns> A single instance of Country </returns>
         public static CountryResource Fetch(FetchCountryOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -186,8 +186,8 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// </summary>
         /// <param name="options"> Fetch Country parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Country </returns> 
-        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(FetchCountryOptions options, 
+        /// <returns> Task that resolves to A single instance of Country </returns>
+        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(FetchCountryOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -201,7 +201,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// </summary>
         /// <param name="pathIsoCountry"> The ISO country code </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Country </returns> 
+        /// <returns> A single instance of Country </returns>
         public static CountryResource Fetch(string pathIsoCountry, ITwilioRestClient client = null)
         {
             var options = new FetchCountryOptions(pathIsoCountry);
@@ -214,8 +214,8 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// </summary>
         /// <param name="pathIsoCountry"> The ISO country code </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Country </returns> 
-        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string pathIsoCountry, 
+        /// <returns> Task that resolves to A single instance of Country </returns>
+        public static async System.Threading.Tasks.Task<CountryResource> FetchAsync(string pathIsoCountry,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchCountryOptions(pathIsoCountry);
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         /// Converts a JSON string into a CountryResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> CountryResource object represented by the provided JSON </returns> 
+        /// <returns> CountryResource object represented by the provided JSON </returns>
         public static CountryResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

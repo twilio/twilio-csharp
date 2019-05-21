@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue 
+namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
 {
 
-    public class TaskQueuesStatisticsResource : Resource 
+    public class TaskQueuesStatisticsResource : Resource
     {
         private static Request BuildReadRequest(ReadTaskQueuesStatisticsOptions options, ITwilioRestClient client)
         {
@@ -36,8 +36,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="options"> Read TaskQueuesStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskQueuesStatistics </returns> 
-        public static ResourceSet<TaskQueuesStatisticsResource> Read(ReadTaskQueuesStatisticsOptions options, 
+        /// <returns> A single instance of TaskQueuesStatistics </returns>
+        public static ResourceSet<TaskQueuesStatisticsResource> Read(ReadTaskQueuesStatisticsOptions options,
                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="options"> Read TaskQueuesStatistics parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskQueuesStatistics </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(ReadTaskQueuesStatisticsOptions options, 
+        /// <returns> Task that resolves to A single instance of TaskQueuesStatistics </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(ReadTaskQueuesStatisticsOptions options,
                                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -79,16 +79,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of TaskQueuesStatistics </returns> 
-        public static ResourceSet<TaskQueuesStatisticsResource> Read(string pathWorkspaceSid, 
-                                                                     DateTime? endDate = null, 
-                                                                     string friendlyName = null, 
-                                                                     int? minutes = null, 
-                                                                     DateTime? startDate = null, 
-                                                                     string taskChannel = null, 
-                                                                     string splitByWaitTime = null, 
-                                                                     int? pageSize = null, 
-                                                                     long? limit = null, 
+        /// <returns> A single instance of TaskQueuesStatistics </returns>
+        public static ResourceSet<TaskQueuesStatisticsResource> Read(string pathWorkspaceSid,
+                                                                     DateTime? endDate = null,
+                                                                     string friendlyName = null,
+                                                                     int? minutes = null,
+                                                                     DateTime? startDate = null,
+                                                                     string taskChannel = null,
+                                                                     string splitByWaitTime = null,
+                                                                     int? pageSize = null,
+                                                                     long? limit = null,
                                                                      ITwilioRestClient client = null)
         {
             var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime, PageSize = pageSize, Limit = limit};
@@ -110,16 +110,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of TaskQueuesStatistics </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(string pathWorkspaceSid, 
-                                                                                                             DateTime? endDate = null, 
-                                                                                                             string friendlyName = null, 
-                                                                                                             int? minutes = null, 
-                                                                                                             DateTime? startDate = null, 
-                                                                                                             string taskChannel = null, 
-                                                                                                             string splitByWaitTime = null, 
-                                                                                                             int? pageSize = null, 
-                                                                                                             long? limit = null, 
+        /// <returns> Task that resolves to A single instance of TaskQueuesStatistics </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskQueuesStatisticsResource>> ReadAsync(string pathWorkspaceSid,
+                                                                                                             DateTime? endDate = null,
+                                                                                                             string friendlyName = null,
+                                                                                                             int? minutes = null,
+                                                                                                             DateTime? startDate = null,
+                                                                                                             string taskChannel = null,
+                                                                                                             string splitByWaitTime = null,
+                                                                                                             int? pageSize = null,
+                                                                                                             long? limit = null,
                                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadTaskQueuesStatisticsOptions(pathWorkspaceSid){EndDate = endDate, FriendlyName = friendlyName, Minutes = minutes, StartDate = startDate, TaskChannel = taskChannel, SplitByWaitTime = splitByWaitTime, PageSize = pageSize, Limit = limit};
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<TaskQueuesStatisticsResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -151,8 +151,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<TaskQueuesStatisticsResource> NextPage(Page<TaskQueuesStatisticsResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<TaskQueuesStatisticsResource> NextPage(Page<TaskQueuesStatisticsResource> page,
                                                                   ITwilioRestClient client)
         {
             var request = new Request(
@@ -172,8 +172,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<TaskQueuesStatisticsResource> PreviousPage(Page<TaskQueuesStatisticsResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<TaskQueuesStatisticsResource> PreviousPage(Page<TaskQueuesStatisticsResource> page,
                                                                       ITwilioRestClient client)
         {
             var request = new Request(
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// Converts a JSON string into a TaskQueuesStatisticsResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> TaskQueuesStatisticsResource object represented by the provided JSON </returns> 
+        /// <returns> TaskQueuesStatisticsResource object represented by the provided JSON </returns>
         public static TaskQueuesStatisticsResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

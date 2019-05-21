@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// TaskResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.Understand.Assistant 
+namespace Twilio.Rest.Preview.Understand.Assistant
 {
 
-    public class TaskResource : Resource 
+    public class TaskResource : Resource
     {
         private static Request BuildFetchRequest(FetchTaskOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Fetch Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
+        /// <returns> A single instance of Task </returns>
         public static TaskResource Fetch(FetchTaskOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Fetch Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(FetchTaskOptions options, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(FetchTaskOptions options,
                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
+        /// <returns> A single instance of Task </returns>
         public static TaskResource Fetch(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchTaskOptions(pathAssistantSid, pathSid);
@@ -83,9 +83,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(string pathAssistantSid, 
-                                                                                 string pathSid, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(string pathAssistantSid,
+                                                                                 string pathSid,
                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchTaskOptions(pathAssistantSid, pathSid);
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Read Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
+        /// <returns> A single instance of Task </returns>
         public static ResourceSet<TaskResource> Read(ReadTaskOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -125,8 +125,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Read Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(ReadTaskOptions options, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(ReadTaskOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -144,10 +144,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
-        public static ResourceSet<TaskResource> Read(string pathAssistantSid, 
-                                                     int? pageSize = null, 
-                                                     long? limit = null, 
+        /// <returns> A single instance of Task </returns>
+        public static ResourceSet<TaskResource> Read(string pathAssistantSid,
+                                                     int? pageSize = null,
+                                                     long? limit = null,
                                                      ITwilioRestClient client = null)
         {
             var options = new ReadTaskOptions(pathAssistantSid){PageSize = pageSize, Limit = limit};
@@ -162,10 +162,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(string pathAssistantSid, 
-                                                                                             int? pageSize = null, 
-                                                                                             long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TaskResource>> ReadAsync(string pathAssistantSid,
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadTaskOptions(pathAssistantSid){PageSize = pageSize, Limit = limit};
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<TaskResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<TaskResource> NextPage(Page<TaskResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<TaskResource> PreviousPage(Page<TaskResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Create Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
+        /// <returns> A single instance of Task </returns>
         public static TaskResource Create(CreateTaskOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -262,8 +262,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Create Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(CreateTaskOptions options, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(CreateTaskOptions options,
                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -284,12 +284,12 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         ///               optional and non-unique. </param>
         /// <param name="actionsUrl"> User-provided HTTP endpoint where from the assistant fetches actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
-        public static TaskResource Create(string pathAssistantSid, 
-                                          string uniqueName, 
-                                          string friendlyName = null, 
-                                          object actions = null, 
-                                          Uri actionsUrl = null, 
+        /// <returns> A single instance of Task </returns>
+        public static TaskResource Create(string pathAssistantSid,
+                                          string uniqueName,
+                                          string friendlyName = null,
+                                          object actions = null,
+                                          Uri actionsUrl = null,
                                           ITwilioRestClient client = null)
         {
             var options = new CreateTaskOptions(pathAssistantSid, uniqueName){FriendlyName = friendlyName, Actions = actions, ActionsUrl = actionsUrl};
@@ -309,12 +309,12 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         ///               optional and non-unique. </param>
         /// <param name="actionsUrl"> User-provided HTTP endpoint where from the assistant fetches actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(string pathAssistantSid, 
-                                                                                  string uniqueName, 
-                                                                                  string friendlyName = null, 
-                                                                                  object actions = null, 
-                                                                                  Uri actionsUrl = null, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(string pathAssistantSid,
+                                                                                  string uniqueName,
+                                                                                  string friendlyName = null,
+                                                                                  object actions = null,
+                                                                                  Uri actionsUrl = null,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new CreateTaskOptions(pathAssistantSid, uniqueName){FriendlyName = friendlyName, Actions = actions, ActionsUrl = actionsUrl};
@@ -338,7 +338,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Update Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
+        /// <returns> A single instance of Task </returns>
         public static TaskResource Update(UpdateTaskOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -352,8 +352,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Update Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(UpdateTaskOptions options, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(UpdateTaskOptions options,
                                                                                   ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -375,13 +375,13 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         ///               optional and non-unique. </param>
         /// <param name="actionsUrl"> User-provided HTTP endpoint where from the assistant fetches actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
-        public static TaskResource Update(string pathAssistantSid, 
-                                          string pathSid, 
-                                          string friendlyName = null, 
-                                          string uniqueName = null, 
-                                          object actions = null, 
-                                          Uri actionsUrl = null, 
+        /// <returns> A single instance of Task </returns>
+        public static TaskResource Update(string pathAssistantSid,
+                                          string pathSid,
+                                          string friendlyName = null,
+                                          string uniqueName = null,
+                                          object actions = null,
+                                          Uri actionsUrl = null,
                                           ITwilioRestClient client = null)
         {
             var options = new UpdateTaskOptions(pathAssistantSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Actions = actions, ActionsUrl = actionsUrl};
@@ -402,13 +402,13 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         ///               optional and non-unique. </param>
         /// <param name="actionsUrl"> User-provided HTTP endpoint where from the assistant fetches actions </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(string pathAssistantSid, 
-                                                                                  string pathSid, 
-                                                                                  string friendlyName = null, 
-                                                                                  string uniqueName = null, 
-                                                                                  object actions = null, 
-                                                                                  Uri actionsUrl = null, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(string pathAssistantSid,
+                                                                                  string pathSid,
+                                                                                  string friendlyName = null,
+                                                                                  string uniqueName = null,
+                                                                                  object actions = null,
+                                                                                  Uri actionsUrl = null,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new UpdateTaskOptions(pathAssistantSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Actions = actions, ActionsUrl = actionsUrl};
@@ -432,7 +432,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Delete Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
+        /// <returns> A single instance of Task </returns>
         public static bool Delete(DeleteTaskOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -446,8 +446,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// </summary>
         /// <param name="options"> Delete Task parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskOptions options, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteTaskOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -462,7 +462,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Task </returns> 
+        /// <returns> A single instance of Task </returns>
         public static bool Delete(string pathAssistantSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteTaskOptions(pathAssistantSid, pathSid);
@@ -476,9 +476,9 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// <param name="pathAssistantSid"> The unique ID of the Assistant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Task </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of Task </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathAssistantSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteTaskOptions(pathAssistantSid, pathSid);
@@ -490,7 +490,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         /// Converts a JSON string into a TaskResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> TaskResource object represented by the provided JSON </returns> 
+        /// <returns> TaskResource object represented by the provided JSON </returns>
         public static TaskResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

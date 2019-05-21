@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistrations 
+namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistrations
 {
 
     /// <summary>
     /// Create a new credential list mapping resource
     /// </summary>
-    public class CreateAuthRegistrationsCredentialListMappingOptions : IOptions<AuthRegistrationsCredentialListMappingResource> 
+    public class CreateAuthRegistrationsCredentialListMappingOptions : IOptions<AuthRegistrationsCredentialListMappingResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
     /// <summary>
     /// Retrieve a list of credential list mappings belonging to the domain used in the request
     /// </summary>
-    public class ReadAuthRegistrationsCredentialListMappingOptions : ReadOptions<AuthRegistrationsCredentialListMappingResource> 
+    public class ReadAuthRegistrationsCredentialListMappingOptions : ReadOptions<AuthRegistrationsCredentialListMappingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
     /// <summary>
     /// Fetch a specific instance of a credential list mapping
     /// </summary>
-    public class FetchAuthRegistrationsCredentialListMappingOptions : IOptions<AuthRegistrationsCredentialListMappingResource> 
+    public class FetchAuthRegistrationsCredentialListMappingOptions : IOptions<AuthRegistrationsCredentialListMappingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain.AuthTypes.AuthTypeRegistratio
     /// <summary>
     /// Delete a credential list mapping from the requested domain
     /// </summary>
-    public class DeleteAuthRegistrationsCredentialListMappingOptions : IOptions<AuthRegistrationsCredentialListMappingResource> 
+    public class DeleteAuthRegistrationsCredentialListMappingOptions : IOptions<AuthRegistrationsCredentialListMappingResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete

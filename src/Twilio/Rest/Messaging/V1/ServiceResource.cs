@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// ServiceResource
 /// </summary>
 
@@ -18,12 +18,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Messaging.V1 
+namespace Twilio.Rest.Messaging.V1
 {
 
-    public class ServiceResource : Resource 
+    public class ServiceResource : Resource
     {
-        public sealed class ScanMessageContentEnum : StringEnum 
+        public sealed class ScanMessageContentEnum : StringEnum
         {
             private ScanMessageContentEnum(string value) : base(value) {}
             public ScanMessageContentEnum() {}
@@ -53,7 +53,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(CreateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,8 +67,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(CreateServiceOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -99,21 +99,21 @@ namespace Twilio.Rest.Messaging.V1
         ///                      seconds. </param>
         /// <param name="synchronousValidation"> The synchronous_validation </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Create(string friendlyName, 
-                                             Uri inboundRequestUrl = null, 
-                                             Twilio.Http.HttpMethod inboundMethod = null, 
-                                             Uri fallbackUrl = null, 
-                                             Twilio.Http.HttpMethod fallbackMethod = null, 
-                                             Uri statusCallback = null, 
-                                             bool? stickySender = null, 
-                                             bool? mmsConverter = null, 
-                                             bool? smartEncoding = null, 
-                                             ServiceResource.ScanMessageContentEnum scanMessageContent = null, 
-                                             bool? fallbackToLongCode = null, 
-                                             bool? areaCodeGeomatch = null, 
-                                             int? validityPeriod = null, 
-                                             bool? synchronousValidation = null, 
+        /// <returns> A single instance of Service </returns>
+        public static ServiceResource Create(string friendlyName,
+                                             Uri inboundRequestUrl = null,
+                                             Twilio.Http.HttpMethod inboundMethod = null,
+                                             Uri fallbackUrl = null,
+                                             Twilio.Http.HttpMethod fallbackMethod = null,
+                                             Uri statusCallback = null,
+                                             bool? stickySender = null,
+                                             bool? mmsConverter = null,
+                                             bool? smartEncoding = null,
+                                             ServiceResource.ScanMessageContentEnum scanMessageContent = null,
+                                             bool? fallbackToLongCode = null,
+                                             bool? areaCodeGeomatch = null,
+                                             int? validityPeriod = null,
+                                             bool? synchronousValidation = null,
                                              ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation};
@@ -143,21 +143,21 @@ namespace Twilio.Rest.Messaging.V1
         ///                      seconds. </param>
         /// <param name="synchronousValidation"> The synchronous_validation </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName, 
-                                                                                     Uri inboundRequestUrl = null, 
-                                                                                     Twilio.Http.HttpMethod inboundMethod = null, 
-                                                                                     Uri fallbackUrl = null, 
-                                                                                     Twilio.Http.HttpMethod fallbackMethod = null, 
-                                                                                     Uri statusCallback = null, 
-                                                                                     bool? stickySender = null, 
-                                                                                     bool? mmsConverter = null, 
-                                                                                     bool? smartEncoding = null, 
-                                                                                     ServiceResource.ScanMessageContentEnum scanMessageContent = null, 
-                                                                                     bool? fallbackToLongCode = null, 
-                                                                                     bool? areaCodeGeomatch = null, 
-                                                                                     int? validityPeriod = null, 
-                                                                                     bool? synchronousValidation = null, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
+                                                                                     Uri inboundRequestUrl = null,
+                                                                                     Twilio.Http.HttpMethod inboundMethod = null,
+                                                                                     Uri fallbackUrl = null,
+                                                                                     Twilio.Http.HttpMethod fallbackMethod = null,
+                                                                                     Uri statusCallback = null,
+                                                                                     bool? stickySender = null,
+                                                                                     bool? mmsConverter = null,
+                                                                                     bool? smartEncoding = null,
+                                                                                     ServiceResource.ScanMessageContentEnum scanMessageContent = null,
+                                                                                     bool? fallbackToLongCode = null,
+                                                                                     bool? areaCodeGeomatch = null,
+                                                                                     int? validityPeriod = null,
+                                                                                     bool? synchronousValidation = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation};
@@ -181,7 +181,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(UpdateServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -195,8 +195,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(UpdateServiceOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -224,22 +224,22 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="validityPeriod"> The validity_period </param>
         /// <param name="synchronousValidation"> The synchronous_validation </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
-        public static ServiceResource Update(string pathSid, 
-                                             string friendlyName = null, 
-                                             Uri inboundRequestUrl = null, 
-                                             Twilio.Http.HttpMethod inboundMethod = null, 
-                                             Uri fallbackUrl = null, 
-                                             Twilio.Http.HttpMethod fallbackMethod = null, 
-                                             Uri statusCallback = null, 
-                                             bool? stickySender = null, 
-                                             bool? mmsConverter = null, 
-                                             bool? smartEncoding = null, 
-                                             ServiceResource.ScanMessageContentEnum scanMessageContent = null, 
-                                             bool? fallbackToLongCode = null, 
-                                             bool? areaCodeGeomatch = null, 
-                                             int? validityPeriod = null, 
-                                             bool? synchronousValidation = null, 
+        /// <returns> A single instance of Service </returns>
+        public static ServiceResource Update(string pathSid,
+                                             string friendlyName = null,
+                                             Uri inboundRequestUrl = null,
+                                             Twilio.Http.HttpMethod inboundMethod = null,
+                                             Uri fallbackUrl = null,
+                                             Twilio.Http.HttpMethod fallbackMethod = null,
+                                             Uri statusCallback = null,
+                                             bool? stickySender = null,
+                                             bool? mmsConverter = null,
+                                             bool? smartEncoding = null,
+                                             ServiceResource.ScanMessageContentEnum scanMessageContent = null,
+                                             bool? fallbackToLongCode = null,
+                                             bool? areaCodeGeomatch = null,
+                                             int? validityPeriod = null,
+                                             bool? synchronousValidation = null,
                                              ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation};
@@ -266,22 +266,22 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="validityPeriod"> The validity_period </param>
         /// <param name="synchronousValidation"> The synchronous_validation </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid, 
-                                                                                     string friendlyName = null, 
-                                                                                     Uri inboundRequestUrl = null, 
-                                                                                     Twilio.Http.HttpMethod inboundMethod = null, 
-                                                                                     Uri fallbackUrl = null, 
-                                                                                     Twilio.Http.HttpMethod fallbackMethod = null, 
-                                                                                     Uri statusCallback = null, 
-                                                                                     bool? stickySender = null, 
-                                                                                     bool? mmsConverter = null, 
-                                                                                     bool? smartEncoding = null, 
-                                                                                     ServiceResource.ScanMessageContentEnum scanMessageContent = null, 
-                                                                                     bool? fallbackToLongCode = null, 
-                                                                                     bool? areaCodeGeomatch = null, 
-                                                                                     int? validityPeriod = null, 
-                                                                                     bool? synchronousValidation = null, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
+                                                                                     string friendlyName = null,
+                                                                                     Uri inboundRequestUrl = null,
+                                                                                     Twilio.Http.HttpMethod inboundMethod = null,
+                                                                                     Uri fallbackUrl = null,
+                                                                                     Twilio.Http.HttpMethod fallbackMethod = null,
+                                                                                     Uri statusCallback = null,
+                                                                                     bool? stickySender = null,
+                                                                                     bool? mmsConverter = null,
+                                                                                     bool? smartEncoding = null,
+                                                                                     ServiceResource.ScanMessageContentEnum scanMessageContent = null,
+                                                                                     bool? fallbackToLongCode = null,
+                                                                                     bool? areaCodeGeomatch = null,
+                                                                                     int? validityPeriod = null,
+                                                                                     bool? synchronousValidation = null,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation};
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ResourceSet<ServiceResource> Read(ReadServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -321,8 +321,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(ReadServiceOptions options,
                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -339,9 +339,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
-        public static ResourceSet<ServiceResource> Read(int? pageSize = null, 
-                                                        long? limit = null, 
+        /// <returns> A single instance of Service </returns>
+        public static ResourceSet<ServiceResource> Read(int? pageSize = null,
+                                                        long? limit = null,
                                                         ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
@@ -355,9 +355,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null, 
-                                                                                                long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ServiceResource>> ReadAsync(int? pageSize = null,
+                                                                                                long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
             var options = new ReadServiceOptions(){PageSize = pageSize, Limit = limit};
@@ -370,7 +370,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<ServiceResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -389,7 +389,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<ServiceResource> NextPage(Page<ServiceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -409,7 +409,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<ServiceResource> PreviousPage(Page<ServiceResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -440,7 +440,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(FetchServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -454,8 +454,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(FetchServiceOptions options,
                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -469,7 +469,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid);
@@ -482,8 +482,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
                                                                                     ITwilioRestClient client = null)
         {
             var options = new FetchServiceOptions(pathSid);
@@ -507,7 +507,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Delete Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static bool Delete(DeleteServiceOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -521,8 +521,8 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="options"> Delete Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options, 
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -536,7 +536,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Service </returns> 
+        /// <returns> A single instance of Service </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteServiceOptions(pathSid);
@@ -549,7 +549,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Service </returns> 
+        /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteServiceOptions(pathSid);
@@ -561,7 +561,7 @@ namespace Twilio.Rest.Messaging.V1
         /// Converts a JSON string into a ServiceResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ServiceResource object represented by the provided JSON </returns> 
+        /// <returns> ServiceResource object represented by the provided JSON </returns>
         public static ServiceResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

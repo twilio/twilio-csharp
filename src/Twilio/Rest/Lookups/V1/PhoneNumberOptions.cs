@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Lookups.V1 
+namespace Twilio.Rest.Lookups.V1
 {
 
     /// <summary>
     /// FetchPhoneNumberOptions
     /// </summary>
-    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource> 
+    public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
         /// The phone number to fetch in E.164 format

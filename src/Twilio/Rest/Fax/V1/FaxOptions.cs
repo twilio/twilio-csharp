@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Fax.V1 
+namespace Twilio.Rest.Fax.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Fetch a specific fax.
     /// </summary>
-    public class FetchFaxOptions : IOptions<FaxResource> 
+    public class FetchFaxOptions : IOptions<FaxResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -44,10 +44,10 @@ namespace Twilio.Rest.Fax.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Retrieve a list of all faxes.
     /// </summary>
-    public class ReadFaxOptions : ReadOptions<FaxResource> 
+    public class ReadFaxOptions : ReadOptions<FaxResource>
     {
         /// <summary>
         /// Retrieve only those faxes sent from this phone number
@@ -103,10 +103,10 @@ namespace Twilio.Rest.Fax.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Create a new fax to send to a phone number or SIP endpoint.
     /// </summary>
-    public class CreateFaxOptions : IOptions<FaxResource> 
+    public class CreateFaxOptions : IOptions<FaxResource>
     {
         /// <summary>
         /// The phone number to receive the fax
@@ -213,10 +213,10 @@ namespace Twilio.Rest.Fax.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Update a specific fax.
     /// </summary>
-    public class UpdateFaxOptions : IOptions<FaxResource> 
+    public class UpdateFaxOptions : IOptions<FaxResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -253,10 +253,10 @@ namespace Twilio.Rest.Fax.V1
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Delete a specific fax and its associated media.
     /// </summary>
-    public class DeleteFaxOptions : IOptions<FaxResource> 
+    public class DeleteFaxOptions : IOptions<FaxResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

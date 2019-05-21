@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// AssignedAddOnResource
 /// </summary>
 
@@ -17,10 +17,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber 
+namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
 {
 
-    public class AssignedAddOnResource : Resource 
+    public class AssignedAddOnResource : Resource
     {
         private static Request BuildFetchRequest(FetchAssignedAddOnOptions options, ITwilioRestClient client)
         {
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Fetch AssignedAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssignedAddOn </returns> 
+        /// <returns> A single instance of AssignedAddOn </returns>
         public static AssignedAddOnResource Fetch(FetchAssignedAddOnOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Fetch AssignedAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
-        public static async System.Threading.Tasks.Task<AssignedAddOnResource> FetchAsync(FetchAssignedAddOnOptions options, 
+        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns>
+        public static async System.Threading.Tasks.Task<AssignedAddOnResource> FetchAsync(FetchAssignedAddOnOptions options,
                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -69,10 +69,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssignedAddOn </returns> 
-        public static AssignedAddOnResource Fetch(string pathResourceSid, 
-                                                  string pathSid, 
-                                                  string pathAccountSid = null, 
+        /// <returns> A single instance of AssignedAddOn </returns>
+        public static AssignedAddOnResource Fetch(string pathResourceSid,
+                                                  string pathSid,
+                                                  string pathAccountSid = null,
                                                   ITwilioRestClient client = null)
         {
             var options = new FetchAssignedAddOnOptions(pathResourceSid, pathSid){PathAccountSid = pathAccountSid};
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
-        public static async System.Threading.Tasks.Task<AssignedAddOnResource> FetchAsync(string pathResourceSid, 
-                                                                                          string pathSid, 
-                                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns>
+        public static async System.Threading.Tasks.Task<AssignedAddOnResource> FetchAsync(string pathResourceSid,
+                                                                                          string pathSid,
+                                                                                          string pathAccountSid = null,
                                                                                           ITwilioRestClient client = null)
         {
             var options = new FetchAssignedAddOnOptions(pathResourceSid, pathSid){PathAccountSid = pathAccountSid};
@@ -114,8 +114,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Read AssignedAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssignedAddOn </returns> 
-        public static ResourceSet<AssignedAddOnResource> Read(ReadAssignedAddOnOptions options, 
+        /// <returns> A single instance of AssignedAddOn </returns>
+        public static ResourceSet<AssignedAddOnResource> Read(ReadAssignedAddOnOptions options,
                                                               ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -131,8 +131,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Read AssignedAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AssignedAddOnResource>> ReadAsync(ReadAssignedAddOnOptions options, 
+        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AssignedAddOnResource>> ReadAsync(ReadAssignedAddOnOptions options,
                                                                                                       ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -151,11 +151,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssignedAddOn </returns> 
-        public static ResourceSet<AssignedAddOnResource> Read(string pathResourceSid, 
-                                                              string pathAccountSid = null, 
-                                                              int? pageSize = null, 
-                                                              long? limit = null, 
+        /// <returns> A single instance of AssignedAddOn </returns>
+        public static ResourceSet<AssignedAddOnResource> Read(string pathResourceSid,
+                                                              string pathAccountSid = null,
+                                                              int? pageSize = null,
+                                                              long? limit = null,
                                                               ITwilioRestClient client = null)
         {
             var options = new ReadAssignedAddOnOptions(pathResourceSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -171,11 +171,11 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<AssignedAddOnResource>> ReadAsync(string pathResourceSid, 
-                                                                                                      string pathAccountSid = null, 
-                                                                                                      int? pageSize = null, 
-                                                                                                      long? limit = null, 
+        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<AssignedAddOnResource>> ReadAsync(string pathResourceSid,
+                                                                                                      string pathAccountSid = null,
+                                                                                                      int? pageSize = null,
+                                                                                                      long? limit = null,
                                                                                                       ITwilioRestClient client = null)
         {
             var options = new ReadAssignedAddOnOptions(pathResourceSid){PathAccountSid = pathAccountSid, PageSize = pageSize, Limit = limit};
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<AssignedAddOnResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<AssignedAddOnResource> NextPage(Page<AssignedAddOnResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<AssignedAddOnResource> PreviousPage(Page<AssignedAddOnResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Create AssignedAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssignedAddOn </returns> 
+        /// <returns> A single instance of AssignedAddOn </returns>
         public static AssignedAddOnResource Create(CreateAssignedAddOnOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -272,8 +272,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Create AssignedAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
-        public static async System.Threading.Tasks.Task<AssignedAddOnResource> CreateAsync(CreateAssignedAddOnOptions options, 
+        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns>
+        public static async System.Threading.Tasks.Task<AssignedAddOnResource> CreateAsync(CreateAssignedAddOnOptions options,
                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -289,10 +289,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="installedAddOnSid"> The SID that identifies the Add-on installation </param>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssignedAddOn </returns> 
-        public static AssignedAddOnResource Create(string pathResourceSid, 
-                                                   string installedAddOnSid, 
-                                                   string pathAccountSid = null, 
+        /// <returns> A single instance of AssignedAddOn </returns>
+        public static AssignedAddOnResource Create(string pathResourceSid,
+                                                   string installedAddOnSid,
+                                                   string pathAccountSid = null,
                                                    ITwilioRestClient client = null)
         {
             var options = new CreateAssignedAddOnOptions(pathResourceSid, installedAddOnSid){PathAccountSid = pathAccountSid};
@@ -307,10 +307,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="installedAddOnSid"> The SID that identifies the Add-on installation </param>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
-        public static async System.Threading.Tasks.Task<AssignedAddOnResource> CreateAsync(string pathResourceSid, 
-                                                                                           string installedAddOnSid, 
-                                                                                           string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns>
+        public static async System.Threading.Tasks.Task<AssignedAddOnResource> CreateAsync(string pathResourceSid,
+                                                                                           string installedAddOnSid,
+                                                                                           string pathAccountSid = null,
                                                                                            ITwilioRestClient client = null)
         {
             var options = new CreateAssignedAddOnOptions(pathResourceSid, installedAddOnSid){PathAccountSid = pathAccountSid};
@@ -334,7 +334,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Delete AssignedAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssignedAddOn </returns> 
+        /// <returns> A single instance of AssignedAddOn </returns>
         public static bool Delete(DeleteAssignedAddOnOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -348,8 +348,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         /// <param name="options"> Delete AssignedAddOn parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssignedAddOnOptions options, 
+        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAssignedAddOnOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -365,10 +365,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssignedAddOn </returns> 
-        public static bool Delete(string pathResourceSid, 
-                                  string pathSid, 
-                                  string pathAccountSid = null, 
+        /// <returns> A single instance of AssignedAddOn </returns>
+        public static bool Delete(string pathResourceSid,
+                                  string pathSid,
+                                  string pathAccountSid = null,
                                   ITwilioRestClient client = null)
         {
             var options = new DeleteAssignedAddOnOptions(pathResourceSid, pathSid){PathAccountSid = pathAccountSid};
@@ -383,10 +383,10 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathResourceSid, 
-                                                                          string pathSid, 
-                                                                          string pathAccountSid = null, 
+        /// <returns> Task that resolves to A single instance of AssignedAddOn </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathResourceSid,
+                                                                          string pathSid,
+                                                                          string pathAccountSid = null,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteAssignedAddOnOptions(pathResourceSid, pathSid){PathAccountSid = pathAccountSid};
@@ -398,7 +398,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// Converts a JSON string into a AssignedAddOnResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> AssignedAddOnResource object represented by the provided JSON </returns> 
+        /// <returns> AssignedAddOnResource object represented by the provided JSON </returns>
         public static AssignedAddOnResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

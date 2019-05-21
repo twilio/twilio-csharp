@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace 
+namespace Twilio.Rest.Taskrouter.V1.Workspace
 {
 
     /// <summary>
     /// FetchTaskChannelOptions
     /// </summary>
-    public class FetchTaskChannelOptions : IOptions<TaskChannelResource> 
+    public class FetchTaskChannelOptions : IOptions<TaskChannelResource>
     {
         /// <summary>
         /// The unique ID of the Workspace that this TaskChannel belongs to.
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// ReadTaskChannelOptions
     /// </summary>
-    public class ReadTaskChannelOptions : ReadOptions<TaskChannelResource> 
+    public class ReadTaskChannelOptions : ReadOptions<TaskChannelResource>
     {
         /// <summary>
         /// The unique ID of the Workspace that this TaskChannel belongs to.
@@ -83,7 +83,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// UpdateTaskChannelOptions
     /// </summary>
-    public class UpdateTaskChannelOptions : IOptions<TaskChannelResource> 
+    public class UpdateTaskChannelOptions : IOptions<TaskChannelResource>
     {
         /// <summary>
         /// The unique ID of the Workspace that this TaskChannel belongs to.
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// DeleteTaskChannelOptions
     /// </summary>
-    public class DeleteTaskChannelOptions : IOptions<TaskChannelResource> 
+    public class DeleteTaskChannelOptions : IOptions<TaskChannelResource>
     {
         /// <summary>
         /// The unique ID of the Workspace that this TaskChannel belongs to.
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     /// <summary>
     /// CreateTaskChannelOptions
     /// </summary>
-    public class CreateTaskChannelOptions : IOptions<TaskChannelResource> 
+    public class CreateTaskChannelOptions : IOptions<TaskChannelResource>
     {
         /// <summary>
         /// The unique ID of the Workspace that this TaskChannel belongs to.

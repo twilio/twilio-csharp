@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Wireless.V1 
+namespace Twilio.Rest.Wireless.V1
 {
 
     /// <summary>
     /// Fetch a Sim instance from your account.
     /// </summary>
-    public class FetchSimOptions : IOptions<SimResource> 
+    public class FetchSimOptions : IOptions<SimResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// Retrieve a list of Sims from your account.
     /// </summary>
-    public class ReadSimOptions : ReadOptions<SimResource> 
+    public class ReadSimOptions : ReadOptions<SimResource>
     {
         /// <summary>
         /// Only return Sims with this status.
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// Updates the given properties of a Sim instance from your account.
     /// </summary>
-    public class UpdateSimOptions : IOptions<SimResource> 
+    public class UpdateSimOptions : IOptions<SimResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.
@@ -291,7 +291,7 @@ namespace Twilio.Rest.Wireless.V1
     /// <summary>
     /// Delete a Sim instance from your account.
     /// </summary>
-    public class DeleteSimOptions : IOptions<SimResource> 
+    public class DeleteSimOptions : IOptions<SimResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.

@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step 
+namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
 {
 
-    public class StepContextResource : Resource 
+    public class StepContextResource : Resource
     {
         private static Request BuildFetchRequest(FetchStepContextOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// </summary>
         /// <param name="options"> Fetch StepContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StepContext </returns> 
+        /// <returns> A single instance of StepContext </returns>
         public static StepContextResource Fetch(FetchStepContextOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// </summary>
         /// <param name="options"> Fetch StepContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StepContext </returns> 
-        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(FetchStepContextOptions options, 
+        /// <returns> Task that resolves to A single instance of StepContext </returns>
+        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(FetchStepContextOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,10 +67,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="pathStepSid"> Step Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of StepContext </returns> 
-        public static StepContextResource Fetch(string pathFlowSid, 
-                                                string pathEngagementSid, 
-                                                string pathStepSid, 
+        /// <returns> A single instance of StepContext </returns>
+        public static StepContextResource Fetch(string pathFlowSid,
+                                                string pathEngagementSid,
+                                                string pathStepSid,
                                                 ITwilioRestClient client = null)
         {
             var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid);
@@ -85,10 +85,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="pathStepSid"> Step Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of StepContext </returns> 
-        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(string pathFlowSid, 
-                                                                                        string pathEngagementSid, 
-                                                                                        string pathStepSid, 
+        /// <returns> Task that resolves to A single instance of StepContext </returns>
+        public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(string pathFlowSid,
+                                                                                        string pathEngagementSid,
+                                                                                        string pathStepSid,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchStepContextOptions(pathFlowSid, pathEngagementSid, pathStepSid);
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// Converts a JSON string into a StepContextResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> StepContextResource object represented by the provided JSON </returns> 
+        /// <returns> StepContextResource object represented by the provided JSON </returns>
         public static StepContextResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

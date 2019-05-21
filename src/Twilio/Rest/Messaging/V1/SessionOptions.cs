@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Messaging.V1 
+namespace Twilio.Rest.Messaging.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchSessionOptions
     /// </summary>
-    public class FetchSessionOptions : IOptions<SessionResource> 
+    public class FetchSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.
@@ -46,10 +46,10 @@ namespace Twilio.Rest.Messaging.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteSessionOptions
     /// </summary>
-    public class DeleteSessionOptions : IOptions<SessionResource> 
+    public class DeleteSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.
@@ -78,10 +78,10 @@ namespace Twilio.Rest.Messaging.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateSessionOptions
     /// </summary>
-    public class CreateSessionOptions : IOptions<SessionResource> 
+    public class CreateSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
         /// The unique id of the SMS Service this session belongs to.
@@ -160,10 +160,10 @@ namespace Twilio.Rest.Messaging.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateSessionOptions
     /// </summary>
-    public class UpdateSessionOptions : IOptions<SessionResource> 
+    public class UpdateSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.
@@ -237,10 +237,10 @@ namespace Twilio.Rest.Messaging.V1
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadSessionOptions
     /// </summary>
-    public class ReadSessionOptions : ReadOptions<SessionResource> 
+    public class ReadSessionOptions : ReadOptions<SessionResource>
     {
         /// <summary>
         /// Generate the necessary parameters

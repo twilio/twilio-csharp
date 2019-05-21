@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Monitor.V1 
+namespace Twilio.Rest.Monitor.V1
 {
 
     /// <summary>
     /// FetchAlertOptions
     /// </summary>
-    public class FetchAlertOptions : IOptions<AlertResource> 
+    public class FetchAlertOptions : IOptions<AlertResource>
     {
         /// <summary>
         /// The sid
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Monitor.V1
     /// <summary>
     /// DeleteAlertOptions
     /// </summary>
-    public class DeleteAlertOptions : IOptions<AlertResource> 
+    public class DeleteAlertOptions : IOptions<AlertResource>
     {
         /// <summary>
         /// The sid
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Monitor.V1
     /// <summary>
     /// ReadAlertOptions
     /// </summary>
-    public class ReadAlertOptions : ReadOptions<AlertResource> 
+    public class ReadAlertOptions : ReadOptions<AlertResource>
     {
         /// <summary>
         /// Only show alerts for this log-level.

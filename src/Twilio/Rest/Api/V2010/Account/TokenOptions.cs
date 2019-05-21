@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Create a new token
     /// </summary>
-    public class CreateTokenOptions : IOptions<TokenResource> 
+    public class CreateTokenOptions : IOptions<TokenResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource

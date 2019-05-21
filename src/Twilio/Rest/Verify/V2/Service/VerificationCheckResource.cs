@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// VerificationCheckResource
 /// </summary>
 
@@ -18,12 +18,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Verify.V2.Service 
+namespace Twilio.Rest.Verify.V2.Service
 {
 
-    public class VerificationCheckResource : Resource 
+    public class VerificationCheckResource : Resource
     {
-        public sealed class ChannelEnum : StringEnum 
+        public sealed class ChannelEnum : StringEnum
         {
             private ChannelEnum(string value) : base(value) {}
             public ChannelEnum() {}
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="options"> Create VerificationCheck parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of VerificationCheck </returns> 
-        public static VerificationCheckResource Create(CreateVerificationCheckOptions options, 
+        /// <returns> A single instance of VerificationCheck </returns>
+        public static VerificationCheckResource Create(CreateVerificationCheckOptions options,
                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -67,8 +67,8 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="options"> Create VerificationCheck parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of VerificationCheck </returns> 
-        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options, 
+        /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
+        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(CreateVerificationCheckOptions options,
                                                                                                ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -87,13 +87,13 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of VerificationCheck </returns> 
-        public static VerificationCheckResource Create(string pathServiceSid, 
-                                                       string code, 
-                                                       string to = null, 
-                                                       string verificationSid = null, 
-                                                       string amount = null, 
-                                                       string payee = null, 
+        /// <returns> A single instance of VerificationCheck </returns>
+        public static VerificationCheckResource Create(string pathServiceSid,
+                                                       string code,
+                                                       string to = null,
+                                                       string verificationSid = null,
+                                                       string amount = null,
+                                                       string payee = null,
                                                        ITwilioRestClient client = null)
         {
             var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee};
@@ -111,13 +111,13 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of VerificationCheck </returns> 
-        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid, 
-                                                                                               string code, 
-                                                                                               string to = null, 
-                                                                                               string verificationSid = null, 
-                                                                                               string amount = null, 
-                                                                                               string payee = null, 
+        /// <returns> Task that resolves to A single instance of VerificationCheck </returns>
+        public static async System.Threading.Tasks.Task<VerificationCheckResource> CreateAsync(string pathServiceSid,
+                                                                                               string code,
+                                                                                               string to = null,
+                                                                                               string verificationSid = null,
+                                                                                               string amount = null,
+                                                                                               string payee = null,
                                                                                                ITwilioRestClient client = null)
         {
             var options = new CreateVerificationCheckOptions(pathServiceSid, code){To = to, VerificationSid = verificationSid, Amount = amount, Payee = payee};
@@ -129,7 +129,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Converts a JSON string into a VerificationCheckResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> VerificationCheckResource object represented by the provided JSON </returns> 
+        /// <returns> VerificationCheckResource object represented by the provided JSON </returns>
         public static VerificationCheckResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

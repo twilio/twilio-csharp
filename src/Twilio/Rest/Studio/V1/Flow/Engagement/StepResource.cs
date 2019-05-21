@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Studio.V1.Flow.Engagement 
+namespace Twilio.Rest.Studio.V1.Flow.Engagement
 {
 
-    public class StepResource : Resource 
+    public class StepResource : Resource
     {
         private static Request BuildReadRequest(ReadStepOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         /// <param name="options"> Read Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Step </returns> 
+        /// <returns> A single instance of Step </returns>
         public static ResourceSet<StepResource> Read(ReadStepOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         /// <param name="options"> Read Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Step </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<StepResource>> ReadAsync(ReadStepOptions options, 
+        /// <returns> Task that resolves to A single instance of Step </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<StepResource>> ReadAsync(ReadStepOptions options,
                                                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -72,11 +72,11 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Step </returns> 
-        public static ResourceSet<StepResource> Read(string pathFlowSid, 
-                                                     string pathEngagementSid, 
-                                                     int? pageSize = null, 
-                                                     long? limit = null, 
+        /// <returns> A single instance of Step </returns>
+        public static ResourceSet<StepResource> Read(string pathFlowSid,
+                                                     string pathEngagementSid,
+                                                     int? pageSize = null,
+                                                     long? limit = null,
                                                      ITwilioRestClient client = null)
         {
             var options = new ReadStepOptions(pathFlowSid, pathEngagementSid){PageSize = pageSize, Limit = limit};
@@ -92,11 +92,11 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Step </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<StepResource>> ReadAsync(string pathFlowSid, 
-                                                                                             string pathEngagementSid, 
-                                                                                             int? pageSize = null, 
-                                                                                             long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Step </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<StepResource>> ReadAsync(string pathFlowSid,
+                                                                                             string pathEngagementSid,
+                                                                                             int? pageSize = null,
+                                                                                             long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
             var options = new ReadStepOptions(pathFlowSid, pathEngagementSid){PageSize = pageSize, Limit = limit};
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<StepResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<StepResource> NextPage(Page<StepResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<StepResource> PreviousPage(Page<StepResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         /// <param name="options"> Fetch Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Step </returns> 
+        /// <returns> A single instance of Step </returns>
         public static StepResource Fetch(FetchStepOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -193,8 +193,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// </summary>
         /// <param name="options"> Fetch Step parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Step </returns> 
-        public static async System.Threading.Tasks.Task<StepResource> FetchAsync(FetchStepOptions options, 
+        /// <returns> Task that resolves to A single instance of Step </returns>
+        public static async System.Threading.Tasks.Task<StepResource> FetchAsync(FetchStepOptions options,
                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -210,10 +210,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="pathSid"> Step Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Step </returns> 
-        public static StepResource Fetch(string pathFlowSid, 
-                                         string pathEngagementSid, 
-                                         string pathSid, 
+        /// <returns> A single instance of Step </returns>
+        public static StepResource Fetch(string pathFlowSid,
+                                         string pathEngagementSid,
+                                         string pathSid,
                                          ITwilioRestClient client = null)
         {
             var options = new FetchStepOptions(pathFlowSid, pathEngagementSid, pathSid);
@@ -228,10 +228,10 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <param name="pathEngagementSid"> Engagement Sid. </param>
         /// <param name="pathSid"> Step Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Step </returns> 
-        public static async System.Threading.Tasks.Task<StepResource> FetchAsync(string pathFlowSid, 
-                                                                                 string pathEngagementSid, 
-                                                                                 string pathSid, 
+        /// <returns> Task that resolves to A single instance of Step </returns>
+        public static async System.Threading.Tasks.Task<StepResource> FetchAsync(string pathFlowSid,
+                                                                                 string pathEngagementSid,
+                                                                                 string pathSid,
                                                                                  ITwilioRestClient client = null)
         {
             var options = new FetchStepOptions(pathFlowSid, pathEngagementSid, pathSid);
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// Converts a JSON string into a StepResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> StepResource object represented by the provided JSON </returns> 
+        /// <returns> StepResource object represented by the provided JSON </returns>
         public static StepResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

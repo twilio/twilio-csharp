@@ -10,13 +10,13 @@ using Twilio.Base;
 using Twilio.Converters;
 using Twilio.Types;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// Create a new outgoing call to phones, SIP-enabled endpoints or Twilio Client connections
     /// </summary>
-    public class CreateCallOptions : IOptions<CallResource> 
+    public class CreateCallOptions : IOptions<CallResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// Delete a Call record from your account. Once the record is deleted, it will no longer appear in the API and Account
     /// Portal logs.
     /// </summary>
-    public class DeleteCallOptions : IOptions<CallResource> 
+    public class DeleteCallOptions : IOptions<CallResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to delete
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Fetch the call specified by the provided Call SID
     /// </summary>
-    public class FetchCallOptions : IOptions<CallResource> 
+    public class FetchCallOptions : IOptions<CallResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to fetch
@@ -350,7 +350,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Retrieves a collection of calls made to and from your account
     /// </summary>
-    public class ReadCallOptions : ReadOptions<CallResource> 
+    public class ReadCallOptions : ReadOptions<CallResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to read
@@ -469,7 +469,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// Initiates a call redirect or terminates a call
     /// </summary>
-    public class UpdateCallOptions : IOptions<CallResource> 
+    public class UpdateCallOptions : IOptions<CallResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource(s) to update

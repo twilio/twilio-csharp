@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Wireless.V1 
+namespace Twilio.Rest.Wireless.V1
 {
 
-    public class SimResource : Resource 
+    public class SimResource : Resource
     {
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -40,7 +40,7 @@ namespace Twilio.Rest.Wireless.V1
             public static readonly StatusEnum Updating = new StatusEnum("updating");
         }
 
-        public sealed class ResetStatusEnum : StringEnum 
+        public sealed class ResetStatusEnum : StringEnum
         {
             private ResetStatusEnum(string value) : base(value) {}
             public ResetStatusEnum() {}
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="options"> Fetch Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns> 
+        /// <returns> A single instance of Sim </returns>
         public static SimResource Fetch(FetchSimOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="options"> Fetch Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns> 
-        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(FetchSimOptions options, 
+        /// <returns> Task that resolves to A single instance of Sim </returns>
+        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(FetchSimOptions options,
                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -97,7 +97,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns> 
+        /// <returns> A single instance of Sim </returns>
         public static SimResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchSimOptions(pathSid);
@@ -110,8 +110,8 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns> 
-        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(string pathSid, 
+        /// <returns> Task that resolves to A single instance of Sim </returns>
+        public static async System.Threading.Tasks.Task<SimResource> FetchAsync(string pathSid,
                                                                                 ITwilioRestClient client = null)
         {
             var options = new FetchSimOptions(pathSid);
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="options"> Read Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns> 
+        /// <returns> A single instance of Sim </returns>
         public static ResourceSet<SimResource> Read(ReadSimOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -151,8 +151,8 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="options"> Read Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(ReadSimOptions options, 
+        /// <returns> Task that resolves to A single instance of Sim </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(ReadSimOptions options,
                                                                                             ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -174,14 +174,14 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns> 
-        public static ResourceSet<SimResource> Read(SimResource.StatusEnum status = null, 
-                                                    string iccid = null, 
-                                                    string ratePlan = null, 
-                                                    string eId = null, 
-                                                    string simRegistrationCode = null, 
-                                                    int? pageSize = null, 
-                                                    long? limit = null, 
+        /// <returns> A single instance of Sim </returns>
+        public static ResourceSet<SimResource> Read(SimResource.StatusEnum status = null,
+                                                    string iccid = null,
+                                                    string ratePlan = null,
+                                                    string eId = null,
+                                                    string simRegistrationCode = null,
+                                                    int? pageSize = null,
+                                                    long? limit = null,
                                                     ITwilioRestClient client = null)
         {
             var options = new ReadSimOptions(){Status = status, Iccid = iccid, RatePlan = ratePlan, EId = eId, SimRegistrationCode = simRegistrationCode, PageSize = pageSize, Limit = limit};
@@ -200,14 +200,14 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(SimResource.StatusEnum status = null, 
-                                                                                            string iccid = null, 
-                                                                                            string ratePlan = null, 
-                                                                                            string eId = null, 
-                                                                                            string simRegistrationCode = null, 
-                                                                                            int? pageSize = null, 
-                                                                                            long? limit = null, 
+        /// <returns> Task that resolves to A single instance of Sim </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SimResource>> ReadAsync(SimResource.StatusEnum status = null,
+                                                                                            string iccid = null,
+                                                                                            string ratePlan = null,
+                                                                                            string eId = null,
+                                                                                            string simRegistrationCode = null,
+                                                                                            int? pageSize = null,
+                                                                                            long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
             var options = new ReadSimOptions(){Status = status, Iccid = iccid, RatePlan = ratePlan, EId = eId, SimRegistrationCode = simRegistrationCode, PageSize = pageSize, Limit = limit};
@@ -220,7 +220,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<SimResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<SimResource> NextPage(Page<SimResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<SimResource> PreviousPage(Page<SimResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -290,7 +290,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="options"> Update Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns> 
+        /// <returns> A single instance of Sim </returns>
         public static SimResource Update(UpdateSimOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -304,8 +304,8 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="options"> Update Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns> 
-        public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(UpdateSimOptions options, 
+        /// <returns> Task that resolves to A single instance of Sim </returns>
+        public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(UpdateSimOptions options,
                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -341,25 +341,25 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="voiceUrl"> The URL Twilio will request when the SIM-connected device makes a call. </param>
         /// <param name="resetStatus"> Initiate a connectivity reset on a Sim. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns> 
-        public static SimResource Update(string pathSid, 
-                                         string uniqueName = null, 
-                                         Twilio.Http.HttpMethod callbackMethod = null, 
-                                         Uri callbackUrl = null, 
-                                         string friendlyName = null, 
-                                         string ratePlan = null, 
-                                         SimResource.StatusEnum status = null, 
-                                         Twilio.Http.HttpMethod commandsCallbackMethod = null, 
-                                         Uri commandsCallbackUrl = null, 
-                                         Twilio.Http.HttpMethod smsFallbackMethod = null, 
-                                         Uri smsFallbackUrl = null, 
-                                         Twilio.Http.HttpMethod smsMethod = null, 
-                                         Uri smsUrl = null, 
-                                         Twilio.Http.HttpMethod voiceFallbackMethod = null, 
-                                         Uri voiceFallbackUrl = null, 
-                                         Twilio.Http.HttpMethod voiceMethod = null, 
-                                         Uri voiceUrl = null, 
-                                         SimResource.ResetStatusEnum resetStatus = null, 
+        /// <returns> A single instance of Sim </returns>
+        public static SimResource Update(string pathSid,
+                                         string uniqueName = null,
+                                         Twilio.Http.HttpMethod callbackMethod = null,
+                                         Uri callbackUrl = null,
+                                         string friendlyName = null,
+                                         string ratePlan = null,
+                                         SimResource.StatusEnum status = null,
+                                         Twilio.Http.HttpMethod commandsCallbackMethod = null,
+                                         Uri commandsCallbackUrl = null,
+                                         Twilio.Http.HttpMethod smsFallbackMethod = null,
+                                         Uri smsFallbackUrl = null,
+                                         Twilio.Http.HttpMethod smsMethod = null,
+                                         Uri smsUrl = null,
+                                         Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                         Uri voiceFallbackUrl = null,
+                                         Twilio.Http.HttpMethod voiceMethod = null,
+                                         Uri voiceUrl = null,
+                                         SimResource.ResetStatusEnum resetStatus = null,
                                          ITwilioRestClient client = null)
         {
             var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus};
@@ -394,25 +394,25 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="voiceUrl"> The URL Twilio will request when the SIM-connected device makes a call. </param>
         /// <param name="resetStatus"> Initiate a connectivity reset on a Sim. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns> 
-        public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid, 
-                                                                                 string uniqueName = null, 
-                                                                                 Twilio.Http.HttpMethod callbackMethod = null, 
-                                                                                 Uri callbackUrl = null, 
-                                                                                 string friendlyName = null, 
-                                                                                 string ratePlan = null, 
-                                                                                 SimResource.StatusEnum status = null, 
-                                                                                 Twilio.Http.HttpMethod commandsCallbackMethod = null, 
-                                                                                 Uri commandsCallbackUrl = null, 
-                                                                                 Twilio.Http.HttpMethod smsFallbackMethod = null, 
-                                                                                 Uri smsFallbackUrl = null, 
-                                                                                 Twilio.Http.HttpMethod smsMethod = null, 
-                                                                                 Uri smsUrl = null, 
-                                                                                 Twilio.Http.HttpMethod voiceFallbackMethod = null, 
-                                                                                 Uri voiceFallbackUrl = null, 
-                                                                                 Twilio.Http.HttpMethod voiceMethod = null, 
-                                                                                 Uri voiceUrl = null, 
-                                                                                 SimResource.ResetStatusEnum resetStatus = null, 
+        /// <returns> Task that resolves to A single instance of Sim </returns>
+        public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid,
+                                                                                 string uniqueName = null,
+                                                                                 Twilio.Http.HttpMethod callbackMethod = null,
+                                                                                 Uri callbackUrl = null,
+                                                                                 string friendlyName = null,
+                                                                                 string ratePlan = null,
+                                                                                 SimResource.StatusEnum status = null,
+                                                                                 Twilio.Http.HttpMethod commandsCallbackMethod = null,
+                                                                                 Uri commandsCallbackUrl = null,
+                                                                                 Twilio.Http.HttpMethod smsFallbackMethod = null,
+                                                                                 Uri smsFallbackUrl = null,
+                                                                                 Twilio.Http.HttpMethod smsMethod = null,
+                                                                                 Uri smsUrl = null,
+                                                                                 Twilio.Http.HttpMethod voiceFallbackMethod = null,
+                                                                                 Uri voiceFallbackUrl = null,
+                                                                                 Twilio.Http.HttpMethod voiceMethod = null,
+                                                                                 Uri voiceUrl = null,
+                                                                                 SimResource.ResetStatusEnum resetStatus = null,
                                                                                  ITwilioRestClient client = null)
         {
             var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus};
@@ -436,7 +436,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="options"> Delete Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns> 
+        /// <returns> A single instance of Sim </returns>
         public static bool Delete(DeleteSimOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -450,8 +450,8 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="options"> Delete Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSimOptions options, 
+        /// <returns> Task that resolves to A single instance of Sim </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSimOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -465,7 +465,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Sim </returns> 
+        /// <returns> A single instance of Sim </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteSimOptions(pathSid);
@@ -478,7 +478,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Sim </returns> 
+        /// <returns> Task that resolves to A single instance of Sim </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteSimOptions(pathSid);
@@ -490,7 +490,7 @@ namespace Twilio.Rest.Wireless.V1
         /// Converts a JSON string into a SimResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> SimResource object represented by the provided JSON </returns> 
+        /// <returns> SimResource object represented by the provided JSON </returns>
         public static SimResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

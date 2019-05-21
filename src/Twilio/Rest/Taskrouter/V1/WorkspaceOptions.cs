@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Taskrouter.V1 
+namespace Twilio.Rest.Taskrouter.V1
 {
 
     /// <summary>
     /// FetchWorkspaceOptions
     /// </summary>
-    public class FetchWorkspaceOptions : IOptions<WorkspaceResource> 
+    public class FetchWorkspaceOptions : IOptions<WorkspaceResource>
     {
         /// <summary>
         /// The sid
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Taskrouter.V1
     /// <summary>
     /// UpdateWorkspaceOptions
     /// </summary>
-    public class UpdateWorkspaceOptions : IOptions<WorkspaceResource> 
+    public class UpdateWorkspaceOptions : IOptions<WorkspaceResource>
     {
         /// <summary>
         /// The sid
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Taskrouter.V1
     /// <summary>
     /// ReadWorkspaceOptions
     /// </summary>
-    public class ReadWorkspaceOptions : ReadOptions<WorkspaceResource> 
+    public class ReadWorkspaceOptions : ReadOptions<WorkspaceResource>
     {
         /// <summary>
         /// Filter by a workspace's friendly name.
@@ -165,7 +165,7 @@ namespace Twilio.Rest.Taskrouter.V1
     /// <summary>
     /// CreateWorkspaceOptions
     /// </summary>
-    public class CreateWorkspaceOptions : IOptions<WorkspaceResource> 
+    public class CreateWorkspaceOptions : IOptions<WorkspaceResource>
     {
         /// <summary>
         /// Human readable description of this workspace
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Taskrouter.V1
     /// <summary>
     /// DeleteWorkspaceOptions
     /// </summary>
-    public class DeleteWorkspaceOptions : IOptions<WorkspaceResource> 
+    public class DeleteWorkspaceOptions : IOptions<WorkspaceResource>
     {
         /// <summary>
         /// The sid

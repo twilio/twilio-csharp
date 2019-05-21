@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Call 
+namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
     /// Create a Feedback resource for a call
     /// </summary>
-    public class CreateFeedbackOptions : IOptions<FeedbackResource> 
+    public class CreateFeedbackOptions : IOptions<FeedbackResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -69,7 +69,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// <summary>
     /// Fetch a Feedback resource from a call
     /// </summary>
-    public class FetchFeedbackOptions : IOptions<FeedbackResource> 
+    public class FetchFeedbackOptions : IOptions<FeedbackResource>
     {
         /// <summary>
         /// The unique sid that identifies this account
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     /// <summary>
     /// Update a Feedback resource for a call
     /// </summary>
-    public class UpdateFeedbackOptions : IOptions<FeedbackResource> 
+    public class UpdateFeedbackOptions : IOptions<FeedbackResource>
     {
         /// <summary>
         /// The unique sid that identifies this account

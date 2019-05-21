@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// PhoneCallResource
 /// </summary>
 
@@ -18,10 +18,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.TrustedComms 
+namespace Twilio.Rest.Preview.TrustedComms
 {
 
-    public class PhoneCallResource : Resource 
+    public class PhoneCallResource : Resource
     {
         private static Request BuildCreateRequest(CreatePhoneCallOptions options, ITwilioRestClient client)
         {
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// </summary>
         /// <param name="options"> Create PhoneCall parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneCall </returns> 
+        /// <returns> A single instance of PhoneCall </returns>
         public static PhoneCallResource Create(CreatePhoneCallOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -53,8 +53,8 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// </summary>
         /// <param name="options"> Create PhoneCall parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneCall </returns> 
-        public static async System.Threading.Tasks.Task<PhoneCallResource> CreateAsync(CreatePhoneCallOptions options, 
+        /// <returns> Task that resolves to A single instance of PhoneCall </returns>
+        public static async System.Threading.Tasks.Task<PhoneCallResource> CreateAsync(CreatePhoneCallOptions options,
                                                                                        ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -71,11 +71,11 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <param name="url"> The Twiml URL </param>
         /// <param name="reason"> The business reason for this phone call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneCall </returns> 
-        public static PhoneCallResource Create(string from, 
-                                               string to, 
-                                               string url, 
-                                               string reason = null, 
+        /// <returns> A single instance of PhoneCall </returns>
+        public static PhoneCallResource Create(string from,
+                                               string to,
+                                               string url,
+                                               string reason = null,
                                                ITwilioRestClient client = null)
         {
             var options = new CreatePhoneCallOptions(from, to, url){Reason = reason};
@@ -91,11 +91,11 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <param name="url"> The Twiml URL </param>
         /// <param name="reason"> The business reason for this phone call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneCall </returns> 
-        public static async System.Threading.Tasks.Task<PhoneCallResource> CreateAsync(string from, 
-                                                                                       string to, 
-                                                                                       string url, 
-                                                                                       string reason = null, 
+        /// <returns> Task that resolves to A single instance of PhoneCall </returns>
+        public static async System.Threading.Tasks.Task<PhoneCallResource> CreateAsync(string from,
+                                                                                       string to,
+                                                                                       string url,
+                                                                                       string reason = null,
                                                                                        ITwilioRestClient client = null)
         {
             var options = new CreatePhoneCallOptions(from, to, url){Reason = reason};
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// Converts a JSON string into a PhoneCallResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> PhoneCallResource object represented by the provided JSON </returns> 
+        /// <returns> PhoneCallResource object represented by the provided JSON </returns>
         public static PhoneCallResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

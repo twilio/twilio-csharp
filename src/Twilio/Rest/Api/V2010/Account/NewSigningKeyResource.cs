@@ -15,10 +15,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
-    public class NewSigningKeyResource : Resource 
+    public class NewSigningKeyResource : Resource
     {
         private static Request BuildCreateRequest(CreateNewSigningKeyOptions options, ITwilioRestClient client)
         {
@@ -36,7 +36,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Create NewSigningKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of NewSigningKey </returns> 
+        /// <returns> A single instance of NewSigningKey </returns>
         public static NewSigningKeyResource Create(CreateNewSigningKeyOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -50,8 +50,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="options"> Create NewSigningKey parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of NewSigningKey </returns> 
-        public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(CreateNewSigningKeyOptions options, 
+        /// <returns> Task that resolves to A single instance of NewSigningKey </returns>
+        public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(CreateNewSigningKeyOptions options,
                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -66,9 +66,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the Account that will be responsible for the new Key resource </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of NewSigningKey </returns> 
-        public static NewSigningKeyResource Create(string pathAccountSid = null, 
-                                                   string friendlyName = null, 
+        /// <returns> A single instance of NewSigningKey </returns>
+        public static NewSigningKeyResource Create(string pathAccountSid = null,
+                                                   string friendlyName = null,
                                                    ITwilioRestClient client = null)
         {
             var options = new CreateNewSigningKeyOptions(){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
@@ -82,9 +82,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="pathAccountSid"> The SID of the Account that will be responsible for the new Key resource </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of NewSigningKey </returns> 
-        public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(string pathAccountSid = null, 
-                                                                                           string friendlyName = null, 
+        /// <returns> Task that resolves to A single instance of NewSigningKey </returns>
+        public static async System.Threading.Tasks.Task<NewSigningKeyResource> CreateAsync(string pathAccountSid = null,
+                                                                                           string friendlyName = null,
                                                                                            ITwilioRestClient client = null)
         {
             var options = new CreateNewSigningKeyOptions(){PathAccountSid = pathAccountSid, FriendlyName = friendlyName};
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Converts a JSON string into a NewSigningKeyResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> NewSigningKeyResource object represented by the provided JSON </returns> 
+        /// <returns> NewSigningKeyResource object represented by the provided JSON </returns>
         public static NewSigningKeyResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Accounts.V1.Credential 
+namespace Twilio.Rest.Accounts.V1.Credential
 {
 
     /// <summary>
     /// Retrieves a collection of AWS Credentials belonging to the account used to make the request
     /// </summary>
-    public class ReadAwsOptions : ReadOptions<AwsResource> 
+    public class ReadAwsOptions : ReadOptions<AwsResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
     /// <summary>
     /// Create a new AWS Credential
     /// </summary>
-    public class CreateAwsOptions : IOptions<AwsResource> 
+    public class CreateAwsOptions : IOptions<AwsResource>
     {
         /// <summary>
         /// A string that contains the AWS access credentials in the format <AWS_ACCESS_KEY_ID>:<AWS_SECRET_ACCESS_KEY>
@@ -87,7 +87,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
     /// <summary>
     /// Fetch the AWS credentials specified by the provided Credential Sid
     /// </summary>
-    public class FetchAwsOptions : IOptions<AwsResource> 
+    public class FetchAwsOptions : IOptions<AwsResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
     /// <summary>
     /// Modify the properties of a given Account
     /// </summary>
-    public class UpdateAwsOptions : IOptions<AwsResource> 
+    public class UpdateAwsOptions : IOptions<AwsResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
     /// <summary>
     /// Delete a Credential from your account
     /// </summary>
-    public class DeleteAwsOptions : IOptions<AwsResource> 
+    public class DeleteAwsOptions : IOptions<AwsResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

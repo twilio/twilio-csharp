@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// FaxMediaResource
 /// </summary>
 
@@ -17,10 +17,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Fax.V1.Fax 
+namespace Twilio.Rest.Fax.V1.Fax
 {
 
-    public class FaxMediaResource : Resource 
+    public class FaxMediaResource : Resource
     {
         private static Request BuildFetchRequest(FetchFaxMediaOptions options, ITwilioRestClient client)
         {
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// </summary>
         /// <param name="options"> Fetch FaxMedia parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FaxMedia </returns> 
+        /// <returns> A single instance of FaxMedia </returns>
         public static FaxMediaResource Fetch(FetchFaxMediaOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// </summary>
         /// <param name="options"> Fetch FaxMedia parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FaxMedia </returns> 
-        public static async System.Threading.Tasks.Task<FaxMediaResource> FetchAsync(FetchFaxMediaOptions options, 
+        /// <returns> Task that resolves to A single instance of FaxMedia </returns>
+        public static async System.Threading.Tasks.Task<FaxMediaResource> FetchAsync(FetchFaxMediaOptions options,
                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// <param name="pathFaxSid"> The SID of the fax with the FaxMedia resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FaxMedia </returns> 
+        /// <returns> A single instance of FaxMedia </returns>
         public static FaxMediaResource Fetch(string pathFaxSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchFaxMediaOptions(pathFaxSid, pathSid);
@@ -82,9 +82,9 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// <param name="pathFaxSid"> The SID of the fax with the FaxMedia resource to fetch </param>
         /// <param name="pathSid"> The unique string that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FaxMedia </returns> 
-        public static async System.Threading.Tasks.Task<FaxMediaResource> FetchAsync(string pathFaxSid, 
-                                                                                     string pathSid, 
+        /// <returns> Task that resolves to A single instance of FaxMedia </returns>
+        public static async System.Threading.Tasks.Task<FaxMediaResource> FetchAsync(string pathFaxSid,
+                                                                                     string pathSid,
                                                                                      ITwilioRestClient client = null)
         {
             var options = new FetchFaxMediaOptions(pathFaxSid, pathSid);
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// </summary>
         /// <param name="options"> Read FaxMedia parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FaxMedia </returns> 
+        /// <returns> A single instance of FaxMedia </returns>
         public static ResourceSet<FaxMediaResource> Read(ReadFaxMediaOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -124,8 +124,8 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// </summary>
         /// <param name="options"> Read FaxMedia parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FaxMedia </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FaxMediaResource>> ReadAsync(ReadFaxMediaOptions options, 
+        /// <returns> Task that resolves to A single instance of FaxMedia </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FaxMediaResource>> ReadAsync(ReadFaxMediaOptions options,
                                                                                                  ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -143,10 +143,10 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FaxMedia </returns> 
-        public static ResourceSet<FaxMediaResource> Read(string pathFaxSid, 
-                                                         int? pageSize = null, 
-                                                         long? limit = null, 
+        /// <returns> A single instance of FaxMedia </returns>
+        public static ResourceSet<FaxMediaResource> Read(string pathFaxSid,
+                                                         int? pageSize = null,
+                                                         long? limit = null,
                                                          ITwilioRestClient client = null)
         {
             var options = new ReadFaxMediaOptions(pathFaxSid){PageSize = pageSize, Limit = limit};
@@ -161,10 +161,10 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FaxMedia </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<FaxMediaResource>> ReadAsync(string pathFaxSid, 
-                                                                                                 int? pageSize = null, 
-                                                                                                 long? limit = null, 
+        /// <returns> Task that resolves to A single instance of FaxMedia </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<FaxMediaResource>> ReadAsync(string pathFaxSid,
+                                                                                                 int? pageSize = null,
+                                                                                                 long? limit = null,
                                                                                                  ITwilioRestClient client = null)
         {
             var options = new ReadFaxMediaOptions(pathFaxSid){PageSize = pageSize, Limit = limit};
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<FaxMediaResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -196,7 +196,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<FaxMediaResource> NextPage(Page<FaxMediaResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -216,7 +216,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<FaxMediaResource> PreviousPage(Page<FaxMediaResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// </summary>
         /// <param name="options"> Delete FaxMedia parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FaxMedia </returns> 
+        /// <returns> A single instance of FaxMedia </returns>
         public static bool Delete(DeleteFaxMediaOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -261,8 +261,8 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// </summary>
         /// <param name="options"> Delete FaxMedia parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FaxMedia </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFaxMediaOptions options, 
+        /// <returns> Task that resolves to A single instance of FaxMedia </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFaxMediaOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// <param name="pathFaxSid"> The SID of the fax with the FaxMedia resource to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FaxMedia </returns> 
+        /// <returns> A single instance of FaxMedia </returns>
         public static bool Delete(string pathFaxSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeleteFaxMediaOptions(pathFaxSid, pathSid);
@@ -291,9 +291,9 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// <param name="pathFaxSid"> The SID of the fax with the FaxMedia resource to delete </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FaxMedia </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFaxSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of FaxMedia </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFaxSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeleteFaxMediaOptions(pathFaxSid, pathSid);
@@ -305,7 +305,7 @@ namespace Twilio.Rest.Fax.V1.Fax
         /// Converts a JSON string into a FaxMediaResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> FaxMediaResource object represented by the provided JSON </returns> 
+        /// <returns> FaxMediaResource object represented by the provided JSON </returns>
         public static FaxMediaResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

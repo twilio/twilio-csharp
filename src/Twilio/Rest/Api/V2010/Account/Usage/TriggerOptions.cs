@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.Usage 
+namespace Twilio.Rest.Api.V2010.Account.Usage
 {
 
     /// <summary>
     /// Fetch and instance of a usage-trigger
     /// </summary>
-    public class FetchTriggerOptions : IOptions<TriggerResource> 
+    public class FetchTriggerOptions : IOptions<TriggerResource>
     {
         /// <summary>
         /// The SID of the Account that created the resource to fetch
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     /// <summary>
     /// Update an instance of a usage trigger
     /// </summary>
-    public class UpdateTriggerOptions : IOptions<TriggerResource> 
+    public class UpdateTriggerOptions : IOptions<TriggerResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to update
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     /// <summary>
     /// DeleteTriggerOptions
     /// </summary>
-    public class DeleteTriggerOptions : IOptions<TriggerResource> 
+    public class DeleteTriggerOptions : IOptions<TriggerResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to delete
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     /// <summary>
     /// Create a new UsageTrigger
     /// </summary>
-    public class CreateTriggerOptions : IOptions<TriggerResource> 
+    public class CreateTriggerOptions : IOptions<TriggerResource>
     {
         /// <summary>
         /// The SID of the Account that will create the resource
@@ -236,7 +236,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
     /// <summary>
     /// Retrieve a list of usage-triggers belonging to the account used to make the request
     /// </summary>
-    public class ReadTriggerOptions : ReadOptions<TriggerResource> 
+    public class ReadTriggerOptions : ReadOptions<TriggerResource>
     {
         /// <summary>
         /// The SID of the Account that created the resources to read

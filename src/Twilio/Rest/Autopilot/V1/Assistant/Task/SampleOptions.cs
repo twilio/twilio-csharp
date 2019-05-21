@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant.Task 
+namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchSampleOptions
     /// </summary>
-    public class FetchSampleOptions : IOptions<SampleResource> 
+    public class FetchSampleOptions : IOptions<SampleResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task associated with the resource to fetch
@@ -59,10 +59,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadSampleOptions
     /// </summary>
-    public class ReadSampleOptions : ReadOptions<SampleResource> 
+    public class ReadSampleOptions : ReadOptions<SampleResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task associated with the resources to read
@@ -112,10 +112,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateSampleOptions
     /// </summary>
-    public class CreateSampleOptions : IOptions<SampleResource> 
+    public class CreateSampleOptions : IOptions<SampleResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task associated with the new resource
@@ -182,10 +182,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// UpdateSampleOptions
     /// </summary>
-    public class UpdateSampleOptions : IOptions<SampleResource> 
+    public class UpdateSampleOptions : IOptions<SampleResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task associated with the resource to update
@@ -254,10 +254,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteSampleOptions
     /// </summary>
-    public class DeleteSampleOptions : IOptions<SampleResource> 
+    public class DeleteSampleOptions : IOptions<SampleResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task associated with the resources to delete

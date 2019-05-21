@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Sync.V1.Service.SyncList 
+namespace Twilio.Rest.Sync.V1.Service.SyncList
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchSyncListItemOptions
     /// </summary>
-    public class FetchSyncListItemOptions : IOptions<SyncListItemResource> 
+    public class FetchSyncListItemOptions : IOptions<SyncListItemResource>
     {
         /// <summary>
         /// The service_sid
@@ -56,10 +56,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteSyncListItemOptions
     /// </summary>
-    public class DeleteSyncListItemOptions : IOptions<SyncListItemResource> 
+    public class DeleteSyncListItemOptions : IOptions<SyncListItemResource>
     {
         /// <summary>
         /// The service_sid
@@ -99,10 +99,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateSyncListItemOptions
     /// </summary>
-    public class CreateSyncListItemOptions : IOptions<SyncListItemResource> 
+    public class CreateSyncListItemOptions : IOptions<SyncListItemResource>
     {
         /// <summary>
         /// The service_sid
@@ -175,10 +175,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadSyncListItemOptions
     /// </summary>
-    public class ReadSyncListItemOptions : ReadOptions<SyncListItemResource> 
+    public class ReadSyncListItemOptions : ReadOptions<SyncListItemResource>
     {
         /// <summary>
         /// The service_sid
@@ -244,10 +244,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// UpdateSyncListItemOptions
     /// </summary>
-    public class UpdateSyncListItemOptions : IOptions<SyncListItemResource> 
+    public class UpdateSyncListItemOptions : IOptions<SyncListItemResource>
     {
         /// <summary>
         /// The service_sid

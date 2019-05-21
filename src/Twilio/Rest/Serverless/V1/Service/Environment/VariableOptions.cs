@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Serverless.V1.Service.Environment 
+namespace Twilio.Rest.Serverless.V1.Service.Environment
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Variables.
     /// </summary>
-    public class ReadVariableOptions : ReadOptions<VariableResource> 
+    public class ReadVariableOptions : ReadOptions<VariableResource>
     {
         /// <summary>
         /// Service Sid.
@@ -57,10 +57,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a specific Variable.
     /// </summary>
-    public class FetchVariableOptions : IOptions<VariableResource> 
+    public class FetchVariableOptions : IOptions<VariableResource>
     {
         /// <summary>
         /// Service Sid.
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Variable.
     /// </summary>
-    public class CreateVariableOptions : IOptions<VariableResource> 
+    public class CreateVariableOptions : IOptions<VariableResource>
     {
         /// <summary>
         /// Service Sid.
@@ -161,10 +161,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update a specific Variable.
     /// </summary>
-    public class UpdateVariableOptions : IOptions<VariableResource> 
+    public class UpdateVariableOptions : IOptions<VariableResource>
     {
         /// <summary>
         /// Service Sid.

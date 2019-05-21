@@ -9,15 +9,15 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Notify.V1.Service 
+namespace Twilio.Rest.Notify.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateNotificationOptions
     /// </summary>
-    public class CreateNotificationOptions : IOptions<NotificationResource> 
+    public class CreateNotificationOptions : IOptions<NotificationResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under

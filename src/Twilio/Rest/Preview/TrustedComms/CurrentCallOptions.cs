@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.TrustedComms 
+namespace Twilio.Rest.Preview.TrustedComms
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a current call given the originating and terminating number.
     /// </summary>
-    public class FetchCurrentCallOptions : IOptions<CurrentCallResource> 
+    public class FetchCurrentCallOptions : IOptions<CurrentCallResource>
     {
         /// <summary>
         /// The originating Phone Number

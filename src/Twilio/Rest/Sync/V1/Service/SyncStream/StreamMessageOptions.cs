@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Sync.V1.Service.SyncStream 
+namespace Twilio.Rest.Sync.V1.Service.SyncStream
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// Create a new Stream Message.
     /// </summary>
-    public class CreateStreamMessageOptions : IOptions<StreamMessageResource> 
+    public class CreateStreamMessageOptions : IOptions<StreamMessageResource>
     {
         /// <summary>
         /// The service_sid

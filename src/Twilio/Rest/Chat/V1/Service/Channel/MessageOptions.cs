@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Chat.V1.Service.Channel 
+namespace Twilio.Rest.Chat.V1.Service.Channel
 {
 
     /// <summary>
     /// FetchMessageOptions
     /// </summary>
-    public class FetchMessageOptions : IOptions<MessageResource> 
+    public class FetchMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Service to fetch the resource from
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
     /// <summary>
     /// CreateMessageOptions
     /// </summary>
-    public class CreateMessageOptions : IOptions<MessageResource> 
+    public class CreateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Service to create the resource under
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
     /// <summary>
     /// ReadMessageOptions
     /// </summary>
-    public class ReadMessageOptions : ReadOptions<MessageResource> 
+    public class ReadMessageOptions : ReadOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Service to read the resources from
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
     /// <summary>
     /// DeleteMessageOptions
     /// </summary>
-    public class DeleteMessageOptions : IOptions<MessageResource> 
+    public class DeleteMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Service to delete the resource from
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
     /// <summary>
     /// UpdateMessageOptions
     /// </summary>
-    public class UpdateMessageOptions : IOptions<MessageResource> 
+    public class UpdateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
         /// The SID of the Service to update the resource from

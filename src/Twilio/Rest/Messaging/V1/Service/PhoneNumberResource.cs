@@ -4,7 +4,7 @@
 ///       /       /
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-/// 
+///
 /// PhoneNumberResource
 /// </summary>
 
@@ -17,10 +17,10 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Messaging.V1.Service 
+namespace Twilio.Rest.Messaging.V1.Service
 {
 
-    public class PhoneNumberResource : Resource 
+    public class PhoneNumberResource : Resource
     {
         private static Request BuildCreateRequest(CreatePhoneNumberOptions options, ITwilioRestClient client)
         {
@@ -38,7 +38,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Create PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
+        /// <returns> A single instance of PhoneNumber </returns>
         public static PhoneNumberResource Create(CreatePhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -52,8 +52,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Create PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(CreatePhoneNumberOptions options, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(CreatePhoneNumberOptions options,
                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -68,9 +68,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="phoneNumberSid"> Phone Number SID for the Phone Number being added to the Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
-        public static PhoneNumberResource Create(string pathServiceSid, 
-                                                 string phoneNumberSid, 
+        /// <returns> A single instance of PhoneNumber </returns>
+        public static PhoneNumberResource Create(string pathServiceSid,
+                                                 string phoneNumberSid,
                                                  ITwilioRestClient client = null)
         {
             var options = new CreatePhoneNumberOptions(pathServiceSid, phoneNumberSid);
@@ -84,9 +84,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="phoneNumberSid"> Phone Number SID for the Phone Number being added to the Service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathServiceSid, 
-                                                                                         string phoneNumberSid, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> CreateAsync(string pathServiceSid,
+                                                                                         string phoneNumberSid,
                                                                                          ITwilioRestClient client = null)
         {
             var options = new CreatePhoneNumberOptions(pathServiceSid, phoneNumberSid);
@@ -110,7 +110,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
+        /// <returns> A single instance of PhoneNumber </returns>
         public static bool Delete(DeletePhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -124,8 +124,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Delete PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePhoneNumberOptions options, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeletePhoneNumberOptions options,
                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
+        /// <returns> A single instance of PhoneNumber </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new DeletePhoneNumberOptions(pathServiceSid, pathSid);
@@ -154,9 +154,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid, 
-                                                                          string pathSid, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
             var options = new DeletePhoneNumberOptions(pathServiceSid, pathSid);
@@ -180,7 +180,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Read PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
+        /// <returns> A single instance of PhoneNumber </returns>
         public static ResourceSet<PhoneNumberResource> Read(ReadPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -196,8 +196,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Read PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(ReadPhoneNumberOptions options, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(ReadPhoneNumberOptions options,
                                                                                                     ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -215,10 +215,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
-        public static ResourceSet<PhoneNumberResource> Read(string pathServiceSid, 
-                                                            int? pageSize = null, 
-                                                            long? limit = null, 
+        /// <returns> A single instance of PhoneNumber </returns>
+        public static ResourceSet<PhoneNumberResource> Read(string pathServiceSid,
+                                                            int? pageSize = null,
+                                                            long? limit = null,
                                                             ITwilioRestClient client = null)
         {
             var options = new ReadPhoneNumberOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -233,10 +233,10 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(string pathServiceSid, 
-                                                                                                    int? pageSize = null, 
-                                                                                                    long? limit = null, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<PhoneNumberResource>> ReadAsync(string pathServiceSid,
+                                                                                                    int? pageSize = null,
+                                                                                                    long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
             var options = new ReadPhoneNumberOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
@@ -249,7 +249,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<PhoneNumberResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
+        /// <returns> The next page of records </returns>
         public static Page<PhoneNumberResource> NextPage(Page<PhoneNumberResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -288,7 +288,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
+        /// <returns> The previous page of records </returns>
         public static Page<PhoneNumberResource> PreviousPage(Page<PhoneNumberResource> page, ITwilioRestClient client)
         {
             var request = new Request(
@@ -319,7 +319,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
+        /// <returns> A single instance of PhoneNumber </returns>
         public static PhoneNumberResource Fetch(FetchPhoneNumberOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -333,8 +333,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         /// <param name="options"> Fetch PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(FetchPhoneNumberOptions options,
                                                                                         ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -349,7 +349,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of PhoneNumber </returns> 
+        /// <returns> A single instance of PhoneNumber </returns>
         public static PhoneNumberResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathServiceSid, pathSid);
@@ -363,9 +363,9 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of PhoneNumber </returns> 
-        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathServiceSid, 
-                                                                                        string pathSid, 
+        /// <returns> Task that resolves to A single instance of PhoneNumber </returns>
+        public static async System.Threading.Tasks.Task<PhoneNumberResource> FetchAsync(string pathServiceSid,
+                                                                                        string pathSid,
                                                                                         ITwilioRestClient client = null)
         {
             var options = new FetchPhoneNumberOptions(pathServiceSid, pathSid);
@@ -377,7 +377,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// Converts a JSON string into a PhoneNumberResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> PhoneNumberResource object represented by the provided JSON </returns> 
+        /// <returns> PhoneNumberResource object represented by the provided JSON </returns>
         public static PhoneNumberResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

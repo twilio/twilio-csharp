@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Autopilot.V1.Assistant.Task 
+namespace Twilio.Rest.Autopilot.V1.Assistant.Task
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchFieldOptions
     /// </summary>
-    public class FetchFieldOptions : IOptions<FieldResource> 
+    public class FetchFieldOptions : IOptions<FieldResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task associated with the resource to fetch
@@ -60,10 +60,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadFieldOptions
     /// </summary>
-    public class ReadFieldOptions : ReadOptions<FieldResource> 
+    public class ReadFieldOptions : ReadOptions<FieldResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task associated with the resources to read.
@@ -105,10 +105,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateFieldOptions
     /// </summary>
-    public class CreateFieldOptions : IOptions<FieldResource> 
+    public class CreateFieldOptions : IOptions<FieldResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task associated with the new resource
@@ -167,10 +167,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteFieldOptions
     /// </summary>
-    public class DeleteFieldOptions : IOptions<FieldResource> 
+    public class DeleteFieldOptions : IOptions<FieldResource>
     {
         /// <summary>
         /// The SID of the Assistant that is the parent of the Task associated with the resources to delete

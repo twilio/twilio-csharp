@@ -8,15 +8,15 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Sync.V1.Service 
+namespace Twilio.Rest.Sync.V1.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// FetchSyncMapOptions
     /// </summary>
-    public class FetchSyncMapOptions : IOptions<SyncMapResource> 
+    public class FetchSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
         /// The service_sid
@@ -50,10 +50,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// DeleteSyncMapOptions
     /// </summary>
-    public class DeleteSyncMapOptions : IOptions<SyncMapResource> 
+    public class DeleteSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
         /// The service_sid
@@ -87,10 +87,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// CreateSyncMapOptions
     /// </summary>
-    public class CreateSyncMapOptions : IOptions<SyncMapResource> 
+    public class CreateSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
         /// The service_sid
@@ -145,10 +145,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// UpdateSyncMapOptions
     /// </summary>
-    public class UpdateSyncMapOptions : IOptions<SyncMapResource> 
+    public class UpdateSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
         /// The service_sid
@@ -200,10 +200,10 @@ namespace Twilio.Rest.Sync.V1.Service
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    /// 
+    ///
     /// ReadSyncMapOptions
     /// </summary>
-    public class ReadSyncMapOptions : ReadOptions<SyncMapResource> 
+    public class ReadSyncMapOptions : ReadOptions<SyncMapResource>
     {
         /// <summary>
         /// The service_sid

@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker 
+namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
 {
 
     /// <summary>
     /// ReadWorkerChannelOptions
     /// </summary>
-    public class ReadWorkerChannelOptions : ReadOptions<WorkerChannelResource> 
+    public class ReadWorkerChannelOptions : ReadOptions<WorkerChannelResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     /// <summary>
     /// FetchWorkerChannelOptions
     /// </summary>
-    public class FetchWorkerChannelOptions : IOptions<WorkerChannelResource> 
+    public class FetchWorkerChannelOptions : IOptions<WorkerChannelResource>
     {
         /// <summary>
         /// The workspace_sid
@@ -95,7 +95,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     /// <summary>
     /// UpdateWorkerChannelOptions
     /// </summary>
-    public class UpdateWorkerChannelOptions : IOptions<WorkerChannelResource> 
+    public class UpdateWorkerChannelOptions : IOptions<WorkerChannelResource>
     {
         /// <summary>
         /// The workspace_sid

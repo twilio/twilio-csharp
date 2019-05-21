@@ -12,15 +12,15 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Client TwiML Noun
     /// </summary>
-    public class Client : TwiML 
+    public class Client : TwiML
     {
-        public sealed class EventEnum : StringEnum 
+        public sealed class EventEnum : StringEnum
         {
             private EventEnum(string value) : base(value) {}
             public EventEnum() {}
@@ -69,11 +69,11 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackEvent"> Events to trigger status callback </param>
         /// <param name="statusCallback"> Status Callback URL </param>
         /// <param name="statusCallbackMethod"> Status Callback URL Method </param>
-        public Client(string identity = null, 
-                      Uri url = null, 
-                      Twilio.Http.HttpMethod method = null, 
-                      List<Client.EventEnum> statusCallbackEvent = null, 
-                      Uri statusCallback = null, 
+        public Client(string identity = null,
+                      Uri url = null,
+                      Twilio.Http.HttpMethod method = null,
+                      List<Client.EventEnum> statusCallbackEvent = null,
+                      Uri statusCallback = null,
                       Twilio.Http.HttpMethod statusCallbackMethod = null) : base("Client")
         {
             this.IdentityAttribute = identity;

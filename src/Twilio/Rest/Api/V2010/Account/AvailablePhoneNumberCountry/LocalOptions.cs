@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry 
+namespace Twilio.Rest.Api.V2010.Account.AvailablePhoneNumberCountry
 {
 
     /// <summary>
     /// ReadLocalOptions
     /// </summary>
-    public class ReadLocalOptions : ReadOptions<LocalResource> 
+    public class ReadLocalOptions : ReadOptions<LocalResource>
     {
         /// <summary>
         /// The SID of the Account requesting the AvailablePhoneNumber resources

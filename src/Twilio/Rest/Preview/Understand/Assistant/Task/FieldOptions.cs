@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.Understand.Assistant.Task 
+namespace Twilio.Rest.Preview.Understand.Assistant.Task
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// FetchFieldOptions
     /// </summary>
-    public class FetchFieldOptions : IOptions<FieldResource> 
+    public class FetchFieldOptions : IOptions<FieldResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -58,10 +58,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// ReadFieldOptions
     /// </summary>
-    public class ReadFieldOptions : ReadOptions<FieldResource> 
+    public class ReadFieldOptions : ReadOptions<FieldResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.
@@ -101,10 +101,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// CreateFieldOptions
     /// </summary>
-    public class CreateFieldOptions : IOptions<FieldResource> 
+    public class CreateFieldOptions : IOptions<FieldResource>
     {
         /// <summary>
         /// The unique ID of the parent Assistant.
@@ -163,10 +163,10 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// DeleteFieldOptions
     /// </summary>
-    public class DeleteFieldOptions : IOptions<FieldResource> 
+    public class DeleteFieldOptions : IOptions<FieldResource>
     {
         /// <summary>
         /// The unique ID of the Assistant.

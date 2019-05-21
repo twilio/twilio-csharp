@@ -14,11 +14,11 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Rest.Voice.V1.DialingPermissions;
 
-namespace Twilio.Tests.Rest.Voice.V1.DialingPermissions 
+namespace Twilio.Tests.Rest.Voice.V1.DialingPermissions
 {
 
     [TestFixture]
-    public class SettingsTest : TwilioTest 
+    public class SettingsTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()

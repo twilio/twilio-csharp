@@ -16,12 +16,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.FlexApi.V1 
+namespace Twilio.Rest.FlexApi.V1
 {
 
-    public class ConfigurationResource : Resource 
+    public class ConfigurationResource : Resource
     {
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -51,7 +51,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Fetch Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Configuration </returns> 
+        /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Fetch(FetchConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -65,8 +65,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Fetch Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Configuration </returns> 
-        public static async System.Threading.Tasks.Task<ConfigurationResource> FetchAsync(FetchConfigurationOptions options, 
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
+        public static async System.Threading.Tasks.Task<ConfigurationResource> FetchAsync(FetchConfigurationOptions options,
                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -80,7 +80,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="uiVersion"> Pinned UI version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Configuration </returns> 
+        /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Fetch(string uiVersion = null, ITwilioRestClient client = null)
         {
             var options = new FetchConfigurationOptions(){UiVersion = uiVersion};
@@ -93,8 +93,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="uiVersion"> Pinned UI version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Configuration </returns> 
-        public static async System.Threading.Tasks.Task<ConfigurationResource> FetchAsync(string uiVersion = null, 
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
+        public static async System.Threading.Tasks.Task<ConfigurationResource> FetchAsync(string uiVersion = null,
                                                                                           ITwilioRestClient client = null)
         {
             var options = new FetchConfigurationOptions(){UiVersion = uiVersion};
@@ -118,7 +118,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Create Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Configuration </returns> 
+        /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Create(CreateConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -132,8 +132,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Create Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Configuration </returns> 
-        public static async System.Threading.Tasks.Task<ConfigurationResource> CreateAsync(CreateConfigurationOptions options, 
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
+        public static async System.Threading.Tasks.Task<ConfigurationResource> CreateAsync(CreateConfigurationOptions options,
                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -146,7 +146,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// create
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Configuration </returns> 
+        /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Create(ITwilioRestClient client = null)
         {
             var options = new CreateConfigurationOptions();
@@ -158,7 +158,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// create
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Configuration </returns> 
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
         public static async System.Threading.Tasks.Task<ConfigurationResource> CreateAsync(ITwilioRestClient client = null)
         {
             var options = new CreateConfigurationOptions();
@@ -182,7 +182,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Update Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Configuration </returns> 
+        /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Update(UpdateConfigurationOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -196,8 +196,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         /// <param name="options"> Update Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Configuration </returns> 
-        public static async System.Threading.Tasks.Task<ConfigurationResource> UpdateAsync(UpdateConfigurationOptions options, 
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
+        public static async System.Threading.Tasks.Task<ConfigurationResource> UpdateAsync(UpdateConfigurationOptions options,
                                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -210,7 +210,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// update
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Configuration </returns> 
+        /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Update(ITwilioRestClient client = null)
         {
             var options = new UpdateConfigurationOptions();
@@ -222,7 +222,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// update
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Configuration </returns> 
+        /// <returns> Task that resolves to A single instance of Configuration </returns>
         public static async System.Threading.Tasks.Task<ConfigurationResource> UpdateAsync(ITwilioRestClient client = null)
         {
             var options = new UpdateConfigurationOptions();
@@ -234,7 +234,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// Converts a JSON string into a ConfigurationResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> ConfigurationResource object represented by the provided JSON </returns> 
+        /// <returns> ConfigurationResource object represented by the provided JSON </returns>
         public static ConfigurationResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

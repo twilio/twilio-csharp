@@ -10,13 +10,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Connect TwiML Verb
     /// </summary>
-    public class Connect : TwiML 
+    public class Connect : TwiML
     {
         /// <summary>
         /// Action URL

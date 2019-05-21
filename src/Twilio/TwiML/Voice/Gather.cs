@@ -12,15 +12,15 @@ using System.Xml.Linq;
 using Twilio.Converters;
 using Twilio.Types;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Gather TwiML Verb
     /// </summary>
-    public class Gather : TwiML 
+    public class Gather : TwiML
     {
-        public sealed class InputEnum : StringEnum 
+        public sealed class InputEnum : StringEnum
         {
             private InputEnum(string value) : base(value) {}
             public InputEnum() {}
@@ -33,7 +33,7 @@ namespace Twilio.TwiML.Voice
             public static readonly InputEnum Speech = new InputEnum("speech");
         }
 
-        public sealed class LanguageEnum : StringEnum 
+        public sealed class LanguageEnum : StringEnum
         {
             private LanguageEnum(string value) : base(value) {}
             public LanguageEnum() {}
@@ -248,21 +248,21 @@ namespace Twilio.TwiML.Voice
         /// <param name="bargeIn"> Stop playing media upon speech </param>
         /// <param name="debug"> Allow debug for gather </param>
         /// <param name="actionOnEmptyResult"> Force webhook to the action URL event if there is no input </param>
-        public Gather(List<Gather.InputEnum> input = null, 
-                      Uri action = null, 
-                      Twilio.Http.HttpMethod method = null, 
-                      int? timeout = null, 
-                      string speechTimeout = null, 
-                      int? maxSpeechTime = null, 
-                      bool? profanityFilter = null, 
-                      string finishOnKey = null, 
-                      int? numDigits = null, 
-                      Uri partialResultCallback = null, 
-                      Twilio.Http.HttpMethod partialResultCallbackMethod = null, 
-                      Gather.LanguageEnum language = null, 
-                      string hints = null, 
-                      bool? bargeIn = null, 
-                      bool? debug = null, 
+        public Gather(List<Gather.InputEnum> input = null,
+                      Uri action = null,
+                      Twilio.Http.HttpMethod method = null,
+                      int? timeout = null,
+                      string speechTimeout = null,
+                      int? maxSpeechTime = null,
+                      bool? profanityFilter = null,
+                      string finishOnKey = null,
+                      int? numDigits = null,
+                      Uri partialResultCallback = null,
+                      Twilio.Http.HttpMethod partialResultCallbackMethod = null,
+                      Gather.LanguageEnum language = null,
+                      string hints = null,
+                      bool? bargeIn = null,
+                      bool? debug = null,
                       bool? actionOnEmptyResult = null) : base("Gather")
         {
             this.Input = input;
@@ -374,9 +374,9 @@ namespace Twilio.TwiML.Voice
         /// <param name="voice"> Voice to use </param>
         /// <param name="loop"> Times to loop message </param>
         /// <param name="language"> Message langauge </param>
-        public Gather Say(string message = null, 
-                          Say.VoiceEnum voice = null, 
-                          int? loop = null, 
+        public Gather Say(string message = null,
+                          Say.VoiceEnum voice = null,
+                          int? loop = null,
                           Say.LanguageEnum language = null)
         {
             var newChild = new Say(message, voice, loop, language);

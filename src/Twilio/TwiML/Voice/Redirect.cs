@@ -10,13 +10,13 @@ using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
 
-namespace Twilio.TwiML.Voice 
+namespace Twilio.TwiML.Voice
 {
 
     /// <summary>
     /// Redirect TwiML Verb
     /// </summary>
-    public class Redirect : TwiML 
+    public class Redirect : TwiML
     {
         /// <summary>
         /// Redirect URL

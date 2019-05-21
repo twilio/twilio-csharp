@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
-/// 
+///
 /// DependentHostedNumberOrderResource
 /// </summary>
 
@@ -19,12 +19,12 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument 
+namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
 {
 
-    public class DependentHostedNumberOrderResource : Resource 
+    public class DependentHostedNumberOrderResource : Resource
     {
-        public sealed class StatusEnum : StringEnum 
+        public sealed class StatusEnum : StringEnum
         {
             private StatusEnum(string value) : base(value) {}
             public StatusEnum() {}
@@ -44,7 +44,7 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
             public static readonly StatusEnum ActionRequired = new StatusEnum("action-required");
         }
 
-        public sealed class VerificationTypeEnum : StringEnum 
+        public sealed class VerificationTypeEnum : StringEnum
         {
             private VerificationTypeEnum(string value) : base(value) {}
             public VerificationTypeEnum() {}
@@ -73,8 +73,8 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// </summary>
         /// <param name="options"> Read DependentHostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DependentHostedNumberOrder </returns> 
-        public static ResourceSet<DependentHostedNumberOrderResource> Read(ReadDependentHostedNumberOrderOptions options, 
+        /// <returns> A single instance of DependentHostedNumberOrder </returns>
+        public static ResourceSet<DependentHostedNumberOrderResource> Read(ReadDependentHostedNumberOrderOptions options,
                                                                            ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -90,8 +90,8 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// </summary>
         /// <param name="options"> Read DependentHostedNumberOrder parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DependentHostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DependentHostedNumberOrderResource>> ReadAsync(ReadDependentHostedNumberOrderOptions options, 
+        /// <returns> Task that resolves to A single instance of DependentHostedNumberOrder </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DependentHostedNumberOrderResource>> ReadAsync(ReadDependentHostedNumberOrderOptions options,
                                                                                                                    ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -114,15 +114,15 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of DependentHostedNumberOrder </returns> 
-        public static ResourceSet<DependentHostedNumberOrderResource> Read(string pathSigningDocumentSid, 
-                                                                           DependentHostedNumberOrderResource.StatusEnum status = null, 
-                                                                           Types.PhoneNumber phoneNumber = null, 
-                                                                           string incomingPhoneNumberSid = null, 
-                                                                           string friendlyName = null, 
-                                                                           string uniqueName = null, 
-                                                                           int? pageSize = null, 
-                                                                           long? limit = null, 
+        /// <returns> A single instance of DependentHostedNumberOrder </returns>
+        public static ResourceSet<DependentHostedNumberOrderResource> Read(string pathSigningDocumentSid,
+                                                                           DependentHostedNumberOrderResource.StatusEnum status = null,
+                                                                           Types.PhoneNumber phoneNumber = null,
+                                                                           string incomingPhoneNumberSid = null,
+                                                                           string friendlyName = null,
+                                                                           string uniqueName = null,
+                                                                           int? pageSize = null,
+                                                                           long? limit = null,
                                                                            ITwilioRestClient client = null)
         {
             var options = new ReadDependentHostedNumberOrderOptions(pathSigningDocumentSid){Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
@@ -142,15 +142,15 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of DependentHostedNumberOrder </returns> 
-        public static async System.Threading.Tasks.Task<ResourceSet<DependentHostedNumberOrderResource>> ReadAsync(string pathSigningDocumentSid, 
-                                                                                                                   DependentHostedNumberOrderResource.StatusEnum status = null, 
-                                                                                                                   Types.PhoneNumber phoneNumber = null, 
-                                                                                                                   string incomingPhoneNumberSid = null, 
-                                                                                                                   string friendlyName = null, 
-                                                                                                                   string uniqueName = null, 
-                                                                                                                   int? pageSize = null, 
-                                                                                                                   long? limit = null, 
+        /// <returns> Task that resolves to A single instance of DependentHostedNumberOrder </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<DependentHostedNumberOrderResource>> ReadAsync(string pathSigningDocumentSid,
+                                                                                                                   DependentHostedNumberOrderResource.StatusEnum status = null,
+                                                                                                                   Types.PhoneNumber phoneNumber = null,
+                                                                                                                   string incomingPhoneNumberSid = null,
+                                                                                                                   string friendlyName = null,
+                                                                                                                   string uniqueName = null,
+                                                                                                                   int? pageSize = null,
+                                                                                                                   long? limit = null,
                                                                                                                    ITwilioRestClient client = null)
         {
             var options = new ReadDependentHostedNumberOrderOptions(pathSigningDocumentSid){Status = status, PhoneNumber = phoneNumber, IncomingPhoneNumberSid = incomingPhoneNumberSid, FriendlyName = friendlyName, UniqueName = uniqueName, PageSize = pageSize, Limit = limit};
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// </summary>
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The target page of records </returns> 
+        /// <returns> The target page of records </returns>
         public static Page<DependentHostedNumberOrderResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
@@ -182,8 +182,8 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The next page of records </returns> 
-        public static Page<DependentHostedNumberOrderResource> NextPage(Page<DependentHostedNumberOrderResource> page, 
+        /// <returns> The next page of records </returns>
+        public static Page<DependentHostedNumberOrderResource> NextPage(Page<DependentHostedNumberOrderResource> page,
                                                                         ITwilioRestClient client)
         {
             var request = new Request(
@@ -203,8 +203,8 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// </summary>
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> The previous page of records </returns> 
-        public static Page<DependentHostedNumberOrderResource> PreviousPage(Page<DependentHostedNumberOrderResource> page, 
+        /// <returns> The previous page of records </returns>
+        public static Page<DependentHostedNumberOrderResource> PreviousPage(Page<DependentHostedNumberOrderResource> page,
                                                                             ITwilioRestClient client)
         {
             var request = new Request(
@@ -223,7 +223,7 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
         /// Converts a JSON string into a DependentHostedNumberOrderResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> DependentHostedNumberOrderResource object represented by the provided JSON </returns> 
+        /// <returns> DependentHostedNumberOrderResource object represented by the provided JSON </returns>
         public static DependentHostedNumberOrderResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime

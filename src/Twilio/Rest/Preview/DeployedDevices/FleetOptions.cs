@@ -8,16 +8,16 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.DeployedDevices 
+namespace Twilio.Rest.Preview.DeployedDevices
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Fetch information about a specific Fleet in your account.
     /// </summary>
-    public class FetchFleetOptions : IOptions<FleetResource> 
+    public class FetchFleetOptions : IOptions<FleetResource>
     {
         /// <summary>
         /// A string that uniquely identifies the Fleet.
@@ -46,11 +46,11 @@ namespace Twilio.Rest.Preview.DeployedDevices
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Delete a specific Fleet from your account, also destroys all nested resources: Devices, Deployments, Certificates,
     /// Keys.
     /// </summary>
-    public class DeleteFleetOptions : IOptions<FleetResource> 
+    public class DeleteFleetOptions : IOptions<FleetResource>
     {
         /// <summary>
         /// A string that uniquely identifies the Fleet.
@@ -79,10 +79,10 @@ namespace Twilio.Rest.Preview.DeployedDevices
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Create a new Fleet for scoping of deployed devices within your account.
     /// </summary>
-    public class CreateFleetOptions : IOptions<FleetResource> 
+    public class CreateFleetOptions : IOptions<FleetResource>
     {
         /// <summary>
         /// A human readable description for this Fleet.
@@ -107,10 +107,10 @@ namespace Twilio.Rest.Preview.DeployedDevices
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Retrieve a list of all Fleets belonging to your account.
     /// </summary>
-    public class ReadFleetOptions : ReadOptions<FleetResource> 
+    public class ReadFleetOptions : ReadOptions<FleetResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -130,10 +130,10 @@ namespace Twilio.Rest.Preview.DeployedDevices
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
-    /// 
+    ///
     /// Update the friendly name property of a specific Fleet in your account.
     /// </summary>
-    public class UpdateFleetOptions : IOptions<FleetResource> 
+    public class UpdateFleetOptions : IOptions<FleetResource>
     {
         /// <summary>
         /// A string that uniquely identifies the Fleet.

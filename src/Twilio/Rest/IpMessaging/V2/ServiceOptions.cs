@@ -9,13 +9,13 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.IpMessaging.V2 
+namespace Twilio.Rest.IpMessaging.V2
 {
 
     /// <summary>
     /// FetchServiceOptions
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource> 
+    public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -44,7 +44,7 @@ namespace Twilio.Rest.IpMessaging.V2
     /// <summary>
     /// DeleteServiceOptions
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource> 
+    public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource
@@ -73,7 +73,7 @@ namespace Twilio.Rest.IpMessaging.V2
     /// <summary>
     /// CreateServiceOptions
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource> 
+    public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// A string to describe the resource
@@ -107,7 +107,7 @@ namespace Twilio.Rest.IpMessaging.V2
     /// <summary>
     /// ReadServiceOptions
     /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource> 
+    public class ReadServiceOptions : ReadOptions<ServiceResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -127,7 +127,7 @@ namespace Twilio.Rest.IpMessaging.V2
     /// <summary>
     /// UpdateServiceOptions
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource> 
+    public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
         /// The unique string that identifies the resource

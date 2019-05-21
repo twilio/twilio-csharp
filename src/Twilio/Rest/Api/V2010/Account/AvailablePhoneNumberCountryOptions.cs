@@ -8,13 +8,13 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Api.V2010.Account 
+namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
     /// ReadAvailablePhoneNumberCountryOptions
     /// </summary>
-    public class ReadAvailablePhoneNumberCountryOptions : ReadOptions<AvailablePhoneNumberCountryResource> 
+    public class ReadAvailablePhoneNumberCountryOptions : ReadOptions<AvailablePhoneNumberCountryResource>
     {
         /// <summary>
         /// The SID of the Account requesting the available phone number Country resources
@@ -39,7 +39,7 @@ namespace Twilio.Rest.Api.V2010.Account
     /// <summary>
     /// FetchAvailablePhoneNumberCountryOptions
     /// </summary>
-    public class FetchAvailablePhoneNumberCountryOptions : IOptions<AvailablePhoneNumberCountryResource> 
+    public class FetchAvailablePhoneNumberCountryOptions : IOptions<AvailablePhoneNumberCountryResource>
     {
         /// <summary>
         /// The SID of the Account requesting the available phone number Country resource
