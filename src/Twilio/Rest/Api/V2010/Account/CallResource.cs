@@ -146,7 +146,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns>
         public static CallResource Create(IEndpoint to,
-                                          Types.PhoneNumber from,
+                                          IEndpoint from,
                                           string pathAccountSid = null,
                                           Uri url = null,
                                           string applicationSid = null,
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
         public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to,
-                                                                                  Types.PhoneNumber from,
+                                                                                  IEndpoint from,
                                                                                   string pathAccountSid = null,
                                                                                   Uri url = null,
                                                                                   string applicationSid = null,

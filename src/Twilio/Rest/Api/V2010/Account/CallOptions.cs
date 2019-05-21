@@ -29,7 +29,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Twilio number from which to originate the call
         /// </summary>
-        public Types.PhoneNumber From { get; }
+        public IEndpoint From { get; }
         /// <summary>
         /// The absolute URL that returns TwiML for this call
         /// </summary>
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         /// <param name="to"> Phone number, SIP address, or client identifier to call </param>
         /// <param name="from"> Twilio number from which to originate the call </param>
-        public CreateCallOptions(IEndpoint to, Types.PhoneNumber from)
+        public CreateCallOptions(IEndpoint to, IEndpoint from)
         {
             To = to;
             From = from;
