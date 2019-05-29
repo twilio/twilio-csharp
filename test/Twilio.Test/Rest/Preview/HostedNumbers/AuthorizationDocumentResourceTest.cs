@@ -121,7 +121,7 @@ namespace Twilio.Tests.Rest.Preview.HostedNumbers
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/HostedNumbers/AuthorizationDocuments?PageSize=50&Page=0\",\"key\": \"items\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/AuthorizationDocuments?PageSize=50&Page=0\"},\"items\": []}"
+                                         "{\"meta\": {\"first_page_url\": \"https://preview.twilio.com/HostedNumbers/AuthorizationDocuments?Status=signed&Email=test%2Bhosted%40twilio.com&PageSize=50&Page=0\",\"key\": \"items\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/HostedNumbers/AuthorizationDocuments?Status=signed&Email=test%2Bhosted%40twilio.com&PageSize=50&Page=0\"},\"items\": []}"
                                      ));
 
             var response = AuthorizationDocumentResource.Read(client: twilioRestClient);

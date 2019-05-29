@@ -46,6 +46,7 @@ namespace Twilio.Rest.Verify.V2.Service
             }
 
             public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+            public static readonly StatusEnum Approved = new StatusEnum("approved");
         }
 
         private static Request BuildCreateRequest(CreateVerificationOptions options, ITwilioRestClient client)

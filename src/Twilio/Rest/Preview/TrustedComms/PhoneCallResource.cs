@@ -66,19 +66,65 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Initiates a Branded Call.
         /// </summary>
-        /// <param name="from"> The originating Phone Number </param>
+        /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="to"> The terminating Phone Number </param>
-        /// <param name="url"> The Twiml URL </param>
         /// <param name="reason"> The business reason for this phone call </param>
+        /// <param name="applicationSid"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="callerId"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="fallbackMethod"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="fallbackUrl"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetection"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetectionSilenceTimeout"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetectionSpeechEndThreshold"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetectionSpeechThreshold"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetectionTimeout"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="method"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="record"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="recordingChannels"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="recordingStatusCallback"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="recordingStatusCallbackEvent"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="recordingStatusCallbackMethod"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="sendDigits"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="sipAuthPassword"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="sipAuthUsername"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="statusCallback"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="statusCallbackEvent"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="statusCallbackMethod"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="timeout"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="trim"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="url"> Refers to the Voice API Initiate Call parameter </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PhoneCall </returns>
         public static PhoneCallResource Create(string from,
                                                string to,
-                                               string url,
                                                string reason = null,
+                                               string applicationSid = null,
+                                               string callerId = null,
+                                               Twilio.Http.HttpMethod fallbackMethod = null,
+                                               Uri fallbackUrl = null,
+                                               string machineDetection = null,
+                                               int? machineDetectionSilenceTimeout = null,
+                                               int? machineDetectionSpeechEndThreshold = null,
+                                               int? machineDetectionSpeechThreshold = null,
+                                               int? machineDetectionTimeout = null,
+                                               Twilio.Http.HttpMethod method = null,
+                                               bool? record = null,
+                                               string recordingChannels = null,
+                                               string recordingStatusCallback = null,
+                                               List<string> recordingStatusCallbackEvent = null,
+                                               Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                                               string sendDigits = null,
+                                               string sipAuthPassword = null,
+                                               string sipAuthUsername = null,
+                                               Uri statusCallback = null,
+                                               List<string> statusCallbackEvent = null,
+                                               Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                               int? timeout = null,
+                                               string trim = null,
+                                               Uri url = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new CreatePhoneCallOptions(from, to, url){Reason = reason};
+            var options = new CreatePhoneCallOptions(from, to){Reason = reason, ApplicationSid = applicationSid, CallerId = callerId, FallbackMethod = fallbackMethod, FallbackUrl = fallbackUrl, MachineDetection = machineDetection, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionTimeout = machineDetectionTimeout, Method = method, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SendDigits = sendDigits, SipAuthPassword = sipAuthPassword, SipAuthUsername = sipAuthUsername, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, Timeout = timeout, Trim = trim, Url = url};
             return Create(options, client);
         }
 
@@ -86,19 +132,65 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Initiates a Branded Call.
         /// </summary>
-        /// <param name="from"> The originating Phone Number </param>
+        /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="to"> The terminating Phone Number </param>
-        /// <param name="url"> The Twiml URL </param>
         /// <param name="reason"> The business reason for this phone call </param>
+        /// <param name="applicationSid"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="callerId"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="fallbackMethod"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="fallbackUrl"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetection"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetectionSilenceTimeout"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetectionSpeechEndThreshold"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetectionSpeechThreshold"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="machineDetectionTimeout"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="method"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="record"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="recordingChannels"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="recordingStatusCallback"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="recordingStatusCallbackEvent"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="recordingStatusCallbackMethod"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="sendDigits"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="sipAuthPassword"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="sipAuthUsername"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="statusCallback"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="statusCallbackEvent"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="statusCallbackMethod"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="timeout"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="trim"> Refers to the Voice API Initiate Call parameter </param>
+        /// <param name="url"> Refers to the Voice API Initiate Call parameter </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PhoneCall </returns>
         public static async System.Threading.Tasks.Task<PhoneCallResource> CreateAsync(string from,
                                                                                        string to,
-                                                                                       string url,
                                                                                        string reason = null,
+                                                                                       string applicationSid = null,
+                                                                                       string callerId = null,
+                                                                                       Twilio.Http.HttpMethod fallbackMethod = null,
+                                                                                       Uri fallbackUrl = null,
+                                                                                       string machineDetection = null,
+                                                                                       int? machineDetectionSilenceTimeout = null,
+                                                                                       int? machineDetectionSpeechEndThreshold = null,
+                                                                                       int? machineDetectionSpeechThreshold = null,
+                                                                                       int? machineDetectionTimeout = null,
+                                                                                       Twilio.Http.HttpMethod method = null,
+                                                                                       bool? record = null,
+                                                                                       string recordingChannels = null,
+                                                                                       string recordingStatusCallback = null,
+                                                                                       List<string> recordingStatusCallbackEvent = null,
+                                                                                       Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
+                                                                                       string sendDigits = null,
+                                                                                       string sipAuthPassword = null,
+                                                                                       string sipAuthUsername = null,
+                                                                                       Uri statusCallback = null,
+                                                                                       List<string> statusCallbackEvent = null,
+                                                                                       Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                       int? timeout = null,
+                                                                                       string trim = null,
+                                                                                       Uri url = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreatePhoneCallOptions(from, to, url){Reason = reason};
+            var options = new CreatePhoneCallOptions(from, to){Reason = reason, ApplicationSid = applicationSid, CallerId = callerId, FallbackMethod = fallbackMethod, FallbackUrl = fallbackUrl, MachineDetection = machineDetection, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionTimeout = machineDetectionTimeout, Method = method, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SendDigits = sendDigits, SipAuthPassword = sipAuthPassword, SipAuthUsername = sipAuthUsername, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, Timeout = timeout, Trim = trim, Url = url};
             return await CreateAsync(options, client);
         }
         #endif

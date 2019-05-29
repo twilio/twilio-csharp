@@ -518,11 +518,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-        /// <summary>
-        /// Queue Instance Subresources
-        /// </summary>
-        [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> SubresourceUris { get; private set; }
 
         private QueueResource()
         {

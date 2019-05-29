@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2019-05-29] Version 5.29.1
+----------------------------
+**Library**
+- [PR #482](https://github.com/twilio/twilio-csharp/pull/482): Add SubscribeRule and SubscribeRulesUpdate. Thanks to [@innerverse](https://github.com/innerverse)!
+- [PR #481](https://github.com/twilio/twilio-csharp/pull/481): Perform case-insensitive check for 'client:' prefix. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #456](https://github.com/twilio/twilio-csharp/pull/456): Updated Twilio.Types.Client implementation of IEndpoint to function as expected. Thanks to [@pwoosam](https://github.com/pwoosam)!
+- [PR #480](https://github.com/twilio/twilio-csharp/pull/480): Update the call create 'from' param to be endpoint type for client identifier support. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Verify**
+- Add `approved` to status enum
+
+
 [2019-05-15] Version 5.29.0
 ----------------------------
 **Library**

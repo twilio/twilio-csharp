@@ -32,12 +32,11 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
             );
             request.AddPostParam("From", Serialize("from"));
             request.AddPostParam("To", Serialize("to"));
-            request.AddPostParam("Url", Serialize("url"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                PhoneCallResource.Create("from", "to", "url", client: twilioRestClient);
+                PhoneCallResource.Create("from", "to", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -55,7 +54,7 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
                                          "{\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"from\": \"+15000000000\",\"to\": \"+573000000000\",\"reason\": \"Hello Jhon, your appointment has been confirmed.\",\"created_at\": \"2019-05-01T20:00:00Z\",\"url\": \"https://preview.twilio.com/TrustedComms/Business/PhoneCalls\"}"
                                      ));
 
-            var response = PhoneCallResource.Create("from", "to", "url", client: twilioRestClient);
+            var response = PhoneCallResource.Create("from", "to", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }
