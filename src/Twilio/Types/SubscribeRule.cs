@@ -5,6 +5,8 @@ using Twilio.Converters;
 /// <summary>
 /// Subscribe Rule - A single Subscribe Rule for a Participant
 ///
+///   For more information see:
+///   <a href="https://www.twilio.com/docs/video/api/track-subscriptions#specifying-sr">Specifying Subscribe Rules</a>
 /// </summary>
 namespace Twilio.Types
 {
@@ -79,10 +81,10 @@ namespace Twilio.Types
         {
             Type = type;
             All = all;
-            Kind = kind;
-            Priority = priority;
             Publisher = publisher;
             Track = track;
+            Kind = kind;
+            Priority = priority;
         }
     }
 }
