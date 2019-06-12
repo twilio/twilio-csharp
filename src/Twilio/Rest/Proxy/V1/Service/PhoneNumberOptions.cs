@@ -109,7 +109,8 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
+    /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be
+    /// returned per page.
     /// </summary>
     public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
     {

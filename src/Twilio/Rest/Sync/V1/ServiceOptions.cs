@@ -19,14 +19,14 @@ namespace Twilio.Rest.Sync.V1
     public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The sid
+        /// A unique identifier for this service instance.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A unique identifier for this service instance. </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,14 +50,14 @@ namespace Twilio.Rest.Sync.V1
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The sid
+        /// A unique identifier for this service instance.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A unique identifier for this service instance. </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -96,6 +96,14 @@ namespace Twilio.Rest.Sync.V1
         /// true or false - determines whether token identities must be granted access to Sync objects via the Permissions API in this Service.
         /// </summary>
         public bool? AclEnabled { get; set; }
+        /// <summary>
+        /// true or false - Determines whether transient disconnections (i.e. an immediate reconnect succeeds) cause reachability webhooks.
+        /// </summary>
+        public bool? ReachabilityDebouncingEnabled { get; set; }
+        /// <summary>
+        /// Determines how long an identity must be offline before reachability webhooks fire.
+        /// </summary>
+        public int? ReachabilityDebouncingWindow { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -121,6 +129,16 @@ namespace Twilio.Rest.Sync.V1
             if (AclEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString().ToLower()));
+            }
+
+            if (ReachabilityDebouncingEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingEnabled", ReachabilityDebouncingEnabled.Value.ToString().ToLower()));
+            }
+
+            if (ReachabilityDebouncingWindow != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingWindow", ReachabilityDebouncingWindow.ToString()));
             }
 
             return p;
@@ -157,7 +175,7 @@ namespace Twilio.Rest.Sync.V1
     public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The sid
+        /// A unique identifier for this service instance.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -176,11 +194,19 @@ namespace Twilio.Rest.Sync.V1
         /// true or false - determines whether token identities must be granted access to Sync objects via the Permissions API in this Service.
         /// </summary>
         public bool? AclEnabled { get; set; }
+        /// <summary>
+        /// true or false - Determines whether transient disconnections (i.e. an immediate reconnect succeeds) cause reachability webhooks.
+        /// </summary>
+        public bool? ReachabilityDebouncingEnabled { get; set; }
+        /// <summary>
+        /// Determines how long an identity must be offline before reachability webhooks fire.
+        /// </summary>
+        public int? ReachabilityDebouncingWindow { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A unique identifier for this service instance. </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -210,6 +236,16 @@ namespace Twilio.Rest.Sync.V1
             if (AclEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("AclEnabled", AclEnabled.Value.ToString().ToLower()));
+            }
+
+            if (ReachabilityDebouncingEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingEnabled", ReachabilityDebouncingEnabled.Value.ToString().ToLower()));
+            }
+
+            if (ReachabilityDebouncingWindow != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingWindow", ReachabilityDebouncingWindow.ToString()));
             }
 
             return p;

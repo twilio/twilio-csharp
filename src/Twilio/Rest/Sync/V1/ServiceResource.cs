@@ -65,7 +65,7 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A unique identifier for this service instance. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A unique identifier for this service instance. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A unique identifier for this service instance. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A unique identifier for this service instance. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -204,15 +204,21 @@ namespace Twilio.Rest.Sync.V1
         ///                                   client endpoints connect to Sync </param>
         /// <param name="aclEnabled"> true or false - determines whether token identities must be granted access to Sync
         ///                  objects via the Permissions API in this Service. </param>
+        /// <param name="reachabilityDebouncingEnabled"> true or false - Determines whether transient disconnections (i.e. an
+        ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
+        /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
+        ///                                    webhooks fire. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName = null,
                                              Uri webhookUrl = null,
                                              bool? reachabilityWebhooksEnabled = null,
                                              bool? aclEnabled = null,
+                                             bool? reachabilityDebouncingEnabled = null,
+                                             int? reachabilityDebouncingWindow = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow};
             return Create(options, client);
         }
 
@@ -226,15 +232,21 @@ namespace Twilio.Rest.Sync.V1
         ///                                   client endpoints connect to Sync </param>
         /// <param name="aclEnabled"> true or false - determines whether token identities must be granted access to Sync
         ///                  objects via the Permissions API in this Service. </param>
+        /// <param name="reachabilityDebouncingEnabled"> true or false - Determines whether transient disconnections (i.e. an
+        ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
+        /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
+        ///                                    webhooks fire. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null,
                                                                                      Uri webhookUrl = null,
                                                                                      bool? reachabilityWebhooksEnabled = null,
                                                                                      bool? aclEnabled = null,
+                                                                                     bool? reachabilityDebouncingEnabled = null,
+                                                                                     int? reachabilityDebouncingWindow = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow};
             return await CreateAsync(options, client);
         }
         #endif
@@ -417,13 +429,17 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A unique identifier for this service instance. </param>
         /// <param name="webhookUrl"> A URL that will receive event updates when objects are manipulated. </param>
         /// <param name="friendlyName"> Human-readable name for this service instance </param>
         /// <param name="reachabilityWebhooksEnabled"> True or false - controls whether this instance fires webhooks when
         ///                                   client endpoints connect to Sync </param>
         /// <param name="aclEnabled"> true or false - determines whether token identities must be granted access to Sync
         ///                  objects via the Permissions API in this Service. </param>
+        /// <param name="reachabilityDebouncingEnabled"> true or false - Determines whether transient disconnections (i.e. an
+        ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
+        /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
+        ///                                    webhooks fire. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -431,9 +447,11 @@ namespace Twilio.Rest.Sync.V1
                                              string friendlyName = null,
                                              bool? reachabilityWebhooksEnabled = null,
                                              bool? aclEnabled = null,
+                                             bool? reachabilityDebouncingEnabled = null,
+                                             int? reachabilityDebouncingWindow = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
+            var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow};
             return Update(options, client);
         }
 
@@ -441,13 +459,17 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A unique identifier for this service instance. </param>
         /// <param name="webhookUrl"> A URL that will receive event updates when objects are manipulated. </param>
         /// <param name="friendlyName"> Human-readable name for this service instance </param>
         /// <param name="reachabilityWebhooksEnabled"> True or false - controls whether this instance fires webhooks when
         ///                                   client endpoints connect to Sync </param>
         /// <param name="aclEnabled"> true or false - determines whether token identities must be granted access to Sync
         ///                  objects via the Permissions API in this Service. </param>
+        /// <param name="reachabilityDebouncingEnabled"> true or false - Determines whether transient disconnections (i.e. an
+        ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
+        /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
+        ///                                    webhooks fire. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -455,9 +477,11 @@ namespace Twilio.Rest.Sync.V1
                                                                                      string friendlyName = null,
                                                                                      bool? reachabilityWebhooksEnabled = null,
                                                                                      bool? aclEnabled = null,
+                                                                                     bool? reachabilityDebouncingEnabled = null,
+                                                                                     int? reachabilityDebouncingWindow = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled};
+            var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -481,7 +505,7 @@ namespace Twilio.Rest.Sync.V1
         }
 
         /// <summary>
-        /// The sid
+        /// A unique identifier for this service instance.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
@@ -530,6 +554,16 @@ namespace Twilio.Rest.Sync.V1
         /// </summary>
         [JsonProperty("acl_enabled")]
         public bool? AclEnabled { get; private set; }
+        /// <summary>
+        /// true or false - Determines whether transient disconnections (i.e. an immediate reconnect succeeds) cause reachability webhooks.
+        /// </summary>
+        [JsonProperty("reachability_debouncing_enabled")]
+        public bool? ReachabilityDebouncingEnabled { get; private set; }
+        /// <summary>
+        /// Determines how long an identity must be offline before reachability webhooks fire.
+        /// </summary>
+        [JsonProperty("reachability_debouncing_window")]
+        public int? ReachabilityDebouncingWindow { get; private set; }
         /// <summary>
         /// The links
         /// </summary>

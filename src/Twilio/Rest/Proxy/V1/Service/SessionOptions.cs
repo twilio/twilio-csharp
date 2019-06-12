@@ -52,7 +52,7 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Retrieve a list of all Sessions for the Service.
+    /// Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.
     /// </summary>
     public class ReadSessionOptions : ReadOptions<SessionResource>
     {
@@ -232,17 +232,9 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// The Mode of the Session
-        /// </summary>
-        public SessionResource.ModeEnum Mode { get; set; }
-        /// <summary>
         /// The new status of the resource
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
-        /// <summary>
-        /// The Participant objects to include in the session
-        /// </summary>
-        public List<object> Participants { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSessionOptions
@@ -253,7 +245,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         {
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
-            Participants = new List<object>();
         }
 
         /// <summary>
@@ -272,19 +263,9 @@ namespace Twilio.Rest.Proxy.V1.Service
                 p.Add(new KeyValuePair<string, string>("Ttl", Ttl.ToString()));
             }
 
-            if (Mode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Mode", Mode.ToString()));
-            }
-
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
-            }
-
-            if (Participants != null)
-            {
-                p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", Serializers.JsonObject(prop))));
             }
 
             return p;

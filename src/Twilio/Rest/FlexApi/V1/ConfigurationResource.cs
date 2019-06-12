@@ -400,6 +400,11 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("plugin_service_attributes")]
         public object PluginServiceAttributes { get; private set; }
         /// <summary>
+        /// Integration parameters
+        /// </summary>
+        [JsonProperty("integrations")]
+        public List<object> Integrations { get; private set; }
+        /// <summary>
         /// The URL for this resource
         /// </summary>
         [JsonProperty("url")]

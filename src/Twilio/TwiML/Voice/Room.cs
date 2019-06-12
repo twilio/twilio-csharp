@@ -23,17 +23,17 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Participant identity when connecting to the Room
         /// </summary>
-        public string Participantidentity { get; set; }
+        public string ParticipantIdentity { get; set; }
 
         /// <summary>
         /// Create a new Room
         /// </summary>
         /// <param name="name"> Room name, the body of the TwiML Element. </param>
-        /// <param name="participantidentity"> Participant identity when connecting to the Room </param>
-        public Room(string name = null, string participantidentity = null) : base("Room")
+        /// <param name="participantIdentity"> Participant identity when connecting to the Room </param>
+        public Room(string name = null, string participantIdentity = null) : base("Room")
         {
             this.Name = name;
-            this.Participantidentity = participantidentity;
+            this.ParticipantIdentity = participantIdentity;
         }
 
         /// <summary>
@@ -50,9 +50,9 @@ namespace Twilio.TwiML.Voice
         protected override List<XAttribute> GetElementAttributes()
         {
             var attributes = new List<XAttribute>();
-            if (this.Participantidentity != null)
+            if (this.ParticipantIdentity != null)
             {
-                attributes.Add(new XAttribute("participantidentity", this.Participantidentity));
+                attributes.Add(new XAttribute("participantIdentity", this.ParticipantIdentity));
             }
             return attributes;
         }

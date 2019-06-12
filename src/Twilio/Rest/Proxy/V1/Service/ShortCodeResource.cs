@@ -175,7 +175,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
+        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service. A maximum of 100 records will be
+        /// returned per page.
         /// </summary>
         /// <param name="options"> Read ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -191,7 +192,8 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
+        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service. A maximum of 100 records will be
+        /// returned per page.
         /// </summary>
         /// <param name="options"> Read ShortCode parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -208,7 +210,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
+        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service. A maximum of 100 records will be
+        /// returned per page.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
         /// <param name="pageSize"> Page size </param>
@@ -226,7 +229,8 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service.
+        /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service. A maximum of 100 records will be
+        /// returned per page.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
         /// <param name="pageSize"> Page size </param>

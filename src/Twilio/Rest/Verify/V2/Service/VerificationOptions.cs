@@ -54,6 +54,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// The payee of the associated PSD2 compliant transaction
         /// </summary>
         public string Payee { get; set; }
+        /// <summary>
+        /// The custom key-value pairs of Programmable Rate Limits.
+        /// </summary>
+        public object RateLimits { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationOptions
@@ -112,6 +116,11 @@ namespace Twilio.Rest.Verify.V2.Service
             if (Payee != null)
             {
                 p.Add(new KeyValuePair<string, string>("Payee", Payee));
+            }
+
+            if (RateLimits != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RateLimits", Serializers.JsonObject(RateLimits)));
             }
 
             return p;

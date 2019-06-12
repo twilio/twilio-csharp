@@ -35,6 +35,7 @@ namespace Twilio.Rest.FlexApi.V1
             public static readonly ChannelTypeEnum Facebook = new ChannelTypeEnum("facebook");
             public static readonly ChannelTypeEnum Whatsapp = new ChannelTypeEnum("whatsapp");
             public static readonly ChannelTypeEnum Line = new ChannelTypeEnum("line");
+            public static readonly ChannelTypeEnum Custom = new ChannelTypeEnum("custom");
         }
 
         public sealed class IntegrationTypeEnum : StringEnum

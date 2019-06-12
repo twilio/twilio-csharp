@@ -185,7 +185,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
+        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be
+        /// returned per page.
         /// </summary>
         /// <param name="options"> Read PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -201,7 +202,8 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
+        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be
+        /// returned per page.
         /// </summary>
         /// <param name="options"> Read PhoneNumber parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -218,7 +220,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
+        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be
+        /// returned per page.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to read </param>
         /// <param name="pageSize"> Page size </param>
@@ -236,7 +239,8 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service.
+        /// Retrieve a list of all Phone Numbers in the Proxy Number Pool for a Service. A maximum of 100 records will be
+        /// returned per page.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the parent Service resource of the PhoneNumber resource to read </param>
         /// <param name="pageSize"> Page size </param>

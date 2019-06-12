@@ -39,6 +39,8 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly StatusEnum Receiving = new StatusEnum("receiving");
             public static readonly StatusEnum Received = new StatusEnum("received");
             public static readonly StatusEnum Accepted = new StatusEnum("accepted");
+            public static readonly StatusEnum Scheduled = new StatusEnum("scheduled");
+            public static readonly StatusEnum Read = new StatusEnum("read");
         }
 
         public sealed class DirectionEnum : StringEnum
@@ -686,7 +688,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The amount billed for the message
         /// </summary>
         [JsonProperty("price")]
-        public decimal? Price { get; private set; }
+        public string Price { get; private set; }
         /// <summary>
         /// The currency in which price is measured
         /// </summary>

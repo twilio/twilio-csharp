@@ -157,7 +157,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         }
 
         /// <summary>
-        /// Retrieve a list of all Interactions for a Session.
+        /// Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="options"> Read Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Interactions for a Session.
+        /// Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="options"> Read Interaction parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Interactions for a Session.
+        /// Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
         /// <param name="pathSessionSid"> The SID of the parent Session to read the resource from </param>
@@ -210,7 +210,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Interactions for a Session.
+        /// Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
         /// <param name="pathSessionSid"> The SID of the parent Session to read the resource from </param>

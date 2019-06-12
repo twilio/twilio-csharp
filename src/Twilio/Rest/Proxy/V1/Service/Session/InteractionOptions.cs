@@ -57,7 +57,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Retrieve a list of all Interactions for a Session.
+    /// Retrieve a list of all Interactions for a Session. A maximum of 100 records will be returned per page.
     /// </summary>
     public class ReadInteractionOptions : ReadOptions<InteractionResource>
     {

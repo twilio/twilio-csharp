@@ -101,6 +101,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="customCode"> A pre-generated code </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
+        /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(string pathServiceSid,
@@ -112,9 +113,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                   string customCode = null,
                                                   string amount = null,
                                                   string payee = null,
+                                                  object rateLimits = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits};
             return Create(options, client);
         }
 
@@ -131,6 +133,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="customCode"> A pre-generated code </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
+        /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid,
@@ -142,9 +145,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                           string customCode = null,
                                                                                           string amount = null,
                                                                                           string payee = null,
+                                                                                          object rateLimits = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits};
             return await CreateAsync(options, client);
         }
         #endif

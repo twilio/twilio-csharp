@@ -56,14 +56,14 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new Connect();
 
-            elem.Room("name", "participantIdentity");
+            elem.Room("name", "participant_identity");
 
             elem.Autopilot("name");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Connect>" + Environment.NewLine +
-                "  <Room participantidentity=\"participantIdentity\">name</Room>" + Environment.NewLine +
+                "  <Room participantIdentity=\"participant_identity\">name</Room>" + Environment.NewLine +
                 "  <Autopilot>name</Autopilot>" + Environment.NewLine +
                 "</Connect>",
                 elem.ToString()

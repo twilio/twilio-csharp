@@ -8,34 +8,38 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Proxy.V1.Service
+namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Add a Short Code to the Proxy Number Pool for the Service.
+    /// Create a new Rate Limit for a Service
     /// </summary>
-    public class CreateShortCodeOptions : IOptions<ShortCodeResource>
+    public class CreateRateLimitOptions : IOptions<RateLimitResource>
     {
         /// <summary>
-        /// The SID of the parent Service resource
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of a Twilio ShortCode resource
+        /// A unique, developer assigned name of this Rate Limit.
         /// </summary>
-        public string Sid { get; }
+        public string UniqueName { get; }
+        /// <summary>
+        /// Description of this Rate Limit
+        /// </summary>
+        public string Description { get; set; }
 
         /// <summary>
-        /// Construct a new CreateShortCodeOptions
+        /// Construct a new CreateRateLimitOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service resource </param>
-        /// <param name="sid"> The SID of a Twilio ShortCode resource </param>
-        public CreateShortCodeOptions(string pathServiceSid, string sid)
+        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+        /// <param name="uniqueName"> A unique, developer assigned name of this Rate Limit. </param>
+        public CreateRateLimitOptions(string pathServiceSid, string uniqueName)
         {
             PathServiceSid = pathServiceSid;
-            Sid = sid;
+            UniqueName = uniqueName;
         }
 
         /// <summary>
@@ -44,9 +48,14 @@ namespace Twilio.Rest.Proxy.V1.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Sid != null)
+            if (UniqueName != null)
             {
-                p.Add(new KeyValuePair<string, string>("Sid", Sid.ToString()));
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (Description != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Description", Description));
             }
 
             return p;
@@ -56,12 +65,58 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Delete a specific Short Code from a Service.
+    /// Update a specific Rate Limit.
     /// </summary>
-    public class DeleteShortCodeOptions : IOptions<ShortCodeResource>
+    public class UpdateRateLimitOptions : IOptions<RateLimitResource>
     {
         /// <summary>
-        /// The SID of the parent Service to delete the ShortCode resource from
+        /// The SID of the Service that the resource is associated with
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// The unique string that identifies the resource
+        /// </summary>
+        public string PathSid { get; }
+        /// <summary>
+        /// Description of this Rate Limit
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Construct a new UpdateRateLimitOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        public UpdateRateLimitOptions(string pathServiceSid, string pathSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (Description != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Description", Description));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
+    /// Fetch a specific Rate Limit.
+    /// </summary>
+    public class FetchRateLimitOptions : IOptions<RateLimitResource>
+    {
+        /// <summary>
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -70,11 +125,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new DeleteShortCodeOptions
+        /// Construct a new FetchRateLimitOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service to delete the ShortCode resource from </param>
+        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteShortCodeOptions(string pathServiceSid, string pathSid)
+        public FetchRateLimitOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
@@ -93,21 +148,20 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Retrieve a list of all Short Codes in the Proxy Number Pool for the Service. A maximum of 100 records will be
-    /// returned per page.
+    /// Retrieve a list of all Rate Limits for a service.
     /// </summary>
-    public class ReadShortCodeOptions : ReadOptions<ShortCodeResource>
+    public class ReadRateLimitOptions : ReadOptions<RateLimitResource>
     {
         /// <summary>
-        /// The SID of the parent Service to read the resource from
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
-        /// Construct a new ReadShortCodeOptions
+        /// Construct a new ReadRateLimitOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service to read the resource from </param>
-        public ReadShortCodeOptions(string pathServiceSid)
+        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
+        public ReadRateLimitOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
         }
@@ -130,12 +184,12 @@ namespace Twilio.Rest.Proxy.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Fetch a specific Short Code.
+    /// Delete a specific Rate Limit.
     /// </summary>
-    public class FetchShortCodeOptions : IOptions<ShortCodeResource>
+    public class DeleteRateLimitOptions : IOptions<RateLimitResource>
     {
         /// <summary>
-        /// The SID of the parent Service to fetch the resource from
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -144,11 +198,11 @@ namespace Twilio.Rest.Proxy.V1.Service
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new FetchShortCodeOptions
+        /// Construct a new DeleteRateLimitOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the parent Service to fetch the resource from </param>
+        /// <param name="pathServiceSid"> The SID of the Service that the resource is associated with </param>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public FetchShortCodeOptions(string pathServiceSid, string pathSid)
+        public DeleteRateLimitOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
             PathSid = pathSid;
@@ -160,52 +214,6 @@ namespace Twilio.Rest.Proxy.V1.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-    }
-
-    /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Update a specific Short Code.
-    /// </summary>
-    public class UpdateShortCodeOptions : IOptions<ShortCodeResource>
-    {
-        /// <summary>
-        /// The SID of the Service to update the resource from
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-        /// <summary>
-        /// Whether the short code should be reserved for manual assignment to participants only
-        /// </summary>
-        public bool? IsReserved { get; set; }
-
-        /// <summary>
-        /// Construct a new UpdateShortCodeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public UpdateShortCodeOptions(string pathServiceSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IsReserved != null)
-            {
-                p.Add(new KeyValuePair<string, string>("IsReserved", IsReserved.Value.ToString().ToLower()));
-            }
-
             return p;
         }
     }

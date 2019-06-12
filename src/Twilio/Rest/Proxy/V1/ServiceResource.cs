@@ -130,7 +130,7 @@ namespace Twilio.Rest.Proxy.V1
         }
 
         /// <summary>
-        /// Retrieve a list of all Services for Twilio Proxy.
+        /// Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Proxy.V1
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Services for Twilio Proxy.
+        /// Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Proxy.V1
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Services for Twilio Proxy.
+        /// Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Proxy.V1
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Services for Twilio Proxy.
+        /// Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>

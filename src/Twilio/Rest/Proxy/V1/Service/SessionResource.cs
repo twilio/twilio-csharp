@@ -135,7 +135,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a list of all Sessions for the Service.
+        /// Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="options"> Read Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -151,7 +151,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Sessions for the Service.
+        /// Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="options"> Read Session parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Sessions for the Service.
+        /// Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pageSize"> Page size </param>
@@ -186,7 +186,7 @@ namespace Twilio.Rest.Proxy.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Sessions for the Service.
+        /// Retrieve a list of all Sessions for the Service. A maximum of 100 records will be returned per page.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pageSize"> Page size </param>
@@ -471,21 +471,17 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
         /// <param name="ttl"> When the session will expire </param>
-        /// <param name="mode"> The Mode of the Session </param>
         /// <param name="status"> The new status of the resource </param>
-        /// <param name="participants"> The Participant objects to include in the session </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static SessionResource Update(string pathServiceSid,
                                              string pathSid,
                                              DateTime? dateExpiry = null,
                                              int? ttl = null,
-                                             SessionResource.ModeEnum mode = null,
                                              SessionResource.StatusEnum status = null,
-                                             List<object> participants = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status};
             return Update(options, client);
         }
 
@@ -497,21 +493,17 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
         /// <param name="ttl"> When the session will expire </param>
-        /// <param name="mode"> The Mode of the Session </param>
         /// <param name="status"> The new status of the resource </param>
-        /// <param name="participants"> The Participant objects to include in the session </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathServiceSid,
                                                                                      string pathSid,
                                                                                      DateTime? dateExpiry = null,
                                                                                      int? ttl = null,
-                                                                                     SessionResource.ModeEnum mode = null,
                                                                                      SessionResource.StatusEnum status = null,
-                                                                                     List<object> participants = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status};
             return await UpdateAsync(options, client);
         }
         #endif

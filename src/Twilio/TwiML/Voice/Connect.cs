@@ -70,10 +70,10 @@ namespace Twilio.TwiML.Voice
         /// Create a new <Room/> element and append it as a child of this element.
         /// </summary>
         /// <param name="name"> Room name, the body of the TwiML Element. </param>
-        /// <param name="participantidentity"> Participant identity when connecting to the Room </param>
-        public Connect Room(string name = null, string participantidentity = null)
+        /// <param name="participantIdentity"> Participant identity when connecting to the Room </param>
+        public Connect Room(string name = null, string participantIdentity = null)
         {
-            var newChild = new Room(name, participantidentity);
+            var newChild = new Room(name, participantIdentity);
             this.Append(newChild);
             return this;
         }

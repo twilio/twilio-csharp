@@ -45,7 +45,7 @@ namespace Twilio.Rest.Proxy.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// Retrieve a list of all Services for Twilio Proxy.
+    /// Retrieve a list of all Services for Twilio Proxy. A maximum of 100 records will be returned per page.
     /// </summary>
     public class ReadServiceOptions : ReadOptions<ServiceResource>
     {

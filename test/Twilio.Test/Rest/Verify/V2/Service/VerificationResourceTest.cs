@@ -59,6 +59,21 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
         }
 
         [Test]
+        public void TestCreateVerificationWithRateLimitsResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"+14159373912\",\"channel\": \"sms\",\"status\": \"pending\",\"valid\": null,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"lookup\": {\"carrier\": {\"error_code\": null,\"name\": \"Carrier Name\",\"mobile_country_code\": \"310\",\"mobile_network_code\": \"150\",\"type\": \"mobile\"}},\"amount\": null,\"payee\": null,\"url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications/VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                     ));
+
+            var response = VerificationResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "to", "channel", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestUpdateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
