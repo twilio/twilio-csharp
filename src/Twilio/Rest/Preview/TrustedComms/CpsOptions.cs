@@ -15,10 +15,9 @@ namespace Twilio.Rest.Preview.TrustedComms
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and
-    /// `X-XCNAM-Sensitive-Phone-Number-To` headers.
+    /// Fetch a specific CPS given a phone number via `X-XCNAM-Sensitive-Phone-Number` header.
     /// </summary>
-    public class FetchCurrentCallOptions : IOptions<CurrentCallResource>
+    public class FetchCpsOptions : IOptions<CpsResource>
     {
         /// <summary>
         /// Generate the necessary parameters

@@ -188,6 +188,10 @@ namespace Twilio.Rest.Autopilot.V1
         /// A JSON object that defines the Assistant's [default tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios
         /// </summary>
         public object Defaults { get; set; }
+        /// <summary>
+        /// A string describing the state of the assistant.
+        /// </summary>
+        public string DevelopmentStage { get; set; }
 
         /// <summary>
         /// Construct a new UpdateAssistantOptions
@@ -237,6 +241,11 @@ namespace Twilio.Rest.Autopilot.V1
             if (Defaults != null)
             {
                 p.Add(new KeyValuePair<string, string>("Defaults", Serializers.JsonObject(Defaults)));
+            }
+
+            if (DevelopmentStage != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DevelopmentStage", DevelopmentStage));
             }
 
             return p;

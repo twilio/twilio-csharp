@@ -369,6 +369,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <param name="styleSheet"> A JSON string that defines the Assistant's style sheet </param>
         /// <param name="defaults"> A JSON object that defines the Assistant's [default
         ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
+        /// <param name="developmentStage"> A string describing the state of the assistant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Assistant </returns>
         public static AssistantResource Update(string pathSid,
@@ -379,9 +380,10 @@ namespace Twilio.Rest.Autopilot.V1
                                                string callbackEvents = null,
                                                object styleSheet = null,
                                                object defaults = null,
+                                               string developmentStage = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, StyleSheet = styleSheet, Defaults = defaults};
+            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, StyleSheet = styleSheet, Defaults = defaults, DevelopmentStage = developmentStage};
             return Update(options, client);
         }
 
@@ -398,6 +400,7 @@ namespace Twilio.Rest.Autopilot.V1
         /// <param name="styleSheet"> A JSON string that defines the Assistant's style sheet </param>
         /// <param name="defaults"> A JSON object that defines the Assistant's [default
         ///                tasks](https://www.twilio.com/docs/autopilot/api/assistant/defaults) for various scenarios </param>
+        /// <param name="developmentStage"> A string describing the state of the assistant. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Assistant </returns>
         public static async System.Threading.Tasks.Task<AssistantResource> UpdateAsync(string pathSid,
@@ -408,9 +411,10 @@ namespace Twilio.Rest.Autopilot.V1
                                                                                        string callbackEvents = null,
                                                                                        object styleSheet = null,
                                                                                        object defaults = null,
+                                                                                       string developmentStage = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, StyleSheet = styleSheet, Defaults = defaults};
+            var options = new UpdateAssistantOptions(pathSid){FriendlyName = friendlyName, LogQueries = logQueries, UniqueName = uniqueName, CallbackUrl = callbackUrl, CallbackEvents = callbackEvents, StyleSheet = styleSheet, Defaults = defaults, DevelopmentStage = developmentStage};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -534,6 +538,16 @@ namespace Twilio.Rest.Autopilot.V1
         /// </summary>
         [JsonProperty("log_queries")]
         public bool? LogQueries { get; private set; }
+        /// <summary>
+        /// A string describing the state of the assistant.
+        /// </summary>
+        [JsonProperty("development_stage")]
+        public string DevelopmentStage { get; private set; }
+        /// <summary>
+        /// Whether model needs to be rebuilt
+        /// </summary>
+        [JsonProperty("needs_model_build")]
+        public bool? NeedsModelBuild { get; private set; }
         /// <summary>
         /// The unique string that identifies the resource
         /// </summary>
