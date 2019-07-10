@@ -21,10 +21,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// A string to describe the new resource
-        /// </summary>
-        public string FriendlyName { get; }
-        /// <summary>
         /// The API version to use to start a new TwiML session
         /// </summary>
         public string ApiVersion { get; set; }
@@ -80,15 +76,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The URL to send message status information to your application
         /// </summary>
         public Uri MessageStatusCallback { get; set; }
-
         /// <summary>
-        /// Construct a new CreateApplicationOptions
+        /// A string to describe the new resource
         /// </summary>
-        /// <param name="friendlyName"> A string to describe the new resource </param>
-        public CreateApplicationOptions(string friendlyName)
-        {
-            FriendlyName = friendlyName;
-        }
+        public string FriendlyName { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -96,11 +87,6 @@ namespace Twilio.Rest.Api.V2010.Account
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
             if (ApiVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("ApiVersion", ApiVersion));
@@ -169,6 +155,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (MessageStatusCallback != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessageStatusCallback", Serializers.Url(MessageStatusCallback)));
+            }
+
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
             return p;

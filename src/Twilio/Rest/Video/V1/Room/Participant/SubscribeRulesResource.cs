@@ -16,6 +16,7 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Video.V1.Room.Participant
 {
@@ -202,7 +203,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// A collection of Subscribe Rules to include or exclude matching Tracks.
         /// </summary>
         [JsonProperty("rules")]
-        public List<object> Rules { get; private set; }
+        public List<SubscribeRule> Rules { get; private set; }
         /// <summary>
         /// The date that this resource was created.
         /// </summary>

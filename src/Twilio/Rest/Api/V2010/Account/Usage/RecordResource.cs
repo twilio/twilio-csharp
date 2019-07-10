@@ -459,6 +459,11 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
+        /// Usage records up to date as of this timestamp
+        /// </summary>
+        [JsonProperty("as_of")]
+        public string AsOf { get; private set; }
+        /// <summary>
         /// The category of usage
         /// </summary>
         [JsonProperty("category")]

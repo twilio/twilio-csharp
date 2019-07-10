@@ -1,6 +1,19 @@
 twilio-csharp Changelog
 =======================
 
+[2019-07-10] Version 5.31.1
+----------------------------
+**Library**
+- [PR #485](https://github.com/twilio/twilio-csharp/pull/485): Add urls property in ice servers. Thanks to [@FMV1491](https://github.com/FMV1491)!
+
+**Api**
+- Make `friendly_name` optional for applications create
+- Add new property `as_of` date to Usage Record API calls
+
+**Wireless**
+- Added Usage Records resource.
+
+
 [2019-06-26] Version 5.31.0
 ----------------------------
 **Autopilot**

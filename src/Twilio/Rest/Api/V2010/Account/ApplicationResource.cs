@@ -63,7 +63,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new application within your account
         /// </summary>
-        /// <param name="friendlyName"> A string to describe the new resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
         /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
@@ -79,10 +78,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
         /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
         /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns>
-        public static ApplicationResource Create(string friendlyName,
-                                                 string pathAccountSid = null,
+        public static ApplicationResource Create(string pathAccountSid = null,
                                                  string apiVersion = null,
                                                  Uri voiceUrl = null,
                                                  Twilio.Http.HttpMethod voiceMethod = null,
@@ -97,9 +96,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                  Twilio.Http.HttpMethod smsFallbackMethod = null,
                                                  Uri smsStatusCallback = null,
                                                  Uri messageStatusCallback = null,
+                                                 string friendlyName = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateApplicationOptions(friendlyName){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
+            var options = new CreateApplicationOptions(){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName};
             return Create(options, client);
         }
 
@@ -107,7 +107,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Create a new application within your account
         /// </summary>
-        /// <param name="friendlyName"> A string to describe the new resource </param>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="apiVersion"> The API version to use to start a new TwiML session </param>
         /// <param name="voiceUrl"> The URL to call when the phone number receives a call </param>
@@ -123,10 +122,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
         /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
         /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
+        /// <param name="friendlyName"> A string to describe the new resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>
-        public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(string friendlyName,
-                                                                                         string pathAccountSid = null,
+        public static async System.Threading.Tasks.Task<ApplicationResource> CreateAsync(string pathAccountSid = null,
                                                                                          string apiVersion = null,
                                                                                          Uri voiceUrl = null,
                                                                                          Twilio.Http.HttpMethod voiceMethod = null,
@@ -141,9 +140,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                          Twilio.Http.HttpMethod smsFallbackMethod = null,
                                                                                          Uri smsStatusCallback = null,
                                                                                          Uri messageStatusCallback = null,
+                                                                                         string friendlyName = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateApplicationOptions(friendlyName){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback};
+            var options = new CreateApplicationOptions(){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceCallerIdLookup = voiceCallerIdLookup, SmsUrl = smsUrl, SmsMethod = smsMethod, SmsFallbackUrl = smsFallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsStatusCallback = smsStatusCallback, MessageStatusCallback = messageStatusCallback, FriendlyName = friendlyName};
             return await CreateAsync(options, client);
         }
         #endif

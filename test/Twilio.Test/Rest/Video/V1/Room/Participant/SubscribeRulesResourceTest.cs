@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Video.V1.Room.Participant
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"participant_sid\": \"PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"room_sid\": \"RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": null,\"date_updated\": null,\"rules\": []}"
+                                         "{\"participant_sid\": \"PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"room_sid\": \"RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": null,\"date_updated\": null,\"rules\": [{\"type\": \"include\",\"all\": true,\"publisher\": null,\"track\": null,\"kind\": null,\"priority\": null}]}"
                                      ));
 
             var response = SubscribeRulesResource.Fetch("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.Video.V1.Room.Participant
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"participant_sid\": \"PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"room_sid\": \"RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": null,\"date_updated\": null,\"rules\": [{\"type\": \"exclude\",\"all\": true}]}"
+                                         "{\"participant_sid\": \"PAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"room_sid\": \"RMaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": null,\"date_updated\": null,\"rules\": [{\"type\": \"exclude\",\"all\": true,\"publisher\": null,\"track\": null,\"kind\": null,\"priority\": null}]}"
                                      ));
 
             var response = SubscribeRulesResource.Update("RMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
