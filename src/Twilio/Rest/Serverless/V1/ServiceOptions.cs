@@ -70,6 +70,38 @@ namespace Twilio.Rest.Serverless.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
+    /// Delete a Service.
+    /// </summary>
+    public class DeleteServiceOptions : IOptions<ServiceResource>
+    {
+        /// <summary>
+        /// Serverless Service Sid or unique name.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteServiceOptions
+        /// </summary>
+        /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
+        public DeleteServiceOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+    /// currently do not have developer preview access, please contact help@twilio.com.
+    ///
     /// Create a new Service.
     /// </summary>
     public class CreateServiceOptions : IOptions<ServiceResource>

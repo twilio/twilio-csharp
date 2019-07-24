@@ -296,6 +296,11 @@ namespace Twilio.Rest.Insights.V1
         /// </summary>
         [JsonProperty("attributes")]
         public object Attributes { get; private set; }
+        /// <summary>
+        /// The properties
+        /// </summary>
+        [JsonProperty("properties")]
+        public object Properties { get; private set; }
 
         private CallSummaryResource()
         {

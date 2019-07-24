@@ -258,86 +258,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         }
         #endif
 
-        private static Request BuildCreateRequest(CreateAssetVersionOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Serverless,
-                "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathAssetSid + "/Versions",
-                client.Region,
-                postParams: options.GetParams()
-            );
-        }
-
-        /// <summary>
-        /// Create a new Asset Version.
-        /// </summary>
-        /// <param name="options"> Create AssetVersion parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssetVersion </returns>
-        public static AssetVersionResource Create(CreateAssetVersionOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Asset Version.
-        /// </summary>
-        /// <param name="options"> Create AssetVersion parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssetVersion </returns>
-        public static async System.Threading.Tasks.Task<AssetVersionResource> CreateAsync(CreateAssetVersionOptions options,
-                                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Create a new Asset Version.
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathAssetSid"> Asset Sid. </param>
-        /// <param name="path"> The URL-friendly string by which this Asset Version can be referenced. </param>
-        /// <param name="visibility"> The access control which determines how the Asset Version can be accessed. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of AssetVersion </returns>
-        public static AssetVersionResource Create(string pathServiceSid,
-                                                  string pathAssetSid,
-                                                  string path,
-                                                  AssetVersionResource.VisibilityEnum visibility,
-                                                  ITwilioRestClient client = null)
-        {
-            var options = new CreateAssetVersionOptions(pathServiceSid, pathAssetSid, path, visibility);
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Asset Version.
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathAssetSid"> Asset Sid. </param>
-        /// <param name="path"> The URL-friendly string by which this Asset Version can be referenced. </param>
-        /// <param name="visibility"> The access control which determines how the Asset Version can be accessed. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of AssetVersion </returns>
-        public static async System.Threading.Tasks.Task<AssetVersionResource> CreateAsync(string pathServiceSid,
-                                                                                          string pathAssetSid,
-                                                                                          string path,
-                                                                                          AssetVersionResource.VisibilityEnum visibility,
-                                                                                          ITwilioRestClient client = null)
-        {
-            var options = new CreateAssetVersionOptions(pathServiceSid, pathAssetSid, path, visibility);
-            return await CreateAsync(options, client);
-        }
-        #endif
-
         /// <summary>
         /// Converts a JSON string into a AssetVersionResource object
         /// </summary>
@@ -387,11 +307,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         [JsonProperty("visibility")]
         [JsonConverter(typeof(StringEnumConverter))]
         public AssetVersionResource.VisibilityEnum Visibility { get; private set; }
-        /// <summary>
-        /// The object which provides the details required for uploading this Asset Version.
-        /// </summary>
-        [JsonProperty("pre_signed_upload_url")]
-        public object PreSignedUploadUrl { get; private set; }
         /// <summary>
         /// The date that this Asset Version was created.
         /// </summary>

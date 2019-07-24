@@ -259,86 +259,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         }
         #endif
 
-        private static Request BuildCreateRequest(CreateFunctionVersionOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Post,
-                Rest.Domain.Serverless,
-                "/v1/Services/" + options.PathServiceSid + "/Functions/" + options.PathFunctionSid + "/Versions",
-                client.Region,
-                postParams: options.GetParams()
-            );
-        }
-
-        /// <summary>
-        /// Create a new Function Version.
-        /// </summary>
-        /// <param name="options"> Create FunctionVersion parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersion </returns>
-        public static FunctionVersionResource Create(CreateFunctionVersionOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Function Version.
-        /// </summary>
-        /// <param name="options"> Create FunctionVersion parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionResource> CreateAsync(CreateFunctionVersionOptions options,
-                                                                                             ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildCreateRequest(options, client));
-            return FromJson(response.Content);
-        }
-        #endif
-
-        /// <summary>
-        /// Create a new Function Version.
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathFunctionSid"> Function Sid. </param>
-        /// <param name="path"> The URL-friendly string by which this Function Version can be referenced. </param>
-        /// <param name="visibility"> The access control which determines how the Function Version can be accessed. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of FunctionVersion </returns>
-        public static FunctionVersionResource Create(string pathServiceSid,
-                                                     string pathFunctionSid,
-                                                     string path,
-                                                     FunctionVersionResource.VisibilityEnum visibility,
-                                                     ITwilioRestClient client = null)
-        {
-            var options = new CreateFunctionVersionOptions(pathServiceSid, pathFunctionSid, path, visibility);
-            return Create(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Create a new Function Version.
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathFunctionSid"> Function Sid. </param>
-        /// <param name="path"> The URL-friendly string by which this Function Version can be referenced. </param>
-        /// <param name="visibility"> The access control which determines how the Function Version can be accessed. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
-        public static async System.Threading.Tasks.Task<FunctionVersionResource> CreateAsync(string pathServiceSid,
-                                                                                             string pathFunctionSid,
-                                                                                             string path,
-                                                                                             FunctionVersionResource.VisibilityEnum visibility,
-                                                                                             ITwilioRestClient client = null)
-        {
-            var options = new CreateFunctionVersionOptions(pathServiceSid, pathFunctionSid, path, visibility);
-            return await CreateAsync(options, client);
-        }
-        #endif
-
         /// <summary>
         /// Converts a JSON string into a FunctionVersionResource object
         /// </summary>
@@ -382,11 +302,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         [JsonProperty("path")]
         public string Path { get; private set; }
-        /// <summary>
-        /// The object which provides the details required for uploading this Function Version.
-        /// </summary>
-        [JsonProperty("pre_signed_upload_url")]
-        public object PreSignedUploadUrl { get; private set; }
         /// <summary>
         /// The access control which determines how the Function Version can be accessed.
         /// </summary>

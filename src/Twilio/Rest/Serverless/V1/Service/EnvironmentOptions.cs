@@ -138,4 +138,42 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+    /// currently do not have developer preview access, please contact help@twilio.com.
+    ///
+    /// Delete a specific Environment.
+    /// </summary>
+    public class DeleteEnvironmentOptions : IOptions<EnvironmentResource>
+    {
+        /// <summary>
+        /// Service Sid.
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// Environment Sid.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteEnvironmentOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Environment Sid. </param>
+        public DeleteEnvironmentOptions(string pathServiceSid, string pathSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

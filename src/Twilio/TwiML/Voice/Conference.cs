@@ -106,10 +106,7 @@ namespace Twilio.TwiML.Voice
                 return new RecordingEventEnum(value);
             }
 
-            public static readonly RecordingEventEnum Started = new RecordingEventEnum("started");
-            public static readonly RecordingEventEnum Stopped = new RecordingEventEnum("stopped");
-            public static readonly RecordingEventEnum Paused = new RecordingEventEnum("paused");
-            public static readonly RecordingEventEnum Resumed = new RecordingEventEnum("resumed");
+            public static readonly RecordingEventEnum InProgress = new RecordingEventEnum("in-progress");
             public static readonly RecordingEventEnum Completed = new RecordingEventEnum("completed");
             public static readonly RecordingEventEnum Absent = new RecordingEventEnum("absent");
         }

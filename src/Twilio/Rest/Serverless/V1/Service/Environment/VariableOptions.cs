@@ -220,4 +220,48 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+    /// currently do not have developer preview access, please contact help@twilio.com.
+    ///
+    /// Delete a specific Variable.
+    /// </summary>
+    public class DeleteVariableOptions : IOptions<VariableResource>
+    {
+        /// <summary>
+        /// Service Sid.
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// Environment Sid.
+        /// </summary>
+        public string PathEnvironmentSid { get; }
+        /// <summary>
+        /// Variable Sid.
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteVariableOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathSid"> Variable Sid. </param>
+        public DeleteVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathEnvironmentSid = pathEnvironmentSid;
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

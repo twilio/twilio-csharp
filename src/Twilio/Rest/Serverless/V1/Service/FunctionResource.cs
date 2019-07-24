@@ -232,6 +232,76 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteFunctionOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Serverless,
+                "/v1/Services/" + options.PathServiceSid + "/Functions/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a Function.
+        /// </summary>
+        /// <param name="options"> Delete Function parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Function </returns>
+        public static bool Delete(DeleteFunctionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Function.
+        /// </summary>
+        /// <param name="options"> Delete Function parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteFunctionOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a Function.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Function Sid. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Function </returns>
+        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteFunctionOptions(pathServiceSid, pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Function.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Function Sid. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Function </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathSid,
+                                                                          ITwilioRestClient client = null)
+        {
+            var options = new DeleteFunctionOptions(pathServiceSid, pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         private static Request BuildCreateRequest(CreateFunctionOptions options, ITwilioRestClient client)
         {
             return new Request(

@@ -225,6 +225,72 @@ namespace Twilio.Rest.Serverless.V1
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteServiceOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Serverless,
+                "/v1/Services/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a Service.
+        /// </summary>
+        /// <param name="options"> Delete Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns>
+        public static bool Delete(DeleteServiceOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Service.
+        /// </summary>
+        /// <param name="options"> Delete Service parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteServiceOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a Service.
+        /// </summary>
+        /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Service </returns>
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Service.
+        /// </summary>
+        /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Service </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteServiceOptions(pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         private static Request BuildCreateRequest(CreateServiceOptions options, ITwilioRestClient client)
         {
             return new Request(

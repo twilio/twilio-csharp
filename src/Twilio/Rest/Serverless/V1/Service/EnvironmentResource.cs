@@ -308,6 +308,76 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteEnvironmentOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Serverless,
+                "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a specific Environment.
+        /// </summary>
+        /// <param name="options"> Delete Environment parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Environment </returns>
+        public static bool Delete(DeleteEnvironmentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Environment.
+        /// </summary>
+        /// <param name="options"> Delete Environment parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Environment </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEnvironmentOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a specific Environment.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Environment Sid. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Environment </returns>
+        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteEnvironmentOptions(pathServiceSid, pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Environment.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Environment Sid. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Environment </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathSid,
+                                                                          ITwilioRestClient client = null)
+        {
+            var options = new DeleteEnvironmentOptions(pathServiceSid, pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a EnvironmentResource object
         /// </summary>
