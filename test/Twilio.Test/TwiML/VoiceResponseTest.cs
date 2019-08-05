@@ -184,6 +184,10 @@ namespace Twilio.Tests.TwiML
                 Promoter.ListOfOne(1)
             );
 
+            elem.Start(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
+
+            elem.Stop();
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
@@ -204,6 +208,8 @@ namespace Twilio.Tests.TwiML
                 "  <Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
                 "  <Pay input=\"dtmf\" action=\"https://example.com\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" paymentConnector=\"payment_connector\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>" + Environment.NewLine +
                 "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\"></Prompt>" + Environment.NewLine +
+                "  <Start action=\"https://example.com\" method=\"GET\"></Start>" + Environment.NewLine +
+                "  <Stop></Stop>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

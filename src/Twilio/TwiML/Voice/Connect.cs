@@ -101,6 +101,34 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Append a <Stream/> element as a child of this element
+        /// </summary>
+        /// <param name="stream"> A Stream instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Connect Stream(Stream stream)
+        {
+            this.Append(stream);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Stream/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="name"> Friendly name given to the Stream </param>
+        /// <param name="connectorName"> Unique name for Stream Connector </param>
+        /// <param name="url"> URL of the remote service where the Stream is routed </param>
+        /// <param name="track"> Track to be streamed to remote service </param>
+        public Connect Stream(string name = null,
+                              string connectorName = null,
+                              string url = null,
+                              Stream.TrackEnum track = null)
+        {
+            var newChild = new Stream(name, connectorName, url, track);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

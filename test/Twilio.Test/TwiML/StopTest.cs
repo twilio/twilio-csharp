@@ -12,27 +12,16 @@ namespace Twilio.Tests.TwiML
 {
 
     [TestFixture]
-    public class ConnectTest : TwilioTest
+    public class StopTest : TwilioTest
     {
         [Test]
         public void TestEmptyElement()
         {
-            var elem = new Connect();
+            var elem = new Stop();
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect></Connect>",
-                elem.ToString()
-            );
-        }
-
-        [Test]
-        public void TestElementWithParams()
-        {
-            var elem = new Connect(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
-            Assert.AreEqual(
-                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect action=\"https://example.com\" method=\"GET\"></Connect>",
+                "<Stop></Stop>",
                 elem.ToString()
             );
         }
@@ -40,13 +29,31 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithExtraAttributes()
         {
-            var elem = new Connect();
+            var elem = new Stop();
             elem.SetOption("newParam1", "value");
             elem.SetOption("newParam2", 1);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect newParam1=\"value\" newParam2=\"1\"></Connect>",
+                "<Stop newParam1=\"value\" newParam2=\"1\"></Stop>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestNestElement()
+        {
+            var elem = new Stop();
+            var child = new Stream();
+            elem.Nest(child).Parameter();
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Stop>" + Environment.NewLine +
+                "  <Stream>" + Environment.NewLine +
+                "    <Parameter></Parameter>" + Environment.NewLine +
+                "  </Stream>" + Environment.NewLine +
+                "</Stop>",
                 elem.ToString()
             );
         }
@@ -54,21 +61,18 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithChildren()
         {
-            var elem = new Connect();
-
-            elem.Room("name", "participant_identity");
-
-            elem.Autopilot("name");
+            var elem = new Stop();
 
             elem.Stream("name", "connector_name", "url", Stream.TrackEnum.InboundTrack);
 
+            elem.Siprec("name", "connector_name");
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>" + Environment.NewLine +
-                "  <Room participantIdentity=\"participant_identity\">name</Room>" + Environment.NewLine +
-                "  <Autopilot>name</Autopilot>" + Environment.NewLine +
+                "<Stop>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\"></Stream>" + Environment.NewLine +
-                "</Connect>",
+                "  <Siprec name=\"name\" connectorName=\"connector_name\"></Siprec>" + Environment.NewLine +
+                "</Stop>",
                 elem.ToString()
             );
         }
@@ -76,13 +80,13 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithTextNode()
         {
-            var elem = new Connect();
+            var elem = new Stop();
 
             elem.AddText("Here is the content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>Here is the content</Connect>",
+                "<Stop>Here is the content</Stop>",
                 elem.ToString()
             );
         }
@@ -90,14 +94,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestAllowGenericChildNodes()
         {
-            var elem = new Connect();
+            var elem = new Stop();
             elem.AddChild("generic-tag").AddText("Content").SetOption("tag", true);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>" + Environment.NewLine +
+                "<Stop>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "</Connect>",
+                "</Stop>",
                 elem.ToString()
             );
         }
@@ -105,17 +109,17 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestAllowGenericChildrenOfChildNodes()
         {
-            var elem = new Connect();
-            var child = new Room();
+            var elem = new Stop();
+            var child = new Stream();
             elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>" + Environment.NewLine +
-                "  <Room>" + Environment.NewLine +
+                "<Stop>" + Environment.NewLine +
+                "  <Stream>" + Environment.NewLine +
                 "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "  </Room>" + Environment.NewLine +
-                "</Connect>",
+                "  </Stream>" + Environment.NewLine +
+                "</Stop>",
                 elem.ToString()
             );
         }
@@ -123,14 +127,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestMixedContent()
         {
-            var elem = new Connect();
+            var elem = new Stop();
             elem.AddText("before")
                 .AddChild("Child").AddText("content");
             elem.AddText("after");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>before<Child>content</Child>after</Connect>",
+                "<Stop>before<Child>content</Child>after</Stop>",
                 elem.ToString()
             );
         }

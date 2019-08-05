@@ -613,6 +613,50 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
+        /// Append a <Start/> element as a child of this element
+        /// </summary>
+        /// <param name="start"> A Start instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VoiceResponse Start(Start start)
+        {
+            this.Append(start);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Start/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="action"> Action URL </param>
+        /// <param name="method"> Action URL method </param>
+        public VoiceResponse Start(Uri action = null, Twilio.Http.HttpMethod method = null)
+        {
+            var newChild = new Start(action, method);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Stop/> element as a child of this element
+        /// </summary>
+        /// <param name="stop"> A Stop instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VoiceResponse Stop(Stop stop)
+        {
+            this.Append(stop);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Stop/> element and append it as a child of this element.
+        /// </summary>
+        public VoiceResponse Stop()
+        {
+            var newChild = new Stop();
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

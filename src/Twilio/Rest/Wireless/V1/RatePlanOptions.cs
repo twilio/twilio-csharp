@@ -38,14 +38,14 @@ namespace Twilio.Rest.Wireless.V1
     public class FetchRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchRatePlanOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchRatePlanOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -79,11 +79,11 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public bool? DataEnabled { get; set; }
         /// <summary>
-        /// Network-enforced limit specifying the total Megabytes of data usage allowed during one month on the home network.
+        /// Network-enforced limit specifying the total Megabytes of data usage allowed during one month on the 'home' (T-Mobile USA) network.
         /// </summary>
         public int? DataLimit { get; set; }
         /// <summary>
-        /// The model by which to meter data usage, in accordance with the two available data metering models.
+        /// The model by which to meter data usage, in accordance with the available data metering models.
         /// </summary>
         public string DataMetering { get; set; }
         /// <summary>
@@ -95,19 +95,19 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public bool? VoiceEnabled { get; set; }
         /// <summary>
-        /// Defines whether SIMs can roam onto other networks in the SIM's home country.
+        /// Defines whether SIMs can roam onto networks other than the 'home' (T-Mobile USA) network in the United States.
         /// </summary>
         public bool? NationalRoamingEnabled { get; set; }
         /// <summary>
-        /// The international_roaming
+        /// Defines whether SIMs are capable of using GPRS/3G/4G/LTE data connectivity and messaging outside of the United States.
         /// </summary>
         public List<string> InternationalRoaming { get; set; }
         /// <summary>
-        /// Network-enforced limit specifying the total Megabytes of national roaming data usage allowed during one month.
+        /// Network-enforced limit specifying the total Megabytes of data usage allowed during one month on networks in the United States other than the 'home' (T-Mobile USA) network.
         /// </summary>
         public int? NationalRoamingDataLimit { get; set; }
         /// <summary>
-        /// The international_roaming_data_limit
+        /// Network-enforced limit specifying the total Megabytes of international roaming (non-US) data usage (download and upload combined) allowed during one month.
         /// </summary>
         public int? InternationalRoamingDataLimit { get; set; }
 
@@ -190,7 +190,7 @@ namespace Twilio.Rest.Wireless.V1
     public class UpdateRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Construct a new UpdateRatePlanOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateRatePlanOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -237,14 +237,14 @@ namespace Twilio.Rest.Wireless.V1
     public class DeleteRatePlanOptions : IOptions<RatePlanResource>
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteRatePlanOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteRatePlanOptions(string pathSid)
         {
             PathSid = pathSid;

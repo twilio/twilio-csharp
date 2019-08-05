@@ -12,16 +12,16 @@ namespace Twilio.Tests.TwiML
 {
 
     [TestFixture]
-    public class ConnectTest : TwilioTest
+    public class StartTest : TwilioTest
     {
         [Test]
         public void TestEmptyElement()
         {
-            var elem = new Connect();
+            var elem = new Start();
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect></Connect>",
+                "<Start></Start>",
                 elem.ToString()
             );
         }
@@ -29,10 +29,10 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Connect(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
+            var elem = new Start(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect action=\"https://example.com\" method=\"GET\"></Connect>",
+                "<Start action=\"https://example.com\" method=\"GET\"></Start>",
                 elem.ToString()
             );
         }
@@ -40,13 +40,31 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithExtraAttributes()
         {
-            var elem = new Connect();
+            var elem = new Start();
             elem.SetOption("newParam1", "value");
             elem.SetOption("newParam2", 1);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect newParam1=\"value\" newParam2=\"1\"></Connect>",
+                "<Start newParam1=\"value\" newParam2=\"1\"></Start>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestNestElement()
+        {
+            var elem = new Start();
+            var child = new Stream();
+            elem.Nest(child).Parameter();
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<Start>" + Environment.NewLine +
+                "  <Stream>" + Environment.NewLine +
+                "    <Parameter></Parameter>" + Environment.NewLine +
+                "  </Stream>" + Environment.NewLine +
+                "</Start>",
                 elem.ToString()
             );
         }
@@ -54,21 +72,18 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithChildren()
         {
-            var elem = new Connect();
-
-            elem.Room("name", "participant_identity");
-
-            elem.Autopilot("name");
+            var elem = new Start();
 
             elem.Stream("name", "connector_name", "url", Stream.TrackEnum.InboundTrack);
 
+            elem.Siprec("name", "connector_name");
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>" + Environment.NewLine +
-                "  <Room participantIdentity=\"participant_identity\">name</Room>" + Environment.NewLine +
-                "  <Autopilot>name</Autopilot>" + Environment.NewLine +
+                "<Start>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\"></Stream>" + Environment.NewLine +
-                "</Connect>",
+                "  <Siprec name=\"name\" connectorName=\"connector_name\"></Siprec>" + Environment.NewLine +
+                "</Start>",
                 elem.ToString()
             );
         }
@@ -76,13 +91,13 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithTextNode()
         {
-            var elem = new Connect();
+            var elem = new Start();
 
             elem.AddText("Here is the content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>Here is the content</Connect>",
+                "<Start>Here is the content</Start>",
                 elem.ToString()
             );
         }
@@ -90,14 +105,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestAllowGenericChildNodes()
         {
-            var elem = new Connect();
+            var elem = new Start();
             elem.AddChild("generic-tag").AddText("Content").SetOption("tag", true);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>" + Environment.NewLine +
+                "<Start>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "</Connect>",
+                "</Start>",
                 elem.ToString()
             );
         }
@@ -105,17 +120,17 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestAllowGenericChildrenOfChildNodes()
         {
-            var elem = new Connect();
-            var child = new Room();
+            var elem = new Start();
+            var child = new Stream();
             elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>" + Environment.NewLine +
-                "  <Room>" + Environment.NewLine +
+                "<Start>" + Environment.NewLine +
+                "  <Stream>" + Environment.NewLine +
                 "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
-                "  </Room>" + Environment.NewLine +
-                "</Connect>",
+                "  </Stream>" + Environment.NewLine +
+                "</Start>",
                 elem.ToString()
             );
         }
@@ -123,14 +138,14 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestMixedContent()
         {
-            var elem = new Connect();
+            var elem = new Start();
             elem.AddText("before")
                 .AddChild("Child").AddText("content");
             elem.AddText("after");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Connect>before<Child>content</Child>after</Connect>",
+                "<Start>before<Child>content</Child>after</Start>",
                 elem.ToString()
             );
         }

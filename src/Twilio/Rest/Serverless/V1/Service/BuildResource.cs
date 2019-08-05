@@ -247,6 +247,76 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteBuildOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Serverless,
+                "/v1/Services/" + options.PathServiceSid + "/Builds/" + options.PathSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a Build.
+        /// </summary>
+        /// <param name="options"> Delete Build parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Build </returns>
+        public static bool Delete(DeleteBuildOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Build.
+        /// </summary>
+        /// <param name="options"> Delete Build parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Build </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBuildOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a Build.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Build Sid. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Build </returns>
+        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBuildOptions(pathServiceSid, pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a Build.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathSid"> Build Sid. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Build </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathSid,
+                                                                          ITwilioRestClient client = null)
+        {
+            var options = new DeleteBuildOptions(pathServiceSid, pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         private static Request BuildCreateRequest(CreateBuildOptions options, ITwilioRestClient client)
         {
             return new Request(

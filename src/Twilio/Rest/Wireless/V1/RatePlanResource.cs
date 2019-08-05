@@ -198,7 +198,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RatePlan </returns>
         public static RatePlanResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RatePlan </returns>
         public static async System.Threading.Tasks.Task<RatePlanResource> FetchAsync(string pathSid,
@@ -270,18 +270,22 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="friendlyName"> A user-provided string that identifies this resource. </param>
         /// <param name="dataEnabled"> Defines whether SIMs are capable of using GPRS/3G/LTE data connectivity. </param>
         /// <param name="dataLimit"> Network-enforced limit specifying the total Megabytes of data usage allowed during one
-        ///                 month on the home network. </param>
-        /// <param name="dataMetering"> The model by which to meter data usage, in accordance with the two available data
-        ///                    metering models. </param>
+        ///                 month on the 'home' (T-Mobile USA) network. </param>
+        /// <param name="dataMetering"> The model by which to meter data usage, in accordance with the available data metering
+        ///                    models. </param>
         /// <param name="messagingEnabled"> Defines whether SIMs are capable of making and sending and receiving SMS messages
         ///                        via either Commands or Programmable SMS APIs. </param>
         /// <param name="voiceEnabled"> Defines whether SIMs are capable of making and receiving voice calls. </param>
-        /// <param name="nationalRoamingEnabled"> Defines whether SIMs can roam onto other networks in the SIM's home country.
-        ///                              </param>
-        /// <param name="internationalRoaming"> The international_roaming </param>
-        /// <param name="nationalRoamingDataLimit"> Network-enforced limit specifying the total Megabytes of national roaming
-        ///                                data usage allowed during one month. </param>
-        /// <param name="internationalRoamingDataLimit"> The international_roaming_data_limit </param>
+        /// <param name="nationalRoamingEnabled"> Defines whether SIMs can roam onto networks other than the 'home' (T-Mobile
+        ///                              USA) network in the United States. </param>
+        /// <param name="internationalRoaming"> Defines whether SIMs are capable of using GPRS/3G/4G/LTE data connectivity and
+        ///                            messaging outside of the United States. </param>
+        /// <param name="nationalRoamingDataLimit"> Network-enforced limit specifying the total Megabytes of data usage allowed
+        ///                                during one month on networks in the United States other than the 'home' (T-Mobile
+        ///                                USA) network. </param>
+        /// <param name="internationalRoamingDataLimit"> Network-enforced limit specifying the total Megabytes of international
+        ///                                     roaming (non-US) data usage (download and upload combined) allowed during one
+        ///                                     month. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RatePlan </returns>
         public static RatePlanResource Create(string uniqueName = null,
@@ -310,18 +314,22 @@ namespace Twilio.Rest.Wireless.V1
         /// <param name="friendlyName"> A user-provided string that identifies this resource. </param>
         /// <param name="dataEnabled"> Defines whether SIMs are capable of using GPRS/3G/LTE data connectivity. </param>
         /// <param name="dataLimit"> Network-enforced limit specifying the total Megabytes of data usage allowed during one
-        ///                 month on the home network. </param>
-        /// <param name="dataMetering"> The model by which to meter data usage, in accordance with the two available data
-        ///                    metering models. </param>
+        ///                 month on the 'home' (T-Mobile USA) network. </param>
+        /// <param name="dataMetering"> The model by which to meter data usage, in accordance with the available data metering
+        ///                    models. </param>
         /// <param name="messagingEnabled"> Defines whether SIMs are capable of making and sending and receiving SMS messages
         ///                        via either Commands or Programmable SMS APIs. </param>
         /// <param name="voiceEnabled"> Defines whether SIMs are capable of making and receiving voice calls. </param>
-        /// <param name="nationalRoamingEnabled"> Defines whether SIMs can roam onto other networks in the SIM's home country.
-        ///                              </param>
-        /// <param name="internationalRoaming"> The international_roaming </param>
-        /// <param name="nationalRoamingDataLimit"> Network-enforced limit specifying the total Megabytes of national roaming
-        ///                                data usage allowed during one month. </param>
-        /// <param name="internationalRoamingDataLimit"> The international_roaming_data_limit </param>
+        /// <param name="nationalRoamingEnabled"> Defines whether SIMs can roam onto networks other than the 'home' (T-Mobile
+        ///                              USA) network in the United States. </param>
+        /// <param name="internationalRoaming"> Defines whether SIMs are capable of using GPRS/3G/4G/LTE data connectivity and
+        ///                            messaging outside of the United States. </param>
+        /// <param name="nationalRoamingDataLimit"> Network-enforced limit specifying the total Megabytes of data usage allowed
+        ///                                during one month on networks in the United States other than the 'home' (T-Mobile
+        ///                                USA) network. </param>
+        /// <param name="internationalRoamingDataLimit"> Network-enforced limit specifying the total Megabytes of international
+        ///                                     roaming (non-US) data usage (download and upload combined) allowed during one
+        ///                                     month. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RatePlan </returns>
         public static async System.Threading.Tasks.Task<RatePlanResource> CreateAsync(string uniqueName = null,
@@ -385,7 +393,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  Sid. </param>
         /// <param name="friendlyName"> A user-provided string that identifies this resource. </param>
@@ -404,7 +412,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="uniqueName"> A user-provided string that uniquely identifies this resource as an alternative to the
         ///                  Sid. </param>
         /// <param name="friendlyName"> A user-provided string that identifies this resource. </param>
@@ -463,7 +471,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RatePlan </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -476,7 +484,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RatePlan </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -530,12 +538,12 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("data_enabled")]
         public bool? DataEnabled { get; private set; }
         /// <summary>
-        /// The model by which to meter data usage, in accordance with the two available data metering models.
+        /// The model by which to meter data usage, in accordance with the available data metering models.
         /// </summary>
         [JsonProperty("data_metering")]
         public string DataMetering { get; private set; }
         /// <summary>
-        /// Network-enforced limit specifying the total Megabytes of data usage allowed during one month on the home network.
+        /// Network-enforced limit specifying the total Megabytes of data usage allowed during one month on the 'home' (T-Mobile USA) network.
         /// </summary>
         [JsonProperty("data_limit")]
         public int? DataLimit { get; private set; }
@@ -550,22 +558,22 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("voice_enabled")]
         public bool? VoiceEnabled { get; private set; }
         /// <summary>
-        /// Defines whether SIMs can roam onto other networks in the SIM's home country.
+        /// Defines whether SIMs can roam onto networks other than the 'home' (T-Mobile USA) network in the United States.
         /// </summary>
         [JsonProperty("national_roaming_enabled")]
         public bool? NationalRoamingEnabled { get; private set; }
         /// <summary>
-        /// Network-enforced limit specifying the total Megabytes of national roaming data usage allowed during one month.
+        /// Network-enforced limit specifying the total Megabytes of 'national roaming' data usage allowed during one month on networks in the United States other than the 'home' (T-Mobile USA) network.
         /// </summary>
         [JsonProperty("national_roaming_data_limit")]
         public int? NationalRoamingDataLimit { get; private set; }
         /// <summary>
-        /// The international_roaming
+        /// Defines whether SIMs are capable of using GPRS/3G/4G/LTE data connectivity and messaging outside of the United States.
         /// </summary>
         [JsonProperty("international_roaming")]
         public List<string> InternationalRoaming { get; private set; }
         /// <summary>
-        /// The international_roaming_data_limit
+        /// Network-enforced limit specifying the total Megabytes of 'international roaming' (non-US) data usage (download and upload combined) allowed during one month.
         /// </summary>
         [JsonProperty("international_roaming_data_limit")]
         public int? InternationalRoamingDataLimit { get; private set; }
