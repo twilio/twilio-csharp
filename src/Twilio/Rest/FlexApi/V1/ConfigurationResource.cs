@@ -405,6 +405,11 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("integrations")]
         public List<object> Integrations { get; private set; }
         /// <summary>
+        /// Outbound call flows Attributes
+        /// </summary>
+        [JsonProperty("outbound_call_flows")]
+        public object OutboundCallFlows { get; private set; }
+        /// <summary>
         /// The URL for this resource
         /// </summary>
         [JsonProperty("url")]

@@ -162,13 +162,16 @@ namespace Twilio.Tests.TwiML
             elem.Pay(
                 Pay.InputEnum.Dtmf,
                 new Uri("https://example.com"),
+                Pay.BankAccountTypeEnum.ConsumerChecking,
                 new Uri("https://example.com"),
                 Pay.StatusCallbackMethodEnum.Get,
                 1,
                 1,
                 true,
                 "postal_code",
+                1,
                 "payment_connector",
+                Pay.PaymentMethodEnum.AchDebit,
                 Pay.TokenTypeEnum.OneTime,
                 "charge_amount",
                 "currency",
@@ -206,7 +209,7 @@ namespace Twilio.Tests.TwiML
                 "  <Reject reason=\"rejected\"></Reject>" + Environment.NewLine +
                 "  <Say voice=\"man\" loop=\"1\" language=\"da-DK\">message</Say>" + Environment.NewLine +
                 "  <Sms to=\"+15558675310\" from=\"+15017122661\" action=\"https://example.com\" method=\"GET\" statusCallback=\"https://example.com\">message</Sms>" + Environment.NewLine +
-                "  <Pay input=\"dtmf\" action=\"https://example.com\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" paymentConnector=\"payment_connector\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>" + Environment.NewLine +
+                "  <Pay input=\"dtmf\" action=\"https://example.com\" bankAccountType=\"consumer-checking\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" minPostalCodeLength=\"1\" paymentConnector=\"payment_connector\" paymentMethod=\"ach-debit\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>" + Environment.NewLine +
                 "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\"></Prompt>" + Environment.NewLine +
                 "  <Start action=\"https://example.com\" method=\"GET\"></Start>" + Environment.NewLine +
                 "  <Stop></Stop>" + Environment.NewLine +

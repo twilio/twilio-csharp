@@ -533,13 +533,17 @@ namespace Twilio.TwiML
         /// </summary>
         /// <param name="input"> Input type Twilio should accept </param>
         /// <param name="action"> Action URL </param>
+        /// <param name="bankAccountType"> Bank account type for ach transactions. If set, payment method attribute must be
+        ///                       provided and value should be set to ach-debit. defaults to consumer-checking </param>
         /// <param name="statusCallback"> Status callback URL </param>
         /// <param name="statusCallbackMethod"> Status callback method </param>
         /// <param name="timeout"> Time to wait to gather input </param>
         /// <param name="maxAttempts"> Maximum number of allowed retries when gathering input </param>
         /// <param name="securityCode"> Prompt for security code </param>
         /// <param name="postalCode"> Prompt for postal code and it should be true/false or default postal code </param>
+        /// <param name="minPostalCodeLength"> Prompt for minimum postal code length </param>
         /// <param name="paymentConnector"> Unique name for payment connector </param>
+        /// <param name="paymentMethod"> Payment method to be used. defaults to credit-card </param>
         /// <param name="tokenType"> Type of token </param>
         /// <param name="chargeAmount"> Amount to process. If value is greater than 0 then make the payment else create a
         ///                    payment token </param>
@@ -549,13 +553,16 @@ namespace Twilio.TwiML
         /// <param name="language"> Language to use </param>
         public VoiceResponse Pay(Pay.InputEnum input = null,
                                  Uri action = null,
+                                 Pay.BankAccountTypeEnum bankAccountType = null,
                                  Uri statusCallback = null,
                                  Pay.StatusCallbackMethodEnum statusCallbackMethod = null,
                                  int? timeout = null,
                                  int? maxAttempts = null,
                                  bool? securityCode = null,
                                  string postalCode = null,
+                                 int? minPostalCodeLength = null,
                                  string paymentConnector = null,
+                                 Pay.PaymentMethodEnum paymentMethod = null,
                                  Pay.TokenTypeEnum tokenType = null,
                                  string chargeAmount = null,
                                  string currency = null,
@@ -566,13 +573,16 @@ namespace Twilio.TwiML
             var newChild = new Pay(
                 input,
                 action,
+                bankAccountType,
                 statusCallback,
                 statusCallbackMethod,
                 timeout,
                 maxAttempts,
                 securityCode,
                 postalCode,
+                minPostalCodeLength,
                 paymentConnector,
+                paymentMethod,
                 tokenType,
                 chargeAmount,
                 currency,
@@ -598,7 +608,7 @@ namespace Twilio.TwiML
         /// <summary>
         /// Create a new <Prompt/> element and append it as a child of this element.
         /// </summary>
-        /// <param name="for_"> Name of the credit card data element </param>
+        /// <param name="for_"> Name of the payment source data element </param>
         /// <param name="errorType"> Type of error </param>
         /// <param name="cardType"> Type of the credit card </param>
         /// <param name="attempt"> Current attempt count </param>

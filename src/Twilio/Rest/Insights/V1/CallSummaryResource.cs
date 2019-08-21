@@ -71,36 +71,6 @@ namespace Twilio.Rest.Insights.V1
             public static readonly ProcessingStateEnum Partial = new ProcessingStateEnum("partial");
         }
 
-        public sealed class DirectionEnum : StringEnum
-        {
-            private DirectionEnum(string value) : base(value) {}
-            public DirectionEnum() {}
-            public static implicit operator DirectionEnum(string value)
-            {
-                return new DirectionEnum(value);
-            }
-
-            public static readonly DirectionEnum Inbound = new DirectionEnum("inbound");
-            public static readonly DirectionEnum OutboundApi = new DirectionEnum("outbound_api");
-            public static readonly DirectionEnum OutboundDial = new DirectionEnum("outbound_dial");
-            public static readonly DirectionEnum TrunkingOriginating = new DirectionEnum("trunking_originating");
-            public static readonly DirectionEnum TrunkingTerminating = new DirectionEnum("trunking_terminating");
-        }
-
-        public sealed class DisconnectedByEnum : StringEnum
-        {
-            private DisconnectedByEnum(string value) : base(value) {}
-            public DisconnectedByEnum() {}
-            public static implicit operator DisconnectedByEnum(string value)
-            {
-                return new DisconnectedByEnum(value);
-            }
-
-            public static readonly DisconnectedByEnum Callee = new DisconnectedByEnum("callee");
-            public static readonly DisconnectedByEnum Caller = new DisconnectedByEnum("caller");
-            public static readonly DisconnectedByEnum Unknown = new DisconnectedByEnum("unknown");
-        }
-
         private static Request BuildFetchRequest(FetchCallSummaryOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -219,18 +189,6 @@ namespace Twilio.Rest.Insights.V1
         [JsonProperty("processing_state")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CallSummaryResource.ProcessingStateEnum ProcessingState { get; private set; }
-        /// <summary>
-        /// The direction
-        /// </summary>
-        [JsonProperty("direction")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public CallSummaryResource.DirectionEnum Direction { get; private set; }
-        /// <summary>
-        /// The disconnected_by
-        /// </summary>
-        [JsonProperty("disconnected_by")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public CallSummaryResource.DisconnectedByEnum DisconnectedBy { get; private set; }
         /// <summary>
         /// The start_time
         /// </summary>

@@ -34,6 +34,8 @@ namespace Twilio.TwiML.Voice
             public static readonly ForEnum SecurityCode = new ForEnum("security-code");
             public static readonly ForEnum PostalCode = new ForEnum("postal-code");
             public static readonly ForEnum PaymentProcessing = new ForEnum("payment-processing");
+            public static readonly ForEnum BankAccountNumber = new ForEnum("bank-account-number");
+            public static readonly ForEnum BankRoutingNumber = new ForEnum("bank-routing-number");
         }
 
         public sealed class ErrorTypeEnum : StringEnum
@@ -74,7 +76,7 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Name of the credit card data element
+        /// Name of the payment source data element
         /// </summary>
         public Prompt.ForEnum For_ { get; set; }
         /// <summary>
@@ -93,7 +95,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Create a new Prompt
         /// </summary>
-        /// <param name="for_"> Name of the credit card data element </param>
+        /// <param name="for_"> Name of the payment source data element </param>
         /// <param name="errorType"> Type of error </param>
         /// <param name="cardType"> Type of the credit card </param>
         /// <param name="attempt"> Current attempt count </param>

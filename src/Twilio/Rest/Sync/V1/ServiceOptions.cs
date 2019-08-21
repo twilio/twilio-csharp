@@ -104,6 +104,10 @@ namespace Twilio.Rest.Sync.V1
         /// Determines how long an identity must be offline before reachability webhooks fire.
         /// </summary>
         public int? ReachabilityDebouncingWindow { get; set; }
+        /// <summary>
+        /// true or false - controls whether this instance fires webhooks when Sync objects are updated through REST
+        /// </summary>
+        public bool? WebhooksFromRestEnabled { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -139,6 +143,11 @@ namespace Twilio.Rest.Sync.V1
             if (ReachabilityDebouncingWindow != null)
             {
                 p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingWindow", ReachabilityDebouncingWindow.ToString()));
+            }
+
+            if (WebhooksFromRestEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("WebhooksFromRestEnabled", WebhooksFromRestEnabled.Value.ToString().ToLower()));
             }
 
             return p;
@@ -202,6 +211,10 @@ namespace Twilio.Rest.Sync.V1
         /// Determines how long an identity must be offline before reachability webhooks fire.
         /// </summary>
         public int? ReachabilityDebouncingWindow { get; set; }
+        /// <summary>
+        /// true or false - controls whether this instance fires webhooks when Sync objects are updated through REST
+        /// </summary>
+        public bool? WebhooksFromRestEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -246,6 +259,11 @@ namespace Twilio.Rest.Sync.V1
             if (ReachabilityDebouncingWindow != null)
             {
                 p.Add(new KeyValuePair<string, string>("ReachabilityDebouncingWindow", ReachabilityDebouncingWindow.ToString()));
+            }
+
+            if (WebhooksFromRestEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("WebhooksFromRestEnabled", WebhooksFromRestEnabled.Value.ToString().ToLower()));
             }
 
             return p;

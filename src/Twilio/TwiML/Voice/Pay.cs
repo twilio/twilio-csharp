@@ -104,6 +104,34 @@ namespace Twilio.TwiML.Voice
             public static readonly LanguageEnum ItIt = new LanguageEnum("it-IT");
         }
 
+        public sealed class BankAccountTypeEnum : StringEnum
+        {
+            private BankAccountTypeEnum(string value) : base(value) {}
+            public BankAccountTypeEnum() {}
+            public static implicit operator BankAccountTypeEnum(string value)
+            {
+                return new BankAccountTypeEnum(value);
+            }
+
+            public static readonly BankAccountTypeEnum ConsumerChecking = new BankAccountTypeEnum("consumer-checking");
+            public static readonly BankAccountTypeEnum ConsumerSavings = new BankAccountTypeEnum("consumer-savings");
+            public static readonly BankAccountTypeEnum CommercialChecking = new BankAccountTypeEnum("commercial-checking");
+            public static readonly BankAccountTypeEnum CommercialSavings = new BankAccountTypeEnum("commercial-savings");
+        }
+
+        public sealed class PaymentMethodEnum : StringEnum
+        {
+            private PaymentMethodEnum(string value) : base(value) {}
+            public PaymentMethodEnum() {}
+            public static implicit operator PaymentMethodEnum(string value)
+            {
+                return new PaymentMethodEnum(value);
+            }
+
+            public static readonly PaymentMethodEnum AchDebit = new PaymentMethodEnum("ach-debit");
+            public static readonly PaymentMethodEnum CreditCard = new PaymentMethodEnum("credit-card");
+        }
+
         /// <summary>
         /// Input type Twilio should accept
         /// </summary>
@@ -112,6 +140,10 @@ namespace Twilio.TwiML.Voice
         /// Action URL
         /// </summary>
         public Uri Action { get; set; }
+        /// <summary>
+        /// Bank account type for ach transactions. If set, payment method attribute must be provided and value should be set to ach-debit. defaults to consumer-checking
+        /// </summary>
+        public Pay.BankAccountTypeEnum BankAccountType { get; set; }
         /// <summary>
         /// Status callback URL
         /// </summary>
@@ -137,9 +169,17 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public string PostalCode { get; set; }
         /// <summary>
+        /// Prompt for minimum postal code length
+        /// </summary>
+        public int? MinPostalCodeLength { get; set; }
+        /// <summary>
         /// Unique name for payment connector
         /// </summary>
         public string PaymentConnector { get; set; }
+        /// <summary>
+        /// Payment method to be used. defaults to credit-card
+        /// </summary>
+        public Pay.PaymentMethodEnum PaymentMethod { get; set; }
         /// <summary>
         /// Type of token
         /// </summary>
@@ -170,13 +210,17 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="input"> Input type Twilio should accept </param>
         /// <param name="action"> Action URL </param>
+        /// <param name="bankAccountType"> Bank account type for ach transactions. If set, payment method attribute must be
+        ///                       provided and value should be set to ach-debit. defaults to consumer-checking </param>
         /// <param name="statusCallback"> Status callback URL </param>
         /// <param name="statusCallbackMethod"> Status callback method </param>
         /// <param name="timeout"> Time to wait to gather input </param>
         /// <param name="maxAttempts"> Maximum number of allowed retries when gathering input </param>
         /// <param name="securityCode"> Prompt for security code </param>
         /// <param name="postalCode"> Prompt for postal code and it should be true/false or default postal code </param>
+        /// <param name="minPostalCodeLength"> Prompt for minimum postal code length </param>
         /// <param name="paymentConnector"> Unique name for payment connector </param>
+        /// <param name="paymentMethod"> Payment method to be used. defaults to credit-card </param>
         /// <param name="tokenType"> Type of token </param>
         /// <param name="chargeAmount"> Amount to process. If value is greater than 0 then make the payment else create a
         ///                    payment token </param>
@@ -186,13 +230,16 @@ namespace Twilio.TwiML.Voice
         /// <param name="language"> Language to use </param>
         public Pay(Pay.InputEnum input = null,
                    Uri action = null,
+                   Pay.BankAccountTypeEnum bankAccountType = null,
                    Uri statusCallback = null,
                    Pay.StatusCallbackMethodEnum statusCallbackMethod = null,
                    int? timeout = null,
                    int? maxAttempts = null,
                    bool? securityCode = null,
                    string postalCode = null,
+                   int? minPostalCodeLength = null,
                    string paymentConnector = null,
+                   Pay.PaymentMethodEnum paymentMethod = null,
                    Pay.TokenTypeEnum tokenType = null,
                    string chargeAmount = null,
                    string currency = null,
@@ -202,13 +249,16 @@ namespace Twilio.TwiML.Voice
         {
             this.Input = input;
             this.Action = action;
+            this.BankAccountType = bankAccountType;
             this.StatusCallback = statusCallback;
             this.StatusCallbackMethod = statusCallbackMethod;
             this.Timeout = timeout;
             this.MaxAttempts = maxAttempts;
             this.SecurityCode = securityCode;
             this.PostalCode = postalCode;
+            this.MinPostalCodeLength = minPostalCodeLength;
             this.PaymentConnector = paymentConnector;
+            this.PaymentMethod = paymentMethod;
             this.TokenType = tokenType;
             this.ChargeAmount = chargeAmount;
             this.Currency = currency;
@@ -230,6 +280,10 @@ namespace Twilio.TwiML.Voice
             if (this.Action != null)
             {
                 attributes.Add(new XAttribute("action", Serializers.Url(this.Action)));
+            }
+            if (this.BankAccountType != null)
+            {
+                attributes.Add(new XAttribute("bankAccountType", this.BankAccountType.ToString()));
             }
             if (this.StatusCallback != null)
             {
@@ -255,9 +309,17 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("postalCode", this.PostalCode));
             }
+            if (this.MinPostalCodeLength != null)
+            {
+                attributes.Add(new XAttribute("minPostalCodeLength", this.MinPostalCodeLength.ToString()));
+            }
             if (this.PaymentConnector != null)
             {
                 attributes.Add(new XAttribute("paymentConnector", this.PaymentConnector));
+            }
+            if (this.PaymentMethod != null)
+            {
+                attributes.Add(new XAttribute("paymentMethod", this.PaymentMethod.ToString()));
             }
             if (this.TokenType != null)
             {
@@ -300,7 +362,7 @@ namespace Twilio.TwiML.Voice
         /// <summary>
         /// Create a new <Prompt/> element and append it as a child of this element.
         /// </summary>
-        /// <param name="for_"> Name of the credit card data element </param>
+        /// <param name="for_"> Name of the payment source data element </param>
         /// <param name="errorType"> Type of error </param>
         /// <param name="cardType"> Type of the credit card </param>
         /// <param name="attempt"> Current attempt count </param>
@@ -310,6 +372,29 @@ namespace Twilio.TwiML.Voice
                           List<int> attempt = null)
         {
             var newChild = new Prompt(for_, errorType, cardType, attempt);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Parameter/> element as a child of this element
+        /// </summary>
+        /// <param name="parameter"> A Parameter instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Pay Parameter(Parameter parameter)
+        {
+            this.Append(parameter);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Parameter/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="name"> The name of the custom parameter </param>
+        /// <param name="value"> The value of the custom parameter </param>
+        public Pay Parameter(string name = null, string value = null)
+        {
+            var newChild = new Parameter(name, value);
             this.Append(newChild);
             return this;
         }

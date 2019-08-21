@@ -208,6 +208,8 @@ namespace Twilio.Rest.Sync.V1
         ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
         /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
         ///                                    webhooks fire. </param>
+        /// <param name="webhooksFromRestEnabled"> true or false - controls whether this instance fires webhooks when Sync
+        ///                               objects are updated through REST </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName = null,
@@ -216,9 +218,10 @@ namespace Twilio.Rest.Sync.V1
                                              bool? aclEnabled = null,
                                              bool? reachabilityDebouncingEnabled = null,
                                              int? reachabilityDebouncingWindow = null,
+                                             bool? webhooksFromRestEnabled = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow, WebhooksFromRestEnabled = webhooksFromRestEnabled};
             return Create(options, client);
         }
 
@@ -236,6 +239,8 @@ namespace Twilio.Rest.Sync.V1
         ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
         /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
         ///                                    webhooks fire. </param>
+        /// <param name="webhooksFromRestEnabled"> true or false - controls whether this instance fires webhooks when Sync
+        ///                               objects are updated through REST </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null,
@@ -244,9 +249,10 @@ namespace Twilio.Rest.Sync.V1
                                                                                      bool? aclEnabled = null,
                                                                                      bool? reachabilityDebouncingEnabled = null,
                                                                                      int? reachabilityDebouncingWindow = null,
+                                                                                     bool? webhooksFromRestEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, WebhookUrl = webhookUrl, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow, WebhooksFromRestEnabled = webhooksFromRestEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -440,6 +446,8 @@ namespace Twilio.Rest.Sync.V1
         ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
         /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
         ///                                    webhooks fire. </param>
+        /// <param name="webhooksFromRestEnabled"> true or false - controls whether this instance fires webhooks when Sync
+        ///                               objects are updated through REST </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -449,9 +457,10 @@ namespace Twilio.Rest.Sync.V1
                                              bool? aclEnabled = null,
                                              bool? reachabilityDebouncingEnabled = null,
                                              int? reachabilityDebouncingWindow = null,
+                                             bool? webhooksFromRestEnabled = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow};
+            var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow, WebhooksFromRestEnabled = webhooksFromRestEnabled};
             return Update(options, client);
         }
 
@@ -470,6 +479,8 @@ namespace Twilio.Rest.Sync.V1
         ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
         /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
         ///                                    webhooks fire. </param>
+        /// <param name="webhooksFromRestEnabled"> true or false - controls whether this instance fires webhooks when Sync
+        ///                               objects are updated through REST </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -479,9 +490,10 @@ namespace Twilio.Rest.Sync.V1
                                                                                      bool? aclEnabled = null,
                                                                                      bool? reachabilityDebouncingEnabled = null,
                                                                                      int? reachabilityDebouncingWindow = null,
+                                                                                     bool? webhooksFromRestEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow};
+            var options = new UpdateServiceOptions(pathSid){WebhookUrl = webhookUrl, FriendlyName = friendlyName, ReachabilityWebhooksEnabled = reachabilityWebhooksEnabled, AclEnabled = aclEnabled, ReachabilityDebouncingEnabled = reachabilityDebouncingEnabled, ReachabilityDebouncingWindow = reachabilityDebouncingWindow, WebhooksFromRestEnabled = webhooksFromRestEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -544,6 +556,11 @@ namespace Twilio.Rest.Sync.V1
         /// </summary>
         [JsonProperty("webhook_url")]
         public Uri WebhookUrl { get; private set; }
+        /// <summary>
+        /// true or false - controls whether this instance fires webhooks when Sync objects are updated through REST
+        /// </summary>
+        [JsonProperty("webhooks_from_rest_enabled")]
+        public bool? WebhooksFromRestEnabled { get; private set; }
         /// <summary>
         /// true or false - controls whether this instance fires webhooks when client endpoints connect to Sync
         /// </summary>

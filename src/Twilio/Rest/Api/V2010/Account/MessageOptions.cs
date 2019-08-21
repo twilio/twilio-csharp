@@ -69,14 +69,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Whether to detect Unicode characters that have a similar GSM-7 character and replace them
         /// </summary>
         public bool? SmartEncoded { get; set; }
-        /// <summary>
-        /// A JSON string that represents an interactive message
-        /// </summary>
-        public string InteractiveData { get; set; }
-        /// <summary>
-        /// Whether to forcefully whitelist a from:to pair
-        /// </summary>
-        public bool? ForceOptIn { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -152,16 +144,6 @@ namespace Twilio.Rest.Api.V2010.Account
             if (SmartEncoded != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmartEncoded", SmartEncoded.Value.ToString().ToLower()));
-            }
-
-            if (InteractiveData != null)
-            {
-                p.Add(new KeyValuePair<string, string>("InteractiveData", InteractiveData));
-            }
-
-            if (ForceOptIn != null)
-            {
-                p.Add(new KeyValuePair<string, string>("ForceOptIn", ForceOptIn.Value.ToString().ToLower()));
             }
 
             return p;

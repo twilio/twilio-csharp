@@ -12,13 +12,13 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Wireless.V1;
+using Twilio.Rest.FlexApi.V1;
 
-namespace Twilio.Tests.Rest.Wireless.V1
+namespace Twilio.Tests.Rest.FlexApi.V1
 {
 
     [TestFixture]
-    public class RatePlanTest : TwilioTest
+    public class WebChannelTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()
@@ -26,34 +26,19 @@ namespace Twilio.Tests.Rest.Wireless.V1
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Wireless,
-                "/v1/RatePlans",
+                Twilio.Rest.Domain.FlexApi,
+                "/v1/WebChannels",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                RatePlanResource.Read(client: twilioRestClient);
+                WebChannelResource.Read(client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
             twilioRestClient.Received().Request(request);
-        }
-
-        [Test]
-        public void TestReadEmptyResponse()
-        {
-            var twilioRestClient = Substitute.For<ITwilioRestClient>();
-            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-            twilioRestClient.Request(Arg.Any<Request>())
-                            .Returns(new Response(
-                                         System.Net.HttpStatusCode.OK,
-                                         "{\"meta\": {\"first_page_url\": \"https://wireless.twilio.com/v1/RatePlans?PageSize=50&Page=0\",\"key\": \"rate_plans\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://wireless.twilio.com/v1/RatePlans?PageSize=50&Page=0\"},\"rate_plans\": []}"
-                                     ));
-
-            var response = RatePlanResource.Read(client: twilioRestClient);
-            Assert.NotNull(response);
         }
 
         [Test]
@@ -64,10 +49,25 @@ namespace Twilio.Tests.Rest.Wireless.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"meta\": {\"first_page_url\": \"https://wireless.twilio.com/v1/RatePlans?PageSize=50&Page=0\",\"key\": \"rate_plans\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://wireless.twilio.com/v1/RatePlans?PageSize=50&Page=0\"},\"rate_plans\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_limit\": 1000,\"data_metering\": \"payg\",\"date_created\": \"2019-07-30T20:00:00Z\",\"date_updated\": \"2019-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"messaging_enabled\": true,\"voice_enabled\": true,\"national_roaming_enabled\": true,\"national_roaming_data_limit\": 1000,\"international_roaming\": [\"data\",\"messaging\",\"voice\"],\"international_roaming_data_limit\": 1000,\"sid\": \"WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"usage_notification_method\": \"POST\",\"usage_notification_url\": \"https://callback.com\",\"url\": \"https://wireless.twilio.com/v1/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"
+                                         "{\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://flex-api.twilio.com/v1/WebChannels?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://flex-api.twilio.com/v1/WebChannels?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"flex_chat_channels\"},\"flex_chat_channels\": [{\"flex_flow_sid\": \"FOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2016-08-01T22:10:40Z\",\"date_updated\": \"2016-08-01T22:10:40Z\",\"url\": \"https://flex-api.twilio.com/v1/WebChannels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"
                                      ));
 
-            var response = RatePlanResource.Read(client: twilioRestClient);
+            var response = WebChannelResource.Read(client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestReadEmptyResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://flex-api.twilio.com/v1/WebChannels?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://flex-api.twilio.com/v1/WebChannels?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"flex_chat_channels\"},\"flex_chat_channels\": []}"
+                                     ));
+
+            var response = WebChannelResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -77,15 +77,15 @@ namespace Twilio.Tests.Rest.Wireless.V1
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Wireless,
-                "/v1/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                Twilio.Rest.Domain.FlexApi,
+                "/v1/WebChannels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                RatePlanResource.Fetch("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                WebChannelResource.Fetch("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -100,10 +100,10 @@ namespace Twilio.Tests.Rest.Wireless.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_limit\": 1000,\"data_metering\": \"payg\",\"date_created\": \"2019-07-30T20:00:00Z\",\"date_updated\": \"2019-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"messaging_enabled\": true,\"voice_enabled\": true,\"national_roaming_enabled\": true,\"national_roaming_data_limit\": 1000,\"international_roaming\": [\"data\",\"messaging\",\"voice\"],\"international_roaming_data_limit\": 1000,\"sid\": \"WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"usage_notification_method\": \"POST\",\"usage_notification_url\": \"https://callback.com\",\"url\": \"https://wireless.twilio.com/v1/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"flex_flow_sid\": \"FOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2016-08-01T22:10:40Z\",\"date_updated\": \"2016-08-01T22:10:40Z\",\"url\": \"https://flex-api.twilio.com/v1/WebChannels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = RatePlanResource.Fetch("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = WebChannelResource.Fetch("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -113,15 +113,19 @@ namespace Twilio.Tests.Rest.Wireless.V1
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Post,
-                Twilio.Rest.Domain.Wireless,
-                "/v1/RatePlans",
+                Twilio.Rest.Domain.FlexApi,
+                "/v1/WebChannels",
                 ""
             );
+            request.AddPostParam("FlexFlowSid", Serialize("FOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
+            request.AddPostParam("Identity", Serialize("identity"));
+            request.AddPostParam("CustomerFriendlyName", Serialize("customer_friendly_name"));
+            request.AddPostParam("ChatFriendlyName", Serialize("chat_friendly_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                RatePlanResource.Create(client: twilioRestClient);
+                WebChannelResource.Create("FOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", "customer_friendly_name", "chat_friendly_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -136,10 +140,10 @@ namespace Twilio.Tests.Rest.Wireless.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_limit\": 1000,\"data_metering\": \"payg\",\"date_created\": \"2019-07-30T20:00:00Z\",\"date_updated\": \"2019-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"messaging_enabled\": true,\"voice_enabled\": true,\"national_roaming_enabled\": true,\"national_roaming_data_limit\": 1000,\"international_roaming\": [\"data\",\"messaging\",\"voice\"],\"international_roaming_data_limit\": 1000,\"sid\": \"WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"usage_notification_method\": \"POST\",\"usage_notification_url\": \"https://callback.com\",\"url\": \"https://wireless.twilio.com/v1/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"flex_flow_sid\": \"FOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2016-08-01T22:10:40Z\",\"date_updated\": \"2016-08-01T22:10:40Z\",\"url\": \"https://flex-api.twilio.com/v1/WebChannels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = RatePlanResource.Create(client: twilioRestClient);
+            var response = WebChannelResource.Create("FOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", "customer_friendly_name", "chat_friendly_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -149,15 +153,15 @@ namespace Twilio.Tests.Rest.Wireless.V1
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Post,
-                Twilio.Rest.Domain.Wireless,
-                "/v1/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                Twilio.Rest.Domain.FlexApi,
+                "/v1/WebChannels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                RatePlanResource.Update("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                WebChannelResource.Update("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -172,10 +176,10 @@ namespace Twilio.Tests.Rest.Wireless.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_limit\": 1000,\"data_metering\": \"payg\",\"date_created\": \"2019-07-30T20:00:00Z\",\"date_updated\": \"2019-07-30T20:00:00Z\",\"friendly_name\": \"friendly_name\",\"messaging_enabled\": true,\"voice_enabled\": true,\"national_roaming_enabled\": true,\"national_roaming_data_limit\": 1000,\"international_roaming\": [\"data\",\"messaging\",\"voice\"],\"international_roaming_data_limit\": 1000,\"sid\": \"WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"usage_notification_method\": \"POST\",\"usage_notification_url\": \"https://callback.com\",\"url\": \"https://wireless.twilio.com/v1/RatePlans/WPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"flex_flow_sid\": \"FOaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2016-08-01T22:10:40Z\",\"date_updated\": \"2016-08-01T22:10:40Z\",\"url\": \"https://flex-api.twilio.com/v1/WebChannels/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = RatePlanResource.Update("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = WebChannelResource.Update("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -185,15 +189,15 @@ namespace Twilio.Tests.Rest.Wireless.V1
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Delete,
-                Twilio.Rest.Domain.Wireless,
-                "/v1/RatePlans/WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                Twilio.Rest.Domain.FlexApi,
+                "/v1/WebChannels/CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                RatePlanResource.Delete("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                WebChannelResource.Delete("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -211,7 +215,7 @@ namespace Twilio.Tests.Rest.Wireless.V1
                                          "null"
                                      ));
 
-            var response = RatePlanResource.Delete("WPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = WebChannelResource.Delete("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

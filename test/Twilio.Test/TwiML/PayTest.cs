@@ -32,13 +32,16 @@ namespace Twilio.Tests.TwiML
             var elem = new Pay(
                 Pay.InputEnum.Dtmf,
                 new Uri("https://example.com"),
+                Pay.BankAccountTypeEnum.ConsumerChecking,
                 new Uri("https://example.com"),
                 Pay.StatusCallbackMethodEnum.Get,
                 1,
                 1,
                 true,
                 "postal_code",
+                1,
                 "payment_connector",
+                Pay.PaymentMethodEnum.AchDebit,
                 Pay.TokenTypeEnum.OneTime,
                 "charge_amount",
                 "currency",
@@ -48,7 +51,7 @@ namespace Twilio.Tests.TwiML
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Pay input=\"dtmf\" action=\"https://example.com\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" paymentConnector=\"payment_connector\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>",
+                "<Pay input=\"dtmf\" action=\"https://example.com\" bankAccountType=\"consumer-checking\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" timeout=\"1\" maxAttempts=\"1\" securityCode=\"true\" postalCode=\"postal_code\" minPostalCodeLength=\"1\" paymentConnector=\"payment_connector\" paymentMethod=\"ach-debit\" tokenType=\"one-time\" chargeAmount=\"charge_amount\" currency=\"currency\" description=\"description\" validCardTypes=\"visa\" language=\"de-DE\"></Pay>",
                 elem.ToString()
             );
         }
@@ -97,10 +100,13 @@ namespace Twilio.Tests.TwiML
                 Promoter.ListOfOne(1)
             );
 
+            elem.Parameter("name", "value");
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Pay>" + Environment.NewLine +
                 "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\"></Prompt>" + Environment.NewLine +
+                "  <Parameter name=\"name\" value=\"value\"></Parameter>" + Environment.NewLine +
                 "</Pay>",
                 elem.ToString()
             );

@@ -154,8 +154,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="forceDelivery"> Reserved </param>
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
-        /// <param name="interactiveData"> A JSON string that represents an interactive message </param>
-        /// <param name="forceOptIn"> Whether to forcefully whitelist a from:to pair </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Create(Types.PhoneNumber to,
@@ -171,11 +169,9 @@ namespace Twilio.Rest.Api.V2010.Account
                                              int? validityPeriod = null,
                                              bool? forceDelivery = null,
                                              bool? smartEncoded = null,
-                                             string interactiveData = null,
-                                             bool? forceOptIn = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, SmartEncoded = smartEncoded, InteractiveData = interactiveData, ForceOptIn = forceOptIn};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, SmartEncoded = smartEncoded};
             return Create(options, client);
         }
 
@@ -198,8 +194,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="forceDelivery"> Reserved </param>
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
-        /// <param name="interactiveData"> A JSON string that represents an interactive message </param>
-        /// <param name="forceOptIn"> Whether to forcefully whitelist a from:to pair </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(Types.PhoneNumber to,
@@ -215,11 +209,9 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      int? validityPeriod = null,
                                                                                      bool? forceDelivery = null,
                                                                                      bool? smartEncoded = null,
-                                                                                     string interactiveData = null,
-                                                                                     bool? forceOptIn = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, SmartEncoded = smartEncoded, InteractiveData = interactiveData, ForceOptIn = forceOptIn};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, SmartEncoded = smartEncoded};
             return await CreateAsync(options, client);
         }
         #endif
