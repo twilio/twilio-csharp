@@ -67,7 +67,7 @@ Console.WriteLine(message.Sid);
 
 ### Generating TwiML
 
-To control phone calls, your application needs to output [TwiML](twiml "TwiML - Twilio Markup Language").
+To control phone calls, your application needs to output [TwiML][twiml].
 
 ```csharp
 // TwiML classes can be created as standalone elements
