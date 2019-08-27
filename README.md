@@ -1,5 +1,13 @@
+# twilio-csharp
+
 [![Build status](https://ci.appveyor.com/api/projects/status/e0qcgl8r6rid4akb/branch/master?svg=true)](https://ci.appveyor.com/project/TwilioAPI/twilio-csharp-lum8a/branch/master)
 [![NuGet](https://img.shields.io/nuget/v/Twilio.svg)](https://www.nuget.org/packages/Twilio)
+
+## Documentation
+
+The documentation for the Twilio API can be found [here][apidocs].
+
+The C# library documentation can be found [here][libdocs].
 
 ## Recent Update
 
@@ -18,7 +26,7 @@ in-line code documentation here in the library.
 
 # Twilio REST API and TwiML Libraries for .NET
 
-Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more at [http://www.twilio.com][0]
+Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more at [https://www.twilio.com][twilio]
 
 ### Adding Twilio libraries to your .NET project
 
@@ -57,7 +65,10 @@ var message = MessageResource.Create(
 Console.WriteLine(message.Sid);
 ```
 
-### TwiML Generation
+### Generating TwiML
+
+To control phone calls, your application needs to output [TwiML](twiml "TwiML - Twilio Markup Language").
+
 ```csharp
 // TwiML classes can be created as standalone elements
 var gather = new Gather(numDigits: 1, action: new Uri("hello-monkey-handle-key.cshtml"), method: HttpMethod.Post)
@@ -95,13 +106,15 @@ Console.WriteLine(response);
 ```
 
 ## Migrating from earlier versions
-See the migration guide [here][3]. Also, if you were using the Twilio.Mvc package, that has been replaced by the [Twilio.AspNet.Mvc][4]
-package which is compatible with this version of the library.
+
+See the migration guide [here][migrating]. Also, if you were using the Twilio.Mvc package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
 
 ## Alpha Version
+
 The alpha version is no longer necessary. All Twilio products are available in the main-line library.
 
 ## Docker Image
+
 The `Dockerfile` present in this repository and its respective `twilio/twilio-csharp` Docker image are currently used by Twilio for testing purposes only.
 
 ## Getting help
@@ -110,11 +123,9 @@ If you need help installing or using the library, please check the [Twilio Suppo
 
 If you've instead found a bug in the library or would like new features added, go ahead and open issues or pull requests against this repo!
 
-#### [Twilio REST API Documentation][1]
-#### [Twilio TwiML Documentation][2]
-
-[0]: http://www.twilio.com
-[1]: http://www.twilio.com/docs/api/rest
-[2]: http://www.twilio.com/docs/api/twiml
-[3]: https://www.twilio.com/docs/libraries/csharp/migrating-your-csharp-dot-net-application-twilio-sdk-4x-5x
-[4]: https://github.com/twilio/twilio-aspnet
+[twilio]: https://www.twilio.com
+[apidocs]: https://www.twilio.com/docs/api
+[twiml]: https://www.twilio.com/docs/api/twiml
+[libdocs]: https://twilio.github.io/twilio-csharp
+[migrating]: https://www.twilio.com/docs/libraries/csharp/migrating-your-csharp-dot-net-application-twilio-sdk-4x-5x
+[aspnet]: https://github.com/twilio/twilio-aspnet
