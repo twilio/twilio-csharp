@@ -63,7 +63,7 @@ namespace Twilio.Rest.Chat.V2
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Chat.V2
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
@@ -130,7 +130,7 @@ namespace Twilio.Rest.Chat.V2
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Service resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -143,7 +143,7 @@ namespace Twilio.Rest.Chat.V2
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Service resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -398,7 +398,7 @@ namespace Twilio.Rest.Chat.V2
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Service resource to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="defaultServiceRoleSid"> The service role assigned to users when they are added to the service </param>
         /// <param name="defaultChannelRoleSid"> The channel role assigned to users when they are added to a channel </param>
@@ -438,7 +438,7 @@ namespace Twilio.Rest.Chat.V2
         /// <param name="preWebhookUrl"> The webhook URL for pre-event webhooks </param>
         /// <param name="postWebhookUrl"> The URL for post-event webhooks </param>
         /// <param name="webhookMethod"> The HTTP method  to use for both PRE and POST webhooks </param>
-        /// <param name="webhookFilters"> The list of WebHook events that are enabled for this Service instance </param>
+        /// <param name="webhookFilters"> The list of webhook events that are enabled for this Service instance </param>
         /// <param name="limitsChannelMembers"> The maximum number of Members that can be added to Channels within this Service
         ///                            </param>
         /// <param name="limitsUserChannels"> The maximum number of Channels Users can be a Member of within this Service
@@ -492,7 +492,7 @@ namespace Twilio.Rest.Chat.V2
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Service resource to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="defaultServiceRoleSid"> The service role assigned to users when they are added to the service </param>
         /// <param name="defaultChannelRoleSid"> The channel role assigned to users when they are added to a channel </param>
@@ -532,7 +532,7 @@ namespace Twilio.Rest.Chat.V2
         /// <param name="preWebhookUrl"> The webhook URL for pre-event webhooks </param>
         /// <param name="postWebhookUrl"> The URL for post-event webhooks </param>
         /// <param name="webhookMethod"> The HTTP method  to use for both PRE and POST webhooks </param>
-        /// <param name="webhookFilters"> The list of WebHook events that are enabled for this Service instance </param>
+        /// <param name="webhookFilters"> The list of webhook events that are enabled for this Service instance </param>
         /// <param name="limitsChannelMembers"> The maximum number of Members that can be added to Channels within this Service
         ///                            </param>
         /// <param name="limitsUserChannels"> The maximum number of Channels Users can be a Member of within this Service
@@ -682,7 +682,7 @@ namespace Twilio.Rest.Chat.V2
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
         /// <summary>
-        /// The list of WebHook events that are enabled for this Service instance
+        /// The list of webhook events that are enabled for this Service instance
         /// </summary>
         [JsonProperty("webhook_filters")]
         public List<string> WebhookFilters { get; private set; }

@@ -81,7 +81,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <summary>
         /// Retrieve a list of all Engagements for the Flow.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow to read Engagements from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <summary>
         /// Retrieve a list of all Engagements for the Flow.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow to read Engagements from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -216,8 +216,8 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <summary>
         /// Retrieve an Engagement
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> Flow SID </param>
+        /// <param name="pathSid"> The SID of the Engagement resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Engagement </returns>
         public static EngagementResource Fetch(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
@@ -230,8 +230,8 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <summary>
         /// Retrieve an Engagement
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> Flow SID </param>
+        /// <param name="pathSid"> The SID of the Engagement resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
         public static async System.Threading.Tasks.Task<EngagementResource> FetchAsync(string pathFlowSid,
@@ -286,12 +286,12 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <summary>
         /// Triggers a new Engagement for the Flow
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement. </param>
-        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement.
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement </param>
+        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement
         ///            </param>
-        /// <param name="parameters"> JSON data that will be added to your flow's context and can accessed as variables inside
-        ///                  your flow. </param>
+        /// <param name="parameters"> A JSON string we will add to your flow's context and that you can access as variables
+        ///                  inside your flow </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Engagement </returns>
         public static EngagementResource Create(string pathFlowSid,
@@ -308,12 +308,12 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <summary>
         /// Triggers a new Engagement for the Flow
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement. </param>
-        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement.
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement </param>
+        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement
         ///            </param>
-        /// <param name="parameters"> JSON data that will be added to your flow's context and can accessed as variables inside
-        ///                  your flow. </param>
+        /// <param name="parameters"> A JSON string we will add to your flow's context and that you can access as variables
+        ///                  inside your flow </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
         public static async System.Threading.Tasks.Task<EngagementResource> CreateAsync(string pathFlowSid,
@@ -370,8 +370,8 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <summary>
         /// Delete this Engagement and all Steps relating to it.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow to delete Engagements from </param>
+        /// <param name="pathSid"> The SID of the Engagement resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Engagement </returns>
         public static bool Delete(string pathFlowSid, string pathSid, ITwilioRestClient client = null)
@@ -384,8 +384,8 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// <summary>
         /// Delete this Engagement and all Steps relating to it.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow to delete Engagements from </param>
+        /// <param name="pathSid"> The SID of the Engagement resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Engagement </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathFlowSid,
@@ -416,58 +416,58 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Engagement.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
         /// <summary>
-        /// Contact Sid.
+        /// The SID of the Contact
         /// </summary>
         [JsonProperty("contact_sid")]
         public string ContactSid { get; private set; }
         /// <summary>
-        /// The phone number, SIP address or Client identifier that triggered this Engagement.
+        /// The phone number, SIP address or Client identifier that triggered this Engagement
         /// </summary>
         [JsonProperty("contact_channel_address")]
         public string ContactChannelAddress { get; private set; }
         /// <summary>
-        /// Flow state.
+        /// The current state of the execution flow
         /// </summary>
         [JsonProperty("context")]
         public object Context { get; private set; }
         /// <summary>
-        /// The Status of this Engagement
+        /// The status of the Engagement
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public EngagementResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The date this Engagement was created
+        /// The ISO 8601 date and time in GMT when the Engagement was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Engagement was updated
+        /// The ISO 8601 date and time in GMT when the Engagement was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Nested resource URLs.
+        /// The URLs of the Engagement's nested resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

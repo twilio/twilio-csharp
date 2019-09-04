@@ -64,9 +64,9 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
         /// <summary>
         /// Retrieve the context for an Execution Step.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathExecutionSid"> Execution Sid. </param>
-        /// <param name="pathStepSid"> Step Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
+        /// <param name="pathStepSid"> Step SID </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExecutionStepContext </returns>
         public static ExecutionStepContextResource Fetch(string pathFlowSid,
@@ -82,9 +82,9 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
         /// <summary>
         /// Retrieve the context for an Execution Step.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathExecutionSid"> Execution Sid. </param>
-        /// <param name="pathStepSid"> Step Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
+        /// <param name="pathStepSid"> Step SID </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExecutionStepContext </returns>
         public static async System.Threading.Tasks.Task<ExecutionStepContextResource> FetchAsync(string pathFlowSid,
@@ -116,32 +116,32 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
         }
 
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Flow state.
+        /// The current state of the flow
         /// </summary>
         [JsonProperty("context")]
         public object Context { get; private set; }
         /// <summary>
-        /// Execution Sid.
+        /// The SID of the Execution
         /// </summary>
         [JsonProperty("execution_sid")]
         public string ExecutionSid { get; private set; }
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
         /// <summary>
-        /// Step Sid.
+        /// Step SID
         /// </summary>
         [JsonProperty("step_sid")]
         public string StepSid { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

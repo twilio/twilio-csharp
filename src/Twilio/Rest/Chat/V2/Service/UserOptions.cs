@@ -21,7 +21,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the User resource to fetch
         /// </summary>
         public string PathSid { get; }
 
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// Construct a new FetchUserOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the User resource to fetch </param>
         public FetchUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -56,7 +56,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of  the User resource to delete
         /// </summary>
         public string PathSid { get; }
 
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// Construct a new DeleteUserOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of  the User resource to delete </param>
         public DeleteUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -154,14 +154,14 @@ namespace Twilio.Rest.Chat.V2.Service
     public class ReadUserOptions : ReadOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service to read the resources from
+        /// The SID of the Service to read the User resources from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the User resources from </param>
         public ReadUserOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -192,7 +192,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the User resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// Construct a new UpdateUserOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the User resource to update </param>
         public UpdateUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

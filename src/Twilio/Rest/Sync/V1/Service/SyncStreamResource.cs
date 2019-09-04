@@ -65,8 +65,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
-        /// <param name="pathSid"> Stream SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Stream resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns>
         public static SyncStreamResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -79,8 +79,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Fetch a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
-        /// <param name="pathSid"> Stream SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Stream resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
         public static async System.Threading.Tasks.Task<SyncStreamResource> FetchAsync(string pathServiceSid,
@@ -135,8 +135,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Delete a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
-        /// <param name="pathSid"> Stream SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to delete </param>
+        /// <param name="pathSid"> The SID of the Stream resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -149,8 +149,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Delete a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
-        /// <param name="pathSid"> Stream SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to delete </param>
+        /// <param name="pathSid"> The SID of the Stream resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -205,9 +205,9 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Create a new Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> Stream unique name. </param>
-        /// <param name="ttl"> Stream TTL. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the new Stream in </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="ttl"> How long, in seconds, before the Stream expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns>
         public static SyncStreamResource Create(string pathServiceSid,
@@ -223,9 +223,9 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Create a new Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> Stream unique name. </param>
-        /// <param name="ttl"> Stream TTL. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the new Stream in </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="ttl"> How long, in seconds, before the Stream expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
         public static async System.Threading.Tasks.Task<SyncStreamResource> CreateAsync(string pathServiceSid,
@@ -281,9 +281,9 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Update a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="ttl"> Stream TTL. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to update </param>
+        /// <param name="pathSid"> The SID of the Stream resource to update </param>
+        /// <param name="ttl"> How long, in seconds, before the Stream expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncStream </returns>
         public static SyncStreamResource Update(string pathServiceSid,
@@ -299,9 +299,9 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Update a specific Stream.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="ttl"> Stream TTL. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Stream resource to update </param>
+        /// <param name="pathSid"> The SID of the Stream resource to update </param>
+        /// <param name="ttl"> How long, in seconds, before the Stream expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncStream </returns>
         public static async System.Threading.Tasks.Task<SyncStreamResource> UpdateAsync(string pathServiceSid,
@@ -361,7 +361,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Retrieve a list of all Streams in a Service Instance.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Stream resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -379,7 +379,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// Retrieve a list of all Streams in a Service Instance.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Instance SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Stream resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -472,52 +472,52 @@ namespace Twilio.Rest.Sync.V1.Service
         }
 
         /// <summary>
-        /// Stream SID.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Stream unique name.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// Twilio Account SID.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Service Instance SID.
+        /// The SID of the Sync Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// URL of this Stream.
+        /// The absolute URL of the Message Stream resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Nested resource URLs.
+        /// The URLs of the Stream's nested resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The date this Stream expires.
+        /// The ISO 8601 date and time in GMT when the Message Stream expires
         /// </summary>
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
         /// <summary>
-        /// The date this Stream was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Stream was updated.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Identity of the Stream creator.
+        /// The Identity of the Stream's creator
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }

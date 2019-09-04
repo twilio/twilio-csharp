@@ -22,7 +22,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the resource
         /// </summary>
         public string PathSid { get; }
 
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// Construct a new FetchChannelOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the resource </param>
         public FetchChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -57,7 +57,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Channel resource to delete
         /// </summary>
         public string PathSid { get; }
 
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// Construct a new DeleteChannelOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Channel resource to delete </param>
         public DeleteChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Chat.V2.Service
     public class CreateChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to create the resource under
+        /// The SID of the Service to create the Channel resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -96,7 +96,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// An application-defined string that uniquely identifies the resource
+        /// An application-defined string that uniquely identifies the Channel resource
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// Construct a new CreateChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Channel resource under </param>
         public CreateChannelOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -228,7 +228,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Channel resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -260,7 +260,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// Construct a new UpdateChannelOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Channel resource to update </param>
         public UpdateChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

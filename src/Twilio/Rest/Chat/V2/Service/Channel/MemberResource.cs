@@ -78,8 +78,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathChannelSid"> The SID of the channel the member belongs to </param>
+        /// <param name="pathSid"> The SID of the Member resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns>
         public static MemberResource Fetch(string pathServiceSid,
@@ -96,8 +96,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathChannelSid"> The SID of the channel the member belongs to </param>
+        /// <param name="pathSid"> The SID of the Member resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns>
         public static async System.Threading.Tasks.Task<MemberResource> FetchAsync(string pathServiceSid,
@@ -154,12 +154,12 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the new member belongs to </param>
+        /// <param name="pathChannelSid"> The SID of the channel the new member belongs to </param>
         /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
         /// <param name="roleSid"> The SID of the Role to assign to the member </param>
         /// <param name="lastConsumedMessageIndex"> The index of the last Message in the Channel the Member has read </param>
-        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string representing the date-time of the last
-        ///                                Message read event for the Member within the Channel </param>
+        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string representing the datetime of the last
+        ///                                Message read event for the member within the Channel </param>
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
@@ -185,12 +185,12 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the new member belongs to </param>
+        /// <param name="pathChannelSid"> The SID of the channel the new member belongs to </param>
         /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
         /// <param name="roleSid"> The SID of the Role to assign to the member </param>
         /// <param name="lastConsumedMessageIndex"> The index of the last Message in the Channel the Member has read </param>
-        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string representing the date-time of the last
-        ///                                Message read event for the Member within the Channel </param>
+        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string representing the datetime of the last
+        ///                                Message read event for the member within the Channel </param>
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
@@ -260,7 +260,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// read
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
+        /// <param name="pathChannelSid"> The SID of the channel the member belongs to </param>
         /// <param name="identity"> The `identity` value of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -282,7 +282,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// read
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
+        /// <param name="pathChannelSid"> The SID of the channel the member belongs to </param>
         /// <param name="identity"> The `identity` value of the resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -403,8 +403,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the message to delete belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathChannelSid"> The SID of the channel the Member resource to delete belongs to </param>
+        /// <param name="pathSid"> The SID of the Member resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns>
         public static bool Delete(string pathServiceSid,
@@ -421,8 +421,8 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the message to delete belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathChannelSid"> The SID of the channel the Member resource to delete belongs to </param>
+        /// <param name="pathSid"> The SID of the Member resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -479,12 +479,12 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// update
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member to update belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathChannelSid"> The SID of the channel the member to update belongs to </param>
+        /// <param name="pathSid"> The SID of the Member resource to update </param>
         /// <param name="roleSid"> The SID of the Role to assign to the member </param>
         /// <param name="lastConsumedMessageIndex"> The index of the last consumed Message for the Channel for the Member
         ///                                </param>
-        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string representing the date-time of the last
+        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string representing the datetime of the last
         ///                                Message read event for the Member within the Channel </param>
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
@@ -511,12 +511,12 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// update
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member to update belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathChannelSid"> The SID of the channel the member to update belongs to </param>
+        /// <param name="pathSid"> The SID of the Member resource to update </param>
         /// <param name="roleSid"> The SID of the Role to assign to the member </param>
         /// <param name="lastConsumedMessageIndex"> The index of the last consumed Message for the Channel for the Member
         ///                                </param>
-        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string representing the date-time of the last
+        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string representing the datetime of the last
         ///                                Message read event for the Member within the Channel </param>
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
@@ -568,7 +568,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique ID of the Channel for the member
+        /// The SID of the Channel for the member
         /// </summary>
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
@@ -583,12 +583,12 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
@@ -603,7 +603,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         [JsonProperty("last_consumed_message_index")]
         public int? LastConsumedMessageIndex { get; private set; }
         /// <summary>
-        /// The ISO 8601 based timestamp string that represents the date-time of the last Message read event for the Member within the Channel
+        /// The ISO 8601 based timestamp string that represents the datetime of the last Message read event for the Member within the Channel
         /// </summary>
         [JsonProperty("last_consumption_timestamp")]
         public DateTime? LastConsumptionTimestamp { get; private set; }

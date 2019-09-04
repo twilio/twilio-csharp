@@ -17,15 +17,15 @@ namespace Twilio.Rest.Wireless.V1
     public class ReadUsageRecordOptions : ReadOptions<UsageRecordResource>
     {
         /// <summary>
-        /// Only include usage that has occurred on or before this date.
+        /// Only include usage that has occurred on or before this date
         /// </summary>
         public DateTime? End { get; set; }
         /// <summary>
-        /// Only include usage that has occurred on or after this date.
+        /// Only include usage that has occurred on or after this date
         /// </summary>
         public DateTime? Start { get; set; }
         /// <summary>
-        /// The time-based grouping that results are aggregated by.
+        /// The time-based grouping that results are aggregated by
         /// </summary>
         public UsageRecordResource.GranularityEnum Granularity { get; set; }
 

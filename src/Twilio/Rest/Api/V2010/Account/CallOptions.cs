@@ -507,6 +507,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// HTTP Method to use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        /// <summary>
+        /// TwiML instructions for the call
+        /// </summary>
+        public string Twiml { get; set; }
 
         /// <summary>
         /// Construct a new UpdateCallOptions
@@ -556,6 +560,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (StatusCallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("StatusCallbackMethod", StatusCallbackMethod.ToString()));
+            }
+
+            if (Twiml != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twiml", Twiml));
             }
 
             return p;

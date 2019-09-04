@@ -19,19 +19,19 @@ namespace Twilio.Rest.Sync.V1.Service
     public class FetchSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync Map resource to fetch
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the Sync Map resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchSyncMapOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to fetch </param>
         public FetchSyncMapOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -56,19 +56,19 @@ namespace Twilio.Rest.Sync.V1.Service
     public class DeleteSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync Map resource to delete
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the Sync Map resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteSyncMapOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to delete </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to delete </param>
         public DeleteSyncMapOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -93,26 +93,26 @@ namespace Twilio.Rest.Sync.V1.Service
     public class CreateSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service to create the Sync Map in
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Human-readable name for this map
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// Alias for collection_ttl
+        /// An alias for collection_ttl
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// Time-to-live of this Map in seconds, defaults to no expiration.
+        /// How long, in seconds, before the Sync Map expires and is deleted
         /// </summary>
         public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new CreateSyncMapOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the Sync Map in </param>
         public CreateSyncMapOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -151,27 +151,27 @@ namespace Twilio.Rest.Sync.V1.Service
     public class UpdateSyncMapOptions : IOptions<SyncMapResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync Map resource to update
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the Sync Map resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Alias for collection_ttl
+        /// An alias for collection_ttl
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// New time-to-live of this Map in seconds.
+        /// How long, in seconds, before the Sync Map expires and is deleted
         /// </summary>
         public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncMapOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to update </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to update </param>
         public UpdateSyncMapOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -206,14 +206,14 @@ namespace Twilio.Rest.Sync.V1.Service
     public class ReadSyncMapOptions : ReadOptions<SyncMapResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync Map resources to read
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadSyncMapOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
         public ReadSyncMapOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;

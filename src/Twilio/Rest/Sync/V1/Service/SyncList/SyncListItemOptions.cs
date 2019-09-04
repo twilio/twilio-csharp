@@ -19,24 +19,24 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class FetchSyncListItemOptions : IOptions<SyncListItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync List Item resource to fetch
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The list_sid
+        /// The SID of the Sync List with the Sync List Item resource to fetch
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// The index
+        /// The index of the Sync List Item resource to fetch
         /// </summary>
         public int? PathIndex { get; }
 
         /// <summary>
         /// Construct a new FetchSyncListItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to fetch </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to fetch </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to fetch </param>
         public FetchSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
         {
             PathServiceSid = pathServiceSid;
@@ -62,24 +62,24 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class DeleteSyncListItemOptions : IOptions<SyncListItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync List Item resource to delete
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The list_sid
+        /// The SID of the Sync List with the Sync List Item resource to delete
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// The index
+        /// The index of the Sync List Item resource to delete
         /// </summary>
         public int? PathIndex { get; }
 
         /// <summary>
         /// Construct a new DeleteSyncListItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to delete </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to delete </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to delete </param>
         public DeleteSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
         {
             PathServiceSid = pathServiceSid;
@@ -105,37 +105,37 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class CreateSyncListItemOptions : IOptions<SyncListItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service to create the List Item in
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The list_sid
+        /// The SID of the Sync List to add the new List Item to
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.
+        /// A JSON string that represents an arbitrary, schema-less object that the List Item stores
         /// </summary>
         public object Data { get; }
         /// <summary>
-        /// Alias for item_ttl
+        /// An alias for item_ttl
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// How long, in seconds, before the List Item expires
         /// </summary>
         public int? ItemTtl { get; set; }
         /// <summary>
-        /// Time-to-live of this item's parent List in seconds, defaults to no expiration.
+        /// How long, in seconds, before the List Item's parent Sync List expires
         /// </summary>
         public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new CreateSyncListItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
-        ///            JSON object, up to 16KB. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the List Item in </param>
+        /// <param name="pathListSid"> The SID of the Sync List to add the new List Item to </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the List Item stores
+        ///            </param>
         public CreateSyncListItemOptions(string pathServiceSid, string pathListSid, object data)
         {
             PathServiceSid = pathServiceSid;
@@ -181,31 +181,31 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class ReadSyncListItemOptions : ReadOptions<SyncListItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the List Item resources to read
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The list_sid
+        /// The SID of the Sync List with the List Items to read
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// A string; asc or desc
+        /// The order to return the List Items
         /// </summary>
         public SyncListItemResource.QueryResultOrderEnum Order { get; set; }
         /// <summary>
-        /// An integer representing Item index offset.
+        /// The index of the first Sync List Item resource to read
         /// </summary>
         public string From { get; set; }
         /// <summary>
-        /// The bounds
+        /// Whether to include the List Item referenced by the from parameter
         /// </summary>
         public SyncListItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
 
         /// <summary>
         /// Construct a new ReadSyncListItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the List Item resources to read </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the List Items to read </param>
         public ReadSyncListItemOptions(string pathServiceSid, string pathListSid)
         {
             PathServiceSid = pathServiceSid;
@@ -250,40 +250,40 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class UpdateSyncListItemOptions : IOptions<SyncListItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync List Item resource to update
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The list_sid
+        /// The SID of the Sync List with the Sync List Item resource to update
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// The index
+        /// The index of the Sync List Item resource to update
         /// </summary>
         public int? PathIndex { get; }
         /// <summary>
-        /// Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.
+        /// A JSON string that represents an arbitrary, schema-less object that the List Item stores
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// Alias for item_ttl
+        /// An alias for item_ttl
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// How long, in seconds, before the List Item expires
         /// </summary>
         public int? ItemTtl { get; set; }
         /// <summary>
-        /// Time-to-live of this item's parent List in seconds, defaults to no expiration.
+        /// How long, in seconds, before the List Item's parent Sync List expires
         /// </summary>
         public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to update </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to update </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to update </param>
         public UpdateSyncListItemOptions(string pathServiceSid, string pathListSid, int? pathIndex)
         {
             PathServiceSid = pathServiceSid;

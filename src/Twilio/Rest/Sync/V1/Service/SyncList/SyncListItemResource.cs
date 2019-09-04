@@ -92,9 +92,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to fetch </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to fetch </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns>
         public static SyncListItemResource Fetch(string pathServiceSid,
@@ -110,9 +110,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to fetch </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to fetch </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
         public static async System.Threading.Tasks.Task<SyncListItemResource> FetchAsync(string pathServiceSid,
@@ -168,9 +168,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to delete </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to delete </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns>
         public static bool Delete(string pathServiceSid, string pathListSid, int? pathIndex, ITwilioRestClient client = null)
@@ -183,9 +183,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to delete </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to delete </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -241,13 +241,13 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
-        ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Alias for item_ttl </param>
-        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
-        /// <param name="collectionTtl"> Time-to-live of this item's parent List in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the List Item in </param>
+        /// <param name="pathListSid"> The SID of the Sync List to add the new List Item to </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the List Item stores
+        ///            </param>
+        /// <param name="ttl"> An alias for item_ttl </param>
+        /// <param name="itemTtl"> How long, in seconds, before the List Item expires </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the List Item's parent Sync List expires </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns>
         public static SyncListItemResource Create(string pathServiceSid,
@@ -266,13 +266,13 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
-        ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Alias for item_ttl </param>
-        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
-        /// <param name="collectionTtl"> Time-to-live of this item's parent List in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the List Item in </param>
+        /// <param name="pathListSid"> The SID of the Sync List to add the new List Item to </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the List Item stores
+        ///            </param>
+        /// <param name="ttl"> An alias for item_ttl </param>
+        /// <param name="itemTtl"> How long, in seconds, before the List Item expires </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the List Item's parent Sync List expires </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
         public static async System.Threading.Tasks.Task<SyncListItemResource> CreateAsync(string pathServiceSid,
@@ -336,11 +336,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="order"> A string; asc or desc </param>
-        /// <param name="from"> An integer representing Item index offset. </param>
-        /// <param name="bounds"> The bounds </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the List Item resources to read </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the List Items to read </param>
+        /// <param name="order"> The order to return the List Items </param>
+        /// <param name="from"> The index of the first Sync List Item resource to read </param>
+        /// <param name="bounds"> Whether to include the List Item referenced by the from parameter </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -362,11 +362,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="order"> A string; asc or desc </param>
-        /// <param name="from"> An integer representing Item index offset. </param>
-        /// <param name="bounds"> The bounds </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the List Item resources to read </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the List Items to read </param>
+        /// <param name="order"> The order to return the List Items </param>
+        /// <param name="from"> The index of the first Sync List Item resource to read </param>
+        /// <param name="bounds"> Whether to include the List Item referenced by the from parameter </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -487,14 +487,14 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
-        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
-        ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Alias for item_ttl </param>
-        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
-        /// <param name="collectionTtl"> Time-to-live of this item's parent List in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to update </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to update </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to update </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the List Item stores
+        ///            </param>
+        /// <param name="ttl"> An alias for item_ttl </param>
+        /// <param name="itemTtl"> How long, in seconds, before the List Item expires </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the List Item's parent Sync List expires </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns>
         public static SyncListItemResource Update(string pathServiceSid,
@@ -514,14 +514,14 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathListSid"> The list_sid </param>
-        /// <param name="pathIndex"> The index </param>
-        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a
-        ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Alias for item_ttl </param>
-        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
-        /// <param name="collectionTtl"> Time-to-live of this item's parent List in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to update </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to update </param>
+        /// <param name="pathIndex"> The index of the Sync List Item resource to update </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the List Item stores
+        ///            </param>
+        /// <param name="ttl"> An alias for item_ttl </param>
+        /// <param name="itemTtl"> How long, in seconds, before the List Item expires </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the List Item's parent Sync List expires </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
         public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(string pathServiceSid,
@@ -557,57 +557,57 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         }
 
         /// <summary>
-        /// Contains the numeric index of this List Item.
+        /// The automatically generated index of the List Item
         /// </summary>
         [JsonProperty("index")]
         public int? Index { get; private set; }
         /// <summary>
-        /// The unique SID identifier of the Twilio Account.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique SID identifier of the Service Instance that hosts this List object.
+        /// The SID of the Sync Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The unique 34-character SID identifier of the List containing this Item.
+        /// The SID of the Sync List that contains the List Item
         /// </summary>
         [JsonProperty("list_sid")]
         public string ListSid { get; private set; }
         /// <summary>
-        /// The absolute URL for this item.
+        /// The absolute URL of the List Item resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Contains the current revision of this item, represented by a string identifier.
+        /// The current revision of the item, represented as a string
         /// </summary>
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         /// <summary>
-        /// Contains arbitrary user-defined, schema-less data that this List Item stores, represented by a JSON object, up to 16KB.
+        /// An arbitrary, schema-less object that the List Item stores
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
         /// <summary>
-        /// Contains the date this item expires and gets deleted automatically.
+        /// The ISO 8601 date and time in GMT when the List Item expires
         /// </summary>
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
         /// <summary>
-        /// The date this item was created, given in UTC ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// Specifies the date this item was last updated, given in UTC ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The identity of this item's creator.
+        /// The identity of the List Item's creator
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }

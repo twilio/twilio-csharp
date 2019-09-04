@@ -307,7 +307,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Credential resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns>
         public static CredentialResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -320,7 +320,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Credential resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns>
         public static async System.Threading.Tasks.Task<CredentialResource> FetchAsync(string pathSid,
@@ -374,7 +374,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Credential resource to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="certificate"> [APN only] The URL encoded representation of the certificate </param>
         /// <param name="privateKey"> [APN only] The URL encoded representation of the private key </param>
@@ -401,7 +401,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Credential resource to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="certificate"> [APN only] The URL encoded representation of the certificate </param>
         /// <param name="privateKey"> [APN only] The URL encoded representation of the private key </param>
@@ -468,7 +468,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Credential resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Credential </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -481,7 +481,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Credential resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Credential </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -536,12 +536,12 @@ namespace Twilio.Rest.IpMessaging.V2
         [JsonProperty("sandbox")]
         public string Sandbox { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

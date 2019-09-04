@@ -17,14 +17,14 @@ namespace Twilio.Rest.Wireless.V1
     public class FetchCommandOptions : IOptions<CommandResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCommandOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchCommandOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -46,19 +46,19 @@ namespace Twilio.Rest.Wireless.V1
     public class ReadCommandOptions : ReadOptions<CommandResource>
     {
         /// <summary>
-        /// Only return Commands to or from this SIM.
+        /// The sid or unique_name of the Sim resources to read
         /// </summary>
         public string Sim { get; set; }
         /// <summary>
-        /// Only return Commands with this status value.
+        /// The status of the resources to read
         /// </summary>
         public CommandResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// Only return Commands with this direction value.
+        /// Only return Commands with this direction value
         /// </summary>
         public CommandResource.DirectionEnum Direction { get; set; }
         /// <summary>
-        /// Only return Commands with this transport value.
+        /// Only return Commands with this transport value
         /// </summary>
         public CommandResource.TransportEnum Transport { get; set; }
 
@@ -103,38 +103,38 @@ namespace Twilio.Rest.Wireless.V1
     public class CreateCommandOptions : IOptions<CommandResource>
     {
         /// <summary>
-        /// The message body of the Command or a Base64 encoded byte string in binary mode.
+        /// The message body of the Command or a Base64 encoded byte string in binary mode
         /// </summary>
         public string Command { get; }
         /// <summary>
-        /// The Sid or UniqueName of the SIM to send the Command to.
+        /// The sid or unique_name of the SIM to send the Command to
         /// </summary>
         public string Sim { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use when making a request to the callback URL.
+        /// The HTTP method we use to call callback_url
         /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
         /// <summary>
-        /// Twilio will make a request to this URL when the Command has finished sending.
+        /// he URL we call when the Command has finished sending
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// A string representing which mode to send the SMS message using.
+        /// The mode to use when sending the SMS message
         /// </summary>
         public CommandResource.CommandModeEnum CommandMode { get; set; }
         /// <summary>
-        /// When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of the Command in the message body, which could be used to ensure that the device does not process the same Command more than once.
+        /// Whether to include the SID of the command in the message body
         /// </summary>
         public string IncludeSid { get; set; }
         /// <summary>
-        /// A boolean representing whether to request delivery receipt from the recipient.
+        /// Whether to request delivery receipt from the recipient
         /// </summary>
         public bool? DeliveryReceiptRequested { get; set; }
 
         /// <summary>
         /// Construct a new CreateCommandOptions
         /// </summary>
-        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode. </param>
+        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode </param>
         public CreateCommandOptions(string command)
         {
             Command = command;
@@ -191,14 +191,14 @@ namespace Twilio.Rest.Wireless.V1
     public class DeleteCommandOptions : IOptions<CommandResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCommandOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteCommandOptions(string pathSid)
         {
             PathSid = pathSid;

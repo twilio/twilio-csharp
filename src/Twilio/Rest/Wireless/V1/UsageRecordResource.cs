@@ -82,9 +82,9 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="end"> Only include usage that has occurred on or before this date. </param>
-        /// <param name="start"> Only include usage that has occurred on or after this date. </param>
-        /// <param name="granularity"> The time-based grouping that results are aggregated by. </param>
+        /// <param name="end"> Only include usage that has occurred on or before this date </param>
+        /// <param name="start"> Only include usage that has occurred on or after this date </param>
+        /// <param name="granularity"> The time-based grouping that results are aggregated by </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -104,9 +104,9 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="end"> Only include usage that has occurred on or before this date. </param>
-        /// <param name="start"> Only include usage that has occurred on or after this date. </param>
-        /// <param name="granularity"> The time-based grouping that results are aggregated by. </param>
+        /// <param name="end"> Only include usage that has occurred on or before this date </param>
+        /// <param name="start"> Only include usage that has occurred on or after this date </param>
+        /// <param name="granularity"> The time-based grouping that results are aggregated by </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -201,22 +201,22 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// The unique id of the Account.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The time period for which usage is reported.
+        /// The time period for which usage is reported
         /// </summary>
         [JsonProperty("period")]
         public object Period { get; private set; }
         /// <summary>
-        /// An object representing the aggregated Commands usage for all SIMs over the period.
+        /// An object that describes the aggregated Commands usage for all SIMs during the specified period
         /// </summary>
         [JsonProperty("commands")]
         public object Commands { get; private set; }
         /// <summary>
-        /// An object representing the aggregated Data usage for all SIMs over the period.
+        /// An object that describes the aggregated Data usage for all SIMs over the period
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }

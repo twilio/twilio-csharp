@@ -63,8 +63,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <summary>
         /// Retrieve the most recent context for an Engagement.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathEngagementSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> Flow SID </param>
+        /// <param name="pathEngagementSid"> Engagement SID </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EngagementContext </returns>
         public static EngagementContextResource Fetch(string pathFlowSid,
@@ -79,8 +79,8 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         /// <summary>
         /// Retrieve the most recent context for an Engagement.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathEngagementSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> Flow SID </param>
+        /// <param name="pathEngagementSid"> Engagement SID </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EngagementContext </returns>
         public static async System.Threading.Tasks.Task<EngagementContextResource> FetchAsync(string pathFlowSid,
@@ -111,27 +111,27 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         }
 
         /// <summary>
-        /// Account Sid.
+        /// Account SID
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Flow state.
+        /// Flow state
         /// </summary>
         [JsonProperty("context")]
         public object Context { get; private set; }
         /// <summary>
-        /// Engagement Sid.
+        /// Engagement SID
         /// </summary>
         [JsonProperty("engagement_sid")]
         public string EngagementSid { get; private set; }
         /// <summary>
-        /// Flow Sid.
+        /// Flow SID
         /// </summary>
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

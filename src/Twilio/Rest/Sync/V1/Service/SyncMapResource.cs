@@ -65,8 +65,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMap </returns>
         public static SyncMapResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -79,8 +79,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
         public static async System.Threading.Tasks.Task<SyncMapResource> FetchAsync(string pathServiceSid,
@@ -135,8 +135,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to delete </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMap </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -149,8 +149,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to delete </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -205,10 +205,10 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> Human-readable name for this map </param>
-        /// <param name="ttl"> Alias for collection_ttl </param>
-        /// <param name="collectionTtl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the Sync Map in </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="ttl"> An alias for collection_ttl </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMap </returns>
         public static SyncMapResource Create(string pathServiceSid,
@@ -225,10 +225,10 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> Human-readable name for this map </param>
-        /// <param name="ttl"> Alias for collection_ttl </param>
-        /// <param name="collectionTtl"> Time-to-live of this Map in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the Sync Map in </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="ttl"> An alias for collection_ttl </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
         public static async System.Threading.Tasks.Task<SyncMapResource> CreateAsync(string pathServiceSid,
@@ -285,10 +285,10 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="ttl"> Alias for collection_ttl </param>
-        /// <param name="collectionTtl"> New time-to-live of this Map in seconds. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to update </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to update </param>
+        /// <param name="ttl"> An alias for collection_ttl </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMap </returns>
         public static SyncMapResource Update(string pathServiceSid,
@@ -305,10 +305,10 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="ttl"> Alias for collection_ttl </param>
-        /// <param name="collectionTtl"> New time-to-live of this Map in seconds. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resource to update </param>
+        /// <param name="pathSid"> The SID of the Sync Map resource to update </param>
+        /// <param name="ttl"> An alias for collection_ttl </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the Sync Map expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
         public static async System.Threading.Tasks.Task<SyncMapResource> UpdateAsync(string pathServiceSid,
@@ -369,7 +369,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -387,7 +387,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -480,57 +480,57 @@ namespace Twilio.Rest.Sync.V1.Service
         }
 
         /// <summary>
-        /// The unique 34-character SID identifier of the Map.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique and addressable name of this Map.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The unique SID identifier of the Twilio Account.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique SID identifier of the Service Instance that hosts this Map object.
+        /// The SID of the Sync Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The absolute URL for this Map.
+        /// The absolute URL of the Sync Map resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// A dictionary of URL links to nested resources of this Map.
+        /// The URLs of the Sync Map's nested resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// Contains the current revision of this Map, represented by a string identifier.
+        /// The current revision of the Sync Map, represented as a string
         /// </summary>
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         /// <summary>
-        /// Contains the date this Map expires and gets deleted automatically.
+        /// The ISO 8601 date and time in GMT when the Sync Map expires
         /// </summary>
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
         /// <summary>
-        /// The date this Map was created, given in UTC ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// Specifies the date this Map was last updated, given in UTC ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The identity of the Map creator.
+        /// The identity of the Sync Map's creator
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }

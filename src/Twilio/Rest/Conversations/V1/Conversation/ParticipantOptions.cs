@@ -43,6 +43,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// The date that this resource was last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
+        /// <summary>
+        /// An optional string metadata field you can use to store any data you wish.
+        /// </summary>
+        public string Attributes { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -84,6 +88,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
             }
 
+            if (Attributes != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+            }
+
             return p;
         }
     }
@@ -112,6 +121,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// The date that this resource was last updated.
         /// </summary>
         public DateTime? DateUpdated { get; set; }
+        /// <summary>
+        /// An optional string metadata field you can use to store any data you wish.
+        /// </summary>
+        public string Attributes { get; set; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
@@ -138,6 +151,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             if (DateUpdated != null)
             {
                 p.Add(new KeyValuePair<string, string>("DateUpdated", Serializers.DateTimeIso8601(DateUpdated)));
+            }
+
+            if (Attributes != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
             }
 
             return p;

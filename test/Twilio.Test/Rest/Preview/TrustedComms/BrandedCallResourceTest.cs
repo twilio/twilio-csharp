@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"bg_color\": \"#fff\",\"caller\": \"Owl Bank\",\"created_at\": \"2019-05-01T20:00:00Z\",\"font_color\": \"#000\",\"from\": \"+15000000000\",\"logo\": \"https://www.twilio.com/marketing/bundles/company/img/logos/red/twilio-logo-red.png\",\"reason\": \"Hello Jhon, your appointment has been confirmed.\",\"status\": \"unknown\",\"to\": \"+573000000000\",\"use_case\": \"conversational\",\"url\": \"https://preview.twilio.com/TrustedComms/Business/BrandedCalls\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"bg_color\": \"#fff\",\"caller\": \"Owl Bank\",\"created_at\": \"2019-05-01T20:00:00Z\",\"font_color\": \"#000\",\"from\": \"+15000000000\",\"logo\": \"https://www.twilio.com/marketing/bundles/company/img/logos/red/twilio-logo-red.png\",\"reason\": \"Hello Jhon, your appointment has been confirmed.\",\"sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"status\": \"unknown\",\"to\": \"+573000000000\",\"use_case\": \"conversational\",\"url\": \"https://preview.twilio.com/TrustedComms/Business/BrandedCalls\"}"
                                      ));
 
             var response = BrandedCallResource.Create("from", "to", "reason", client: twilioRestClient);

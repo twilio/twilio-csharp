@@ -65,9 +65,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Fetch a specific Sync Map Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to fetch </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to fetch </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
+        ///                    resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapPermission </returns>
         public static SyncMapPermissionResource Fetch(string pathServiceSid,
@@ -83,9 +84,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Fetch a specific Sync Map Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to fetch </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to fetch </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
+        ///                    resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
         public static async System.Threading.Tasks.Task<SyncMapPermissionResource> FetchAsync(string pathServiceSid,
@@ -141,9 +143,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Delete a specific Sync Map Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name </param>
-        /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to delete </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to delete </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
+        ///                    resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapPermission </returns>
         public static bool Delete(string pathServiceSid,
@@ -159,9 +162,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Delete a specific Sync Map Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name </param>
-        /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to delete </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to delete </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
+        ///                    resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -222,8 +226,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resources to read </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Permission resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -242,8 +246,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Map.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resources to read </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Permission resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -364,12 +368,13 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Update an identity's access to a specific Sync Map.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
-        /// <param name="read"> Read access. </param>
-        /// <param name="write"> Write access. </param>
-        /// <param name="manage"> Manage access. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to update </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to update </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
+        ///                    resource to update </param>
+        /// <param name="read"> Read access </param>
+        /// <param name="write"> Write access </param>
+        /// <param name="manage"> Manage access </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapPermission </returns>
         public static SyncMapPermissionResource Update(string pathServiceSid,
@@ -388,12 +393,13 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// Update an identity's access to a specific Sync Map.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathMapSid"> Sync Map SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Map Permission applies. </param>
-        /// <param name="read"> Read access. </param>
-        /// <param name="write"> Write access. </param>
-        /// <param name="manage"> Manage access. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Permission resource to update </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Permission resource to update </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync Map Permission
+        ///                    resource to update </param>
+        /// <param name="read"> Read access </param>
+        /// <param name="write"> Write access </param>
+        /// <param name="manage"> Manage access </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapPermission </returns>
         public static async System.Threading.Tasks.Task<SyncMapPermissionResource> UpdateAsync(string pathServiceSid,
@@ -428,42 +434,42 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         }
 
         /// <summary>
-        /// Twilio Account SID.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Sync Service Instance SID.
+        /// The SID of the Sync Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// Sync Map SID.
+        /// Sync Map SID
         /// </summary>
         [JsonProperty("map_sid")]
         public string MapSid { get; private set; }
         /// <summary>
-        /// Identity of the user to whom the Sync Map Permission applies.
+        /// The identity of the user to whom the Sync Document Permission applies
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// Read access.
+        /// Read access
         /// </summary>
         [JsonProperty("read")]
         public bool? _Read { get; private set; }
         /// <summary>
-        /// Write access.
+        /// Write access
         /// </summary>
         [JsonProperty("write")]
         public bool? Write { get; private set; }
         /// <summary>
-        /// Manage access.
+        /// Manage access
         /// </summary>
         [JsonProperty("manage")]
         public bool? Manage { get; private set; }
         /// <summary>
-        /// URL of this Sync Map Permission.
+        /// The absolute URL of the Sync Map Permission resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -17,19 +17,19 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
     public class ReadStepOptions : ReadOptions<StepResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// Engagement Sid.
+        /// The SID of the Engagement
         /// </summary>
         public string PathEngagementSid { get; }
 
         /// <summary>
         /// Construct a new ReadStepOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathEngagementSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathEngagementSid"> The SID of the Engagement </param>
         public ReadStepOptions(string pathFlowSid, string pathEngagementSid)
         {
             PathFlowSid = pathFlowSid;
@@ -57,24 +57,24 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
     public class FetchStepOptions : IOptions<StepResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// Engagement Sid.
+        /// The SID of the Engagement
         /// </summary>
         public string PathEngagementSid { get; }
         /// <summary>
-        /// Step Sid.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchStepOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathEngagementSid"> Engagement Sid. </param>
-        /// <param name="pathSid"> Step Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathEngagementSid"> The SID of the Engagement </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchStepOptions(string pathFlowSid, string pathEngagementSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;

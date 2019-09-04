@@ -226,7 +226,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns>
         public static BindingResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -240,7 +240,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
         public static async System.Threading.Tasks.Task<BindingResource> FetchAsync(string pathServiceSid,
@@ -296,7 +296,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -310,7 +310,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -351,17 +351,17 @@ namespace Twilio.Rest.Chat.V2.Service
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The SID of the Service that the Binding resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
@@ -397,7 +397,7 @@ namespace Twilio.Rest.Chat.V2.Service
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The absolute URLs of the Users for the Binding
+        /// The absolute URLs of the Binding's User
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

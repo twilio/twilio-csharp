@@ -22,7 +22,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Role resource to fetch
         /// </summary>
         public string PathSid { get; }
 
@@ -30,7 +30,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// Construct a new FetchRoleOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Role resource to fetch </param>
         public FetchRoleOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -57,7 +57,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Role resource to delete
         /// </summary>
         public string PathSid { get; }
 
@@ -65,7 +65,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// Construct a new DeleteRoleOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Role resource to delete </param>
         public DeleteRoleOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -191,7 +191,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Role resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -203,7 +203,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// Construct a new UpdateRoleOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Role resource to update </param>
         /// <param name="permission"> A permission the role should have </param>
         public UpdateRoleOptions(string pathServiceSid, string pathSid, List<string> permission)
         {

@@ -67,9 +67,9 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathSimSid"> The sim_sid </param>
-        /// <param name="end"> The end </param>
-        /// <param name="start"> The start </param>
+        /// <param name="pathSimSid"> The SID of the Sim resource with the Data Sessions to read </param>
+        /// <param name="end"> The date that the record ended, given as GMT in ISO 8601 format </param>
+        /// <param name="start"> The date that the Data Session started, given as GMT in ISO 8601 format </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -89,9 +89,9 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathSimSid"> The sim_sid </param>
-        /// <param name="end"> The end </param>
-        /// <param name="start"> The start </param>
+        /// <param name="pathSimSid"> The SID of the Sim resource with the Data Sessions to read </param>
+        /// <param name="end"> The date that the record ended, given as GMT in ISO 8601 format </param>
+        /// <param name="start"> The date that the Data Session started, given as GMT in ISO 8601 format </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -186,82 +186,82 @@ namespace Twilio.Rest.Wireless.V1.Sim
         }
 
         /// <summary>
-        /// The unique id of the Data Session resource that this Data Record is for.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique id of the SIM resource that this Data Session is for.
+        /// The SID of the Sim resource that the Data Session is for
         /// </summary>
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
         /// <summary>
-        /// The unique id of the Account that the SIM belongs to.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The generation of wireless technology that the device was attached to the cellular tower using.
+        /// The generation of wireless technology that the device was using
         /// </summary>
         [JsonProperty("radio_link")]
         public string RadioLink { get; private set; }
         /// <summary>
-        /// The 'mobile country code' is the unique id of the home country where the Data Session took place.
+        /// The 'mobile country code' is the unique ID of the home country where the Data Session took place
         /// </summary>
         [JsonProperty("operator_mcc")]
         public string OperatorMcc { get; private set; }
         /// <summary>
-        /// The 'mobile network code' is the unique id specific to the mobile operator network where the Data Session took place.
+        /// The 'mobile network code' is the unique ID specific to the mobile operator network where the Data Session took place
         /// </summary>
         [JsonProperty("operator_mnc")]
         public string OperatorMnc { get; private set; }
         /// <summary>
-        /// The three letter country code representing where the device's Data Session took place.
+        /// The three letter country code representing where the device's Data Session took place
         /// </summary>
         [JsonProperty("operator_country")]
         public string OperatorCountry { get; private set; }
         /// <summary>
-        /// The friendly name of the mobile operator network that the SIM-connected device is attached to.
+        /// The friendly name of the mobile operator network that the SIM-connected device is attached to
         /// </summary>
         [JsonProperty("operator_name")]
         public string OperatorName { get; private set; }
         /// <summary>
-        /// The unique id of the cellular tower that the device was attached to at the moment when the Data Session was last updated.
+        /// The unique ID of the cellular tower that the device was attached to at the moment when the Data Session was last updated
         /// </summary>
         [JsonProperty("cell_id")]
         public string CellId { get; private set; }
         /// <summary>
-        /// An object representing the estimated location where the device's Data Session took place.
+        /// An object with the estimated location where the device's Data Session took place
         /// </summary>
         [JsonProperty("cell_location_estimate")]
         public object CellLocationEstimate { get; private set; }
         /// <summary>
-        /// The number of packets uploaded by the device between the start time and when the Data Session was last updated.
+        /// The number of packets uploaded by the device between the start time and when the Data Session was last updated
         /// </summary>
         [JsonProperty("packets_uploaded")]
         public int? PacketsUploaded { get; private set; }
         /// <summary>
-        /// The number of packets downloaded by the device between the start time and when the Data Session was last updated.
+        /// The number of packets downloaded by the device between the start time and when the Data Session was last updated
         /// </summary>
         [JsonProperty("packets_downloaded")]
         public int? PacketsDownloaded { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated, given as GMT in ISO 8601 format.
+        /// The date that the resource was last updated, given as GMT in ISO 8601 format
         /// </summary>
         [JsonProperty("last_updated")]
         public DateTime? LastUpdated { get; private set; }
         /// <summary>
-        /// The date that this Data Session started, given as GMT in ISO 8601 format.
+        /// The date that the Data Session started, given as GMT in ISO 8601 format
         /// </summary>
         [JsonProperty("start")]
         public DateTime? Start { get; private set; }
         /// <summary>
-        /// The date that this record ended, given as GMT in ISO 8601 format.
+        /// The date that the record ended, given as GMT in ISO 8601 format
         /// </summary>
         [JsonProperty("end")]
         public DateTime? End { get; private set; }
         /// <summary>
-        /// The unique id of the device using the SIM to connect.
+        /// The unique ID of the device using the SIM to connect
         /// </summary>
         [JsonProperty("imei")]
         public string Imei { get; private set; }

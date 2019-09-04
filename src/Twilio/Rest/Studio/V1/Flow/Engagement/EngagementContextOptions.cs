@@ -17,19 +17,19 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
     public class FetchEngagementContextOptions : IOptions<EngagementContextResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// Flow SID
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// Engagement Sid.
+        /// Engagement SID
         /// </summary>
         public string PathEngagementSid { get; }
 
         /// <summary>
         /// Construct a new FetchEngagementContextOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathEngagementSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> Flow SID </param>
+        /// <param name="pathEngagementSid"> Engagement SID </param>
         public FetchEngagementContextOptions(string pathFlowSid, string pathEngagementSid)
         {
             PathFlowSid = pathFlowSid;

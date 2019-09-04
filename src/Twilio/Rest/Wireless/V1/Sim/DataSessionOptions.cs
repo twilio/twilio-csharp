@@ -17,22 +17,22 @@ namespace Twilio.Rest.Wireless.V1.Sim
     public class ReadDataSessionOptions : ReadOptions<DataSessionResource>
     {
         /// <summary>
-        /// The sim_sid
+        /// The SID of the Sim resource with the Data Sessions to read
         /// </summary>
         public string PathSimSid { get; }
         /// <summary>
-        /// The end
+        /// The date that the record ended, given as GMT in ISO 8601 format
         /// </summary>
         public DateTime? End { get; set; }
         /// <summary>
-        /// The start
+        /// The date that the Data Session started, given as GMT in ISO 8601 format
         /// </summary>
         public DateTime? Start { get; set; }
 
         /// <summary>
         /// Construct a new ReadDataSessionOptions
         /// </summary>
-        /// <param name="pathSimSid"> The sim_sid </param>
+        /// <param name="pathSimSid"> The SID of the Sim resource with the Data Sessions to read </param>
         public ReadDataSessionOptions(string pathSimSid)
         {
             PathSimSid = pathSimSid;

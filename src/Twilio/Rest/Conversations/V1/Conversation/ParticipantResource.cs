@@ -87,6 +87,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///                                    contact with. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Create(string pathConversationSid,
@@ -95,9 +96,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                  string messagingBindingProxyAddress = null,
                                                  DateTime? dateCreated = null,
                                                  DateTime? dateUpdated = null,
+                                                 string attributes = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return Create(options, client);
         }
 
@@ -112,6 +114,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///                                    contact with. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConversationSid,
@@ -120,9 +123,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                                                          string messagingBindingProxyAddress = null,
                                                                                          DateTime? dateCreated = null,
                                                                                          DateTime? dateUpdated = null,
+                                                                                         string attributes = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return await CreateAsync(options, client);
         }
         #endif
@@ -174,15 +178,17 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Update(string pathConversationSid,
                                                  string pathSid,
                                                  DateTime? dateCreated = null,
                                                  DateTime? dateUpdated = null,
+                                                 string attributes = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return Update(options, client);
         }
 
@@ -194,15 +200,17 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConversationSid,
                                                                                          string pathSid,
                                                                                          DateTime? dateCreated = null,
                                                                                          DateTime? dateUpdated = null,
+                                                                                         string attributes = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -524,6 +532,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
+        /// <summary>
+        /// An optional string metadata field you can use to store any data you wish.
+        /// </summary>
+        [JsonProperty("attributes")]
+        public string Attributes { get; private set; }
         /// <summary>
         /// Information about how this participant exchanges messages with the conversation.
         /// </summary>

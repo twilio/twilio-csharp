@@ -91,7 +91,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
         public static ChannelResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<ChannelResource> FetchAsync(string pathServiceSid,
@@ -161,7 +161,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Channel resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Channel resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -230,9 +230,9 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Channel resource under </param>
         /// <param name="friendlyName"> A string to describe the new resource </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Channel resource </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="type"> The visibility of the channel </param>
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
@@ -258,9 +258,9 @@ namespace Twilio.Rest.Chat.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Channel resource under </param>
         /// <param name="friendlyName"> A string to describe the new resource </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Channel resource </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="type"> The visibility of the channel </param>
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
@@ -470,7 +470,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// update
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Channel resource to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
@@ -498,7 +498,7 @@ namespace Twilio.Rest.Chat.V2.Service
         /// update
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Channel resource to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
@@ -577,12 +577,12 @@ namespace Twilio.Rest.Chat.V2.Service
         [JsonConverter(typeof(StringEnumConverter))]
         public ChannelResource.ChannelTypeEnum Type { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
@@ -597,7 +597,7 @@ namespace Twilio.Rest.Chat.V2.Service
         [JsonProperty("members_count")]
         public int? MembersCount { get; private set; }
         /// <summary>
-        /// The number of Messages in the Channel
+        /// The number of Messages that have been passed in the Channel
         /// </summary>
         [JsonProperty("messages_count")]
         public int? MessagesCount { get; private set; }

@@ -26,7 +26,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Invite resource to fetch
         /// </summary>
         public string PathSid { get; }
 
@@ -35,7 +35,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
         /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Invite resource to fetch </param>
         public FetchInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -172,7 +172,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Invite resource to delete
         /// </summary>
         public string PathSid { get; }
 
@@ -181,7 +181,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathChannelSid"> The SID of the Channel the resource to delete belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Invite resource to delete </param>
         public DeleteInviteOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

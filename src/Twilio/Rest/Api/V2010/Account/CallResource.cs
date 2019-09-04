@@ -625,6 +625,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="fallbackMethod"> HTTP Method to use with fallback_url </param>
         /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use to call status_callback </param>
+        /// <param name="twiml"> TwiML instructions for the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns>
         public static CallResource Update(string pathSid,
@@ -636,9 +637,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                           Twilio.Http.HttpMethod fallbackMethod = null,
                                           Uri statusCallback = null,
                                           Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                          string twiml = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml};
             return Update(options, client);
         }
 
@@ -655,6 +657,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="fallbackMethod"> HTTP Method to use with fallback_url </param>
         /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
         /// <param name="statusCallbackMethod"> HTTP Method to use to call status_callback </param>
+        /// <param name="twiml"> TwiML instructions for the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
         public static async System.Threading.Tasks.Task<CallResource> UpdateAsync(string pathSid,
@@ -666,9 +669,10 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   Twilio.Http.HttpMethod fallbackMethod = null,
                                                                                   Uri statusCallback = null,
                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null,
+                                                                                  string twiml = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod};
+            var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml};
             return await UpdateAsync(options, client);
         }
         #endif

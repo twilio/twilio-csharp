@@ -63,9 +63,9 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// <summary>
         /// Retrieve the context for an Engagement Step.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathEngagementSid"> Engagement Sid. </param>
-        /// <param name="pathStepSid"> Step Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathEngagementSid"> The SID of the Engagement </param>
+        /// <param name="pathStepSid"> Step SID </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of StepContext </returns>
         public static StepContextResource Fetch(string pathFlowSid,
@@ -81,9 +81,9 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         /// <summary>
         /// Retrieve the context for an Engagement Step.
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathEngagementSid"> Engagement Sid. </param>
-        /// <param name="pathStepSid"> Step Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathEngagementSid"> The SID of the Engagement </param>
+        /// <param name="pathStepSid"> Step SID </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StepContext </returns>
         public static async System.Threading.Tasks.Task<StepContextResource> FetchAsync(string pathFlowSid,
@@ -115,32 +115,32 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
         }
 
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Flow state.
+        /// The current state of the flow
         /// </summary>
         [JsonProperty("context")]
         public object Context { get; private set; }
         /// <summary>
-        /// Engagement Sid.
+        /// The SID of the Engagement
         /// </summary>
         [JsonProperty("engagement_sid")]
         public string EngagementSid { get; private set; }
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
         /// <summary>
-        /// Step Sid.
+        /// Step SID
         /// </summary>
         [JsonProperty("step_sid")]
         public string StepSid { get; private set; }
         /// <summary>
-        /// The URL of this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

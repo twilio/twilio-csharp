@@ -12,19 +12,19 @@ namespace Twilio.Rest.Wireless.V1
 {
 
     /// <summary>
-    /// Fetch a Sim instance from your account.
+    /// Fetch a Sim resource from your account.
     /// </summary>
     public class FetchSimOptions : IOptions<SimResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchSimOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchSimOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -46,23 +46,23 @@ namespace Twilio.Rest.Wireless.V1
     public class ReadSimOptions : ReadOptions<SimResource>
     {
         /// <summary>
-        /// Only return Sims with this status.
+        /// Only return Sim resources with this status
         /// </summary>
         public SimResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// Return Sims with this Iccid.
+        /// Only return Sim resources with this ICCID
         /// </summary>
         public string Iccid { get; set; }
         /// <summary>
-        /// Only return Sims with this Rate Plan.
+        /// Only return Sim resources with this Rate Plan
         /// </summary>
         public string RatePlan { get; set; }
         /// <summary>
-        /// Only return Sims with this EID.
+        /// Deprecated
         /// </summary>
         public string EId { get; set; }
         /// <summary>
-        /// Only return Sims with this registration code.
+        /// Only return Sim resources with this registration code
         /// </summary>
         public string SimRegistrationCode { get; set; }
 
@@ -107,87 +107,87 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// Updates the given properties of a Sim instance from your account.
+    /// Updates the given properties of a Sim resource from your account.
     /// </summary>
     public class UpdateSimOptions : IOptions<SimResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A user-provided string that uniquely identifies this resource as an alternative to the Sid.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use when making a request to the callback URL.
+        /// The HTTP method we use to call callback_url
         /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
         /// <summary>
-        /// Twilio will make a request to this URL when the Sim has finished updating.
+        /// The URL we call when the SIM has finished updating
         /// </summary>
         public Uri CallbackUrl { get; set; }
         /// <summary>
-        /// A user-provided string that identifies this resource.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The Sid or UniqueName of the RatePlan that this Sim should use.
+        /// The sid or unique_name of the RatePlan resource that this SIM should use
         /// </summary>
         public string RatePlan { get; set; }
         /// <summary>
-        /// A string representing the status of the Sim.
+        /// The new status of the resource
         /// </summary>
         public SimResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// A string representing the HTTP method to use when making a request to CommandsCallbackUrl.
+        /// The HTTP method we use to call commands_callback_url
         /// </summary>
         public Twilio.Http.HttpMethod CommandsCallbackMethod { get; set; }
         /// <summary>
-        /// The URL that will receive a webhook when this Sim originates a Command.
+        /// he URL we call when the SIM originates a Command
         /// </summary>
         public Uri CommandsCallbackUrl { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use when requesting the sms_fallback_url.
+        /// The HTTP method we use to call sms_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         /// <summary>
-        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by sms_url.
+        /// The URL we call when an error occurs while retrieving or executing the TwiML requested from sms_url
         /// </summary>
         public Uri SmsFallbackUrl { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use when requesting the above Url.
+        /// The HTTP method we use to call sms_url
         /// </summary>
         public Twilio.Http.HttpMethod SmsMethod { get; set; }
         /// <summary>
-        /// The URL Twilio will request when the SIM-connected device sends an SMS message that is not a Command.
+        /// The URL we call when the SIM-connected device sends an SMS message that is not a Command
         /// </summary>
         public Uri SmsUrl { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use when requesting the voice_fallback_url.
+        /// The HTTP method we use to call voice_fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         /// <summary>
-        /// The URL that Twilio will request if an error occurs retrieving or executing the TwiML requested by voice_url.
+        /// The URL we call when an error occurs while retrieving or executing the TwiML requested from voice_url
         /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
         /// <summary>
-        /// The HTTP method Twilio will use when requesting the above Url.
+        /// The HTTP method we use when we call voice_url
         /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         /// <summary>
-        /// The URL Twilio will request when the SIM-connected device makes a call.
+        /// The URL we call when the SIM-connected device makes a voice call
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// Initiate a connectivity reset on a Sim.
+        /// Initiate a connectivity reset on a SIM
         /// </summary>
         public SimResource.ResetStatusEnum ResetStatus { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSimOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
         public UpdateSimOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -289,19 +289,19 @@ namespace Twilio.Rest.Wireless.V1
     }
 
     /// <summary>
-    /// Delete a Sim instance from your account.
+    /// Delete a Sim resource from your account.
     /// </summary>
     public class DeleteSimOptions : IOptions<SimResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteSimOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteSimOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -19,24 +19,25 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
     public class CreateStreamMessageOptions : IOptions<StreamMessageResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service to create the new Stream Message in
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The stream_sid
+        /// The SID of the Sync Stream to create the new Stream Message resource for
         /// </summary>
         public string PathStreamSid { get; }
         /// <summary>
-        /// Stream Message body.
+        /// A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message body
         /// </summary>
         public object Data { get; }
 
         /// <summary>
         /// Construct a new CreateStreamMessageOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathStreamSid"> The stream_sid </param>
-        /// <param name="data"> Stream Message body. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the new Stream Message in </param>
+        /// <param name="pathStreamSid"> The SID of the Sync Stream to create the new Stream Message resource for </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message
+        ///            body </param>
         public CreateStreamMessageOptions(string pathServiceSid, string pathStreamSid, object data)
         {
             PathServiceSid = pathServiceSid;

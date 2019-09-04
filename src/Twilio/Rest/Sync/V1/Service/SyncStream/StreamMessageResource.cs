@@ -65,9 +65,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <summary>
         /// Create a new Stream Message.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathStreamSid"> The stream_sid </param>
-        /// <param name="data"> Stream Message body. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the new Stream Message in </param>
+        /// <param name="pathStreamSid"> The SID of the Sync Stream to create the new Stream Message resource for </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message
+        ///            body </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of StreamMessage </returns>
         public static StreamMessageResource Create(string pathServiceSid,
@@ -83,9 +84,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         /// <summary>
         /// Create a new Stream Message.
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathStreamSid"> The stream_sid </param>
-        /// <param name="data"> Stream Message body. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the new Stream Message in </param>
+        /// <param name="pathStreamSid"> The SID of the Sync Stream to create the new Stream Message resource for </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that makes up the Stream Message
+        ///            body </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of StreamMessage </returns>
         public static async System.Threading.Tasks.Task<StreamMessageResource> CreateAsync(string pathServiceSid,
@@ -117,12 +119,12 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
         }
 
         /// <summary>
-        /// Stream Message SID.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Stream Message body.
+        /// Stream Message body
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }

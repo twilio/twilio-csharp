@@ -19,24 +19,24 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     public class FetchSyncMapItemOptions : IOptions<SyncMapItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync Map Item resource to fetch
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The map_sid
+        /// The SID of the Sync Map with the Sync Map Item resource to fetch
         /// </summary>
         public string PathMapSid { get; }
         /// <summary>
-        /// The key
+        /// The key value of the Sync Map Item resource to fetch
         /// </summary>
         public string PathKey { get; }
 
         /// <summary>
         /// Construct a new FetchSyncMapItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to fetch </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch </param>
+        /// <param name="pathKey"> The key value of the Sync Map Item resource to fetch </param>
         public FetchSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
         {
             PathServiceSid = pathServiceSid;
@@ -62,24 +62,24 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     public class DeleteSyncMapItemOptions : IOptions<SyncMapItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync Map Item resource to delete
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The map_sid
+        /// The SID of the Sync Map with the Sync Map Item resource to delete
         /// </summary>
         public string PathMapSid { get; }
         /// <summary>
-        /// The key
+        /// The key value of the Sync Map Item resource to delete
         /// </summary>
         public string PathKey { get; }
 
         /// <summary>
         /// Construct a new DeleteSyncMapItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to delete </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to delete </param>
+        /// <param name="pathKey"> The key value of the Sync Map Item resource to delete </param>
         public DeleteSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
         {
             PathServiceSid = pathServiceSid;
@@ -105,42 +105,41 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     public class CreateSyncMapItemOptions : IOptions<SyncMapItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service to create the Map Item in
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The map_sid
+        /// The SID of the Sync Map to add the new Map Item to
         /// </summary>
         public string PathMapSid { get; }
         /// <summary>
-        /// The unique user-defined key of this Map Item.
+        /// The unique, user-defined key for the Map Item
         /// </summary>
         public string Key { get; }
         /// <summary>
-        /// Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a JSON object, up to 16KB.
+        /// A JSON string that represents an arbitrary, schema-less object that the Map Item stores
         /// </summary>
         public object Data { get; }
         /// <summary>
-        /// Alias for item_ttl
+        /// An alias for item_ttl
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// How long, in seconds, before the Map Item expires
         /// </summary>
         public int? ItemTtl { get; set; }
         /// <summary>
-        /// Time-to-live of this item's parent Map in seconds, defaults to no expiration.
+        /// How long, in seconds, before the Map Item's parent Sync Map expires and is deleted
         /// </summary>
         public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new CreateSyncMapItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="key"> The unique user-defined key of this Map Item. </param>
-        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a
-        ///            JSON object, up to 16KB. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the Map Item in </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map to add the new Map Item to </param>
+        /// <param name="key"> The unique, user-defined key for the Map Item </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Map Item stores </param>
         public CreateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string key, object data)
         {
             PathServiceSid = pathServiceSid;
@@ -192,31 +191,31 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     public class ReadSyncMapItemOptions : ReadOptions<SyncMapItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Map Item resources to read
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The map_sid
+        /// The SID of the Sync Map with the Sync Map Item resource to fetch
         /// </summary>
         public string PathMapSid { get; }
         /// <summary>
-        /// A string; asc or desc. Map Items are ordered lexicographically by Item key.
+        /// How to order the Map Items returned by their key value
         /// </summary>
         public SyncMapItemResource.QueryResultOrderEnum Order { get; set; }
         /// <summary>
-        /// The Item key offset (including the specified key).
+        /// The index of the first Sync Map Item resource to read
         /// </summary>
         public string From { get; set; }
         /// <summary>
-        /// The bounds
+        /// Whether to include the Map Item referenced by the from parameter
         /// </summary>
         public SyncMapItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
 
         /// <summary>
         /// Construct a new ReadSyncMapItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Map Item resources to read </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch </param>
         public ReadSyncMapItemOptions(string pathServiceSid, string pathMapSid)
         {
             PathServiceSid = pathServiceSid;
@@ -261,40 +260,40 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     public class UpdateSyncMapItemOptions : IOptions<SyncMapItemResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Sync Map Item resource to update
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The map_sid
+        /// The SID of the Sync Map with the Sync Map Item resource to update
         /// </summary>
         public string PathMapSid { get; }
         /// <summary>
-        /// The key
+        /// The key value of the Sync Map Item resource to update
         /// </summary>
         public string PathKey { get; }
         /// <summary>
-        /// Contains an arbitrary JSON object to be stored in this Map Item.
+        /// A JSON string that represents an arbitrary, schema-less object that the Map Item stores
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// Alias for item_ttl
+        /// An alias for item_ttl
         /// </summary>
         public int? Ttl { get; set; }
         /// <summary>
-        /// Time-to-live of this item in seconds, defaults to no expiration.
+        /// How long, in seconds, before the Map Item expires
         /// </summary>
         public int? ItemTtl { get; set; }
         /// <summary>
-        /// Time-to-live of this item's parent Map in seconds, defaults to no expiration.
+        /// How long, in seconds, before the Map Item's parent Sync Map expires and is deleted
         /// </summary>
         public int? CollectionTtl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncMapItemOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to update </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to update </param>
+        /// <param name="pathKey"> The key value of the Sync Map Item resource to update </param>
         public UpdateSyncMapItemOptions(string pathServiceSid, string pathMapSid, string pathKey)
         {
             PathServiceSid = pathServiceSid;

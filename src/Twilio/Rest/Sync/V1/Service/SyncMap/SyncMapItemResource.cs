@@ -92,9 +92,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to fetch </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch </param>
+        /// <param name="pathKey"> The key value of the Sync Map Item resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns>
         public static SyncMapItemResource Fetch(string pathServiceSid,
@@ -110,9 +110,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to fetch </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch </param>
+        /// <param name="pathKey"> The key value of the Sync Map Item resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns>
         public static async System.Threading.Tasks.Task<SyncMapItemResource> FetchAsync(string pathServiceSid,
@@ -168,9 +168,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to delete </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to delete </param>
+        /// <param name="pathKey"> The key value of the Sync Map Item resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns>
         public static bool Delete(string pathServiceSid, string pathMapSid, string pathKey, ITwilioRestClient client = null)
@@ -183,9 +183,9 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to delete </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to delete </param>
+        /// <param name="pathKey"> The key value of the Sync Map Item resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -241,14 +241,14 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="key"> The unique user-defined key of this Map Item. </param>
-        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a
-        ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Alias for item_ttl </param>
-        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
-        /// <param name="collectionTtl"> Time-to-live of this item's parent Map in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the Map Item in </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map to add the new Map Item to </param>
+        /// <param name="key"> The unique, user-defined key for the Map Item </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Map Item stores </param>
+        /// <param name="ttl"> An alias for item_ttl </param>
+        /// <param name="itemTtl"> How long, in seconds, before the Map Item expires </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the Map Item's parent Sync Map expires and is deleted
+        ///                     </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns>
         public static SyncMapItemResource Create(string pathServiceSid,
@@ -268,14 +268,14 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="key"> The unique user-defined key of this Map Item. </param>
-        /// <param name="data"> Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a
-        ///            JSON object, up to 16KB. </param>
-        /// <param name="ttl"> Alias for item_ttl </param>
-        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
-        /// <param name="collectionTtl"> Time-to-live of this item's parent Map in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to create the Map Item in </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map to add the new Map Item to </param>
+        /// <param name="key"> The unique, user-defined key for the Map Item </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Map Item stores </param>
+        /// <param name="ttl"> An alias for item_ttl </param>
+        /// <param name="itemTtl"> How long, in seconds, before the Map Item expires </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the Map Item's parent Sync Map expires and is deleted
+        ///                     </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns>
         public static async System.Threading.Tasks.Task<SyncMapItemResource> CreateAsync(string pathServiceSid,
@@ -339,11 +339,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="order"> A string; asc or desc. Map Items are ordered lexicographically by Item key. </param>
-        /// <param name="from"> The Item key offset (including the specified key). </param>
-        /// <param name="bounds"> The bounds </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Map Item resources to read </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch </param>
+        /// <param name="order"> How to order the Map Items returned by their key value </param>
+        /// <param name="from"> The index of the first Sync Map Item resource to read </param>
+        /// <param name="bounds"> Whether to include the Map Item referenced by the from parameter </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -365,11 +365,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="order"> A string; asc or desc. Map Items are ordered lexicographically by Item key. </param>
-        /// <param name="from"> The Item key offset (including the specified key). </param>
-        /// <param name="bounds"> The bounds </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Map Item resources to read </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to fetch </param>
+        /// <param name="order"> How to order the Map Items returned by their key value </param>
+        /// <param name="from"> The index of the first Sync Map Item resource to read </param>
+        /// <param name="bounds"> Whether to include the Map Item referenced by the from parameter </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -490,13 +490,14 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
-        /// <param name="data"> Contains an arbitrary JSON object to be stored in this Map Item. </param>
-        /// <param name="ttl"> Alias for item_ttl </param>
-        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
-        /// <param name="collectionTtl"> Time-to-live of this item's parent Map in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to update </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to update </param>
+        /// <param name="pathKey"> The key value of the Sync Map Item resource to update </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Map Item stores </param>
+        /// <param name="ttl"> An alias for item_ttl </param>
+        /// <param name="itemTtl"> How long, in seconds, before the Map Item expires </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the Map Item's parent Sync Map expires and is deleted
+        ///                     </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns>
         public static SyncMapItemResource Update(string pathServiceSid,
@@ -516,13 +517,14 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathMapSid"> The map_sid </param>
-        /// <param name="pathKey"> The key </param>
-        /// <param name="data"> Contains an arbitrary JSON object to be stored in this Map Item. </param>
-        /// <param name="ttl"> Alias for item_ttl </param>
-        /// <param name="itemTtl"> Time-to-live of this item in seconds, defaults to no expiration. </param>
-        /// <param name="collectionTtl"> Time-to-live of this item's parent Map in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to update </param>
+        /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to update </param>
+        /// <param name="pathKey"> The key value of the Sync Map Item resource to update </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Map Item stores </param>
+        /// <param name="ttl"> An alias for item_ttl </param>
+        /// <param name="itemTtl"> How long, in seconds, before the Map Item expires </param>
+        /// <param name="collectionTtl"> How long, in seconds, before the Map Item's parent Sync Map expires and is deleted
+        ///                     </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns>
         public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(string pathServiceSid,
@@ -558,57 +560,57 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         }
 
         /// <summary>
-        /// The unique user-defined key of this Map Item.
+        /// The unique, user-defined key for the Map Item
         /// </summary>
         [JsonProperty("key")]
         public string Key { get; private set; }
         /// <summary>
-        /// The unique SID identifier of the Twilio Account.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique SID identifier of the Service Instance that hosts this Map object.
+        /// The SID of the Sync Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The unique 34-character SID identifier of the Map containing this Item.
+        /// The SID of the Sync Map that contains the Map Item
         /// </summary>
         [JsonProperty("map_sid")]
         public string MapSid { get; private set; }
         /// <summary>
-        /// The absolute URL for this Map.
+        /// The absolute URL of the Map Item resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Contains the current revision of this Map, represented by a string identifier.
+        /// The current revision of the Map Item, represented as a string
         /// </summary>
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         /// <summary>
-        /// Contains arbitrary user-defined, schema-less data that this Map Item stores, represented by a JSON object, up to 16KB.
+        /// An arbitrary, schema-less object that the Map Item stores
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
         /// <summary>
-        /// Contains the date this Map expires and gets deleted automatically.
+        /// The ISO 8601 date and time in GMT when the Map Item expires
         /// </summary>
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
         /// <summary>
-        /// The date this Map was created, given in UTC ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// Specifies the date this Map was last updated, given in UTC ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The identity of the Map creator.
+        /// The identity of the Map Item's creator
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }

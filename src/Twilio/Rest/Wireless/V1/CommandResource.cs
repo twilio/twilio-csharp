@@ -119,7 +119,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Fetch a Command instance from your account.
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Command </returns>
         public static CommandResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Fetch a Command instance from your account.
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
         public static async System.Threading.Tasks.Task<CommandResource> FetchAsync(string pathSid,
@@ -190,10 +190,10 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Retrieve a list of Commands from your account.
         /// </summary>
-        /// <param name="sim"> Only return Commands to or from this SIM. </param>
-        /// <param name="status"> Only return Commands with this status value. </param>
-        /// <param name="direction"> Only return Commands with this direction value. </param>
-        /// <param name="transport"> Only return Commands with this transport value. </param>
+        /// <param name="sim"> The sid or unique_name of the Sim resources to read </param>
+        /// <param name="status"> The status of the resources to read </param>
+        /// <param name="direction"> Only return Commands with this direction value </param>
+        /// <param name="transport"> Only return Commands with this transport value </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -214,10 +214,10 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Retrieve a list of Commands from your account.
         /// </summary>
-        /// <param name="sim"> Only return Commands to or from this SIM. </param>
-        /// <param name="status"> Only return Commands with this status value. </param>
-        /// <param name="direction"> Only return Commands with this direction value. </param>
-        /// <param name="transport"> Only return Commands with this transport value. </param>
+        /// <param name="sim"> The sid or unique_name of the Sim resources to read </param>
+        /// <param name="status"> The status of the resources to read </param>
+        /// <param name="direction"> Only return Commands with this direction value </param>
+        /// <param name="transport"> Only return Commands with this transport value </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -337,16 +337,13 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Send a Command to a Sim.
         /// </summary>
-        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode. </param>
-        /// <param name="sim"> The Sid or UniqueName of the SIM to send the Command to. </param>
-        /// <param name="callbackMethod"> The HTTP method Twilio will use when making a request to the callback URL. </param>
-        /// <param name="callbackUrl"> Twilio will make a request to this URL when the Command has finished sending. </param>
-        /// <param name="commandMode"> A string representing which mode to send the SMS message using. </param>
-        /// <param name="includeSid"> When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of
-        ///                  the Command in the message body, which could be used to ensure that the device does not process the
-        ///                  same Command more than once. </param>
-        /// <param name="deliveryReceiptRequested"> A boolean representing whether to request delivery receipt from the
-        ///                                recipient. </param>
+        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode </param>
+        /// <param name="sim"> The sid or unique_name of the SIM to send the Command to </param>
+        /// <param name="callbackMethod"> The HTTP method we use to call callback_url </param>
+        /// <param name="callbackUrl"> he URL we call when the Command has finished sending </param>
+        /// <param name="commandMode"> The mode to use when sending the SMS message </param>
+        /// <param name="includeSid"> Whether to include the SID of the command in the message body </param>
+        /// <param name="deliveryReceiptRequested"> Whether to request delivery receipt from the recipient </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Command </returns>
         public static CommandResource Create(string command,
@@ -366,16 +363,13 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Send a Command to a Sim.
         /// </summary>
-        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode. </param>
-        /// <param name="sim"> The Sid or UniqueName of the SIM to send the Command to. </param>
-        /// <param name="callbackMethod"> The HTTP method Twilio will use when making a request to the callback URL. </param>
-        /// <param name="callbackUrl"> Twilio will make a request to this URL when the Command has finished sending. </param>
-        /// <param name="commandMode"> A string representing which mode to send the SMS message using. </param>
-        /// <param name="includeSid"> When sending a Command to a SIM in text mode, Twilio can automatically include the Sid of
-        ///                  the Command in the message body, which could be used to ensure that the device does not process the
-        ///                  same Command more than once. </param>
-        /// <param name="deliveryReceiptRequested"> A boolean representing whether to request delivery receipt from the
-        ///                                recipient. </param>
+        /// <param name="command"> The message body of the Command or a Base64 encoded byte string in binary mode </param>
+        /// <param name="sim"> The sid or unique_name of the SIM to send the Command to </param>
+        /// <param name="callbackMethod"> The HTTP method we use to call callback_url </param>
+        /// <param name="callbackUrl"> he URL we call when the Command has finished sending </param>
+        /// <param name="commandMode"> The mode to use when sending the SMS message </param>
+        /// <param name="includeSid"> Whether to include the SID of the command in the message body </param>
+        /// <param name="deliveryReceiptRequested"> Whether to request delivery receipt from the recipient </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
         public static async System.Threading.Tasks.Task<CommandResource> CreateAsync(string command,
@@ -435,7 +429,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Delete a Command instance from your account.
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Command </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -448,7 +442,7 @@ namespace Twilio.Rest.Wireless.V1
         /// <summary>
         /// Delete a Command instance from your account.
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Command </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -477,66 +471,66 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique id of the Account that this Command belongs to.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique ID of the SIM that this Command was sent to or from.
+        /// The SID of the Sim resource that the Command was sent to or from
         /// </summary>
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
         /// <summary>
-        /// The message being sent to or from the SIM.
+        /// The message being sent to or from the SIM
         /// </summary>
         [JsonProperty("command")]
         public string Command { get; private set; }
         /// <summary>
-        /// A string representing which mode the SMS was sent or received using.
+        /// The mode used to send the SMS message
         /// </summary>
         [JsonProperty("command_mode")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CommandResource.CommandModeEnum CommandMode { get; private set; }
         /// <summary>
-        /// The transport
+        /// The type of transport used
         /// </summary>
         [JsonProperty("transport")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CommandResource.TransportEnum Transport { get; private set; }
         /// <summary>
-        /// The delivery_receipt_requested
+        /// Whether to request a delivery receipt
         /// </summary>
         [JsonProperty("delivery_receipt_requested")]
         public bool? DeliveryReceiptRequested { get; private set; }
         /// <summary>
-        /// A string representing the status of the Command.
+        /// The status of the Command
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CommandResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The direction of the Command.
+        /// The direction of the Command
         /// </summary>
         [JsonProperty("direction")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CommandResource.DirectionEnum Direction { get; private set; }
         /// <summary>
-        /// The date that this resource was created, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated format
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL for this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

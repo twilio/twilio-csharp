@@ -19,24 +19,25 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class FetchSyncListPermissionOptions : IOptions<SyncListPermissionResource>
     {
         /// <summary>
-        /// Sync Service Instance SID or unique name.
+        /// The SID of the Sync Service with the Sync List Permission resource to fetch
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Sync List SID or unique name.
+        /// The SID of the Sync List with the Sync List Permission resource to fetch
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// Identity of the user to whom the Sync List Permission applies.
+        /// The application-defined string that uniquely identifies the User's Sync List Permission resource to fetch
         /// </summary>
         public string PathIdentity { get; }
 
         /// <summary>
         /// Construct a new FetchSyncListPermissionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathListSid"> Sync List SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Permission resource to fetch </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resource to fetch </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync List Permission
+        ///                    resource to fetch </param>
         public FetchSyncListPermissionOptions(string pathServiceSid, string pathListSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -62,24 +63,25 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class DeleteSyncListPermissionOptions : IOptions<SyncListPermissionResource>
     {
         /// <summary>
-        /// Sync Service Instance SID or unique name.
+        /// The SID of the Sync Service with the Sync List Permission resource to delete
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Sync List SID or unique name.
+        /// The SID of the Sync List with the Sync List Permission resource to delete
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// Identity of the user to whom the Sync List Permission applies.
+        /// The application-defined string that uniquely identifies the User's Sync List Permission resource to delete
         /// </summary>
         public string PathIdentity { get; }
 
         /// <summary>
         /// Construct a new DeleteSyncListPermissionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathListSid"> Sync List SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Permission resource to delete </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resource to delete </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync List Permission
+        ///                    resource to delete </param>
         public DeleteSyncListPermissionOptions(string pathServiceSid, string pathListSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -105,19 +107,19 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class ReadSyncListPermissionOptions : ReadOptions<SyncListPermissionResource>
     {
         /// <summary>
-        /// Sync Service Instance SID or unique name.
+        /// The SID of the Sync Service with the Sync List Permission resources to read
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Sync List SID or unique name.
+        /// The SID of the Sync List with the Sync List Permission resources to read
         /// </summary>
         public string PathListSid { get; }
 
         /// <summary>
         /// Construct a new ReadSyncListPermissionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathListSid"> Sync List SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Permission resources to read </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resources to read </param>
         public ReadSyncListPermissionOptions(string pathServiceSid, string pathListSid)
         {
             PathServiceSid = pathServiceSid;
@@ -147,39 +149,40 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     public class UpdateSyncListPermissionOptions : IOptions<SyncListPermissionResource>
     {
         /// <summary>
-        /// Sync Service Instance SID or unique name.
+        /// The SID of the Sync Service with the Sync List Permission resource to update
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Sync List SID or unique name.
+        /// The SID of the Sync List with the Sync List Permission resource to update
         /// </summary>
         public string PathListSid { get; }
         /// <summary>
-        /// Identity of the user to whom the Sync List Permission applies.
+        /// The application-defined string that uniquely identifies the User's Sync List Permission resource to update
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
-        /// Read access.
+        /// Read access
         /// </summary>
         public bool? Read { get; }
         /// <summary>
-        /// Write access.
+        /// Write access
         /// </summary>
         public bool? Write { get; }
         /// <summary>
-        /// Manage access.
+        /// Manage access
         /// </summary>
         public bool? Manage { get; }
 
         /// <summary>
         /// Construct a new UpdateSyncListPermissionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathListSid"> Sync List SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync List Permission applies. </param>
-        /// <param name="read"> Read access. </param>
-        /// <param name="write"> Write access. </param>
-        /// <param name="manage"> Manage access. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Permission resource to update </param>
+        /// <param name="pathListSid"> The SID of the Sync List with the Sync List Permission resource to update </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Sync List Permission
+        ///                    resource to update </param>
+        /// <param name="read"> Read access </param>
+        /// <param name="write"> Write access </param>
+        /// <param name="manage"> Manage access </param>
         public UpdateSyncListPermissionOptions(string pathServiceSid,
                                                string pathListSid,
                                                string pathIdentity,

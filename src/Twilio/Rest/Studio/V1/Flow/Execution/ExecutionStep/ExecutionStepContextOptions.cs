@@ -17,24 +17,24 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution.ExecutionStep
     public class FetchExecutionStepContextOptions : IOptions<ExecutionStepContextResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// Execution Sid.
+        /// The SID of the Execution
         /// </summary>
         public string PathExecutionSid { get; }
         /// <summary>
-        /// Step Sid.
+        /// Step SID
         /// </summary>
         public string PathStepSid { get; }
 
         /// <summary>
         /// Construct a new FetchExecutionStepContextOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathExecutionSid"> Execution Sid. </param>
-        /// <param name="pathStepSid"> Step Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
+        /// <param name="pathStepSid"> Step SID </param>
         public FetchExecutionStepContextOptions(string pathFlowSid, string pathExecutionSid, string pathStepSid)
         {
             PathFlowSid = pathFlowSid;

@@ -82,10 +82,10 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathSimSid"> The sim_sid </param>
-        /// <param name="end"> Only include usage that has occurred on or before this date. </param>
-        /// <param name="start"> Only include usage that has occurred on or after this date. </param>
-        /// <param name="granularity"> The time-based grouping that results are aggregated by. </param>
+        /// <param name="pathSimSid"> The SID of the Sim resource to read the usage from </param>
+        /// <param name="end"> Only include usage that occurred on or before this date </param>
+        /// <param name="start"> Only include usage that has occurred on or after this date </param>
+        /// <param name="granularity"> The time-based grouping that results are aggregated by </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -106,10 +106,10 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathSimSid"> The sim_sid </param>
-        /// <param name="end"> Only include usage that has occurred on or before this date. </param>
-        /// <param name="start"> Only include usage that has occurred on or after this date. </param>
-        /// <param name="granularity"> The time-based grouping that results are aggregated by. </param>
+        /// <param name="pathSimSid"> The SID of the Sim resource to read the usage from </param>
+        /// <param name="end"> Only include usage that occurred on or before this date </param>
+        /// <param name="start"> Only include usage that has occurred on or after this date </param>
+        /// <param name="granularity"> The time-based grouping that results are aggregated by </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -205,27 +205,27 @@ namespace Twilio.Rest.Wireless.V1.Sim
         }
 
         /// <summary>
-        /// The unique id of the SIM resource that this Usage Record is for.
+        /// The SID of the Sim resource that this Usage Record is for
         /// </summary>
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
         /// <summary>
-        /// The unique id of the Account that the SIM belongs to.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The time period for which usage is reported.
+        /// The time period for which the usage is reported
         /// </summary>
         [JsonProperty("period")]
         public object Period { get; private set; }
         /// <summary>
-        /// An object representing the Commands usage for the SIM over the period.
+        /// An object that describes the SIM's usage of Commands during the specified period
         /// </summary>
         [JsonProperty("commands")]
         public object Commands { get; private set; }
         /// <summary>
-        /// An object representing the Data usage for the SIM over the period.
+        /// An object that describes the SIM's data usage during the specified period
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }

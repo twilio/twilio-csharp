@@ -19,19 +19,19 @@ namespace Twilio.Rest.Sync.V1.Service
     public class FetchDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Document resource to fetch
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the Document resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchDocumentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Document resource to fetch </param>
         public FetchDocumentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -56,19 +56,19 @@ namespace Twilio.Rest.Sync.V1.Service
     public class DeleteDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Document resource to delete
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the Document resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteDocumentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to delete </param>
+        /// <param name="pathSid"> The SID of the Document resource to delete </param>
         public DeleteDocumentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -93,26 +93,26 @@ namespace Twilio.Rest.Sync.V1.Service
     public class CreateDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service to associate the Document resource to create with
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Human-readable name for this document
+        /// An application-defined string that uniquely identifies the Sync Document
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// JSON data to be stored in this document
+        /// A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// Time-to-live of this Document in seconds, defaults to no expiration.
+        /// How long, in seconds, before the Sync Document expires and is deleted
         /// </summary>
         public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new CreateDocumentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to associate the Document resource to create with </param>
         public CreateDocumentOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -151,14 +151,14 @@ namespace Twilio.Rest.Sync.V1.Service
     public class ReadDocumentOptions : ReadOptions<DocumentResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Document resources to read
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadDocumentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resources to read </param>
         public ReadDocumentOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -187,27 +187,27 @@ namespace Twilio.Rest.Sync.V1.Service
     public class UpdateDocumentOptions : IOptions<DocumentResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Sync Service with the Document resource to update
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the Document resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Contains an arbitrary JSON object to be stored in this Document.
+        /// A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
         /// </summary>
         public object Data { get; set; }
         /// <summary>
-        /// New time-to-live of this Document in seconds.
+        /// How long, in seconds, before the Document resource expires and is deleted
         /// </summary>
         public int? Ttl { get; set; }
 
         /// <summary>
         /// Construct a new UpdateDocumentOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to update </param>
+        /// <param name="pathSid"> The SID of the Document resource to update </param>
         public UpdateDocumentOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

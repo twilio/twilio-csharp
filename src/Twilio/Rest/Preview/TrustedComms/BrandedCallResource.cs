@@ -37,8 +37,8 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Brands a Call without actually placing it. Useful for cases when the Customer wants to initiate the call themselves
         /// right after calling this endpoint. This can be used also through a TwiML using `<Brand callerId="+1500123"
-        /// callReason="This is the call reason">+1500456</Brand>`, and right after doing `<Dial
-        /// callerId="+1500123">+1500456</Dial>`
+        /// callReason="This is the call reason" callSid="CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">+1500456</Brand>`, and right after
+        /// doing `<Dial callerId="+1500123">+1500456</Dial>`
         /// </summary>
         /// <param name="options"> Create BrandedCall parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -54,8 +54,8 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Brands a Call without actually placing it. Useful for cases when the Customer wants to initiate the call themselves
         /// right after calling this endpoint. This can be used also through a TwiML using `<Brand callerId="+1500123"
-        /// callReason="This is the call reason">+1500456</Brand>`, and right after doing `<Dial
-        /// callerId="+1500123">+1500456</Dial>`
+        /// callReason="This is the call reason" callSid="CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">+1500456</Brand>`, and right after
+        /// doing `<Dial callerId="+1500123">+1500456</Dial>`
         /// </summary>
         /// <param name="options"> Create BrandedCall parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -72,17 +72,22 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Brands a Call without actually placing it. Useful for cases when the Customer wants to initiate the call themselves
         /// right after calling this endpoint. This can be used also through a TwiML using `<Brand callerId="+1500123"
-        /// callReason="This is the call reason">+1500456</Brand>`, and right after doing `<Dial
-        /// callerId="+1500123">+1500456</Dial>`
+        /// callReason="This is the call reason" callSid="CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">+1500456</Brand>`, and right after
+        /// doing `<Dial callerId="+1500123">+1500456</Dial>`
         /// </summary>
         /// <param name="from"> Twilio number from which to brand the call </param>
         /// <param name="to"> The terminating Phone Number </param>
         /// <param name="reason"> The business reason for this phone call </param>
+        /// <param name="callSid"> The call_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandedCall </returns>
-        public static BrandedCallResource Create(string from, string to, string reason, ITwilioRestClient client = null)
+        public static BrandedCallResource Create(string from,
+                                                 string to,
+                                                 string reason,
+                                                 string callSid = null,
+                                                 ITwilioRestClient client = null)
         {
-            var options = new CreateBrandedCallOptions(from, to, reason);
+            var options = new CreateBrandedCallOptions(from, to, reason){CallSid = callSid};
             return Create(options, client);
         }
 
@@ -90,20 +95,22 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Brands a Call without actually placing it. Useful for cases when the Customer wants to initiate the call themselves
         /// right after calling this endpoint. This can be used also through a TwiML using `<Brand callerId="+1500123"
-        /// callReason="This is the call reason">+1500456</Brand>`, and right after doing `<Dial
-        /// callerId="+1500123">+1500456</Dial>`
+        /// callReason="This is the call reason" callSid="CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">+1500456</Brand>`, and right after
+        /// doing `<Dial callerId="+1500123">+1500456</Dial>`
         /// </summary>
         /// <param name="from"> Twilio number from which to brand the call </param>
         /// <param name="to"> The terminating Phone Number </param>
         /// <param name="reason"> The business reason for this phone call </param>
+        /// <param name="callSid"> The call_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandedCall </returns>
         public static async System.Threading.Tasks.Task<BrandedCallResource> CreateAsync(string from,
                                                                                          string to,
                                                                                          string reason,
+                                                                                         string callSid = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateBrandedCallOptions(from, to, reason);
+            var options = new CreateBrandedCallOptions(from, to, reason){CallSid = callSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -166,6 +173,11 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; private set; }
+        /// <summary>
+        /// A string that uniquely identifies this current phone call.
+        /// </summary>
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
         /// <summary>
         /// The status of the current phone call
         /// </summary>

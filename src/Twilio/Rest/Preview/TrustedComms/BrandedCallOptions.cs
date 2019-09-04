@@ -17,8 +17,8 @@ namespace Twilio.Rest.Preview.TrustedComms
     ///
     /// Brands a Call without actually placing it. Useful for cases when the Customer wants to initiate the call themselves
     /// right after calling this endpoint. This can be used also through a TwiML using `<Brand callerId="+1500123"
-    /// callReason="This is the call reason">+1500456</Brand>`, and right after doing `<Dial
-    /// callerId="+1500123">+1500456</Dial>`
+    /// callReason="This is the call reason" callSid="CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa">+1500456</Brand>`, and right after
+    /// doing `<Dial callerId="+1500123">+1500456</Dial>`
     /// </summary>
     public class CreateBrandedCallOptions : IOptions<BrandedCallResource>
     {
@@ -34,6 +34,10 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// The business reason for this phone call
         /// </summary>
         public string Reason { get; }
+        /// <summary>
+        /// The call_sid
+        /// </summary>
+        public string CallSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateBrandedCallOptions
@@ -67,6 +71,11 @@ namespace Twilio.Rest.Preview.TrustedComms
             if (Reason != null)
             {
                 p.Add(new KeyValuePair<string, string>("Reason", Reason));
+            }
+
+            if (CallSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallSid", CallSid.ToString()));
             }
 
             return p;

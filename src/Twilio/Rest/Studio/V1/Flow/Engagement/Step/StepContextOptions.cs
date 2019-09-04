@@ -17,24 +17,24 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement.Step
     public class FetchStepContextOptions : IOptions<StepContextResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// Engagement Sid.
+        /// The SID of the Engagement
         /// </summary>
         public string PathEngagementSid { get; }
         /// <summary>
-        /// Step Sid.
+        /// Step SID
         /// </summary>
         public string PathStepSid { get; }
 
         /// <summary>
         /// Construct a new FetchStepContextOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathEngagementSid"> Engagement Sid. </param>
-        /// <param name="pathStepSid"> Step Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathEngagementSid"> The SID of the Engagement </param>
+        /// <param name="pathStepSid"> Step SID </param>
         public FetchStepContextOptions(string pathFlowSid, string pathEngagementSid, string pathStepSid)
         {
             PathFlowSid = pathFlowSid;

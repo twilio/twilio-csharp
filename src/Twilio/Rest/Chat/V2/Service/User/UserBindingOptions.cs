@@ -22,7 +22,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the User of the User Bindings to read
+        /// The SID of the User with the User Bindings to read
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// Construct a new ReadUserBindingOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User of the User Bindings to read </param>
+        /// <param name="pathUserSid"> The SID of the User with the User Bindings to read </param>
         public ReadUserBindingOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;
@@ -72,11 +72,11 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the User for the binding
+        /// The SID of the User with the binding
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the User Binding resource to fetch
         /// </summary>
         public string PathSid { get; }
 
@@ -84,8 +84,8 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// Construct a new FetchUserBindingOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User for the binding </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathUserSid"> The SID of the User with the binding </param>
+        /// <param name="pathSid"> The SID of the User Binding resource to fetch </param>
         public FetchUserBindingOptions(string pathServiceSid, string pathUserSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the User Binding resource to delete
         /// </summary>
         public string PathSid { get; }
 
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathUserSid"> The SID of the User of the User Bindings to delete </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the User Binding resource to delete </param>
         public DeleteUserBindingOptions(string pathServiceSid, string pathUserSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

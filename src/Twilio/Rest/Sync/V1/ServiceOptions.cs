@@ -19,14 +19,14 @@ namespace Twilio.Rest.Sync.V1
     public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// A unique identifier for this service instance.
+        /// The SID of the Service resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> A unique identifier for this service instance. </param>
+        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -50,14 +50,14 @@ namespace Twilio.Rest.Sync.V1
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// A unique identifier for this service instance.
+        /// The SID of the Service resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        /// <param name="pathSid"> A unique identifier for this service instance. </param>
+        /// <param name="pathSid"> The SID of the Service resource to delete </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -81,31 +81,31 @@ namespace Twilio.Rest.Sync.V1
     public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// Human-readable name for this service instance
+        /// A string that you assign to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// A URL that will receive event updates when objects are manipulated.
+        /// The URL we should call when Sync objects are manipulated
         /// </summary>
         public Uri WebhookUrl { get; set; }
         /// <summary>
-        /// true or false - controls whether this instance fires webhooks when client endpoints connect to Sync
+        /// Whether the service instance should call webhook_url when client endpoints connect to Sync
         /// </summary>
         public bool? ReachabilityWebhooksEnabled { get; set; }
         /// <summary>
-        /// true or false - determines whether token identities must be granted access to Sync objects via the Permissions API in this Service.
+        /// Whether token identities in the Service must be granted access to Sync objects by using the Permissions resource
         /// </summary>
         public bool? AclEnabled { get; set; }
         /// <summary>
-        /// true or false - Determines whether transient disconnections (i.e. an immediate reconnect succeeds) cause reachability webhooks.
+        /// Whether every endpoint_disconnected event occurs after a configurable delay
         /// </summary>
         public bool? ReachabilityDebouncingEnabled { get; set; }
         /// <summary>
-        /// Determines how long an identity must be offline before reachability webhooks fire.
+        /// The reachability event delay in milliseconds
         /// </summary>
         public int? ReachabilityDebouncingWindow { get; set; }
         /// <summary>
-        /// true or false - controls whether this instance fires webhooks when Sync objects are updated through REST
+        /// Whether the Service instance should call webhook_url when the REST API is used to update Sync objects
         /// </summary>
         public bool? WebhooksFromRestEnabled { get; set; }
 
@@ -184,42 +184,42 @@ namespace Twilio.Rest.Sync.V1
     public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// A unique identifier for this service instance.
+        /// The SID of the Service resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A URL that will receive event updates when objects are manipulated.
+        /// The URL we should call when Sync objects are manipulated
         /// </summary>
         public Uri WebhookUrl { get; set; }
         /// <summary>
-        /// Human-readable name for this service instance
+        /// A string that you assign to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// True or false - controls whether this instance fires webhooks when client endpoints connect to Sync
+        /// Whether the service instance should call webhook_url when client endpoints connect to Sync
         /// </summary>
         public bool? ReachabilityWebhooksEnabled { get; set; }
         /// <summary>
-        /// true or false - determines whether token identities must be granted access to Sync objects via the Permissions API in this Service.
+        /// Whether token identities in the Service must be granted access to Sync objects by using the Permissions resource
         /// </summary>
         public bool? AclEnabled { get; set; }
         /// <summary>
-        /// true or false - Determines whether transient disconnections (i.e. an immediate reconnect succeeds) cause reachability webhooks.
+        /// Whether every endpoint_disconnected event occurs after a configurable delay
         /// </summary>
         public bool? ReachabilityDebouncingEnabled { get; set; }
         /// <summary>
-        /// Determines how long an identity must be offline before reachability webhooks fire.
+        /// The reachability event delay in milliseconds
         /// </summary>
         public int? ReachabilityDebouncingWindow { get; set; }
         /// <summary>
-        /// true or false - controls whether this instance fires webhooks when Sync objects are updated through REST
+        /// Whether the Service instance should call webhook_url when the REST API is used to update Sync objects
         /// </summary>
         public bool? WebhooksFromRestEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> A unique identifier for this service instance. </param>
+        /// <param name="pathSid"> The SID of the Service resource to update </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

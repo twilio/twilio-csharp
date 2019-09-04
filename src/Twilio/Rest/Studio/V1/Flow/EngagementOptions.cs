@@ -17,14 +17,14 @@ namespace Twilio.Rest.Studio.V1.Flow
     public class ReadEngagementOptions : ReadOptions<EngagementResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow to read Engagements from
         /// </summary>
         public string PathFlowSid { get; }
 
         /// <summary>
         /// Construct a new ReadEngagementOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow to read Engagements from </param>
         public ReadEngagementOptions(string pathFlowSid)
         {
             PathFlowSid = pathFlowSid;
@@ -51,19 +51,19 @@ namespace Twilio.Rest.Studio.V1.Flow
     public class FetchEngagementOptions : IOptions<EngagementResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// Flow SID
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// Engagement Sid.
+        /// The SID of the Engagement resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchEngagementOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> Flow SID </param>
+        /// <param name="pathSid"> The SID of the Engagement resource to fetch </param>
         public FetchEngagementOptions(string pathFlowSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;
@@ -86,28 +86,28 @@ namespace Twilio.Rest.Studio.V1.Flow
     public class CreateEngagementOptions : IOptions<EngagementResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The Contact phone number to start a Studio Flow Engagement.
+        /// The Contact phone number to start a Studio Flow Engagement
         /// </summary>
         public Types.PhoneNumber To { get; }
         /// <summary>
-        /// The Twilio phone number to send messages or initiate calls from during the Flow Engagement.
+        /// The Twilio phone number to send messages or initiate calls from during the Flow Engagement
         /// </summary>
         public Types.PhoneNumber From { get; }
         /// <summary>
-        /// JSON data that will be added to your flow's context and can accessed as variables inside your flow.
+        /// A JSON string we will add to your flow's context and that you can access as variables inside your flow
         /// </summary>
         public object Parameters { get; set; }
 
         /// <summary>
         /// Construct a new CreateEngagementOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement. </param>
-        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement.
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="to"> The Contact phone number to start a Studio Flow Engagement </param>
+        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Engagement
         ///            </param>
         public CreateEngagementOptions(string pathFlowSid, Types.PhoneNumber to, Types.PhoneNumber from)
         {
@@ -147,19 +147,19 @@ namespace Twilio.Rest.Studio.V1.Flow
     public class DeleteEngagementOptions : IOptions<EngagementResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow to delete Engagements from
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// Engagement Sid.
+        /// The SID of the Engagement resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteEngagementOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathSid"> Engagement Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow to delete Engagements from </param>
+        /// <param name="pathSid"> The SID of the Engagement resource to delete </param>
         public DeleteEngagementOptions(string pathFlowSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;

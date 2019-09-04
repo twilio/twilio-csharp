@@ -65,7 +65,7 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A unique identifier for this service instance. </param>
+        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A unique identifier for this service instance. </param>
+        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> A unique identifier for this service instance. </param>
+        /// <param name="pathSid"> The SID of the Service resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -145,7 +145,7 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> A unique identifier for this service instance. </param>
+        /// <param name="pathSid"> The SID of the Service resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -198,18 +198,17 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Human-readable name for this service instance </param>
-        /// <param name="webhookUrl"> A URL that will receive event updates when objects are manipulated. </param>
-        /// <param name="reachabilityWebhooksEnabled"> true or false - controls whether this instance fires webhooks when
-        ///                                   client endpoints connect to Sync </param>
-        /// <param name="aclEnabled"> true or false - determines whether token identities must be granted access to Sync
-        ///                  objects via the Permissions API in this Service. </param>
-        /// <param name="reachabilityDebouncingEnabled"> true or false - Determines whether transient disconnections (i.e. an
-        ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
-        /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
-        ///                                    webhooks fire. </param>
-        /// <param name="webhooksFromRestEnabled"> true or false - controls whether this instance fires webhooks when Sync
-        ///                               objects are updated through REST </param>
+        /// <param name="friendlyName"> A string that you assign to describe the resource </param>
+        /// <param name="webhookUrl"> The URL we should call when Sync objects are manipulated </param>
+        /// <param name="reachabilityWebhooksEnabled"> Whether the service instance should call webhook_url when client
+        ///                                   endpoints connect to Sync </param>
+        /// <param name="aclEnabled"> Whether token identities in the Service must be granted access to Sync objects by using
+        ///                  the Permissions resource </param>
+        /// <param name="reachabilityDebouncingEnabled"> Whether every endpoint_disconnected event occurs after a configurable
+        ///                                     delay </param>
+        /// <param name="reachabilityDebouncingWindow"> The reachability event delay in milliseconds </param>
+        /// <param name="webhooksFromRestEnabled"> Whether the Service instance should call webhook_url when the REST API is
+        ///                               used to update Sync objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName = null,
@@ -229,18 +228,17 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Human-readable name for this service instance </param>
-        /// <param name="webhookUrl"> A URL that will receive event updates when objects are manipulated. </param>
-        /// <param name="reachabilityWebhooksEnabled"> true or false - controls whether this instance fires webhooks when
-        ///                                   client endpoints connect to Sync </param>
-        /// <param name="aclEnabled"> true or false - determines whether token identities must be granted access to Sync
-        ///                  objects via the Permissions API in this Service. </param>
-        /// <param name="reachabilityDebouncingEnabled"> true or false - Determines whether transient disconnections (i.e. an
-        ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
-        /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
-        ///                                    webhooks fire. </param>
-        /// <param name="webhooksFromRestEnabled"> true or false - controls whether this instance fires webhooks when Sync
-        ///                               objects are updated through REST </param>
+        /// <param name="friendlyName"> A string that you assign to describe the resource </param>
+        /// <param name="webhookUrl"> The URL we should call when Sync objects are manipulated </param>
+        /// <param name="reachabilityWebhooksEnabled"> Whether the service instance should call webhook_url when client
+        ///                                   endpoints connect to Sync </param>
+        /// <param name="aclEnabled"> Whether token identities in the Service must be granted access to Sync objects by using
+        ///                  the Permissions resource </param>
+        /// <param name="reachabilityDebouncingEnabled"> Whether every endpoint_disconnected event occurs after a configurable
+        ///                                     delay </param>
+        /// <param name="reachabilityDebouncingWindow"> The reachability event delay in milliseconds </param>
+        /// <param name="webhooksFromRestEnabled"> Whether the Service instance should call webhook_url when the REST API is
+        ///                               used to update Sync objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null,
@@ -435,19 +433,18 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> A unique identifier for this service instance. </param>
-        /// <param name="webhookUrl"> A URL that will receive event updates when objects are manipulated. </param>
-        /// <param name="friendlyName"> Human-readable name for this service instance </param>
-        /// <param name="reachabilityWebhooksEnabled"> True or false - controls whether this instance fires webhooks when
-        ///                                   client endpoints connect to Sync </param>
-        /// <param name="aclEnabled"> true or false - determines whether token identities must be granted access to Sync
-        ///                  objects via the Permissions API in this Service. </param>
-        /// <param name="reachabilityDebouncingEnabled"> true or false - Determines whether transient disconnections (i.e. an
-        ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
-        /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
-        ///                                    webhooks fire. </param>
-        /// <param name="webhooksFromRestEnabled"> true or false - controls whether this instance fires webhooks when Sync
-        ///                               objects are updated through REST </param>
+        /// <param name="pathSid"> The SID of the Service resource to update </param>
+        /// <param name="webhookUrl"> The URL we should call when Sync objects are manipulated </param>
+        /// <param name="friendlyName"> A string that you assign to describe the resource </param>
+        /// <param name="reachabilityWebhooksEnabled"> Whether the service instance should call webhook_url when client
+        ///                                   endpoints connect to Sync </param>
+        /// <param name="aclEnabled"> Whether token identities in the Service must be granted access to Sync objects by using
+        ///                  the Permissions resource </param>
+        /// <param name="reachabilityDebouncingEnabled"> Whether every endpoint_disconnected event occurs after a configurable
+        ///                                     delay </param>
+        /// <param name="reachabilityDebouncingWindow"> The reachability event delay in milliseconds </param>
+        /// <param name="webhooksFromRestEnabled"> Whether the Service instance should call webhook_url when the REST API is
+        ///                               used to update Sync objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -468,19 +465,18 @@ namespace Twilio.Rest.Sync.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> A unique identifier for this service instance. </param>
-        /// <param name="webhookUrl"> A URL that will receive event updates when objects are manipulated. </param>
-        /// <param name="friendlyName"> Human-readable name for this service instance </param>
-        /// <param name="reachabilityWebhooksEnabled"> True or false - controls whether this instance fires webhooks when
-        ///                                   client endpoints connect to Sync </param>
-        /// <param name="aclEnabled"> true or false - determines whether token identities must be granted access to Sync
-        ///                  objects via the Permissions API in this Service. </param>
-        /// <param name="reachabilityDebouncingEnabled"> true or false - Determines whether transient disconnections (i.e. an
-        ///                                     immediate reconnect succeeds) cause reachability webhooks. </param>
-        /// <param name="reachabilityDebouncingWindow"> Determines how long an identity must be offline before reachability
-        ///                                    webhooks fire. </param>
-        /// <param name="webhooksFromRestEnabled"> true or false - controls whether this instance fires webhooks when Sync
-        ///                               objects are updated through REST </param>
+        /// <param name="pathSid"> The SID of the Service resource to update </param>
+        /// <param name="webhookUrl"> The URL we should call when Sync objects are manipulated </param>
+        /// <param name="friendlyName"> A string that you assign to describe the resource </param>
+        /// <param name="reachabilityWebhooksEnabled"> Whether the service instance should call webhook_url when client
+        ///                                   endpoints connect to Sync </param>
+        /// <param name="aclEnabled"> Whether token identities in the Service must be granted access to Sync objects by using
+        ///                  the Permissions resource </param>
+        /// <param name="reachabilityDebouncingEnabled"> Whether every endpoint_disconnected event occurs after a configurable
+        ///                                     delay </param>
+        /// <param name="reachabilityDebouncingWindow"> The reachability event delay in milliseconds </param>
+        /// <param name="webhooksFromRestEnabled"> Whether the Service instance should call webhook_url when the REST API is
+        ///                               used to update Sync objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -517,72 +513,72 @@ namespace Twilio.Rest.Sync.V1
         }
 
         /// <summary>
-        /// A unique identifier for this service instance.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Human-readable name for this service instance
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Service resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// A URL that will receive event updates when objects are manipulated.
+        /// The URL we call when Sync objects are manipulated
         /// </summary>
         [JsonProperty("webhook_url")]
         public Uri WebhookUrl { get; private set; }
         /// <summary>
-        /// true or false - controls whether this instance fires webhooks when Sync objects are updated through REST
+        /// Whether the Service instance should call webhook_url when the REST API is used to update Sync objects
         /// </summary>
         [JsonProperty("webhooks_from_rest_enabled")]
         public bool? WebhooksFromRestEnabled { get; private set; }
         /// <summary>
-        /// true or false - controls whether this instance fires webhooks when client endpoints connect to Sync
+        /// Whether the service instance calls webhook_url when client endpoints connect to Sync
         /// </summary>
         [JsonProperty("reachability_webhooks_enabled")]
         public bool? ReachabilityWebhooksEnabled { get; private set; }
         /// <summary>
-        /// true or false - determines whether token identities must be granted access to Sync objects via the Permissions API in this Service.
+        /// Whether token identities in the Service must be granted access to Sync objects by using the Permissions resource
         /// </summary>
         [JsonProperty("acl_enabled")]
         public bool? AclEnabled { get; private set; }
         /// <summary>
-        /// true or false - Determines whether transient disconnections (i.e. an immediate reconnect succeeds) cause reachability webhooks.
+        /// Whether every endpoint_disconnected event occurs after a configurable delay
         /// </summary>
         [JsonProperty("reachability_debouncing_enabled")]
         public bool? ReachabilityDebouncingEnabled { get; private set; }
         /// <summary>
-        /// Determines how long an identity must be offline before reachability webhooks fire.
+        /// The reachability event delay in milliseconds
         /// </summary>
         [JsonProperty("reachability_debouncing_window")]
         public int? ReachabilityDebouncingWindow { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

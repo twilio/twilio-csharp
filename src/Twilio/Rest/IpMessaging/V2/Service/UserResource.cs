@@ -78,7 +78,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the User resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -92,7 +92,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the User resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathServiceSid,
@@ -148,7 +148,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of  the User resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -162,7 +162,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of  the User resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -305,7 +305,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the User resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -323,7 +323,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the User resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -441,7 +441,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// update
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the User resource to update </param>
         /// <param name="roleSid"> The SID id of the Role assigned to this user </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
@@ -463,7 +463,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// update
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the User resource to update </param>
         /// <param name="roleSid"> The SID id of the Role assigned to this user </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
@@ -545,17 +545,17 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         [JsonProperty("is_notifiable")]
         public bool? IsNotifiable { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The number of Channels this User is a Member of
+        /// The number of Channels the User is a Member of
         /// </summary>
         [JsonProperty("joined_channels_count")]
         public int? JoinedChannelsCount { get; private set; }

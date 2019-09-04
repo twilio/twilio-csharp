@@ -85,6 +85,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="body"> The content of the message. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="attributes"> A string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Create(string pathConversationSid,
@@ -92,9 +93,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                              string body = null,
                                              DateTime? dateCreated = null,
                                              DateTime? dateUpdated = null,
+                                             string attributes = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathConversationSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new CreateMessageOptions(pathConversationSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return Create(options, client);
         }
 
@@ -107,6 +109,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="body"> The content of the message. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="attributes"> A string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathConversationSid,
@@ -114,9 +117,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                                                      string body = null,
                                                                                      DateTime? dateCreated = null,
                                                                                      DateTime? dateUpdated = null,
+                                                                                     string attributes = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathConversationSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new CreateMessageOptions(pathConversationSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return await CreateAsync(options, client);
         }
         #endif
@@ -170,6 +174,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="body"> The content of the message. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="attributes"> A string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Update(string pathConversationSid,
@@ -178,9 +183,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                              string body = null,
                                              DateTime? dateCreated = null,
                                              DateTime? dateUpdated = null,
+                                             string attributes = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathConversationSid, pathSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new UpdateMessageOptions(pathConversationSid, pathSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return Update(options, client);
         }
 
@@ -194,6 +200,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="body"> The content of the message. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="attributes"> A string metadata field you can use to store any data you wish. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathConversationSid,
@@ -202,9 +209,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                                                      string body = null,
                                                                                      DateTime? dateCreated = null,
                                                                                      DateTime? dateUpdated = null,
+                                                                                     string attributes = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathConversationSid, pathSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated};
+            var options = new UpdateMessageOptions(pathConversationSid, pathSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -536,6 +544,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         [JsonProperty("body")]
         public string Body { get; private set; }
+        /// <summary>
+        /// A string metadata field you can use to store any data you wish.
+        /// </summary>
+        [JsonProperty("attributes")]
+        public string Attributes { get; private set; }
         /// <summary>
         /// The date that this resource was created.
         /// </summary>

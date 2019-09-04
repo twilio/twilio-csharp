@@ -125,14 +125,14 @@ namespace Twilio.Rest.IpMessaging.V2
     public class FetchCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Credential resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCredentialOptions
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Credential resource to fetch </param>
         public FetchCredentialOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -154,7 +154,7 @@ namespace Twilio.Rest.IpMessaging.V2
     public class UpdateCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Credential resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -185,7 +185,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// Construct a new UpdateCredentialOptions
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Credential resource to update </param>
         public UpdateCredentialOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -237,14 +237,14 @@ namespace Twilio.Rest.IpMessaging.V2
     public class DeleteCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The SID of the Credential resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCredentialOptions
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The SID of the Credential resource to delete </param>
         public DeleteCredentialOptions(string pathSid)
         {
             PathSid = pathSid;

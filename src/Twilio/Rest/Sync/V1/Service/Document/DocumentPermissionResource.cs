@@ -66,9 +66,10 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Fetch a specific Sync Document Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to fetch </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to fetch </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
+        ///                    resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DocumentPermission </returns>
         public static DocumentPermissionResource Fetch(string pathServiceSid,
@@ -84,9 +85,10 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Fetch a specific Sync Document Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to fetch </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to fetch </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
+        ///                    resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
         public static async System.Threading.Tasks.Task<DocumentPermissionResource> FetchAsync(string pathServiceSid,
@@ -142,9 +144,10 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Delete a specific Sync Document Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to delete </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to delete </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
+        ///                    resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DocumentPermission </returns>
         public static bool Delete(string pathServiceSid,
@@ -160,9 +163,10 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Delete a specific Sync Document Permission.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to delete </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to delete </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
+        ///                    resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -223,8 +227,8 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Document.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resources to read </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -243,8 +247,8 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Retrieve a list of all Permissions applying to a Sync Document.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resources to read </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -365,12 +369,13 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Update an identity's access to a specific Sync Document.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
-        /// <param name="read"> Read access. </param>
-        /// <param name="write"> Write access. </param>
-        /// <param name="manage"> Manage access. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to update </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to update </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
+        ///                    resource to update </param>
+        /// <param name="read"> Read access </param>
+        /// <param name="write"> Write access </param>
+        /// <param name="manage"> Manage access </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DocumentPermission </returns>
         public static DocumentPermissionResource Update(string pathServiceSid,
@@ -389,12 +394,13 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         /// <summary>
         /// Update an identity's access to a specific Sync Document.
         /// </summary>
-        /// <param name="pathServiceSid"> Sync Service Instance SID or unique name. </param>
-        /// <param name="pathDocumentSid"> Sync Document SID or unique name. </param>
-        /// <param name="pathIdentity"> Identity of the user to whom the Sync Document Permission applies. </param>
-        /// <param name="read"> Read access. </param>
-        /// <param name="write"> Write access. </param>
-        /// <param name="manage"> Manage access. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document Permission resource to update </param>
+        /// <param name="pathDocumentSid"> The SID of the Sync Document with the Document Permission resource to update </param>
+        /// <param name="pathIdentity"> The application-defined string that uniquely identifies the User's Document Permission
+        ///                    resource to update </param>
+        /// <param name="read"> Read access </param>
+        /// <param name="write"> Write access </param>
+        /// <param name="manage"> Manage access </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DocumentPermission </returns>
         public static async System.Threading.Tasks.Task<DocumentPermissionResource> UpdateAsync(string pathServiceSid,
@@ -429,42 +435,42 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         }
 
         /// <summary>
-        /// Twilio Account SID.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Sync Service Instance SID.
+        /// The SID of the Sync Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// Sync Document SID.
+        /// The Sync Document SID
         /// </summary>
         [JsonProperty("document_sid")]
         public string DocumentSid { get; private set; }
         /// <summary>
-        /// Identity of the user to whom the Sync Document Permission applies.
+        /// The identity of the user to whom the Sync Document Permission applies
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// Read access.
+        /// Read access
         /// </summary>
         [JsonProperty("read")]
         public bool? _Read { get; private set; }
         /// <summary>
-        /// Write access.
+        /// Write access
         /// </summary>
         [JsonProperty("write")]
         public bool? Write { get; private set; }
         /// <summary>
-        /// Manage access.
+        /// Manage access
         /// </summary>
         [JsonProperty("manage")]
         public bool? Manage { get; private set; }
         /// <summary>
-        /// URL of this Sync Document Permission.
+        /// The absolute URL of the Sync Document Permission resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

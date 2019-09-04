@@ -17,19 +17,19 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
     public class ReadExecutionStepOptions : ReadOptions<ExecutionStepResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// Execution Sid.
+        /// The SID of the Execution
         /// </summary>
         public string PathExecutionSid { get; }
 
         /// <summary>
         /// Construct a new ReadExecutionStepOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathExecutionSid"> Execution Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
         public ReadExecutionStepOptions(string pathFlowSid, string pathExecutionSid)
         {
             PathFlowSid = pathFlowSid;
@@ -57,24 +57,24 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
     public class FetchExecutionStepOptions : IOptions<ExecutionStepResource>
     {
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// Execution Sid.
+        /// The SID of the Execution
         /// </summary>
         public string PathExecutionSid { get; }
         /// <summary>
-        /// Step Sid.
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchExecutionStepOptions
         /// </summary>
-        /// <param name="pathFlowSid"> Flow Sid. </param>
-        /// <param name="pathExecutionSid"> Execution Sid. </param>
-        /// <param name="pathSid"> Step Sid. </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchExecutionStepOptions(string pathFlowSid, string pathExecutionSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;

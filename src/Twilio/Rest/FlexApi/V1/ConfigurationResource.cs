@@ -410,6 +410,16 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("outbound_call_flows")]
         public object OutboundCallFlows { get; private set; }
         /// <summary>
+        /// List of enabled features
+        /// </summary>
+        [JsonProperty("features_enabled")]
+        public List<string> FeaturesEnabled { get; private set; }
+        /// <summary>
+        /// List of serverless services sids
+        /// </summary>
+        [JsonProperty("serverless_service_sids")]
+        public List<string> ServerlessServiceSids { get; private set; }
+        /// <summary>
         /// The URL for this resource
         /// </summary>
         [JsonProperty("url")]

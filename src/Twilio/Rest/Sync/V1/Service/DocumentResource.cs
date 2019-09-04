@@ -65,8 +65,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Document resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns>
         public static DocumentResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -79,8 +79,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Document resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns>
         public static async System.Threading.Tasks.Task<DocumentResource> FetchAsync(string pathServiceSid,
@@ -135,8 +135,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to delete </param>
+        /// <param name="pathSid"> The SID of the Document resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -149,8 +149,8 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to delete </param>
+        /// <param name="pathSid"> The SID of the Document resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -205,10 +205,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> Human-readable name for this document </param>
-        /// <param name="data"> JSON data to be stored in this document </param>
-        /// <param name="ttl"> Time-to-live of this Document in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to associate the Document resource to create with </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Sync Document </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
+        ///            </param>
+        /// <param name="ttl"> How long, in seconds, before the Sync Document expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns>
         public static DocumentResource Create(string pathServiceSid,
@@ -225,10 +226,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="uniqueName"> Human-readable name for this document </param>
-        /// <param name="data"> JSON data to be stored in this document </param>
-        /// <param name="ttl"> Time-to-live of this Document in seconds, defaults to no expiration. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service to associate the Document resource to create with </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Sync Document </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
+        ///            </param>
+        /// <param name="ttl"> How long, in seconds, before the Sync Document expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns>
         public static async System.Threading.Tasks.Task<DocumentResource> CreateAsync(string pathServiceSid,
@@ -289,7 +291,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -307,7 +309,7 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -424,10 +426,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="data"> Contains an arbitrary JSON object to be stored in this Document. </param>
-        /// <param name="ttl"> New time-to-live of this Document in seconds. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to update </param>
+        /// <param name="pathSid"> The SID of the Document resource to update </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
+        ///            </param>
+        /// <param name="ttl"> How long, in seconds, before the Document resource expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns>
         public static DocumentResource Update(string pathServiceSid,
@@ -444,10 +447,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="data"> Contains an arbitrary JSON object to be stored in this Document. </param>
-        /// <param name="ttl"> New time-to-live of this Document in seconds. </param>
+        /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to update </param>
+        /// <param name="pathSid"> The SID of the Document resource to update </param>
+        /// <param name="data"> A JSON string that represents an arbitrary, schema-less object that the Sync Document stores
+        ///            </param>
+        /// <param name="ttl"> How long, in seconds, before the Document resource expires and is deleted </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns>
         public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(string pathServiceSid,
@@ -480,62 +484,62 @@ namespace Twilio.Rest.Sync.V1.Service
         }
 
         /// <summary>
-        /// The unique 34-character SID identifier of the Document.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique and addressable name of this Document.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The unique SID identifier of the Twilio Account.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique SID identifier of the Service Instance that hosts this Document.
+        /// The SID of the Sync Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The absolute URL for this Document.
+        /// The absolute URL of the Document resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// A dictionary of URL links to nested resources of this Document.
+        /// The URLs of resources related to the Sync Document
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// Contains the current revision of this Document, represented by a string identifier.
+        /// The current revision of the Sync Document, represented by a string identifier
         /// </summary>
         [JsonProperty("revision")]
         public string Revision { get; private set; }
         /// <summary>
-        /// Contains arbitrary user-defined, schema-less data that this Document stores, represented by a JSON object, up to 16KB.
+        /// An arbitrary, schema-less object that the Sync Document stores
         /// </summary>
         [JsonProperty("data")]
         public object Data { get; private set; }
         /// <summary>
-        /// Contains the date this Document expires and gets deleted automatically.
+        /// The ISO 8601 date and time in GMT when the Sync Document expires
         /// </summary>
         [JsonProperty("date_expires")]
         public DateTime? DateExpires { get; private set; }
         /// <summary>
-        /// The date this Document was created, given in UTC ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// Specifies the date this Document was last updated, given in UTC ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The identity of the Document creator.
+        /// The identity of the Sync Document's creator
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
