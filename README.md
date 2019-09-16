@@ -44,7 +44,19 @@ If you are building with the .NET Core command line tools, then you can run the 
 
     dotnet add package Twilio
 
-### Sample Usage
+## Versions
+
+`twilio-csharp` uses a modified version of [Semantic Versioning](https://semver.org) for all changes. [See this document](VERSIONS.md) for details.
+
+### Migrating from earlier versions
+
+See the migration guide [here][migrating]. Also, if you were using the Twilio.Mvc package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
+
+### Alpha Version
+
+The alpha version is no longer necessary. All Twilio products are available in the main-line library.
+
+## Sample Usage
 
 The examples below show how to have your application initiate and outbound phone call and send an SMS message using the Twilio .NET helper library:
 ```csharp
@@ -65,7 +77,7 @@ var message = MessageResource.Create(
 Console.WriteLine(message.Sid);
 ```
 
-### Generating TwiML
+## Generating TwiML
 
 To control phone calls, your application needs to output [TwiML][twiml].
 
@@ -104,14 +116,6 @@ Console.WriteLine(response);
 </Response>
 */
 ```
-
-## Migrating from earlier versions
-
-See the migration guide [here][migrating]. Also, if you were using the Twilio.Mvc package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
-
-## Alpha Version
-
-The alpha version is no longer necessary. All Twilio products are available in the main-line library.
 
 ## Docker Image
 
