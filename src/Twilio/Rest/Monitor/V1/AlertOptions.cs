@@ -17,44 +17,15 @@ namespace Twilio.Rest.Monitor.V1
     public class FetchAlertOptions : IOptions<AlertResource>
     {
         /// <summary>
-        /// The sid
+        /// A 34 character string that uniquely identifies this Alert.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAlertOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this Alert. </param>
         public FetchAlertOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-    }
-
-    /// <summary>
-    /// DeleteAlertOptions
-    /// </summary>
-    public class DeleteAlertOptions : IOptions<AlertResource>
-    {
-        /// <summary>
-        /// The sid
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteAlertOptions
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        public DeleteAlertOptions(string pathSid)
         {
             PathSid = pathSid;
         }

@@ -63,7 +63,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this Alert. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns>
         public static AlertResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A 34 character string that uniquely identifies this Alert. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns>
         public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(string pathSid,
@@ -84,72 +84,6 @@ namespace Twilio.Rest.Monitor.V1
         {
             var options = new FetchAlertOptions(pathSid);
             return await FetchAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteAlertOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Monitor,
-                "/v1/Alerts/" + options.PathSid + "",
-                client.Region,
-                queryParams: options.GetParams()
-            );
-        }
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Alert parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Alert </returns>
-        public static bool Delete(DeleteAlertOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="options"> Delete Alert parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Alert </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteAlertOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Alert </returns>
-        public static bool Delete(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteAlertOptions(pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// delete
-        /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Alert </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
-        {
-            var options = new DeleteAlertOptions(pathSid);
-            return await DeleteAsync(options, client);
         }
         #endif
 
@@ -404,6 +338,16 @@ namespace Twilio.Rest.Monitor.V1
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The request_headers
+        /// </summary>
+        [JsonProperty("request_headers")]
+        public string RequestHeaders { get; private set; }
+        /// <summary>
+        /// The service_sid
+        /// </summary>
+        [JsonProperty("service_sid")]
+        public string ServiceSid { get; private set; }
 
         private AlertResource()
         {
