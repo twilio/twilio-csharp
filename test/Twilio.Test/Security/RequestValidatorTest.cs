@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using System;
+using System.Collections.Specialized;
 using NUnit.Framework;
 using Twilio.Security;
 
@@ -69,5 +70,33 @@ namespace Twilio.Tests.Security
         {
             Assert.IsFalse(_validator.Validate(Url, Body, "RSOYDt4T1cUTdK1PDd93/VVr8B8="), "Request signature or body validation failed");
         }
+
+        [Test]
+        public void TestValidateRemovesPortHttps()
+        {
+            const string url = "https://mycompany.com:1234/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, "RSOYDt4T1cUTdK1PDd93/VVr8B8="), "Request does not match provided signature");
+        }
+
+        [Test]
+        public void TestValidateRemovesPortHttp()
+        {
+            const string url = "http://mycompany.com:1234/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, "Zmvh+3yNM1Phv2jhDCwEM3q5ebU="), "Request does not match provided signature");
+        }
+        
+        [Test]
+        public void TestValidateAddsPortHttps()
+        {
+            Assert.IsTrue(_validator.Validate(Url, _parameters, "kvajT1Ptam85bY51eRf/AJRuM3w="), "Request does not match provided signature");
+        }
+
+        [Test]
+        public void TestValidateAddsPortHttp()
+        {
+            const string url = "http://mycompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, "0ZXoZLH/DfblKGATFgpif+LLRf4="), "Request does not match provided signature");
+        }
+
     }
 }

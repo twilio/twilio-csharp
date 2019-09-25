@@ -45,13 +45,14 @@ namespace Twilio.Security
         /// <returns>true if the signature matches the result; false otherwise</returns>
         public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
-            var signature = GetValidationSignature(url, parameters);
-            return SecureCompare(signature, expected);
+            var signatureWithoutPort = GetValidationSignature(RemovePort(new UriBuilder(url)), parameters);
+            var signatureWithPort = GetValidationSignature(AddPort(new UriBuilder(url)), parameters);
+            return SecureCompare(signatureWithoutPort, expected) || SecureCompare(signatureWithPort, expected);
         }
 
         public bool Validate(string url, string body, string expected)
         {
-            var paramString = new Uri(url).Query.TrimStart('?');
+            var paramString = new UriBuilder(url).Query.TrimStart('?');
             var bodyHash = "";
             foreach (var param in paramString.Split('&'))
             {
@@ -119,6 +120,24 @@ namespace Twilio.Security
             }
 
             return mismatch == 0;
+        }
+
+        private string RemovePort(UriBuilder uri)
+        {
+            // UriBuilder.ToString() will not display the port 
+            // if the Port property is set to -1
+            uri.Port = -1;
+            return uri.ToString();
+        }
+
+        private string AddPort(UriBuilder uri)
+        {
+            if (uri.Port != -1)
+            {
+                return uri.ToString();
+            }
+            uri.Port = uri.Scheme == "https" ? 443 : 80;
+            return uri.ToString();
         }
 
     }
