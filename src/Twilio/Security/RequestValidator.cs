@@ -45,8 +45,10 @@ namespace Twilio.Security
         /// <returns>true if the signature matches the result; false otherwise</returns>
         public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
+            // check signature of url with and without port, since sig generation on back end is inconsistent
             var signatureWithoutPort = GetValidationSignature(RemovePort(new UriBuilder(url)), parameters);
             var signatureWithPort = GetValidationSignature(AddPort(new UriBuilder(url)), parameters);
+            // If either url produces a valid signature, we accept the request as valid
             return SecureCompare(signatureWithoutPort, expected) || SecureCompare(signatureWithPort, expected);
         }
 
