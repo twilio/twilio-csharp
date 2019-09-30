@@ -3,42 +3,27 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/e0qcgl8r6rid4akb/branch/master?svg=true)](https://ci.appveyor.com/project/TwilioAPI/twilio-csharp-lum8a/branch/master)
 [![NuGet](https://img.shields.io/nuget/v/Twilio.svg)](https://www.nuget.org/packages/Twilio)
 
-## Documentation
-
-The documentation for the Twilio API can be found [here][apidocs].
-
-The C# library documentation can be found [here][libdocs].
-
-## Recent Update
-
-As of release 5.6.0, Beta and Developer Preview products are now exposed via
-the main `twilio-csharp` artifact. Releases of the `alpha` branch have been
-discontinued.
-
-If you were using the `alpha` release line, you should be able to switch back
-to the normal release line without issue.
-
-If you were using the normal release line, you should now see several new
-product lines that were historically hidden from you due to their Beta or
-Developer Preview status. Such products are explicitly documented as
-Beta/Developer Preview both in the Twilio docs and console, as well as through
-in-line code documentation here in the library.
-
 # Twilio REST API and TwiML Libraries for .NET
 
-Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more at [https://www.twilio.com][twilio]
+Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more on [twilio.com][apidocs]
 
-### Adding Twilio libraries to your .NET project
+More documentation for this library can be found [here][libdocs].
+
+## Supported .NET versions
+
+This library supports .NET applications written in C#, VB.Net, and F# that utilize .NET Framework 3.5 or above or any [supported version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core#lifecycle) of .NET Core (.NET Standard v1.4).
+
+## Adding Twilio libraries to your .NET project
 
 The best and easiest way to add the Twilio libraries to your .NET project is to use the NuGet package manager.
 
-#### With Visual Studio IDE
+### With Visual Studio IDE
 
 From within Visual Studio, you can use the NuGet GUI to search for and install the Twilio NuGet package. Or, as a shortcut, simply type the following command into the Package Manager Console:
 
     Install-Package Twilio
 
-#### With .NET Core Command Line Tools
+### With .NET Core Command Line Tools
 
 If you are building with the .NET Core command line tools, then you can run the following command from within your project directory:
 
@@ -52,7 +37,7 @@ If you are building with the .NET Core command line tools, then you can run the 
 
 See the migration guide [here][migrating]. Also, if you were using the Twilio.Mvc package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
 
-### Alpha Version
+### Alpha Version (deprecated)
 
 The alpha version is no longer necessary. All Twilio products are available in the main-line library.
 
