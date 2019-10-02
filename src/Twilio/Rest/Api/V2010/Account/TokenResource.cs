@@ -33,7 +33,7 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// Create a new token
+        /// Create a new token for ICE servers
         /// </summary>
         /// <param name="options"> Create Token parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Create a new token
+        /// Create a new token for ICE servers
         /// </summary>
         /// <param name="options"> Create Token parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Api.V2010.Account
         #endif
 
         /// <summary>
-        /// Create a new token
+        /// Create a new token for ICE servers
         /// </summary>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
         #if !NET35
         /// <summary>
-        /// Create a new token
+        /// Create a new token for ICE servers
         /// </summary>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="ttl"> The duration in seconds the credentials are valid </param>

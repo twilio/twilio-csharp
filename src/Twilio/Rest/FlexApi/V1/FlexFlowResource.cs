@@ -99,7 +99,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> Human readable description of this FlexFlow </param>
+        /// <param name="friendlyName"> The `friendly_name` of the FlexFlow resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -117,7 +117,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> Human readable description of this FlexFlow </param>
+        /// <param name="friendlyName"> The `friendly_name` of the FlexFlow resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -234,7 +234,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The unique ID of the FlexFlow </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
         public static FlexFlowResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -247,7 +247,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The unique ID of the FlexFlow </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         public static async System.Threading.Tasks.Task<FlexFlowResource> FetchAsync(string pathSid,
@@ -301,21 +301,21 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Human readable description of this FlexFlow </param>
-        /// <param name="chatServiceSid"> Service Sid. </param>
-        /// <param name="channelType"> Channel type </param>
-        /// <param name="contactIdentity"> Channel contact Identity </param>
-        /// <param name="enabled"> Boolean flag for enabling or disabling the FlexFlow </param>
-        /// <param name="integrationType"> Integration type </param>
-        /// <param name="integrationFlowSid"> Flow Sid. </param>
-        /// <param name="integrationUrl"> External Webhook Url </param>
-        /// <param name="integrationWorkspaceSid"> Workspace Sid for a new task </param>
-        /// <param name="integrationWorkflowSid"> Workflow Sid for a new task </param>
-        /// <param name="integrationChannel"> Task Channel for a new task </param>
-        /// <param name="integrationTimeout"> Task timeout in seconds for a new task </param>
-        /// <param name="integrationPriority"> Task priority for a new task </param>
-        /// <param name="integrationCreationOnMessage"> Flag for task creation </param>
-        /// <param name="longLived"> Long Lived flag for new Channel </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="chatServiceSid"> The SID of the chat service </param>
+        /// <param name="channelType"> The channel type </param>
+        /// <param name="contactIdentity"> The channel contact's Identity </param>
+        /// <param name="enabled"> Whether the new FlexFlow is enabled </param>
+        /// <param name="integrationType"> The integration type </param>
+        /// <param name="integrationFlowSid"> The SID of the Flow </param>
+        /// <param name="integrationUrl"> The External Webhook URL </param>
+        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new task </param>
+        /// <param name="integrationWorkflowSid"> The Workflow SID for a new task </param>
+        /// <param name="integrationChannel"> The task channel for a new task </param>
+        /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
+        /// <param name="integrationPriority"> The task priority of a new task </param>
+        /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
+        /// <param name="longLived"> Whether new channels are long-lived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
         public static FlexFlowResource Create(string friendlyName,
@@ -343,21 +343,21 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Human readable description of this FlexFlow </param>
-        /// <param name="chatServiceSid"> Service Sid. </param>
-        /// <param name="channelType"> Channel type </param>
-        /// <param name="contactIdentity"> Channel contact Identity </param>
-        /// <param name="enabled"> Boolean flag for enabling or disabling the FlexFlow </param>
-        /// <param name="integrationType"> Integration type </param>
-        /// <param name="integrationFlowSid"> Flow Sid. </param>
-        /// <param name="integrationUrl"> External Webhook Url </param>
-        /// <param name="integrationWorkspaceSid"> Workspace Sid for a new task </param>
-        /// <param name="integrationWorkflowSid"> Workflow Sid for a new task </param>
-        /// <param name="integrationChannel"> Task Channel for a new task </param>
-        /// <param name="integrationTimeout"> Task timeout in seconds for a new task </param>
-        /// <param name="integrationPriority"> Task priority for a new task </param>
-        /// <param name="integrationCreationOnMessage"> Flag for task creation </param>
-        /// <param name="longLived"> Long Lived flag for new Channel </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="chatServiceSid"> The SID of the chat service </param>
+        /// <param name="channelType"> The channel type </param>
+        /// <param name="contactIdentity"> The channel contact's Identity </param>
+        /// <param name="enabled"> Whether the new FlexFlow is enabled </param>
+        /// <param name="integrationType"> The integration type </param>
+        /// <param name="integrationFlowSid"> The SID of the Flow </param>
+        /// <param name="integrationUrl"> The External Webhook URL </param>
+        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new task </param>
+        /// <param name="integrationWorkflowSid"> The Workflow SID for a new task </param>
+        /// <param name="integrationChannel"> The task channel for a new task </param>
+        /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
+        /// <param name="integrationPriority"> The task priority of a new task </param>
+        /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
+        /// <param name="longLived"> Whether new channels are long-lived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         public static async System.Threading.Tasks.Task<FlexFlowResource> CreateAsync(string friendlyName,
@@ -425,22 +425,22 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The unique ID of the FlexFlow </param>
-        /// <param name="friendlyName"> Human readable description of this FlexFlow </param>
-        /// <param name="chatServiceSid"> Service Sid. </param>
-        /// <param name="channelType"> Channel type </param>
-        /// <param name="contactIdentity"> Channel contact Identity </param>
-        /// <param name="enabled"> Boolean flag for enabling or disabling the FlexFlow </param>
-        /// <param name="integrationType"> Integration type </param>
-        /// <param name="integrationFlowSid"> Flow Sid. </param>
-        /// <param name="integrationUrl"> External Webhook Url </param>
-        /// <param name="integrationWorkspaceSid"> Workspace Sid for a new task </param>
-        /// <param name="integrationWorkflowSid"> Workflow Sid for a new task </param>
-        /// <param name="integrationChannel"> Task Channel for a new task </param>
-        /// <param name="integrationTimeout"> Task timeout in seconds for a new task </param>
-        /// <param name="integrationPriority"> Task priority for a new task </param>
-        /// <param name="integrationCreationOnMessage"> Flag for task creation </param>
-        /// <param name="longLived"> Long Lived flag for new Channel </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="chatServiceSid"> The SID of the chat service </param>
+        /// <param name="channelType"> The channel type </param>
+        /// <param name="contactIdentity"> The channel contact's Identity </param>
+        /// <param name="enabled"> Whether the FlexFlow is enabled </param>
+        /// <param name="integrationType"> The integration type </param>
+        /// <param name="integrationFlowSid"> The SID of the Flow </param>
+        /// <param name="integrationUrl"> The External Webhook URL </param>
+        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new task </param>
+        /// <param name="integrationWorkflowSid"> The Workflow SID for a new task </param>
+        /// <param name="integrationChannel"> task channel for a new task </param>
+        /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
+        /// <param name="integrationPriority"> The task priority of a new task </param>
+        /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
+        /// <param name="longLived"> Whether new channels created are long-lived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
         public static FlexFlowResource Update(string pathSid,
@@ -469,22 +469,22 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The unique ID of the FlexFlow </param>
-        /// <param name="friendlyName"> Human readable description of this FlexFlow </param>
-        /// <param name="chatServiceSid"> Service Sid. </param>
-        /// <param name="channelType"> Channel type </param>
-        /// <param name="contactIdentity"> Channel contact Identity </param>
-        /// <param name="enabled"> Boolean flag for enabling or disabling the FlexFlow </param>
-        /// <param name="integrationType"> Integration type </param>
-        /// <param name="integrationFlowSid"> Flow Sid. </param>
-        /// <param name="integrationUrl"> External Webhook Url </param>
-        /// <param name="integrationWorkspaceSid"> Workspace Sid for a new task </param>
-        /// <param name="integrationWorkflowSid"> Workflow Sid for a new task </param>
-        /// <param name="integrationChannel"> Task Channel for a new task </param>
-        /// <param name="integrationTimeout"> Task timeout in seconds for a new task </param>
-        /// <param name="integrationPriority"> Task priority for a new task </param>
-        /// <param name="integrationCreationOnMessage"> Flag for task creation </param>
-        /// <param name="longLived"> Long Lived flag for new Channel </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="chatServiceSid"> The SID of the chat service </param>
+        /// <param name="channelType"> The channel type </param>
+        /// <param name="contactIdentity"> The channel contact's Identity </param>
+        /// <param name="enabled"> Whether the FlexFlow is enabled </param>
+        /// <param name="integrationType"> The integration type </param>
+        /// <param name="integrationFlowSid"> The SID of the Flow </param>
+        /// <param name="integrationUrl"> The External Webhook URL </param>
+        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new task </param>
+        /// <param name="integrationWorkflowSid"> The Workflow SID for a new task </param>
+        /// <param name="integrationChannel"> task channel for a new task </param>
+        /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
+        /// <param name="integrationPriority"> The task priority of a new task </param>
+        /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
+        /// <param name="longLived"> Whether new channels created are long-lived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         public static async System.Threading.Tasks.Task<FlexFlowResource> UpdateAsync(string pathSid,
@@ -553,7 +553,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The unique ID of the FlexFlow </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -566,7 +566,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The unique ID of the FlexFlow </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -595,69 +595,69 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
         /// <summary>
-        /// The ID of the account that owns this Workflow
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The time the FlexFlow was created, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The time the FlexFlow was last updated, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The unique ID of the FlexFlow
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Human readable description of this FlexFlow
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the chat service
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
         /// <summary>
-        /// Channel type
+        /// The channel type
         /// </summary>
         [JsonProperty("channel_type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FlexFlowResource.ChannelTypeEnum ChannelType { get; private set; }
         /// <summary>
-        /// Channel contact Identity
+        /// The channel contact's Identity
         /// </summary>
         [JsonProperty("contact_identity")]
         public string ContactIdentity { get; private set; }
         /// <summary>
-        /// Boolean flag for enabling or disabling the FlexFlow
+        /// Whether the FlexFlow is enabled
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
         /// <summary>
-        /// Integration type
+        /// The integration type
         /// </summary>
         [JsonProperty("integration_type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; private set; }
         /// <summary>
-        /// Integration block
+        /// An object that contains specific parameters for the integration
         /// </summary>
         [JsonProperty("integration")]
         public object Integration { get; private set; }
         /// <summary>
-        /// Long Lived flag for new Channel
+        /// Whether new channels are long-lived
         /// </summary>
         [JsonProperty("long_lived")]
         public bool? LongLived { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the FlexFlow resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

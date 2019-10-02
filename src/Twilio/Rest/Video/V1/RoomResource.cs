@@ -105,7 +105,7 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns>
         public static RoomResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
         public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(string pathSid,
@@ -172,15 +172,16 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="enableTurn"> Use Twilio Network Traversal for TURN service. </param>
-        /// <param name="type"> Type of room, either peer-to-peer, group-small or group. </param>
-        /// <param name="uniqueName"> Name of the Room. </param>
-        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every room event. </param>
-        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
-        /// <param name="maxParticipants"> Maximum number of Participants in the Room. </param>
-        /// <param name="recordParticipantsOnConnect"> Start Participant recording when connected. </param>
-        /// <param name="videoCodecs"> An array of video codecs supported when publishing a Track in the Room. </param>
-        /// <param name="mediaRegion"> Region for the media server in Group Rooms. </param>
+        /// <param name="enableTurn"> Enable Twilio's Network Traversal TURN service </param>
+        /// <param name="type"> The type of room </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="statusCallback"> The URL to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room </param>
+        /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect </param>
+        /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room
+        ///                   </param>
+        /// <param name="mediaRegion"> The region for the media server in Group Rooms </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns>
         public static RoomResource Create(bool? enableTurn = null,
@@ -202,15 +203,16 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="enableTurn"> Use Twilio Network Traversal for TURN service. </param>
-        /// <param name="type"> Type of room, either peer-to-peer, group-small or group. </param>
-        /// <param name="uniqueName"> Name of the Room. </param>
-        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every room event. </param>
-        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
-        /// <param name="maxParticipants"> Maximum number of Participants in the Room. </param>
-        /// <param name="recordParticipantsOnConnect"> Start Participant recording when connected. </param>
-        /// <param name="videoCodecs"> An array of video codecs supported when publishing a Track in the Room. </param>
-        /// <param name="mediaRegion"> Region for the media server in Group Rooms. </param>
+        /// <param name="enableTurn"> Enable Twilio's Network Traversal TURN service </param>
+        /// <param name="type"> The type of room </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="statusCallback"> The URL to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="maxParticipants"> The maximum number of concurrent Participants allowed in the room </param>
+        /// <param name="recordParticipantsOnConnect"> Whether to start recording when Participants connect </param>
+        /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room
+        ///                   </param>
+        /// <param name="mediaRegion"> The region for the media server in Group Rooms </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
         public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null,
@@ -276,10 +278,10 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="status"> Only show Rooms with the given status. </param>
-        /// <param name="uniqueName"> Only show Rooms with the provided Name. </param>
-        /// <param name="dateCreatedAfter"> Only show Rooms that started on or after this date, given as YYYY-MM-DD. </param>
-        /// <param name="dateCreatedBefore"> Only show Rooms that started before this date, given as YYYY-MM-DD. </param>
+        /// <param name="status"> Read only the rooms with this status </param>
+        /// <param name="uniqueName"> Read only rooms with this unique_name </param>
+        /// <param name="dateCreatedAfter"> Read only rooms that started on or after this date, given as YYYY-MM-DD </param>
+        /// <param name="dateCreatedBefore"> Read only rooms that started before this date, given as YYYY-MM-DD </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -300,10 +302,10 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="status"> Only show Rooms with the given status. </param>
-        /// <param name="uniqueName"> Only show Rooms with the provided Name. </param>
-        /// <param name="dateCreatedAfter"> Only show Rooms that started on or after this date, given as YYYY-MM-DD. </param>
-        /// <param name="dateCreatedBefore"> Only show Rooms that started before this date, given as YYYY-MM-DD. </param>
+        /// <param name="status"> Read only the rooms with this status </param>
+        /// <param name="uniqueName"> Read only rooms with this unique_name </param>
+        /// <param name="dateCreatedAfter"> Read only rooms that started on or after this date, given as YYYY-MM-DD </param>
+        /// <param name="dateCreatedBefore"> Read only rooms that started before this date, given as YYYY-MM-DD </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -423,8 +425,8 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
-        /// <param name="status"> Set to completed to end the Room. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns>
         public static RoomResource Update(string pathSid,
@@ -439,8 +441,8 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
-        /// <param name="status"> Set to completed to end the Room. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="status"> The new status of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
         public static async System.Threading.Tasks.Task<RoomResource> UpdateAsync(string pathSid,
@@ -471,96 +473,96 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// A system-generated 34-character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A string representing the status of the Room.
+        /// The status of the room
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomResource.RoomStatusEnum Status { get; private set; }
         /// <summary>
-        /// The date that this resource was created, given as a UTC ISO 8601 Timestamp.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated, given as a UTC ISO 8601 Timestamp.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The unique ID of the Account associated with this Room.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Enable Twilio's Network Traversal TURN service.
+        /// Enable Twilio's Network Traversal TURN service
         /// </summary>
         [JsonProperty("enable_turn")]
         public bool? EnableTurn { get; private set; }
         /// <summary>
-        /// A developer-supplied Name of the Room.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// A URL that Twilio sends asynchronous webhook requests to on every Room event.
+        /// The URL to send status information to your application
         /// </summary>
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
         /// <summary>
-        /// HTTP method Twilio should use when requesting the above URL.
+        /// The HTTP method we use to call status_callback
         /// </summary>
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
         /// <summary>
-        /// The end time of the Room, given as a UTC ISO 8601 Timestamp.
+        /// The UTC end time of the room in UTC ISO 8601 format
         /// </summary>
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
         /// <summary>
-        /// The duration of the Room in seconds.
+        /// The duration of the room in seconds
         /// </summary>
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
-        /// Type of Room, either peer-to-peer, group-small or group.
+        /// The type of room
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomResource.RoomTypeEnum Type { get; private set; }
         /// <summary>
-        /// Maximum number of concurrent Participants allowed in the Room.
+        /// The maximum number of concurrent Participants allowed in the room
         /// </summary>
         [JsonProperty("max_participants")]
         public int? MaxParticipants { get; private set; }
         /// <summary>
-        /// Start recording when Participants connect.
+        /// Whether to start recording when Participants connect
         /// </summary>
         [JsonProperty("record_participants_on_connect")]
         public bool? RecordParticipantsOnConnect { get; private set; }
         /// <summary>
-        /// The video_codecs
+        /// An array of the video codecs that are supported when publishing a track in the room
         /// </summary>
         [JsonProperty("video_codecs")]
         [JsonConverter(typeof(StringEnumConverter))]
         public List<RoomResource.VideoCodecEnum> VideoCodecs { get; private set; }
         /// <summary>
-        /// Region for the media server in Group Rooms.
+        /// The region for the media server in Group Rooms
         /// </summary>
         [JsonProperty("media_region")]
         public string MediaRegion { get; private set; }
         /// <summary>
-        /// The absolute URL for this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

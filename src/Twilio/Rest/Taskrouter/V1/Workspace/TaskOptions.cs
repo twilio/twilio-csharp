@@ -18,19 +18,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class FetchTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Task to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTaskOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         public FetchTaskOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -53,39 +53,39 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class UpdateTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Task to update
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The user-defined JSON data describing the custom attributes of this task.
+        /// The JSON string that describes the custom attributes of the task
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// A 'pending' or 'reserved' Task may be canceled by posting AssignmentStatus='canceled'.
+        /// The new status of the task
         /// </summary>
         public TaskResource.StatusEnum AssignmentStatus { get; set; }
         /// <summary>
-        /// This is only required if the Task is canceled or completed.
+        /// The reason that the Task was canceled or complete
         /// </summary>
         public string Reason { get; set; }
         /// <summary>
-        /// Override priority for the Task.
+        /// The Task's new priority value
         /// </summary>
         public int? Priority { get; set; }
         /// <summary>
-        /// The task_channel
+        /// When MultiTasking is enabled, specify the TaskChannel with the task to update
         /// </summary>
         public string TaskChannel { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTaskOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to update </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
         public UpdateTaskOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -133,19 +133,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class DeleteTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Task to delete
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTaskOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         public DeleteTaskOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -168,50 +168,50 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class ReadTaskOptions : ReadOptions<TaskResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Tasks to read
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Retrieve the list of all Tasks in the workspace with the specified priority.
+        /// The priority value of the Tasks to read
         /// </summary>
         public int? Priority { get; set; }
         /// <summary>
-        /// Returns the list of all Tasks in the workspace with the specified AssignmentStatus.
+        /// Returns the list of all Tasks in the Workspace with the specified assignment_status
         /// </summary>
         public List<string> AssignmentStatus { get; set; }
         /// <summary>
-        /// Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value.
+        /// The SID of the Workflow with the Tasks to read
         /// </summary>
         public string WorkflowSid { get; set; }
         /// <summary>
-        /// Returns the list of Tasks that are being controlled by the Workflow with the specified FriendlyName value.
+        /// The friendly name of the Workflow with the Tasks to read
         /// </summary>
         public string WorkflowName { get; set; }
         /// <summary>
-        /// Returns the list of Tasks that are currently waiting in the TaskQueue identified by the Sid specified.
+        /// The SID of the TaskQueue with the Tasks to read
         /// </summary>
         public string TaskQueueSid { get; set; }
         /// <summary>
-        /// Returns the list of Tasks that are currently waiting in the TaskQueue identified by the FriendlyName specified.
+        /// The friendly_name of the TaskQueue with the Tasks to read
         /// </summary>
         public string TaskQueueName { get; set; }
         /// <summary>
-        /// Provide a task attributes expression, and this will return tasks which match the attributes.
+        /// The task attributes of the Tasks to read
         /// </summary>
         public string EvaluateTaskAttributes { get; set; }
         /// <summary>
-        /// Use this parameter to control the order of the Tasks returned.
+        /// Controls the order of the Tasks returned
         /// </summary>
         public string Ordering { get; set; }
         /// <summary>
-        /// The has_addons
+        /// Whether to read Tasks with addons
         /// </summary>
         public bool? HasAddons { get; set; }
 
         /// <summary>
         /// Construct a new ReadTaskOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Tasks to read </param>
         public ReadTaskOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -284,34 +284,34 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class CreateTaskOptions : IOptions<TaskResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that the new Task belongs to
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The amount of time in seconds the task is allowed to live up to a maximum of 2 weeks.
+        /// The amount of time in seconds the task is allowed to live
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>
-        /// Override priority for the Task.
+        /// The priority to assign the new task and override the default
         /// </summary>
         public int? Priority { get; set; }
         /// <summary>
-        /// When MultiTasking is enabled specify the type of the task by passing either TaskChannel Unique Name or Task Channel Sid.
+        /// When MultiTasking is enabled specify the TaskChannel by passing either its unique_name or SID
         /// </summary>
         public string TaskChannel { get; set; }
         /// <summary>
-        /// The WorkflowSid for the Workflow that you would like to handle routing for this Task.
+        /// The SID of the Workflow that you would like to handle routing for the new Task
         /// </summary>
         public string WorkflowSid { get; set; }
         /// <summary>
-        /// Url-encoded JSON string describing the attributes of this task.
+        /// A URL-encoded JSON string describing the attributes of the task
         /// </summary>
         public string Attributes { get; set; }
 
         /// <summary>
         /// Construct a new CreateTaskOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to </param>
         public CreateTaskOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

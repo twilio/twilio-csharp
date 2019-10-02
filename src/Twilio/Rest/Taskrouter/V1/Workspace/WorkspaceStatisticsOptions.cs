@@ -17,34 +17,34 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class FetchWorkspaceStatisticsOptions : IOptions<WorkspaceStatisticsResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Filter cumulative statistics by up to 'x' minutes in the past.
+        /// Only calculate statistics since this many minutes in the past
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by a start date.
+        /// Only calculate statistics from on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by an end date.
+        /// Only calculate statistics from this date and time and earlier
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// Filter real-time and cumulative statistics by TaskChannel.
+        /// Only calculate statistics on this TaskChannel.
         /// </summary>
         public string TaskChannel { get; set; }
         /// <summary>
-        /// A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.
+        /// A comma separated list of values that describes the thresholds to calculate statistics on
         /// </summary>
         public string SplitByWaitTime { get; set; }
 
         /// <summary>
         /// Construct a new FetchWorkspaceStatisticsOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace to fetch </param>
         public FetchWorkspaceStatisticsOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

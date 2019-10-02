@@ -63,8 +63,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Activity </returns>
         public static ActivityResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
@@ -77,8 +77,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns>
         public static async System.Threading.Tasks.Task<ActivityResource> FetchAsync(string pathWorkspaceSid,
@@ -133,10 +133,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> A human-readable name for the Activity, such as 'on-call', 'break', 'email', etc.
-        ///                    </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to update </param>
+        /// <param name="pathSid"> The SID of the Activity resource to update </param>
+        /// <param name="friendlyName"> A string to describe the Activity resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Activity </returns>
         public static ActivityResource Update(string pathWorkspaceSid,
@@ -152,10 +151,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> A human-readable name for the Activity, such as 'on-call', 'break', 'email', etc.
-        ///                    </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to update </param>
+        /// <param name="pathSid"> The SID of the Activity resource to update </param>
+        /// <param name="friendlyName"> A string to describe the Activity resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns>
         public static async System.Threading.Tasks.Task<ActivityResource> UpdateAsync(string pathWorkspaceSid,
@@ -211,8 +209,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to delete </param>
+        /// <param name="pathSid"> The SID of the Activity resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Activity </returns>
         public static bool Delete(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
@@ -225,8 +223,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to delete </param>
+        /// <param name="pathSid"> The SID of the Activity resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
@@ -285,9 +283,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> Filter by an Activity's friendly name </param>
-        /// <param name="available"> Filter by activities that are available or unavailable. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to read </param>
+        /// <param name="friendlyName"> The friendly_name of the Activity resources to read </param>
+        /// <param name="available"> Whether to return activities that are available or unavailable </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -307,9 +305,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> Filter by an Activity's friendly name </param>
-        /// <param name="available"> Filter by activities that are available or unavailable. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to read </param>
+        /// <param name="friendlyName"> The friendly_name of the Activity resources to read </param>
+        /// <param name="available"> Whether to return activities that are available or unavailable </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -428,11 +426,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> A human-readable name for the Activity, such as 'On Call', 'Break', 'Email', etc.
-        ///                    </param>
-        /// <param name="available"> Boolean value indicating whether the worker should be eligible to receive a Task when they
-        ///                 occupy this Activity. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Activity belongs to </param>
+        /// <param name="friendlyName"> A string to describe the Activity resource </param>
+        /// <param name="available"> Whether the Worker should be eligible to receive a Task when it occupies the Activity
+        ///                 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Activity </returns>
         public static ActivityResource Create(string pathWorkspaceSid,
@@ -448,11 +445,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> A human-readable name for the Activity, such as 'On Call', 'Break', 'Email', etc.
-        ///                    </param>
-        /// <param name="available"> Boolean value indicating whether the worker should be eligible to receive a Task when they
-        ///                 occupy this Activity. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Activity belongs to </param>
+        /// <param name="friendlyName"> A string to describe the Activity resource </param>
+        /// <param name="available"> Whether the Worker should be eligible to receive a Task when it occupies the Activity
+        ///                 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Activity </returns>
         public static async System.Threading.Tasks.Task<ActivityResource> CreateAsync(string pathWorkspaceSid,
@@ -484,42 +480,42 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
         /// <summary>
-        /// The unique ID of the Account that owns this Activity.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Filter by activities that are available or unavailable.
+        /// Whether the Worker should be eligible to receive a Task when it occupies the Activity
         /// </summary>
         [JsonProperty("available")]
         public bool? Available { get; private set; }
         /// <summary>
-        /// The date this Activity was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Activity was updated.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Filter by an Activity's friendly name
+        /// The string that you assigned to describe the Activity resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The unique ID for this Activity.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique ID of the Workspace that this Activity belongs to.
+        /// The SID of the Workspace that contains the Activity
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Activity resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

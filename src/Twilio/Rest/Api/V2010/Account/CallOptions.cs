@@ -373,27 +373,27 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public CallResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// Only include calls that started on or after this date
+        /// Only include calls that started on this date
         /// </summary>
         public DateTime? StartTimeBefore { get; set; }
         /// <summary>
-        /// Only include calls that started on or after this date
+        /// Only include calls that started on this date
         /// </summary>
         public DateTime? StartTime { get; set; }
         /// <summary>
-        /// Only include calls that started on or after this date
+        /// Only include calls that started on this date
         /// </summary>
         public DateTime? StartTimeAfter { get; set; }
         /// <summary>
-        /// Only include usage that occurred on or before this date
+        /// Only include calls that ended on this date
         /// </summary>
         public DateTime? EndTimeBefore { get; set; }
         /// <summary>
-        /// Only include usage that occurred on or before this date
+        /// Only include calls that ended on this date
         /// </summary>
         public DateTime? EndTime { get; set; }
         /// <summary>
-        /// Only include usage that occurred on or before this date
+        /// Only include calls that ended on this date
         /// </summary>
         public DateTime? EndTimeAfter { get; set; }
 

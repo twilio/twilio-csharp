@@ -12,30 +12,30 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
     /// <summary>
-    /// Returns a single Track resource represented by `TrackSid`.  Note: This is one resource with the Video API that
-    /// requires a Sid, as Track Name on the subscriber side is not guaranteed to be unique.
+    /// Returns a single Track resource represented by `track_sid`.  Note: This is one resource with the Video API that
+    /// requires a SID, be Track Name on the subscriber side is not guaranteed to be unique.
     /// </summary>
     public class FetchSubscribedTrackOptions : IOptions<SubscribedTrackResource>
     {
         /// <summary>
-        /// Unique Room identifier where this Track is subscribed.
+        /// The SID of the Room where the Track resource to fetch is subscribed
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// Unique Participant identifier that subscribes to this Track.
+        /// The SID of the participant that subscribes to the Track resource to fetch
         /// </summary>
         public string PathParticipantSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchSubscribedTrackOptions
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where this Track is subscribed. </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathRoomSid"> The SID of the Room where the Track resource to fetch is subscribed </param>
+        /// <param name="pathParticipantSid"> The SID of the participant that subscribes to the Track resource to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchSubscribedTrackOptions(string pathRoomSid, string pathParticipantSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -59,19 +59,19 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     public class ReadSubscribedTrackOptions : ReadOptions<SubscribedTrackResource>
     {
         /// <summary>
-        /// Unique Room identifier where the Tracks are subscribed.
+        /// The SID of the Room resource with the Track resources to read
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// Unique Participant identifier that subscribes to this Track.
+        /// The SID of the participant that subscribes to the Track resources to read
         /// </summary>
         public string PathParticipantSid { get; }
 
         /// <summary>
         /// Construct a new ReadSubscribedTrackOptions
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where the Tracks are subscribed. </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier that subscribes to this Track. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource with the Track resources to read </param>
+        /// <param name="pathParticipantSid"> The SID of the participant that subscribes to the Track resources to read </param>
         public ReadSubscribedTrackOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;

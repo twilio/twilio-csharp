@@ -17,42 +17,42 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     public class FetchWorkersStatisticsOptions : IOptions<WorkersStatisticsResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Worker to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Filter cumulative statistics by up to 'x' minutes in the past.
+        /// Only calculate statistics since this many minutes in the past
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by a start date.
+        /// Only calculate statistics from on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by a end date.
+        /// Only calculate statistics from this date and time and earlier
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// Filter the real-time and cumulative statistics based on Workers tied to a particular queue
+        /// The SID of the TaskQueue for which to fetch Worker statistics
         /// </summary>
         public string TaskQueueSid { get; set; }
         /// <summary>
-        /// Filter the real-time and cumulative statistics based on Workers tied to a particular queue
+        /// The friendly_name of the TaskQueue for which to fetch Worker statistics
         /// </summary>
         public string TaskQueueName { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// Only include Workers with `friendly_name` values that match this parameter
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by TaskChannel.
+        /// Only calculate statistics on this TaskChannel
         /// </summary>
         public string TaskChannel { get; set; }
 
         /// <summary>
         /// Construct a new FetchWorkersStatisticsOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch </param>
         public FetchWorkersStatisticsOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

@@ -15,24 +15,25 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a list of all Function Versions.
+    /// Retrieve a list of all FunctionVersion resources.
     /// </summary>
     public class ReadFunctionVersionOptions : ReadOptions<FunctionVersionResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to read the FunctionVersion resources from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Function Sid.
+        /// The SID of the function that is the parent of the FunctionVersion resources to read
         /// </summary>
         public string PathFunctionSid { get; }
 
         /// <summary>
         /// Construct a new ReadFunctionVersionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathFunctionSid"> Function Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the FunctionVersion resources from </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the FunctionVersion resources to read
+        ///                       </param>
         public ReadFunctionVersionOptions(string pathServiceSid, string pathFunctionSid)
         {
             PathServiceSid = pathServiceSid;
@@ -58,29 +59,30 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific Function Version.
+    /// Retrieve a specific FunctionVersion resource.
     /// </summary>
     public class FetchFunctionVersionOptions : IOptions<FunctionVersionResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to fetch the FunctionVersion resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Function Sid.
+        /// The SID of the function that is the parent of the FunctionVersion resource to fetch
         /// </summary>
         public string PathFunctionSid { get; }
         /// <summary>
-        /// Function Version Sid.
+        /// The SID that identifies the FunctionVersion resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFunctionVersionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathFunctionSid"> Function Sid. </param>
-        /// <param name="pathSid"> Function Version Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the FunctionVersion resource from </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the FunctionVersion resource to fetch
+        ///                       </param>
+        /// <param name="pathSid"> The SID that identifies the FunctionVersion resource to fetch </param>
         public FetchFunctionVersionOptions(string pathServiceSid, string pathFunctionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

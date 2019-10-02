@@ -121,8 +121,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource with the recording to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RoomRecording </returns>
         public static RoomRecordingResource Fetch(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
@@ -135,8 +135,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource with the recording to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoomRecording </returns>
         public static async System.Threading.Tasks.Task<RoomRecordingResource> FetchAsync(string pathRoomSid,
@@ -196,11 +196,13 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="status"> The status </param>
-        /// <param name="sourceSid"> The source_sid </param>
-        /// <param name="dateCreatedAfter"> The date_created_after </param>
-        /// <param name="dateCreatedBefore"> The date_created_before </param>
+        /// <param name="pathRoomSid"> The SID of the room with the RoomRecording resources to read </param>
+        /// <param name="status"> Read only the recordings with this status </param>
+        /// <param name="sourceSid"> Read only the recordings that have this source_sid </param>
+        /// <param name="dateCreatedAfter"> Read only Recordings that started on or after this ISO 8601 datetime with time zone
+        ///                        </param>
+        /// <param name="dateCreatedBefore"> Read only Recordings that started before this ISO 8601 date-time with time zone
+        ///                         </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -222,11 +224,13 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="status"> The status </param>
-        /// <param name="sourceSid"> The source_sid </param>
-        /// <param name="dateCreatedAfter"> The date_created_after </param>
-        /// <param name="dateCreatedBefore"> The date_created_before </param>
+        /// <param name="pathRoomSid"> The SID of the room with the RoomRecording resources to read </param>
+        /// <param name="status"> Read only the recordings with this status </param>
+        /// <param name="sourceSid"> Read only the recordings that have this source_sid </param>
+        /// <param name="dateCreatedAfter"> Read only Recordings that started on or after this ISO 8601 datetime with time zone
+        ///                        </param>
+        /// <param name="dateCreatedBefore"> Read only Recordings that started before this ISO 8601 date-time with time zone
+        ///                         </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -347,8 +351,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> The SID of the room with the RoomRecording resource to delete </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of RoomRecording </returns>
         public static bool Delete(string pathRoomSid, string pathSid, ITwilioRestClient client = null)
@@ -361,8 +365,8 @@ namespace Twilio.Rest.Video.V1.Room
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> The SID of the room with the RoomRecording resource to delete </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of RoomRecording </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathRoomSid,
@@ -393,86 +397,86 @@ namespace Twilio.Rest.Video.V1.Room
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The status
+        /// The status of the recording
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomRecordingResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The source_sid
+        /// The SID of the recording source
         /// </summary>
         [JsonProperty("source_sid")]
         public string SourceSid { get; private set; }
         /// <summary>
-        /// The size
+        /// The size of the recorded track in bytes
         /// </summary>
         [JsonProperty("size")]
         public long? Size { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The type
+        /// The recording's media type
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomRecordingResource.TypeEnum Type { get; private set; }
         /// <summary>
-        /// The duration
+        /// The duration of the recording in seconds
         /// </summary>
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
-        /// The container_format
+        /// The file format for the recording
         /// </summary>
         [JsonProperty("container_format")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomRecordingResource.FormatEnum ContainerFormat { get; private set; }
         /// <summary>
-        /// The codec
+        /// The codec used for the recording
         /// </summary>
         [JsonProperty("codec")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomRecordingResource.CodecEnum Codec { get; private set; }
         /// <summary>
-        /// The grouping_sids
+        /// A list of SIDs related to the Recording
         /// </summary>
         [JsonProperty("grouping_sids")]
         public object GroupingSids { get; private set; }
         /// <summary>
-        /// The track_name
+        /// The name that was given to the source track of the recording
         /// </summary>
         [JsonProperty("track_name")]
         public string TrackName { get; private set; }
         /// <summary>
-        /// The offset
+        /// The number of milliseconds between a point in time that is common to all rooms in a group and when the source room of the recording started
         /// </summary>
         [JsonProperty("offset")]
         public long? Offset { get; private set; }
         /// <summary>
-        /// The room_sid
+        /// The SID of the Room resource the recording is associated with
         /// </summary>
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

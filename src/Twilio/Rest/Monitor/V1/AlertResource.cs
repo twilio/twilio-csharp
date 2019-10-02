@@ -63,7 +63,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Alert. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Alert </returns>
         public static AlertResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Alert. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Alert </returns>
         public static async System.Threading.Tasks.Task<AlertResource> FetchAsync(string pathSid,
@@ -134,9 +134,9 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="logLevel"> Only show alerts for this log-level. </param>
-        /// <param name="startDate"> Only show Alerts on or after this date. </param>
-        /// <param name="endDate"> Only show Alerts on or before this date. </param>
+        /// <param name="logLevel"> Only show alerts for this log-level </param>
+        /// <param name="startDate"> Only include alerts that occurred on or after this date </param>
+        /// <param name="endDate"> Only include alerts that occurred on or before this date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -156,9 +156,9 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="logLevel"> Only show alerts for this log-level. </param>
-        /// <param name="startDate"> Only show Alerts on or after this date. </param>
-        /// <param name="endDate"> Only show Alerts on or before this date. </param>
+        /// <param name="logLevel"> Only show alerts for this log-level </param>
+        /// <param name="startDate"> Only include alerts that occurred on or after this date </param>
+        /// <param name="endDate"> Only include alerts that occurred on or before this date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -253,98 +253,98 @@ namespace Twilio.Rest.Monitor.V1
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this alert.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The text of the alert.
+        /// The text of the alert
         /// </summary>
         [JsonProperty("alert_text")]
         public string AlertText { get; private set; }
         /// <summary>
-        /// The version of the Twilio API in use when this alert was generated.
+        /// The API version used when the alert was generated
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; private set; }
         /// <summary>
-        /// The date that this resource was created, given in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date the alert was actually generated, given in ISO 8601 format.
+        /// The date and time when the alert was generated specified in ISO 8601 format
         /// </summary>
         [JsonProperty("date_generated")]
         public DateTime? DateGenerated { get; private set; }
         /// <summary>
-        /// The most recent date that this resource was updated, given in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// A unique error code for the error condition.
+        /// The error code for the condition that generated the alert
         /// </summary>
         [JsonProperty("error_code")]
         public string ErrorCode { get; private set; }
         /// <summary>
-        /// A string representing the log level.
+        /// The log level
         /// </summary>
         [JsonProperty("log_level")]
         public string LogLevel { get; private set; }
         /// <summary>
-        /// A URL for more information about the error condition.
+        /// The URL of the page in our Error Dictionary with more information about the error condition
         /// </summary>
         [JsonProperty("more_info")]
         public string MoreInfo { get; private set; }
         /// <summary>
-        /// If the Alert was generated by a request Twilio made to your server, this will be the request method used when Twilio made the request to your server.
+        /// The method used by the request that generated the alert
         /// </summary>
         [JsonProperty("request_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod RequestMethod { get; private set; }
         /// <summary>
-        /// If the Alert was generated by a request Twilio made to your server, this will be the URL on your server that generated the alert.
+        /// The URL of the request that generated the alert
         /// </summary>
         [JsonProperty("request_url")]
         public string RequestUrl { get; private set; }
         /// <summary>
-        /// The request_variables
+        /// The variables passed in the request that generated the alert
         /// </summary>
         [JsonProperty("request_variables")]
         public string RequestVariables { get; private set; }
         /// <summary>
-        /// The unique ID of the resource for which the Alert was generated.
+        /// The SID of the resource for which the alert was generated
         /// </summary>
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
         /// <summary>
-        /// The response_body
+        /// The response body of the request that generated the alert
         /// </summary>
         [JsonProperty("response_body")]
         public string ResponseBody { get; private set; }
         /// <summary>
-        /// The response_headers
+        /// The response headers of the request that generated the alert
         /// </summary>
         [JsonProperty("response_headers")]
         public string ResponseHeaders { get; private set; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this Alert.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The absolute URL for this resource.
+        /// The absolute URL of the Alert resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The request_headers
+        /// The request headers of the request that generated the alert
         /// </summary>
         [JsonProperty("request_headers")]
         public string RequestHeaders { get; private set; }
         /// <summary>
-        /// The service_sid
+        /// The SID of the service or resource that generated the alert
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }

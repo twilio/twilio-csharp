@@ -70,7 +70,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <summary>
         /// Retrieve a list of all Assets.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Asset resource from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <summary>
         /// Retrieve a list of all Assets.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Asset resource from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a specific Asset.
+        /// Retrieve a specific Asset resource.
         /// </summary>
         /// <param name="options"> Fetch Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Asset.
+        /// Retrieve a specific Asset resource.
         /// </summary>
         /// <param name="options"> Fetch Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -203,10 +203,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a specific Asset.
+        /// Retrieve a specific Asset resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Asset Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset resource from </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Asset </returns>
         public static AssetResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -217,10 +217,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Asset.
+        /// Retrieve a specific Asset resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Asset Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset resource from </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
         public static async System.Threading.Tasks.Task<AssetResource> FetchAsync(string pathServiceSid,
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Delete an Asset.
+        /// Delete an Asset resource.
         /// </summary>
         /// <param name="options"> Delete Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete an Asset.
+        /// Delete an Asset resource.
         /// </summary>
         /// <param name="options"> Delete Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -273,10 +273,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Delete an Asset.
+        /// Delete an Asset resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Asset Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Asset resource from </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Asset </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -287,10 +287,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete an Asset.
+        /// Delete an Asset resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Asset Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Asset resource from </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Create a new Asset.
+        /// Create a new Asset resource.
         /// </summary>
         /// <param name="options"> Create Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -328,7 +328,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Create a new Asset.
+        /// Create a new Asset resource.
         /// </summary>
         /// <param name="options"> Create Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -343,10 +343,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Create a new Asset.
+        /// Create a new Asset resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Asset. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Asset resource under </param>
+        /// <param name="friendlyName"> A string to describe the Asset resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Asset </returns>
         public static AssetResource Create(string pathServiceSid, string friendlyName, ITwilioRestClient client = null)
@@ -357,10 +357,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Create a new Asset.
+        /// Create a new Asset resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Asset. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Asset resource under </param>
+        /// <param name="friendlyName"> A string to describe the Asset resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
         public static async System.Threading.Tasks.Task<AssetResource> CreateAsync(string pathServiceSid,
@@ -384,7 +384,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Update a specific Asset.
+        /// Update a specific Asset resource.
         /// </summary>
         /// <param name="options"> Update Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -398,7 +398,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Update a specific Asset.
+        /// Update a specific Asset resource.
         /// </summary>
         /// <param name="options"> Update Asset parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -413,11 +413,11 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Update a specific Asset.
+        /// Update a specific Asset resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Asset Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Asset. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the Asset resource from </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to update </param>
+        /// <param name="friendlyName"> A string to describe the Asset resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Asset </returns>
         public static AssetResource Update(string pathServiceSid,
@@ -431,11 +431,11 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Update a specific Asset.
+        /// Update a specific Asset resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Asset Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Asset. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the Asset resource from </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to update </param>
+        /// <param name="friendlyName"> A string to describe the Asset resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Asset </returns>
         public static async System.Threading.Tasks.Task<AssetResource> UpdateAsync(string pathServiceSid,
@@ -467,42 +467,42 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Asset Sid.
+        /// The unique string that identifies the Asset resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the Asset resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service that the Asset resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// A human-readable description of this Asset.
+        /// The string that you assigned to describe the Asset resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date that this Asset was created.
+        /// The ISO 8601 date and time in GMT when the Asset resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this Asset was updated.
+        /// The ISO 8601 date and time in GMT when the Asset resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL of this Asset.
+        /// The absolute URL of the Asset resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Nested resource URLs.
+        /// The links to the nested resources of the asset
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

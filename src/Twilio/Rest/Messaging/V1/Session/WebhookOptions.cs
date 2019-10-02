@@ -21,14 +21,14 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class ReadWebhookOptions : ReadOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Session for this webhook.
+        /// The SID of the Session with the Webhook resources to read
         /// </summary>
         public string PathSessionSid { get; }
 
         /// <summary>
         /// Construct a new ReadWebhookOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this webhook. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the Webhook resources to read </param>
         public ReadWebhookOptions(string pathSessionSid)
         {
             PathSessionSid = pathSessionSid;
@@ -58,19 +58,19 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class FetchWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Session for this webhook.
+        /// The SID of the Session with the Webhook resource to fetch
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID of the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchWebhookOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this webhook. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the Webhook resource to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         public FetchWebhookOptions(string pathSessionSid, string pathSid)
         {
             PathSessionSid = pathSessionSid;
@@ -96,55 +96,55 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class CreateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Session for this webhook.
+        /// The SID of the Session for the webhook
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// The target of this webhook.
+        /// The target of the webhook
         /// </summary>
         public WebhookResource.TargetEnum Target { get; }
         /// <summary>
-        /// The absolute url the webhook request should be sent to.
+        /// The absolute URL the webhook request should be sent to
         /// </summary>
         public string ConfigurationUrl { get; set; }
         /// <summary>
-        /// The HTTP method to be used when sending a webhook request.
+        /// The HTTP method we should use when sending a webhook request to url
         /// </summary>
         public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
         /// <summary>
-        /// The list of events, firing webhook event for this Session.
+        /// The list of events that trigger a webhook event for the Session
         /// </summary>
         public List<string> ConfigurationFilters { get; set; }
         /// <summary>
-        /// The list of keywords, firing webhook event for this Session.
+        /// The list of keywords, firing webhook event for the Session
         /// </summary>
         public List<string> ConfigurationTriggers { get; set; }
         /// <summary>
-        /// The studio flow sid, where the webhook should be sent to.
+        /// The SID of the studio flow where the webhook should be sent to
         /// </summary>
         public string ConfigurationFlowSid { get; set; }
         /// <summary>
-        /// The number of retries in case of webhook request failures.
+        /// The number of times to call the webhook request if the first attempt fails
         /// </summary>
         public int? ConfigurationRetryCount { get; set; }
         /// <summary>
-        /// The message index for which and it's successors the webhook will be replayed.
+        /// The message index for which and its successors the webhook will be replayed
         /// </summary>
         public int? ConfigurationReplayAfter { get; set; }
         /// <summary>
-        /// The flag whether buffering should be applied to messages.
+        /// Whether buffering should be applied to messages
         /// </summary>
         public bool? ConfigurationBufferMessages { get; set; }
         /// <summary>
-        /// The period of buffering messages.
+        /// The period to buffer messages
         /// </summary>
         public int? ConfigurationBufferWindow { get; set; }
 
         /// <summary>
         /// Construct a new CreateWebhookOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this webhook. </param>
-        /// <param name="target"> The target of this webhook. </param>
+        /// <param name="pathSessionSid"> The SID of the Session for the webhook </param>
+        /// <param name="target"> The target of the webhook </param>
         public CreateWebhookOptions(string pathSessionSid, WebhookResource.TargetEnum target)
         {
             PathSessionSid = pathSessionSid;
@@ -222,51 +222,51 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class UpdateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Session for this webhook.
+        /// The SID of the Session for the webhook
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The absolute url the webhook request should be sent to.
+        /// The absolute URL the webhook request should be sent to
         /// </summary>
         public string ConfigurationUrl { get; set; }
         /// <summary>
-        /// The HTTP method to be used when sending a webhook request.
+        /// The HTTP method we should use when sending a webhook request to url
         /// </summary>
         public WebhookResource.MethodEnum ConfigurationMethod { get; set; }
         /// <summary>
-        /// The list of events, firing webhook event for this Session.
+        /// The list of events that trigger a  webhook event for the Session
         /// </summary>
         public List<string> ConfigurationFilters { get; set; }
         /// <summary>
-        /// The list of keywords, firing webhook event for this Session.
+        /// The list of keywords, that trigger a webhook event for the Session
         /// </summary>
         public List<string> ConfigurationTriggers { get; set; }
         /// <summary>
-        /// The studio flow sid, where the webhook should be sent to.
+        /// The SID of the studio flow where the webhook should be sent to
         /// </summary>
         public string ConfigurationFlowSid { get; set; }
         /// <summary>
-        /// The number of retries in case of webhook request failures.
+        /// The number of times to try the webhook request if the first attempt fails
         /// </summary>
         public int? ConfigurationRetryCount { get; set; }
         /// <summary>
-        /// The flag whether buffering should be applied to messages.
+        /// Whether buffering should be applied to messages
         /// </summary>
         public bool? ConfigurationBufferMessages { get; set; }
         /// <summary>
-        /// The period of buffering messages.
+        /// The period to buffer messages
         /// </summary>
         public int? ConfigurationBufferWindow { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWebhookOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this webhook. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session for the webhook </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
         public UpdateWebhookOptions(string pathSessionSid, string pathSid)
         {
             PathSessionSid = pathSessionSid;
@@ -334,19 +334,19 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class DeleteWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Session for this webhook.
+        /// The SID of the Session with the Webhook resource to delete
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteWebhookOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this webhook. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the Webhook resource to delete </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteWebhookOptions(string pathSessionSid, string pathSid)
         {
             PathSessionSid = pathSessionSid;

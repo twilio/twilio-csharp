@@ -42,6 +42,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// A string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The Media Sid to be attached to the new Message.
+        /// </summary>
+        public string MediaSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -81,6 +85,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+            }
+
+            if (MediaSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MediaSid", MediaSid.ToString()));
             }
 
             return p;

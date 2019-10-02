@@ -17,38 +17,38 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
     public class ReadTaskQueuesStatisticsOptions : ReadOptions<TaskQueuesStatisticsResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the TaskQueues to read
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Filter cumulative statistics by an end date.
+        /// Only calculate statistics from on or before this date
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// Filter the TaskQueue stats based on a TaskQueue's name
+        /// The friendly_name of the TaskQueue statistics to read
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by up to 'x' minutes in the past.
+        /// Only calculate statistics since this many minutes in the past
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by a start date.
+        /// Only calculate statistics from on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Filter real-time and cumulative statistics by TaskChannel.
+        /// Only calculate statistics on this TaskChannel.
         /// </summary>
         public string TaskChannel { get; set; }
         /// <summary>
-        /// A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.
+        /// A comma separated list of values that describes the thresholds to calculate statistics on
         /// </summary>
         public string SplitByWaitTime { get; set; }
 
         /// <summary>
         /// Construct a new ReadTaskQueuesStatisticsOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueues to read </param>
         public ReadTaskQueuesStatisticsOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

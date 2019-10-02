@@ -20,14 +20,14 @@ namespace Twilio.Rest.Serverless.V1.Service
     public class ReadAssetOptions : ReadOptions<AssetResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to read the Asset resource from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadAssetOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Asset resource from </param>
         public ReadAssetOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -52,24 +52,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific Asset.
+    /// Retrieve a specific Asset resource.
     /// </summary>
     public class FetchAssetOptions : IOptions<AssetResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to fetch the Asset resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Asset Sid.
+        /// The SID that identifies the Asset resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAssetOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Asset Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset resource from </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to fetch </param>
         public FetchAssetOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -90,24 +90,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Delete an Asset.
+    /// Delete an Asset resource.
     /// </summary>
     public class DeleteAssetOptions : IOptions<AssetResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to delete the Asset resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Asset Sid.
+        /// The SID that identifies the Asset resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAssetOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Asset Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Asset resource from </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to delete </param>
         public DeleteAssetOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -128,24 +128,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Create a new Asset.
+    /// Create a new Asset resource.
     /// </summary>
     public class CreateAssetOptions : IOptions<AssetResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to create the Asset resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A human-readable description of this Asset.
+        /// A string to describe the Asset resource
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new CreateAssetOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Asset. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Asset resource under </param>
+        /// <param name="friendlyName"> A string to describe the Asset resource </param>
         public CreateAssetOptions(string pathServiceSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;
@@ -171,29 +171,29 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Update a specific Asset.
+    /// Update a specific Asset resource.
     /// </summary>
     public class UpdateAssetOptions : IOptions<AssetResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to update the Asset resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Asset Sid.
+        /// The SID that identifies the Asset resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human-readable description of this Asset.
+        /// A string to describe the Asset resource
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new UpdateAssetOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Asset Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Asset. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the Asset resource from </param>
+        /// <param name="pathSid"> The SID that identifies the Asset resource to update </param>
+        /// <param name="friendlyName"> A string to describe the Asset resource </param>
         public UpdateAssetOptions(string pathServiceSid, string pathSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;

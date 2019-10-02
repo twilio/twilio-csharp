@@ -1,6 +1,19 @@
 twilio-csharp Changelog
 =======================
 
+[2019-10-02] Version 5.33.1
+---------------------------
+**Library**
+- [PR #493](https://github.com/twilio/twilio-csharp/pull/493): Docs cleanup, clarify .NET support. Thanks to [@dprothero](https://github.com/dprothero)!
+- [PR #492](https://github.com/twilio/twilio-csharp/pull/492): add validation for urls with non-standard ports. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Conversations**
+- Add media to Conversations Message resource
+
+**Supersim**
+- Add List endpoint to Sims resource for Super Sim Pilot
+
+
 [2019-09-18] Version 5.33.0
 ----------------------------
 **Numbers**

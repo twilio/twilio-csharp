@@ -17,14 +17,14 @@ namespace Twilio.Rest.Taskrouter.V1
     public class FetchWorkspaceOptions : IOptions<WorkspaceResource>
     {
         /// <summary>
-        /// The sid
+        /// The SID of the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchWorkspaceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         public FetchWorkspaceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -46,42 +46,42 @@ namespace Twilio.Rest.Taskrouter.V1
     public class UpdateWorkspaceOptions : IOptions<WorkspaceResource>
     {
         /// <summary>
-        /// The sid
+        /// The SID of the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The ID of the Activity that will be used when new Workers are created in this Workspace.
+        /// The SID of the Activity that will be used when new Workers are created in the Workspace
         /// </summary>
         public string DefaultActivitySid { get; set; }
         /// <summary>
-        /// The Workspace will publish events to this URL.
+        /// The URL we should call when an event occurs
         /// </summary>
         public Uri EventCallbackUrl { get; set; }
         /// <summary>
-        /// Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace.
+        /// The list of Workspace events for which to call event_callback_url
         /// </summary>
         public string EventsFilter { get; set; }
         /// <summary>
-        /// Human readable description of this workspace
+        /// A string to describe the Workspace resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Enable or Disable Multitasking by passing either true or False with the POST request.
+        /// Whether multi-tasking is enabled
         /// </summary>
         public bool? MultiTaskEnabled { get; set; }
         /// <summary>
-        /// The ID of the Activity that will be assigned to a Worker when a Task reservation times out without a response.
+        /// The SID of the Activity that will be assigned to a Worker when a Task reservation times out without a response
         /// </summary>
         public string TimeoutActivitySid { get; set; }
         /// <summary>
-        /// Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues.
+        /// The type of TaskQueue to prioritize when Workers are receiving Tasks from both types of TaskQueues
         /// </summary>
         public WorkspaceResource.QueueOrderEnum PrioritizeQueueOrder { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWorkspaceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
         public UpdateWorkspaceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Taskrouter.V1
     public class ReadWorkspaceOptions : ReadOptions<WorkspaceResource>
     {
         /// <summary>
-        /// Filter by a workspace's friendly name.
+        /// The friendly_name of the Workspace resources to read
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -168,34 +168,34 @@ namespace Twilio.Rest.Taskrouter.V1
     public class CreateWorkspaceOptions : IOptions<WorkspaceResource>
     {
         /// <summary>
-        /// Human readable description of this workspace
+        /// A string to describe the Workspace resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// If provided, the Workspace will publish events to this URL.
+        /// The URL we should call when an event occurs
         /// </summary>
         public Uri EventCallbackUrl { get; set; }
         /// <summary>
-        /// Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace.
+        /// The list of Workspace events for which to call event_callback_url
         /// </summary>
         public string EventsFilter { get; set; }
         /// <summary>
-        /// Multi tasking allows workers to handle multiple tasks simultaneously.
+        /// Whether multi-tasking is enabled
         /// </summary>
         public bool? MultiTaskEnabled { get; set; }
         /// <summary>
-        /// One of the available template names.
+        /// An available template name
         /// </summary>
         public string Template { get; set; }
         /// <summary>
-        /// Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues.
+        /// The type of TaskQueue to prioritize when Workers are receiving Tasks from both types of TaskQueues
         /// </summary>
         public WorkspaceResource.QueueOrderEnum PrioritizeQueueOrder { get; set; }
 
         /// <summary>
         /// Construct a new CreateWorkspaceOptions
         /// </summary>
-        /// <param name="friendlyName"> Human readable description of this workspace </param>
+        /// <param name="friendlyName"> A string to describe the Workspace resource </param>
         public CreateWorkspaceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -247,14 +247,14 @@ namespace Twilio.Rest.Taskrouter.V1
     public class DeleteWorkspaceOptions : IOptions<WorkspaceResource>
     {
         /// <summary>
-        /// The sid
+        /// The SID of the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteWorkspaceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         public DeleteWorkspaceOptions(string pathSid)
         {
             PathSid = pathSid;

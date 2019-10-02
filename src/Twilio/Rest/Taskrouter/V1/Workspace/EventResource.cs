@@ -63,8 +63,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Event to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns>
         public static EventResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
@@ -77,8 +77,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Event to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns>
         public static async System.Threading.Tasks.Task<EventResource> FetchAsync(string pathWorkspaceSid,
@@ -137,18 +137,18 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> Filter events by those pertaining to a particular workspace </param>
-        /// <param name="endDate"> Filter events by an end date. </param>
-        /// <param name="eventType"> Filter events by those of a certain event type </param>
-        /// <param name="minutes"> Filter events by up to 'x' minutes in the past. </param>
-        /// <param name="reservationSid"> Filter events by those pertaining to a particular reservation </param>
-        /// <param name="startDate"> Filter events by a start date. </param>
-        /// <param name="taskQueueSid"> Filter events by those pertaining to a particular queue </param>
-        /// <param name="taskSid"> Filter events by those pertaining to a particular task </param>
-        /// <param name="workerSid"> Filter events by those pertaining to a particular worker </param>
-        /// <param name="workflowSid"> Filter events by those pertaining to a particular workflow </param>
-        /// <param name="taskChannel"> Filter events by those pertaining to a particular task channel </param>
-        /// <param name="sid"> Filter events by those pertaining to a particular event </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Events to read </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="eventType"> The type of Events to read </param>
+        /// <param name="minutes"> The period of events to read in minutes </param>
+        /// <param name="reservationSid"> The SID of the Reservation with the Events to read </param>
+        /// <param name="startDate"> Only include Events from on or after this date </param>
+        /// <param name="taskQueueSid"> The SID of the TaskQueue with the Events to read </param>
+        /// <param name="taskSid"> The SID of the Task with the Events to read </param>
+        /// <param name="workerSid"> The SID of the Worker with the Events to read </param>
+        /// <param name="workflowSid"> The SID of the Worker with the Events to read </param>
+        /// <param name="taskChannel"> The TaskChannel with the Events to read </param>
+        /// <param name="sid"> The unique string that identifies the resource </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -177,18 +177,18 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> Filter events by those pertaining to a particular workspace </param>
-        /// <param name="endDate"> Filter events by an end date. </param>
-        /// <param name="eventType"> Filter events by those of a certain event type </param>
-        /// <param name="minutes"> Filter events by up to 'x' minutes in the past. </param>
-        /// <param name="reservationSid"> Filter events by those pertaining to a particular reservation </param>
-        /// <param name="startDate"> Filter events by a start date. </param>
-        /// <param name="taskQueueSid"> Filter events by those pertaining to a particular queue </param>
-        /// <param name="taskSid"> Filter events by those pertaining to a particular task </param>
-        /// <param name="workerSid"> Filter events by those pertaining to a particular worker </param>
-        /// <param name="workflowSid"> Filter events by those pertaining to a particular workflow </param>
-        /// <param name="taskChannel"> Filter events by those pertaining to a particular task channel </param>
-        /// <param name="sid"> Filter events by those pertaining to a particular event </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Events to read </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="eventType"> The type of Events to read </param>
+        /// <param name="minutes"> The period of events to read in minutes </param>
+        /// <param name="reservationSid"> The SID of the Reservation with the Events to read </param>
+        /// <param name="startDate"> Only include Events from on or after this date </param>
+        /// <param name="taskQueueSid"> The SID of the TaskQueue with the Events to read </param>
+        /// <param name="taskSid"> The SID of the Task with the Events to read </param>
+        /// <param name="workerSid"> The SID of the Worker with the Events to read </param>
+        /// <param name="workflowSid"> The SID of the Worker with the Events to read </param>
+        /// <param name="taskChannel"> The TaskChannel with the Events to read </param>
+        /// <param name="sid"> The unique string that identifies the resource </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -292,22 +292,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
         /// <summary>
-        /// The account owning this event
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The actor_sid
+        /// The SID of the resource that triggered the event
         /// </summary>
         [JsonProperty("actor_sid")]
         public string ActorSid { get; private set; }
         /// <summary>
-        /// The actor_type
+        /// The type of resource that triggered the event
         /// </summary>
         [JsonProperty("actor_type")]
         public string ActorType { get; private set; }
         /// <summary>
-        /// The actor_url
+        /// The absolute URL of the resource that triggered the event
         /// </summary>
         [JsonProperty("actor_url")]
         public Uri ActorUrl { get; private set; }
@@ -317,62 +317,62 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// Data about this specific event.
+        /// Data about the event
         /// </summary>
         [JsonProperty("event_data")]
         public object EventData { get; private set; }
         /// <summary>
-        /// The time this event was sent
+        /// The time the event was sent
         /// </summary>
         [JsonProperty("event_date")]
         public DateTime? EventDate { get; private set; }
         /// <summary>
-        /// The time this event was sent in ms
+        /// The time the event was sent in milliseconds
         /// </summary>
         [JsonProperty("event_date_ms")]
         public long? EventDateMs { get; private set; }
         /// <summary>
-        /// An identifier for this event
+        /// The identifier for the event
         /// </summary>
         [JsonProperty("event_type")]
         public string EventType { get; private set; }
         /// <summary>
-        /// The sid of the object this event is most relevant to
+        /// The SID of the object the event is most relevant to
         /// </summary>
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
         /// <summary>
-        /// The type of object this event is most relevant to
+        /// The type of object the event is most relevant to
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
         /// <summary>
-        /// The resource_url
+        /// The URL of the resource the event is most relevant to
         /// </summary>
         [JsonProperty("resource_url")]
         public Uri ResourceUrl { get; private set; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The source
+        /// Where the Event originated
         /// </summary>
         [JsonProperty("source")]
         public string Source { get; private set; }
         /// <summary>
-        /// The source_ip_address
+        /// The IP from which the Event originated
         /// </summary>
         [JsonProperty("source_ip_address")]
         public string SourceIpAddress { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Event resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that contains the Event
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }

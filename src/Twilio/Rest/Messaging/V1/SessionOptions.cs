@@ -20,14 +20,14 @@ namespace Twilio.Rest.Messaging.V1
     public class FetchSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchSessionOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchSessionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -52,14 +52,14 @@ namespace Twilio.Rest.Messaging.V1
     public class DeleteSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteSessionOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteSessionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -84,34 +84,34 @@ namespace Twilio.Rest.Messaging.V1
     public class CreateSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
-        /// The unique id of the SMS Service this session belongs to.
+        /// The SID of the SMS Service the session belongs to
         /// </summary>
         public string MessagingServiceSid { get; }
         /// <summary>
-        /// The human-readable name of this session.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
+        /// A JSON string that stores application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// Identity of the session's creator.
+        /// The Identity of the session's creator
         /// </summary>
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Construct a new CreateSessionOptions
         /// </summary>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this session belongs to. </param>
+        /// <param name="messagingServiceSid"> The SID of the SMS Service the session belongs to </param>
         public CreateSessionOptions(string messagingServiceSid)
         {
             MessagingServiceSid = messagingServiceSid;
@@ -166,34 +166,34 @@ namespace Twilio.Rest.Messaging.V1
     public class UpdateSessionOptions : IOptions<SessionResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The human-readable name of this session.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
+        /// A JSON string that stores application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// Identity of the session's creator.
+        /// The Identity of the session's creator
         /// </summary>
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSessionOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
         public UpdateSessionOptions(string pathSid)
         {
             PathSid = pathSid;

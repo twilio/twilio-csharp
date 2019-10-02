@@ -113,7 +113,7 @@ namespace Twilio.Rest.Fax.V1
         /// </summary>
         public string To { get; }
         /// <summary>
-        /// The Twilio-hosted URL of the PDF that contains the fax
+        /// The URL of the PDF that contains the fax
         /// </summary>
         public Uri MediaUrl { get; }
         /// <summary>
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Fax.V1
         /// Construct a new CreateFaxOptions
         /// </summary>
         /// <param name="to"> The phone number to receive the fax </param>
-        /// <param name="mediaUrl"> The Twilio-hosted URL of the PDF that contains the fax </param>
+        /// <param name="mediaUrl"> The URL of the PDF that contains the fax </param>
         public CreateFaxOptions(string to, Uri mediaUrl)
         {
             To = to;

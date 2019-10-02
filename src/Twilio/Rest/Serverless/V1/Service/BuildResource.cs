@@ -85,7 +85,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <summary>
         /// Retrieve a list of all Builds.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Build resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <summary>
         /// Retrieve a list of all Builds.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Build resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -189,7 +189,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a specific Build.
+        /// Retrieve a specific Buildn resource.
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Build.
+        /// Retrieve a specific Buildn resource.
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -218,10 +218,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a specific Build.
+        /// Retrieve a specific Buildn resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Build Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
+        /// <param name="pathSid"> The SID of the Build resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Build </returns>
         public static BuildResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -232,10 +232,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Build.
+        /// Retrieve a specific Buildn resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Build Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
+        /// <param name="pathSid"> The SID of the Build resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
         public static async System.Threading.Tasks.Task<BuildResource> FetchAsync(string pathServiceSid,
@@ -259,7 +259,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Delete a Build.
+        /// Delete a Build resource.
         /// </summary>
         /// <param name="options"> Delete Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -273,7 +273,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a Build.
+        /// Delete a Build resource.
         /// </summary>
         /// <param name="options"> Delete Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -288,10 +288,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Delete a Build.
+        /// Delete a Build resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Build Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Build resource from </param>
+        /// <param name="pathSid"> The SID of the Build resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Build </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -302,10 +302,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a Build.
+        /// Delete a Build resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Build Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Build resource from </param>
+        /// <param name="pathSid"> The SID of the Build resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -329,7 +329,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Create a new Build. At least one Function Version or Asset Version is required.
+        /// Create a new Build resource. At least one function version or asset version is required.
         /// </summary>
         /// <param name="options"> Create Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -343,7 +343,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Create a new Build. At least one Function Version or Asset Version is required.
+        /// Create a new Build resource. At least one function version or asset version is required.
         /// </summary>
         /// <param name="options"> Create Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -358,12 +358,12 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Create a new Build. At least one Function Version or Asset Version is required.
+        /// Create a new Build resource. At least one function version or asset version is required.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="assetVersions"> List of Asset Version Sids. </param>
-        /// <param name="functionVersions"> List of Function Version Sids. </param>
-        /// <param name="dependencies"> List of Dependencies. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
+        /// <param name="assetVersions"> The list of AssetVersion resource SIDs to include in the build </param>
+        /// <param name="functionVersions"> The list of the Variable resource SIDs to include in the build </param>
+        /// <param name="dependencies"> A list of objects that describe the Dependencies included in the build </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Build </returns>
         public static BuildResource Create(string pathServiceSid,
@@ -378,12 +378,12 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Create a new Build. At least one Function Version or Asset Version is required.
+        /// Create a new Build resource. At least one function version or asset version is required.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="assetVersions"> List of Asset Version Sids. </param>
-        /// <param name="functionVersions"> List of Function Version Sids. </param>
-        /// <param name="dependencies"> List of Dependencies. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
+        /// <param name="assetVersions"> The list of AssetVersion resource SIDs to include in the build </param>
+        /// <param name="functionVersions"> The list of the Variable resource SIDs to include in the build </param>
+        /// <param name="dependencies"> A list of objects that describe the Dependencies included in the build </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
         public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(string pathServiceSid,
@@ -416,53 +416,53 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Build Sid.
+        /// The unique string that identifies the Build resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the Build resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service that the Build resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The current state of the Build.
+        /// The status of the build
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public BuildResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// List of Asset Version Sids.
+        /// The list of AssetVersion resource SIDs that are included in the build
         /// </summary>
         [JsonProperty("asset_versions")]
         public List<object> AssetVersions { get; private set; }
         /// <summary>
-        /// List of Function Version Sids.
+        /// List of the Variable resource SIDs
         /// </summary>
         [JsonProperty("function_versions")]
         public List<object> FunctionVersions { get; private set; }
         /// <summary>
-        /// List of Dependencies.
+        /// A list of objects that describe the Dependencies included in the build
         /// </summary>
         [JsonProperty("dependencies")]
         public List<object> Dependencies { get; private set; }
         /// <summary>
-        /// The date that this Build was created.
+        /// The ISO 8601 date and time in GMT when the Build resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this Build was updated.
+        /// The ISO 8601 date and time in GMT when the Build resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL of this Build.
+        /// The absolute URL of the Build resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -16,19 +16,19 @@ namespace Twilio.Rest.Video.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Returns a single Composition Instance resource identified by a CompositionSid.
+    /// Returns a single Composition resource identified by a Composition SID.
     /// </summary>
     public class FetchCompositionOptions : IOptions<CompositionResource>
     {
         /// <summary>
-        /// The Composition Sid that uniquely identifies the Composition to fetch.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCompositionOptions
         /// </summary>
-        /// <param name="pathSid"> The Composition Sid that uniquely identifies the Composition to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchCompositionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -48,24 +48,24 @@ namespace Twilio.Rest.Video.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// List of all Recording Compositions.
+    /// List of all Recording compositions.
     /// </summary>
     public class ReadCompositionOptions : ReadOptions<CompositionResource>
     {
         /// <summary>
-        /// Only show Compositions with the given status.
+        /// Read only Composition resources with this status
         /// </summary>
         public CompositionResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// Only show Compositions created on or after this ISO8601 date-time with timezone.
+        /// Read only Composition resources created on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Only show Compositions created before this ISO8601 date-time with timezone.
+        /// Read only Composition resources created before this ISO 8601 date-time with time zone
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// Only show Compositions with the given Room SID.
+        /// Read only Composition resources with this Room SID
         /// </summary>
         public string RoomSid { get; set; }
 
@@ -108,20 +108,19 @@ namespace Twilio.Rest.Video.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Delete a Recording Composition Instance resource identified by a `CompositionSid`.
+    /// Delete a Recording Composition resource identified by a Composition SID.
     /// </summary>
     public class DeleteCompositionOptions : IOptions<CompositionResource>
     {
         /// <summary>
-        /// The Recording Composition Sid that uniquely identifies the Recording Composition to delete.
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCompositionOptions
         /// </summary>
-        /// <param name="pathSid"> The Recording Composition Sid that uniquely identifies the Recording Composition to delete.
-        ///               </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteCompositionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -146,46 +145,46 @@ namespace Twilio.Rest.Video.V1
     public class CreateCompositionOptions : IOptions<CompositionResource>
     {
         /// <summary>
-        /// Twilio Room SID.
+        /// The SID of the Group Room with the media tracks to be used as composition sources
         /// </summary>
         public string RoomSid { get; }
         /// <summary>
-        /// The JSON video layout description.
+        /// An object that describes the video layout of the composition
         /// </summary>
         public object VideoLayout { get; set; }
         /// <summary>
-        /// A list of audio sources related to this Composition.
+        /// An array of track names from the same group room to merge
         /// </summary>
         public List<string> AudioSources { get; set; }
         /// <summary>
-        /// A list of audio sources excluded related to this Composition.
+        /// An array of track names to exclude
         /// </summary>
         public List<string> AudioSourcesExcluded { get; set; }
         /// <summary>
-        /// Pixel resolution of the composed video.
+        /// A string that describes the columns (width) and rows (height) of the generated composed video in pixels
         /// </summary>
         public string Resolution { get; set; }
         /// <summary>
-        /// Container format of the Composition media file. Any of the following: `mp4`, `webm`.
+        /// The container format of the composition's media files
         /// </summary>
         public CompositionResource.FormatEnum Format { get; set; }
         /// <summary>
-        /// A URL that Twilio sends asynchronous webhook requests to on every composition event.
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// HTTP method Twilio should use when requesting the above URL.
+        /// The HTTP method we should use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// Boolean flag for clipping intervals that have no media.
+        /// Whether to clip the intervals where there is no active media in the composition
         /// </summary>
         public bool? Trim { get; set; }
 
         /// <summary>
         /// Construct a new CreateCompositionOptions
         /// </summary>
-        /// <param name="roomSid"> Twilio Room SID. </param>
+        /// <param name="roomSid"> The SID of the Group Room with the media tracks to be used as composition sources </param>
         public CreateCompositionOptions(string roomSid)
         {
             RoomSid = roomSid;

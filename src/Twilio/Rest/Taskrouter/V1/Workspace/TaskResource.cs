@@ -81,8 +81,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns>
         public static TaskResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
@@ -95,8 +95,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
         public static async System.Threading.Tasks.Task<TaskResource> FetchAsync(string pathWorkspaceSid,
@@ -151,14 +151,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="attributes"> The user-defined JSON data describing the custom attributes of this task. </param>
-        /// <param name="assignmentStatus"> A 'pending' or 'reserved' Task may be canceled by posting
-        ///                        AssignmentStatus='canceled'. </param>
-        /// <param name="reason"> This is only required if the Task is canceled or completed. </param>
-        /// <param name="priority"> Override priority for the Task. </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to update </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
+        /// <param name="attributes"> The JSON string that describes the custom attributes of the task </param>
+        /// <param name="assignmentStatus"> The new status of the task </param>
+        /// <param name="reason"> The reason that the Task was canceled or complete </param>
+        /// <param name="priority"> The Task's new priority value </param>
+        /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns>
         public static TaskResource Update(string pathWorkspaceSid,
@@ -178,14 +177,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="attributes"> The user-defined JSON data describing the custom attributes of this task. </param>
-        /// <param name="assignmentStatus"> A 'pending' or 'reserved' Task may be canceled by posting
-        ///                        AssignmentStatus='canceled'. </param>
-        /// <param name="reason"> This is only required if the Task is canceled or completed. </param>
-        /// <param name="priority"> Override priority for the Task. </param>
-        /// <param name="taskChannel"> The task_channel </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to update </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
+        /// <param name="attributes"> The JSON string that describes the custom attributes of the task </param>
+        /// <param name="assignmentStatus"> The new status of the task </param>
+        /// <param name="reason"> The reason that the Task was canceled or complete </param>
+        /// <param name="priority"> The Task's new priority value </param>
+        /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
         public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(string pathWorkspaceSid,
@@ -245,8 +243,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns>
         public static bool Delete(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
@@ -259,8 +257,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
@@ -319,22 +317,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="priority"> Retrieve the list of all Tasks in the workspace with the specified priority. </param>
-        /// <param name="assignmentStatus"> Returns the list of all Tasks in the workspace with the specified AssignmentStatus.
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Tasks to read </param>
+        /// <param name="priority"> The priority value of the Tasks to read </param>
+        /// <param name="assignmentStatus"> Returns the list of all Tasks in the Workspace with the specified assignment_status
         ///                        </param>
-        /// <param name="workflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the specified
-        ///                   Sid value. </param>
-        /// <param name="workflowName"> Returns the list of Tasks that are being controlled by the Workflow with the specified
-        ///                    FriendlyName value. </param>
-        /// <param name="taskQueueSid"> Returns the list of Tasks that are currently waiting in the TaskQueue identified by the
-        ///                    Sid specified. </param>
-        /// <param name="taskQueueName"> Returns the list of Tasks that are currently waiting in the TaskQueue identified by
-        ///                     the FriendlyName specified. </param>
-        /// <param name="evaluateTaskAttributes"> Provide a task attributes expression, and this will return tasks which match
-        ///                              the attributes. </param>
-        /// <param name="ordering"> Use this parameter to control the order of the Tasks returned. </param>
-        /// <param name="hasAddons"> The has_addons </param>
+        /// <param name="workflowSid"> The SID of the Workflow with the Tasks to read </param>
+        /// <param name="workflowName"> The friendly name of the Workflow with the Tasks to read </param>
+        /// <param name="taskQueueSid"> The SID of the TaskQueue with the Tasks to read </param>
+        /// <param name="taskQueueName"> The friendly_name of the TaskQueue with the Tasks to read </param>
+        /// <param name="evaluateTaskAttributes"> The task attributes of the Tasks to read </param>
+        /// <param name="ordering"> Controls the order of the Tasks returned </param>
+        /// <param name="hasAddons"> Whether to read Tasks with addons </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -361,22 +354,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="priority"> Retrieve the list of all Tasks in the workspace with the specified priority. </param>
-        /// <param name="assignmentStatus"> Returns the list of all Tasks in the workspace with the specified AssignmentStatus.
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Tasks to read </param>
+        /// <param name="priority"> The priority value of the Tasks to read </param>
+        /// <param name="assignmentStatus"> Returns the list of all Tasks in the Workspace with the specified assignment_status
         ///                        </param>
-        /// <param name="workflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the specified
-        ///                   Sid value. </param>
-        /// <param name="workflowName"> Returns the list of Tasks that are being controlled by the Workflow with the specified
-        ///                    FriendlyName value. </param>
-        /// <param name="taskQueueSid"> Returns the list of Tasks that are currently waiting in the TaskQueue identified by the
-        ///                    Sid specified. </param>
-        /// <param name="taskQueueName"> Returns the list of Tasks that are currently waiting in the TaskQueue identified by
-        ///                     the FriendlyName specified. </param>
-        /// <param name="evaluateTaskAttributes"> Provide a task attributes expression, and this will return tasks which match
-        ///                              the attributes. </param>
-        /// <param name="ordering"> Use this parameter to control the order of the Tasks returned. </param>
-        /// <param name="hasAddons"> The has_addons </param>
+        /// <param name="workflowSid"> The SID of the Workflow with the Tasks to read </param>
+        /// <param name="workflowName"> The friendly name of the Workflow with the Tasks to read </param>
+        /// <param name="taskQueueSid"> The SID of the TaskQueue with the Tasks to read </param>
+        /// <param name="taskQueueName"> The friendly_name of the TaskQueue with the Tasks to read </param>
+        /// <param name="evaluateTaskAttributes"> The task attributes of the Tasks to read </param>
+        /// <param name="ordering"> Controls the order of the Tasks returned </param>
+        /// <param name="hasAddons"> Whether to read Tasks with addons </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -502,15 +490,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="timeout"> The amount of time in seconds the task is allowed to live up to a maximum of 2 weeks.
-        ///               </param>
-        /// <param name="priority"> Override priority for the Task. </param>
-        /// <param name="taskChannel"> When MultiTasking is enabled specify the type of the task by passing either TaskChannel
-        ///                   Unique Name or Task Channel Sid. </param>
-        /// <param name="workflowSid"> The WorkflowSid for the Workflow that you would like to handle routing for this Task.
-        ///                   </param>
-        /// <param name="attributes"> Url-encoded JSON string describing the attributes of this task. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to </param>
+        /// <param name="timeout"> The amount of time in seconds the task is allowed to live </param>
+        /// <param name="priority"> The priority to assign the new task and override the default </param>
+        /// <param name="taskChannel"> When MultiTasking is enabled specify the TaskChannel by passing either its unique_name
+        ///                   or SID </param>
+        /// <param name="workflowSid"> The SID of the Workflow that you would like to handle routing for the new Task </param>
+        /// <param name="attributes"> A URL-encoded JSON string describing the attributes of the task </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns>
         public static TaskResource Create(string pathWorkspaceSid,
@@ -529,15 +515,13 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="timeout"> The amount of time in seconds the task is allowed to live up to a maximum of 2 weeks.
-        ///               </param>
-        /// <param name="priority"> Override priority for the Task. </param>
-        /// <param name="taskChannel"> When MultiTasking is enabled specify the type of the task by passing either TaskChannel
-        ///                   Unique Name or Task Channel Sid. </param>
-        /// <param name="workflowSid"> The WorkflowSid for the Workflow that you would like to handle routing for this Task.
-        ///                   </param>
-        /// <param name="attributes"> Url-encoded JSON string describing the attributes of this task. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to </param>
+        /// <param name="timeout"> The amount of time in seconds the task is allowed to live </param>
+        /// <param name="priority"> The priority to assign the new task and override the default </param>
+        /// <param name="taskChannel"> When MultiTasking is enabled specify the TaskChannel by passing either its unique_name
+        ///                   or SID </param>
+        /// <param name="workflowSid"> The SID of the Workflow that you would like to handle routing for the new Task </param>
+        /// <param name="attributes"> A URL-encoded JSON string describing the attributes of the task </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
         public static async System.Threading.Tasks.Task<TaskResource> CreateAsync(string pathWorkspaceSid,
@@ -572,103 +556,103 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
         /// <summary>
-        /// The ID of the account that owns this Task
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The number of seconds since this task was created.
+        /// The number of seconds since the task was created
         /// </summary>
         [JsonProperty("age")]
         public int? Age { get; private set; }
         /// <summary>
-        /// Returns the list of all Tasks in the workspace with the specified AssignmentStatus.
+        /// The current status of the Task's assignment
         /// </summary>
         [JsonProperty("assignment_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public TaskResource.StatusEnum AssignmentStatus { get; private set; }
         /// <summary>
-        /// The user-defined JSON string describing the custom attributes of this work.
+        /// The JSON string with custom attributes of the work
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// The addon data for all installed addons is returned with this attribute
+        /// An object that contains the addon data for all installed addons
         /// </summary>
         [JsonProperty("addons")]
         public string Addons { get; private set; }
         /// <summary>
-        /// Date this task was created, given as ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// Date this task was updated, given as ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Retrieve the list of all Tasks in the workspace with the specified priority.
+        /// Retrieve the list of all Tasks in the Workspace with the specified priority
         /// </summary>
         [JsonProperty("priority")]
         public int? Priority { get; private set; }
         /// <summary>
-        /// The reason the task was canceled  or completed
+        /// The reason the task was canceled or completed
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; private set; }
         /// <summary>
-        /// The unique ID of the Task
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Returns the list of Tasks that are currently waiting in the TaskQueue identified by the Sid specified.
+        /// The SID of the TaskQueue
         /// </summary>
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
         /// <summary>
-        /// The task_queue_friendly_name
+        /// The friendly name of the TaskQueue
         /// </summary>
         [JsonProperty("task_queue_friendly_name")]
         public string TaskQueueFriendlyName { get; private set; }
         /// <summary>
-        /// The ID of the Task Channel
+        /// The SID of the TaskChannel
         /// </summary>
         [JsonProperty("task_channel_sid")]
         public string TaskChannelSid { get; private set; }
         /// <summary>
-        /// The unique name of the Task Channel
+        /// The unique name of the TaskChannel
         /// </summary>
         [JsonProperty("task_channel_unique_name")]
         public string TaskChannelUniqueName { get; private set; }
         /// <summary>
-        /// The amount of time in seconds the task is allowed to live
+        /// The amount of time in seconds that the task is allowed to live
         /// </summary>
         [JsonProperty("timeout")]
         public int? Timeout { get; private set; }
         /// <summary>
-        /// Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value.
+        /// The SID of the Workflow that is controlling the Task
         /// </summary>
         [JsonProperty("workflow_sid")]
         public string WorkflowSid { get; private set; }
         /// <summary>
-        /// The workflow_friendly_name
+        /// The friendly name of the Workflow that is controlling the Task
         /// </summary>
         [JsonProperty("workflow_friendly_name")]
         public string WorkflowFriendlyName { get; private set; }
         /// <summary>
-        /// The ID of the Workspace that holds this Task
+        /// The SID of the Workspace that contains the Task
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Task resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

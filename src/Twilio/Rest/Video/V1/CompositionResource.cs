@@ -65,7 +65,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// Returns a single Composition Instance resource identified by a CompositionSid.
+        /// Returns a single Composition resource identified by a Composition SID.
         /// </summary>
         /// <param name="options"> Fetch Composition parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Returns a single Composition Instance resource identified by a CompositionSid.
+        /// Returns a single Composition resource identified by a Composition SID.
         /// </summary>
         /// <param name="options"> Fetch Composition parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -94,9 +94,9 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// Returns a single Composition Instance resource identified by a CompositionSid.
+        /// Returns a single Composition resource identified by a Composition SID.
         /// </summary>
-        /// <param name="pathSid"> The Composition Sid that uniquely identifies the Composition to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Composition </returns>
         public static CompositionResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -107,9 +107,9 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Returns a single Composition Instance resource identified by a CompositionSid.
+        /// Returns a single Composition resource identified by a Composition SID.
         /// </summary>
-        /// <param name="pathSid"> The Composition Sid that uniquely identifies the Composition to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns>
         public static async System.Threading.Tasks.Task<CompositionResource> FetchAsync(string pathSid,
@@ -132,7 +132,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// List of all Recording Compositions.
+        /// List of all Recording compositions.
         /// </summary>
         /// <param name="options"> Read Composition parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// List of all Recording Compositions.
+        /// List of all Recording compositions.
         /// </summary>
         /// <param name="options"> Read Composition parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -165,14 +165,14 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// List of all Recording Compositions.
+        /// List of all Recording compositions.
         /// </summary>
-        /// <param name="status"> Only show Compositions with the given status. </param>
-        /// <param name="dateCreatedAfter"> Only show Compositions created on or after this ISO8601 date-time with timezone.
-        ///                        </param>
-        /// <param name="dateCreatedBefore"> Only show Compositions created before this ISO8601 date-time with timezone.
-        ///                         </param>
-        /// <param name="roomSid"> Only show Compositions with the given Room SID. </param>
+        /// <param name="status"> Read only Composition resources with this status </param>
+        /// <param name="dateCreatedAfter"> Read only Composition resources created on or after this [ISO
+        ///                        8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone </param>
+        /// <param name="dateCreatedBefore"> Read only Composition resources created before this ISO 8601 date-time with time
+        ///                         zone </param>
+        /// <param name="roomSid"> Read only Composition resources with this Room SID </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -191,14 +191,14 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// List of all Recording Compositions.
+        /// List of all Recording compositions.
         /// </summary>
-        /// <param name="status"> Only show Compositions with the given status. </param>
-        /// <param name="dateCreatedAfter"> Only show Compositions created on or after this ISO8601 date-time with timezone.
-        ///                        </param>
-        /// <param name="dateCreatedBefore"> Only show Compositions created before this ISO8601 date-time with timezone.
-        ///                         </param>
-        /// <param name="roomSid"> Only show Compositions with the given Room SID. </param>
+        /// <param name="status"> Read only Composition resources with this status </param>
+        /// <param name="dateCreatedAfter"> Read only Composition resources created on or after this [ISO
+        ///                        8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone </param>
+        /// <param name="dateCreatedBefore"> Read only Composition resources created before this ISO 8601 date-time with time
+        ///                         zone </param>
+        /// <param name="roomSid"> Read only Composition resources with this Room SID </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// Delete a Recording Composition Instance resource identified by a `CompositionSid`.
+        /// Delete a Recording Composition resource identified by a Composition SID.
         /// </summary>
         /// <param name="options"> Delete Composition parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Delete a Recording Composition Instance resource identified by a `CompositionSid`.
+        /// Delete a Recording Composition resource identified by a Composition SID.
         /// </summary>
         /// <param name="options"> Delete Composition parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -316,10 +316,9 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// Delete a Recording Composition Instance resource identified by a `CompositionSid`.
+        /// Delete a Recording Composition resource identified by a Composition SID.
         /// </summary>
-        /// <param name="pathSid"> The Recording Composition Sid that uniquely identifies the Recording Composition to delete.
-        ///               </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Composition </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -330,10 +329,9 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Delete a Recording Composition Instance resource identified by a `CompositionSid`.
+        /// Delete a Recording Composition resource identified by a Composition SID.
         /// </summary>
-        /// <param name="pathSid"> The Recording Composition Sid that uniquely identifies the Recording Composition to delete.
-        ///               </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -386,16 +384,16 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="roomSid"> Twilio Room SID. </param>
-        /// <param name="videoLayout"> The JSON video layout description. </param>
-        /// <param name="audioSources"> A list of audio sources related to this Composition. </param>
-        /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition. </param>
-        /// <param name="resolution"> Pixel resolution of the composed video. </param>
-        /// <param name="format"> Container format of the Composition media file. Any of the following: `mp4`, `webm`. </param>
-        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
-        ///                      </param>
-        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
-        /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
+        /// <param name="roomSid"> The SID of the Group Room with the media tracks to be used as composition sources </param>
+        /// <param name="videoLayout"> An object that describes the video layout of the composition </param>
+        /// <param name="audioSources"> An array of track names from the same group room to merge </param>
+        /// <param name="audioSourcesExcluded"> An array of track names to exclude </param>
+        /// <param name="resolution"> A string that describes the columns (width) and rows (height) of the generated composed
+        ///                  video in pixels </param>
+        /// <param name="format"> The container format of the composition's media files </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="trim"> Whether to clip the intervals where there is no active media in the composition </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Composition </returns>
         public static CompositionResource Create(string roomSid,
@@ -417,16 +415,16 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="roomSid"> Twilio Room SID. </param>
-        /// <param name="videoLayout"> The JSON video layout description. </param>
-        /// <param name="audioSources"> A list of audio sources related to this Composition. </param>
-        /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition. </param>
-        /// <param name="resolution"> Pixel resolution of the composed video. </param>
-        /// <param name="format"> Container format of the Composition media file. Any of the following: `mp4`, `webm`. </param>
-        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
-        ///                      </param>
-        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
-        /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
+        /// <param name="roomSid"> The SID of the Group Room with the media tracks to be used as composition sources </param>
+        /// <param name="videoLayout"> An object that describes the video layout of the composition </param>
+        /// <param name="audioSources"> An array of track names from the same group room to merge </param>
+        /// <param name="audioSourcesExcluded"> An array of track names to exclude </param>
+        /// <param name="resolution"> A string that describes the columns (width) and rows (height) of the generated composed
+        ///                  video in pixels </param>
+        /// <param name="format"> The container format of the composition's media files </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="trim"> Whether to clip the intervals where there is no active media in the composition </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Composition </returns>
         public static async System.Threading.Tasks.Task<CompositionResource> CreateAsync(string roomSid,
@@ -464,94 +462,94 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// Twilio Account SID.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The status of the Composition.
+        /// The status of the composition
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CompositionResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// Date when the Composition Resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// Date when the media processing task finished.
+        /// Date when the media processing task finished
         /// </summary>
         [JsonProperty("date_completed")]
         public string DateCompleted { get; private set; }
         /// <summary>
-        /// Date when the Composition Resource generated media was deleted.
+        /// The ISO 8601 date and time in GMT when the composition generated media was deleted
         /// </summary>
         [JsonProperty("date_deleted")]
         public string DateDeleted { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this Composition.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies the source of this Composition.
+        /// The SID of the Group Room that generated the audio and video tracks used in the composition
         /// </summary>
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
         /// <summary>
-        /// A list of audio sources related to this Composition.
+        /// The array of track names to include in the composition
         /// </summary>
         [JsonProperty("audio_sources")]
         public List<string> AudioSources { get; private set; }
         /// <summary>
-        /// A list of audio sources excluded related to this Composition.
+        /// The array of track names to exclude from the composition
         /// </summary>
         [JsonProperty("audio_sources_excluded")]
         public List<string> AudioSourcesExcluded { get; private set; }
         /// <summary>
-        /// The JSON video layout description.
+        /// An object that describes the video layout of the composition
         /// </summary>
         [JsonProperty("video_layout")]
         public object VideoLayout { get; private set; }
         /// <summary>
-        /// Pixel resolution of the composed video.
+        /// The dimensions of the video image in pixels expressed as columns (width) and rows (height)
         /// </summary>
         [JsonProperty("resolution")]
         public string Resolution { get; private set; }
         /// <summary>
-        /// Boolean flag for clipping intervals that have no media.
+        /// Whether to remove intervals with no media
         /// </summary>
         [JsonProperty("trim")]
         public bool? Trim { get; private set; }
         /// <summary>
-        /// The file format for this Composition.
+        /// The container format of the composition's media files as specified in the POST request that created the Composition resource
         /// </summary>
         [JsonProperty("format")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CompositionResource.FormatEnum Format { get; private set; }
         /// <summary>
-        /// The bitrate
+        /// The average bit rate of the composition's media
         /// </summary>
         [JsonProperty("bitrate")]
         public int? Bitrate { get; private set; }
         /// <summary>
-        /// Size of the Composed media file expressed in bytes.
+        /// The size of the composed media file in bytes
         /// </summary>
         [JsonProperty("size")]
         public long? Size { get; private set; }
         /// <summary>
-        /// Duration of the Composed media in seconds.
+        /// The duration of the composition's media file in seconds
         /// </summary>
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
-        /// The absolute URL for this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// JSON object with the URL where the media file can be fetched.
+        /// The URL of the media file associated with the composition
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

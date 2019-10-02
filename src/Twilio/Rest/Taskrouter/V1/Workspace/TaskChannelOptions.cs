@@ -17,19 +17,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class FetchTaskChannelOptions : IOptions<TaskChannelResource>
     {
         /// <summary>
-        /// The unique ID of the Workspace that this TaskChannel belongs to.
+        /// The SID of the Workspace with the TaskChannel to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The unique ID for this TaskChannel.
+        /// The SID of the TaskChannel resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to fetch </param>
+        /// <param name="pathSid"> The SID of the TaskChannel resource to fetch </param>
         public FetchTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -52,14 +52,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class ReadTaskChannelOptions : ReadOptions<TaskChannelResource>
     {
         /// <summary>
-        /// The unique ID of the Workspace that this TaskChannel belongs to.
+        /// The SID of the Workspace with the TaskChannel to read
         /// </summary>
         public string PathWorkspaceSid { get; }
 
         /// <summary>
         /// Construct a new ReadTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to read </param>
         public ReadTaskChannelOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -86,27 +86,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class UpdateTaskChannelOptions : IOptions<TaskChannelResource>
     {
         /// <summary>
-        /// The unique ID of the Workspace that this TaskChannel belongs to.
+        /// The SID of the Workspace with the TaskChannel to update
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The unique ID for this TaskChannel.
+        /// The SID of the TaskChannel resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Toggle the FriendlyName for the TaskChannel
+        /// A string to describe the TaskChannel resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// If true then prioritize longest idle workers
+        /// Whether the TaskChannel should prioritize Workers that have been idle
         /// </summary>
         public bool? ChannelOptimizedRouting { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to update </param>
+        /// <param name="pathSid"> The SID of the TaskChannel resource to update </param>
         public UpdateTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -139,19 +139,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class DeleteTaskChannelOptions : IOptions<TaskChannelResource>
     {
         /// <summary>
-        /// The unique ID of the Workspace that this TaskChannel belongs to.
+        /// The SID of the Workspace with the TaskChannel to delete
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The unique ID for this TaskChannel.
+        /// The SID of the TaskChannel resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to delete </param>
+        /// <param name="pathSid"> The SID of the TaskChannel resource to delete </param>
         public DeleteTaskChannelOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -174,28 +174,28 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class CreateTaskChannelOptions : IOptions<TaskChannelResource>
     {
         /// <summary>
-        /// The unique ID of the Workspace that this TaskChannel belongs to.
+        /// The SID of the Workspace that the new TaskChannel belongs to
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// String representing user-friendly name for the TaskChannel
+        /// A string to describe the TaskChannel resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// String representing unique name for the TaskChannel
+        /// An application-defined string that uniquely identifies the TaskChannel
         /// </summary>
         public string UniqueName { get; }
         /// <summary>
-        /// If true then prioritize longest idle workers
+        /// Whether the TaskChannel should prioritize Workers that have been idle
         /// </summary>
         public bool? ChannelOptimizedRouting { get; set; }
 
         /// <summary>
         /// Construct a new CreateTaskChannelOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="friendlyName"> String representing user-friendly name for the TaskChannel </param>
-        /// <param name="uniqueName"> String representing unique name for the TaskChannel </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskChannel belongs to </param>
+        /// <param name="friendlyName"> A string to describe the TaskChannel resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the TaskChannel </param>
         public CreateTaskChannelOptions(string pathWorkspaceSid, string friendlyName, string uniqueName)
         {
             PathWorkspaceSid = pathWorkspaceSid;

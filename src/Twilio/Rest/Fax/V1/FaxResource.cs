@@ -345,7 +345,7 @@ namespace Twilio.Rest.Fax.V1
         /// Create a new fax to send to a phone number or SIP endpoint.
         /// </summary>
         /// <param name="to"> The phone number to receive the fax </param>
-        /// <param name="mediaUrl"> The Twilio-hosted URL of the PDF that contains the fax </param>
+        /// <param name="mediaUrl"> The URL of the PDF that contains the fax </param>
         /// <param name="quality"> The quality of this fax </param>
         /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
         /// <param name="from"> The number the fax was sent from </param>
@@ -375,7 +375,7 @@ namespace Twilio.Rest.Fax.V1
         /// Create a new fax to send to a phone number or SIP endpoint.
         /// </summary>
         /// <param name="to"> The phone number to receive the fax </param>
-        /// <param name="mediaUrl"> The Twilio-hosted URL of the PDF that contains the fax </param>
+        /// <param name="mediaUrl"> The URL of the PDF that contains the fax </param>
         /// <param name="quality"> The quality of this fax </param>
         /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
         /// <param name="from"> The number the fax was sent from </param>

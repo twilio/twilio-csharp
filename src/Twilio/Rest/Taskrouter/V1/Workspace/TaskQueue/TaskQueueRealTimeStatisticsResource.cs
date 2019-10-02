@@ -64,9 +64,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+        /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
+        /// <param name="taskChannel"> The TaskChannel for which to fetch statistics </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueueRealTimeStatistics </returns>
         public static TaskQueueRealTimeStatisticsResource Fetch(string pathWorkspaceSid,
@@ -82,9 +82,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+        /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
+        /// <param name="taskChannel"> The TaskChannel for which to fetch statistics </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueRealTimeStatistics </returns>
         public static async System.Threading.Tasks.Task<TaskQueueRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid,
@@ -116,12 +116,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The current Worker status count breakdown by Activity
+        /// The number of current Workers by Activity
         /// </summary>
         [JsonProperty("activity_statistics")]
         public List<object> ActivityStatistics { get; private set; }
@@ -136,27 +136,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         [JsonProperty("longest_task_waiting_sid")]
         public string LongestTaskWaitingSid { get; private set; }
         /// <summary>
-        /// The task_queue_sid
+        /// The SID of the TaskQueue from which these statistics were calculated
         /// </summary>
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
         /// <summary>
-        /// The Tasks broken down by priority
+        /// The number of Tasks by priority
         /// </summary>
         [JsonProperty("tasks_by_priority")]
         public object TasksByPriority { get; private set; }
         /// <summary>
-        /// The Tasks broken down by status
+        /// The number of Tasks by their current status
         /// </summary>
         [JsonProperty("tasks_by_status")]
         public object TasksByStatus { get; private set; }
         /// <summary>
-        /// The total number of Workers available for Tasks in this TaskQueue
+        /// The total number of Workers available for Tasks in the TaskQueue
         /// </summary>
         [JsonProperty("total_available_workers")]
         public int? TotalAvailableWorkers { get; private set; }
         /// <summary>
-        /// The total number of Workers eligible for Tasks in this TaskQueue, irrespective of Activity state.
+        /// The total number of Workers eligible for Tasks in the TaskQueue, independent of their Activity state
         /// </summary>
         [JsonProperty("total_eligible_workers")]
         public int? TotalEligibleWorkers { get; private set; }
@@ -166,12 +166,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         [JsonProperty("total_tasks")]
         public int? TotalTasks { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that contains the TaskQueue
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the TaskQueue statistics resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

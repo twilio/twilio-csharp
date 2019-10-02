@@ -49,7 +49,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// Returns a single Composition Hook Instance resource identified by a CompositionHookSid.
+        /// Returns a single CompositionHook resource identified by a CompositionHook SID.
         /// </summary>
         /// <param name="options"> Fetch CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,7 +63,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Returns a single Composition Hook Instance resource identified by a CompositionHookSid.
+        /// Returns a single CompositionHook resource identified by a CompositionHook SID.
         /// </summary>
         /// <param name="options"> Fetch CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -78,9 +78,9 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// Returns a single Composition Hook Instance resource identified by a CompositionHookSid.
+        /// Returns a single CompositionHook resource identified by a CompositionHook SID.
         /// </summary>
-        /// <param name="pathSid"> The Composition Hook Sid that uniquely identifies the Composition Hook to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
         public static CompositionHookResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -91,9 +91,9 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Returns a single Composition Hook Instance resource identified by a CompositionHookSid.
+        /// Returns a single CompositionHook resource identified by a CompositionHook SID.
         /// </summary>
-        /// <param name="pathSid"> The Composition Hook Sid that uniquely identifies the Composition Hook to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
         public static async System.Threading.Tasks.Task<CompositionHookResource> FetchAsync(string pathSid,
@@ -116,7 +116,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// List of all Recording Composition Hooks.
+        /// List of all Recording CompositionHook resources.
         /// </summary>
         /// <param name="options"> Read CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// List of all Recording Composition Hooks.
+        /// List of all Recording CompositionHook resources.
         /// </summary>
         /// <param name="options"> Read CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -150,14 +150,15 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// List of all Recording Composition Hooks.
+        /// List of all Recording CompositionHook resources.
         /// </summary>
-        /// <param name="enabled"> Only show Composition Hooks enabled or disabled. </param>
-        /// <param name="dateCreatedAfter"> Only show Composition Hooks created on or after this ISO8601 date-time with
-        ///                        timezone. </param>
-        /// <param name="dateCreatedBefore"> Only show Composition Hooks created before this ISO8601 date-time with timezone.
-        ///                         </param>
-        /// <param name="friendlyName"> Only show Composition Hooks with friendly name that match this name. </param>
+        /// <param name="enabled"> Read only CompositionHook resources with an enabled value that matches this parameter
+        ///               </param>
+        /// <param name="dateCreatedAfter"> Read only CompositionHook resources created on or after this ISO 8601 datetime with
+        ///                        time zone </param>
+        /// <param name="dateCreatedBefore"> Read only CompositionHook resources created before this ISO 8601 datetime with
+        ///                         time zone </param>
+        /// <param name="friendlyName"> Read only CompositionHook resources with friendly names that match this string </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -176,14 +177,15 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// List of all Recording Composition Hooks.
+        /// List of all Recording CompositionHook resources.
         /// </summary>
-        /// <param name="enabled"> Only show Composition Hooks enabled or disabled. </param>
-        /// <param name="dateCreatedAfter"> Only show Composition Hooks created on or after this ISO8601 date-time with
-        ///                        timezone. </param>
-        /// <param name="dateCreatedBefore"> Only show Composition Hooks created before this ISO8601 date-time with timezone.
-        ///                         </param>
-        /// <param name="friendlyName"> Only show Composition Hooks with friendly name that match this name. </param>
+        /// <param name="enabled"> Read only CompositionHook resources with an enabled value that matches this parameter
+        ///               </param>
+        /// <param name="dateCreatedAfter"> Read only CompositionHook resources created on or after this ISO 8601 datetime with
+        ///                        time zone </param>
+        /// <param name="dateCreatedBefore"> Read only CompositionHook resources created before this ISO 8601 datetime with
+        ///                         time zone </param>
+        /// <param name="friendlyName"> Read only CompositionHook resources with friendly names that match this string </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -273,7 +275,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// Delete a Recording Composition Hook Instance resource identified by a `CompositionHookSid`.
+        /// Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
         /// </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -287,7 +289,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Delete a Recording Composition Hook Instance resource identified by a `CompositionHookSid`.
+        /// Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
         /// </summary>
         /// <param name="options"> Delete CompositionHook parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -302,10 +304,9 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// Delete a Recording Composition Hook Instance resource identified by a `CompositionHookSid`.
+        /// Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
         /// </summary>
-        /// <param name="pathSid"> The Recording Composition Hook Sid that uniquely identifies the Recording Composition Hook
-        ///               to delete. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -316,10 +317,9 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Delete a Recording Composition Hook Instance resource identified by a `CompositionHookSid`.
+        /// Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
         /// </summary>
-        /// <param name="pathSid"> The Recording Composition Hook Sid that uniquely identifies the Recording Composition Hook
-        ///               to delete. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -372,18 +372,19 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
-        /// <param name="enabled"> Boolean flag indicating if the Composition Hook is active. </param>
-        /// <param name="videoLayout"> The JSON video layout description. </param>
-        /// <param name="audioSources"> A list of audio sources related to this Composition Hook. </param>
-        /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition Hook. </param>
-        /// <param name="resolution"> Pixel resolution of the composed video. </param>
-        /// <param name="format"> Container format of the Composition Hook media file. Any of the following: `mp4`, `webm`.
-        ///              </param>
-        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
-        ///                      </param>
-        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
-        /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
+        /// <param name="friendlyName"> A unique string to describe the resource </param>
+        /// <param name="enabled"> Whether the composition hook is active </param>
+        /// <param name="videoLayout"> An object that describes the video layout of the composition hook </param>
+        /// <param name="audioSources"> An array of track names from the same group room to merge </param>
+        /// <param name="audioSourcesExcluded"> An array of track names to exclude </param>
+        /// <param name="resolution"> A string that describes the rows (width) and columns (height) of the generated composed
+        ///                  video in pixels </param>
+        /// <param name="format"> The container format of the media files used by the compositions created by the composition
+        ///              hook </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="trim"> Whether to clip the intervals where there is no active media in the Compositions triggered by
+        ///            the composition hook </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
         public static CompositionHookResource Create(string friendlyName,
@@ -406,18 +407,19 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
-        /// <param name="enabled"> Boolean flag indicating if the Composition Hook is active. </param>
-        /// <param name="videoLayout"> The JSON video layout description. </param>
-        /// <param name="audioSources"> A list of audio sources related to this Composition Hook. </param>
-        /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition Hook. </param>
-        /// <param name="resolution"> Pixel resolution of the composed video. </param>
-        /// <param name="format"> Container format of the Composition Hook media file. Any of the following: `mp4`, `webm`.
-        ///              </param>
-        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
-        ///                      </param>
-        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
-        /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
+        /// <param name="friendlyName"> A unique string to describe the resource </param>
+        /// <param name="enabled"> Whether the composition hook is active </param>
+        /// <param name="videoLayout"> An object that describes the video layout of the composition hook </param>
+        /// <param name="audioSources"> An array of track names from the same group room to merge </param>
+        /// <param name="audioSourcesExcluded"> An array of track names to exclude </param>
+        /// <param name="resolution"> A string that describes the rows (width) and columns (height) of the generated composed
+        ///                  video in pixels </param>
+        /// <param name="format"> The container format of the media files used by the compositions created by the composition
+        ///              hook </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="trim"> Whether to clip the intervals where there is no active media in the Compositions triggered by
+        ///            the composition hook </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
         public static async System.Threading.Tasks.Task<CompositionHookResource> CreateAsync(string friendlyName,
@@ -480,20 +482,20 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies the Composition Hook to update, specified as
-        ///               a path parameter. </param>
-        /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
-        /// <param name="enabled"> Boolean flag indicating if the Composition Hook is active. </param>
-        /// <param name="videoLayout"> The JSON video layout description. </param>
-        /// <param name="audioSources"> A list of audio sources related to this Composition Hook. </param>
-        /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition Hook. </param>
-        /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
-        /// <param name="format"> Container format of the Composition Hook media file. Any of the following: `mp4`, `webm`.
-        ///              </param>
-        /// <param name="resolution"> Pixel resolution of the composed video. </param>
-        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
-        ///                      </param>
-        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="friendlyName"> A unique string to describe the resource </param>
+        /// <param name="enabled"> Whether the composition hook is active </param>
+        /// <param name="videoLayout"> A JSON object that describes the video layout of the composition hook </param>
+        /// <param name="audioSources"> An array of track names from the same group room to merge </param>
+        /// <param name="audioSourcesExcluded"> An array of track names to exclude </param>
+        /// <param name="trim"> Whether to clip the intervals where there is no active media in the Compositions triggered by
+        ///            the composition hook </param>
+        /// <param name="format"> The container format of the media files used by the compositions created by the composition
+        ///              hook </param>
+        /// <param name="resolution"> A string that describes the columns (width) and rows (height) of the generated composed
+        ///                  video in pixels </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionHook </returns>
         public static CompositionHookResource Update(string pathSid,
@@ -517,20 +519,20 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies the Composition Hook to update, specified as
-        ///               a path parameter. </param>
-        /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
-        /// <param name="enabled"> Boolean flag indicating if the Composition Hook is active. </param>
-        /// <param name="videoLayout"> The JSON video layout description. </param>
-        /// <param name="audioSources"> A list of audio sources related to this Composition Hook. </param>
-        /// <param name="audioSourcesExcluded"> A list of audio sources excluded related to this Composition Hook. </param>
-        /// <param name="trim"> Boolean flag for clipping intervals that have no media. </param>
-        /// <param name="format"> Container format of the Composition Hook media file. Any of the following: `mp4`, `webm`.
-        ///              </param>
-        /// <param name="resolution"> Pixel resolution of the composed video. </param>
-        /// <param name="statusCallback"> A URL that Twilio sends asynchronous webhook requests to on every composition event.
-        ///                      </param>
-        /// <param name="statusCallbackMethod"> HTTP method Twilio should use when requesting the above URL. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="friendlyName"> A unique string to describe the resource </param>
+        /// <param name="enabled"> Whether the composition hook is active </param>
+        /// <param name="videoLayout"> A JSON object that describes the video layout of the composition hook </param>
+        /// <param name="audioSources"> An array of track names from the same group room to merge </param>
+        /// <param name="audioSourcesExcluded"> An array of track names to exclude </param>
+        /// <param name="trim"> Whether to clip the intervals where there is no active media in the Compositions triggered by
+        ///            the composition hook </param>
+        /// <param name="format"> The container format of the media files used by the compositions created by the composition
+        ///              hook </param>
+        /// <param name="resolution"> A string that describes the columns (width) and rows (height) of the generated composed
+        ///                  video in pixels </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionHook </returns>
         public static async System.Threading.Tasks.Task<CompositionHookResource> UpdateAsync(string pathSid,
@@ -570,79 +572,79 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// Twilio Account SID.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Friendly name of the Composition Hook to be shown in the console.
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// Boolean flag indicating if the Composition Hook is active.
+        /// Whether the CompositionHook is active
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
         /// <summary>
-        /// Date when the Composition Hook Resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// Date when the Composition Hook was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public string DateUpdated { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this Composition Hook.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A list of audio sources related to this Composition Hook.
+        /// The array of track names to include in the compositions created by the composition hook
         /// </summary>
         [JsonProperty("audio_sources")]
         public List<string> AudioSources { get; private set; }
         /// <summary>
-        /// A list of audio sources excluded related to this Composition Hook.
+        /// The array of track names to exclude from the compositions created by the composition hook
         /// </summary>
         [JsonProperty("audio_sources_excluded")]
         public List<string> AudioSourcesExcluded { get; private set; }
         /// <summary>
-        /// The JSON video layout description.
+        /// A JSON object that describes the video layout of the Composition
         /// </summary>
         [JsonProperty("video_layout")]
         public object VideoLayout { get; private set; }
         /// <summary>
-        /// Pixel resolution of the composed video.
+        /// The dimensions of the video image in pixels expressed as columns (width) and rows (height)
         /// </summary>
         [JsonProperty("resolution")]
         public string Resolution { get; private set; }
         /// <summary>
-        /// Boolean flag for clipping intervals that have no media.
+        /// Whether intervals with no media are clipped
         /// </summary>
         [JsonProperty("trim")]
         public bool? Trim { get; private set; }
         /// <summary>
-        /// The file format for the Compositions triggered by the Composition Hook.
+        /// The container format of the media files used by the compositions created by the composition hook
         /// </summary>
         [JsonProperty("format")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CompositionHookResource.FormatEnum Format { get; private set; }
         /// <summary>
-        /// A URL that Twilio sends asynchronous webhook requests to on every composition event.
+        /// The URL to send status information to your application
         /// </summary>
         [JsonProperty("status_callback")]
         public string StatusCallback { get; private set; }
         /// <summary>
-        /// HTTP method Twilio should use when requesting the above URL.
+        /// The HTTP method we should use to call status_callback
         /// </summary>
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
         /// <summary>
-        /// The absolute URL for this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

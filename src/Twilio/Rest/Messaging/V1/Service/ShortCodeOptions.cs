@@ -23,7 +23,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// SID of the ShortCode being added to the Service.
+        /// The SID of the ShortCode being added to the Service
         /// </summary>
         public string ShortCodeSid { get; }
 
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// Construct a new CreateShortCodeOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="shortCodeSid"> SID of the ShortCode being added to the Service. </param>
+        /// <param name="shortCodeSid"> The SID of the ShortCode being added to the Service </param>
         public CreateShortCodeOptions(string pathServiceSid, string shortCodeSid)
         {
             PathServiceSid = pathServiceSid;
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies this resource
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
@@ -73,7 +73,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// Construct a new DeleteShortCodeOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteShortCodeOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -98,14 +98,14 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class ReadShortCodeOptions : ReadOptions<ShortCodeResource>
     {
         /// <summary>
-        /// The SID of the Service to read the resource from
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadShortCodeOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         public ReadShortCodeOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies this resource
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// Construct a new FetchShortCodeOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchShortCodeOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

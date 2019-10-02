@@ -70,7 +70,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <summary>
         /// Retrieve a list of all Functions.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Function resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <summary>
         /// Retrieve a list of all Functions.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Function resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -174,7 +174,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a specific Function.
+        /// Retrieve a specific Function resource.
         /// </summary>
         /// <param name="options"> Fetch Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Function.
+        /// Retrieve a specific Function resource.
         /// </summary>
         /// <param name="options"> Fetch Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -203,10 +203,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a specific Function.
+        /// Retrieve a specific Function resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Function Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function resource from </param>
+        /// <param name="pathSid"> The SID of the Function resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Function </returns>
         public static FunctionResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -217,10 +217,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Function.
+        /// Retrieve a specific Function resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Function Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function resource from </param>
+        /// <param name="pathSid"> The SID of the Function resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Function </returns>
         public static async System.Threading.Tasks.Task<FunctionResource> FetchAsync(string pathServiceSid,
@@ -244,7 +244,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Delete a Function.
+        /// Delete a Function resource.
         /// </summary>
         /// <param name="options"> Delete Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a Function.
+        /// Delete a Function resource.
         /// </summary>
         /// <param name="options"> Delete Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -273,10 +273,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Delete a Function.
+        /// Delete a Function resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Function Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Function resource from </param>
+        /// <param name="pathSid"> The SID of the Function resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Function </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -287,10 +287,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Delete a Function.
+        /// Delete a Function resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Function Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Function resource from </param>
+        /// <param name="pathSid"> The SID of the Function resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Function </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -314,7 +314,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Create a new Function.
+        /// Create a new Function resource.
         /// </summary>
         /// <param name="options"> Create Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -328,7 +328,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Create a new Function.
+        /// Create a new Function resource.
         /// </summary>
         /// <param name="options"> Create Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -343,10 +343,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Create a new Function.
+        /// Create a new Function resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Function. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Function resource under </param>
+        /// <param name="friendlyName"> A string to describe the Function resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Function </returns>
         public static FunctionResource Create(string pathServiceSid, string friendlyName, ITwilioRestClient client = null)
@@ -357,10 +357,10 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Create a new Function.
+        /// Create a new Function resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Function. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Function resource under </param>
+        /// <param name="friendlyName"> A string to describe the Function resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Function </returns>
         public static async System.Threading.Tasks.Task<FunctionResource> CreateAsync(string pathServiceSid,
@@ -384,7 +384,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Update a specific Function.
+        /// Update a specific Function resource.
         /// </summary>
         /// <param name="options"> Update Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -398,7 +398,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Update a specific Function.
+        /// Update a specific Function resource.
         /// </summary>
         /// <param name="options"> Update Function parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -413,11 +413,11 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Update a specific Function.
+        /// Update a specific Function resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Function Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Function. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the Function resource from </param>
+        /// <param name="pathSid"> The SID of the Function resource to update </param>
+        /// <param name="friendlyName"> A string to describe the Function resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Function </returns>
         public static FunctionResource Update(string pathServiceSid,
@@ -431,11 +431,11 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Update a specific Function.
+        /// Update a specific Function resource.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Function Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Function. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the Function resource from </param>
+        /// <param name="pathSid"> The SID of the Function resource to update </param>
+        /// <param name="friendlyName"> A string to describe the Function resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Function </returns>
         public static async System.Threading.Tasks.Task<FunctionResource> UpdateAsync(string pathServiceSid,
@@ -467,42 +467,42 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Function Sid.
+        /// The unique string that identifies the Function resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the Function resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service that the Function resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// A human-readable description of this Function.
+        /// The string that you assigned to describe the Function resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The date that this Function was created.
+        /// The ISO 8601 date and time in GMT when the Function resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this Function was updated.
+        /// The ISO 8601 date and time in GMT when the Function resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL of this Function.
+        /// The absolute URL of the Function resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Nested resource URLs.
+        /// The URLs of nested resources of the function
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

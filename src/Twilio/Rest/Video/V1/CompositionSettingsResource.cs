@@ -132,16 +132,12 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Friendly name of the configuration to be shown in the console </param>
-        /// <param name="awsCredentialsSid"> SID of the Stored Credential resource CRxx </param>
-        /// <param name="encryptionKeySid"> SID of the Public Key resource CRxx </param>
-        /// <param name="awsS3Url"> Identity of the external location where the compositions should be stored. We only support
-        ///                DNS-compliant URLs like http://<my-bucket>.s3-<aws-region>.amazonaws.com/compositions, where
-        ///                compositions is the path where you want compositions to be stored. </param>
-        /// <param name="awsStorageEnabled"> true|false When set to true, all Compositions will be written to the AwsS3Url
-        ///                         specified above. When set to false, all Compositions will be stored in Twilio's cloud.
-        ///                         </param>
-        /// <param name="encryptionEnabled"> true|false When set to true, all Compositions will be stored encrypted. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the resource </param>
+        /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
+        /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
+        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored </param>
+        /// <param name="awsStorageEnabled"> Whether all compositions should be written to the aws_s3_url </param>
+        /// <param name="encryptionEnabled"> Whether all compositions should be stored in an encrypted form </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CompositionSettings </returns>
         public static CompositionSettingsResource Create(string friendlyName,
@@ -160,16 +156,12 @@ namespace Twilio.Rest.Video.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Friendly name of the configuration to be shown in the console </param>
-        /// <param name="awsCredentialsSid"> SID of the Stored Credential resource CRxx </param>
-        /// <param name="encryptionKeySid"> SID of the Public Key resource CRxx </param>
-        /// <param name="awsS3Url"> Identity of the external location where the compositions should be stored. We only support
-        ///                DNS-compliant URLs like http://<my-bucket>.s3-<aws-region>.amazonaws.com/compositions, where
-        ///                compositions is the path where you want compositions to be stored. </param>
-        /// <param name="awsStorageEnabled"> true|false When set to true, all Compositions will be written to the AwsS3Url
-        ///                         specified above. When set to false, all Compositions will be stored in Twilio's cloud.
-        ///                         </param>
-        /// <param name="encryptionEnabled"> true|false When set to true, all Compositions will be stored encrypted. </param>
+        /// <param name="friendlyName"> A descriptive string that you create to describe the resource </param>
+        /// <param name="awsCredentialsSid"> The SID of the stored Credential resource </param>
+        /// <param name="encryptionKeySid"> The SID of the Public Key resource to use for encryption </param>
+        /// <param name="awsS3Url"> The URL of the AWS S3 bucket where the compositions should be stored </param>
+        /// <param name="awsStorageEnabled"> Whether all compositions should be written to the aws_s3_url </param>
+        /// <param name="encryptionEnabled"> Whether all compositions should be stored in an encrypted form </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CompositionSettings </returns>
         public static async System.Threading.Tasks.Task<CompositionSettingsResource> CreateAsync(string friendlyName,
@@ -204,42 +196,42 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// The Twilio Account SID associated with this item
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Friendly name of the configuration to be shown in the console
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// SID of the Stored Credential resource CRxx
+        /// The SID of the stored Credential resource
         /// </summary>
         [JsonProperty("aws_credentials_sid")]
         public string AwsCredentialsSid { get; private set; }
         /// <summary>
-        /// URL of the S3 bucket where the compositions should be stored. We only support DNS-compliant URLs like http://<my-bucket>.s3-<aws-region>.amazonaws.com/compositions, where compositions is the path where you want compositions to be stored.
+        /// The URL of the AWS S3 bucket where the compositions are stored
         /// </summary>
         [JsonProperty("aws_s3_url")]
         public Uri AwsS3Url { get; private set; }
         /// <summary>
-        /// true|false When set to true, all Compositions will be written to the AwsS3Url specified above. When set to false, all Compositions will be stored in Twilio's cloud.
+        /// Whether all compositions are written to the aws_s3_url
         /// </summary>
         [JsonProperty("aws_storage_enabled")]
         public bool? AwsStorageEnabled { get; private set; }
         /// <summary>
-        /// SID of the Public Key resource CRxx
+        /// The SID of the Public Key resource used for encryption
         /// </summary>
         [JsonProperty("encryption_key_sid")]
         public string EncryptionKeySid { get; private set; }
         /// <summary>
-        /// true|false When set to true, all Compositions will be stored encrypted.
+        /// Whether all compositions are stored in an encrypted form
         /// </summary>
         [JsonProperty("encryption_enabled")]
         public bool? EncryptionEnabled { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

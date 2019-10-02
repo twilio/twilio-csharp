@@ -17,35 +17,35 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     public class FetchWorkerStatisticsOptions : IOptions<WorkerStatisticsResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the WorkerChannel to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The worker_sid
+        /// The SID of the Worker with the WorkerChannel to fetch
         /// </summary>
         public string PathWorkerSid { get; }
         /// <summary>
-        /// Filter cumulative statistics by up to 'x' minutes in the past.
+        /// Only calculate statistics since this many minutes in the past
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by a start date.
+        /// Only calculate statistics from on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by a end date.
+        /// Only include usage that occurred on or before this date
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by TaskChannel.
+        /// Only calculate statistics on this TaskChannel
         /// </summary>
         public string TaskChannel { get; set; }
 
         /// <summary>
         /// Construct a new FetchWorkerStatisticsOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
+        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
         public FetchWorkerStatisticsOptions(string pathWorkspaceSid, string pathWorkerSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

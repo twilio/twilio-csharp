@@ -47,7 +47,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
         /// <summary>
-        /// Returns a single Track resource represented by `TrackNameOrSid`.
+        /// Returns a single Track resource represented by TrackName or SID.
         /// </summary>
         /// <param name="options"> Fetch PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -61,7 +61,7 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
         #if !NET35
         /// <summary>
-        /// Returns a single Track resource represented by `TrackNameOrSid`.
+        /// Returns a single Track resource represented by TrackName or SID.
         /// </summary>
         /// <param name="options"> Fetch PublishedTrack parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -76,11 +76,11 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         #endif
 
         /// <summary>
-        /// Returns a single Track resource represented by `TrackNameOrSid`.
+        /// Returns a single Track resource represented by TrackName or SID.
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where this Track is published. </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resource to fetch is published </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published track to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of PublishedTrack </returns>
         public static PublishedTrackResource Fetch(string pathRoomSid,
@@ -94,11 +94,11 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 
         #if !NET35
         /// <summary>
-        /// Returns a single Track resource represented by `TrackNameOrSid`.
+        /// Returns a single Track resource represented by TrackName or SID.
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where this Track is published. </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resource to fetch is published </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published track to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of PublishedTrack </returns>
         public static async System.Threading.Tasks.Task<PublishedTrackResource> FetchAsync(string pathRoomSid,
@@ -162,8 +162,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list
         /// resource.
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where this Track is published. </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resources to read are published </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published tracks to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -183,8 +183,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// Returns a list of tracks associated with a given Participant. Only `currently` Published Tracks are in the list
         /// resource.
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where this Track is published. </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resources to read are published </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published tracks to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -278,48 +278,48 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Unique Participant identifier that publishes this Track.
+        /// The SID of the Participant resource with the published track
         /// </summary>
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }
         /// <summary>
-        /// Unique Room identifier where this Track is published.
+        /// The SID of the Room resource where the track is published
         /// </summary>
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
         /// <summary>
-        /// Track name. Limited to 128 characters.
+        /// The track name
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; private set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Specifies whether the Track is enabled or not.
+        /// Whether the track is enabled
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
         /// <summary>
-        /// Specifies whether Track represents `audio`, `video` or `data`
+        /// The track type
         /// </summary>
         [JsonProperty("kind")]
         [JsonConverter(typeof(StringEnumConverter))]
         public PublishedTrackResource.KindEnum Kind { get; private set; }
         /// <summary>
-        /// The absolute URL for this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

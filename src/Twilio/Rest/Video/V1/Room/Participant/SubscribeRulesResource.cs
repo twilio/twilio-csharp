@@ -66,8 +66,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <summary>
         /// Returns a list of Subscribe Rules for the Participant.
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where the Subscribe Rules apply </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier to apply Subscribe Rules. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to fetch apply </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribeRules </returns>
         public static SubscribeRulesResource Fetch(string pathRoomSid,
@@ -82,8 +82,8 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <summary>
         /// Returns a list of Subscribe Rules for the Participant.
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where the Subscribe Rules apply </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier to apply Subscribe Rules. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to fetch apply </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
         public static async System.Threading.Tasks.Task<SubscribeRulesResource> FetchAsync(string pathRoomSid,
@@ -138,9 +138,9 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <summary>
         /// Update the Subscribe Rules for the Participant
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where the Subscribe Rules apply </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier to apply Subscribe Rules. </param>
-        /// <param name="rules"> A JSON-encoded array of Subscribe Rules. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to update apply </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource to update the Subscribe Rules </param>
+        /// <param name="rules"> A JSON-encoded array of subscribe rules </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribeRules </returns>
         public static SubscribeRulesResource Update(string pathRoomSid,
@@ -156,9 +156,9 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         /// <summary>
         /// Update the Subscribe Rules for the Participant
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where the Subscribe Rules apply </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier to apply Subscribe Rules. </param>
-        /// <param name="rules"> A JSON-encoded array of Subscribe Rules. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to update apply </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource to update the Subscribe Rules </param>
+        /// <param name="rules"> A JSON-encoded array of subscribe rules </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribeRules </returns>
         public static async System.Threading.Tasks.Task<SubscribeRulesResource> UpdateAsync(string pathRoomSid,
@@ -190,27 +190,27 @@ namespace Twilio.Rest.Video.V1.Room.Participant
         }
 
         /// <summary>
-        /// The unique Participant identifier for the Subscribe Rules.
+        /// The SID of the Participant resource for the Subscribe Rules
         /// </summary>
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }
         /// <summary>
-        /// The unique Room identifier for the Subscribe Rules
+        /// The SID of the Room resource for the Subscribe Rules
         /// </summary>
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
         /// <summary>
-        /// A collection of Subscribe Rules to include or exclude matching Tracks.
+        /// A collection of Subscribe Rules that describe how to include or exclude matching tracks
         /// </summary>
         [JsonProperty("rules")]
         public List<SubscribeRule> Rules { get; private set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

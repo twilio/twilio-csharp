@@ -90,7 +90,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// Returns a single Recording Instance resource identified by a RecordingSid.
+        /// Returns a single Recording resource identified by a Recording SID.
         /// </summary>
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -104,7 +104,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Returns a single Recording Instance resource identified by a RecordingSid.
+        /// Returns a single Recording resource identified by a Recording SID.
         /// </summary>
         /// <param name="options"> Fetch Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -119,9 +119,9 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// Returns a single Recording Instance resource identified by a RecordingSid.
+        /// Returns a single Recording resource identified by a Recording SID.
         /// </summary>
-        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns>
         public static RecordingResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -132,9 +132,9 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Returns a single Recording Instance resource identified by a RecordingSid.
+        /// Returns a single Recording resource identified by a Recording SID.
         /// </summary>
-        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         public static async System.Threading.Tasks.Task<RecordingResource> FetchAsync(string pathSid,
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// List of all Track Recordings.
+        /// List of all Track recordings.
         /// </summary>
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// List of all Track Recordings.
+        /// List of all Track recordings.
         /// </summary>
         /// <param name="options"> Read Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -190,16 +190,16 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// List of all Track Recordings.
+        /// List of all Track recordings.
         /// </summary>
-        /// <param name="status"> Only show Recordings with the given status. </param>
-        /// <param name="sourceSid"> Only show the Recordings with the given source Sid. </param>
-        /// <param name="groupingSid"> Only show Recordings that have this GroupingSid. </param>
-        /// <param name="dateCreatedAfter"> Only show Recordings that started on or after this ISO8601 date-time with timezone.
-        ///                        </param>
-        /// <param name="dateCreatedBefore"> Only show Recordings that started before this ISO8601 date-time with timezone.
-        ///                         </param>
-        /// <param name="mediaType"> Only show Recordings that have this media type. </param>
+        /// <param name="status"> Read only the recordings that have this status </param>
+        /// <param name="sourceSid"> Read only the recordings that have this source_sid </param>
+        /// <param name="groupingSid"> Read only recordings that have this grouping_sid </param>
+        /// <param name="dateCreatedAfter"> Read only recordings that started on or after this [ISO
+        ///                        8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone </param>
+        /// <param name="dateCreatedBefore"> Read only recordings that started before this [ISO
+        ///                         8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone </param>
+        /// <param name="mediaType"> Read only recordings that have this media type </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -220,16 +220,16 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// List of all Track Recordings.
+        /// List of all Track recordings.
         /// </summary>
-        /// <param name="status"> Only show Recordings with the given status. </param>
-        /// <param name="sourceSid"> Only show the Recordings with the given source Sid. </param>
-        /// <param name="groupingSid"> Only show Recordings that have this GroupingSid. </param>
-        /// <param name="dateCreatedAfter"> Only show Recordings that started on or after this ISO8601 date-time with timezone.
-        ///                        </param>
-        /// <param name="dateCreatedBefore"> Only show Recordings that started before this ISO8601 date-time with timezone.
-        ///                         </param>
-        /// <param name="mediaType"> Only show Recordings that have this media type. </param>
+        /// <param name="status"> Read only the recordings that have this status </param>
+        /// <param name="sourceSid"> Read only the recordings that have this source_sid </param>
+        /// <param name="groupingSid"> Read only recordings that have this grouping_sid </param>
+        /// <param name="dateCreatedAfter"> Read only recordings that started on or after this [ISO
+        ///                        8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone </param>
+        /// <param name="dateCreatedBefore"> Read only recordings that started before this [ISO
+        ///                         8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone </param>
+        /// <param name="mediaType"> Read only recordings that have this media type </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -320,7 +320,7 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// Delete a Recording Instance resource identified by a RecordingSid.
+        /// Delete a Recording resource identified by a Recording SID.
         /// </summary>
         /// <param name="options"> Delete Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -334,7 +334,7 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Delete a Recording Instance resource identified by a RecordingSid.
+        /// Delete a Recording resource identified by a Recording SID.
         /// </summary>
         /// <param name="options"> Delete Recording parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -349,9 +349,9 @@ namespace Twilio.Rest.Video.V1
         #endif
 
         /// <summary>
-        /// Delete a Recording Instance resource identified by a RecordingSid.
+        /// Delete a Recording resource identified by a Recording SID.
         /// </summary>
-        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to delete. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -362,9 +362,9 @@ namespace Twilio.Rest.Video.V1
 
         #if !NET35
         /// <summary>
-        /// Delete a Recording Instance resource identified by a RecordingSid.
+        /// Delete a Recording resource identified by a Recording SID.
         /// </summary>
-        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to delete. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -393,81 +393,81 @@ namespace Twilio.Rest.Video.V1
         }
 
         /// <summary>
-        /// Twilio Account SID.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The status of the Recording.
+        /// The status of the recording
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// Date when the media recording began writing.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies this Recording.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A 34-character string that uniquely identifies the source of this Recording.
+        /// The SID of the recording source
         /// </summary>
         [JsonProperty("source_sid")]
         public string SourceSid { get; private set; }
         /// <summary>
-        /// Size of the recorded track, in bytes.
+        /// The size of the recorded track, in bytes
         /// </summary>
         [JsonProperty("size")]
         public long? Size { get; private set; }
         /// <summary>
-        /// The absolute URL for this resource.
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Indicates the media type for this recording.
+        /// The recording's media type
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.TypeEnum Type { get; private set; }
         /// <summary>
-        /// Duration of the Recording in seconds.
+        /// The duration of the recording in seconds
         /// </summary>
         [JsonProperty("duration")]
         public int? Duration { get; private set; }
         /// <summary>
-        /// The file format for this Recording.
+        /// The file format for the recording
         /// </summary>
         [JsonProperty("container_format")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.FormatEnum ContainerFormat { get; private set; }
         /// <summary>
-        /// The codec used to encode the track.
+        /// The codec used to encode the track
         /// </summary>
         [JsonProperty("codec")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.CodecEnum Codec { get; private set; }
         /// <summary>
-        /// A list of Sids related to this Recording.
+        /// A list of SIDs related to the recording
         /// </summary>
         [JsonProperty("grouping_sids")]
         public object GroupingSids { get; private set; }
         /// <summary>
-        /// The name that was given to the source track of this recording.
+        /// The name that was given to the source track of the recording
         /// </summary>
         [JsonProperty("track_name")]
         public string TrackName { get; private set; }
         /// <summary>
-        /// Offset in milliseconds for this track.
+        /// The number of milliseconds between a point in time that is common to all rooms in a group and when the source room of the recording started
         /// </summary>
         [JsonProperty("offset")]
         public long? Offset { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

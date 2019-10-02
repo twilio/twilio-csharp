@@ -20,19 +20,19 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class FetchMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Session for this message.
+        /// The SID of the Session with the message to fetch
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this message. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the message to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchMessageOptions(string pathSessionSid, string pathSid)
         {
             PathSessionSid = pathSessionSid;
@@ -58,34 +58,34 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class CreateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Session for this message.
+        /// The SID of the Session for the message
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// The identity of the message's author.
+        /// The identity of the message's author
         /// </summary>
         public string Author { get; set; }
         /// <summary>
-        /// A string metadata field you can use to store any data you wish.
+        /// A JSON string that stores application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// The contents of the message.
+        /// The message body
         /// </summary>
         public string Body { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this message. </param>
+        /// <param name="pathSessionSid"> The SID of the Session for the message </param>
         public CreateMessageOptions(string pathSessionSid)
         {
             PathSessionSid = pathSessionSid;
@@ -135,39 +135,39 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class UpdateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Session for this message.
+        /// The SID of the Session with the message to update
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The identity of the message's author.
+        /// The identity of the message's author
         /// </summary>
         public string Author { get; set; }
         /// <summary>
-        /// A string metadata field you can use to store any data you wish.
+        /// A JSON string that stores application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// The contents of the message.
+        /// The message body
         /// </summary>
         public string Body { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this message. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the message to update </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
         public UpdateMessageOptions(string pathSessionSid, string pathSid)
         {
             PathSessionSid = pathSessionSid;
@@ -218,14 +218,14 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class ReadMessageOptions : ReadOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Session for this message.
+        /// The SID of the Session with the messages to read
         /// </summary>
         public string PathSessionSid { get; }
 
         /// <summary>
         /// Construct a new ReadMessageOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this message. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the messages to read </param>
         public ReadMessageOptions(string pathSessionSid)
         {
             PathSessionSid = pathSessionSid;
@@ -255,19 +255,19 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class DeleteMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Session for this message.
+        /// The SID of the Session with the message to delete
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this message. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the message to delete </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteMessageOptions(string pathSessionSid, string pathSid)
         {
             PathSessionSid = pathSessionSid;

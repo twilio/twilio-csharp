@@ -77,7 +77,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workspace </returns>
         public static WorkspaceResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workspace </returns>
         public static async System.Threading.Tasks.Task<WorkspaceResource> FetchAsync(string pathSid,
@@ -144,19 +144,17 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="defaultActivitySid"> The ID of the Activity that will be used when new Workers are created in this
-        ///                          Workspace. </param>
-        /// <param name="eventCallbackUrl"> The Workspace will publish events to this URL. </param>
-        /// <param name="eventsFilter"> Use this parameter to receive webhooks on EventCallbackUrl for specific events on a
-        ///                    workspace. </param>
-        /// <param name="friendlyName"> Human readable description of this workspace </param>
-        /// <param name="multiTaskEnabled"> Enable or Disable Multitasking by passing either true or False with the POST
-        ///                        request. </param>
-        /// <param name="timeoutActivitySid"> The ID of the Activity that will be assigned to a Worker when a Task reservation
-        ///                          times out without a response. </param>
-        /// <param name="prioritizeQueueOrder"> Use this parameter to configure whether to prioritize LIFO or FIFO when workers
-        ///                            are receiving Tasks from combination of LIFO and FIFO TaskQueues. </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
+        /// <param name="defaultActivitySid"> The SID of the Activity that will be used when new Workers are created in the
+        ///                          Workspace </param>
+        /// <param name="eventCallbackUrl"> The URL we should call when an event occurs </param>
+        /// <param name="eventsFilter"> The list of Workspace events for which to call event_callback_url </param>
+        /// <param name="friendlyName"> A string to describe the Workspace resource </param>
+        /// <param name="multiTaskEnabled"> Whether multi-tasking is enabled </param>
+        /// <param name="timeoutActivitySid"> The SID of the Activity that will be assigned to a Worker when a Task reservation
+        ///                          times out without a response </param>
+        /// <param name="prioritizeQueueOrder"> The type of TaskQueue to prioritize when Workers are receiving Tasks from both
+        ///                            types of TaskQueues </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workspace </returns>
         public static WorkspaceResource Update(string pathSid,
@@ -177,19 +175,17 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="defaultActivitySid"> The ID of the Activity that will be used when new Workers are created in this
-        ///                          Workspace. </param>
-        /// <param name="eventCallbackUrl"> The Workspace will publish events to this URL. </param>
-        /// <param name="eventsFilter"> Use this parameter to receive webhooks on EventCallbackUrl for specific events on a
-        ///                    workspace. </param>
-        /// <param name="friendlyName"> Human readable description of this workspace </param>
-        /// <param name="multiTaskEnabled"> Enable or Disable Multitasking by passing either true or False with the POST
-        ///                        request. </param>
-        /// <param name="timeoutActivitySid"> The ID of the Activity that will be assigned to a Worker when a Task reservation
-        ///                          times out without a response. </param>
-        /// <param name="prioritizeQueueOrder"> Use this parameter to configure whether to prioritize LIFO or FIFO when workers
-        ///                            are receiving Tasks from combination of LIFO and FIFO TaskQueues. </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
+        /// <param name="defaultActivitySid"> The SID of the Activity that will be used when new Workers are created in the
+        ///                          Workspace </param>
+        /// <param name="eventCallbackUrl"> The URL we should call when an event occurs </param>
+        /// <param name="eventsFilter"> The list of Workspace events for which to call event_callback_url </param>
+        /// <param name="friendlyName"> A string to describe the Workspace resource </param>
+        /// <param name="multiTaskEnabled"> Whether multi-tasking is enabled </param>
+        /// <param name="timeoutActivitySid"> The SID of the Activity that will be assigned to a Worker when a Task reservation
+        ///                          times out without a response </param>
+        /// <param name="prioritizeQueueOrder"> The type of TaskQueue to prioritize when Workers are receiving Tasks from both
+        ///                            types of TaskQueues </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workspace </returns>
         public static async System.Threading.Tasks.Task<WorkspaceResource> UpdateAsync(string pathSid,
@@ -254,7 +250,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> Filter by a workspace's friendly name. </param>
+        /// <param name="friendlyName"> The friendly_name of the Workspace resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -272,7 +268,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> Filter by a workspace's friendly name. </param>
+        /// <param name="friendlyName"> The friendly_name of the Workspace resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -389,14 +385,13 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Human readable description of this workspace </param>
-        /// <param name="eventCallbackUrl"> If provided, the Workspace will publish events to this URL. </param>
-        /// <param name="eventsFilter"> Use this parameter to receive webhooks on EventCallbackUrl for specific events on a
-        ///                    workspace. </param>
-        /// <param name="multiTaskEnabled"> Multi tasking allows workers to handle multiple tasks simultaneously. </param>
-        /// <param name="template"> One of the available template names. </param>
-        /// <param name="prioritizeQueueOrder"> Use this parameter to configure whether to prioritize LIFO or FIFO when workers
-        ///                            are receiving Tasks from combination of LIFO and FIFO TaskQueues. </param>
+        /// <param name="friendlyName"> A string to describe the Workspace resource </param>
+        /// <param name="eventCallbackUrl"> The URL we should call when an event occurs </param>
+        /// <param name="eventsFilter"> The list of Workspace events for which to call event_callback_url </param>
+        /// <param name="multiTaskEnabled"> Whether multi-tasking is enabled </param>
+        /// <param name="template"> An available template name </param>
+        /// <param name="prioritizeQueueOrder"> The type of TaskQueue to prioritize when Workers are receiving Tasks from both
+        ///                            types of TaskQueues </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workspace </returns>
         public static WorkspaceResource Create(string friendlyName,
@@ -415,14 +410,13 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> Human readable description of this workspace </param>
-        /// <param name="eventCallbackUrl"> If provided, the Workspace will publish events to this URL. </param>
-        /// <param name="eventsFilter"> Use this parameter to receive webhooks on EventCallbackUrl for specific events on a
-        ///                    workspace. </param>
-        /// <param name="multiTaskEnabled"> Multi tasking allows workers to handle multiple tasks simultaneously. </param>
-        /// <param name="template"> One of the available template names. </param>
-        /// <param name="prioritizeQueueOrder"> Use this parameter to configure whether to prioritize LIFO or FIFO when workers
-        ///                            are receiving Tasks from combination of LIFO and FIFO TaskQueues. </param>
+        /// <param name="friendlyName"> A string to describe the Workspace resource </param>
+        /// <param name="eventCallbackUrl"> The URL we should call when an event occurs </param>
+        /// <param name="eventsFilter"> The list of Workspace events for which to call event_callback_url </param>
+        /// <param name="multiTaskEnabled"> Whether multi-tasking is enabled </param>
+        /// <param name="template"> An available template name </param>
+        /// <param name="prioritizeQueueOrder"> The type of TaskQueue to prioritize when Workers are receiving Tasks from both
+        ///                            types of TaskQueues </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workspace </returns>
         public static async System.Threading.Tasks.Task<WorkspaceResource> CreateAsync(string friendlyName,
@@ -481,7 +475,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workspace </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -494,7 +488,7 @@ namespace Twilio.Rest.Taskrouter.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workspace </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -523,78 +517,78 @@ namespace Twilio.Rest.Taskrouter.V1
         }
 
         /// <summary>
-        /// The ID of the account that owns this Workflow
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The time the Workspace was created, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The time the Workspace was last updated, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The human readable name of the default activity.
+        /// The name of the default activity
         /// </summary>
         [JsonProperty("default_activity_name")]
         public string DefaultActivityName { get; private set; }
         /// <summary>
-        /// The ID of the Activity that will be used when new Workers are created in this Workspace.
+        /// The SID of the Activity that will be used when new Workers are created in the Workspace
         /// </summary>
         [JsonProperty("default_activity_sid")]
         public string DefaultActivitySid { get; private set; }
         /// <summary>
-        /// If provided, the Workspace will publish events to this URL.
+        /// The URL we call when an event occurs
         /// </summary>
         [JsonProperty("event_callback_url")]
         public Uri EventCallbackUrl { get; private set; }
         /// <summary>
-        /// Use this parameter to receive webhooks on EventCallbackUrl for specific events on a workspace.
+        /// The list of Workspace events for which to call event_callback_url
         /// </summary>
         [JsonProperty("events_filter")]
         public string EventsFilter { get; private set; }
         /// <summary>
-        /// Filter by a workspace's friendly name.
+        /// The string that you assigned to describe the Workspace resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// Multi tasking allows workers to handle multiple tasks simultaneously.
+        /// Whether multi-tasking is enabled
         /// </summary>
         [JsonProperty("multi_task_enabled")]
         public bool? MultiTaskEnabled { get; private set; }
         /// <summary>
-        /// The unique ID of the Workspace
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The human readable name of the timeout activity.
+        /// The name of the timeout activity
         /// </summary>
         [JsonProperty("timeout_activity_name")]
         public string TimeoutActivityName { get; private set; }
         /// <summary>
-        /// The ID of the Activity that will be assigned to a Worker when a Task reservation times out without a response.
+        /// The SID of the Activity that will be assigned to a Worker when a Task reservation times out without a response
         /// </summary>
         [JsonProperty("timeout_activity_sid")]
         public string TimeoutActivitySid { get; private set; }
         /// <summary>
-        /// Use this parameter to configure whether to prioritize LIFO or FIFO when workers are receiving Tasks from combination of LIFO and FIFO TaskQueues.
+        /// The type of TaskQueue to prioritize when Workers are receiving Tasks from both types of TaskQueues
         /// </summary>
         [JsonProperty("prioritize_queue_order")]
         [JsonConverter(typeof(StringEnumConverter))]
         public WorkspaceResource.QueueOrderEnum PrioritizeQueueOrder { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Workspace resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

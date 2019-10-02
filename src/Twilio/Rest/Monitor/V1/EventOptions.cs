@@ -17,14 +17,14 @@ namespace Twilio.Rest.Monitor.V1
     public class FetchEventOptions : IOptions<EventResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this event.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchEventOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this event. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchEventOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -41,32 +41,32 @@ namespace Twilio.Rest.Monitor.V1
     }
 
     /// <summary>
-    /// Returns a list of Events in this account, sorted by event-date.
+    /// Returns a list of events in the account, sorted by event-date.
     /// </summary>
     public class ReadEventOptions : ReadOptions<EventResource>
     {
         /// <summary>
-        /// Only include Events initiated by this Actor
+        /// Only include events initiated by this Actor
         /// </summary>
         public string ActorSid { get; set; }
         /// <summary>
-        /// Only include Events of this EventType
+        /// Only include events of this Event Type
         /// </summary>
         public string EventType { get; set; }
         /// <summary>
-        /// Only include Events referring to this resource
+        /// Only include events that refer to this resource
         /// </summary>
         public string ResourceSid { get; set; }
         /// <summary>
-        /// Only include Events that originated from this IP address
+        /// Only include events that originated from this IP address
         /// </summary>
         public string SourceIpAddress { get; set; }
         /// <summary>
-        /// Only show events on or after this date
+        /// Only include events that occurred on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Only show events on or before this date
+        /// Only include events that occurred on or before this date
         /// </summary>
         public DateTime? EndDate { get; set; }
 

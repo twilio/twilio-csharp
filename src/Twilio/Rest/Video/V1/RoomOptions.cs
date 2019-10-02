@@ -18,14 +18,14 @@ namespace Twilio.Rest.Video.V1
     public class FetchRoomOptions : IOptions<RoomResource>
     {
         /// <summary>
-        /// The Room Sid or name that uniquely identifies this resource.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchRoomOptions
         /// </summary>
-        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchRoomOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -47,39 +47,39 @@ namespace Twilio.Rest.Video.V1
     public class CreateRoomOptions : IOptions<RoomResource>
     {
         /// <summary>
-        /// Use Twilio Network Traversal for TURN service.
+        /// Enable Twilio's Network Traversal TURN service
         /// </summary>
         public bool? EnableTurn { get; set; }
         /// <summary>
-        /// Type of room, either peer-to-peer, group-small or group.
+        /// The type of room
         /// </summary>
         public RoomResource.RoomTypeEnum Type { get; set; }
         /// <summary>
-        /// Name of the Room.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// A URL that Twilio sends asynchronous webhook requests to on every room event.
+        /// The URL to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// HTTP method Twilio should use when requesting the above URL.
+        /// The HTTP method we should use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// Maximum number of Participants in the Room.
+        /// The maximum number of concurrent Participants allowed in the room
         /// </summary>
         public int? MaxParticipants { get; set; }
         /// <summary>
-        /// Start Participant recording when connected.
+        /// Whether to start recording when Participants connect
         /// </summary>
         public bool? RecordParticipantsOnConnect { get; set; }
         /// <summary>
-        /// An array of video codecs supported when publishing a Track in the Room.
+        /// An array of the video codecs that are supported when publishing a track in the room
         /// </summary>
         public List<RoomResource.VideoCodecEnum> VideoCodecs { get; set; }
         /// <summary>
-        /// Region for the media server in Group Rooms.
+        /// The region for the media server in Group Rooms
         /// </summary>
         public string MediaRegion { get; set; }
 
@@ -152,19 +152,19 @@ namespace Twilio.Rest.Video.V1
     public class ReadRoomOptions : ReadOptions<RoomResource>
     {
         /// <summary>
-        /// Only show Rooms with the given status.
+        /// Read only the rooms with this status
         /// </summary>
         public RoomResource.RoomStatusEnum Status { get; set; }
         /// <summary>
-        /// Only show Rooms with the provided Name.
+        /// Read only rooms with this unique_name
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// Only show Rooms that started on or after this date, given as YYYY-MM-DD.
+        /// Read only rooms that started on or after this date, given as YYYY-MM-DD
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Only show Rooms that started before this date, given as YYYY-MM-DD.
+        /// Read only rooms that started before this date, given as YYYY-MM-DD
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
 
@@ -209,19 +209,19 @@ namespace Twilio.Rest.Video.V1
     public class UpdateRoomOptions : IOptions<RoomResource>
     {
         /// <summary>
-        /// The Room Sid or name that uniquely identifies this resource.
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Set to completed to end the Room.
+        /// The new status of the resource
         /// </summary>
         public RoomResource.RoomStatusEnum Status { get; }
 
         /// <summary>
         /// Construct a new UpdateRoomOptions
         /// </summary>
-        /// <param name="pathSid"> The Room Sid or name that uniquely identifies this resource. </param>
-        /// <param name="status"> Set to completed to end the Room. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="status"> The new status of the resource </param>
         public UpdateRoomOptions(string pathSid, RoomResource.RoomStatusEnum status)
         {
             PathSid = pathSid;

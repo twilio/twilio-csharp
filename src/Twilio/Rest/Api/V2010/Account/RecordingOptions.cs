@@ -87,15 +87,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
+        /// Only include recordings that were created on this date
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
+        /// Only include recordings that were created on this date
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
+        /// Only include recordings that were created on this date
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>

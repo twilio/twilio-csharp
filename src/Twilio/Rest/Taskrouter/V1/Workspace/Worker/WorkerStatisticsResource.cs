@@ -63,12 +63,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
-        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
+        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="taskChannel"> Only calculate statistics on this TaskChannel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkerStatistics </returns>
         public static WorkerStatisticsResource Fetch(string pathWorkspaceSid,
@@ -87,12 +87,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
-        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerChannel to fetch </param>
+        /// <param name="pathWorkerSid"> The SID of the Worker with the WorkerChannel to fetch </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="taskChannel"> Only calculate statistics on this TaskChannel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkerStatistics </returns>
         public static async System.Threading.Tasks.Task<WorkerStatisticsResource> FetchAsync(string pathWorkspaceSid,
@@ -127,27 +127,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The cumulative
+        /// An object that contains the cumulative statistics for the Worker
         /// </summary>
         [JsonProperty("cumulative")]
         public object Cumulative { get; private set; }
         /// <summary>
-        /// The worker_sid
+        /// The SID of the Worker that contains the WorkerChannel
         /// </summary>
         [JsonProperty("worker_sid")]
         public string WorkerSid { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that contains the WorkerChannel
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the WorkerChannel statistics resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

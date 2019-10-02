@@ -12,29 +12,29 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
     /// <summary>
-    /// Returns a single Track resource represented by `TrackNameOrSid`.
+    /// Returns a single Track resource represented by TrackName or SID.
     /// </summary>
     public class FetchPublishedTrackOptions : IOptions<PublishedTrackResource>
     {
         /// <summary>
-        /// Unique Room identifier where this Track is published.
+        /// The SID of the Room resource where the Track resource to fetch is published
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// Unique Participant identifier that publishes this Track.
+        /// The SID of the Participant resource with the published track to fetch
         /// </summary>
         public string PathParticipantSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchPublishedTrackOptions
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where this Track is published. </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resource to fetch is published </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published track to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchPublishedTrackOptions(string pathRoomSid, string pathParticipantSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -59,19 +59,19 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     public class ReadPublishedTrackOptions : ReadOptions<PublishedTrackResource>
     {
         /// <summary>
-        /// Unique Room identifier where this Track is published.
+        /// The SID of the Room resource where the Track resources to read are published
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// Unique Participant identifier that publishes this Track.
+        /// The SID of the Participant resource with the published tracks to read
         /// </summary>
         public string PathParticipantSid { get; }
 
         /// <summary>
         /// Construct a new ReadPublishedTrackOptions
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where this Track is published. </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier that publishes this Track. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the Track resources to read are published </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the published tracks to read </param>
         public ReadPublishedTrackOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;

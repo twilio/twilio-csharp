@@ -211,7 +211,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID of the WebChannel resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WebChannel </returns>
         public static WebChannelResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -224,7 +224,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID of the WebChannel resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WebChannel </returns>
         public static async System.Threading.Tasks.Task<WebChannelResource> FetchAsync(string pathSid,
@@ -278,12 +278,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="flexFlowSid"> The unique ID of the FlexFlow </param>
-        /// <param name="identity"> Chat identity </param>
-        /// <param name="customerFriendlyName"> Customer friendly name </param>
-        /// <param name="chatFriendlyName"> Chat channel friendly name </param>
-        /// <param name="chatUniqueName"> Chat channel unique name </param>
-        /// <param name="preEngagementData"> Pre-engagement data </param>
+        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="identity"> The chat identity </param>
+        /// <param name="customerFriendlyName"> The chat participant's friendly name </param>
+        /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
+        /// <param name="chatUniqueName"> The chat channel's unique name </param>
+        /// <param name="preEngagementData"> The pre-engagement data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WebChannel </returns>
         public static WebChannelResource Create(string flexFlowSid,
@@ -302,12 +302,12 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="flexFlowSid"> The unique ID of the FlexFlow </param>
-        /// <param name="identity"> Chat identity </param>
-        /// <param name="customerFriendlyName"> Customer friendly name </param>
-        /// <param name="chatFriendlyName"> Chat channel friendly name </param>
-        /// <param name="chatUniqueName"> Chat channel unique name </param>
-        /// <param name="preEngagementData"> Pre-engagement data </param>
+        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="identity"> The chat identity </param>
+        /// <param name="customerFriendlyName"> The chat participant's friendly name </param>
+        /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
+        /// <param name="chatUniqueName"> The chat channel's unique name </param>
+        /// <param name="preEngagementData"> The pre-engagement data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WebChannel </returns>
         public static async System.Threading.Tasks.Task<WebChannelResource> CreateAsync(string flexFlowSid,
@@ -366,9 +366,9 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> Channel Sid. </param>
-        /// <param name="chatStatus"> Chat status </param>
-        /// <param name="postEngagementData"> Post-engagement data </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="chatStatus"> The chat status </param>
+        /// <param name="postEngagementData"> The post-engagement data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WebChannel </returns>
         public static WebChannelResource Update(string pathSid,
@@ -384,9 +384,9 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> Channel Sid. </param>
-        /// <param name="chatStatus"> Chat status </param>
-        /// <param name="postEngagementData"> Post-engagement data </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="chatStatus"> The chat status </param>
+        /// <param name="postEngagementData"> The post-engagement data </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WebChannel </returns>
         public static async System.Threading.Tasks.Task<WebChannelResource> UpdateAsync(string pathSid,
@@ -442,7 +442,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WebChannel </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -455,7 +455,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WebChannel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -484,32 +484,32 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
         /// <summary>
-        /// The ID of the account that owns this Workflow
+        /// The SID of the Account that created the resource and owns this Workflow
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique ID of the FlexFlow
+        /// The SID of the FlexFlow
         /// </summary>
         [JsonProperty("flex_flow_sid")]
         public string FlexFlowSid { get; private set; }
         /// <summary>
-        /// Flex Chat Channel Sid
+        /// The unique string that identifies the WebChannel resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the WebChannel resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The time the Flex Chat Channel was created, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The time the Flex Chat Channel was last updated, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

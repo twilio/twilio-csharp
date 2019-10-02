@@ -17,19 +17,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class FetchWorkflowOptions : IOptions<WorkflowResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Workflow to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchWorkflowOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
+        /// <param name="pathSid"> The SID of the resource </param>
         public FetchWorkflowOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -52,39 +52,39 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class UpdateWorkflowOptions : IOptions<WorkflowResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Workflow to update
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A string representing a human readable name for this Workflow.
+        ///  descriptive string that you create to describe the Workflow resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// A valid URL for the application that will process task assignment events.
+        /// The URL from your application that will process task assignment events
         /// </summary>
         public Uri AssignmentCallbackUrl { get; set; }
         /// <summary>
-        /// If the request to the AssignmentCallbackUrl fails, the assignment callback will be made to this URL.
+        /// The URL that we should call when a call to the `assignment_callback_url` fails
         /// </summary>
         public Uri FallbackAssignmentCallbackUrl { get; set; }
         /// <summary>
-        /// JSON document configuring the rules for this Workflow.
+        /// A JSON string that contains the rules to apply to the Workflow
         /// </summary>
         public string Configuration { get; set; }
         /// <summary>
-        /// An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker.
+        /// How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker
         /// </summary>
         public int? TaskReservationTimeout { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWorkflowOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to update </param>
+        /// <param name="pathSid"> The SID of the resource </param>
         public UpdateWorkflowOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -132,19 +132,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class DeleteWorkflowOptions : IOptions<WorkflowResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Workflow to delete
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the Workflow resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteWorkflowOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to delete </param>
+        /// <param name="pathSid"> The SID of the Workflow resource to delete </param>
         public DeleteWorkflowOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -167,18 +167,18 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class ReadWorkflowOptions : ReadOptions<WorkflowResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Workflow to read
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Human readable description of this Workflow
+        /// The friendly_name of the Workflow resources to read
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new ReadWorkflowOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to read </param>
         public ReadWorkflowOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -210,36 +210,36 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class CreateWorkflowOptions : IOptions<WorkflowResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that the new Workflow to create belongs to
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// A string representing a human readable name for this Workflow.
+        ///  descriptive string that you create to describe the Workflow resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// JSON document configuring the rules for this Workflow.
+        /// A JSON string that contains the rules to apply to the Workflow
         /// </summary>
         public string Configuration { get; }
         /// <summary>
-        /// A valid URL for the application that will process task assignment events.
+        /// The URL from your application that will process task assignment events
         /// </summary>
         public Uri AssignmentCallbackUrl { get; set; }
         /// <summary>
-        /// If the request to the AssignmentCallbackUrl fails, the assignment callback will be made to this URL.
+        /// The URL that we should call when a call to the `assignment_callback_url` fails
         /// </summary>
         public Uri FallbackAssignmentCallbackUrl { get; set; }
         /// <summary>
-        /// An integer value controlling how long in seconds TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker.
+        /// How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker
         /// </summary>
         public int? TaskReservationTimeout { get; set; }
 
         /// <summary>
         /// Construct a new CreateWorkflowOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> A string representing a human readable name for this Workflow. </param>
-        /// <param name="configuration"> JSON document configuring the rules for this Workflow. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Workflow to create belongs to </param>
+        /// <param name="friendlyName">  descriptive string that you create to describe the Workflow resource </param>
+        /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow </param>
         public CreateWorkflowOptions(string pathWorkspaceSid, string friendlyName, string configuration)
         {
             PathWorkspaceSid = pathWorkspaceSid;

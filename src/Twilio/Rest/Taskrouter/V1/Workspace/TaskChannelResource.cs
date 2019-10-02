@@ -63,8 +63,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to fetch </param>
+        /// <param name="pathSid"> The SID of the TaskChannel resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskChannel </returns>
         public static TaskChannelResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
@@ -77,8 +77,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to fetch </param>
+        /// <param name="pathSid"> The SID of the TaskChannel resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
         public static async System.Threading.Tasks.Task<TaskChannelResource> FetchAsync(string pathWorkspaceSid,
@@ -137,7 +137,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -272,10 +272,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
-        /// <param name="friendlyName"> Toggle the FriendlyName for the TaskChannel </param>
-        /// <param name="channelOptimizedRouting"> If true then prioritize longest idle workers </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to update </param>
+        /// <param name="pathSid"> The SID of the TaskChannel resource to update </param>
+        /// <param name="friendlyName"> A string to describe the TaskChannel resource </param>
+        /// <param name="channelOptimizedRouting"> Whether the TaskChannel should prioritize Workers that have been idle
+        ///                               </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskChannel </returns>
         public static TaskChannelResource Update(string pathWorkspaceSid,
@@ -292,10 +293,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
-        /// <param name="friendlyName"> Toggle the FriendlyName for the TaskChannel </param>
-        /// <param name="channelOptimizedRouting"> If true then prioritize longest idle workers </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to update </param>
+        /// <param name="pathSid"> The SID of the TaskChannel resource to update </param>
+        /// <param name="friendlyName"> A string to describe the TaskChannel resource </param>
+        /// <param name="channelOptimizedRouting"> Whether the TaskChannel should prioritize Workers that have been idle
+        ///                               </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
         public static async System.Threading.Tasks.Task<TaskChannelResource> UpdateAsync(string pathWorkspaceSid,
@@ -352,8 +354,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to delete </param>
+        /// <param name="pathSid"> The SID of the TaskChannel resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskChannel </returns>
         public static bool Delete(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
@@ -366,8 +368,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="pathSid"> The unique ID for this TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskChannel to delete </param>
+        /// <param name="pathSid"> The SID of the TaskChannel resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
@@ -422,10 +424,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="friendlyName"> String representing user-friendly name for the TaskChannel </param>
-        /// <param name="uniqueName"> String representing unique name for the TaskChannel </param>
-        /// <param name="channelOptimizedRouting"> If true then prioritize longest idle workers </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskChannel belongs to </param>
+        /// <param name="friendlyName"> A string to describe the TaskChannel resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the TaskChannel </param>
+        /// <param name="channelOptimizedRouting"> Whether the TaskChannel should prioritize Workers that have been idle
+        ///                               </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskChannel </returns>
         public static TaskChannelResource Create(string pathWorkspaceSid,
@@ -442,10 +445,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The unique ID of the Workspace that this TaskChannel belongs to. </param>
-        /// <param name="friendlyName"> String representing user-friendly name for the TaskChannel </param>
-        /// <param name="uniqueName"> String representing unique name for the TaskChannel </param>
-        /// <param name="channelOptimizedRouting"> If true then prioritize longest idle workers </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskChannel belongs to </param>
+        /// <param name="friendlyName"> A string to describe the TaskChannel resource </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the TaskChannel </param>
+        /// <param name="channelOptimizedRouting"> Whether the TaskChannel should prioritize Workers that have been idle
+        ///                               </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskChannel </returns>
         public static async System.Threading.Tasks.Task<TaskChannelResource> CreateAsync(string pathWorkspaceSid,
@@ -478,52 +482,52 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
         /// <summary>
-        /// The unique ID of the Account that owns this TaskChannel.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date this TaskChannel was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this TaskChannel was updated.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The friendly name of this TaskChannel
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The unique ID for this TaskChannel.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique name of TaskChannel, such as 'voice', 'sms', etc.
+        /// An application-defined string that uniquely identifies the TaskChannel
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The unique ID of the Workspace that this TaskChannel belongs to.
+        /// The SID of the Workspace that contains the TaskChannel
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// If true then prioritize longest idle workers
+        /// Whether the TaskChannel will prioritize Workers that have been idle
         /// </summary>
         [JsonProperty("channel_optimized_routing")]
         public bool? ChannelOptimizedRouting { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the TaskChannel resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

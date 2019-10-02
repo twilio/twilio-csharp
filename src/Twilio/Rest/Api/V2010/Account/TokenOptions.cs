@@ -12,7 +12,7 @@ namespace Twilio.Rest.Api.V2010.Account
 {
 
     /// <summary>
-    /// Create a new token
+    /// Create a new token for ICE servers
     /// </summary>
     public class CreateTokenOptions : IOptions<TokenResource>
     {

@@ -17,19 +17,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class FetchTaskQueueOptions : IOptions<TaskQueueResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the TaskQueue to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchTaskQueueOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to  </param>
         public FetchTaskQueueOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -52,43 +52,43 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class UpdateTaskQueueOptions : IOptions<TaskQueueResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the TaskQueue to update
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Human readable description of this TaskQueue
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// A string describing the Worker selection criteria for any Tasks that enter this TaskQueue.
+        /// A string describing the Worker selection criteria for any Tasks that enter the TaskQueue
         /// </summary>
         public string TargetWorkers { get; set; }
         /// <summary>
-        /// ActivitySID that will be assigned to Workers when they are reserved for a task from this TaskQueue.
+        /// The SID of the Activity to assign Workers when a task is reserved for them
         /// </summary>
         public string ReservationActivitySid { get; set; }
         /// <summary>
-        /// ActivitySID that will be assigned to Workers when they are assigned a task from this TaskQueue.
+        /// The SID of the Activity to assign Workers when a task is assigned for them
         /// </summary>
         public string AssignmentActivitySid { get; set; }
         /// <summary>
-        /// The maximum amount of workers to create reservations for the assignment of a task while in this queue.
+        /// The maximum number of Workers to create reservations for the assignment of a task while in the queue
         /// </summary>
         public int? MaxReservedWorkers { get; set; }
         /// <summary>
-        /// TaskOrder will determine which order the Tasks will be assigned to Workers.
+        /// How Tasks will be assigned to Workers
         /// </summary>
         public TaskQueueResource.TaskOrderEnum TaskOrder { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTaskQueueOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to update </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
         public UpdateTaskQueueOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -141,26 +141,26 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class ReadTaskQueueOptions : ReadOptions<TaskQueueResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the TaskQueue to read
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Filter by a human readable description of a TaskQueue
+        /// The friendly_name of the TaskQueue resources to read
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Provide a Worker attributes expression, and this will return the list of TaskQueues that would distribute tasks to a worker with these attributes.
+        /// The attributes of the Workers to read
         /// </summary>
         public string EvaluateWorkerAttributes { get; set; }
         /// <summary>
-        /// The worker_sid
+        /// The SID of the Worker with the TaskQueue resources to read
         /// </summary>
         public string WorkerSid { get; set; }
 
         /// <summary>
         /// Construct a new ReadTaskQueueOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to read </param>
         public ReadTaskQueueOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -202,39 +202,39 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class CreateTaskQueueOptions : IOptions<TaskQueueResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that the new TaskQueue belongs to
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Human readable description of this TaskQueue
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// A string describing the Worker selection criteria for any Tasks that enter this TaskQueue.
+        /// A string describing the Worker selection criteria for any Tasks that enter the TaskQueue
         /// </summary>
         public string TargetWorkers { get; set; }
         /// <summary>
-        /// The maximum amount of workers to create reservations for the assignment of a task while in this queue.
+        /// The maximum number of Workers to reserve
         /// </summary>
         public int? MaxReservedWorkers { get; set; }
         /// <summary>
-        /// TaskOrder will determine which order the Tasks will be assigned to Workers.
+        /// How Tasks will be assigned to Workers
         /// </summary>
         public TaskQueueResource.TaskOrderEnum TaskOrder { get; set; }
         /// <summary>
-        /// ActivitySID to assign workers once a task is reserved for them
+        /// The SID of the Activity to assign Workers when a task is reserved for them
         /// </summary>
         public string ReservationActivitySid { get; set; }
         /// <summary>
-        /// ActivitySID to assign workers once a task is assigned for them
+        /// The SID of the Activity to assign Workers once a task is assigned to them
         /// </summary>
         public string AssignmentActivitySid { get; set; }
 
         /// <summary>
         /// Construct a new CreateTaskQueueOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> Human readable description of this TaskQueue </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new TaskQueue belongs to </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         public CreateTaskQueueOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -287,19 +287,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class DeleteTaskQueueOptions : IOptions<TaskQueueResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the TaskQueue to delete
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteTaskQueueOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to delete </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         public DeleteTaskQueueOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

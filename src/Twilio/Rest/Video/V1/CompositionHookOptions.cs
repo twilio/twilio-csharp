@@ -16,19 +16,19 @@ namespace Twilio.Rest.Video.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Returns a single Composition Hook Instance resource identified by a CompositionHookSid.
+    /// Returns a single CompositionHook resource identified by a CompositionHook SID.
     /// </summary>
     public class FetchCompositionHookOptions : IOptions<CompositionHookResource>
     {
         /// <summary>
-        /// The Composition Hook Sid that uniquely identifies the Composition Hook to fetch.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCompositionHookOptions
         /// </summary>
-        /// <param name="pathSid"> The Composition Hook Sid that uniquely identifies the Composition Hook to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchCompositionHookOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -48,24 +48,24 @@ namespace Twilio.Rest.Video.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// List of all Recording Composition Hooks.
+    /// List of all Recording CompositionHook resources.
     /// </summary>
     public class ReadCompositionHookOptions : ReadOptions<CompositionHookResource>
     {
         /// <summary>
-        /// Only show Composition Hooks enabled or disabled.
+        /// Read only CompositionHook resources with an enabled value that matches this parameter
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// Only show Composition Hooks created on or after this ISO8601 date-time with timezone.
+        /// Read only CompositionHook resources created on or after this ISO 8601 datetime with time zone
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Only show Composition Hooks created before this ISO8601 date-time with timezone.
+        /// Read only CompositionHook resources created before this ISO 8601 datetime with time zone
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// Only show Composition Hooks with friendly name that match this name.
+        /// Read only CompositionHook resources with friendly names that match this string
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -108,20 +108,19 @@ namespace Twilio.Rest.Video.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Delete a Recording Composition Hook Instance resource identified by a `CompositionHookSid`.
+    /// Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
     /// </summary>
     public class DeleteCompositionHookOptions : IOptions<CompositionHookResource>
     {
         /// <summary>
-        /// The Recording Composition Hook Sid that uniquely identifies the Recording Composition Hook to delete.
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCompositionHookOptions
         /// </summary>
-        /// <param name="pathSid"> The Recording Composition Hook Sid that uniquely identifies the Recording Composition Hook
-        ///               to delete. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteCompositionHookOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -146,50 +145,50 @@ namespace Twilio.Rest.Video.V1
     public class CreateCompositionHookOptions : IOptions<CompositionHookResource>
     {
         /// <summary>
-        /// Friendly name of the Composition Hook to be shown in the console.
+        /// A unique string to describe the resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// Boolean flag indicating if the Composition Hook is active.
+        /// Whether the composition hook is active
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// The JSON video layout description.
+        /// An object that describes the video layout of the composition hook
         /// </summary>
         public object VideoLayout { get; set; }
         /// <summary>
-        /// A list of audio sources related to this Composition Hook.
+        /// An array of track names from the same group room to merge
         /// </summary>
         public List<string> AudioSources { get; set; }
         /// <summary>
-        /// A list of audio sources excluded related to this Composition Hook.
+        /// An array of track names to exclude
         /// </summary>
         public List<string> AudioSourcesExcluded { get; set; }
         /// <summary>
-        /// Pixel resolution of the composed video.
+        /// A string that describes the rows (width) and columns (height) of the generated composed video in pixels
         /// </summary>
         public string Resolution { get; set; }
         /// <summary>
-        /// Container format of the Composition Hook media file. Any of the following: `mp4`, `webm`.
+        /// The container format of the media files used by the compositions created by the composition hook
         /// </summary>
         public CompositionHookResource.FormatEnum Format { get; set; }
         /// <summary>
-        /// A URL that Twilio sends asynchronous webhook requests to on every composition event.
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// HTTP method Twilio should use when requesting the above URL.
+        /// The HTTP method we should use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// Boolean flag for clipping intervals that have no media.
+        /// Whether to clip the intervals where there is no active media in the Compositions triggered by the composition hook
         /// </summary>
         public bool? Trim { get; set; }
 
         /// <summary>
         /// Construct a new CreateCompositionHookOptions
         /// </summary>
-        /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
+        /// <param name="friendlyName"> A unique string to describe the resource </param>
         public CreateCompositionHookOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -266,56 +265,55 @@ namespace Twilio.Rest.Video.V1
     public class UpdateCompositionHookOptions : IOptions<CompositionHookResource>
     {
         /// <summary>
-        /// A 34-character string that uniquely identifies the Composition Hook to update, specified as a path parameter.
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Friendly name of the Composition Hook to be shown in the console.
+        /// A unique string to describe the resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// Boolean flag indicating if the Composition Hook is active.
+        /// Whether the composition hook is active
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// The JSON video layout description.
+        /// A JSON object that describes the video layout of the composition hook
         /// </summary>
         public object VideoLayout { get; set; }
         /// <summary>
-        /// A list of audio sources related to this Composition Hook.
+        /// An array of track names from the same group room to merge
         /// </summary>
         public List<string> AudioSources { get; set; }
         /// <summary>
-        /// A list of audio sources excluded related to this Composition Hook.
+        /// An array of track names to exclude
         /// </summary>
         public List<string> AudioSourcesExcluded { get; set; }
         /// <summary>
-        /// Boolean flag for clipping intervals that have no media.
+        /// Whether to clip the intervals where there is no active media in the Compositions triggered by the composition hook
         /// </summary>
         public bool? Trim { get; set; }
         /// <summary>
-        /// Container format of the Composition Hook media file. Any of the following: `mp4`, `webm`.
+        /// The container format of the media files used by the compositions created by the composition hook
         /// </summary>
         public CompositionHookResource.FormatEnum Format { get; set; }
         /// <summary>
-        /// Pixel resolution of the composed video.
+        /// A string that describes the columns (width) and rows (height) of the generated composed video in pixels
         /// </summary>
         public string Resolution { get; set; }
         /// <summary>
-        /// A URL that Twilio sends asynchronous webhook requests to on every composition event.
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// HTTP method Twilio should use when requesting the above URL.
+        /// The HTTP method we should use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateCompositionHookOptions
         /// </summary>
-        /// <param name="pathSid"> A 34-character string that uniquely identifies the Composition Hook to update, specified as
-        ///               a path parameter. </param>
-        /// <param name="friendlyName"> Friendly name of the Composition Hook to be shown in the console. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="friendlyName"> A unique string to describe the resource </param>
         public UpdateCompositionHookOptions(string pathSid, string friendlyName)
         {
             PathSid = pathSid;

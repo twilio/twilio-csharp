@@ -38,19 +38,19 @@ namespace Twilio.Rest.Serverless.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific Service.
+    /// Retrieve a specific Service resource.
     /// </summary>
     public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// Serverless Service Sid or unique name.
+        /// The SID of the Service resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
+        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -70,19 +70,19 @@ namespace Twilio.Rest.Serverless.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Delete a Service.
+    /// Delete a Service resource.
     /// </summary>
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// Serverless Service Sid or unique name.
+        /// The SID of the Service resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        /// <param name="pathSid"> Serverless Service Sid or unique name. </param>
+        /// <param name="pathSid"> The SID of the Service resource to delete </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -102,28 +102,28 @@ namespace Twilio.Rest.Serverless.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Create a new Service.
+    /// Create a new Service resource.
     /// </summary>
     public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// A unique, addressable name of this Service.
+        /// An application-defined string that uniquely identifies the Service resource
         /// </summary>
         public string UniqueName { get; }
         /// <summary>
-        /// A human-readable description of this Service.
+        /// A string to describe the Service resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// Whether to inject Account credentials into a Function invocation context.
+        /// Whether to inject Account credentials into a function invocation context
         /// </summary>
         public bool? IncludeCredentials { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="uniqueName"> A unique, addressable name of this Service. </param>
-        /// <param name="friendlyName"> A human-readable description of this Service. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Service resource </param>
+        /// <param name="friendlyName"> A string to describe the Service resource </param>
         public CreateServiceOptions(string uniqueName, string friendlyName)
         {
             UniqueName = uniqueName;
@@ -159,27 +159,27 @@ namespace Twilio.Rest.Serverless.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Update a specific Service.
+    /// Update a specific Service resource.
     /// </summary>
     public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Whether to inject Account credentials into a Function invocation context.
+        /// Whether to inject Account credentials into a function invocation context
         /// </summary>
         public bool? IncludeCredentials { get; set; }
         /// <summary>
-        /// A human-readable description of this Service.
+        /// A string to describe the Service resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> Service Sid. </param>
+        /// <param name="pathSid"> The SID of the Service resource to update </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

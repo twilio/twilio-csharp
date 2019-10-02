@@ -36,7 +36,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
 
         /// <summary>
         /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
-        /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        /// code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="options"> Read HighriskSpecialPrefix parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         #if !NET35
         /// <summary>
         /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
-        /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        /// code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="options"> Read HighriskSpecialPrefix parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -72,7 +72,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
 
         /// <summary>
         /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
-        /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        /// code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="pathIsoCode"> The ISO 3166-1 country code </param>
         /// <param name="pageSize"> Page size </param>
@@ -91,7 +91,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions.Country
         #if !NET35
         /// <summary>
         /// Fetch the high-risk special services prefixes from the country resource corresponding to the [ISO country
-        /// code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        /// code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="pathIsoCode"> The ISO 3166-1 country code </param>
         /// <param name="pageSize"> Page size </param>

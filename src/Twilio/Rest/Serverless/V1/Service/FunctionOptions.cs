@@ -20,14 +20,14 @@ namespace Twilio.Rest.Serverless.V1.Service
     public class ReadFunctionOptions : ReadOptions<FunctionResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to read the Function resources from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadFunctionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Function resources from </param>
         public ReadFunctionOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -52,24 +52,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific Function.
+    /// Retrieve a specific Function resource.
     /// </summary>
     public class FetchFunctionOptions : IOptions<FunctionResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to fetch the Function resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Function Sid.
+        /// The SID of the Function resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFunctionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Function Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function resource from </param>
+        /// <param name="pathSid"> The SID of the Function resource to fetch </param>
         public FetchFunctionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -90,24 +90,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Delete a Function.
+    /// Delete a Function resource.
     /// </summary>
     public class DeleteFunctionOptions : IOptions<FunctionResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to delete the Function resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Function Sid.
+        /// The SID of the Function resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteFunctionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Function Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the Function resource from </param>
+        /// <param name="pathSid"> The SID of the Function resource to delete </param>
         public DeleteFunctionOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -128,24 +128,24 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Create a new Function.
+    /// Create a new Function resource.
     /// </summary>
     public class CreateFunctionOptions : IOptions<FunctionResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to create the Function resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A human-readable description of this Function.
+        /// A string to describe the Function resource
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new CreateFunctionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Function. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the Function resource under </param>
+        /// <param name="friendlyName"> A string to describe the Function resource </param>
         public CreateFunctionOptions(string pathServiceSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;
@@ -171,29 +171,29 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Update a specific Function.
+    /// Update a specific Function resource.
     /// </summary>
     public class UpdateFunctionOptions : IOptions<FunctionResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to update the Function resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Function Sid.
+        /// The SID of the Function resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human-readable description of this Function.
+        /// A string to describe the Function resource
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new UpdateFunctionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathSid"> Function Sid. </param>
-        /// <param name="friendlyName"> A human-readable description of this Function. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to update the Function resource from </param>
+        /// <param name="pathSid"> The SID of the Function resource to update </param>
+        /// <param name="friendlyName"> A string to describe the Function resource </param>
         public UpdateFunctionOptions(string pathServiceSid, string pathSid, string friendlyName)
         {
             PathServiceSid = pathServiceSid;

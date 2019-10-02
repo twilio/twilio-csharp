@@ -78,7 +78,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <param name="from"> Twilio number from which to brand the call </param>
         /// <param name="to"> The terminating Phone Number </param>
         /// <param name="reason"> The business reason for this phone call </param>
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="callSid"> The Call sid this Branded Call should link to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandedCall </returns>
         public static BrandedCallResource Create(string from,
@@ -101,7 +101,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <param name="from"> Twilio number from which to brand the call </param>
         /// <param name="to"> The terminating Phone Number </param>
         /// <param name="reason"> The business reason for this phone call </param>
-        /// <param name="callSid"> The call_sid </param>
+        /// <param name="callSid"> The Call sid this Branded Call should link to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandedCall </returns>
         public static async System.Threading.Tasks.Task<BrandedCallResource> CreateAsync(string from,

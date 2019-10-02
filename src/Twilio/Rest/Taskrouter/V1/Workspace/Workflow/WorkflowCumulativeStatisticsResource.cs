@@ -64,14 +64,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathWorkflowSid"> The workflow_sid </param>
-        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
-        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
-        ///                       given threshold in seconds. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
+        /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
+        ///                       specified Sid value </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
+        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+        ///                       statistics on </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkflowCumulativeStatistics </returns>
         public static WorkflowCumulativeStatisticsResource Fetch(string pathWorkspaceSid,
@@ -91,14 +92,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathWorkflowSid"> The workflow_sid </param>
-        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
-        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
-        ///                       given threshold in seconds. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
+        /// <param name="pathWorkflowSid"> Returns the list of Tasks that are being controlled by the Workflow with the
+        ///                       specified Sid value </param>
+        /// <param name="endDate"> Only include usage that occurred on or before this date </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
+        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+        ///                       statistics on </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkflowCumulativeStatistics </returns>
         public static async System.Threading.Tasks.Task<WorkflowCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid,
@@ -134,22 +136,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The average time from Task creation to acceptance
+        /// The average time in seconds between Task creation and acceptance
         /// </summary>
         [JsonProperty("avg_task_acceptance_time")]
         public int? AvgTaskAcceptanceTime { get; private set; }
         /// <summary>
-        /// The start_time
+        /// The beginning of the interval during which these statistics were calculated
         /// </summary>
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// The end_time
+        /// The end of the interval during which these statistics were calculated
         /// </summary>
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
@@ -184,17 +186,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         [JsonProperty("reservations_rescinded")]
         public int? ReservationsRescinded { get; private set; }
         /// <summary>
-        /// The splits of the tasks canceled and accepted based on the provided SplitByWaitTime parameter.
+        /// A list of objects that describe the Tasks canceled and reservations accepted above and below the specified thresholds
         /// </summary>
         [JsonProperty("split_by_wait_time")]
         public object SplitByWaitTime { get; private set; }
         /// <summary>
-        /// The wait duration stats for tasks that were accepted.
+        /// The wait duration statistics for Tasks that were accepted
         /// </summary>
         [JsonProperty("wait_duration_until_accepted")]
         public object WaitDurationUntilAccepted { get; private set; }
         /// <summary>
-        /// The wait duration stats for tasks that were canceled.
+        /// The wait duration statistics for Tasks that were canceled
         /// </summary>
         [JsonProperty("wait_duration_until_canceled")]
         public object WaitDurationUntilCanceled { get; private set; }
@@ -209,7 +211,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         [JsonProperty("tasks_completed")]
         public int? TasksCompleted { get; private set; }
         /// <summary>
-        /// The total number of Tasks that entered this Workflow
+        /// The total number of Tasks that entered the Workflow
         /// </summary>
         [JsonProperty("tasks_entered")]
         public int? TasksEntered { get; private set; }
@@ -229,17 +231,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Workflow
         [JsonProperty("tasks_timed_out_in_workflow")]
         public int? TasksTimedOutInWorkflow { get; private set; }
         /// <summary>
-        /// The workflow_sid
+        /// Returns the list of Tasks that are being controlled by the Workflow with the specified Sid value
         /// </summary>
         [JsonProperty("workflow_sid")]
         public string WorkflowSid { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that contains the Workflow.
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Workflow statistics resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

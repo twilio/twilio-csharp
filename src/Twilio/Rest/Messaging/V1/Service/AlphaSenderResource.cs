@@ -65,8 +65,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="alphaSender"> An Alphanumeric Sender ID string, up to 11 characters. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="alphaSender"> The Alphanumeric Sender ID string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AlphaSender </returns>
         public static AlphaSenderResource Create(string pathServiceSid, string alphaSender, ITwilioRestClient client = null)
@@ -79,8 +79,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="alphaSender"> An Alphanumeric Sender ID string, up to 11 characters. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="alphaSender"> The Alphanumeric Sender ID string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AlphaSender </returns>
         public static async System.Threading.Tasks.Task<AlphaSenderResource> CreateAsync(string pathServiceSid,
@@ -139,7 +139,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -274,8 +274,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AlphaSender </returns>
         public static AlphaSenderResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -288,8 +288,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AlphaSender </returns>
         public static async System.Threading.Tasks.Task<AlphaSenderResource> FetchAsync(string pathServiceSid,
@@ -344,8 +344,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AlphaSender </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -358,8 +358,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AlphaSender </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -390,42 +390,42 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
 
         /// <summary>
-        /// The 34 character unique sid of the Alpha Sender ID.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The 34 character unique sid of the Account.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The 34 character unique sid of the Messaging Service.
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// An Alphanumeric Sender ID string, up to 11 characters.
+        /// The Alphanumeric Sender ID string
         /// </summary>
         [JsonProperty("alpha_sender")]
         public string AlphaSender { get; private set; }
         /// <summary>
-        /// An array of values that indicate whether the number can receive calls or messages.
+        /// An array of values that describe whether the number can receive calls or messages
         /// </summary>
         [JsonProperty("capabilities")]
         public List<object> Capabilities { get; private set; }
         /// <summary>
-        /// The absolute URL for this resource.
+        /// The absolute URL of the AlphaSender resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

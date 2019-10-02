@@ -38,34 +38,34 @@ namespace Twilio.Rest.Video.V1
     public class CreateRecordingSettingsOptions : IOptions<RecordingSettingsResource>
     {
         /// <summary>
-        /// Friendly name of the configuration to be shown in the console
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// SID of the Stored Credential resource CRxx
+        /// The SID of the stored Credential resource
         /// </summary>
         public string AwsCredentialsSid { get; set; }
         /// <summary>
-        /// SID of the Public Key resource CRxx
+        /// The SID of the Public Key resource to use for encryption
         /// </summary>
         public string EncryptionKeySid { get; set; }
         /// <summary>
-        /// Identity of the external location where the recordings should be stored. We only support DNS-compliant URLs like http://<my-bucket>.s3-<aws-region>.amazonaws.com/recordings, where recordings is the path where you want recordings to be stored.
+        /// The URL of the AWS S3 bucket where the recordings should be stored
         /// </summary>
         public Uri AwsS3Url { get; set; }
         /// <summary>
-        /// true|false When set to true, all Recordings will be written to the AwsS3Url specified above. When set to false, all Recordings will be stored in Twilio's cloud.
+        /// Whether all recordings should be written to the aws_s3_url
         /// </summary>
         public bool? AwsStorageEnabled { get; set; }
         /// <summary>
-        /// true|false When set to true, all Recordings will be stored encrypted.
+        /// Whether all recordings should be stored in an encrypted form
         /// </summary>
         public bool? EncryptionEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateRecordingSettingsOptions
         /// </summary>
-        /// <param name="friendlyName"> Friendly name of the configuration to be shown in the console </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         public CreateRecordingSettingsOptions(string friendlyName)
         {
             FriendlyName = friendlyName;

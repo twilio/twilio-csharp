@@ -17,42 +17,42 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class ReadWorkerOptions : ReadOptions<WorkerResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Workers to read
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Filter by workers that are in a particular Activity by Friendly Name
+        /// The activity_name of the Worker resources to read
         /// </summary>
         public string ActivityName { get; set; }
         /// <summary>
-        /// Filter by workers that are in a particular Activity by SID
+        /// The activity_sid of the Worker resources to read
         /// </summary>
         public string ActivitySid { get; set; }
         /// <summary>
-        /// Filter by workers that are available or unavailable.
+        /// Whether to return Worker resources that are available or unavailable
         /// </summary>
         public string Available { get; set; }
         /// <summary>
-        /// Filter by a worker's friendly name
+        /// The friendly_name of the Worker resources to read
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Filter by workers that would match an expression on a TaskQueue.
+        /// Filter by Workers that would match an expression on a TaskQueue
         /// </summary>
         public string TargetWorkersExpression { get; set; }
         /// <summary>
-        /// Filter by workers that are eligible for a TaskQueue by Friendly Name
+        /// The friendly_name of the TaskQueue that the Workers to read are eligible for
         /// </summary>
         public string TaskQueueName { get; set; }
         /// <summary>
-        /// Filter by workers that are eligible for a TaskQueue by SID
+        /// The SID of the TaskQueue that the Workers to read are eligible for
         /// </summary>
         public string TaskQueueSid { get; set; }
 
         /// <summary>
         /// Construct a new ReadWorkerOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workers to read </param>
         public ReadWorkerOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -114,27 +114,27 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class CreateWorkerOptions : IOptions<WorkerResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that the new Worker belongs to
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// String representing user-friendly name for the Worker.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// A valid Activity describing the worker's initial state.
+        /// The SID of a valid Activity that describes the new Worker's initial state
         /// </summary>
         public string ActivitySid { get; set; }
         /// <summary>
-        /// JSON object describing this worker.
+        /// A valid JSON string that describes the new Worker
         /// </summary>
         public string Attributes { get; set; }
 
         /// <summary>
         /// Construct a new CreateWorkerOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> String representing user-friendly name for the Worker. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Worker belongs to </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         public CreateWorkerOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -172,19 +172,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class FetchWorkerOptions : IOptions<WorkerResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Worker to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchWorkerOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         public FetchWorkerOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -207,35 +207,35 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class UpdateWorkerOptions : IOptions<WorkerResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Worker to update
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The activity_sid
+        /// The SID of the Activity that describes the Worker's initial state
         /// </summary>
         public string ActivitySid { get; set; }
         /// <summary>
-        /// The attributes
+        /// The JSON string that describes the Worker
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The friendly_name
+        /// A string to describe the Worker
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The reject_pending_reservations
+        /// Whether to reject pending reservations
         /// </summary>
         public bool? RejectPendingReservations { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWorkerOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to update </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
         public UpdateWorkerOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -278,19 +278,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class DeleteWorkerOptions : IOptions<WorkerResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Worker to delete
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteWorkerOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Worker to delete </param>
+        /// <param name="pathSid"> The SID of the resource to delete </param>
         public DeleteWorkerOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

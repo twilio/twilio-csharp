@@ -66,7 +66,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static SessionResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<SessionResource> FetchAsync(string pathSid,
@@ -133,7 +133,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -199,12 +199,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this session belongs to. </param>
-        /// <param name="friendlyName"> The human-readable name of this session. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="createdBy"> Identity of the session's creator. </param>
+        /// <param name="messagingServiceSid"> The SID of the SMS Service the session belongs to </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="attributes"> A JSON string that stores application-specific data </param>
+        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
+        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
+        /// <param name="createdBy"> The Identity of the session's creator </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static SessionResource Create(string messagingServiceSid,
@@ -223,12 +223,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this session belongs to. </param>
-        /// <param name="friendlyName"> The human-readable name of this session. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="createdBy"> Identity of the session's creator. </param>
+        /// <param name="messagingServiceSid"> The SID of the SMS Service the session belongs to </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="attributes"> A JSON string that stores application-specific data </param>
+        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
+        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
+        /// <param name="createdBy"> The Identity of the session's creator </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(string messagingServiceSid,
@@ -287,12 +287,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="friendlyName"> The human-readable name of this session. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="createdBy"> Identity of the session's creator. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="attributes"> A JSON string that stores application-specific data </param>
+        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
+        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
+        /// <param name="createdBy"> The Identity of the session's creator </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static SessionResource Update(string pathSid,
@@ -311,12 +311,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="friendlyName"> The human-readable name of this session. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="createdBy"> Identity of the session's creator. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="attributes"> A JSON string that stores application-specific data </param>
+        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
+        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
+        /// <param name="createdBy"> The Identity of the session's creator </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathSid,
@@ -486,57 +486,57 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique id of the Account responsible for this session.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique id of the Chat Service this session belongs to.
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The unique id of the SMS Service this session belongs to.
+        /// The SID of the SMS Service the session belongs to
         /// </summary>
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
         /// <summary>
-        /// The human-readable name of this session.
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
+        /// The JSON string that stores application-specific data
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// Identity of the session's creator.
+        /// The Identity of the session's creator
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// An absolute URL for this session.
+        /// The absolute URL of the session
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Absolute URLs to access the Participants and Messages for this Session.
+        /// The absolute URLs of the Participants, Interactions, and Messages for the Session
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

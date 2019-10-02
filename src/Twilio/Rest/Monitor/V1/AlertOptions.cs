@@ -17,14 +17,14 @@ namespace Twilio.Rest.Monitor.V1
     public class FetchAlertOptions : IOptions<AlertResource>
     {
         /// <summary>
-        /// A 34 character string that uniquely identifies this Alert.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAlertOptions
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this Alert. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchAlertOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -46,15 +46,15 @@ namespace Twilio.Rest.Monitor.V1
     public class ReadAlertOptions : ReadOptions<AlertResource>
     {
         /// <summary>
-        /// Only show alerts for this log-level.
+        /// Only show alerts for this log-level
         /// </summary>
         public string LogLevel { get; set; }
         /// <summary>
-        /// Only show Alerts on or after this date.
+        /// Only include alerts that occurred on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Only show Alerts on or before this date.
+        /// Only include alerts that occurred on or before this date
         /// </summary>
         public DateTime? EndDate { get; set; }
 

@@ -17,19 +17,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class FetchEventOptions : IOptions<EventResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Event to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchEventOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Event to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         public FetchEventOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -52,58 +52,58 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class ReadEventOptions : ReadOptions<EventResource>
     {
         /// <summary>
-        /// Filter events by those pertaining to a particular workspace
+        /// The SID of the Workspace with the Events to read
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Filter events by an end date.
+        /// Only include usage that occurred on or before this date
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// Filter events by those of a certain event type
+        /// The type of Events to read
         /// </summary>
         public string EventType { get; set; }
         /// <summary>
-        /// Filter events by up to 'x' minutes in the past.
+        /// The period of events to read in minutes
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
-        /// Filter events by those pertaining to a particular reservation
+        /// The SID of the Reservation with the Events to read
         /// </summary>
         public string ReservationSid { get; set; }
         /// <summary>
-        /// Filter events by a start date.
+        /// Only include Events from on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Filter events by those pertaining to a particular queue
+        /// The SID of the TaskQueue with the Events to read
         /// </summary>
         public string TaskQueueSid { get; set; }
         /// <summary>
-        /// Filter events by those pertaining to a particular task
+        /// The SID of the Task with the Events to read
         /// </summary>
         public string TaskSid { get; set; }
         /// <summary>
-        /// Filter events by those pertaining to a particular worker
+        /// The SID of the Worker with the Events to read
         /// </summary>
         public string WorkerSid { get; set; }
         /// <summary>
-        /// Filter events by those pertaining to a particular workflow
+        /// The SID of the Worker with the Events to read
         /// </summary>
         public string WorkflowSid { get; set; }
         /// <summary>
-        /// Filter events by those pertaining to a particular task channel
+        /// The TaskChannel with the Events to read
         /// </summary>
         public string TaskChannel { get; set; }
         /// <summary>
-        /// Filter events by those pertaining to a particular event
+        /// The unique string that identifies the resource
         /// </summary>
         public string Sid { get; set; }
 
         /// <summary>
         /// Construct a new ReadEventOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> Filter events by those pertaining to a particular workspace </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Events to read </param>
         public ReadEventOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

@@ -144,13 +144,15 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="webhookMethod"> The HTTP method to be used when sending a webhook request. </param>
-        /// <param name="webhookFilters"> The list of webhook event triggers that are enabled for this Service. </param>
-        /// <param name="preWebhookUrl"> The absolute url the pre-event webhook request should be sent to. </param>
-        /// <param name="postWebhookUrl"> The absolute url the post-event webhook request should be sent to. </param>
-        /// <param name="preWebhookRetryCount"> The number of retries in case of pre-event webhook request failures. </param>
-        /// <param name="postWebhookRetryCount"> The number of retries in case of post-event webhook request failures. </param>
-        /// <param name="target"> The routing target of the webhook. </param>
+        /// <param name="webhookMethod"> The HTTP method to use when sending a webhook request </param>
+        /// <param name="webhookFilters"> The list of webhook event triggers that are enabled for the Service </param>
+        /// <param name="preWebhookUrl"> The absolute URL of the pre-event webhook </param>
+        /// <param name="postWebhookUrl"> The absolute URL of the post-event webhook </param>
+        /// <param name="preWebhookRetryCount"> The number of times to try the pre-event webhook request if the first attempt
+        ///                            fails </param>
+        /// <param name="postWebhookRetryCount"> The number of times to try the post-event webhook request if the first attempt
+        ///                             fails </param>
+        /// <param name="target"> The routing target of the webhook </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Update(string webhookMethod = null,
@@ -170,13 +172,15 @@ namespace Twilio.Rest.Messaging.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="webhookMethod"> The HTTP method to be used when sending a webhook request. </param>
-        /// <param name="webhookFilters"> The list of webhook event triggers that are enabled for this Service. </param>
-        /// <param name="preWebhookUrl"> The absolute url the pre-event webhook request should be sent to. </param>
-        /// <param name="postWebhookUrl"> The absolute url the post-event webhook request should be sent to. </param>
-        /// <param name="preWebhookRetryCount"> The number of retries in case of pre-event webhook request failures. </param>
-        /// <param name="postWebhookRetryCount"> The number of retries in case of post-event webhook request failures. </param>
-        /// <param name="target"> The routing target of the webhook. </param>
+        /// <param name="webhookMethod"> The HTTP method to use when sending a webhook request </param>
+        /// <param name="webhookFilters"> The list of webhook event triggers that are enabled for the Service </param>
+        /// <param name="preWebhookUrl"> The absolute URL of the pre-event webhook </param>
+        /// <param name="postWebhookUrl"> The absolute URL of the post-event webhook </param>
+        /// <param name="preWebhookRetryCount"> The number of times to try the pre-event webhook request if the first attempt
+        ///                            fails </param>
+        /// <param name="postWebhookRetryCount"> The number of times to try the post-event webhook request if the first attempt
+        ///                             fails </param>
+        /// <param name="target"> The routing target of the webhook </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string webhookMethod = null,
@@ -212,53 +216,53 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this session.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique id of the Chat Service this session belongs to.
+        /// The SID of the Chat Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The HTTP method to be used when sending a webhook request.
+        /// The HTTP method to use when sending a webhook request
         /// </summary>
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
         /// <summary>
-        /// The list of webhook event triggers that are enabled for this Service.
+        /// The list of webhook event triggers that are enabled for the Service
         /// </summary>
         [JsonProperty("webhook_filters")]
         public List<string> WebhookFilters { get; private set; }
         /// <summary>
-        /// The absolute url the pre-event webhook request should be sent to.
+        /// The absolute URL of the pre-event webhook
         /// </summary>
         [JsonProperty("pre_webhook_url")]
         public string PreWebhookUrl { get; private set; }
         /// <summary>
-        /// The absolute url the post-event webhook request should be sent to.
+        /// The absolute URL of the post-event webhook
         /// </summary>
         [JsonProperty("post_webhook_url")]
         public string PostWebhookUrl { get; private set; }
         /// <summary>
-        /// The number of retries in case of pre-event webhook request failures.
+        /// The number of times to try the pre-event webhook request if the first attempt fails
         /// </summary>
         [JsonProperty("pre_webhook_retry_count")]
         public int? PreWebhookRetryCount { get; private set; }
         /// <summary>
-        /// The number of retries in case of post-event webhook request failures.
+        /// The number of times to try the post-event webhook request if the first attempt fails
         /// </summary>
         [JsonProperty("post_webhook_retry_count")]
         public int? PostWebhookRetryCount { get; private set; }
         /// <summary>
-        /// The routing target of the webhook.
+        /// The routing target of the webhook
         /// </summary>
         [JsonProperty("target")]
         [JsonConverter(typeof(StringEnumConverter))]
         public WebhookResource.TargetEnum Target { get; private set; }
         /// <summary>
-        /// An absolute URL for this webhook.
+        /// The absolute URL of the webhook
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

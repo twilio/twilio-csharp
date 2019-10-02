@@ -35,7 +35,7 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// </summary>
         public string Reason { get; }
         /// <summary>
-        /// The call_sid
+        /// The Call sid this Branded Call should link to
         /// </summary>
         public string CallSid { get; set; }
 

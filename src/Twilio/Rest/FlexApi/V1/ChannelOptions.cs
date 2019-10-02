@@ -37,14 +37,14 @@ namespace Twilio.Rest.FlexApi.V1
     public class FetchChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
-        /// Flex Chat Channel Sid
+        /// The SID that identifies the Flex chat channel resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchChannelOptions
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID that identifies the Flex chat channel resource to fetch </param>
         public FetchChannelOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -66,53 +66,53 @@ namespace Twilio.Rest.FlexApi.V1
     public class CreateChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
-        /// The unique ID of the FlexFlow
+        /// The SID of the FlexFlow
         /// </summary>
         public string FlexFlowSid { get; }
         /// <summary>
-        /// Chat User identity
+        /// The identity value that identifies the new resource's chat User
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// Customer friendly name
+        /// The chat participant's friendly name
         /// </summary>
         public string ChatUserFriendlyName { get; }
         /// <summary>
-        /// Chat channel friendly name
+        /// The chat channel's friendly name
         /// </summary>
         public string ChatFriendlyName { get; }
         /// <summary>
-        /// Target Contact Identity
+        /// The Target Contact Identity
         /// </summary>
         public string Target { get; set; }
         /// <summary>
-        /// Chat channel unique name
+        /// The chat channel's unique name
         /// </summary>
         public string ChatUniqueName { get; set; }
         /// <summary>
-        /// Pre-engagement data
+        /// The pre-engagement data
         /// </summary>
         public string PreEngagementData { get; set; }
         /// <summary>
-        /// TaskRouter Task Sid.
+        /// The SID of the TaskRouter task
         /// </summary>
         public string TaskSid { get; set; }
         /// <summary>
-        /// Task attributes to be added for the TaskRouter Task
+        /// The task attributes to be added for the TaskRouter Task
         /// </summary>
         public string TaskAttributes { get; set; }
         /// <summary>
-        /// Long Lived flag
+        /// Whether to create the channel as long-lived
         /// </summary>
         public bool? LongLived { get; set; }
 
         /// <summary>
         /// Construct a new CreateChannelOptions
         /// </summary>
-        /// <param name="flexFlowSid"> The unique ID of the FlexFlow </param>
-        /// <param name="identity"> Chat User identity </param>
-        /// <param name="chatUserFriendlyName"> Customer friendly name </param>
-        /// <param name="chatFriendlyName"> Chat channel friendly name </param>
+        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="identity"> The identity value that identifies the new resource's chat User </param>
+        /// <param name="chatUserFriendlyName"> The chat participant's friendly name </param>
+        /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
         public CreateChannelOptions(string flexFlowSid,
                                     string identity,
                                     string chatUserFriendlyName,
@@ -190,14 +190,14 @@ namespace Twilio.Rest.FlexApi.V1
     public class DeleteChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
-        /// Flex Chat Channel Sid
+        /// The SID of the Flex chat channel resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteChannelOptions
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID of the Flex chat channel resource to delete </param>
         public DeleteChannelOptions(string pathSid)
         {
             PathSid = pathSid;

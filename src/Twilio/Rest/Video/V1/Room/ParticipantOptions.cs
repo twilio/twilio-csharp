@@ -17,19 +17,19 @@ namespace Twilio.Rest.Video.V1.Room
     public class FetchParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// A system-generated 34-character string that uniquely identifies a Room.
+        /// The SID of the room with the Participant resource to fetch
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// A system-generated 34-character string that uniquely identifies this Participant.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchParticipantOptions
         /// </summary>
-        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
-        /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
+        /// <param name="pathRoomSid"> The SID of the room with the Participant resource to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchParticipantOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -52,30 +52,30 @@ namespace Twilio.Rest.Video.V1.Room
     public class ReadParticipantOptions : ReadOptions<ParticipantResource>
     {
         /// <summary>
-        /// A system-generated 34-character string that uniquely identifies this Room.
+        /// The SID of the room with the Participant resources to read
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// Only show Participants with the given Status.
+        /// Read only the participants with this status
         /// </summary>
         public ParticipantResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// Only show Participants that connected to the Room using the provided Identity.
+        /// Read only the Participants with this user identity value
         /// </summary>
         public string Identity { get; set; }
         /// <summary>
-        /// Only show Participants that started after this date, given as an UTC ISO 8601 Timestamp.
+        /// Read only Participants that started after this date in UTC ISO 8601 format
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Only show Participants that started before this date, given as an UTC ISO 8601 Timestamp.
+        /// Read only Participants that started before this date in ISO 8601 format
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
 
         /// <summary>
         /// Construct a new ReadParticipantOptions
         /// </summary>
-        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies this Room. </param>
+        /// <param name="pathRoomSid"> The SID of the room with the Participant resources to read </param>
         public ReadParticipantOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;
@@ -122,23 +122,23 @@ namespace Twilio.Rest.Video.V1.Room
     public class UpdateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// A system-generated 34-character string that uniquely identifies a Room.
+        /// The SID of the room with the participant to update
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// A system-generated 34-character string that uniquely identifies this Participant.
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Set to `disconnected` to remove participant.
+        /// The new status of the resource
         /// </summary>
         public ParticipantResource.StatusEnum Status { get; set; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
         /// </summary>
-        /// <param name="pathRoomSid"> A system-generated 34-character string that uniquely identifies a Room. </param>
-        /// <param name="pathSid"> A system-generated 34-character string that uniquely identifies this Participant. </param>
+        /// <param name="pathRoomSid"> The SID of the room with the participant to update </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
         public UpdateParticipantOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;

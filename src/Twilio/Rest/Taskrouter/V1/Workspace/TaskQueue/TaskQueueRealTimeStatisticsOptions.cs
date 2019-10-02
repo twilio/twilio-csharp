@@ -17,23 +17,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
     public class FetchTaskQueueRealTimeStatisticsOptions : IOptions<TaskQueueRealTimeStatisticsResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the TaskQueue to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The task_queue_sid
+        /// The SID of the TaskQueue for which to fetch statistics
         /// </summary>
         public string PathTaskQueueSid { get; }
         /// <summary>
-        /// Filter real-time and cumulative statistics by TaskChannel.
+        /// The TaskChannel for which to fetch statistics
         /// </summary>
         public string TaskChannel { get; set; }
 
         /// <summary>
         /// Construct a new FetchTaskQueueRealTimeStatisticsOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+        /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
         public FetchTaskQueueRealTimeStatisticsOptions(string pathWorkspaceSid, string pathTaskQueueSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

@@ -15,7 +15,7 @@ namespace Twilio.Rest.Preview.TrustedComms
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Fetch a specific CPS given a phone number via `X-XCNAM-Sensitive-Phone-Number` header.
+    /// Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header.
     /// </summary>
     public class FetchCpsOptions : IOptions<CpsResource>
     {

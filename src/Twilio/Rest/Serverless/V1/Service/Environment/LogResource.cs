@@ -50,7 +50,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// Retrieve a list of all Logs.
+        /// Retrieve a list of all logs.
         /// </summary>
         /// <param name="options"> Read Log parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Logs.
+        /// Retrieve a list of all logs.
         /// </summary>
         /// <param name="options"> Read Log parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -83,11 +83,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Logs.
+        /// Retrieve a list of all logs.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
-        /// <param name="functionSid"> Function Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
+        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
+        /// <param name="functionSid"> The SID of the function whose invocation produced the Log resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -105,11 +105,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Logs.
+        /// Retrieve a list of all logs.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
-        /// <param name="functionSid"> Function Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
+        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
+        /// <param name="functionSid"> The SID of the function whose invocation produced the Log resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// Retrieve a specific Log.
+        /// Retrieve a specific log.
         /// </summary>
         /// <param name="options"> Fetch Log parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Log.
+        /// Retrieve a specific log.
         /// </summary>
         /// <param name="options"> Fetch Log parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -226,11 +226,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         #endif
 
         /// <summary>
-        /// Retrieve a specific Log.
+        /// Retrieve a specific log.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
-        /// <param name="pathSid"> Log Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from </param>
+        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the Log resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Log </returns>
         public static LogResource Fetch(string pathServiceSid,
@@ -244,11 +244,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Log.
+        /// Retrieve a specific log.
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
-        /// <param name="pathSid"> Log Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from </param>
+        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the Log resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Log </returns>
         public static async System.Threading.Tasks.Task<LogResource> FetchAsync(string pathServiceSid,
@@ -280,58 +280,58 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         }
 
         /// <summary>
-        /// Log Sid.
+        /// The unique string that identifies the Log resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Account Sid.
+        /// The SID of the Account that created the Log resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service that the Log resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// Environment Sid.
+        /// The SID of the environment in which the log occurred
         /// </summary>
         [JsonProperty("environment_sid")]
         public string EnvironmentSid { get; private set; }
         /// <summary>
-        /// Deployment Sid.
+        /// The SID of the deployment that corresponds to the log
         /// </summary>
         [JsonProperty("deployment_sid")]
         public string DeploymentSid { get; private set; }
         /// <summary>
-        /// Function Sid.
+        /// The SID of the function whose invocation produced the log
         /// </summary>
         [JsonProperty("function_sid")]
         public string FunctionSid { get; private set; }
         /// <summary>
-        /// The request_sid
+        /// The SID of the request associated with the log
         /// </summary>
         [JsonProperty("request_sid")]
         public string RequestSid { get; private set; }
         /// <summary>
-        /// The level
+        /// The log level
         /// </summary>
         [JsonProperty("level")]
         [JsonConverter(typeof(StringEnumConverter))]
         public LogResource.LevelEnum Level { get; private set; }
         /// <summary>
-        /// The message
+        /// The log message
         /// </summary>
         [JsonProperty("message")]
         public string Message { get; private set; }
         /// <summary>
-        /// The date that this Log was created.
+        /// The ISO 8601 date and time in GMT when the Log resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The URL of this Log.
+        /// The absolute URL of the Log resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

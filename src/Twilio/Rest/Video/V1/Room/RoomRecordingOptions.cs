@@ -17,19 +17,19 @@ namespace Twilio.Rest.Video.V1.Room
     public class FetchRoomRecordingOptions : IOptions<RoomRecordingResource>
     {
         /// <summary>
-        /// The room_sid
+        /// The SID of the Room resource with the recording to fetch
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchRoomRecordingOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource with the recording to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchRoomRecordingOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;
@@ -52,30 +52,30 @@ namespace Twilio.Rest.Video.V1.Room
     public class ReadRoomRecordingOptions : ReadOptions<RoomRecordingResource>
     {
         /// <summary>
-        /// The room_sid
+        /// The SID of the room with the RoomRecording resources to read
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The status
+        /// Read only the recordings with this status
         /// </summary>
         public RoomRecordingResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// The source_sid
+        /// Read only the recordings that have this source_sid
         /// </summary>
         public string SourceSid { get; set; }
         /// <summary>
-        /// The date_created_after
+        /// Read only Recordings that started on or after this ISO 8601 datetime with time zone
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// The date_created_before
+        /// Read only Recordings that started before this ISO 8601 date-time with time zone
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
 
         /// <summary>
         /// Construct a new ReadRoomRecordingOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> The SID of the room with the RoomRecording resources to read </param>
         public ReadRoomRecordingOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;
@@ -122,19 +122,19 @@ namespace Twilio.Rest.Video.V1.Room
     public class DeleteRoomRecordingOptions : IOptions<RoomRecordingResource>
     {
         /// <summary>
-        /// The room_sid
+        /// The SID of the room with the RoomRecording resource to delete
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteRoomRecordingOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathRoomSid"> The SID of the room with the RoomRecording resource to delete </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteRoomRecordingOptions(string pathRoomSid, string pathSid)
         {
             PathRoomSid = pathRoomSid;

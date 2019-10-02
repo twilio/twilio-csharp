@@ -90,7 +90,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
     }
 
     /// <summary>
-    /// Retrieve a list of medias belonging to the account used to make the request
+    /// Retrieve a list of Media resources belonging to the account used to make the request
     /// </summary>
     public class ReadMediaOptions : ReadOptions<MediaResource>
     {
@@ -103,15 +103,15 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         /// </summary>
         public string PathMessageSid { get; }
         /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
+        /// Only include media that was created on this date
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
+        /// Only include media that was created on this date
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The `YYYY-MM-DD` value of the resources to read
+        /// Only include media that was created on this date
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
 

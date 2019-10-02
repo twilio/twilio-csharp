@@ -17,39 +17,39 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
     public class FetchTaskQueueStatisticsOptions : IOptions<TaskQueueStatisticsResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the TaskQueue to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The task_queue_sid
+        /// The SID of the TaskQueue for which to fetch statistics
         /// </summary>
         public string PathTaskQueueSid { get; }
         /// <summary>
-        /// Filter cumulative statistics by an end date.
+        /// Only calculate statistics from on or before this date
         /// </summary>
         public DateTime? EndDate { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by up to 'x' minutes in the past.
+        /// Only calculate statistics since this many minutes in the past
         /// </summary>
         public int? Minutes { get; set; }
         /// <summary>
-        /// Filter cumulative statistics by a start date.
+        /// Only calculate statistics from on or after this date
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Filter real-time and cumulative statistics by TaskChannel.
+        /// Only calculate real-time and cumulative statistics for the specified TaskChannel
         /// </summary>
         public string TaskChannel { get; set; }
         /// <summary>
-        /// A comma separated values for viewing splits of tasks canceled and accepted above the given threshold in seconds.
+        /// A comma separated list of values that describes the thresholds to calculate statistics on
         /// </summary>
         public string SplitByWaitTime { get; set; }
 
         /// <summary>
         /// Construct a new FetchTaskQueueStatisticsOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+        /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
         public FetchTaskQueueStatisticsOptions(string pathWorkspaceSid, string pathTaskQueueSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

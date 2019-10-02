@@ -15,28 +15,28 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a list of all Logs.
+    /// Retrieve a list of all logs.
     /// </summary>
     public class ReadLogOptions : ReadOptions<LogResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to read the Log resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Environment Sid.
+        /// The SID of the environment with the Log resources to read
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
-        /// Function Sid.
+        /// The SID of the function whose invocation produced the Log resources to read
         /// </summary>
         public string FunctionSid { get; set; }
 
         /// <summary>
         /// Construct a new ReadLogOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
+        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
         public ReadLogOptions(string pathServiceSid, string pathEnvironmentSid)
         {
             PathServiceSid = pathServiceSid;
@@ -67,29 +67,29 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific Log.
+    /// Retrieve a specific log.
     /// </summary>
     public class FetchLogOptions : IOptions<LogResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to fetch the Log resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Environment Sid.
+        /// The SID of the environment with the Log resource to fetch
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
-        /// Log Sid.
+        /// The SID that identifies the Log resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchLogOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathEnvironmentSid"> Environment Sid. </param>
-        /// <param name="pathSid"> Log Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Log resource from </param>
+        /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resource to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the Log resource to fetch </param>
         public FetchLogOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

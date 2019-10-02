@@ -198,7 +198,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID that identifies the Flex chat channel resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
         public static ChannelResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -211,7 +211,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID that identifies the Flex chat channel resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<ChannelResource> FetchAsync(string pathSid,
@@ -265,16 +265,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="flexFlowSid"> The unique ID of the FlexFlow </param>
-        /// <param name="identity"> Chat User identity </param>
-        /// <param name="chatUserFriendlyName"> Customer friendly name </param>
-        /// <param name="chatFriendlyName"> Chat channel friendly name </param>
-        /// <param name="target"> Target Contact Identity </param>
-        /// <param name="chatUniqueName"> Chat channel unique name </param>
-        /// <param name="preEngagementData"> Pre-engagement data </param>
-        /// <param name="taskSid"> TaskRouter Task Sid. </param>
-        /// <param name="taskAttributes"> Task attributes to be added for the TaskRouter Task </param>
-        /// <param name="longLived"> Long Lived flag </param>
+        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="identity"> The identity value that identifies the new resource's chat User </param>
+        /// <param name="chatUserFriendlyName"> The chat participant's friendly name </param>
+        /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
+        /// <param name="target"> The Target Contact Identity </param>
+        /// <param name="chatUniqueName"> The chat channel's unique name </param>
+        /// <param name="preEngagementData"> The pre-engagement data </param>
+        /// <param name="taskSid"> The SID of the TaskRouter task </param>
+        /// <param name="taskAttributes"> The task attributes to be added for the TaskRouter Task </param>
+        /// <param name="longLived"> Whether to create the channel as long-lived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
         public static ChannelResource Create(string flexFlowSid,
@@ -297,16 +297,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="flexFlowSid"> The unique ID of the FlexFlow </param>
-        /// <param name="identity"> Chat User identity </param>
-        /// <param name="chatUserFriendlyName"> Customer friendly name </param>
-        /// <param name="chatFriendlyName"> Chat channel friendly name </param>
-        /// <param name="target"> Target Contact Identity </param>
-        /// <param name="chatUniqueName"> Chat channel unique name </param>
-        /// <param name="preEngagementData"> Pre-engagement data </param>
-        /// <param name="taskSid"> TaskRouter Task Sid. </param>
-        /// <param name="taskAttributes"> Task attributes to be added for the TaskRouter Task </param>
-        /// <param name="longLived"> Long Lived flag </param>
+        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="identity"> The identity value that identifies the new resource's chat User </param>
+        /// <param name="chatUserFriendlyName"> The chat participant's friendly name </param>
+        /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
+        /// <param name="target"> The Target Contact Identity </param>
+        /// <param name="chatUniqueName"> The chat channel's unique name </param>
+        /// <param name="preEngagementData"> The pre-engagement data </param>
+        /// <param name="taskSid"> The SID of the TaskRouter task </param>
+        /// <param name="taskAttributes"> The task attributes to be added for the TaskRouter Task </param>
+        /// <param name="longLived"> Whether to create the channel as long-lived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(string flexFlowSid,
@@ -369,7 +369,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID of the Flex chat channel resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -382,7 +382,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> Flex Chat Channel Sid </param>
+        /// <param name="pathSid"> The SID of the Flex chat channel resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -411,42 +411,42 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
         /// <summary>
-        /// The ID of the account that owns this Workflow
+        /// The SID of the Account that created the resource and owns this Workflow
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique ID of the FlexFlow
+        /// The SID of the FlexFlow
         /// </summary>
         [JsonProperty("flex_flow_sid")]
         public string FlexFlowSid { get; private set; }
         /// <summary>
-        /// Flex Chat Channel Sid
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Chat User Sid.
+        /// The SID of the chat user
         /// </summary>
         [JsonProperty("user_sid")]
         public string UserSid { get; private set; }
         /// <summary>
-        /// TaskRouter Task Sid.
+        /// The SID of the TaskRouter task
         /// </summary>
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Flex chat channel resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The time the Flex Chat Channel was created, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the Flex chat channel was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The time the Flex Chat Channel was last updated, given as GMT in ISO 8601 format.
+        /// The ISO 8601 date and time in GMT when the Flex chat channel was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

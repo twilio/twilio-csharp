@@ -64,14 +64,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
-        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
-        ///                       given threshold in seconds. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+        /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
+        /// <param name="endDate"> Only calculate statistics from on or before this date </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
+        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+        ///                       statistics on </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueueCumulativeStatistics </returns>
         public static TaskQueueCumulativeStatisticsResource Fetch(string pathWorkspaceSid,
@@ -91,14 +91,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
-        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
-        ///                       given threshold in seconds. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+        /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
+        /// <param name="endDate"> Only calculate statistics from on or before this date </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
+        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+        ///                       statistics on </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueCumulativeStatistics </returns>
         public static async System.Threading.Tasks.Task<TaskQueueCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid,
@@ -134,107 +134,107 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The average time from Task creation to reservation acceptance while in this TaskQueue
+        /// The average time in seconds between Task creation and acceptance
         /// </summary>
         [JsonProperty("avg_task_acceptance_time")]
         public int? AvgTaskAcceptanceTime { get; private set; }
         /// <summary>
-        /// The start_time
+        /// The beginning of the interval during which these statistics were calculated
         /// </summary>
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// The end_time
+        /// The end of the interval during which these statistics were calculated
         /// </summary>
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
         /// <summary>
-        /// The total number of Reservations that were created for Tasks while in this TaskQueue
+        /// The total number of Reservations created for Tasks in the TaskQueue
         /// </summary>
         [JsonProperty("reservations_created")]
         public int? ReservationsCreated { get; private set; }
         /// <summary>
-        /// The total number of Reservations that were accepted for Tasks while in this TaskQueue
+        /// The total number of Reservations accepted for Tasks in the TaskQueue
         /// </summary>
         [JsonProperty("reservations_accepted")]
         public int? ReservationsAccepted { get; private set; }
         /// <summary>
-        /// The total number of Reservations that were rejected for Tasks while in this TaskQueue
+        /// The total number of Reservations rejected for Tasks in the TaskQueue
         /// </summary>
         [JsonProperty("reservations_rejected")]
         public int? ReservationsRejected { get; private set; }
         /// <summary>
-        /// The total number of Reservations that were timed out for Tasks while in this TaskQueue
+        /// The total number of Reservations that timed out for Tasks in the TaskQueue
         /// </summary>
         [JsonProperty("reservations_timed_out")]
         public int? ReservationsTimedOut { get; private set; }
         /// <summary>
-        /// The total number of Reservations that were canceled for Tasks while in this TaskQueue
+        /// The total number of Reservations canceled for Tasks in the TaskQueue
         /// </summary>
         [JsonProperty("reservations_canceled")]
         public int? ReservationsCanceled { get; private set; }
         /// <summary>
-        /// The total number of Reservations that were rescinded
+        /// The total number of Reservations rescinded
         /// </summary>
         [JsonProperty("reservations_rescinded")]
         public int? ReservationsRescinded { get; private set; }
         /// <summary>
-        /// The splits of the tasks canceled and accepted based on the provided SplitByWaitTime parameter
+        /// A list of objects that describe the Tasks canceled and reservations accepted above and below the specified thresholds
         /// </summary>
         [JsonProperty("split_by_wait_time")]
         public object SplitByWaitTime { get; private set; }
         /// <summary>
-        /// The task_queue_sid
+        /// The SID of the TaskQueue from which these statistics were calculated
         /// </summary>
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
         /// <summary>
-        /// The wait duration stats for tasks that were accepted while in this TaskQueue
+        /// The wait duration statistics for Tasks accepted while in the TaskQueue
         /// </summary>
         [JsonProperty("wait_duration_until_accepted")]
         public object WaitDurationUntilAccepted { get; private set; }
         /// <summary>
-        /// The wait duration stats for tasks that were canceled while in this TaskQueue
+        /// The wait duration statistics for Tasks canceled while in the TaskQueue
         /// </summary>
         [JsonProperty("wait_duration_until_canceled")]
         public object WaitDurationUntilCanceled { get; private set; }
         /// <summary>
-        /// The total number of Tasks canceled while in this TaskQueue
+        /// The total number of Tasks canceled in the TaskQueue
         /// </summary>
         [JsonProperty("tasks_canceled")]
         public int? TasksCanceled { get; private set; }
         /// <summary>
-        /// The total number of Tasks completed while in this TaskQueue
+        /// The total number of Tasks completed in the TaskQueue
         /// </summary>
         [JsonProperty("tasks_completed")]
         public int? TasksCompleted { get; private set; }
         /// <summary>
-        /// The total number of Tasks that were deleted while in this TaskQueue
+        /// The total number of Tasks deleted in the TaskQueue
         /// </summary>
         [JsonProperty("tasks_deleted")]
         public int? TasksDeleted { get; private set; }
         /// <summary>
-        /// The total number of Tasks entered into this TaskQueue
+        /// The total number of Tasks entered into the TaskQueue
         /// </summary>
         [JsonProperty("tasks_entered")]
         public int? TasksEntered { get; private set; }
         /// <summary>
-        /// The total number of Tasks moved to another TaskQueue from this TaskQueue
+        /// The total number of Tasks that were moved from one queue to another
         /// </summary>
         [JsonProperty("tasks_moved")]
         public int? TasksMoved { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that contains the TaskQueue
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the TaskQueue statistics resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

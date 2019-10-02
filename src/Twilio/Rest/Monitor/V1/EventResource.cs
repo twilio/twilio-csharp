@@ -63,7 +63,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this event. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Event </returns>
         public static EventResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Monitor.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this event. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Event </returns>
         public static async System.Threading.Tasks.Task<EventResource> FetchAsync(string pathSid,
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Monitor.V1
         }
 
         /// <summary>
-        /// Returns a list of Events in this account, sorted by event-date.
+        /// Returns a list of events in the account, sorted by event-date.
         /// </summary>
         /// <param name="options"> Read Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Monitor.V1
 
         #if !NET35
         /// <summary>
-        /// Returns a list of Events in this account, sorted by event-date.
+        /// Returns a list of events in the account, sorted by event-date.
         /// </summary>
         /// <param name="options"> Read Event parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -132,14 +132,14 @@ namespace Twilio.Rest.Monitor.V1
         #endif
 
         /// <summary>
-        /// Returns a list of Events in this account, sorted by event-date.
+        /// Returns a list of events in the account, sorted by event-date.
         /// </summary>
-        /// <param name="actorSid"> Only include Events initiated by this Actor </param>
-        /// <param name="eventType"> Only include Events of this EventType </param>
-        /// <param name="resourceSid"> Only include Events referring to this resource </param>
-        /// <param name="sourceIpAddress"> Only include Events that originated from this IP address </param>
-        /// <param name="startDate"> Only show events on or after this date </param>
-        /// <param name="endDate"> Only show events on or before this date </param>
+        /// <param name="actorSid"> Only include events initiated by this Actor </param>
+        /// <param name="eventType"> Only include events of this Event Type </param>
+        /// <param name="resourceSid"> Only include events that refer to this resource </param>
+        /// <param name="sourceIpAddress"> Only include events that originated from this IP address </param>
+        /// <param name="startDate"> Only include events that occurred on or after this date </param>
+        /// <param name="endDate"> Only include events that occurred on or before this date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -160,14 +160,14 @@ namespace Twilio.Rest.Monitor.V1
 
         #if !NET35
         /// <summary>
-        /// Returns a list of Events in this account, sorted by event-date.
+        /// Returns a list of events in the account, sorted by event-date.
         /// </summary>
-        /// <param name="actorSid"> Only include Events initiated by this Actor </param>
-        /// <param name="eventType"> Only include Events of this EventType </param>
-        /// <param name="resourceSid"> Only include Events referring to this resource </param>
-        /// <param name="sourceIpAddress"> Only include Events that originated from this IP address </param>
-        /// <param name="startDate"> Only show events on or after this date </param>
-        /// <param name="endDate"> Only show events on or before this date </param>
+        /// <param name="actorSid"> Only include events initiated by this Actor </param>
+        /// <param name="eventType"> Only include events of this Event Type </param>
+        /// <param name="resourceSid"> Only include events that refer to this resource </param>
+        /// <param name="sourceIpAddress"> Only include events that originated from this IP address </param>
+        /// <param name="startDate"> Only include events that occurred on or after this date </param>
+        /// <param name="endDate"> Only include events that occurred on or before this date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -265,42 +265,42 @@ namespace Twilio.Rest.Monitor.V1
         }
 
         /// <summary>
-        /// A 34 character string identifying the Account for which this Event was recorded.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// If available, a 34 character string identifying the actor that caused this event. May be null.
+        /// The SID of the actor that caused the event, if available
         /// </summary>
         [JsonProperty("actor_sid")]
         public string ActorSid { get; private set; }
         /// <summary>
-        /// The type of actor that caused this event
+        /// The type of actor that caused the event
         /// </summary>
         [JsonProperty("actor_type")]
         public string ActorType { get; private set; }
         /// <summary>
-        /// A human-readable description of the event.  May be null.
+        /// A description of the event
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// A freeform json object encoding additional data about the event
+        /// A JSON string that represents an object with additional data about the event
         /// </summary>
         [JsonProperty("event_data")]
         public object EventData { get; private set; }
         /// <summary>
-        /// The date-time the event was recorded
+        /// The ISO 8601 date and time in GMT when the event was recorded
         /// </summary>
         [JsonProperty("event_date")]
         public DateTime? EventDate { get; private set; }
         /// <summary>
-        /// The event's type, as a string.
+        /// The event's type
         /// </summary>
         [JsonProperty("event_type")]
         public string EventType { get; private set; }
         /// <summary>
-        /// A 34 character string identifying the resource that was affected.
+        /// The SID of the resource that was affected
         /// </summary>
         [JsonProperty("resource_sid")]
         public string ResourceSid { get; private set; }
@@ -310,12 +310,12 @@ namespace Twilio.Rest.Monitor.V1
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this event.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The originating system or interface that caused the event.  web for events caused by user action in the Twilio Console.  api for events caused through a request to the REST API.  twilio for events caused by an automated or internal Twilio system.
+        /// The originating system or interface that caused the event
         /// </summary>
         [JsonProperty("source")]
         public string Source { get; private set; }
@@ -325,12 +325,12 @@ namespace Twilio.Rest.Monitor.V1
         [JsonProperty("source_ip_address")]
         public string SourceIpAddress { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource that was affected
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// The absolute URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

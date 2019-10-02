@@ -19,19 +19,19 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class CreatePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Phone Number SID for the Phone Number being added to the Service.
+        /// The SID of the Phone Number being added to the Service
         /// </summary>
         public string PhoneNumberSid { get; }
 
         /// <summary>
         /// Construct a new CreatePhoneNumberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="phoneNumberSid"> Phone Number SID for the Phone Number being added to the Service. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="phoneNumberSid"> The SID of the Phone Number being added to the Service </param>
         public CreatePhoneNumberOptions(string pathServiceSid, string phoneNumberSid)
         {
             PathServiceSid = pathServiceSid;
@@ -61,19 +61,19 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class DeletePhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeletePhoneNumberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeletePhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -98,14 +98,14 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class ReadPhoneNumberOptions : ReadOptions<PhoneNumberResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadPhoneNumberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         public ReadPhoneNumberOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -134,19 +134,19 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class FetchPhoneNumberOptions : IOptions<PhoneNumberResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchPhoneNumberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchPhoneNumberOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

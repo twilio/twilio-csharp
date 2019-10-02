@@ -64,8 +64,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
+        /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkersRealTimeStatistics </returns>
         public static WorkersRealTimeStatisticsResource Fetch(string pathWorkspaceSid,
@@ -80,8 +80,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
+        /// <param name="taskChannel"> Only calculate real-time statistics on this TaskChannel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersRealTimeStatistics </returns>
         public static async System.Threading.Tasks.Task<WorkersRealTimeStatisticsResource> FetchAsync(string pathWorkspaceSid,
@@ -112,12 +112,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The current Worker status count breakdown by Activity
+        /// The number of current Workers by Activity
         /// </summary>
         [JsonProperty("activity_statistics")]
         public List<object> ActivityStatistics { get; private set; }
@@ -127,12 +127,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         [JsonProperty("total_workers")]
         public int? TotalWorkers { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that contains the Workers
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Workers statistics resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -39,31 +39,31 @@ namespace Twilio.Rest.Messaging.V1
     public class UpdateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The HTTP method to be used when sending a webhook request.
+        /// The HTTP method to use when sending a webhook request
         /// </summary>
         public string WebhookMethod { get; set; }
         /// <summary>
-        /// The list of webhook event triggers that are enabled for this Service.
+        /// The list of webhook event triggers that are enabled for the Service
         /// </summary>
         public List<string> WebhookFilters { get; set; }
         /// <summary>
-        /// The absolute url the pre-event webhook request should be sent to.
+        /// The absolute URL of the pre-event webhook
         /// </summary>
         public string PreWebhookUrl { get; set; }
         /// <summary>
-        /// The absolute url the post-event webhook request should be sent to.
+        /// The absolute URL of the post-event webhook
         /// </summary>
         public string PostWebhookUrl { get; set; }
         /// <summary>
-        /// The number of retries in case of pre-event webhook request failures.
+        /// The number of times to try the pre-event webhook request if the first attempt fails
         /// </summary>
         public int? PreWebhookRetryCount { get; set; }
         /// <summary>
-        /// The number of retries in case of post-event webhook request failures.
+        /// The number of times to try the post-event webhook request if the first attempt fails
         /// </summary>
         public int? PostWebhookRetryCount { get; set; }
         /// <summary>
-        /// The routing target of the webhook.
+        /// The routing target of the webhook
         /// </summary>
         public WebhookResource.TargetEnum Target { get; set; }
 

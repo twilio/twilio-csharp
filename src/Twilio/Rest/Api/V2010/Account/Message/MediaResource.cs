@@ -184,7 +184,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         }
 
         /// <summary>
-        /// Retrieve a list of medias belonging to the account used to make the request
+        /// Retrieve a list of Media resources belonging to the account used to make the request
         /// </summary>
         /// <param name="options"> Read Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -200,7 +200,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of medias belonging to the account used to make the request
+        /// Retrieve a list of Media resources belonging to the account used to make the request
         /// </summary>
         /// <param name="options"> Read Media parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -217,13 +217,13 @@ namespace Twilio.Rest.Api.V2010.Account.Message
         #endif
 
         /// <summary>
-        /// Retrieve a list of medias belonging to the account used to make the request
+        /// Retrieve a list of Media resources belonging to the account used to make the request
         /// </summary>
         /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
-        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
-        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
-        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedBefore"> Only include media that was created on this date </param>
+        /// <param name="dateCreated"> Only include media that was created on this date </param>
+        /// <param name="dateCreatedAfter"> Only include media that was created on this date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -243,13 +243,13 @@ namespace Twilio.Rest.Api.V2010.Account.Message
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of medias belonging to the account used to make the request
+        /// Retrieve a list of Media resources belonging to the account used to make the request
         /// </summary>
         /// <param name="pathMessageSid"> The SID of the Message resource that this Media resource belongs to </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to read </param>
-        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
-        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
-        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedBefore"> Only include media that was created on this date </param>
+        /// <param name="dateCreated"> Only include media that was created on this date </param>
+        /// <param name="dateCreatedAfter"> Only include media that was created on this date </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

@@ -244,9 +244,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve a list of recordings belonging to the account used to make the request
         /// </summary>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
-        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
-        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
-        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedBefore"> Only include recordings that were created on this date </param>
+        /// <param name="dateCreated"> Only include recordings that were created on this date </param>
+        /// <param name="dateCreatedAfter"> Only include recordings that were created on this date </param>
         /// <param name="callSid"> The Call SID of the resources to read </param>
         /// <param name="conferenceSid"> Read by unique Conference SID for the recording </param>
         /// <param name="pageSize"> Page size </param>
@@ -272,9 +272,9 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Retrieve a list of recordings belonging to the account used to make the request
         /// </summary>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to read </param>
-        /// <param name="dateCreatedBefore"> The `YYYY-MM-DD` value of the resources to read </param>
-        /// <param name="dateCreated"> The `YYYY-MM-DD` value of the resources to read </param>
-        /// <param name="dateCreatedAfter"> The `YYYY-MM-DD` value of the resources to read </param>
+        /// <param name="dateCreatedBefore"> Only include recordings that were created on this date </param>
+        /// <param name="dateCreated"> Only include recordings that were created on this date </param>
+        /// <param name="dateCreatedAfter"> Only include recordings that were created on this date </param>
         /// <param name="callSid"> The Call SID of the resources to read </param>
         /// <param name="conferenceSid"> Read by unique Conference SID for the recording </param>
         /// <param name="pageSize"> Page size </param>

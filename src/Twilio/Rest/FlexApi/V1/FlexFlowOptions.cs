@@ -17,7 +17,7 @@ namespace Twilio.Rest.FlexApi.V1
     public class ReadFlexFlowOptions : ReadOptions<FlexFlowResource>
     {
         /// <summary>
-        /// Human readable description of this FlexFlow
+        /// The `friendly_name` of the FlexFlow resources to read
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -47,14 +47,14 @@ namespace Twilio.Rest.FlexApi.V1
     public class FetchFlexFlowOptions : IOptions<FlexFlowResource>
     {
         /// <summary>
-        /// The unique ID of the FlexFlow
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFlexFlowOptions
         /// </summary>
-        /// <param name="pathSid"> The unique ID of the FlexFlow </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchFlexFlowOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -76,72 +76,72 @@ namespace Twilio.Rest.FlexApi.V1
     public class CreateFlexFlowOptions : IOptions<FlexFlowResource>
     {
         /// <summary>
-        /// Human readable description of this FlexFlow
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the chat service
         /// </summary>
         public string ChatServiceSid { get; }
         /// <summary>
-        /// Channel type
+        /// The channel type
         /// </summary>
         public FlexFlowResource.ChannelTypeEnum ChannelType { get; }
         /// <summary>
-        /// Channel contact Identity
+        /// The channel contact's Identity
         /// </summary>
         public string ContactIdentity { get; set; }
         /// <summary>
-        /// Boolean flag for enabling or disabling the FlexFlow
+        /// Whether the new FlexFlow is enabled
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// Integration type
+        /// The integration type
         /// </summary>
         public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         public string IntegrationFlowSid { get; set; }
         /// <summary>
-        /// External Webhook Url
+        /// The External Webhook URL
         /// </summary>
         public Uri IntegrationUrl { get; set; }
         /// <summary>
-        /// Workspace Sid for a new task
+        /// The Workspace SID for a new task
         /// </summary>
         public string IntegrationWorkspaceSid { get; set; }
         /// <summary>
-        /// Workflow Sid for a new task
+        /// The Workflow SID for a new task
         /// </summary>
         public string IntegrationWorkflowSid { get; set; }
         /// <summary>
-        /// Task Channel for a new task
+        /// The task channel for a new task
         /// </summary>
         public string IntegrationChannel { get; set; }
         /// <summary>
-        /// Task timeout in seconds for a new task
+        /// The task timeout in seconds for a new task
         /// </summary>
         public int? IntegrationTimeout { get; set; }
         /// <summary>
-        /// Task priority for a new task
+        /// The task priority of a new task
         /// </summary>
         public int? IntegrationPriority { get; set; }
         /// <summary>
-        /// Flag for task creation
+        /// Whether to create a task when the first message arrives
         /// </summary>
         public bool? IntegrationCreationOnMessage { get; set; }
         /// <summary>
-        /// Long Lived flag for new Channel
+        /// Whether new channels are long-lived
         /// </summary>
         public bool? LongLived { get; set; }
 
         /// <summary>
         /// Construct a new CreateFlexFlowOptions
         /// </summary>
-        /// <param name="friendlyName"> Human readable description of this FlexFlow </param>
-        /// <param name="chatServiceSid"> Service Sid. </param>
-        /// <param name="channelType"> Channel type </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="chatServiceSid"> The SID of the chat service </param>
+        /// <param name="channelType"> The channel type </param>
         public CreateFlexFlowOptions(string friendlyName,
                                      string chatServiceSid,
                                      FlexFlowResource.ChannelTypeEnum channelType)
@@ -242,74 +242,74 @@ namespace Twilio.Rest.FlexApi.V1
     public class UpdateFlexFlowOptions : IOptions<FlexFlowResource>
     {
         /// <summary>
-        /// The unique ID of the FlexFlow
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Human readable description of this FlexFlow
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Service Sid.
+        /// The SID of the chat service
         /// </summary>
         public string ChatServiceSid { get; set; }
         /// <summary>
-        /// Channel type
+        /// The channel type
         /// </summary>
         public FlexFlowResource.ChannelTypeEnum ChannelType { get; set; }
         /// <summary>
-        /// Channel contact Identity
+        /// The channel contact's Identity
         /// </summary>
         public string ContactIdentity { get; set; }
         /// <summary>
-        /// Boolean flag for enabling or disabling the FlexFlow
+        /// Whether the FlexFlow is enabled
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// Integration type
+        /// The integration type
         /// </summary>
         public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
         /// <summary>
-        /// Flow Sid.
+        /// The SID of the Flow
         /// </summary>
         public string IntegrationFlowSid { get; set; }
         /// <summary>
-        /// External Webhook Url
+        /// The External Webhook URL
         /// </summary>
         public Uri IntegrationUrl { get; set; }
         /// <summary>
-        /// Workspace Sid for a new task
+        /// The Workspace SID for a new task
         /// </summary>
         public string IntegrationWorkspaceSid { get; set; }
         /// <summary>
-        /// Workflow Sid for a new task
+        /// The Workflow SID for a new task
         /// </summary>
         public string IntegrationWorkflowSid { get; set; }
         /// <summary>
-        /// Task Channel for a new task
+        /// task channel for a new task
         /// </summary>
         public string IntegrationChannel { get; set; }
         /// <summary>
-        /// Task timeout in seconds for a new task
+        /// The task timeout in seconds for a new task
         /// </summary>
         public int? IntegrationTimeout { get; set; }
         /// <summary>
-        /// Task priority for a new task
+        /// The task priority of a new task
         /// </summary>
         public int? IntegrationPriority { get; set; }
         /// <summary>
-        /// Flag for task creation
+        /// Whether to create a task when the first message arrives
         /// </summary>
         public bool? IntegrationCreationOnMessage { get; set; }
         /// <summary>
-        /// Long Lived flag for new Channel
+        /// Whether new channels created are long-lived
         /// </summary>
         public bool? LongLived { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFlexFlowOptions
         /// </summary>
-        /// <param name="pathSid"> The unique ID of the FlexFlow </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
         public UpdateFlexFlowOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -406,14 +406,14 @@ namespace Twilio.Rest.FlexApi.V1
     public class DeleteFlexFlowOptions : IOptions<FlexFlowResource>
     {
         /// <summary>
-        /// The unique ID of the FlexFlow
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteFlexFlowOptions
         /// </summary>
-        /// <param name="pathSid"> The unique ID of the FlexFlow </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteFlexFlowOptions(string pathSid)
         {
             PathSid = pathSid;

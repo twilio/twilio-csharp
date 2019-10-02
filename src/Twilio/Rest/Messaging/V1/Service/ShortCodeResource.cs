@@ -66,7 +66,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="shortCodeSid"> SID of the ShortCode being added to the Service. </param>
+        /// <param name="shortCodeSid"> The SID of the ShortCode being added to the Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns>
         public static ShortCodeResource Create(string pathServiceSid, string shortCodeSid, ITwilioRestClient client = null)
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// create
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="shortCodeSid"> SID of the ShortCode being added to the Service. </param>
+        /// <param name="shortCodeSid"> The SID of the ShortCode being added to the Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns>
         public static async System.Threading.Tasks.Task<ShortCodeResource> CreateAsync(string pathServiceSid,
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// delete
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -209,7 +209,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -227,7 +227,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -345,7 +345,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ShortCode </returns>
         public static ShortCodeResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -359,7 +359,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// fetch
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ShortCode </returns>
         public static async System.Threading.Tasks.Task<ShortCodeResource> FetchAsync(string pathServiceSid,
@@ -390,47 +390,47 @@ namespace Twilio.Rest.Messaging.V1.Service
         }
 
         /// <summary>
-        /// The unique string that identifies this resource
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The SID of the Account that created this resource
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that this resource is associated with
+        /// The SID of the Service that the resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT that this resource was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT that this resource was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The E.164 format of the short code.
+        /// The E.164 format of the short code
         /// </summary>
         [JsonProperty("short_code")]
         public string ShortCode { get; private set; }
         /// <summary>
-        /// The 2-character ISO Country Code of the number.
+        /// The 2-character ISO Country Code of the number
         /// </summary>
         [JsonProperty("country_code")]
         public string CountryCode { get; private set; }
         /// <summary>
-        /// Any array of values that indicate whether the number can receive calls or messages.
+        /// An array of values that describe whether the number can receive calls or messages
         /// </summary>
         [JsonProperty("capabilities")]
         public List<object> Capabilities { get; private set; }
         /// <summary>
-        /// The absolute URL of this ShortCode resource
+        /// The absolute URL of the ShortCode resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

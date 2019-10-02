@@ -64,11 +64,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
+        /// <param name="endDate"> Only calculate statistics from on or before this date </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of WorkersCumulativeStatistics </returns>
         public static WorkersCumulativeStatisticsResource Fetch(string pathWorkspaceSid,
@@ -86,11 +86,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="endDate"> Filter cumulative statistics by a end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="taskChannel"> Filter cumulative statistics by TaskChannel. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the resource to fetch </param>
+        /// <param name="endDate"> Only calculate statistics from on or before this date </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="taskChannel"> Only calculate cumulative statistics on this TaskChannel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of WorkersCumulativeStatistics </returns>
         public static async System.Threading.Tasks.Task<WorkersCumulativeStatisticsResource> FetchAsync(string pathWorkspaceSid,
@@ -124,22 +124,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The start_time
+        /// The beginning of the interval during which these statistics were calculated
         /// </summary>
         [JsonProperty("start_time")]
         public DateTime? StartTime { get; private set; }
         /// <summary>
-        /// The end_time
+        /// The end of the interval during which these statistics were calculated
         /// </summary>
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
         /// <summary>
-        /// The minimum, average, maximum and total time Workers spent in each Activity
+        /// The minimum, average, maximum, and total time that Workers spent in each Activity
         /// </summary>
         [JsonProperty("activity_durations")]
         public List<object> ActivityDurations { get; private set; }
@@ -174,12 +174,12 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         [JsonProperty("reservations_rescinded")]
         public int? ReservationsRescinded { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that contains the Workers
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Workers statistics resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

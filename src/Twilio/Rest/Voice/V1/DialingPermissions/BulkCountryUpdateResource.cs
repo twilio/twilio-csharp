@@ -36,7 +36,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
 
         /// <summary>
         /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
-        /// corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="options"> Create BulkCountryUpdate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         #if !NET35
         /// <summary>
         /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
-        /// corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="options"> Create BulkCountryUpdate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
 
         /// <summary>
         /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
-        /// corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -82,7 +82,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         #if !NET35
         /// <summary>
         /// Create a bulk update request to change voice dialing country permissions of one or more countries identified by the
-        /// corresponding [ISO country code](http://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
+        /// corresponding [ISO country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)
         /// </summary>
         /// <param name="updateRequest"> URL encoded JSON array of update objects </param>
         /// <param name="client"> Client to make requests to Twilio </param>

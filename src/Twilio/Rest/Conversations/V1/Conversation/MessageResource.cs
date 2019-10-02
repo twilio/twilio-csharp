@@ -85,6 +85,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. </param>
+        /// <param name="mediaSid"> The Media Sid to be attached to the new Message. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Create(string pathConversationSid,
@@ -93,9 +94,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                              DateTime? dateCreated = null,
                                              DateTime? dateUpdated = null,
                                              string attributes = null,
+                                             string mediaSid = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathConversationSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new CreateMessageOptions(pathConversationSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid};
             return Create(options, client);
         }
 
@@ -109,6 +111,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. </param>
+        /// <param name="mediaSid"> The Media Sid to be attached to the new Message. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> CreateAsync(string pathConversationSid,
@@ -117,9 +120,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                                                      DateTime? dateCreated = null,
                                                                                      DateTime? dateUpdated = null,
                                                                                      string attributes = null,
+                                                                                     string mediaSid = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(pathConversationSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new CreateMessageOptions(pathConversationSid){Author = author, Body = body, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MediaSid = mediaSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -543,6 +547,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         [JsonProperty("body")]
         public string Body { get; private set; }
+        /// <summary>
+        /// An array of objects that describe the Message's media if attached, otherwise, null.
+        /// </summary>
+        [JsonProperty("media")]
+        public List<object> Media { get; private set; }
         /// <summary>
         /// A string metadata field you can use to store any data you wish.
         /// </summary>

@@ -20,38 +20,38 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class CreateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Session for this participant.
+        /// The SID of the Session for the participant
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A unique string identifier for the session participant as Chat User.
+        /// The string that identifies the resource's User
         /// </summary>
         public string Identity { get; set; }
         /// <summary>
-        /// The address of the participant's device.
+        /// The address of the participant's device
         /// </summary>
         public string UserAddress { get; set; }
         /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
+        /// A JSON string that stores application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The address of the Twilio phone number that the participant is in contact with.
+        /// The address of the Twilio phone number that the participant is in contact with
         /// </summary>
         public string TwilioAddress { get; set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
+        /// <param name="pathSessionSid"> The SID of the Session for the participant </param>
         public CreateParticipantOptions(string pathSessionSid)
         {
             PathSessionSid = pathSessionSid;
@@ -106,31 +106,31 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class UpdateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Session for this participant.
+        /// The SID of the Session with the participant to update
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
+        /// A JSON string that stores application-specific data
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         public DateTime? DateCreated { get; set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was updated
         /// </summary>
         public DateTime? DateUpdated { get; set; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participant to update </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
         public UpdateParticipantOptions(string pathSessionSid, string pathSid)
         {
             PathSessionSid = pathSessionSid;
@@ -171,19 +171,19 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class FetchParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Session for this participant.
+        /// The SID of the Session with the participant to fetch
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchParticipantOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participant to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchParticipantOptions(string pathSessionSid, string pathSid)
         {
             PathSessionSid = pathSessionSid;
@@ -209,14 +209,14 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class ReadParticipantOptions : ReadOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Session for this participant.
+        /// The SID of the Session with the participants to read
         /// </summary>
         public string PathSessionSid { get; }
 
         /// <summary>
         /// Construct a new ReadParticipantOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participants to read </param>
         public ReadParticipantOptions(string pathSessionSid)
         {
             PathSessionSid = pathSessionSid;
@@ -246,19 +246,19 @@ namespace Twilio.Rest.Messaging.V1.Session
     public class DeleteParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Session for this participant.
+        /// The SID of the Session with the participant to delete
         /// </summary>
         public string PathSessionSid { get; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteParticipantOptions
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participant to delete </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteParticipantOptions(string pathSessionSid, string pathSid)
         {
             PathSessionSid = pathSessionSid;

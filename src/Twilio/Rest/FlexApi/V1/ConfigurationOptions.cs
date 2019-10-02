@@ -17,7 +17,7 @@ namespace Twilio.Rest.FlexApi.V1
     public class FetchConfigurationOptions : IOptions<ConfigurationResource>
     {
         /// <summary>
-        /// Pinned UI version
+        /// The Pinned UI version of the Configuration resource to fetch
         /// </summary>
         public string UiVersion { get; set; }
 

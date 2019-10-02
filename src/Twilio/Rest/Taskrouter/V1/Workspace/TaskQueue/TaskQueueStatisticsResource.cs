@@ -64,14 +64,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
-        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
-        ///                       given threshold in seconds. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+        /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
+        /// <param name="endDate"> Only calculate statistics from on or before this date </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="taskChannel"> Only calculate real-time and cumulative statistics for the specified TaskChannel </param>
+        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+        ///                       statistics on </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of TaskQueueStatistics </returns>
         public static TaskQueueStatisticsResource Fetch(string pathWorkspaceSid,
@@ -91,14 +91,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskQueueSid"> The task_queue_sid </param>
-        /// <param name="endDate"> Filter cumulative statistics by an end date. </param>
-        /// <param name="minutes"> Filter cumulative statistics by up to 'x' minutes in the past. </param>
-        /// <param name="startDate"> Filter cumulative statistics by a start date. </param>
-        /// <param name="taskChannel"> Filter real-time and cumulative statistics by TaskChannel. </param>
-        /// <param name="splitByWaitTime"> A comma separated values for viewing splits of tasks canceled and accepted above the
-        ///                       given threshold in seconds. </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskQueue to fetch </param>
+        /// <param name="pathTaskQueueSid"> The SID of the TaskQueue for which to fetch statistics </param>
+        /// <param name="endDate"> Only calculate statistics from on or before this date </param>
+        /// <param name="minutes"> Only calculate statistics since this many minutes in the past </param>
+        /// <param name="startDate"> Only calculate statistics from on or after this date </param>
+        /// <param name="taskChannel"> Only calculate real-time and cumulative statistics for the specified TaskChannel </param>
+        /// <param name="splitByWaitTime"> A comma separated list of values that describes the thresholds to calculate
+        ///                       statistics on </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of TaskQueueStatistics </returns>
         public static async System.Threading.Tasks.Task<TaskQueueStatisticsResource> FetchAsync(string pathWorkspaceSid,
@@ -134,32 +134,32 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The cumulative
+        /// An object that contains the cumulative statistics for the TaskQueue
         /// </summary>
         [JsonProperty("cumulative")]
         public object Cumulative { get; private set; }
         /// <summary>
-        /// The realtime
+        /// An object that contains the real-time statistics for the TaskQueue
         /// </summary>
         [JsonProperty("realtime")]
         public object Realtime { get; private set; }
         /// <summary>
-        /// The task_queue_sid
+        /// The SID of the TaskQueue from which these statistics were calculated
         /// </summary>
         [JsonProperty("task_queue_sid")]
         public string TaskQueueSid { get; private set; }
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that contains the TaskQueue
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the TaskQueue statistics resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

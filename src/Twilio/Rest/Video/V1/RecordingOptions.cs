@@ -13,19 +13,19 @@ namespace Twilio.Rest.Video.V1
 {
 
     /// <summary>
-    /// Returns a single Recording Instance resource identified by a RecordingSid.
+    /// Returns a single Recording resource identified by a Recording SID.
     /// </summary>
     public class FetchRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
-        /// The Recording Sid that uniquely identifies the Recording to fetch.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchRecordingOptions
         /// </summary>
-        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to fetch. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchRecordingOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -42,32 +42,32 @@ namespace Twilio.Rest.Video.V1
     }
 
     /// <summary>
-    /// List of all Track Recordings.
+    /// List of all Track recordings.
     /// </summary>
     public class ReadRecordingOptions : ReadOptions<RecordingResource>
     {
         /// <summary>
-        /// Only show Recordings with the given status.
+        /// Read only the recordings that have this status
         /// </summary>
         public RecordingResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// Only show the Recordings with the given source Sid.
+        /// Read only the recordings that have this source_sid
         /// </summary>
         public string SourceSid { get; set; }
         /// <summary>
-        /// Only show Recordings that have this GroupingSid.
+        /// Read only recordings that have this grouping_sid
         /// </summary>
         public List<string> GroupingSid { get; set; }
         /// <summary>
-        /// Only show Recordings that started on or after this ISO8601 date-time with timezone.
+        /// Read only recordings that started on or after this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
         /// </summary>
         public DateTime? DateCreatedAfter { get; set; }
         /// <summary>
-        /// Only show Recordings that started before this ISO8601 date-time with timezone.
+        /// Read only recordings that started before this [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) date-time with time zone
         /// </summary>
         public DateTime? DateCreatedBefore { get; set; }
         /// <summary>
-        /// Only show Recordings that have this media type.
+        /// Read only recordings that have this media type
         /// </summary>
         public RecordingResource.TypeEnum MediaType { get; set; }
 
@@ -125,19 +125,19 @@ namespace Twilio.Rest.Video.V1
     }
 
     /// <summary>
-    /// Delete a Recording Instance resource identified by a RecordingSid.
+    /// Delete a Recording resource identified by a Recording SID.
     /// </summary>
     public class DeleteRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
-        /// The Recording Sid that uniquely identifies the Recording to delete.
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteRecordingOptions
         /// </summary>
-        /// <param name="pathSid"> The Recording Sid that uniquely identifies the Recording to delete. </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteRecordingOptions(string pathSid)
         {
             PathSid = pathSid;

@@ -19,19 +19,19 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     public class FetchSubscribeRulesOptions : IOptions<SubscribeRulesResource>
     {
         /// <summary>
-        /// Unique Room identifier where the Subscribe Rules apply
+        /// The SID of the Room resource where the subscribe rules to fetch apply
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// Unique Participant identifier to apply Subscribe Rules.
+        /// The SID of the Participant resource with the subscribe rules to fetch
         /// </summary>
         public string PathParticipantSid { get; }
 
         /// <summary>
         /// Construct a new FetchSubscribeRulesOptions
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where the Subscribe Rules apply </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier to apply Subscribe Rules. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to fetch apply </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource with the subscribe rules to fetch </param>
         public FetchSubscribeRulesOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;
@@ -56,23 +56,23 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     public class UpdateSubscribeRulesOptions : IOptions<SubscribeRulesResource>
     {
         /// <summary>
-        /// Unique Room identifier where the Subscribe Rules apply
+        /// The SID of the Room resource where the subscribe rules to update apply
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// Unique Participant identifier to apply Subscribe Rules.
+        /// The SID of the Participant resource to update the Subscribe Rules
         /// </summary>
         public string PathParticipantSid { get; }
         /// <summary>
-        /// A JSON-encoded array of Subscribe Rules.
+        /// A JSON-encoded array of subscribe rules
         /// </summary>
         public object Rules { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSubscribeRulesOptions
         /// </summary>
-        /// <param name="pathRoomSid"> Unique Room identifier where the Subscribe Rules apply </param>
-        /// <param name="pathParticipantSid"> Unique Participant identifier to apply Subscribe Rules. </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource where the subscribe rules to update apply </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource to update the Subscribe Rules </param>
         public UpdateSubscribeRulesOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;

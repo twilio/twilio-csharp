@@ -78,7 +78,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="uiVersion"> Pinned UI version </param>
+        /// <param name="uiVersion"> The Pinned UI version of the Configuration resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Fetch(string uiVersion = null, ITwilioRestClient client = null)
@@ -91,7 +91,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="uiVersion"> Pinned UI version </param>
+        /// <param name="uiVersion"> The Pinned UI version of the Configuration resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Configuration </returns>
         public static async System.Threading.Tasks.Task<ConfigurationResource> FetchAsync(string uiVersion = null,
@@ -249,178 +249,178 @@ namespace Twilio.Rest.FlexApi.V1
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this configuration
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The time the Configuration was created, given as GMT in ISO 8601 format
+        /// The ISO 8601 date and time in GMT when the Configuration resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The time the Configuration was last updated, given as GMT in ISO 8601 format
+        /// The ISO 8601 date and time in GMT when the Configuration resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// Attiributes
+        /// An object that contains application-specific data
         /// </summary>
         [JsonProperty("attributes")]
         public object Attributes { get; private set; }
         /// <summary>
-        /// Status of the Flex onboarding
+        /// The status of the Flex onboarding
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ConfigurationResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The unique ID of the TaskRouter Workspace
+        /// The SID of the TaskRouter Workspace
         /// </summary>
         [JsonProperty("taskrouter_workspace_sid")]
         public string TaskrouterWorkspaceSid { get; private set; }
         /// <summary>
-        /// The unique ID of the TaskRouter Target Workflow
+        /// The SID of the TaskRouter target Workflow
         /// </summary>
         [JsonProperty("taskrouter_target_workflow_sid")]
         public string TaskrouterTargetWorkflowSid { get; private set; }
         /// <summary>
-        /// The unique ID of the TaskRouter Target TaskQueue
+        /// The SID of the TaskRouter Target TaskQueue
         /// </summary>
         [JsonProperty("taskrouter_target_taskqueue_sid")]
         public string TaskrouterTargetTaskqueueSid { get; private set; }
         /// <summary>
-        /// Array of TaskRouter TaskQueues
+        /// The list of TaskRouter TaskQueues
         /// </summary>
         [JsonProperty("taskrouter_taskqueues")]
         public List<object> TaskrouterTaskqueues { get; private set; }
         /// <summary>
-        /// Skill description for TaskRouter workers
+        /// The Skill description for TaskRouter workers
         /// </summary>
         [JsonProperty("taskrouter_skills")]
         public List<object> TaskrouterSkills { get; private set; }
         /// <summary>
-        /// TaskRouter default channel capacities and availability for workers
+        /// The TaskRouter default channel capacities and availability for workers
         /// </summary>
         [JsonProperty("taskrouter_worker_channels")]
         public object TaskrouterWorkerChannels { get; private set; }
         /// <summary>
-        /// The taskrouter_worker_attributes
+        /// The TaskRouter Worker attributes
         /// </summary>
         [JsonProperty("taskrouter_worker_attributes")]
         public object TaskrouterWorkerAttributes { get; private set; }
         /// <summary>
-        /// The unique ID of the offline activity
+        /// The TaskRouter SID of the offline activity
         /// </summary>
         [JsonProperty("taskrouter_offline_activity_sid")]
         public string TaskrouterOfflineActivitySid { get; private set; }
         /// <summary>
-        /// Flex resources hosting URL for the main UI
+        /// The URL where the Flex instance is hosted
         /// </summary>
         [JsonProperty("runtime_domain")]
         public Uri RuntimeDomain { get; private set; }
         /// <summary>
-        /// Unique 34 character ID of the Messaging Service
+        /// The SID of the Messaging service instance
         /// </summary>
         [JsonProperty("messaging_service_instance_sid")]
         public string MessagingServiceInstanceSid { get; private set; }
         /// <summary>
-        /// The unique id of the Chat Service this user belongs to
+        /// The SID of the chat service this user belongs to
         /// </summary>
         [JsonProperty("chat_service_instance_sid")]
         public string ChatServiceInstanceSid { get; private set; }
         /// <summary>
-        /// Main language of the Flex UI
+        /// The primary language of the Flex UI
         /// </summary>
         [JsonProperty("ui_language")]
         public string UiLanguage { get; private set; }
         /// <summary>
-        /// UI Attributes
+        /// The object that describes Flex UI characteristics and settings
         /// </summary>
         [JsonProperty("ui_attributes")]
         public object UiAttributes { get; private set; }
         /// <summary>
-        /// Pinned UI version
+        /// The Pinned UI version
         /// </summary>
         [JsonProperty("ui_version")]
         public string UiVersion { get; private set; }
         /// <summary>
-        /// Flex Service version
+        /// The Flex Service version
         /// </summary>
         [JsonProperty("service_version")]
         public string ServiceVersion { get; private set; }
         /// <summary>
-        /// Call recording enabled
+        /// Whether call recording is enabled
         /// </summary>
         [JsonProperty("call_recording_enabled")]
         public bool? CallRecordingEnabled { get; private set; }
         /// <summary>
-        /// Call recording webhook url
+        /// The call recording webhook URL
         /// </summary>
         [JsonProperty("call_recording_webhook_url")]
         public Uri CallRecordingWebhookUrl { get; private set; }
         /// <summary>
-        /// Flag indicating whether CRM is present for Flex
+        /// Whether CRM is present for Flex
         /// </summary>
         [JsonProperty("crm_enabled")]
         public bool? CrmEnabled { get; private set; }
         /// <summary>
-        /// CRM Type
+        /// The CRM Type
         /// </summary>
         [JsonProperty("crm_type")]
         public string CrmType { get; private set; }
         /// <summary>
-        /// CRM Callback URL
+        /// The CRM Callback URL
         /// </summary>
         [JsonProperty("crm_callback_url")]
         public Uri CrmCallbackUrl { get; private set; }
         /// <summary>
-        /// CRM Fallback URL
+        /// The CRM Fallback URL
         /// </summary>
         [JsonProperty("crm_fallback_url")]
         public Uri CrmFallbackUrl { get; private set; }
         /// <summary>
-        /// CRM Attributes
+        /// An object that contains the CRM attributes
         /// </summary>
         [JsonProperty("crm_attributes")]
         public object CrmAttributes { get; private set; }
         /// <summary>
-        /// Public Attributes
+        /// The list of public attributes
         /// </summary>
         [JsonProperty("public_attributes")]
         public object PublicAttributes { get; private set; }
         /// <summary>
-        /// Is plugin service Enabled
+        /// Whether the plugin service enabled
         /// </summary>
         [JsonProperty("plugin_service_enabled")]
         public bool? PluginServiceEnabled { get; private set; }
         /// <summary>
-        /// Plugin service Attributes
+        /// The plugin service attributes
         /// </summary>
         [JsonProperty("plugin_service_attributes")]
         public object PluginServiceAttributes { get; private set; }
         /// <summary>
-        /// Integration parameters
+        /// A list of objects that contain the configurations for the Integrations supported in this configuration
         /// </summary>
         [JsonProperty("integrations")]
         public List<object> Integrations { get; private set; }
         /// <summary>
-        /// Outbound call flows Attributes
+        /// The list of outbound call flows
         /// </summary>
         [JsonProperty("outbound_call_flows")]
         public object OutboundCallFlows { get; private set; }
         /// <summary>
-        /// List of enabled features
+        /// The list of enabled features
         /// </summary>
         [JsonProperty("features_enabled")]
         public List<string> FeaturesEnabled { get; private set; }
         /// <summary>
-        /// List of serverless services sids
+        /// The list of serverless service SIDs
         /// </summary>
         [JsonProperty("serverless_service_sids")]
         public List<string> ServerlessServiceSids { get; private set; }
         /// <summary>
-        /// The URL for this resource
+        /// The absolute URL of the Configuration resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

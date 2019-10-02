@@ -19,66 +19,66 @@ namespace Twilio.Rest.Messaging.V1
     public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// A human readable descriptive text for this resource, up to 64 characters.
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// A webhook request is made to the Inbound Request URL when a message is received by any phone number or shortcode associated to your Messaging Service.
+        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service
         /// </summary>
         public Uri InboundRequestUrl { get; set; }
         /// <summary>
-        /// The HTTP method used when making requests to the Inbound Request URL.
+        /// The HTTP method we should use to call inbound_request_url
         /// </summary>
         public Twilio.Http.HttpMethod InboundMethod { get; set; }
         /// <summary>
-        /// A request is made to the Fallback URL if an error occurs with retrieving or executing the TwiML from you Inbound Request URL.
+        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL
         /// </summary>
         public Uri FallbackUrl { get; set; }
         /// <summary>
-        /// The HTTP method used when requesting the Fallback URL.
+        /// The HTTP method we should use to call fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod FallbackMethod { get; set; }
         /// <summary>
-        /// A webhook request is made to the Status Callback to pass status updates about your messages.
+        /// The URL we should call to pass status updates about message delivery
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// Configuration to enable or disable Sticky Sender on your Service Instance.
+        /// Whether to enable Sticky Sender on the Service instance
         /// </summary>
         public bool? StickySender { get; set; }
         /// <summary>
-        /// Configuration to enable or disable MMS Converter on your Service Instance.
+        /// Whether to enable the MMS Converter for messages sent through the Service instance
         /// </summary>
         public bool? MmsConverter { get; set; }
         /// <summary>
-        /// Configuration to enable or disable Smart Encoding.
+        /// Whether to enable Encoding for messages sent through the Service instance
         /// </summary>
         public bool? SmartEncoding { get; set; }
         /// <summary>
-        /// The scan_message_content
+        /// Reserved
         /// </summary>
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
         /// <summary>
-        /// Configuration to enable or disable Fallback to Long Code.
+        /// Whether to enable Fallback to Long Code for messages sent through the Service instance
         /// </summary>
         public bool? FallbackToLongCode { get; set; }
         /// <summary>
-        /// Configuration to enable or disable Area Code Geomatch.
+        /// Whether to enable Area Code Geomatch on the Service Instance
         /// </summary>
         public bool? AreaCodeGeomatch { get; set; }
         /// <summary>
-        /// Configuration to set the validity period of all messages sent from your Service, in seconds.
+        /// How long, in seconds, messages sent from the Service are valid
         /// </summary>
         public int? ValidityPeriod { get; set; }
         /// <summary>
-        /// The synchronous_validation
+        /// Reserved
         /// </summary>
         public bool? SynchronousValidation { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="friendlyName"> A human readable descriptive text for this resource, up to 64 characters. </param>
+        /// <param name="friendlyName"> A string to describe the resource </param>
         public CreateServiceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -172,70 +172,70 @@ namespace Twilio.Rest.Messaging.V1
     public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The sid
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The friendly_name
+        /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The inbound_request_url
+        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service
         /// </summary>
         public Uri InboundRequestUrl { get; set; }
         /// <summary>
-        /// The inbound_method
+        /// The HTTP method we should use to call inbound_request_url
         /// </summary>
         public Twilio.Http.HttpMethod InboundMethod { get; set; }
         /// <summary>
-        /// The fallback_url
+        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL
         /// </summary>
         public Uri FallbackUrl { get; set; }
         /// <summary>
-        /// The fallback_method
+        /// The HTTP method we should use to call fallback_url
         /// </summary>
         public Twilio.Http.HttpMethod FallbackMethod { get; set; }
         /// <summary>
-        /// The status_callback
+        /// The URL we should call to pass status updates about message delivery
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The sticky_sender
+        /// Whether to enable Sticky Sender on the Service instance
         /// </summary>
         public bool? StickySender { get; set; }
         /// <summary>
-        /// The mms_converter
+        /// Whether to enable the MMS Converter for messages sent through the Service instance
         /// </summary>
         public bool? MmsConverter { get; set; }
         /// <summary>
-        /// The smart_encoding
+        /// Whether to enable Encoding for messages sent through the Service instance
         /// </summary>
         public bool? SmartEncoding { get; set; }
         /// <summary>
-        /// The scan_message_content
+        /// Reserved
         /// </summary>
         public ServiceResource.ScanMessageContentEnum ScanMessageContent { get; set; }
         /// <summary>
-        /// The fallback_to_long_code
+        /// Whether to enable Fallback to Long Code for messages sent through the Service instance
         /// </summary>
         public bool? FallbackToLongCode { get; set; }
         /// <summary>
-        /// The area_code_geomatch
+        /// Whether to enable Area Code Geomatch on the Service Instance
         /// </summary>
         public bool? AreaCodeGeomatch { get; set; }
         /// <summary>
-        /// The validity_period
+        /// How long, in seconds, messages sent from the Service are valid
         /// </summary>
         public int? ValidityPeriod { get; set; }
         /// <summary>
-        /// The synchronous_validation
+        /// Reserved
         /// </summary>
         public bool? SynchronousValidation { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -351,14 +351,14 @@ namespace Twilio.Rest.Messaging.V1
     public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The sid
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -382,14 +382,14 @@ namespace Twilio.Rest.Messaging.V1
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The sid
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;

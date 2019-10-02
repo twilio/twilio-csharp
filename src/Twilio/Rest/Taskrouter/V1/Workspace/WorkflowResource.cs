@@ -63,8 +63,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
+        /// <param name="pathSid"> The SID of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workflow </returns>
         public static WorkflowResource Fetch(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
@@ -77,8 +77,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to fetch </param>
+        /// <param name="pathSid"> The SID of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workflow </returns>
         public static async System.Threading.Tasks.Task<WorkflowResource> FetchAsync(string pathWorkspaceSid,
@@ -133,17 +133,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> A string representing a human readable name for this Workflow. </param>
-        /// <param name="assignmentCallbackUrl"> A valid URL for the application that will process task assignment events.
-        ///                             </param>
-        /// <param name="fallbackAssignmentCallbackUrl"> If the request to the AssignmentCallbackUrl fails, the assignment
-        ///                                     callback will be made to this URL. </param>
-        /// <param name="configuration"> JSON document configuring the rules for this Workflow. </param>
-        /// <param name="taskReservationTimeout"> An integer value controlling how long in seconds TaskRouter will wait for a
-        ///                              confirmation response from your application after assigning a Task to a worker.
-        ///                              </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to update </param>
+        /// <param name="pathSid"> The SID of the resource </param>
+        /// <param name="friendlyName">  descriptive string that you create to describe the Workflow resource </param>
+        /// <param name="assignmentCallbackUrl"> The URL from your application that will process task assignment events </param>
+        /// <param name="fallbackAssignmentCallbackUrl"> The URL that we should call when a call to the
+        ///                                     `assignment_callback_url` fails </param>
+        /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow </param>
+        /// <param name="taskReservationTimeout"> How long TaskRouter will wait for a confirmation response from your
+        ///                              application after it assigns a Task to a Worker </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workflow </returns>
         public static WorkflowResource Update(string pathWorkspaceSid,
@@ -163,17 +161,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="friendlyName"> A string representing a human readable name for this Workflow. </param>
-        /// <param name="assignmentCallbackUrl"> A valid URL for the application that will process task assignment events.
-        ///                             </param>
-        /// <param name="fallbackAssignmentCallbackUrl"> If the request to the AssignmentCallbackUrl fails, the assignment
-        ///                                     callback will be made to this URL. </param>
-        /// <param name="configuration"> JSON document configuring the rules for this Workflow. </param>
-        /// <param name="taskReservationTimeout"> An integer value controlling how long in seconds TaskRouter will wait for a
-        ///                              confirmation response from your application after assigning a Task to a worker.
-        ///                              </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to update </param>
+        /// <param name="pathSid"> The SID of the resource </param>
+        /// <param name="friendlyName">  descriptive string that you create to describe the Workflow resource </param>
+        /// <param name="assignmentCallbackUrl"> The URL from your application that will process task assignment events </param>
+        /// <param name="fallbackAssignmentCallbackUrl"> The URL that we should call when a call to the
+        ///                                     `assignment_callback_url` fails </param>
+        /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow </param>
+        /// <param name="taskReservationTimeout"> How long TaskRouter will wait for a confirmation response from your
+        ///                              application after it assigns a Task to a Worker </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workflow </returns>
         public static async System.Threading.Tasks.Task<WorkflowResource> UpdateAsync(string pathWorkspaceSid,
@@ -233,8 +229,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to delete </param>
+        /// <param name="pathSid"> The SID of the Workflow resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workflow </returns>
         public static bool Delete(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
@@ -247,8 +243,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to delete </param>
+        /// <param name="pathSid"> The SID of the Workflow resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workflow </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
@@ -307,8 +303,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> Human readable description of this Workflow </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to read </param>
+        /// <param name="friendlyName"> The friendly_name of the Workflow resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -327,8 +323,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> Human readable description of this Workflow </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Workflow to read </param>
+        /// <param name="friendlyName"> The friendly_name of the Workflow resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -446,16 +442,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> A string representing a human readable name for this Workflow. </param>
-        /// <param name="configuration"> JSON document configuring the rules for this Workflow. </param>
-        /// <param name="assignmentCallbackUrl"> A valid URL for the application that will process task assignment events.
-        ///                             </param>
-        /// <param name="fallbackAssignmentCallbackUrl"> If the request to the AssignmentCallbackUrl fails, the assignment
-        ///                                     callback will be made to this URL. </param>
-        /// <param name="taskReservationTimeout"> An integer value controlling how long in seconds TaskRouter will wait for a
-        ///                              confirmation response from your application after assigning a Task to a worker.
-        ///                              </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Workflow to create belongs to </param>
+        /// <param name="friendlyName">  descriptive string that you create to describe the Workflow resource </param>
+        /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow </param>
+        /// <param name="assignmentCallbackUrl"> The URL from your application that will process task assignment events </param>
+        /// <param name="fallbackAssignmentCallbackUrl"> The URL that we should call when a call to the
+        ///                                     `assignment_callback_url` fails </param>
+        /// <param name="taskReservationTimeout"> How long TaskRouter will wait for a confirmation response from your
+        ///                              application after it assigns a Task to a Worker </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workflow </returns>
         public static WorkflowResource Create(string pathWorkspaceSid,
@@ -474,16 +468,14 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> A string representing a human readable name for this Workflow. </param>
-        /// <param name="configuration"> JSON document configuring the rules for this Workflow. </param>
-        /// <param name="assignmentCallbackUrl"> A valid URL for the application that will process task assignment events.
-        ///                             </param>
-        /// <param name="fallbackAssignmentCallbackUrl"> If the request to the AssignmentCallbackUrl fails, the assignment
-        ///                                     callback will be made to this URL. </param>
-        /// <param name="taskReservationTimeout"> An integer value controlling how long in seconds TaskRouter will wait for a
-        ///                              confirmation response from your application after assigning a Task to a worker.
-        ///                              </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Workflow to create belongs to </param>
+        /// <param name="friendlyName">  descriptive string that you create to describe the Workflow resource </param>
+        /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow </param>
+        /// <param name="assignmentCallbackUrl"> The URL from your application that will process task assignment events </param>
+        /// <param name="fallbackAssignmentCallbackUrl"> The URL that we should call when a call to the
+        ///                                     `assignment_callback_url` fails </param>
+        /// <param name="taskReservationTimeout"> How long TaskRouter will wait for a confirmation response from your
+        ///                              application after it assigns a Task to a Worker </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workflow </returns>
         public static async System.Threading.Tasks.Task<WorkflowResource> CreateAsync(string pathWorkspaceSid,
@@ -518,67 +510,67 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         }
 
         /// <summary>
-        /// The ID of the account that owns this Workflow
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The URL that will be called whenever a task managed by this Workflow is assigned to a Worker.
+        /// The URL that we call when a task managed by the Workflow is assigned to a Worker
         /// </summary>
         [JsonProperty("assignment_callback_url")]
         public Uri AssignmentCallbackUrl { get; private set; }
         /// <summary>
-        /// JSON document configuring the rules for this Workflow.
+        /// A JSON string that contains the Workflow's configuration
         /// </summary>
         [JsonProperty("configuration")]
         public string Configuration { get; private set; }
         /// <summary>
-        /// The date this workflow was created.
+        /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this workflow was last updated.
+        /// The RFC 2822 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The document_content_type
+        /// The MIME type of the document
         /// </summary>
         [JsonProperty("document_content_type")]
         public string DocumentContentType { get; private set; }
         /// <summary>
-        /// If the request to the AssignmentCallbackUrl fails, the assignment callback will be made to this URL.
+        /// The URL that we call when a call to the `assignment_callback_url` fails
         /// </summary>
         [JsonProperty("fallback_assignment_callback_url")]
         public Uri FallbackAssignmentCallbackUrl { get; private set; }
         /// <summary>
-        /// Human readable description of this Workflow
+        /// The string that you assigned to describe the Workflow resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The unique ID of the Workflow
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Determines how long TaskRouter will wait for a confirmation response from your application after assigning a Task to a worker.
+        /// How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker
         /// </summary>
         [JsonProperty("task_reservation_timeout")]
         public int? TaskReservationTimeout { get; private set; }
         /// <summary>
-        /// The ID of the Workspace that contains this Workflow
+        /// The SID of the Workspace that contains the Workflow
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the Workflow resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

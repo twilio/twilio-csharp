@@ -19,19 +19,19 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class CreateAlphaSenderOptions : IOptions<AlphaSenderResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to create the resource under
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// An Alphanumeric Sender ID string, up to 11 characters.
+        /// The Alphanumeric Sender ID string
         /// </summary>
         public string AlphaSender { get; }
 
         /// <summary>
         /// Construct a new CreateAlphaSenderOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="alphaSender"> An Alphanumeric Sender ID string, up to 11 characters. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="alphaSender"> The Alphanumeric Sender ID string </param>
         public CreateAlphaSenderOptions(string pathServiceSid, string alphaSender)
         {
             PathServiceSid = pathServiceSid;
@@ -61,14 +61,14 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class ReadAlphaSenderOptions : ReadOptions<AlphaSenderResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to read the resources from
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadAlphaSenderOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
         public ReadAlphaSenderOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -97,19 +97,19 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class FetchAlphaSenderOptions : IOptions<AlphaSenderResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Messaging Service to fetch the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAlphaSenderOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         public FetchAlphaSenderOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -134,19 +134,19 @@ namespace Twilio.Rest.Messaging.V1.Service
     public class DeleteAlphaSenderOptions : IOptions<AlphaSenderResource>
     {
         /// <summary>
-        /// The service_sid
+        /// The SID of the Service to delete the resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID that identifies the resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteAlphaSenderOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         public DeleteAlphaSenderOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

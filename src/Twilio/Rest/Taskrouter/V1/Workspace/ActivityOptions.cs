@@ -17,19 +17,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class FetchActivityOptions : IOptions<ActivityResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Activity resources to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchActivityOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to fetch </param>
+        /// <param name="pathSid"> The SID of the resource to fetch </param>
         public FetchActivityOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -52,23 +52,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class UpdateActivityOptions : IOptions<ActivityResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Activity resources to update
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the Activity resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human-readable name for the Activity, such as 'on-call', 'break', 'email', etc.
+        /// A string to describe the Activity resource
         /// </summary>
         public string FriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateActivityOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to update </param>
+        /// <param name="pathSid"> The SID of the Activity resource to update </param>
         public UpdateActivityOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -96,19 +96,19 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class DeleteActivityOptions : IOptions<ActivityResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Activity resources to delete
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the Activity resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteActivityOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to delete </param>
+        /// <param name="pathSid"> The SID of the Activity resource to delete </param>
         public DeleteActivityOptions(string pathWorkspaceSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -131,22 +131,22 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class ReadActivityOptions : ReadOptions<ActivityResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the Activity resources to read
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// Filter by an Activity's friendly name
+        /// The friendly_name of the Activity resources to read
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Filter by activities that are available or unavailable.
+        /// Whether to return activities that are available or unavailable
         /// </summary>
         public string Available { get; set; }
 
         /// <summary>
         /// Construct a new ReadActivityOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Activity resources to read </param>
         public ReadActivityOptions(string pathWorkspaceSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -183,24 +183,23 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
     public class CreateActivityOptions : IOptions<ActivityResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace that the new Activity belongs to
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// A human-readable name for the Activity, such as 'On Call', 'Break', 'Email', etc.
+        /// A string to describe the Activity resource
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// Boolean value indicating whether the worker should be eligible to receive a Task when they occupy this Activity.
+        /// Whether the Worker should be eligible to receive a Task when it occupies the Activity
         /// </summary>
         public bool? Available { get; set; }
 
         /// <summary>
         /// Construct a new CreateActivityOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="friendlyName"> A human-readable name for the Activity, such as 'On Call', 'Break', 'Email', etc.
-        ///                    </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Activity belongs to </param>
+        /// <param name="friendlyName"> A string to describe the Activity resource </param>
         public CreateActivityOptions(string pathWorkspaceSid, string friendlyName)
         {
             PathWorkspaceSid = pathWorkspaceSid;

@@ -80,14 +80,13 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="identity"> A unique string identifier for the session participant as Chat User. </param>
-        /// <param name="userAddress"> The address of the participant's device. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="twilioAddress"> The address of the Twilio phone number that the participant is in contact with.
-        ///                     </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="pathSessionSid"> The SID of the Session for the participant </param>
+        /// <param name="identity"> The string that identifies the resource's User </param>
+        /// <param name="userAddress"> The address of the participant's device </param>
+        /// <param name="attributes"> A JSON string that stores application-specific data </param>
+        /// <param name="twilioAddress"> The address of the Twilio phone number that the participant is in contact with </param>
+        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
+        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Create(string pathSessionSid,
@@ -107,14 +106,13 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="identity"> A unique string identifier for the session participant as Chat User. </param>
-        /// <param name="userAddress"> The address of the participant's device. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="twilioAddress"> The address of the Twilio phone number that the participant is in contact with.
-        ///                     </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="pathSessionSid"> The SID of the Session for the participant </param>
+        /// <param name="identity"> The string that identifies the resource's User </param>
+        /// <param name="userAddress"> The address of the participant's device </param>
+        /// <param name="attributes"> A JSON string that stores application-specific data </param>
+        /// <param name="twilioAddress"> The address of the Twilio phone number that the participant is in contact with </param>
+        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
+        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathSessionSid,
@@ -174,11 +172,11 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participant to update </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="attributes"> A JSON string that stores application-specific data </param>
+        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
+        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Update(string pathSessionSid,
@@ -196,11 +194,11 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
-        /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="dateCreated"> The date that this resource was created. </param>
-        /// <param name="dateUpdated"> The date that this resource was last updated. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participant to update </param>
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="attributes"> A JSON string that stores application-specific data </param>
+        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
+        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathSessionSid,
@@ -258,8 +256,8 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participant to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Fetch(string pathSessionSid, string pathSid, ITwilioRestClient client = null)
@@ -272,8 +270,8 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participant to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathSessionSid,
@@ -332,7 +330,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participants to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -350,7 +348,7 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participants to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -467,8 +465,8 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participant to delete </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static bool Delete(string pathSessionSid, string pathSid, ITwilioRestClient client = null)
@@ -481,8 +479,8 @@ namespace Twilio.Rest.Messaging.V1.Session
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSessionSid"> The unique id of the Session for this participant. </param>
-        /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="pathSessionSid"> The SID of the Session with the participant to delete </param>
+        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSessionSid,
@@ -513,68 +511,68 @@ namespace Twilio.Rest.Messaging.V1.Session
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this session.
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique id of the Chat Service this session belongs to.
+        /// The SID of the Service the session belongs to
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The unique id of the SMS Service this session belongs to.
+        /// The SID of the SMS Service the session belongs to
         /// </summary>
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
         /// <summary>
-        /// The unique id of the Session for this participant.
+        /// The SID of the Session for the participant
         /// </summary>
         [JsonProperty("session_sid")]
         public string SessionSid { get; private set; }
         /// <summary>
-        /// A 34 character string that uniquely identifies this resource.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A unique string identifier for the session participant as Chat User.
+        /// The string that identifies the resource's User
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The address of the Twilio phone number that the participant is in contact with.
+        /// The address of the Twilio phone number that the participant is in contact with
         /// </summary>
         [JsonProperty("twilio_address")]
         public string TwilioAddress { get; private set; }
         /// <summary>
-        /// The address of the participant's device.
+        /// The address of the participant's device
         /// </summary>
         [JsonProperty("user_address")]
         public string UserAddress { get; private set; }
         /// <summary>
-        /// An optional string metadata field you can use to store any data you wish.
+        /// The JSON string that stores application-specific data
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// The type of twilio product, participant is a user of.
+        /// The type of messaging used by the participant
         /// </summary>
         [JsonProperty("type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ParticipantResource.ParticipantTypeEnum Type { get; private set; }
         /// <summary>
-        /// The date that this resource was created.
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date that this resource was last updated.
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// An absolute URL for this participant.
+        /// The absolute URL of the participant
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

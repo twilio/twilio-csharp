@@ -15,24 +15,25 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a list of all Asset Versions.
+    /// Retrieve a list of all asset versions.
     /// </summary>
     public class ReadAssetVersionOptions : ReadOptions<AssetVersionResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to read the AssetVersion resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Asset Sid.
+        /// The SID of the Asset resource that is the parent of the AssetVersion resources to read
         /// </summary>
         public string PathAssetSid { get; }
 
         /// <summary>
         /// Construct a new ReadAssetVersionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathAssetSid"> Asset Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to read the AssetVersion resource from </param>
+        /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the AssetVersion resources to read
+        ///                    </param>
         public ReadAssetVersionOptions(string pathServiceSid, string pathAssetSid)
         {
             PathServiceSid = pathServiceSid;
@@ -58,29 +59,30 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific Asset Version.
+    /// Retrieve a specific asset version.
     /// </summary>
     public class FetchAssetVersionOptions : IOptions<AssetVersionResource>
     {
         /// <summary>
-        /// Service Sid.
+        /// The SID of the Service to fetch the AssetVersion resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Asset Sid.
+        /// The SID of the Asset resource that is the parent of the AssetVersion resource to fetch
         /// </summary>
         public string PathAssetSid { get; }
         /// <summary>
-        /// Asset Version Sid.
+        /// The SID that identifies the AssetVersion resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAssetVersionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathAssetSid"> Asset Sid. </param>
-        /// <param name="pathSid"> Asset Version Sid. </param>
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the AssetVersion resource from </param>
+        /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the AssetVersion resource to fetch
+        ///                    </param>
+        /// <param name="pathSid"> The SID that identifies the AssetVersion resource to fetch </param>
         public FetchAssetVersionOptions(string pathServiceSid, string pathAssetSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
