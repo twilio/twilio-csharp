@@ -595,7 +595,7 @@ namespace Twilio.Rest.Video.V1
         /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
-        public string DateUpdated { get; private set; }
+        public DateTime? DateUpdated { get; private set; }
         /// <summary>
         /// The unique string that identifies the resource
         /// </summary>
@@ -636,7 +636,7 @@ namespace Twilio.Rest.Video.V1
         /// The URL to send status information to your application
         /// </summary>
         [JsonProperty("status_callback")]
-        public string StatusCallback { get; private set; }
+        public Uri StatusCallback { get; private set; }
         /// <summary>
         /// The HTTP method we should use to call status_callback
         /// </summary>

@@ -481,12 +481,12 @@ namespace Twilio.Rest.Video.V1
         /// Date when the media processing task finished
         /// </summary>
         [JsonProperty("date_completed")]
-        public string DateCompleted { get; private set; }
+        public DateTime? DateCompleted { get; private set; }
         /// <summary>
         /// The ISO 8601 date and time in GMT when the composition generated media was deleted
         /// </summary>
         [JsonProperty("date_deleted")]
-        public string DateDeleted { get; private set; }
+        public DateTime? DateDeleted { get; private set; }
         /// <summary>
         /// The unique string that identifies the resource
         /// </summary>
