@@ -5,7 +5,7 @@
 
 # Twilio REST API and TwiML Libraries for .NET
 
-Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more on [twilio.com][apidocs]
+Twilio provides a simple HTTP-based API for sending and receiving phone calls and text messages. Learn more on [twilio.com][apidocs].
 
 More documentation for this library can be found [here][libdocs].
 
@@ -35,7 +35,7 @@ If you are building with the .NET Core command line tools, then you can run the 
 
 ### Migrating from earlier versions
 
-See the migration guide [here][migrating]. Also, if you were using the Twilio.Mvc package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
+See the migration guide [here][migrating]. Also, if you were using the `Twilio.Mvc` package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
 
 ### Alpha Version (deprecated)
 
