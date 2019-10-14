@@ -39,7 +39,7 @@ namespace Twilio.Types
             public PriorityEnum() {}
 
             public static readonly PriorityEnum Low = new PriorityEnum("low");
-            public static readonly PriorityEnum Medium = new PriorityEnum("medium");
+            public static readonly PriorityEnum Standard = new PriorityEnum("standard");
             public static readonly PriorityEnum High = new PriorityEnum("high");
         }
 
