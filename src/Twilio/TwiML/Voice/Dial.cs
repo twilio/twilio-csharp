@@ -353,7 +353,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="maxParticipants"> Maximum number of participants </param>
         /// <param name="record"> Record the conference </param>
         /// <param name="region"> Conference region </param>
-        /// <param name="whisper"> Call whisper </param>
+        /// <param name="coach"> Call coach </param>
         /// <param name="trim"> Trim the conference recording </param>
         /// <param name="statusCallbackEvent"> Events to call status callback URL </param>
         /// <param name="statusCallback"> Status callback URL </param>
@@ -372,7 +372,7 @@ namespace Twilio.TwiML.Voice
                                int? maxParticipants = null,
                                Conference.RecordEnum record = null,
                                Conference.RegionEnum region = null,
-                               string whisper = null,
+                               string coach = null,
                                Conference.TrimEnum trim = null,
                                List<Conference.EventEnum> statusCallbackEvent = null,
                                Uri statusCallback = null,
@@ -393,7 +393,7 @@ namespace Twilio.TwiML.Voice
                 maxParticipants,
                 record,
                 region,
-                whisper,
+                coach,
                 trim,
                 statusCallbackEvent,
                 statusCallback,

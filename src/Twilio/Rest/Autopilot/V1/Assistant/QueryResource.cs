@@ -514,7 +514,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The natural language analysis results that include the Task recognized, the confidence score, and a list of identified Fields
+        /// The natural language analysis results that include the Task recognized and a list of identified Fields
         /// </summary>
         [JsonProperty("results")]
         public object Results { get; private set; }

@@ -152,9 +152,9 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         public Conference.RegionEnum Region { get; set; }
         /// <summary>
-        /// Call whisper
+        /// Call coach
         /// </summary>
-        public string Whisper { get; set; }
+        public string Coach { get; set; }
         /// <summary>
         /// Trim the conference recording
         /// </summary>
@@ -201,7 +201,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="maxParticipants"> Maximum number of participants </param>
         /// <param name="record"> Record the conference </param>
         /// <param name="region"> Conference region </param>
-        /// <param name="whisper"> Call whisper </param>
+        /// <param name="coach"> Call coach </param>
         /// <param name="trim"> Trim the conference recording </param>
         /// <param name="statusCallbackEvent"> Events to call status callback URL </param>
         /// <param name="statusCallback"> Status callback URL </param>
@@ -220,7 +220,7 @@ namespace Twilio.TwiML.Voice
                           int? maxParticipants = null,
                           Conference.RecordEnum record = null,
                           Conference.RegionEnum region = null,
-                          string whisper = null,
+                          string coach = null,
                           Conference.TrimEnum trim = null,
                           List<Conference.EventEnum> statusCallbackEvent = null,
                           Uri statusCallback = null,
@@ -240,7 +240,7 @@ namespace Twilio.TwiML.Voice
             this.MaxParticipants = maxParticipants;
             this.Record = record;
             this.Region = region;
-            this.Whisper = whisper;
+            this.Coach = coach;
             this.Trim = trim;
             this.StatusCallbackEvent = statusCallbackEvent;
             this.StatusCallback = statusCallback;
@@ -301,9 +301,9 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("region", this.Region.ToString()));
             }
-            if (this.Whisper != null)
+            if (this.Coach != null)
             {
-                attributes.Add(new XAttribute("whisper", this.Whisper.ToString()));
+                attributes.Add(new XAttribute("coach", this.Coach.ToString()));
             }
             if (this.Trim != null)
             {

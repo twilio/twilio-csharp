@@ -316,6 +316,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationPriority"> The task priority of a new task </param>
         /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
         /// <param name="longLived"> Whether new channels are long-lived </param>
+        /// <param name="janitorEnabled"> Boolean flag for enabling or disabling the Janitor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
         public static FlexFlowResource Create(string friendlyName,
@@ -333,9 +334,10 @@ namespace Twilio.Rest.FlexApi.V1
                                               int? integrationPriority = null,
                                               bool? integrationCreationOnMessage = null,
                                               bool? longLived = null,
+                                              bool? janitorEnabled = null,
                                               ITwilioRestClient client = null)
         {
-            var options = new CreateFlexFlowOptions(friendlyName, chatServiceSid, channelType){ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived};
+            var options = new CreateFlexFlowOptions(friendlyName, chatServiceSid, channelType){ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled};
             return Create(options, client);
         }
 
@@ -358,6 +360,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationPriority"> The task priority of a new task </param>
         /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
         /// <param name="longLived"> Whether new channels are long-lived </param>
+        /// <param name="janitorEnabled"> Boolean flag for enabling or disabling the Janitor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         public static async System.Threading.Tasks.Task<FlexFlowResource> CreateAsync(string friendlyName,
@@ -375,9 +378,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                       int? integrationPriority = null,
                                                                                       bool? integrationCreationOnMessage = null,
                                                                                       bool? longLived = null,
+                                                                                      bool? janitorEnabled = null,
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new CreateFlexFlowOptions(friendlyName, chatServiceSid, channelType){ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived};
+            var options = new CreateFlexFlowOptions(friendlyName, chatServiceSid, channelType){ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -441,6 +445,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationPriority"> The task priority of a new task </param>
         /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
         /// <param name="longLived"> Whether new channels created are long-lived </param>
+        /// <param name="janitorEnabled"> Boolean flag for enabling or disabling the Janitor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
         public static FlexFlowResource Update(string pathSid,
@@ -459,9 +464,10 @@ namespace Twilio.Rest.FlexApi.V1
                                               int? integrationPriority = null,
                                               bool? integrationCreationOnMessage = null,
                                               bool? longLived = null,
+                                              bool? janitorEnabled = null,
                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateFlexFlowOptions(pathSid){FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived};
+            var options = new UpdateFlexFlowOptions(pathSid){FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled};
             return Update(options, client);
         }
 
@@ -485,6 +491,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationPriority"> The task priority of a new task </param>
         /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
         /// <param name="longLived"> Whether new channels created are long-lived </param>
+        /// <param name="janitorEnabled"> Boolean flag for enabling or disabling the Janitor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
         public static async System.Threading.Tasks.Task<FlexFlowResource> UpdateAsync(string pathSid,
@@ -503,9 +510,10 @@ namespace Twilio.Rest.FlexApi.V1
                                                                                       int? integrationPriority = null,
                                                                                       bool? integrationCreationOnMessage = null,
                                                                                       bool? longLived = null,
+                                                                                      bool? janitorEnabled = null,
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new UpdateFlexFlowOptions(pathSid){FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived};
+            var options = new UpdateFlexFlowOptions(pathSid){FriendlyName = friendlyName, ChatServiceSid = chatServiceSid, ChannelType = channelType, ContactIdentity = contactIdentity, Enabled = enabled, IntegrationType = integrationType, IntegrationFlowSid = integrationFlowSid, IntegrationUrl = integrationUrl, IntegrationWorkspaceSid = integrationWorkspaceSid, IntegrationWorkflowSid = integrationWorkflowSid, IntegrationChannel = integrationChannel, IntegrationTimeout = integrationTimeout, IntegrationPriority = integrationPriority, IntegrationCreationOnMessage = integrationCreationOnMessage, LongLived = longLived, JanitorEnabled = janitorEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -656,6 +664,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         [JsonProperty("long_lived")]
         public bool? LongLived { get; private set; }
+        /// <summary>
+        /// Boolean flag for enabling or disabling the Janitor
+        /// </summary>
+        [JsonProperty("janitor_enabled")]
+        public bool? JanitorEnabled { get; private set; }
         /// <summary>
         /// The absolute URL of the FlexFlow resource
         /// </summary>

@@ -31,7 +31,7 @@ namespace Twilio.Rest.Api.V2010.Account.Message
             }
 
             public static readonly OutcomeEnum Confirmed = new OutcomeEnum("confirmed");
-            public static readonly OutcomeEnum Umconfirmed = new OutcomeEnum("umconfirmed");
+            public static readonly OutcomeEnum Unconfirmed = new OutcomeEnum("unconfirmed");
         }
 
         private static Request BuildCreateRequest(CreateFeedbackOptions options, ITwilioRestClient client)

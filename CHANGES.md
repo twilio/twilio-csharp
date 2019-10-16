@@ -1,6 +1,31 @@
 twilio-csharp Changelog
 =======================
 
+[2019-10-16] Version 5.34.0
+---------------------------
+**Library**
+- [PR #496](https://github.com/twilio/twilio-csharp/pull/496): VIDEO-2338 TrackPriority.STANDARD. Thanks to [@innerverse](https://github.com/innerverse)!
+- [PR #495](https://github.com/twilio/twilio-csharp/pull/495): Fixed point and project highlight in README. Thanks to [@IrvinDominin](https://github.com/IrvinDominin)!
+- [PR #494](https://github.com/twilio/twilio-csharp/pull/494): breaking: Correct video composition date and callback types. Thanks to [@childish-sambino](https://github.com/childish-sambino)! **(breaking change)**
+
+**Api**
+- Add new property `attempt` to sms_messages
+- Fixed a typo in the documentation for Feedback outcome enum **(breaking change)**
+- Update the call price to be optional for deserializing **(breaking change)**
+
+**Flex**
+- Added `JanitorEnabled` attribute to Flex Flow
+- Change `features_enabled` Flex Configuration key to private **(breaking change)**
+
+**Supersim**
+- Add Fetch endpoint to Fleets resource for Super Sim Pilot
+- Allow assigning a Sim to a Fleet for Super Sim Pilot
+- Add Create endpoint to Fleets resource for Super Sim Pilot
+
+**Twiml**
+- Update `<Conference>` rename "whisper" attribute to "coach" **(breaking change)**
+
+
 [2019-10-02] Version 5.33.1
 ---------------------------
 **Library**

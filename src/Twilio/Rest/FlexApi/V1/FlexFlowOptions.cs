@@ -135,6 +135,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// Whether new channels are long-lived
         /// </summary>
         public bool? LongLived { get; set; }
+        /// <summary>
+        /// Boolean flag for enabling or disabling the Janitor
+        /// </summary>
+        public bool? JanitorEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateFlexFlowOptions
@@ -232,6 +236,11 @@ namespace Twilio.Rest.FlexApi.V1
                 p.Add(new KeyValuePair<string, string>("LongLived", LongLived.Value.ToString().ToLower()));
             }
 
+            if (JanitorEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("JanitorEnabled", JanitorEnabled.Value.ToString().ToLower()));
+            }
+
             return p;
         }
     }
@@ -305,6 +314,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// Whether new channels created are long-lived
         /// </summary>
         public bool? LongLived { get; set; }
+        /// <summary>
+        /// Boolean flag for enabling or disabling the Janitor
+        /// </summary>
+        public bool? JanitorEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFlexFlowOptions
@@ -394,6 +407,11 @@ namespace Twilio.Rest.FlexApi.V1
             if (LongLived != null)
             {
                 p.Add(new KeyValuePair<string, string>("LongLived", LongLived.Value.ToString().ToLower()));
+            }
+
+            if (JanitorEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("JanitorEnabled", JanitorEnabled.Value.ToString().ToLower()));
             }
 
             return p;
