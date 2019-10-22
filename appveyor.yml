@@ -10,3 +10,12 @@ branches:
   only:
     - master
     - alpha
+deploy:
+  provider: Nuget
+  api_key:
+    secure: YZzoIwFHwZJOREzsekYHRptdAPDA9/OX1nHmwYRUr0c=
+  skip_symbols: false
+  artifact: .\Twilio.*.nupkg
+  on:
+    branch: master
+    APPVEYOR_REPO_TAG: true
