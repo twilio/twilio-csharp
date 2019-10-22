@@ -11,7 +11,7 @@ branches:
     - master
     - alpha
 deploy:
-  provider: Nuget
+  provider: NuGet
   api_key:
     secure: YZzoIwFHwZJOREzsekYHRptdAPDA9/OX1nHmwYRUr0c=
   skip_symbols: false
