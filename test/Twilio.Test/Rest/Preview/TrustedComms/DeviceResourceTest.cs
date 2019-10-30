@@ -51,7 +51,7 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"sid\": \"DDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"binding_sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phone_number\": \"+573000000000\",\"url\": \"https://preview.twilio.com/TrustedComms/Devices\"}"
+                                         "{\"binding_sid\": \"BSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phone_number\": \"+573000000000\",\"sid\": \"DDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/TrustedComms/Devices\"}"
                                      ));
 
             var response = DeviceResource.Create("phone_number", "push_token", client: twilioRestClient);

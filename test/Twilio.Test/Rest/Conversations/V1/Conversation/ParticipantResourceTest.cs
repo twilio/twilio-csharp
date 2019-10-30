@@ -72,6 +72,21 @@ namespace Twilio.Tests.Rest.Conversations.V1.Conversation
         }
 
         [Test]
+        public void TestCreateGmmsResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"conversation_sid\": \"CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"IDENTITY\",\"attributes\": \"{ \\\"role\\\": \\\"driver\\\" }\",\"messaging_binding\": {\"type\": \"sms\",\"projected_address\": \"+15017122661\"},\"date_created\": \"2015-12-16T22:18:37Z\",\"date_updated\": \"2015-12-16T22:18:38Z\",\"url\": \"https://conversations.twilio.com/v1/Conversations/CHaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/MBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                     ));
+
+            var response = ParticipantResource.Create("CHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestUpdateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();

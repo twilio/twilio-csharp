@@ -18,23 +18,24 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     public class ReadReservationOptions : ReadOptions<ReservationResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the WorkerReservation resources to read
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The worker_sid
+        /// The SID of the reserved Worker resource with the WorkerReservation resources to read
         /// </summary>
         public string PathWorkerSid { get; }
         /// <summary>
-        /// Filter by a worker's reservation status
+        /// Returns the list of reservations for a worker with a specified ReservationStatus
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
 
         /// <summary>
         /// Construct a new ReadReservationOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathWorkerSid"> The worker_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to read </param>
+        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to read
+        ///                     </param>
         public ReadReservationOptions(string pathWorkspaceSid, string pathWorkerSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -67,24 +68,25 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     public class FetchReservationOptions : IOptions<ReservationResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the WorkerReservation resource to fetch
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The worker_sid
+        /// The SID of the reserved Worker resource with the WorkerReservation resource to fetch
         /// </summary>
         public string PathWorkerSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the WorkerReservation resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchReservationOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resource to fetch </param>
+        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resource to fetch
+        ///                     </param>
+        /// <param name="pathSid"> The SID of the WorkerReservation resource to fetch </param>
         public FetchReservationOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;
@@ -108,228 +110,229 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
     public class UpdateReservationOptions : IOptions<ReservationResource>
     {
         /// <summary>
-        /// The workspace_sid
+        /// The SID of the Workspace with the WorkerReservation resources to update
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The worker_sid
+        /// The SID of the reserved Worker resource with the WorkerReservation resources to update
         /// </summary>
         public string PathWorkerSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the WorkerReservation resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// Yes
+        /// The new status of the reservation
         /// </summary>
         public ReservationResource.StatusEnum ReservationStatus { get; set; }
         /// <summary>
-        /// No
+        /// The new worker activity SID if rejecting a reservation
         /// </summary>
         public string WorkerActivitySid { get; set; }
         /// <summary>
-        /// Yes
+        /// The assignment instruction for the reservation
         /// </summary>
         public string Instruction { get; set; }
         /// <summary>
-        /// No
+        /// The SID of the Activity resource to start after executing a Dequeue instruction
         /// </summary>
         public string DequeuePostWorkActivitySid { get; set; }
         /// <summary>
-        /// Yes
+        /// The caller ID of the call to the worker when executing a Dequeue instruction
         /// </summary>
         public string DequeueFrom { get; set; }
         /// <summary>
-        /// The dequeue_record
+        /// Whether to record both legs of a call when executing a Dequeue instruction
         /// </summary>
         public string DequeueRecord { get; set; }
         /// <summary>
-        /// The dequeue_timeout
+        /// The timeout for call when executing a Dequeue instruction
         /// </summary>
         public int? DequeueTimeout { get; set; }
         /// <summary>
-        /// The dequeue_to
+        /// The contact URI of the worker when executing a Dequeue instruction
         /// </summary>
         public string DequeueTo { get; set; }
         /// <summary>
-        /// The dequeue_status_callback_url
+        /// The callback URL for completed call event when executing a Dequeue instruction
         /// </summary>
         public Uri DequeueStatusCallbackUrl { get; set; }
         /// <summary>
-        /// Yes
+        /// The Caller ID of the outbound call when executing a Call instruction
         /// </summary>
         public string CallFrom { get; set; }
         /// <summary>
-        /// The call_record
+        /// Whether to record both legs of a call when executing a Call instruction
         /// </summary>
         public string CallRecord { get; set; }
         /// <summary>
-        /// The call_timeout
+        /// The timeout for a call when executing a Call instruction
         /// </summary>
         public int? CallTimeout { get; set; }
         /// <summary>
-        /// The call_to
+        /// The contact URI of the worker when executing a Call instruction
         /// </summary>
         public string CallTo { get; set; }
         /// <summary>
-        /// Yes
+        /// TwiML URI executed on answering the worker's leg as a result of the Call instruction
         /// </summary>
         public Uri CallUrl { get; set; }
         /// <summary>
-        /// No
+        /// The URL to call for the completed call event when executing a Call instruction
         /// </summary>
         public Uri CallStatusCallbackUrl { get; set; }
         /// <summary>
-        /// No
+        /// Whether to accept a reservation when executing a Call instruction
         /// </summary>
         public bool? CallAccept { get; set; }
         /// <summary>
-        /// The redirect_call_sid
+        /// The Call SID of the call parked in the queue when executing a Redirect instruction
         /// </summary>
         public string RedirectCallSid { get; set; }
         /// <summary>
-        /// The redirect_accept
+        /// Whether the reservation should be accepted when executing a Redirect instruction
         /// </summary>
         public bool? RedirectAccept { get; set; }
         /// <summary>
-        /// The redirect_url
+        /// TwiML URI to redirect the call to when executing the Redirect instruction
         /// </summary>
         public Uri RedirectUrl { get; set; }
         /// <summary>
-        /// The to
+        /// The Contact URI of the worker when executing a Conference instruction
         /// </summary>
         public string To { get; set; }
         /// <summary>
-        /// The from
+        /// The caller ID of the call to the worker when executing a Conference instruction
         /// </summary>
         public string From { get; set; }
         /// <summary>
-        /// The status_callback
+        /// The URL we should call to send status information to your application
         /// </summary>
         public Uri StatusCallback { get; set; }
         /// <summary>
-        /// The status_callback_method
+        /// The HTTP method we should use to call status_callback
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
         /// <summary>
-        /// The status_callback_event
+        /// The call progress events that we will send to status_callback
         /// </summary>
         public List<ReservationResource.CallStatusEnum> StatusCallbackEvent { get; set; }
         /// <summary>
-        /// The timeout
+        /// The timeout for a call when executing a Conference instruction
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>
-        /// The record
+        /// Whether to record the participant and their conferences
         /// </summary>
         public bool? Record { get; set; }
         /// <summary>
-        /// The muted
+        /// Whether to mute the agent
         /// </summary>
         public bool? Muted { get; set; }
         /// <summary>
-        /// The beep
+        /// Whether to play a notification beep when the participant joins
         /// </summary>
         public string Beep { get; set; }
         /// <summary>
-        /// The start_conference_on_enter
+        /// Whether the conference starts when the participant joins the conference
         /// </summary>
         public bool? StartConferenceOnEnter { get; set; }
         /// <summary>
-        /// The end_conference_on_exit
+        /// Whether to end the conference when the agent leaves
         /// </summary>
         public bool? EndConferenceOnExit { get; set; }
         /// <summary>
-        /// The wait_url
+        /// URL that hosts pre-conference hold music
         /// </summary>
         public Uri WaitUrl { get; set; }
         /// <summary>
-        /// The wait_method
+        /// The HTTP method we should use to call `wait_url`
         /// </summary>
         public Twilio.Http.HttpMethod WaitMethod { get; set; }
         /// <summary>
-        /// The early_media
+        /// Whether agents can hear the state of the outbound call
         /// </summary>
         public bool? EarlyMedia { get; set; }
         /// <summary>
-        /// The max_participants
+        /// The maximum number of agent conference participants
         /// </summary>
         public int? MaxParticipants { get; set; }
         /// <summary>
-        /// The conference_status_callback
+        /// The callback URL for conference events
         /// </summary>
         public Uri ConferenceStatusCallback { get; set; }
         /// <summary>
-        /// The conference_status_callback_method
+        /// HTTP method for requesting `conference_status_callback` URL
         /// </summary>
         public Twilio.Http.HttpMethod ConferenceStatusCallbackMethod { get; set; }
         /// <summary>
-        /// The conference_status_callback_event
+        /// The conference status events that we will send to conference_status_callback
         /// </summary>
         public List<ReservationResource.ConferenceEventEnum> ConferenceStatusCallbackEvent { get; set; }
         /// <summary>
-        /// The conference_record
+        /// Whether to record the conference the participant is joining
         /// </summary>
         public string ConferenceRecord { get; set; }
         /// <summary>
-        /// The conference_trim
+        /// Whether to trim leading and trailing silence from your recorded conference audio files
         /// </summary>
         public string ConferenceTrim { get; set; }
         /// <summary>
-        /// The recording_channels
+        /// Specify `mono` or `dual` recording channels
         /// </summary>
         public string RecordingChannels { get; set; }
         /// <summary>
-        /// The recording_status_callback
+        /// The URL that we should call using the `recording_status_callback_method` when the recording status changes
         /// </summary>
         public Uri RecordingStatusCallback { get; set; }
         /// <summary>
-        /// The recording_status_callback_method
+        /// The HTTP method we should use when we call `recording_status_callback`
         /// </summary>
         public Twilio.Http.HttpMethod RecordingStatusCallbackMethod { get; set; }
         /// <summary>
-        /// The conference_recording_status_callback
+        /// The URL we should call using the `conference_recording_status_callback_method` when the conference recording is available
         /// </summary>
         public Uri ConferenceRecordingStatusCallback { get; set; }
         /// <summary>
-        /// The conference_recording_status_callback_method
+        /// The HTTP method we should use to call `conference_recording_status_callback`
         /// </summary>
         public Twilio.Http.HttpMethod ConferenceRecordingStatusCallbackMethod { get; set; }
         /// <summary>
-        /// The region
+        /// The region where we should mix the conference audio
         /// </summary>
         public string Region { get; set; }
         /// <summary>
-        /// The sip_auth_username
+        /// The SIP username used for authentication
         /// </summary>
         public string SipAuthUsername { get; set; }
         /// <summary>
-        /// The sip_auth_password
+        /// The SIP password for authentication
         /// </summary>
         public string SipAuthPassword { get; set; }
         /// <summary>
-        /// The dequeue_status_callback_event
+        /// The call progress events sent via webhooks as a result of a Dequeue instruction
         /// </summary>
         public List<string> DequeueStatusCallbackEvent { get; set; }
         /// <summary>
-        /// The post_work_activity_sid
+        /// The new worker activity SID after executing a Conference instruction
         /// </summary>
         public string PostWorkActivitySid { get; set; }
         /// <summary>
-        /// The end_conference_on_customer_exit
+        /// Whether to end the conference when the customer leaves
         /// </summary>
         public bool? EndConferenceOnCustomerExit { get; set; }
         /// <summary>
-        /// The beep_on_customer_entrance
+        /// Whether to play a notification beep when the customer joins
         /// </summary>
         public bool? BeepOnCustomerEntrance { get; set; }
 
         /// <summary>
         /// Construct a new UpdateReservationOptions
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathWorkerSid"> The worker_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the WorkerReservation resources to update </param>
+        /// <param name="pathWorkerSid"> The SID of the reserved Worker resource with the WorkerReservation resources to update
+        ///                     </param>
+        /// <param name="pathSid"> The SID of the WorkerReservation resource to update </param>
         public UpdateReservationOptions(string pathWorkspaceSid, string pathWorkerSid, string pathSid)
         {
             PathWorkspaceSid = pathWorkspaceSid;

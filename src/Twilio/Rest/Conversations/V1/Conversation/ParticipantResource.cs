@@ -87,6 +87,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
+        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
+        ///                                        </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Create(string pathConversationSid,
@@ -96,9 +98,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                  DateTime? dateCreated = null,
                                                  DateTime? dateUpdated = null,
                                                  string attributes = null,
+                                                 string messagingBindingProjectedAddress = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingBindingProjectedAddress = messagingBindingProjectedAddress};
             return Create(options, client);
         }
 
@@ -114,6 +117,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
+        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
+        ///                                        </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConversationSid,
@@ -123,9 +128,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                                                          DateTime? dateCreated = null,
                                                                                          DateTime? dateUpdated = null,
                                                                                          string attributes = null,
+                                                                                         string messagingBindingProjectedAddress = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new CreateParticipantOptions(pathConversationSid){Identity = identity, MessagingBindingAddress = messagingBindingAddress, MessagingBindingProxyAddress = messagingBindingProxyAddress, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingBindingProjectedAddress = messagingBindingProjectedAddress};
             return await CreateAsync(options, client);
         }
         #endif

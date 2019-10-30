@@ -46,6 +46,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The address of the Twilio phone number that is used in Group MMS.
+        /// </summary>
+        public string MessagingBindingProjectedAddress { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -90,6 +94,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+            }
+
+            if (MessagingBindingProjectedAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
             }
 
             return p;

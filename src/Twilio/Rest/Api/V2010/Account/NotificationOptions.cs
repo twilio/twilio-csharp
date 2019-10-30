@@ -45,39 +45,6 @@ namespace Twilio.Rest.Api.V2010.Account
     }
 
     /// <summary>
-    /// Delete a notification identified by the NotificationSid from an accounts log
-    /// </summary>
-    public class DeleteNotificationOptions : IOptions<NotificationResource>
-    {
-        /// <summary>
-        /// The SID of the Account that created the resources to delete
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The unique string that identifies the resource
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteNotificationOptions
-        /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        public DeleteNotificationOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-    }
-
-    /// <summary>
     /// Retrieve a list of notifications belonging to the account used to make the request
     /// </summary>
     public class ReadNotificationOptions : ReadOptions<NotificationResource>

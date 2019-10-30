@@ -124,7 +124,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> HTTP Method to use with status_callback </param>
         /// <param name="sendDigits"> The digits to dial after connecting to the number </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
-        /// <param name="record"> Whether or not to record the call </param>
+        /// <param name="record"> Whether to record the call </param>
         /// <param name="recordingChannels"> The number of channels in the final recording </param>
         /// <param name="recordingStatusCallback"> The URL that we call when the recording is available to be accessed </param>
         /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when calling the
@@ -195,7 +195,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="statusCallbackMethod"> HTTP Method to use with status_callback </param>
         /// <param name="sendDigits"> The digits to dial after connecting to the number </param>
         /// <param name="timeout"> Number of seconds to wait for an answer </param>
-        /// <param name="record"> Whether or not to record the call </param>
+        /// <param name="record"> Whether to record the call </param>
         /// <param name="recordingChannels"> The number of channels in the final recording </param>
         /// <param name="recordingStatusCallback"> The URL that we call when the recording is available to be accessed </param>
         /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when calling the
@@ -367,7 +367,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch the call specified by the provided Call SID
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The SID of the Call resource to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns>
@@ -381,7 +381,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// Fetch the call specified by the provided Call SID
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The SID of the Call resource to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource(s) to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>

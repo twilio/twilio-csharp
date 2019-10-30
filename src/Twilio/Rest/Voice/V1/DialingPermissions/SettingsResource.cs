@@ -35,7 +35,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         }
 
         /// <summary>
-        /// Retrieve voice dialing permissions inheritance for this sub-account
+        /// Retrieve voice dialing permissions inheritance for the sub-account
         /// </summary>
         /// <param name="options"> Fetch Settings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
 
         #if !NET35
         /// <summary>
-        /// Retrieve voice dialing permissions inheritance for this sub-account
+        /// Retrieve voice dialing permissions inheritance for the sub-account
         /// </summary>
         /// <param name="options"> Fetch Settings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,7 +64,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         #endif
 
         /// <summary>
-        /// Retrieve voice dialing permissions inheritance for this sub-account
+        /// Retrieve voice dialing permissions inheritance for the sub-account
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Settings </returns>
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
 
         #if !NET35
         /// <summary>
-        /// Retrieve voice dialing permissions inheritance for this sub-account
+        /// Retrieve voice dialing permissions inheritance for the sub-account
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Settings </returns>
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         }
 
         /// <summary>
-        /// Update voice dialing permissions inheritance for this sub-account
+        /// Update voice dialing permissions inheritance for the sub-account
         /// </summary>
         /// <param name="options"> Update Settings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
 
         #if !NET35
         /// <summary>
-        /// Update voice dialing permissions inheritance for this sub-account
+        /// Update voice dialing permissions inheritance for the sub-account
         /// </summary>
         /// <param name="options"> Update Settings parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -128,9 +128,9 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         #endif
 
         /// <summary>
-        /// Update voice dialing permissions inheritance for this sub-account
+        /// Update voice dialing permissions inheritance for the sub-account
         /// </summary>
-        /// <param name="dialingPermissionsInheritance"> `true` for this sub-account to inherit voice dialing permissions from
+        /// <param name="dialingPermissionsInheritance"> `true` for the sub-account to inherit voice dialing permissions from
         ///                                     the Master Project; otherwise `false` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Settings </returns>
@@ -142,9 +142,9 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
 
         #if !NET35
         /// <summary>
-        /// Update voice dialing permissions inheritance for this sub-account
+        /// Update voice dialing permissions inheritance for the sub-account
         /// </summary>
-        /// <param name="dialingPermissionsInheritance"> `true` for this sub-account to inherit voice dialing permissions from
+        /// <param name="dialingPermissionsInheritance"> `true` for the sub-account to inherit voice dialing permissions from
         ///                                     the Master Project; otherwise `false` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Settings </returns>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         }
 
         /// <summary>
-        /// `true` if this sub-account will inherit voice dialing permissions from the Master Project; otherwise `false`
+        /// `true` if the sub-account will inherit voice dialing permissions from the Master Project; otherwise `false`
         /// </summary>
         [JsonProperty("dialing_permissions_inheritance")]
         public bool? DialingPermissionsInheritance { get; private set; }

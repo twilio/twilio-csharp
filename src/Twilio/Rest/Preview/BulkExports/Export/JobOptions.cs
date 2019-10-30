@@ -8,17 +8,31 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Voice.V1.DialingPermissions
+namespace Twilio.Rest.Preview.BulkExports.Export
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve voice dialing permissions inheritance for the sub-account
+    /// FetchJobOptions
     /// </summary>
-    public class FetchSettingsOptions : IOptions<SettingsResource>
+    public class FetchJobOptions : IOptions<JobResource>
     {
+        /// <summary>
+        /// The job_sid
+        /// </summary>
+        public string PathJobSid { get; }
+
+        /// <summary>
+        /// Construct a new FetchJobOptions
+        /// </summary>
+        /// <param name="pathJobSid"> The job_sid </param>
+        public FetchJobOptions(string pathJobSid)
+        {
+            PathJobSid = pathJobSid;
+        }
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -33,14 +47,23 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Update voice dialing permissions inheritance for the sub-account
+    /// DeleteJobOptions
     /// </summary>
-    public class UpdateSettingsOptions : IOptions<SettingsResource>
+    public class DeleteJobOptions : IOptions<JobResource>
     {
         /// <summary>
-        /// `true` for the sub-account to inherit voice dialing permissions from the Master Project; otherwise `false`
+        /// The job_sid
         /// </summary>
-        public bool? DialingPermissionsInheritance { get; set; }
+        public string PathJobSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteJobOptions
+        /// </summary>
+        /// <param name="pathJobSid"> The job_sid </param>
+        public DeleteJobOptions(string pathJobSid)
+        {
+            PathJobSid = pathJobSid;
+        }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -48,11 +71,6 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (DialingPermissionsInheritance != null)
-            {
-                p.Add(new KeyValuePair<string, string>("DialingPermissionsInheritance", DialingPermissionsInheritance.Value.ToString().ToLower()));
-            }
-
             return p;
         }
     }

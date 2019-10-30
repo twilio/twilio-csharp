@@ -123,6 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum MmsInbound = new CategoryEnum("mms-inbound");
             public static readonly CategoryEnum MmsInboundLongcode = new CategoryEnum("mms-inbound-longcode");
             public static readonly CategoryEnum MmsInboundShortcode = new CategoryEnum("mms-inbound-shortcode");
+            public static readonly CategoryEnum MmsMessagesCarrierfees = new CategoryEnum("mms-messages-carrierfees");
             public static readonly CategoryEnum MmsOutbound = new CategoryEnum("mms-outbound");
             public static readonly CategoryEnum MmsOutboundLongcode = new CategoryEnum("mms-outbound-longcode");
             public static readonly CategoryEnum MmsOutboundShortcode = new CategoryEnum("mms-outbound-shortcode");
@@ -191,12 +192,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum SmsInbound = new CategoryEnum("sms-inbound");
             public static readonly CategoryEnum SmsInboundLongcode = new CategoryEnum("sms-inbound-longcode");
             public static readonly CategoryEnum SmsInboundShortcode = new CategoryEnum("sms-inbound-shortcode");
+            public static readonly CategoryEnum SmsMessagesCarrierfees = new CategoryEnum("sms-messages-carrierfees");
+            public static readonly CategoryEnum SmsMessagesFeatures = new CategoryEnum("sms-messages-features");
+            public static readonly CategoryEnum SmsMessagesFeaturesSenderid = new CategoryEnum("sms-messages-features-senderid");
             public static readonly CategoryEnum SmsOutbound = new CategoryEnum("sms-outbound");
             public static readonly CategoryEnum SmsOutboundContentInspection = new CategoryEnum("sms-outbound-content-inspection");
             public static readonly CategoryEnum SmsOutboundLongcode = new CategoryEnum("sms-outbound-longcode");
             public static readonly CategoryEnum SmsOutboundShortcode = new CategoryEnum("sms-outbound-shortcode");
-            public static readonly CategoryEnum SmsMessagesFeatures = new CategoryEnum("sms-messages-features");
-            public static readonly CategoryEnum SmsMessagesFeaturesSenderid = new CategoryEnum("sms-messages-features-senderid");
             public static readonly CategoryEnum SpeechRecognition = new CategoryEnum("speech-recognition");
             public static readonly CategoryEnum StudioEngagements = new CategoryEnum("studio-engagements");
             public static readonly CategoryEnum Sync = new CategoryEnum("sync");

@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"phone_number\": \"+1500123\",\"cps_url\": \"https://preview.twilio.com/TrustedComms/CurrentCall\",\"url\": \"https://preview.twilio.com/TrustedComms/CPS\"}"
+                                         "{\"cps_url\": \"https://preview.twilio.com/TrustedComms/CurrentCall\",\"phone_number\": \"+1500123\",\"url\": \"https://preview.twilio.com/TrustedComms/CPS\"}"
                                      ));
 
             var response = CpsResource.Fetch(client: twilioRestClient);

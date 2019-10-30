@@ -144,6 +144,26 @@ namespace Twilio.Rest.Preview.TrustedComms
         [JsonProperty("bg_color")]
         public string BgColor { get; private set; }
         /// <summary>
+        /// Brand Sid.
+        /// </summary>
+        [JsonProperty("brand_sid")]
+        public string BrandSid { get; private set; }
+        /// <summary>
+        /// Branded Channel Sid.
+        /// </summary>
+        [JsonProperty("branded_channel_sid")]
+        public string BrandedChannelSid { get; private set; }
+        /// <summary>
+        /// Business Sid.
+        /// </summary>
+        [JsonProperty("business_sid")]
+        public string BusinessSid { get; private set; }
+        /// <summary>
+        /// A string that uniquely identifies this phone call.
+        /// </summary>
+        [JsonProperty("call_sid")]
+        public string CallSid { get; private set; }
+        /// <summary>
         /// Caller name of the current phone call
         /// </summary>
         [JsonProperty("caller")]
@@ -169,12 +189,17 @@ namespace Twilio.Rest.Preview.TrustedComms
         [JsonProperty("logo")]
         public string Logo { get; private set; }
         /// <summary>
+        /// Phone Number Sid.
+        /// </summary>
+        [JsonProperty("phone_number_sid")]
+        public string PhoneNumberSid { get; private set; }
+        /// <summary>
         /// The business reason for this current phone call
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; private set; }
         /// <summary>
-        /// A string that uniquely identifies this current phone call.
+        /// A string that uniquely identifies this current branded phone call.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }

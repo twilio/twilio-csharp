@@ -91,7 +91,7 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new Gather();
 
-            elem.Say("message", Say.VoiceEnum.Man, 1, Say.LanguageEnum.DaDk);
+            elem.Say("message", Say.VoiceEnum.Man, 1, Say.LanguageEnum.Arb);
 
             elem.Pause(1);
 
@@ -100,7 +100,7 @@ namespace Twilio.Tests.TwiML
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Gather>" + Environment.NewLine +
-                "  <Say voice=\"man\" loop=\"1\" language=\"da-DK\">message</Say>" + Environment.NewLine +
+                "  <Say voice=\"man\" loop=\"1\" language=\"arb\">message</Say>" + Environment.NewLine +
                 "  <Pause length=\"1\"></Pause>" + Environment.NewLine +
                 "  <Play loop=\"1\" digits=\"digits\">https://example.com</Play>" + Environment.NewLine +
                 "</Gather>",

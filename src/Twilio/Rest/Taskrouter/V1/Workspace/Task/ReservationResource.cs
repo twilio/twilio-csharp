@@ -134,8 +134,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to read </param>
+        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to read </param>
         /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus
         ///                         </param>
         /// <param name="pageSize"> Page size </param>
@@ -157,8 +157,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskSid"> The task_sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to read </param>
+        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to read </param>
         /// <param name="reservationStatus"> Returns the list of reservations for a task with a specified ReservationStatus
         ///                         </param>
         /// <param name="pageSize"> Page size </param>
@@ -279,9 +279,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskSid"> The task_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resource to fetch </param>
+        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resource to fetch </param>
+        /// <param name="pathSid"> The SID of the TaskReservation resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Reservation </returns>
         public static ReservationResource Fetch(string pathWorkspaceSid,
@@ -297,9 +297,9 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskSid"> The task_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resource to fetch </param>
+        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resource to fetch </param>
+        /// <param name="pathSid"> The SID of the TaskReservation resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
         public static async System.Threading.Tasks.Task<ReservationResource> FetchAsync(string pathWorkspaceSid,
@@ -355,68 +355,77 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskSid"> The task_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="reservationStatus"> New reservation status </param>
-        /// <param name="workerActivitySid"> New worker activity sid if rejecting a reservation </param>
-        /// <param name="instruction"> Assignment instruction for reservation </param>
-        /// <param name="dequeuePostWorkActivitySid"> New worker activity sid after executing a Dequeue instruction </param>
-        /// <param name="dequeueFrom"> Caller ID for the call to the worker when executing a Dequeue instruction </param>
-        /// <param name="dequeueRecord"> Attribute to record both legs of a call when executing a Dequeue instruction </param>
-        /// <param name="dequeueTimeout"> Timeout for call when executing a Dequeue instruction </param>
-        /// <param name="dequeueTo"> Contact URI of the worker when executing a Dequeue instruction </param>
-        /// <param name="dequeueStatusCallbackUrl"> Callback URL for completed call event when executing a Dequeue instruction
-        ///                                </param>
-        /// <param name="callFrom"> Caller ID for the outbound call when executing a Call instruction </param>
-        /// <param name="callRecord"> Attribute to record both legs of a call when executing a Call instruction </param>
-        /// <param name="callTimeout"> Timeout for call when executing a Call instruction </param>
-        /// <param name="callTo"> Contact URI of the worker when executing a Call instruction </param>
-        /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
-        /// <param name="callStatusCallbackUrl"> Callback URL for completed call event when executing a Call instruction
-        ///                             </param>
-        /// <param name="callAccept"> Flag to determine if reservation should be accepted when executing a Call instruction
-        ///                  </param>
-        /// <param name="redirectCallSid"> Call sid of the call parked in the queue when executing a Redirect instruction
-        ///                       </param>
-        /// <param name="redirectAccept"> Flag to determine if reservation should be accepted when executing a Redirect
-        ///                      instruction </param>
-        /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
-        /// <param name="to"> Contact URI of the worker when executing a Conference instruction </param>
-        /// <param name="from"> Caller ID for the call to the worker when executing a Conference instruction </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="timeout"> Timeout for call when executing a Conference instruction </param>
-        /// <param name="record"> The record </param>
-        /// <param name="muted"> The muted </param>
-        /// <param name="beep"> The beep </param>
-        /// <param name="startConferenceOnEnter"> The start_conference_on_enter </param>
-        /// <param name="endConferenceOnExit"> The end_conference_on_exit </param>
-        /// <param name="waitUrl"> The wait_url </param>
-        /// <param name="waitMethod"> The wait_method </param>
-        /// <param name="earlyMedia"> The early_media </param>
-        /// <param name="maxParticipants"> The max_participants </param>
-        /// <param name="conferenceStatusCallback"> The conference_status_callback </param>
-        /// <param name="conferenceStatusCallbackMethod"> The conference_status_callback_method </param>
-        /// <param name="conferenceStatusCallbackEvent"> The conference_status_callback_event </param>
-        /// <param name="conferenceRecord"> The conference_record </param>
-        /// <param name="conferenceTrim"> The conference_trim </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
-        /// <param name="conferenceRecordingStatusCallback"> The conference_recording_status_callback </param>
-        /// <param name="conferenceRecordingStatusCallbackMethod"> The conference_recording_status_callback_method </param>
-        /// <param name="region"> The region </param>
-        /// <param name="sipAuthUsername"> The sip_auth_username </param>
-        /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        /// <param name="dequeueStatusCallbackEvent"> Call progress events sent via webhooks as a result of a Dequeue
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to update </param>
+        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to update
+        ///                   </param>
+        /// <param name="pathSid"> The SID of the TaskReservation resource to update </param>
+        /// <param name="reservationStatus"> The new status of the reservation </param>
+        /// <param name="workerActivitySid"> The new worker activity SID if rejecting a reservation </param>
+        /// <param name="instruction"> The assignment instruction for reservation </param>
+        /// <param name="dequeuePostWorkActivitySid"> The SID of the Activity resource to start after executing a Dequeue
         ///                                  instruction </param>
-        /// <param name="postWorkActivitySid"> New worker activity sid after executing a Conference instruction </param>
-        /// <param name="supervisorMode"> Supervisor mode when executing the Supervise instruction </param>
-        /// <param name="supervisor"> Supervisor sid/uri when executing the Supervise instruction </param>
-        /// <param name="endConferenceOnCustomerExit"> The end_conference_on_customer_exit </param>
-        /// <param name="beepOnCustomerEntrance"> The beep_on_customer_entrance </param>
+        /// <param name="dequeueFrom"> The Caller ID of the call to the worker when executing a Dequeue instruction </param>
+        /// <param name="dequeueRecord"> Whether to record both legs of a call when executing a Dequeue instruction </param>
+        /// <param name="dequeueTimeout"> Timeout for call when executing a Dequeue instruction </param>
+        /// <param name="dequeueTo"> The Contact URI of the worker when executing a Dequeue instruction </param>
+        /// <param name="dequeueStatusCallbackUrl"> The Callback URL for completed call event when executing a Dequeue
+        ///                                instruction </param>
+        /// <param name="callFrom"> The Caller ID of the outbound call when executing a Call instruction </param>
+        /// <param name="callRecord"> Whether to record both legs of a call when executing a Call instruction </param>
+        /// <param name="callTimeout"> Timeout for call when executing a Call instruction </param>
+        /// <param name="callTo"> The Contact URI of the worker when executing a Call instruction </param>
+        /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
+        /// <param name="callStatusCallbackUrl"> The URL to call  for the completed call event when executing a Call
+        ///                             instruction </param>
+        /// <param name="callAccept"> Whether to accept a reservation when executing a Call instruction </param>
+        /// <param name="redirectCallSid"> The Call SID of the call parked in the queue when executing a Redirect instruction
+        ///                       </param>
+        /// <param name="redirectAccept"> Whether the reservation should be accepted when executing a Redirect instruction
+        ///                      </param>
+        /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
+        /// <param name="to"> The Contact URI of the worker when executing a Conference instruction </param>
+        /// <param name="from"> The Caller ID of the call to the worker when executing a Conference instruction </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="statusCallbackEvent"> The call progress events that we will send to status_callback </param>
+        /// <param name="timeout"> Timeout for call when executing a Conference instruction </param>
+        /// <param name="record"> Whether to record the participant and their conferences </param>
+        /// <param name="muted"> Whether to mute the agent </param>
+        /// <param name="beep"> Whether to play a notification beep when the participant joins </param>
+        /// <param name="startConferenceOnEnter"> Whether the conference starts when the participant joins the conference
+        ///                              </param>
+        /// <param name="endConferenceOnExit"> Whether to end the conference when the agent leaves </param>
+        /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
+        /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
+        /// <param name="earlyMedia"> Whether agents can hear the state of the outbound call </param>
+        /// <param name="maxParticipants"> The maximum number of agent conference participants </param>
+        /// <param name="conferenceStatusCallback"> The callback URL for conference events </param>
+        /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `conference_status_callback` URL </param>
+        /// <param name="conferenceStatusCallbackEvent"> The conference status events that we will send to
+        ///                                     conference_status_callback </param>
+        /// <param name="conferenceRecord"> Whether to record the conference the participant is joining </param>
+        /// <param name="conferenceTrim"> How to trim leading and trailing silence from your recorded conference audio files
+        ///                      </param>
+        /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels </param>
+        /// <param name="recordingStatusCallback"> The URL that we should call using the `recording_status_callback_method`
+        ///                               when the recording status changes </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`
+        ///                                     </param>
+        /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the
+        ///                                         `conference_recording_status_callback_method` when the conference recording
+        ///                                         is available </param>
+        /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call
+        ///                                               `conference_recording_status_callback` </param>
+        /// <param name="region"> The region where we should mix the conference audio </param>
+        /// <param name="sipAuthUsername"> The SIP username used for authentication </param>
+        /// <param name="sipAuthPassword"> The SIP password for authentication </param>
+        /// <param name="dequeueStatusCallbackEvent"> The Call progress events sent via webhooks as a result of a Dequeue
+        ///                                  instruction </param>
+        /// <param name="postWorkActivitySid"> The new worker activity SID after executing a Conference instruction </param>
+        /// <param name="supervisorMode"> The Supervisor mode when executing the Supervise instruction </param>
+        /// <param name="supervisor"> The Supervisor SID/URI when executing the Supervise instruction </param>
+        /// <param name="endConferenceOnCustomerExit"> Whether to end the conference when the customer leaves </param>
+        /// <param name="beepOnCustomerEntrance"> Whether to play a notification beep when the customer joins </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Reservation </returns>
         public static ReservationResource Update(string pathWorkspaceSid,
@@ -485,68 +494,77 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathWorkspaceSid"> The workspace_sid </param>
-        /// <param name="pathTaskSid"> The task_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="reservationStatus"> New reservation status </param>
-        /// <param name="workerActivitySid"> New worker activity sid if rejecting a reservation </param>
-        /// <param name="instruction"> Assignment instruction for reservation </param>
-        /// <param name="dequeuePostWorkActivitySid"> New worker activity sid after executing a Dequeue instruction </param>
-        /// <param name="dequeueFrom"> Caller ID for the call to the worker when executing a Dequeue instruction </param>
-        /// <param name="dequeueRecord"> Attribute to record both legs of a call when executing a Dequeue instruction </param>
-        /// <param name="dequeueTimeout"> Timeout for call when executing a Dequeue instruction </param>
-        /// <param name="dequeueTo"> Contact URI of the worker when executing a Dequeue instruction </param>
-        /// <param name="dequeueStatusCallbackUrl"> Callback URL for completed call event when executing a Dequeue instruction
-        ///                                </param>
-        /// <param name="callFrom"> Caller ID for the outbound call when executing a Call instruction </param>
-        /// <param name="callRecord"> Attribute to record both legs of a call when executing a Call instruction </param>
-        /// <param name="callTimeout"> Timeout for call when executing a Call instruction </param>
-        /// <param name="callTo"> Contact URI of the worker when executing a Call instruction </param>
-        /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
-        /// <param name="callStatusCallbackUrl"> Callback URL for completed call event when executing a Call instruction
-        ///                             </param>
-        /// <param name="callAccept"> Flag to determine if reservation should be accepted when executing a Call instruction
-        ///                  </param>
-        /// <param name="redirectCallSid"> Call sid of the call parked in the queue when executing a Redirect instruction
-        ///                       </param>
-        /// <param name="redirectAccept"> Flag to determine if reservation should be accepted when executing a Redirect
-        ///                      instruction </param>
-        /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
-        /// <param name="to"> Contact URI of the worker when executing a Conference instruction </param>
-        /// <param name="from"> Caller ID for the call to the worker when executing a Conference instruction </param>
-        /// <param name="statusCallback"> The status_callback </param>
-        /// <param name="statusCallbackMethod"> The status_callback_method </param>
-        /// <param name="statusCallbackEvent"> The status_callback_event </param>
-        /// <param name="timeout"> Timeout for call when executing a Conference instruction </param>
-        /// <param name="record"> The record </param>
-        /// <param name="muted"> The muted </param>
-        /// <param name="beep"> The beep </param>
-        /// <param name="startConferenceOnEnter"> The start_conference_on_enter </param>
-        /// <param name="endConferenceOnExit"> The end_conference_on_exit </param>
-        /// <param name="waitUrl"> The wait_url </param>
-        /// <param name="waitMethod"> The wait_method </param>
-        /// <param name="earlyMedia"> The early_media </param>
-        /// <param name="maxParticipants"> The max_participants </param>
-        /// <param name="conferenceStatusCallback"> The conference_status_callback </param>
-        /// <param name="conferenceStatusCallbackMethod"> The conference_status_callback_method </param>
-        /// <param name="conferenceStatusCallbackEvent"> The conference_status_callback_event </param>
-        /// <param name="conferenceRecord"> The conference_record </param>
-        /// <param name="conferenceTrim"> The conference_trim </param>
-        /// <param name="recordingChannels"> The recording_channels </param>
-        /// <param name="recordingStatusCallback"> The recording_status_callback </param>
-        /// <param name="recordingStatusCallbackMethod"> The recording_status_callback_method </param>
-        /// <param name="conferenceRecordingStatusCallback"> The conference_recording_status_callback </param>
-        /// <param name="conferenceRecordingStatusCallbackMethod"> The conference_recording_status_callback_method </param>
-        /// <param name="region"> The region </param>
-        /// <param name="sipAuthUsername"> The sip_auth_username </param>
-        /// <param name="sipAuthPassword"> The sip_auth_password </param>
-        /// <param name="dequeueStatusCallbackEvent"> Call progress events sent via webhooks as a result of a Dequeue
+        /// <param name="pathWorkspaceSid"> The SID of the Workspace with the TaskReservation resources to update </param>
+        /// <param name="pathTaskSid"> The SID of the reserved Task resource with the TaskReservation resources to update
+        ///                   </param>
+        /// <param name="pathSid"> The SID of the TaskReservation resource to update </param>
+        /// <param name="reservationStatus"> The new status of the reservation </param>
+        /// <param name="workerActivitySid"> The new worker activity SID if rejecting a reservation </param>
+        /// <param name="instruction"> The assignment instruction for reservation </param>
+        /// <param name="dequeuePostWorkActivitySid"> The SID of the Activity resource to start after executing a Dequeue
         ///                                  instruction </param>
-        /// <param name="postWorkActivitySid"> New worker activity sid after executing a Conference instruction </param>
-        /// <param name="supervisorMode"> Supervisor mode when executing the Supervise instruction </param>
-        /// <param name="supervisor"> Supervisor sid/uri when executing the Supervise instruction </param>
-        /// <param name="endConferenceOnCustomerExit"> The end_conference_on_customer_exit </param>
-        /// <param name="beepOnCustomerEntrance"> The beep_on_customer_entrance </param>
+        /// <param name="dequeueFrom"> The Caller ID of the call to the worker when executing a Dequeue instruction </param>
+        /// <param name="dequeueRecord"> Whether to record both legs of a call when executing a Dequeue instruction </param>
+        /// <param name="dequeueTimeout"> Timeout for call when executing a Dequeue instruction </param>
+        /// <param name="dequeueTo"> The Contact URI of the worker when executing a Dequeue instruction </param>
+        /// <param name="dequeueStatusCallbackUrl"> The Callback URL for completed call event when executing a Dequeue
+        ///                                instruction </param>
+        /// <param name="callFrom"> The Caller ID of the outbound call when executing a Call instruction </param>
+        /// <param name="callRecord"> Whether to record both legs of a call when executing a Call instruction </param>
+        /// <param name="callTimeout"> Timeout for call when executing a Call instruction </param>
+        /// <param name="callTo"> The Contact URI of the worker when executing a Call instruction </param>
+        /// <param name="callUrl"> TwiML URI executed on answering the worker's leg as a result of the Call instruction </param>
+        /// <param name="callStatusCallbackUrl"> The URL to call  for the completed call event when executing a Call
+        ///                             instruction </param>
+        /// <param name="callAccept"> Whether to accept a reservation when executing a Call instruction </param>
+        /// <param name="redirectCallSid"> The Call SID of the call parked in the queue when executing a Redirect instruction
+        ///                       </param>
+        /// <param name="redirectAccept"> Whether the reservation should be accepted when executing a Redirect instruction
+        ///                      </param>
+        /// <param name="redirectUrl"> TwiML URI to redirect the call to when executing the Redirect instruction </param>
+        /// <param name="to"> The Contact URI of the worker when executing a Conference instruction </param>
+        /// <param name="from"> The Caller ID of the call to the worker when executing a Conference instruction </param>
+        /// <param name="statusCallback"> The URL we should call to send status information to your application </param>
+        /// <param name="statusCallbackMethod"> The HTTP method we should use to call status_callback </param>
+        /// <param name="statusCallbackEvent"> The call progress events that we will send to status_callback </param>
+        /// <param name="timeout"> Timeout for call when executing a Conference instruction </param>
+        /// <param name="record"> Whether to record the participant and their conferences </param>
+        /// <param name="muted"> Whether to mute the agent </param>
+        /// <param name="beep"> Whether to play a notification beep when the participant joins </param>
+        /// <param name="startConferenceOnEnter"> Whether the conference starts when the participant joins the conference
+        ///                              </param>
+        /// <param name="endConferenceOnExit"> Whether to end the conference when the agent leaves </param>
+        /// <param name="waitUrl"> URL that hosts pre-conference hold music </param>
+        /// <param name="waitMethod"> The HTTP method we should use to call `wait_url` </param>
+        /// <param name="earlyMedia"> Whether agents can hear the state of the outbound call </param>
+        /// <param name="maxParticipants"> The maximum number of agent conference participants </param>
+        /// <param name="conferenceStatusCallback"> The callback URL for conference events </param>
+        /// <param name="conferenceStatusCallbackMethod"> HTTP method for requesting `conference_status_callback` URL </param>
+        /// <param name="conferenceStatusCallbackEvent"> The conference status events that we will send to
+        ///                                     conference_status_callback </param>
+        /// <param name="conferenceRecord"> Whether to record the conference the participant is joining </param>
+        /// <param name="conferenceTrim"> How to trim leading and trailing silence from your recorded conference audio files
+        ///                      </param>
+        /// <param name="recordingChannels"> Specify `mono` or `dual` recording channels </param>
+        /// <param name="recordingStatusCallback"> The URL that we should call using the `recording_status_callback_method`
+        ///                               when the recording status changes </param>
+        /// <param name="recordingStatusCallbackMethod"> The HTTP method we should use when we call `recording_status_callback`
+        ///                                     </param>
+        /// <param name="conferenceRecordingStatusCallback"> The URL we should call using the
+        ///                                         `conference_recording_status_callback_method` when the conference recording
+        ///                                         is available </param>
+        /// <param name="conferenceRecordingStatusCallbackMethod"> The HTTP method we should use to call
+        ///                                               `conference_recording_status_callback` </param>
+        /// <param name="region"> The region where we should mix the conference audio </param>
+        /// <param name="sipAuthUsername"> The SIP username used for authentication </param>
+        /// <param name="sipAuthPassword"> The SIP password for authentication </param>
+        /// <param name="dequeueStatusCallbackEvent"> The Call progress events sent via webhooks as a result of a Dequeue
+        ///                                  instruction </param>
+        /// <param name="postWorkActivitySid"> The new worker activity SID after executing a Conference instruction </param>
+        /// <param name="supervisorMode"> The Supervisor mode when executing the Supervise instruction </param>
+        /// <param name="supervisor"> The Supervisor SID/URI when executing the Supervise instruction </param>
+        /// <param name="endConferenceOnCustomerExit"> Whether to end the conference when the customer leaves </param>
+        /// <param name="beepOnCustomerEntrance"> Whether to play a notification beep when the customer joins </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Reservation </returns>
         public static async System.Threading.Tasks.Task<ReservationResource> UpdateAsync(string pathWorkspaceSid,
@@ -631,58 +649,58 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Task
         }
 
         /// <summary>
-        /// The ID of the Account that owns this Task
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The current status of the reservation.
+        /// The current status of the reservation
         /// </summary>
         [JsonProperty("reservation_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ReservationResource.StatusEnum ReservationStatus { get; private set; }
         /// <summary>
-        /// The unique ID of this Reservation.
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The ID of the reserved Task
+        /// The SID of the reserved Task resource
         /// </summary>
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }
         /// <summary>
-        /// Human readable description of the Worker that is reserved
+        /// The friendly_name of the Worker that is reserved
         /// </summary>
         [JsonProperty("worker_name")]
         public string WorkerName { get; private set; }
         /// <summary>
-        /// The ID of the reserved Worker
+        /// The SID of the reserved Worker resource
         /// </summary>
         [JsonProperty("worker_sid")]
         public string WorkerSid { get; private set; }
         /// <summary>
-        /// The ID of the Workspace that this task is contained within.
+        /// The SID of the Workspace that this task is contained within.
         /// </summary>
         [JsonProperty("workspace_sid")]
         public string WorkspaceSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the TaskReservation reservation
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

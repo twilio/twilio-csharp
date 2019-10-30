@@ -116,20 +116,20 @@ namespace Twilio.Rest.Preview.TrustedComms
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Device.
+        /// Binding Sid.
         /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
+        [JsonProperty("binding_sid")]
+        public string BindingSid { get; private set; }
         /// <summary>
         /// The end user Phone Number
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; private set; }
         /// <summary>
-        /// Binding Sid.
+        /// A string that uniquely identifies this Device.
         /// </summary>
-        [JsonProperty("binding_sid")]
-        public string BindingSid { get; private set; }
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>

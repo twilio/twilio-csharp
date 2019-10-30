@@ -279,12 +279,12 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         [JsonProperty("iso_code")]
         public string IsoCode { get; private set; }
         /// <summary>
-        /// Name of the country
+        /// The name of the country
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; private set; }
         /// <summary>
-        /// Name of the continent
+        /// The name of the continent in which the country is located
         /// </summary>
         [JsonProperty("continent")]
         public string Continent { get; private set; }
@@ -294,17 +294,17 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
         [JsonProperty("country_codes")]
         public List<string> CountryCodes { get; private set; }
         /// <summary>
-        /// `true`, if dialing to low-risk numbers is enabled, else `false`
+        /// Whether dialing to low-risk numbers is enabled
         /// </summary>
         [JsonProperty("low_risk_numbers_enabled")]
         public bool? LowRiskNumbersEnabled { get; private set; }
         /// <summary>
-        /// `true`, if dialing to high-risk special services numbers is enabled, else `false`
+        /// Whether dialing to high-risk special services numbers is enabled
         /// </summary>
         [JsonProperty("high_risk_special_numbers_enabled")]
         public bool? HighRiskSpecialNumbersEnabled { get; private set; }
         /// <summary>
-        /// `true`, if dialing to high-risk toll fraud numbers is enabled, else `false`
+        /// Whether dialing to high-risk toll fraud numbers is enabled, else `false`
         /// </summary>
         [JsonProperty("high_risk_tollfraud_numbers_enabled")]
         public bool? HighRiskTollfraudNumbersEnabled { get; private set; }

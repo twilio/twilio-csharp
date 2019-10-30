@@ -214,40 +214,95 @@ namespace Twilio.Rest.Preview.TrustedComms
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Current Call.
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
         /// Account Sid.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The originating Phone Number
+        /// Background color of the current phone call
         /// </summary>
-        [JsonProperty("from")]
-        public string From { get; private set; }
+        [JsonProperty("bg_color")]
+        public string BgColor { get; private set; }
         /// <summary>
-        /// The terminating Phone Number
+        /// Brand Sid.
         /// </summary>
-        [JsonProperty("to")]
-        public string To { get; private set; }
+        [JsonProperty("brand_sid")]
+        public string BrandSid { get; private set; }
         /// <summary>
-        /// The business reason for this phone call
+        /// Branded Channel Sid.
         /// </summary>
-        [JsonProperty("reason")]
-        public string Reason { get; private set; }
+        [JsonProperty("branded_channel_sid")]
+        public string BrandedChannelSid { get; private set; }
+        /// <summary>
+        /// Business Sid.
+        /// </summary>
+        [JsonProperty("business_sid")]
+        public string BusinessSid { get; private set; }
+        /// <summary>
+        /// A string that uniquely identifies this phone call.
+        /// </summary>
+        [JsonProperty("call_sid")]
+        public string CallSid { get; private set; }
+        /// <summary>
+        /// Caller name of the current phone call
+        /// </summary>
+        [JsonProperty("caller")]
+        public string Caller { get; private set; }
         /// <summary>
         /// The date this Current Call was created
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime? CreatedAt { get; private set; }
         /// <summary>
+        /// Font color of the current phone call
+        /// </summary>
+        [JsonProperty("font_color")]
+        public string FontColor { get; private set; }
+        /// <summary>
+        /// The originating Phone Number
+        /// </summary>
+        [JsonProperty("from")]
+        public string From { get; private set; }
+        /// <summary>
+        /// Logo URL of the caller
+        /// </summary>
+        [JsonProperty("logo")]
+        public string Logo { get; private set; }
+        /// <summary>
+        /// Phone Number Sid.
+        /// </summary>
+        [JsonProperty("phone_number_sid")]
+        public string PhoneNumberSid { get; private set; }
+        /// <summary>
+        /// The business reason for this phone call
+        /// </summary>
+        [JsonProperty("reason")]
+        public string Reason { get; private set; }
+        /// <summary>
+        /// A string that uniquely identifies this current branded phone call.
+        /// </summary>
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
+        /// <summary>
+        /// The status of the current phone call
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; private set; }
+        /// <summary>
+        /// The terminating Phone Number
+        /// </summary>
+        [JsonProperty("to")]
+        public string To { get; private set; }
+        /// <summary>
         /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The use case for the current phone call
+        /// </summary>
+        [JsonProperty("use_case")]
+        public string UseCase { get; private set; }
 
         private PhoneCallResource()
         {

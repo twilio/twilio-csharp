@@ -123,6 +123,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum MmsInbound = new UsageCategoryEnum("mms-inbound");
             public static readonly UsageCategoryEnum MmsInboundLongcode = new UsageCategoryEnum("mms-inbound-longcode");
             public static readonly UsageCategoryEnum MmsInboundShortcode = new UsageCategoryEnum("mms-inbound-shortcode");
+            public static readonly UsageCategoryEnum MmsMessagesCarrierfees = new UsageCategoryEnum("mms-messages-carrierfees");
             public static readonly UsageCategoryEnum MmsOutbound = new UsageCategoryEnum("mms-outbound");
             public static readonly UsageCategoryEnum MmsOutboundLongcode = new UsageCategoryEnum("mms-outbound-longcode");
             public static readonly UsageCategoryEnum MmsOutboundShortcode = new UsageCategoryEnum("mms-outbound-shortcode");
@@ -191,12 +192,13 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum SmsInbound = new UsageCategoryEnum("sms-inbound");
             public static readonly UsageCategoryEnum SmsInboundLongcode = new UsageCategoryEnum("sms-inbound-longcode");
             public static readonly UsageCategoryEnum SmsInboundShortcode = new UsageCategoryEnum("sms-inbound-shortcode");
+            public static readonly UsageCategoryEnum SmsMessagesCarrierfees = new UsageCategoryEnum("sms-messages-carrierfees");
+            public static readonly UsageCategoryEnum SmsMessagesFeatures = new UsageCategoryEnum("sms-messages-features");
+            public static readonly UsageCategoryEnum SmsMessagesFeaturesSenderid = new UsageCategoryEnum("sms-messages-features-senderid");
             public static readonly UsageCategoryEnum SmsOutbound = new UsageCategoryEnum("sms-outbound");
             public static readonly UsageCategoryEnum SmsOutboundContentInspection = new UsageCategoryEnum("sms-outbound-content-inspection");
             public static readonly UsageCategoryEnum SmsOutboundLongcode = new UsageCategoryEnum("sms-outbound-longcode");
             public static readonly UsageCategoryEnum SmsOutboundShortcode = new UsageCategoryEnum("sms-outbound-shortcode");
-            public static readonly UsageCategoryEnum SmsMessagesFeatures = new UsageCategoryEnum("sms-messages-features");
-            public static readonly UsageCategoryEnum SmsMessagesFeaturesSenderid = new UsageCategoryEnum("sms-messages-features-senderid");
             public static readonly UsageCategoryEnum SpeechRecognition = new UsageCategoryEnum("speech-recognition");
             public static readonly UsageCategoryEnum StudioEngagements = new UsageCategoryEnum("studio-engagements");
             public static readonly UsageCategoryEnum Sync = new UsageCategoryEnum("sync");

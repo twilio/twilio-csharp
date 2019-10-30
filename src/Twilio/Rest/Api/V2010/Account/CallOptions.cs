@@ -71,7 +71,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>
-        /// Whether or not to record the call
+        /// Whether to record the call
         /// </summary>
         public bool? Record { get; set; }
         /// <summary>
@@ -324,14 +324,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string PathAccountSid { get; set; }
         /// <summary>
-        /// The unique string that identifies this resource
+        /// The SID of the Call resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCallOptions
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies this resource </param>
+        /// <param name="pathSid"> The SID of the Call resource to fetch </param>
         public FetchCallOptions(string pathSid)
         {
             PathSid = pathSid;

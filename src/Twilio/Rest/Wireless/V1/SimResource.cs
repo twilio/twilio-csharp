@@ -64,7 +64,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// Fetch a Sim resource from your account.
+        /// Fetch a Sim resource on your Account.
         /// </summary>
         /// <param name="options"> Fetch Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// Fetch a Sim resource from your account.
+        /// Fetch a Sim resource on your Account.
         /// </summary>
         /// <param name="options"> Fetch Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -93,9 +93,9 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// Fetch a Sim resource from your account.
+        /// Fetch a Sim resource on your Account.
         /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Sim resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns>
         public static SimResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -106,9 +106,9 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// Fetch a Sim resource from your account.
+        /// Fetch a Sim resource on your Account.
         /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+        /// <param name="pathSid"> The SID of the Sim resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
         public static async System.Threading.Tasks.Task<SimResource> FetchAsync(string pathSid,
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// Retrieve a list of Sims from your account.
+        /// Retrieve a list of Sim resources on your Account.
         /// </summary>
         /// <param name="options"> Read Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -147,7 +147,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of Sims from your account.
+        /// Retrieve a list of Sim resources on your Account.
         /// </summary>
         /// <param name="options"> Read Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -164,11 +164,11 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// Retrieve a list of Sims from your account.
+        /// Retrieve a list of Sim resources on your Account.
         /// </summary>
         /// <param name="status"> Only return Sim resources with this status </param>
         /// <param name="iccid"> Only return Sim resources with this ICCID </param>
-        /// <param name="ratePlan"> Only return Sim resources with this Rate Plan </param>
+        /// <param name="ratePlan"> Only return Sim resources assigned to this RatePlan resource </param>
         /// <param name="eId"> Deprecated </param>
         /// <param name="simRegistrationCode"> Only return Sim resources with this registration code </param>
         /// <param name="pageSize"> Page size </param>
@@ -190,11 +190,11 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of Sims from your account.
+        /// Retrieve a list of Sim resources on your Account.
         /// </summary>
         /// <param name="status"> Only return Sim resources with this status </param>
         /// <param name="iccid"> Only return Sim resources with this ICCID </param>
-        /// <param name="ratePlan"> Only return Sim resources with this Rate Plan </param>
+        /// <param name="ratePlan"> Only return Sim resources assigned to this RatePlan resource </param>
         /// <param name="eId"> Deprecated </param>
         /// <param name="simRegistrationCode"> Only return Sim resources with this registration code </param>
         /// <param name="pageSize"> Page size </param>
@@ -286,7 +286,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// Updates the given properties of a Sim resource from your account.
+        /// Updates the given properties of a Sim resource on your Account.
         /// </summary>
         /// <param name="options"> Update Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -300,7 +300,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// Updates the given properties of a Sim resource from your account.
+        /// Updates the given properties of a Sim resource on your Account.
         /// </summary>
         /// <param name="options"> Update Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -315,29 +315,31 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// Updates the given properties of a Sim resource from your account.
+        /// Updates the given properties of a Sim resource on your Account.
         /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="pathSid"> The SID of the Sim resource to update </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="callbackMethod"> The HTTP method we use to call callback_url </param>
-        /// <param name="callbackUrl"> The URL we call when the SIM has finished updating </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="ratePlan"> The sid or unique_name of the RatePlan resource that this SIM should use </param>
-        /// <param name="status"> The new status of the resource </param>
-        /// <param name="commandsCallbackMethod"> The HTTP method we use to call commands_callback_url </param>
-        /// <param name="commandsCallbackUrl"> he URL we call when the SIM originates a Command </param>
-        /// <param name="smsFallbackMethod"> The HTTP method we use to call sms_fallback_url </param>
-        /// <param name="smsFallbackUrl"> The URL we call when an error occurs while retrieving or executing the TwiML
+        /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
+        /// <param name="callbackUrl"> The URL we should call when the Sim resource has finished updating </param>
+        /// <param name="friendlyName"> A string to describe the Sim resource </param>
+        /// <param name="ratePlan"> The SID or unique name of the RatePlan resource to which the Sim resource should be
+        ///                assigned </param>
+        /// <param name="status"> The new status of the Sim resource </param>
+        /// <param name="commandsCallbackMethod"> The HTTP method we should use to call commands_callback_url </param>
+        /// <param name="commandsCallbackUrl"> The URL we should call when the SIM sends a Command </param>
+        /// <param name="smsFallbackMethod"> The HTTP method we should use to call sms_fallback_url </param>
+        /// <param name="smsFallbackUrl"> The URL we should call when an error occurs while retrieving or executing the TwiML
         ///                      requested from sms_url </param>
-        /// <param name="smsMethod"> The HTTP method we use to call sms_url </param>
-        /// <param name="smsUrl"> The URL we call when the SIM-connected device sends an SMS message that is not a Command
-        ///              </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method we use to call voice_fallback_url </param>
-        /// <param name="voiceFallbackUrl"> The URL we call when an error occurs while retrieving or executing the TwiML
+        /// <param name="smsMethod"> The HTTP method we should use to call sms_url </param>
+        /// <param name="smsUrl"> The URL we should call when the SIM-connected device sends an SMS message that is not a
+        ///              Command </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method we should use to call voice_fallback_url </param>
+        /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs while retrieving or executing the TwiML
         ///                        requested from voice_url </param>
-        /// <param name="voiceMethod"> The HTTP method we use when we call voice_url </param>
-        /// <param name="voiceUrl"> The URL we call when the SIM-connected device makes a voice call </param>
+        /// <param name="voiceMethod"> The HTTP method we should use when we call voice_url </param>
+        /// <param name="voiceUrl"> The URL we should call when the SIM-connected device makes a voice call </param>
         /// <param name="resetStatus"> Initiate a connectivity reset on a SIM </param>
+        /// <param name="accountSid"> The SID of the Account to which the Sim resource should belong </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns>
         public static SimResource Update(string pathSid,
@@ -358,37 +360,40 @@ namespace Twilio.Rest.Wireless.V1
                                          Twilio.Http.HttpMethod voiceMethod = null,
                                          Uri voiceUrl = null,
                                          SimResource.ResetStatusEnum resetStatus = null,
+                                         string accountSid = null,
                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus};
+            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus, AccountSid = accountSid};
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// Updates the given properties of a Sim resource from your account.
+        /// Updates the given properties of a Sim resource on your Account.
         /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        /// <param name="pathSid"> The SID of the Sim resource to update </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
-        /// <param name="callbackMethod"> The HTTP method we use to call callback_url </param>
-        /// <param name="callbackUrl"> The URL we call when the SIM has finished updating </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="ratePlan"> The sid or unique_name of the RatePlan resource that this SIM should use </param>
-        /// <param name="status"> The new status of the resource </param>
-        /// <param name="commandsCallbackMethod"> The HTTP method we use to call commands_callback_url </param>
-        /// <param name="commandsCallbackUrl"> he URL we call when the SIM originates a Command </param>
-        /// <param name="smsFallbackMethod"> The HTTP method we use to call sms_fallback_url </param>
-        /// <param name="smsFallbackUrl"> The URL we call when an error occurs while retrieving or executing the TwiML
+        /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
+        /// <param name="callbackUrl"> The URL we should call when the Sim resource has finished updating </param>
+        /// <param name="friendlyName"> A string to describe the Sim resource </param>
+        /// <param name="ratePlan"> The SID or unique name of the RatePlan resource to which the Sim resource should be
+        ///                assigned </param>
+        /// <param name="status"> The new status of the Sim resource </param>
+        /// <param name="commandsCallbackMethod"> The HTTP method we should use to call commands_callback_url </param>
+        /// <param name="commandsCallbackUrl"> The URL we should call when the SIM sends a Command </param>
+        /// <param name="smsFallbackMethod"> The HTTP method we should use to call sms_fallback_url </param>
+        /// <param name="smsFallbackUrl"> The URL we should call when an error occurs while retrieving or executing the TwiML
         ///                      requested from sms_url </param>
-        /// <param name="smsMethod"> The HTTP method we use to call sms_url </param>
-        /// <param name="smsUrl"> The URL we call when the SIM-connected device sends an SMS message that is not a Command
-        ///              </param>
-        /// <param name="voiceFallbackMethod"> The HTTP method we use to call voice_fallback_url </param>
-        /// <param name="voiceFallbackUrl"> The URL we call when an error occurs while retrieving or executing the TwiML
+        /// <param name="smsMethod"> The HTTP method we should use to call sms_url </param>
+        /// <param name="smsUrl"> The URL we should call when the SIM-connected device sends an SMS message that is not a
+        ///              Command </param>
+        /// <param name="voiceFallbackMethod"> The HTTP method we should use to call voice_fallback_url </param>
+        /// <param name="voiceFallbackUrl"> The URL we should call when an error occurs while retrieving or executing the TwiML
         ///                        requested from voice_url </param>
-        /// <param name="voiceMethod"> The HTTP method we use when we call voice_url </param>
-        /// <param name="voiceUrl"> The URL we call when the SIM-connected device makes a voice call </param>
+        /// <param name="voiceMethod"> The HTTP method we should use when we call voice_url </param>
+        /// <param name="voiceUrl"> The URL we should call when the SIM-connected device makes a voice call </param>
         /// <param name="resetStatus"> Initiate a connectivity reset on a SIM </param>
+        /// <param name="accountSid"> The SID of the Account to which the Sim resource should belong </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
         public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid,
@@ -409,9 +414,10 @@ namespace Twilio.Rest.Wireless.V1
                                                                                  Twilio.Http.HttpMethod voiceMethod = null,
                                                                                  Uri voiceUrl = null,
                                                                                  SimResource.ResetStatusEnum resetStatus = null,
+                                                                                 string accountSid = null,
                                                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus};
+            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, CallbackMethod = callbackMethod, CallbackUrl = callbackUrl, FriendlyName = friendlyName, RatePlan = ratePlan, Status = status, CommandsCallbackMethod = commandsCallbackMethod, CommandsCallbackUrl = commandsCallbackUrl, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, ResetStatus = resetStatus, AccountSid = accountSid};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -428,7 +434,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// Delete a Sim resource from your account.
+        /// Delete a Sim resource on your Account.
         /// </summary>
         /// <param name="options"> Delete Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -442,7 +448,7 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// Delete a Sim resource from your account.
+        /// Delete a Sim resource on your Account.
         /// </summary>
         /// <param name="options"> Delete Sim parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -457,9 +463,9 @@ namespace Twilio.Rest.Wireless.V1
         #endif
 
         /// <summary>
-        /// Delete a Sim resource from your account.
+        /// Delete a Sim resource on your Account.
         /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+        /// <param name="pathSid"> The SID of the Sim Resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -470,9 +476,9 @@ namespace Twilio.Rest.Wireless.V1
 
         #if !NET35
         /// <summary>
-        /// Delete a Sim resource from your account.
+        /// Delete a Sim resource on your Account.
         /// </summary>
-        /// <param name="pathSid"> The SID that identifies the resource to delete </param>
+        /// <param name="pathSid"> The SID of the Sim Resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -501,7 +507,7 @@ namespace Twilio.Rest.Wireless.V1
         }
 
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The unique string that identifies the Sim resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
@@ -511,17 +517,17 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The SID of the Account that created the resource
+        /// The SID of the Account to which the Sim resource belongs
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the RatePlan resource configured for this SIM
+        /// The SID of the RatePlan resource to which the Sim resource is assigned.
         /// </summary>
         [JsonProperty("rate_plan_sid")]
         public string RatePlanSid { get; private set; }
         /// <summary>
-        /// The string that you assigned to describe the resource
+        /// The string that you assigned to describe the Sim resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
@@ -536,7 +542,7 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("e_id")]
         public string EId { get; private set; }
         /// <summary>
-        /// The status of the SIM
+        /// The status of the Sim resource
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
@@ -608,7 +614,7 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
+        /// The ISO 8601 date and time in GMT when the Sim resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

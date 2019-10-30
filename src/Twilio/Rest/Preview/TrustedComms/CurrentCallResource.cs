@@ -110,75 +110,75 @@ namespace Twilio.Rest.Preview.TrustedComms
         }
 
         /// <summary>
-        /// A string that uniquely identifies this current phone call.
+        /// Background color of the current phone call
         /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The originating phone number
-        /// </summary>
-        [JsonProperty("from")]
-        public string From { get; private set; }
-        /// <summary>
-        /// The terminating phone number
-        /// </summary>
-        [JsonProperty("to")]
-        public string To { get; private set; }
-        /// <summary>
-        /// The status of the current phone call
-        /// </summary>
-        [JsonProperty("status")]
-        public string Status { get; private set; }
-        /// <summary>
-        /// The business reason for this current phone call
-        /// </summary>
-        [JsonProperty("reason")]
-        public string Reason { get; private set; }
-        /// <summary>
-        /// The date this current phone call was created
-        /// </summary>
-        [JsonProperty("created_at")]
-        public DateTime? CreatedAt { get; private set; }
+        [JsonProperty("bg_color")]
+        public string BgColor { get; private set; }
         /// <summary>
         /// Caller name of the current phone call
         /// </summary>
         [JsonProperty("caller")]
         public string Caller { get; private set; }
         /// <summary>
-        /// Logo URL of the caller
+        /// The date this current phone call was created
         /// </summary>
-        [JsonProperty("logo")]
-        public string Logo { get; private set; }
-        /// <summary>
-        /// Background color of the current phone call
-        /// </summary>
-        [JsonProperty("bg_color")]
-        public string BgColor { get; private set; }
+        [JsonProperty("created_at")]
+        public DateTime? CreatedAt { get; private set; }
         /// <summary>
         /// Font color of the current phone call
         /// </summary>
         [JsonProperty("font_color")]
         public string FontColor { get; private set; }
         /// <summary>
-        /// The use case for the current phone call
+        /// The originating phone number
         /// </summary>
-        [JsonProperty("use_case")]
-        public string UseCase { get; private set; }
+        [JsonProperty("from")]
+        public string From { get; private set; }
+        /// <summary>
+        /// Logo URL of the caller
+        /// </summary>
+        [JsonProperty("logo")]
+        public string Logo { get; private set; }
         /// <summary>
         /// The name of the CPS organization
         /// </summary>
         [JsonProperty("manager")]
         public string Manager { get; private set; }
         /// <summary>
+        /// The business reason for this current phone call
+        /// </summary>
+        [JsonProperty("reason")]
+        public string Reason { get; private set; }
+        /// <summary>
         /// Shield image URL that serves as authenticity proof of the current phone call
         /// </summary>
         [JsonProperty("shield_img")]
         public string ShieldImg { get; private set; }
         /// <summary>
+        /// A string that uniquely identifies this current branded phone call.
+        /// </summary>
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
+        /// <summary>
+        /// The status of the current phone call
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; private set; }
+        /// <summary>
+        /// The terminating phone number
+        /// </summary>
+        [JsonProperty("to")]
+        public string To { get; private set; }
+        /// <summary>
         /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The use case for the current phone call
+        /// </summary>
+        [JsonProperty("use_case")]
+        public string UseCase { get; private set; }
 
         private CurrentCallResource()
         {

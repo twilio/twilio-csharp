@@ -106,15 +106,15 @@ namespace Twilio.Rest.Preview.TrustedComms
         }
 
         /// <summary>
-        /// Phone number passed.
-        /// </summary>
-        [JsonProperty("phone_number")]
-        public string PhoneNumber { get; private set; }
-        /// <summary>
         /// CPS URL of the phone number.
         /// </summary>
         [JsonProperty("cps_url")]
         public Uri CpsUrl { get; private set; }
+        /// <summary>
+        /// Phone number passed.
+        /// </summary>
+        [JsonProperty("phone_number")]
+        public string PhoneNumber { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>
