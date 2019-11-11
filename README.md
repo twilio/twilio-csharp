@@ -38,6 +38,13 @@ If you are building with the .NET Core command line tools, then you can run the 
 
 See the migration guide [here][migrating]. Also, if you were using the `Twilio.Mvc` package, that has been replaced by the [Twilio.AspNet.Mvc][aspnet] package which is compatible with this version of the library.
 
+### TLS 1.2 Requirements
+
+New accounts and subaccounts are now required to use TLS 1.2 when accessing the REST API. ["Upgrade Required" errors](https://www.twilio.com/docs/api/errors/20426) indicate that TLS 1.0/1.1 is being used. With .NET, you can enable TLS 1.2 using this setting:
+```csharp
+System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+```
+
 ### Alpha Version (deprecated)
 
 The alpha version is no longer necessary. All Twilio products are available in the main-line library.
