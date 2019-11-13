@@ -191,6 +191,8 @@ namespace Twilio.Tests.TwiML
 
             elem.Stop();
 
+            elem.Refer(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
@@ -213,6 +215,7 @@ namespace Twilio.Tests.TwiML
                 "  <Prompt for=\"payment-card-number\" errorType=\"timeout\" cardType=\"visa\" attempt=\"1\"></Prompt>" + Environment.NewLine +
                 "  <Start action=\"https://example.com\" method=\"GET\"></Start>" + Environment.NewLine +
                 "  <Stop></Stop>" + Environment.NewLine +
+                "  <Refer action=\"https://example.com\" method=\"GET\"></Refer>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

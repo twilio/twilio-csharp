@@ -20,11 +20,11 @@ namespace Twilio.Rest.Preview.Marketplace
     public class CreateInstalledAddOnOptions : IOptions<InstalledAddOnResource>
     {
         /// <summary>
-        /// A string that uniquely identifies the Add-on to install
+        /// The SID of the AvaliableAddOn to install
         /// </summary>
         public string AvailableAddOnSid { get; }
         /// <summary>
-        /// A boolean reflecting your acceptance of the Terms of Service
+        /// Whether the Terms of Service were accepted
         /// </summary>
         public bool? AcceptTermsOfService { get; }
         /// <summary>
@@ -32,15 +32,15 @@ namespace Twilio.Rest.Preview.Marketplace
         /// </summary>
         public object Configuration { get; set; }
         /// <summary>
-        /// The string that uniquely identifies this Add-on installation
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
 
         /// <summary>
         /// Construct a new CreateInstalledAddOnOptions
         /// </summary>
-        /// <param name="availableAddOnSid"> A string that uniquely identifies the Add-on to install </param>
-        /// <param name="acceptTermsOfService"> A boolean reflecting your acceptance of the Terms of Service </param>
+        /// <param name="availableAddOnSid"> The SID of the AvaliableAddOn to install </param>
+        /// <param name="acceptTermsOfService"> Whether the Terms of Service were accepted </param>
         public CreateInstalledAddOnOptions(string availableAddOnSid, bool? acceptTermsOfService)
         {
             AvailableAddOnSid = availableAddOnSid;
@@ -86,14 +86,14 @@ namespace Twilio.Rest.Preview.Marketplace
     public class DeleteInstalledAddOnOptions : IOptions<InstalledAddOnResource>
     {
         /// <summary>
-        /// The Installed Add-on Sid to delete
+        /// The SID of the InstalledAddOn resource to delete
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteInstalledAddOnOptions
         /// </summary>
-        /// <param name="pathSid"> The Installed Add-on Sid to delete </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn resource to delete </param>
         public DeleteInstalledAddOnOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -118,14 +118,14 @@ namespace Twilio.Rest.Preview.Marketplace
     public class FetchInstalledAddOnOptions : IOptions<InstalledAddOnResource>
     {
         /// <summary>
-        /// The unique Installed Add-on Sid
+        /// The SID of the InstalledAddOn resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchInstalledAddOnOptions
         /// </summary>
-        /// <param name="pathSid"> The unique Installed Add-on Sid </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn resource to fetch </param>
         public FetchInstalledAddOnOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -150,7 +150,7 @@ namespace Twilio.Rest.Preview.Marketplace
     public class UpdateInstalledAddOnOptions : IOptions<InstalledAddOnResource>
     {
         /// <summary>
-        /// The sid
+        /// The SID of the InstalledAddOn resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -158,14 +158,14 @@ namespace Twilio.Rest.Preview.Marketplace
         /// </summary>
         public object Configuration { get; set; }
         /// <summary>
-        /// The string that uniquely identifies this Add-on installation
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
 
         /// <summary>
         /// Construct a new UpdateInstalledAddOnOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn resource to update </param>
         public UpdateInstalledAddOnOptions(string pathSid)
         {
             PathSid = pathSid;

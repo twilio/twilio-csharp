@@ -66,10 +66,10 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Install an Add-on for the Account specified.
         /// </summary>
-        /// <param name="availableAddOnSid"> A string that uniquely identifies the Add-on to install </param>
-        /// <param name="acceptTermsOfService"> A boolean reflecting your acceptance of the Terms of Service </param>
+        /// <param name="availableAddOnSid"> The SID of the AvaliableAddOn to install </param>
+        /// <param name="acceptTermsOfService"> Whether the Terms of Service were accepted </param>
         /// <param name="configuration"> The JSON object representing the configuration </param>
-        /// <param name="uniqueName"> The string that uniquely identifies this Add-on installation </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOn </returns>
         public static InstalledAddOnResource Create(string availableAddOnSid,
@@ -86,10 +86,10 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Install an Add-on for the Account specified.
         /// </summary>
-        /// <param name="availableAddOnSid"> A string that uniquely identifies the Add-on to install </param>
-        /// <param name="acceptTermsOfService"> A boolean reflecting your acceptance of the Terms of Service </param>
+        /// <param name="availableAddOnSid"> The SID of the AvaliableAddOn to install </param>
+        /// <param name="acceptTermsOfService"> Whether the Terms of Service were accepted </param>
         /// <param name="configuration"> The JSON object representing the configuration </param>
-        /// <param name="uniqueName"> The string that uniquely identifies this Add-on installation </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOn </returns>
         public static async System.Threading.Tasks.Task<InstalledAddOnResource> CreateAsync(string availableAddOnSid,
@@ -146,7 +146,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Remove an Add-on installation from your account
         /// </summary>
-        /// <param name="pathSid"> The Installed Add-on Sid to delete </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOn </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -159,7 +159,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Remove an Add-on installation from your account
         /// </summary>
-        /// <param name="pathSid"> The Installed Add-on Sid to delete </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOn </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch an instance of an Add-on currently installed on this Account.
         /// </summary>
-        /// <param name="pathSid"> The unique Installed Add-on Sid </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOn </returns>
         public static InstalledAddOnResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch an instance of an Add-on currently installed on this Account.
         /// </summary>
-        /// <param name="pathSid"> The unique Installed Add-on Sid </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOn </returns>
         public static async System.Threading.Tasks.Task<InstalledAddOnResource> FetchAsync(string pathSid,
@@ -279,9 +279,9 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Update an Add-on installation for the Account specified.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn resource to update </param>
         /// <param name="configuration"> The JSON object representing the configuration </param>
-        /// <param name="uniqueName"> The string that uniquely identifies this Add-on installation </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOn </returns>
         public static InstalledAddOnResource Update(string pathSid,
@@ -297,9 +297,9 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Update an Add-on installation for the Account specified.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn resource to update </param>
         /// <param name="configuration"> The JSON object representing the configuration </param>
-        /// <param name="uniqueName"> The string that uniquely identifies this Add-on installation </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOn </returns>
         public static async System.Threading.Tasks.Task<InstalledAddOnResource> UpdateAsync(string pathSid,
@@ -467,52 +467,52 @@ namespace Twilio.Rest.Preview.Marketplace
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Add-on installation
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The Account id that has installed this Add-on
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// A description of this Add-on installation
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// A short description of the Add-on functionality
+        /// A short description of the Add-on's functionality
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The JSON object representing the current configuration
+        /// The JSON object that represents the current configuration of installed Add-on
         /// </summary>
         [JsonProperty("configuration")]
         public object Configuration { get; private set; }
         /// <summary>
-        /// The string that uniquely identifies this Add-on installation
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The date this Add-on installation was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date this Add-on installation was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// A dictionary of URLs for related resource.
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

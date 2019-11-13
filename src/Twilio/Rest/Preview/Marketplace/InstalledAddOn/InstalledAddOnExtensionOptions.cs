@@ -20,19 +20,19 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
     public class FetchInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource>
     {
         /// <summary>
-        /// The installed_add_on_sid
+        /// The SID of the InstalledAddOn resource with the extension to fetch
         /// </summary>
         public string PathInstalledAddOnSid { get; }
         /// <summary>
-        /// The unique Extension Sid
+        /// The SID of the InstalledAddOn Extension resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchInstalledAddOnExtensionOptions
         /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
-        /// <param name="pathSid"> The unique Extension Sid </param>
+        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to fetch </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to fetch </param>
         public FetchInstalledAddOnExtensionOptions(string pathInstalledAddOnSid, string pathSid)
         {
             PathInstalledAddOnSid = pathInstalledAddOnSid;
@@ -58,24 +58,24 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
     public class UpdateInstalledAddOnExtensionOptions : IOptions<InstalledAddOnExtensionResource>
     {
         /// <summary>
-        /// The installed_add_on_sid
+        /// The SID of the InstalledAddOn resource with the extension to update
         /// </summary>
         public string PathInstalledAddOnSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID of the InstalledAddOn Extension resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A Boolean indicating if the Extension will be invoked
+        /// Whether the Extension should be invoked
         /// </summary>
         public bool? Enabled { get; }
 
         /// <summary>
         /// Construct a new UpdateInstalledAddOnExtensionOptions
         /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="enabled"> A Boolean indicating if the Extension will be invoked </param>
+        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to update </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to update </param>
+        /// <param name="enabled"> Whether the Extension should be invoked </param>
         public UpdateInstalledAddOnExtensionOptions(string pathInstalledAddOnSid, string pathSid, bool? enabled)
         {
             PathInstalledAddOnSid = pathInstalledAddOnSid;
@@ -107,14 +107,14 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
     public class ReadInstalledAddOnExtensionOptions : ReadOptions<InstalledAddOnExtensionResource>
     {
         /// <summary>
-        /// The installed_add_on_sid
+        /// The SID of the InstalledAddOn resource with the extensions to read
         /// </summary>
         public string PathInstalledAddOnSid { get; }
 
         /// <summary>
         /// Construct a new ReadInstalledAddOnExtensionOptions
         /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
+        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extensions to read </param>
         public ReadInstalledAddOnExtensionOptions(string pathInstalledAddOnSid)
         {
             PathInstalledAddOnSid = pathInstalledAddOnSid;

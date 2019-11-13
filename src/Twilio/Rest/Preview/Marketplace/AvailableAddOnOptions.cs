@@ -20,14 +20,14 @@ namespace Twilio.Rest.Preview.Marketplace
     public class FetchAvailableAddOnOptions : IOptions<AvailableAddOnResource>
     {
         /// <summary>
-        /// The unique Available Add-on Sid
+        /// The SID of the AvailableAddOn resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAvailableAddOnOptions
         /// </summary>
-        /// <param name="pathSid"> The unique Available Add-on Sid </param>
+        /// <param name="pathSid"> The SID of the AvailableAddOn resource to fetch </param>
         public FetchAvailableAddOnOptions(string pathSid)
         {
             PathSid = pathSid;

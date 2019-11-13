@@ -59,6 +59,21 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
         }
 
         [Test]
+        public void TestCreateVerificationEmailResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"mail@email.com\",\"channel\": \"email\",\"status\": \"pending\",\"valid\": false,\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"lookup\": {\"carrier\": {\"error_code\": null,\"name\": null,\"mobile_country_code\": null,\"mobile_network_code\": null,\"type\": null}},\"amount\": null,\"payee\": null,\"url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Verifications/VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                     ));
+
+            var response = VerificationResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "to", "channel", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestCreateVerificationWithRateLimitsResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();

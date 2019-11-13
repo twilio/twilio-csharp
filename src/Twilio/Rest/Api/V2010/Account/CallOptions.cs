@@ -126,6 +126,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Number of milliseconds of initial silence
         /// </summary>
         public int? MachineDetectionSilenceTimeout { get; set; }
+        /// <summary>
+        /// TwiML instructions for the call
+        /// </summary>
+        public string Twiml { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -274,6 +278,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (MachineDetectionSilenceTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("MachineDetectionSilenceTimeout", MachineDetectionSilenceTimeout.ToString()));
+            }
+
+            if (Twiml != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twiml", Twiml));
             }
 
             return p;

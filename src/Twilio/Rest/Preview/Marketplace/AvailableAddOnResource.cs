@@ -66,7 +66,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
         /// </summary>
-        /// <param name="pathSid"> The unique Available Add-on Sid </param>
+        /// <param name="pathSid"> The SID of the AvailableAddOn resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AvailableAddOn </returns>
         public static AvailableAddOnResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Preview.Marketplace
         /// <summary>
         /// Fetch an instance of an Add-on currently available to be installed.
         /// </summary>
-        /// <param name="pathSid"> The unique Available Add-on Sid </param>
+        /// <param name="pathSid"> The SID of the AvailableAddOn resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AvailableAddOn </returns>
         public static async System.Threading.Tasks.Task<AvailableAddOnResource> FetchAsync(string pathSid,
@@ -245,37 +245,37 @@ namespace Twilio.Rest.Preview.Marketplace
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Add-on
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A description of this Add-on
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// A short description of the Add-on functionality
+        /// A short description of the Add-on's functionality
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The way customers are charged for using this Add-on
+        /// How customers are charged for using this Add-on
         /// </summary>
         [JsonProperty("pricing_type")]
         public string PricingType { get; private set; }
         /// <summary>
-        /// The JSON Schema describing the Add-on's configuration
+        /// The JSON object with the configuration that must be provided when installing a given Add-on
         /// </summary>
         [JsonProperty("configuration_schema")]
         public object ConfigurationSchema { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// The URLs of related resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

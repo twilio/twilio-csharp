@@ -34,6 +34,7 @@ namespace Twilio.Rest.Verify.V2.Service
 
             public static readonly ChannelEnum Sms = new ChannelEnum("sms");
             public static readonly ChannelEnum Call = new ChannelEnum("call");
+            public static readonly ChannelEnum Email = new ChannelEnum("email");
         }
 
         public sealed class StatusEnum : StringEnum
@@ -93,7 +94,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Create a new Verification for a To number using a Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
-        /// <param name="to"> The phone number to verify </param>
+        /// <param name="to"> The phone number or email to verify </param>
         /// <param name="channel"> The verification method to use </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
@@ -102,6 +103,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
+        /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(string pathServiceSid,
@@ -114,9 +116,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                   string amount = null,
                                                   string payee = null,
                                                   object rateLimits = null,
+                                                  object channelConfiguration = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration};
             return Create(options, client);
         }
 
@@ -125,7 +128,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Create a new Verification for a To number using a Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
-        /// <param name="to"> The phone number to verify </param>
+        /// <param name="to"> The phone number or email to verify </param>
         /// <param name="channel"> The verification method to use </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
@@ -134,6 +137,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
+        /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid,
@@ -146,9 +150,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                           string amount = null,
                                                                                           string payee = null,
                                                                                           object rateLimits = null,
+                                                                                          object channelConfiguration = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration};
             return await CreateAsync(options, client);
         }
         #endif
@@ -333,11 +338,10 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The phone number being verified
+        /// The phone number or email being verified
         /// </summary>
         [JsonProperty("to")]
-        [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber To { get; private set; }
+        public string To { get; private set; }
         /// <summary>
         /// The verification method to use
         /// </summary>

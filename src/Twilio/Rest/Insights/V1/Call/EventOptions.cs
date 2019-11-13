@@ -8,31 +8,31 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Insights.V1
+namespace Twilio.Rest.Insights.V1.Call
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// FetchCallSummaryOptions
+    /// ReadEventOptions
     /// </summary>
-    public class FetchCallSummaryOptions : IOptions<CallSummaryResource>
+    public class ReadEventOptions : ReadOptions<EventResource>
     {
         /// <summary>
         /// The call_sid
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
-        /// The processing_state
+        /// The edge
         /// </summary>
-        public CallSummaryResource.ProcessingStateEnum ProcessingState { get; set; }
+        public EventResource.TwilioEdgeEnum Edge { get; set; }
 
         /// <summary>
-        /// Construct a new FetchCallSummaryOptions
+        /// Construct a new ReadEventOptions
         /// </summary>
         /// <param name="pathCallSid"> The call_sid </param>
-        public FetchCallSummaryOptions(string pathCallSid)
+        public ReadEventOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;
         }
@@ -40,12 +40,17 @@ namespace Twilio.Rest.Insights.V1
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
+        public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (ProcessingState != null)
+            if (Edge != null)
             {
-                p.Add(new KeyValuePair<string, string>("ProcessingState", ProcessingState.ToString()));
+                p.Add(new KeyValuePair<string, string>("Edge", Edge.ToString()));
+            }
+
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
             }
 
             return p;

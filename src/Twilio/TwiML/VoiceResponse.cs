@@ -667,6 +667,29 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
+        /// Append a <Refer/> element as a child of this element
+        /// </summary>
+        /// <param name="refer"> A Refer instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VoiceResponse Refer(Refer refer)
+        {
+            this.Append(refer);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Refer/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="action"> Action URL </param>
+        /// <param name="method"> Action URL method </param>
+        public VoiceResponse Refer(Uri action = null, Twilio.Http.HttpMethod method = null)
+        {
+            var newChild = new Refer(action, method);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

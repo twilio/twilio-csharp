@@ -19,7 +19,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Insights.V1
+namespace Twilio.Rest.Insights.V1.Call
 {
 
     public class CallSummaryResource : Resource

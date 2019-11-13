@@ -139,6 +139,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// Boolean flag for enabling or disabling the Janitor
         /// </summary>
         public bool? JanitorEnabled { get; set; }
+        /// <summary>
+        /// The number of times to retry the webhook if the first attempt fails
+        /// </summary>
+        public int? IntegrationRetryCount { get; set; }
 
         /// <summary>
         /// Construct a new CreateFlexFlowOptions
@@ -241,6 +245,11 @@ namespace Twilio.Rest.FlexApi.V1
                 p.Add(new KeyValuePair<string, string>("JanitorEnabled", JanitorEnabled.Value.ToString().ToLower()));
             }
 
+            if (IntegrationRetryCount != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Integration.RetryCount", IntegrationRetryCount.ToString()));
+            }
+
             return p;
         }
     }
@@ -318,6 +327,10 @@ namespace Twilio.Rest.FlexApi.V1
         /// Boolean flag for enabling or disabling the Janitor
         /// </summary>
         public bool? JanitorEnabled { get; set; }
+        /// <summary>
+        /// The number of times to retry the webhook if the first attempt fails
+        /// </summary>
+        public int? IntegrationRetryCount { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFlexFlowOptions
@@ -412,6 +425,11 @@ namespace Twilio.Rest.FlexApi.V1
             if (JanitorEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("JanitorEnabled", JanitorEnabled.Value.ToString().ToLower()));
+            }
+
+            if (IntegrationRetryCount != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Integration.RetryCount", IntegrationRetryCount.ToString()));
             }
 
             return p;

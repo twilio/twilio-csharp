@@ -69,6 +69,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Whether to detect Unicode characters that have a similar GSM-7 character and replace them
         /// </summary>
         public bool? SmartEncoded { get; set; }
+        /// <summary>
+        /// Rich actions for Channels Messages.
+        /// </summary>
+        public List<string> PersistentAction { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -78,6 +82,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             To = to;
             MediaUrl = new List<Uri>();
+            PersistentAction = new List<string>();
         }
 
         /// <summary>
@@ -144,6 +149,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (SmartEncoded != null)
             {
                 p.Add(new KeyValuePair<string, string>("SmartEncoded", SmartEncoded.Value.ToString().ToLower()));
+            }
+
+            if (PersistentAction != null)
+            {
+                p.AddRange(PersistentAction.Select(prop => new KeyValuePair<string, string>("PersistentAction", prop)));
             }
 
             return p;

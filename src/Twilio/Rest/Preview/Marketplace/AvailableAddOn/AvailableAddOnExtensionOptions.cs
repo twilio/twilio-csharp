@@ -20,19 +20,19 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
     public class FetchAvailableAddOnExtensionOptions : IOptions<AvailableAddOnExtensionResource>
     {
         /// <summary>
-        /// The available_add_on_sid
+        /// The SID of the AvailableAddOn resource with the extension to fetch
         /// </summary>
         public string PathAvailableAddOnSid { get; }
         /// <summary>
-        /// The unique Extension Sid
+        /// The SID of the AvailableAddOn Extension resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchAvailableAddOnExtensionOptions
         /// </summary>
-        /// <param name="pathAvailableAddOnSid"> The available_add_on_sid </param>
-        /// <param name="pathSid"> The unique Extension Sid </param>
+        /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extension to fetch </param>
+        /// <param name="pathSid"> The SID of the AvailableAddOn Extension resource to fetch </param>
         public FetchAvailableAddOnExtensionOptions(string pathAvailableAddOnSid, string pathSid)
         {
             PathAvailableAddOnSid = pathAvailableAddOnSid;
@@ -58,14 +58,14 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
     public class ReadAvailableAddOnExtensionOptions : ReadOptions<AvailableAddOnExtensionResource>
     {
         /// <summary>
-        /// The available_add_on_sid
+        /// The SID of the AvailableAddOn resource with the extensions to read
         /// </summary>
         public string PathAvailableAddOnSid { get; }
 
         /// <summary>
         /// Construct a new ReadAvailableAddOnExtensionOptions
         /// </summary>
-        /// <param name="pathAvailableAddOnSid"> The available_add_on_sid </param>
+        /// <param name="pathAvailableAddOnSid"> The SID of the AvailableAddOn resource with the extensions to read </param>
         public ReadAvailableAddOnExtensionOptions(string pathAvailableAddOnSid)
         {
             PathAvailableAddOnSid = pathAvailableAddOnSid;

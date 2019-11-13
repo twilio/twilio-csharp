@@ -67,8 +67,8 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
         /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
-        /// <param name="pathSid"> The unique Extension Sid </param>
+        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to fetch </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnExtension </returns>
         public static InstalledAddOnExtensionResource Fetch(string pathInstalledAddOnSid,
@@ -83,8 +83,8 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Fetch an instance of an Extension for the Installed Add-on.
         /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
-        /// <param name="pathSid"> The unique Extension Sid </param>
+        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to fetch </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnExtension </returns>
         public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> FetchAsync(string pathInstalledAddOnSid,
@@ -140,9 +140,9 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Update an Extension for an Add-on installation.
         /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="enabled"> A Boolean indicating if the Extension will be invoked </param>
+        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to update </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to update </param>
+        /// <param name="enabled"> Whether the Extension should be invoked </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of InstalledAddOnExtension </returns>
         public static InstalledAddOnExtensionResource Update(string pathInstalledAddOnSid,
@@ -158,9 +158,9 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Update an Extension for an Add-on installation.
         /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="enabled"> A Boolean indicating if the Extension will be invoked </param>
+        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extension to update </param>
+        /// <param name="pathSid"> The SID of the InstalledAddOn Extension resource to update </param>
+        /// <param name="enabled"> Whether the Extension should be invoked </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of InstalledAddOnExtension </returns>
         public static async System.Threading.Tasks.Task<InstalledAddOnExtensionResource> UpdateAsync(string pathInstalledAddOnSid,
@@ -221,7 +221,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
         /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
+        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extensions to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         /// <summary>
         /// Retrieve a list of Extensions for the Installed Add-on.
         /// </summary>
-        /// <param name="pathInstalledAddOnSid"> The installed_add_on_sid </param>
+        /// <param name="pathInstalledAddOnSid"> The SID of the InstalledAddOn resource with the extensions to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -334,37 +334,37 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         }
 
         /// <summary>
-        /// A string that uniquely identifies this Extension
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The installed_add_on_sid
+        /// The SID of the InstalledAddOn resource to which this extension applies
         /// </summary>
         [JsonProperty("installed_add_on_sid")]
         public string InstalledAddOnSid { get; private set; }
         /// <summary>
-        /// A human-readable description of this Extension
+        /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// A human-readable description of the Extension's Product
+        /// The name of the Extension's Product
         /// </summary>
         [JsonProperty("product_name")]
         public string ProductName { get; private set; }
         /// <summary>
-        /// The string that uniquely identifies this Extension
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// A Boolean indicating if the Extension will be invoked
+        /// Whether the Extension will be invoked
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

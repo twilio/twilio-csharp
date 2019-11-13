@@ -23,7 +23,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The phone number to verify
+        /// The phone number or email to verify
         /// </summary>
         public string To { get; }
         /// <summary>
@@ -58,12 +58,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// The custom key-value pairs of Programmable Rate Limits.
         /// </summary>
         public object RateLimits { get; set; }
+        /// <summary>
+        /// Channel specific configuration in json format.
+        /// </summary>
+        public object ChannelConfiguration { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
-        /// <param name="to"> The phone number to verify </param>
+        /// <param name="to"> The phone number or email to verify </param>
         /// <param name="channel"> The verification method to use </param>
         public CreateVerificationOptions(string pathServiceSid, string to, string channel)
         {
@@ -121,6 +125,11 @@ namespace Twilio.Rest.Verify.V2.Service
             if (RateLimits != null)
             {
                 p.Add(new KeyValuePair<string, string>("RateLimits", Serializers.JsonObject(RateLimits)));
+            }
+
+            if (ChannelConfiguration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ChannelConfiguration", Serializers.JsonObject(ChannelConfiguration)));
             }
 
             return p;
