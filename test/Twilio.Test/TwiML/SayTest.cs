@@ -56,25 +56,25 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new Say();
 
-            elem.SsmlBreak(SsmlBreak.StrengthEnum.None, "time");
+            elem.Break(SsmlBreak.StrengthEnum.None, "time");
 
-            elem.SsmlEmphasis("words", SsmlEmphasis.LevelEnum.Strong);
+            elem.Emphasis("words", SsmlEmphasis.LevelEnum.Strong);
 
-            elem.SsmlLang("words", SsmlLang.XmlLangEnum.DaDk);
+            elem.Lang("words", SsmlLang.XmlLangEnum.DaDk);
 
-            elem.SsmlP("words");
+            elem.P("words");
 
-            elem.SsmlPhoneme("words", SsmlPhoneme.AlphabetEnum.Ipa, "ph");
+            elem.Phoneme("words", SsmlPhoneme.AlphabetEnum.Ipa, "ph");
 
-            elem.SsmlProsody("words", "volume", "rate", "pitch");
+            elem.Prosody("words", "volume", "rate", "pitch");
 
-            elem.SsmlS("words");
+            elem.S("words");
 
-            elem.SsmlSayAs("words", SsmlSayAs.InterpretAsEnum.Character, SsmlSayAs.RoleEnum.Mdy);
+            elem.SayAs("words", SsmlSayAs.InterpretAsEnum.Character, SsmlSayAs.RoleEnum.Mdy);
 
-            elem.SsmlSub("words", "alias");
+            elem.Sub("words", "alias");
 
-            elem.SsmlW("words", "role");
+            elem.W("words", "role");
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +

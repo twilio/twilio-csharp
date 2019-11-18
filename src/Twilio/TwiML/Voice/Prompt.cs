@@ -136,17 +136,6 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Say/> element as a child of this element
-        /// </summary>
-        /// <param name="say"> A Say instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Prompt Say(Say say)
-        {
-            this.Append(say);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Say/> element and append it as a child of this element.
         /// </summary>
         /// <param name="message"> Message to say, the body of the TwiML Element. </param>
@@ -164,13 +153,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Play/> element as a child of this element
+        /// Append a <Say/> element as a child of this element
         /// </summary>
-        /// <param name="play"> A Play instance. </param>
+        /// <param name="say"> A Say instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Prompt Play(Play play)
+        public Prompt Say(Say say)
         {
-            this.Append(play);
+            this.Append(say);
             return this;
         }
 
@@ -188,13 +177,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Pause/> element as a child of this element
+        /// Append a <Play/> element as a child of this element
         /// </summary>
-        /// <param name="pause"> A Pause instance. </param>
+        /// <param name="play"> A Play instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Prompt Pause(Pause pause)
+        public Prompt Play(Play play)
         {
-            this.Append(pause);
+            this.Append(play);
             return this;
         }
 
@@ -206,6 +195,17 @@ namespace Twilio.TwiML.Voice
         {
             var newChild = new Pause(length);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Pause/> element as a child of this element
+        /// </summary>
+        /// <param name="pause"> A Pause instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Prompt Pause(Pause pause)
+        {
+            this.Append(pause);
             return this;
         }
 

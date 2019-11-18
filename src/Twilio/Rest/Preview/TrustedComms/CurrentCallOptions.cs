@@ -21,6 +21,19 @@ namespace Twilio.Rest.Preview.TrustedComms
     public class FetchCurrentCallOptions : IOptions<CurrentCallResource>
     {
         /// <summary>
+        /// Optional header to mock all voice dependencies
+        /// </summary>
+        public string TwilioSandboxMode { get; }
+        /// <summary>
+        /// The originating Phone Number
+        /// </summary>
+        public string XXcnamSensitivePhoneNumberFrom { get; }
+        /// <summary>
+        /// The terminating Phone Number
+        /// </summary>
+        public string XXcnamSensitivePhoneNumberTo { get; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public List<KeyValuePair<string, string>> GetParams()

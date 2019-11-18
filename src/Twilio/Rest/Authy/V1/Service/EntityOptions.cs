@@ -27,6 +27,10 @@ namespace Twilio.Rest.Authy.V1.Service
         /// Unique identity of the Entity
         /// </summary>
         public string Identity { get; }
+        /// <summary>
+        /// The Twilio-Authy-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new CreateEntityOptions
@@ -70,6 +74,10 @@ namespace Twilio.Rest.Authy.V1.Service
         /// Unique identity of the Entity
         /// </summary>
         public string PathIdentity { get; }
+        /// <summary>
+        /// The Twilio-Authy-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new DeleteEntityOptions
@@ -108,6 +116,10 @@ namespace Twilio.Rest.Authy.V1.Service
         /// Unique identity of the Entity
         /// </summary>
         public string PathIdentity { get; }
+        /// <summary>
+        /// The Twilio-Authy-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new FetchEntityOptions
@@ -142,6 +154,10 @@ namespace Twilio.Rest.Authy.V1.Service
         /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
+        /// <summary>
+        /// The Twilio-Authy-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new ReadEntityOptions

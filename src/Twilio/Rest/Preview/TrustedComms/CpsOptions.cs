@@ -20,6 +20,15 @@ namespace Twilio.Rest.Preview.TrustedComms
     public class FetchCpsOptions : IOptions<CpsResource>
     {
         /// <summary>
+        /// Optional header to mock all voice dependencies.
+        /// </summary>
+        public string TwilioSandboxMode { get; }
+        /// <summary>
+        /// Phone number to retrieve CPS.
+        /// </summary>
+        public string XXcnamSensitivePhoneNumber { get; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public List<KeyValuePair<string, string>> GetParams()

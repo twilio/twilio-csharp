@@ -56,7 +56,7 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new Refer();
 
-            elem.ReferSip(new Uri("https://example.com"));
+            elem.Sip(new Uri("https://example.com"));
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +

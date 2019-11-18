@@ -357,17 +357,6 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Say/> element as a child of this element
-        /// </summary>
-        /// <param name="say"> A Say instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Gather Say(Say say)
-        {
-            this.Append(say);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Say/> element and append it as a child of this element.
         /// </summary>
         /// <param name="message"> Message to say, the body of the TwiML Element. </param>
@@ -385,13 +374,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Pause/> element as a child of this element
+        /// Append a <Say/> element as a child of this element
         /// </summary>
-        /// <param name="pause"> A Pause instance. </param>
+        /// <param name="say"> A Say instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Gather Pause(Pause pause)
+        public Gather Say(Say say)
         {
-            this.Append(pause);
+            this.Append(say);
             return this;
         }
 
@@ -407,13 +396,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Play/> element as a child of this element
+        /// Append a <Pause/> element as a child of this element
         /// </summary>
-        /// <param name="play"> A Play instance. </param>
+        /// <param name="pause"> A Pause instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Gather Play(Play play)
+        public Gather Pause(Pause pause)
         {
-            this.Append(play);
+            this.Append(pause);
             return this;
         }
 
@@ -427,6 +416,17 @@ namespace Twilio.TwiML.Voice
         {
             var newChild = new Play(url, loop, digits);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Play/> element as a child of this element
+        /// </summary>
+        /// <param name="play"> A Play instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Gather Play(Play play)
+        {
+            this.Append(play);
             return this;
         }
 

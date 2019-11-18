@@ -75,6 +75,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// The key
         /// </summary>
         public string PathKey { get; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new DeleteSyncMapItemOptions
@@ -253,6 +257,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         /// The data
         /// </summary>
         public object Data { get; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new UpdateSyncMapItemOptions

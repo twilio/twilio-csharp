@@ -349,17 +349,6 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Prompt/> element as a child of this element
-        /// </summary>
-        /// <param name="prompt"> A Prompt instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Pay Prompt(Prompt prompt)
-        {
-            this.Append(prompt);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Prompt/> element and append it as a child of this element.
         /// </summary>
         /// <param name="for_"> Name of the payment source data element </param>
@@ -377,13 +366,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Parameter/> element as a child of this element
+        /// Append a <Prompt/> element as a child of this element
         /// </summary>
-        /// <param name="parameter"> A Parameter instance. </param>
+        /// <param name="prompt"> A Prompt instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Pay Parameter(Parameter parameter)
+        public Pay Prompt(Prompt prompt)
         {
-            this.Append(parameter);
+            this.Append(prompt);
             return this;
         }
 
@@ -396,6 +385,17 @@ namespace Twilio.TwiML.Voice
         {
             var newChild = new Parameter(name, value);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Parameter/> element as a child of this element
+        /// </summary>
+        /// <param name="parameter"> A Parameter instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Pay Parameter(Parameter parameter)
+        {
+            this.Append(parameter);
             return this;
         }
 

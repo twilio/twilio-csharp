@@ -27,17 +27,6 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Connect/> element as a child of this element
-        /// </summary>
-        /// <param name="connect"> A Connect instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Connect(Connect connect)
-        {
-            this.Append(connect);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Connect/> element and append it as a child of this element.
         /// </summary>
         /// <param name="action"> Action URL </param>
@@ -50,13 +39,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Dial/> element as a child of this element
+        /// Append a <Connect/> element as a child of this element
         /// </summary>
-        /// <param name="dial"> A Dial instance. </param>
+        /// <param name="connect"> A Connect instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Dial(Dial dial)
+        public VoiceResponse Connect(Connect connect)
         {
-            this.Append(dial);
+            this.Append(connect);
             return this;
         }
 
@@ -115,13 +104,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Echo/> element as a child of this element
+        /// Append a <Dial/> element as a child of this element
         /// </summary>
-        /// <param name="echo"> A Echo instance. </param>
+        /// <param name="dial"> A Dial instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Echo(Echo echo)
+        public VoiceResponse Dial(Dial dial)
         {
-            this.Append(echo);
+            this.Append(dial);
             return this;
         }
 
@@ -136,13 +125,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Enqueue/> element as a child of this element
+        /// Append a <Echo/> element as a child of this element
         /// </summary>
-        /// <param name="enqueue"> A Enqueue instance. </param>
+        /// <param name="echo"> A Echo instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Enqueue(Enqueue enqueue)
+        public VoiceResponse Echo(Echo echo)
         {
-            this.Append(enqueue);
+            this.Append(echo);
             return this;
         }
 
@@ -168,13 +157,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Gather/> element as a child of this element
+        /// Append a <Enqueue/> element as a child of this element
         /// </summary>
-        /// <param name="gather"> A Gather instance. </param>
+        /// <param name="enqueue"> A Enqueue instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Gather(Gather gather)
+        public VoiceResponse Enqueue(Enqueue enqueue)
         {
-            this.Append(gather);
+            this.Append(enqueue);
             return this;
         }
 
@@ -238,6 +227,27 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
+        /// Append a <Gather/> element as a child of this element
+        /// </summary>
+        /// <param name="gather"> A Gather instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VoiceResponse Gather(Gather gather)
+        {
+            this.Append(gather);
+            return this;
+        }
+
+        /// <summary>
+        /// Create a new <Hangup/> element and append it as a child of this element.
+        /// </summary>
+        public VoiceResponse Hangup()
+        {
+            var newChild = new Hangup();
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
         /// Append a <Hangup/> element as a child of this element
         /// </summary>
         /// <param name="hangup"> A Hangup instance. </param>
@@ -249,11 +259,11 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Create a new <Hangup/> element and append it as a child of this element.
+        /// Create a new <Leave/> element and append it as a child of this element.
         /// </summary>
-        public VoiceResponse Hangup()
+        public VoiceResponse Leave()
         {
-            var newChild = new Hangup();
+            var newChild = new Leave();
             this.Append(newChild);
             return this;
         }
@@ -270,11 +280,12 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Create a new <Leave/> element and append it as a child of this element.
+        /// Create a new <Pause/> element and append it as a child of this element.
         /// </summary>
-        public VoiceResponse Leave()
+        /// <param name="length"> Length in seconds to pause </param>
+        public VoiceResponse Pause(int? length = null)
         {
-            var newChild = new Leave();
+            var newChild = new Pause(length);
             this.Append(newChild);
             return this;
         }
@@ -287,28 +298,6 @@ namespace Twilio.TwiML
         public VoiceResponse Pause(Pause pause)
         {
             this.Append(pause);
-            return this;
-        }
-
-        /// <summary>
-        /// Create a new <Pause/> element and append it as a child of this element.
-        /// </summary>
-        /// <param name="length"> Length in seconds to pause </param>
-        public VoiceResponse Pause(int? length = null)
-        {
-            var newChild = new Pause(length);
-            this.Append(newChild);
-            return this;
-        }
-
-        /// <summary>
-        /// Append a <Play/> element as a child of this element
-        /// </summary>
-        /// <param name="play"> A Play instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Play(Play play)
-        {
-            this.Append(play);
             return this;
         }
 
@@ -326,13 +315,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Queue/> element as a child of this element
+        /// Append a <Play/> element as a child of this element
         /// </summary>
-        /// <param name="queue"> A Queue instance. </param>
+        /// <param name="play"> A Play instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Queue(Queue queue)
+        public VoiceResponse Play(Play play)
         {
-            this.Append(queue);
+            this.Append(play);
             return this;
         }
 
@@ -356,13 +345,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Record/> element as a child of this element
+        /// Append a <Queue/> element as a child of this element
         /// </summary>
-        /// <param name="record"> A Record instance. </param>
+        /// <param name="queue"> A Queue instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Record(Record record)
+        public VoiceResponse Queue(Queue queue)
         {
-            this.Append(record);
+            this.Append(queue);
             return this;
         }
 
@@ -413,13 +402,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Redirect/> element as a child of this element
+        /// Append a <Record/> element as a child of this element
         /// </summary>
-        /// <param name="redirect"> A Redirect instance. </param>
+        /// <param name="record"> A Record instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Redirect(Redirect redirect)
+        public VoiceResponse Record(Record record)
         {
-            this.Append(redirect);
+            this.Append(record);
             return this;
         }
 
@@ -436,13 +425,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Reject/> element as a child of this element
+        /// Append a <Redirect/> element as a child of this element
         /// </summary>
-        /// <param name="reject"> A Reject instance. </param>
+        /// <param name="redirect"> A Redirect instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Reject(Reject reject)
+        public VoiceResponse Redirect(Redirect redirect)
         {
-            this.Append(reject);
+            this.Append(redirect);
             return this;
         }
 
@@ -458,13 +447,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Say/> element as a child of this element
+        /// Append a <Reject/> element as a child of this element
         /// </summary>
-        /// <param name="say"> A Say instance. </param>
+        /// <param name="reject"> A Reject instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Say(Say say)
+        public VoiceResponse Reject(Reject reject)
         {
-            this.Append(say);
+            this.Append(reject);
             return this;
         }
 
@@ -486,13 +475,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Sms/> element as a child of this element
+        /// Append a <Say/> element as a child of this element
         /// </summary>
-        /// <param name="sms"> A Sms instance. </param>
+        /// <param name="say"> A Say instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Sms(Sms sms)
+        public VoiceResponse Say(Say say)
         {
-            this.Append(sms);
+            this.Append(say);
             return this;
         }
 
@@ -518,13 +507,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Pay/> element as a child of this element
+        /// Append a <Sms/> element as a child of this element
         /// </summary>
-        /// <param name="pay"> A Pay instance. </param>
+        /// <param name="sms"> A Sms instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Pay(Pay pay)
+        public VoiceResponse Sms(Sms sms)
         {
-            this.Append(pay);
+            this.Append(sms);
             return this;
         }
 
@@ -595,13 +584,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Prompt/> element as a child of this element
+        /// Append a <Pay/> element as a child of this element
         /// </summary>
-        /// <param name="prompt"> A Prompt instance. </param>
+        /// <param name="pay"> A Pay instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Prompt(Prompt prompt)
+        public VoiceResponse Pay(Pay pay)
         {
-            this.Append(prompt);
+            this.Append(pay);
             return this;
         }
 
@@ -623,13 +612,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Start/> element as a child of this element
+        /// Append a <Prompt/> element as a child of this element
         /// </summary>
-        /// <param name="start"> A Start instance. </param>
+        /// <param name="prompt"> A Prompt instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Start(Start start)
+        public VoiceResponse Prompt(Prompt prompt)
         {
-            this.Append(start);
+            this.Append(prompt);
             return this;
         }
 
@@ -646,13 +635,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Stop/> element as a child of this element
+        /// Append a <Start/> element as a child of this element
         /// </summary>
-        /// <param name="stop"> A Stop instance. </param>
+        /// <param name="start"> A Start instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Stop(Stop stop)
+        public VoiceResponse Start(Start start)
         {
-            this.Append(stop);
+            this.Append(start);
             return this;
         }
 
@@ -667,13 +656,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Refer/> element as a child of this element
+        /// Append a <Stop/> element as a child of this element
         /// </summary>
-        /// <param name="refer"> A Refer instance. </param>
+        /// <param name="stop"> A Stop instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public VoiceResponse Refer(Refer refer)
+        public VoiceResponse Stop(Stop stop)
         {
-            this.Append(refer);
+            this.Append(stop);
             return this;
         }
 
@@ -686,6 +675,17 @@ namespace Twilio.TwiML
         {
             var newChild = new Refer(action, method);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Refer/> element as a child of this element
+        /// </summary>
+        /// <param name="refer"> A Refer instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public VoiceResponse Refer(Refer refer)
+        {
+            this.Append(refer);
             return this;
         }
 

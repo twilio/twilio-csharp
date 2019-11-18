@@ -56,6 +56,17 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <Sip/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="sipUrl"> SIP URL, the body of the TwiML Element. </param>
+        public Refer Sip(Uri sipUrl = null)
+        {
+            var newChild = new ReferSip(sipUrl);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
         /// Append a <Sip/> element as a child of this element
         /// </summary>
         /// <param name="referSip"> A ReferSip instance. </param>
@@ -70,11 +81,10 @@ namespace Twilio.TwiML.Voice
         /// Create a new <Sip/> element and append it as a child of this element.
         /// </summary>
         /// <param name="sipUrl"> SIP URL, the body of the TwiML Element. </param>
+        [System.Obsolete("This method is deprecated, use .Sip() instead.")]
         public Refer ReferSip(Uri sipUrl = null)
         {
-            var newChild = new ReferSip(sipUrl);
-            this.Append(newChild);
-            return this;
+            return Sip(sipUrl);
         }
 
         /// <summary>

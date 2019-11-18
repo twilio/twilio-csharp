@@ -26,17 +26,6 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Message/> element as a child of this element
-        /// </summary>
-        /// <param name="message"> A Message instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public MessagingResponse Message(Message message)
-        {
-            this.Append(message);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Message/> element and append it as a child of this element.
         /// </summary>
         /// <param name="body"> Message Body, the body of the TwiML Element. </param>
@@ -58,13 +47,13 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Redirect/> element as a child of this element
+        /// Append a <Message/> element as a child of this element
         /// </summary>
-        /// <param name="redirect"> A Redirect instance. </param>
+        /// <param name="message"> A Message instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public MessagingResponse Redirect(Redirect redirect)
+        public MessagingResponse Message(Message message)
         {
-            this.Append(redirect);
+            this.Append(message);
             return this;
         }
 
@@ -77,6 +66,17 @@ namespace Twilio.TwiML
         {
             var newChild = new Redirect(url, method);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Redirect/> element as a child of this element
+        /// </summary>
+        /// <param name="redirect"> A Redirect instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public MessagingResponse Redirect(Redirect redirect)
+        {
+            this.Append(redirect);
             return this;
         }
 

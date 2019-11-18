@@ -26,17 +26,6 @@ namespace Twilio.TwiML
         }
 
         /// <summary>
-        /// Append a <Receive/> element as a child of this element
-        /// </summary>
-        /// <param name="receive"> A Receive instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public FaxResponse Receive(Receive receive)
-        {
-            this.Append(receive);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Receive/> element and append it as a child of this element.
         /// </summary>
         /// <param name="action"> Receive action URL </param>
@@ -45,6 +34,17 @@ namespace Twilio.TwiML
         {
             var newChild = new Receive(action, method);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Receive/> element as a child of this element
+        /// </summary>
+        /// <param name="receive"> A Receive instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public FaxResponse Receive(Receive receive)
+        {
+            this.Append(receive);
             return this;
         }
 

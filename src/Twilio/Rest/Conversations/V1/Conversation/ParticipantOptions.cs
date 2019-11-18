@@ -50,6 +50,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// The address of the Twilio phone number that is used in Group MMS.
         /// </summary>
         public string MessagingBindingProjectedAddress { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -132,6 +136,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
@@ -184,6 +192,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new DeleteParticipantOptions

@@ -46,6 +46,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// The Media Sid to be attached to the new Message.
         /// </summary>
         public string MediaSid { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -131,6 +135,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// A string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions
@@ -193,6 +201,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new DeleteMessageOptions

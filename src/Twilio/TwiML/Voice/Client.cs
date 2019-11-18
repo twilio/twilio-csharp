@@ -122,17 +122,6 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Identity/> element as a child of this element
-        /// </summary>
-        /// <param name="identity"> A Identity instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Client Identity(Identity identity)
-        {
-            this.Append(identity);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Identity/> element and append it as a child of this element.
         /// </summary>
         /// <param name="clientIdentity"> Identity of the client to dial, the body of the TwiML Element. </param>
@@ -144,13 +133,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Parameter/> element as a child of this element
+        /// Append a <Identity/> element as a child of this element
         /// </summary>
-        /// <param name="parameter"> A Parameter instance. </param>
+        /// <param name="identity"> A Identity instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Client Parameter(Parameter parameter)
+        public Client Identity(Identity identity)
         {
-            this.Append(parameter);
+            this.Append(identity);
             return this;
         }
 
@@ -163,6 +152,17 @@ namespace Twilio.TwiML.Voice
         {
             var newChild = new Parameter(name, value);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Parameter/> element as a child of this element
+        /// </summary>
+        /// <param name="parameter"> A Parameter instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Client Parameter(Parameter parameter)
+        {
+            this.Append(parameter);
             return this;
         }
 

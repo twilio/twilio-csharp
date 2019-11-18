@@ -105,17 +105,6 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Task/> element as a child of this element
-        /// </summary>
-        /// <param name="task"> A Task instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Enqueue Task(Task task)
-        {
-            this.Append(task);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Task/> element and append it as a child of this element.
         /// </summary>
         /// <param name="body"> TaskRouter task attributes, the body of the TwiML Element. Also accepts stringified object
@@ -126,6 +115,17 @@ namespace Twilio.TwiML.Voice
         {
             var newChild = new Task(body, priority, timeout);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Task/> element as a child of this element
+        /// </summary>
+        /// <param name="task"> A Task instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Enqueue Task(Task task)
+        {
+            this.Append(task);
             return this;
         }
 

@@ -28,6 +28,10 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// The Push Token for this Phone Number
         /// </summary>
         public string PushToken { get; }
+        /// <summary>
+        /// Optional header to mock all voice dependencies
+        /// </summary>
+        public string TwilioSandboxMode { get; }
 
         /// <summary>
         /// Construct a new CreateDeviceOptions
