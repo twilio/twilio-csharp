@@ -60,10 +60,6 @@ namespace Twilio.Rest.Chat.V2.Service
         /// The SID of the Channel resource to delete
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new DeleteChannelOptions
@@ -123,10 +119,6 @@ namespace Twilio.Rest.Chat.V2.Service
         /// The identity of the User that created the Channel
         /// </summary>
         public string CreatedBy { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new CreateChannelOptions
@@ -263,10 +255,6 @@ namespace Twilio.Rest.Chat.V2.Service
         /// The identity of the User that created the Channel
         /// </summary>
         public string CreatedBy { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new UpdateChannelOptions

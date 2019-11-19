@@ -63,10 +63,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// The SID of the Document resource to delete
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new DeleteDocumentOptions
@@ -206,10 +202,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// How long, in seconds, before the Document resource expires and is deleted
         /// </summary>
         public int? Ttl { get; set; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new UpdateDocumentOptions

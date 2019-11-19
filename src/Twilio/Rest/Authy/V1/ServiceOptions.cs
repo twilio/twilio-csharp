@@ -23,10 +23,6 @@ namespace Twilio.Rest.Authy.V1
         /// A human readable description of this resource.
         /// </summary>
         public string FriendlyName { get; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -64,10 +60,6 @@ namespace Twilio.Rest.Authy.V1
         /// A string that uniquely identifies this Service.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
@@ -100,10 +92,6 @@ namespace Twilio.Rest.Authy.V1
         /// A string that uniquely identifies this Service.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
@@ -132,11 +120,6 @@ namespace Twilio.Rest.Authy.V1
     /// </summary>
     public class ReadServiceOptions : ReadOptions<ServiceResource>
     {
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
-
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -168,10 +151,6 @@ namespace Twilio.Rest.Authy.V1
         /// A human readable description of this resource.
         /// </summary>
         public string FriendlyName { get; set; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions

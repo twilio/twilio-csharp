@@ -38,10 +38,6 @@ namespace Twilio.Rest.Conversations.V1
         /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ConversationResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -105,10 +101,6 @@ namespace Twilio.Rest.Conversations.V1
         /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ConversationResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new UpdateConversationOptions
@@ -160,10 +152,6 @@ namespace Twilio.Rest.Conversations.V1
         /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public ConversationResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new DeleteConversationOptions

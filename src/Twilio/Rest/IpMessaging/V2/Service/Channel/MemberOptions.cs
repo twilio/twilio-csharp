@@ -94,10 +94,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// A valid JSON string that contains application-specific data
         /// </summary>
         public string Attributes { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public MemberResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new CreateMemberOptions
@@ -224,10 +220,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// The SID of the Member resource to delete
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public MemberResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new DeleteMemberOptions
@@ -293,10 +285,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// A valid JSON string that contains application-specific data
         /// </summary>
         public string Attributes { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public MemberResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new UpdateMemberOptions

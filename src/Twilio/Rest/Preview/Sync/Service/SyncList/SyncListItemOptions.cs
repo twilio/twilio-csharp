@@ -75,10 +75,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// The index
         /// </summary>
         public int? PathIndex { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new DeleteSyncListItemOptions
@@ -246,10 +242,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// The data
         /// </summary>
         public object Data { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions

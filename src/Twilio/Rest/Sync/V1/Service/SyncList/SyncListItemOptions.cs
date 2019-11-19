@@ -73,10 +73,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// The index of the Sync List Item resource to delete
         /// </summary>
         public int? PathIndex { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new DeleteSyncListItemOptions
@@ -281,10 +277,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// How long, in seconds, before the List Item's parent Sync List expires
         /// </summary>
         public int? CollectionTtl { get; set; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions

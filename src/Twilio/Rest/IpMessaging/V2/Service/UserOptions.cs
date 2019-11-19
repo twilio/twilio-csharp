@@ -106,10 +106,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// A string to describe the new resource
         /// </summary>
         public string FriendlyName { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new CreateUserOptions
@@ -211,10 +207,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// A string to describe the resource
         /// </summary>
         public string FriendlyName { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new UpdateUserOptions

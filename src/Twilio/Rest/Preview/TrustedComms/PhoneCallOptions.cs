@@ -128,10 +128,6 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// Refers to the Voice API Initiate Call parameter
         /// </summary>
         public Uri Url { get; set; }
-        /// <summary>
-        /// Optional header to mock all voice dependencies
-        /// </summary>
-        public string TwilioSandboxMode { get; }
 
         /// <summary>
         /// Construct a new CreatePhoneCallOptions

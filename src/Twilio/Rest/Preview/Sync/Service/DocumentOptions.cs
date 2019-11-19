@@ -65,10 +65,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The sid
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new DeleteDocumentOptions
@@ -198,10 +194,6 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// The data
         /// </summary>
         public object Data { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; }
 
         /// <summary>
         /// Construct a new UpdateDocumentOptions

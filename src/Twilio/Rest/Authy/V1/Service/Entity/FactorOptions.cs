@@ -39,10 +39,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// The Type of this Factor
         /// </summary>
         public FactorResource.FactorTypesEnum FactorType { get; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new CreateFactorOptions
@@ -110,10 +106,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// A string that uniquely identifies this Factor.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new DeleteFactorOptions
@@ -158,10 +150,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// A string that uniquely identifies this Factor.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new FetchFactorOptions
@@ -202,10 +190,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// Unique identity of the Entity
         /// </summary>
         public string PathIdentity { get; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new ReadFactorOptions
@@ -257,10 +241,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// Optional payload to verify the Factor for the first time
         /// </summary>
         public string AuthPayload { get; set; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new UpdateFactorOptions

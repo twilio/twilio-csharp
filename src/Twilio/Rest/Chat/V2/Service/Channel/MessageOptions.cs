@@ -93,10 +93,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         ///  The Media Sid to be attached to the new Message
         /// </summary>
         public string MediaSid { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -220,10 +216,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// The SID of the Message resource to delete
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new DeleteMessageOptions
@@ -289,10 +281,6 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// The Identity of the message's author
         /// </summary>
         public string From { get; set; }
-        /// <summary>
-        /// The X-Twilio-Webhook-Enabled HTTP request header
-        /// </summary>
-        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions

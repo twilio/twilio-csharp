@@ -43,10 +43,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// Hidden details provided to contextualize the Challenge
         /// </summary>
         public string HiddenDetails { get; set; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new CreateChallengeOptions
@@ -110,10 +106,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// A string that uniquely identifies this Challenge.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new DeleteChallengeOptions
@@ -164,10 +156,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// A string that uniquely identifies this Challenge, or `latest`.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new FetchChallengeOptions
@@ -222,10 +210,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         /// Optional payload to verify the Challenge
         /// </summary>
         public string AuthPayload { get; set; }
-        /// <summary>
-        /// The Twilio-Authy-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioAuthySandboxMode { get; }
 
         /// <summary>
         /// Construct a new UpdateChallengeOptions

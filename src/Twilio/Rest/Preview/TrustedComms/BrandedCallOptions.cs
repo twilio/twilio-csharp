@@ -38,10 +38,6 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// The Call sid this Branded Call should link to
         /// </summary>
         public string CallSid { get; set; }
-        /// <summary>
-        /// Optional header to mock all voice dependencies
-        /// </summary>
-        public string TwilioSandboxMode { get; }
 
         /// <summary>
         /// Construct a new CreateBrandedCallOptions
