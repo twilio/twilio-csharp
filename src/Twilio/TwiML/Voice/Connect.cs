@@ -56,17 +56,6 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Room/> element as a child of this element
-        /// </summary>
-        /// <param name="room"> A Room instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Connect Room(Room room)
-        {
-            this.Append(room);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Room/> element and append it as a child of this element.
         /// </summary>
         /// <param name="name"> Room name, the body of the TwiML Element. </param>
@@ -79,13 +68,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Autopilot/> element as a child of this element
+        /// Append a <Room/> element as a child of this element
         /// </summary>
-        /// <param name="autopilot"> A Autopilot instance. </param>
+        /// <param name="room"> A Room instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Connect Autopilot(Autopilot autopilot)
+        public Connect Room(Room room)
         {
-            this.Append(autopilot);
+            this.Append(room);
             return this;
         }
 
@@ -101,13 +90,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Stream/> element as a child of this element
+        /// Append a <Autopilot/> element as a child of this element
         /// </summary>
-        /// <param name="stream"> A Stream instance. </param>
+        /// <param name="autopilot"> A Autopilot instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Connect Stream(Stream stream)
+        public Connect Autopilot(Autopilot autopilot)
         {
-            this.Append(stream);
+            this.Append(autopilot);
             return this;
         }
 
@@ -125,6 +114,17 @@ namespace Twilio.TwiML.Voice
         {
             var newChild = new Stream(name, connectorName, url, track);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Stream/> element as a child of this element
+        /// </summary>
+        /// <param name="stream"> A Stream instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Connect Stream(Stream stream)
+        {
+            this.Append(stream);
             return this;
         }
 

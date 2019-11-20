@@ -105,6 +105,17 @@ namespace Twilio.TwiML.Messaging
         }
 
         /// <summary>
+        /// Create a new <Body/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="message"> Message Body, the body of the TwiML Element. </param>
+        public Message Body(string message = null)
+        {
+            var newChild = new Body(message);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
         /// Append a <Body/> element as a child of this element
         /// </summary>
         /// <param name="body"> A Body instance. </param>
@@ -116,12 +127,12 @@ namespace Twilio.TwiML.Messaging
         }
 
         /// <summary>
-        /// Create a new <Body/> element and append it as a child of this element.
+        /// Create a new <Media/> element and append it as a child of this element.
         /// </summary>
-        /// <param name="message"> Message Body, the body of the TwiML Element. </param>
-        public Message Body(string message = null)
+        /// <param name="url"> Media URL, the body of the TwiML Element. </param>
+        public Message Media(Uri url = null)
         {
-            var newChild = new Body(message);
+            var newChild = new Media(url);
             this.Append(newChild);
             return this;
         }
@@ -134,17 +145,6 @@ namespace Twilio.TwiML.Messaging
         public Message Media(Media media)
         {
             this.Append(media);
-            return this;
-        }
-
-        /// <summary>
-        /// Create a new <Media/> element and append it as a child of this element.
-        /// </summary>
-        /// <param name="url"> Media URL, the body of the TwiML Element. </param>
-        public Message Media(Uri url = null)
-        {
-            var newChild = new Media(url);
-            this.Append(newChild);
             return this;
         }
 

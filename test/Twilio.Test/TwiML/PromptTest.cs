@@ -61,7 +61,7 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new Prompt();
             var child = new Say();
-            elem.Nest(child).SsmlBreak();
+            elem.Nest(child).Break();
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +

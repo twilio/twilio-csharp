@@ -93,17 +93,6 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Parameter/> element as a child of this element
-        /// </summary>
-        /// <param name="parameter"> A Parameter instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Stream Parameter(Parameter parameter)
-        {
-            this.Append(parameter);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Parameter/> element and append it as a child of this element.
         /// </summary>
         /// <param name="name"> The name of the custom parameter </param>
@@ -112,6 +101,17 @@ namespace Twilio.TwiML.Voice
         {
             var newChild = new Parameter(name, value);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Parameter/> element as a child of this element
+        /// </summary>
+        /// <param name="parameter"> A Parameter instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Stream Parameter(Parameter parameter)
+        {
+            this.Append(parameter);
             return this;
         }
 

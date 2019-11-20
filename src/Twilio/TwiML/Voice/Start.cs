@@ -56,17 +56,6 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Stream/> element as a child of this element
-        /// </summary>
-        /// <param name="stream"> A Stream instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Start Stream(Stream stream)
-        {
-            this.Append(stream);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Stream/> element and append it as a child of this element.
         /// </summary>
         /// <param name="name"> Friendly name given to the Stream </param>
@@ -84,13 +73,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Siprec/> element as a child of this element
+        /// Append a <Stream/> element as a child of this element
         /// </summary>
-        /// <param name="siprec"> A Siprec instance. </param>
+        /// <param name="stream"> A Stream instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Start Siprec(Siprec siprec)
+        public Start Stream(Stream stream)
         {
-            this.Append(siprec);
+            this.Append(stream);
             return this;
         }
 
@@ -103,6 +92,17 @@ namespace Twilio.TwiML.Voice
         {
             var newChild = new Siprec(name, connectorName);
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Siprec/> element as a child of this element
+        /// </summary>
+        /// <param name="siprec"> A Siprec instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Start Siprec(Siprec siprec)
+        {
+            this.Append(siprec);
             return this;
         }
 

@@ -291,17 +291,6 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Client/> element as a child of this element
-        /// </summary>
-        /// <param name="client"> A Client instance. </param>
-        [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Dial Client(Client client)
-        {
-            this.Append(client);
-            return this;
-        }
-
-        /// <summary>
         /// Create a new <Client/> element and append it as a child of this element.
         /// </summary>
         /// <param name="identity"> Client identity, the body of the TwiML Element. </param>
@@ -330,13 +319,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Conference/> element as a child of this element
+        /// Append a <Client/> element as a child of this element
         /// </summary>
-        /// <param name="conference"> A Conference instance. </param>
+        /// <param name="client"> A Client instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Dial Conference(Conference conference)
+        public Dial Client(Client client)
         {
-            this.Append(conference);
+            this.Append(client);
             return this;
         }
 
@@ -408,13 +397,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Number/> element as a child of this element
+        /// Append a <Conference/> element as a child of this element
         /// </summary>
-        /// <param name="number"> A Number instance. </param>
+        /// <param name="conference"> A Conference instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Dial Number(Number number)
+        public Dial Conference(Conference conference)
         {
-            this.Append(number);
+            this.Append(conference);
             return this;
         }
 
@@ -450,13 +439,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Queue/> element as a child of this element
+        /// Append a <Number/> element as a child of this element
         /// </summary>
-        /// <param name="queue"> A Queue instance. </param>
+        /// <param name="number"> A Number instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Dial Queue(Queue queue)
+        public Dial Number(Number number)
         {
-            this.Append(queue);
+            this.Append(number);
             return this;
         }
 
@@ -480,13 +469,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Sim/> element as a child of this element
+        /// Append a <Queue/> element as a child of this element
         /// </summary>
-        /// <param name="sim"> A Sim instance. </param>
+        /// <param name="queue"> A Queue instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Dial Sim(Sim sim)
+        public Dial Queue(Queue queue)
         {
-            this.Append(sim);
+            this.Append(queue);
             return this;
         }
 
@@ -502,13 +491,13 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
-        /// Append a <Sip/> element as a child of this element
+        /// Append a <Sim/> element as a child of this element
         /// </summary>
-        /// <param name="sip"> A Sip instance. </param>
+        /// <param name="sim"> A Sim instance. </param>
         [System.Obsolete("This method is deprecated, use .Append() instead.")]
-        public Dial Sip(Sip sip)
+        public Dial Sim(Sim sim)
         {
-            this.Append(sip);
+            this.Append(sim);
             return this;
         }
 
@@ -543,6 +532,17 @@ namespace Twilio.TwiML.Voice
                 statusCallbackMethod
             );
             this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <Sip/> element as a child of this element
+        /// </summary>
+        /// <param name="sip"> A Sip instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Dial Sip(Sip sip)
+        {
+            this.Append(sip);
             return this;
         }
 
