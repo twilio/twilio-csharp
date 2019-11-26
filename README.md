@@ -31,8 +31,6 @@ This library supports .NET applications written in C#, VB.Net, and F# that utili
 
 ## Installation
 
-## Adding Twilio libraries to your .NET project
-
 The best and easiest way to add the Twilio libraries to your .NET project is to use the NuGet package manager.
 
 ### With Visual Studio IDE
