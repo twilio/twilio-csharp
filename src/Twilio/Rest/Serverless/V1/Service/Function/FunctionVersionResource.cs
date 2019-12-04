@@ -50,7 +50,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         }
 
         /// <summary>
-        /// Retrieve a list of all FunctionVersion resources.
+        /// Retrieve a list of all Function Version resources.
         /// </summary>
         /// <param name="options"> Read FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all FunctionVersion resources.
+        /// Retrieve a list of all Function Version resources.
         /// </summary>
         /// <param name="options"> Read FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -84,10 +84,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         #endif
 
         /// <summary>
-        /// Retrieve a list of all FunctionVersion resources.
+        /// Retrieve a list of all Function Version resources.
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the FunctionVersion resources from </param>
-        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the FunctionVersion resources to read
+        /// <param name="pathServiceSid"> The SID of the Service to read the Function Version resources from </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resources to read
         ///                       </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -105,10 +105,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all FunctionVersion resources.
+        /// Retrieve a list of all Function Version resources.
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the FunctionVersion resources from </param>
-        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the FunctionVersion resources to read
+        /// <param name="pathServiceSid"> The SID of the Service to read the Function Version resources from </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resources to read
         ///                       </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         }
 
         /// <summary>
-        /// Retrieve a specific FunctionVersion resource.
+        /// Retrieve a specific Function Version resource.
         /// </summary>
         /// <param name="options"> Fetch FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -211,7 +211,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific FunctionVersion resource.
+        /// Retrieve a specific Function Version resource.
         /// </summary>
         /// <param name="options"> Fetch FunctionVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -226,12 +226,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         #endif
 
         /// <summary>
-        /// Retrieve a specific FunctionVersion resource.
+        /// Retrieve a specific Function Version resource.
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the FunctionVersion resource from </param>
-        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the FunctionVersion resource to fetch
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version resource from </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resource to fetch
         ///                       </param>
-        /// <param name="pathSid"> The SID that identifies the FunctionVersion resource to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the Function Version resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FunctionVersion </returns>
         public static FunctionVersionResource Fetch(string pathServiceSid,
@@ -245,12 +245,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific FunctionVersion resource.
+        /// Retrieve a specific Function Version resource.
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the FunctionVersion resource from </param>
-        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the FunctionVersion resource to fetch
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version resource from </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resource to fetch
         ///                       </param>
-        /// <param name="pathSid"> The SID that identifies the FunctionVersion resource to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the Function Version resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FunctionVersion </returns>
         public static async System.Threading.Tasks.Task<FunctionVersionResource> FetchAsync(string pathServiceSid,
@@ -282,17 +282,17 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         }
 
         /// <summary>
-        /// The unique string that identifies the FunctionVersion resource
+        /// The unique string that identifies the Function Version resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The SID of the Account that created the FunctionVersion resource
+        /// The SID of the Account that created the Function Version resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that the FunctionVersion resource is associated with
+        /// The SID of the Service that the Function Version resource is associated with
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
@@ -313,12 +313,12 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         [JsonConverter(typeof(StringEnumConverter))]
         public FunctionVersionResource.VisibilityEnum Visibility { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the FunctionVersion resource was created
+        /// The ISO 8601 date and time in GMT when the Function Version resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The absolute URL of the FunctionVersion resource
+        /// The absolute URL of the Function Version resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

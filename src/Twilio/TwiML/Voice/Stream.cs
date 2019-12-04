@@ -29,7 +29,6 @@ namespace Twilio.TwiML.Voice
             public static readonly TrackEnum InboundTrack = new TrackEnum("inbound_track");
             public static readonly TrackEnum OutboundTrack = new TrackEnum("outbound_track");
             public static readonly TrackEnum BothTracks = new TrackEnum("both_tracks");
-            public static readonly TrackEnum MixedTrack = new TrackEnum("mixed_track");
         }
 
         /// <summary>

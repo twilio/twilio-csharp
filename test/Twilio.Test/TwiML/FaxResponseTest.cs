@@ -46,12 +46,18 @@ namespace Twilio.Tests.TwiML
         {
             var elem = new FaxResponse();
 
-            elem.Receive(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
+            elem.Receive(
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                Receive.MediaTypeEnum.ApplicationPdf,
+                Receive.PageSizeEnum.Letter,
+                true
+            );
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Response>" + Environment.NewLine +
-                "  <Receive action=\"https://example.com\" method=\"GET\"></Receive>" + Environment.NewLine +
+                "  <Receive action=\"https://example.com\" method=\"GET\" mediaType=\"application/pdf\" pageSize=\"letter\" storeMedia=\"true\"></Receive>" + Environment.NewLine +
                 "</Response>",
                 elem.ToString()
             );

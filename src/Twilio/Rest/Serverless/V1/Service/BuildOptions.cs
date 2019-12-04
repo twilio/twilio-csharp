@@ -138,7 +138,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The list of AssetVersion resource SIDs to include in the build
+        /// The list of Asset Version resource SIDs to include in the build
         /// </summary>
         public List<string> AssetVersions { get; set; }
         /// <summary>

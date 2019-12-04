@@ -29,10 +29,16 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Receive(new Uri("https://example.com"), Twilio.Http.HttpMethod.Get);
+            var elem = new Receive(
+                new Uri("https://example.com"),
+                Twilio.Http.HttpMethod.Get,
+                Receive.MediaTypeEnum.ApplicationPdf,
+                Receive.PageSizeEnum.Letter,
+                true
+            );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Receive action=\"https://example.com\" method=\"GET\"></Receive>",
+                "<Receive action=\"https://example.com\" method=\"GET\" mediaType=\"application/pdf\" pageSize=\"letter\" storeMedia=\"true\"></Receive>",
                 elem.ToString()
             );
         }

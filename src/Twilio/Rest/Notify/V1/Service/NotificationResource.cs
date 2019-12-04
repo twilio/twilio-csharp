@@ -101,6 +101,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="segment"> A Segment to notify </param>
         /// <param name="alexa"> Deprecated </param>
         /// <param name="toBinding"> The destination address specified as a JSON string </param>
+        /// <param name="deliveryCallbackUrl"> URL to send webhooks </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Notification </returns>
         public static NotificationResource Create(string pathServiceSid,
@@ -121,9 +122,10 @@ namespace Twilio.Rest.Notify.V1.Service
                                                   List<string> segment = null,
                                                   object alexa = null,
                                                   List<string> toBinding = null,
+                                                  string deliveryCallbackUrl = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding};
+            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl};
             return Create(options, client);
         }
 
@@ -153,6 +155,7 @@ namespace Twilio.Rest.Notify.V1.Service
         /// <param name="segment"> A Segment to notify </param>
         /// <param name="alexa"> Deprecated </param>
         /// <param name="toBinding"> The destination address specified as a JSON string </param>
+        /// <param name="deliveryCallbackUrl"> URL to send webhooks </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
         public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid,
@@ -173,9 +176,10 @@ namespace Twilio.Rest.Notify.V1.Service
                                                                                           List<string> segment = null,
                                                                                           object alexa = null,
                                                                                           List<string> toBinding = null,
+                                                                                          string deliveryCallbackUrl = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding};
+            var options = new CreateNotificationOptions(pathServiceSid){Identity = identity, Tag = tag, Body = body, Priority = priority, Ttl = ttl, Title = title, Sound = sound, Action = action, Data = data, Apn = apn, Gcm = gcm, Sms = sms, FacebookMessenger = facebookMessenger, Fcm = fcm, Segment = segment, Alexa = alexa, ToBinding = toBinding, DeliveryCallbackUrl = deliveryCallbackUrl};
             return await CreateAsync(options, client);
         }
         #endif

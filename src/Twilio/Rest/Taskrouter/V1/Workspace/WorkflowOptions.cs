@@ -79,6 +79,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// How long TaskRouter will wait for a confirmation response from your application after it assigns a Task to a Worker
         /// </summary>
         public int? TaskReservationTimeout { get; set; }
+        /// <summary>
+        /// Whether or not to re-evaluate Tasks
+        /// </summary>
+        public string ReEvaluateTasks { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWorkflowOptions
@@ -120,6 +124,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (TaskReservationTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskReservationTimeout", TaskReservationTimeout.ToString()));
+            }
+
+            if (ReEvaluateTasks != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ReEvaluateTasks", ReEvaluateTasks));
             }
 
             return p;

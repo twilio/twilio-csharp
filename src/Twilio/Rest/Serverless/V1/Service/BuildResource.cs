@@ -361,7 +361,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// Create a new Build resource. At least one function version or asset version is required.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
-        /// <param name="assetVersions"> The list of AssetVersion resource SIDs to include in the build </param>
+        /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the build </param>
         /// <param name="functionVersions"> The list of the Variable resource SIDs to include in the build </param>
         /// <param name="dependencies"> A list of objects that describe the Dependencies included in the build </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -381,7 +381,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// Create a new Build resource. At least one function version or asset version is required.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
-        /// <param name="assetVersions"> The list of AssetVersion resource SIDs to include in the build </param>
+        /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the build </param>
         /// <param name="functionVersions"> The list of the Variable resource SIDs to include in the build </param>
         /// <param name="dependencies"> A list of objects that describe the Dependencies included in the build </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -437,12 +437,12 @@ namespace Twilio.Rest.Serverless.V1.Service
         [JsonConverter(typeof(StringEnumConverter))]
         public BuildResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The list of AssetVersion resource SIDs that are included in the build
+        /// The list of Asset Version resource SIDs that are included in the build
         /// </summary>
         [JsonProperty("asset_versions")]
         public List<object> AssetVersions { get; private set; }
         /// <summary>
-        /// List of the Variable resource SIDs
+        /// The list of Function Version resource SIDs that are included in the build
         /// </summary>
         [JsonProperty("function_versions")]
         public List<object> FunctionVersions { get; private set; }

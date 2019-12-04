@@ -471,6 +471,8 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="logEnabled"> Whether to log notifications </param>
         /// <param name="alexaSkillId"> Deprecated </param>
         /// <param name="defaultAlexaNotificationProtocolVersion"> Deprecated </param>
+        /// <param name="deliveryCallbackUrl"> Webhook URL </param>
+        /// <param name="deliveryCallbackEnabled"> Enable delivery callbacks </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -486,9 +488,11 @@ namespace Twilio.Rest.Notify.V1
                                              bool? logEnabled = null,
                                              string alexaSkillId = null,
                                              string defaultAlexaNotificationProtocolVersion = null,
+                                             string deliveryCallbackUrl = null,
+                                             bool? deliveryCallbackEnabled = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion, DeliveryCallbackUrl = deliveryCallbackUrl, DeliveryCallbackEnabled = deliveryCallbackEnabled};
             return Update(options, client);
         }
 
@@ -512,6 +516,8 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="logEnabled"> Whether to log notifications </param>
         /// <param name="alexaSkillId"> Deprecated </param>
         /// <param name="defaultAlexaNotificationProtocolVersion"> Deprecated </param>
+        /// <param name="deliveryCallbackUrl"> Webhook URL </param>
+        /// <param name="deliveryCallbackEnabled"> Enable delivery callbacks </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -527,9 +533,11 @@ namespace Twilio.Rest.Notify.V1
                                                                                      bool? logEnabled = null,
                                                                                      string alexaSkillId = null,
                                                                                      string defaultAlexaNotificationProtocolVersion = null,
+                                                                                     string deliveryCallbackUrl = null,
+                                                                                     bool? deliveryCallbackEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion, DeliveryCallbackUrl = deliveryCallbackUrl, DeliveryCallbackEnabled = deliveryCallbackEnabled};
             return await UpdateAsync(options, client);
         }
         #endif

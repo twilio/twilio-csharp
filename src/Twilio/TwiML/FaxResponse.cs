@@ -30,9 +30,16 @@ namespace Twilio.TwiML
         /// </summary>
         /// <param name="action"> Receive action URL </param>
         /// <param name="method"> Receive action URL method </param>
-        public FaxResponse Receive(Uri action = null, Twilio.Http.HttpMethod method = null)
+        /// <param name="mediaType"> The media type used to store media in the fax media store </param>
+        /// <param name="pageSize"> What size to interpret received pages as </param>
+        /// <param name="storeMedia"> Whether or not to store received media in the fax media store </param>
+        public FaxResponse Receive(Uri action = null,
+                                   Twilio.Http.HttpMethod method = null,
+                                   Receive.MediaTypeEnum mediaType = null,
+                                   Receive.PageSizeEnum pageSize = null,
+                                   bool? storeMedia = null)
         {
-            var newChild = new Receive(action, method);
+            var newChild = new Receive(action, method, mediaType, pageSize, storeMedia);
             this.Append(newChild);
             return this;
         }

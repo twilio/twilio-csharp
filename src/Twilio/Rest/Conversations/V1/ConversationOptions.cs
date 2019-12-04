@@ -62,7 +62,7 @@ namespace Twilio.Rest.Conversations.V1
 
             if (MessagingServiceSid != null)
             {
-                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid));
+                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
             }
 
             if (Attributes != null)
@@ -101,6 +101,10 @@ namespace Twilio.Rest.Conversations.V1
         /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The unique id of the SMS Service this conversation belongs to.
+        /// </summary>
+        public string MessagingServiceSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateConversationOptions
@@ -135,6 +139,11 @@ namespace Twilio.Rest.Conversations.V1
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+            }
+
+            if (MessagingServiceSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
             }
 
             return p;

@@ -9,6 +9,7 @@ using System.IO;
 using System.Text;
 using System.Xml.Linq;
 using Twilio.Converters;
+using Twilio.Types;
 
 namespace Twilio.TwiML.Fax
 {
@@ -18,6 +19,33 @@ namespace Twilio.TwiML.Fax
     /// </summary>
     public class Receive : TwiML
     {
+        public sealed class MediaTypeEnum : StringEnum
+        {
+            private MediaTypeEnum(string value) : base(value) {}
+            public MediaTypeEnum() {}
+            public static implicit operator MediaTypeEnum(string value)
+            {
+                return new MediaTypeEnum(value);
+            }
+
+            public static readonly MediaTypeEnum ApplicationPdf = new MediaTypeEnum("application/pdf");
+            public static readonly MediaTypeEnum ImageTiff = new MediaTypeEnum("image/tiff");
+        }
+
+        public sealed class PageSizeEnum : StringEnum
+        {
+            private PageSizeEnum(string value) : base(value) {}
+            public PageSizeEnum() {}
+            public static implicit operator PageSizeEnum(string value)
+            {
+                return new PageSizeEnum(value);
+            }
+
+            public static readonly PageSizeEnum Letter = new PageSizeEnum("letter");
+            public static readonly PageSizeEnum Legal = new PageSizeEnum("legal");
+            public static readonly PageSizeEnum A4 = new PageSizeEnum("a4");
+        }
+
         /// <summary>
         /// Receive action URL
         /// </summary>
@@ -26,16 +54,38 @@ namespace Twilio.TwiML.Fax
         /// Receive action URL method
         /// </summary>
         public Twilio.Http.HttpMethod Method { get; set; }
+        /// <summary>
+        /// The media type used to store media in the fax media store
+        /// </summary>
+        public Receive.MediaTypeEnum MediaType { get; set; }
+        /// <summary>
+        /// What size to interpret received pages as
+        /// </summary>
+        public Receive.PageSizeEnum PageSize { get; set; }
+        /// <summary>
+        /// Whether or not to store received media in the fax media store
+        /// </summary>
+        public bool? StoreMedia { get; set; }
 
         /// <summary>
         /// Create a new Receive
         /// </summary>
         /// <param name="action"> Receive action URL </param>
         /// <param name="method"> Receive action URL method </param>
-        public Receive(Uri action = null, Twilio.Http.HttpMethod method = null) : base("Receive")
+        /// <param name="mediaType"> The media type used to store media in the fax media store </param>
+        /// <param name="pageSize"> What size to interpret received pages as </param>
+        /// <param name="storeMedia"> Whether or not to store received media in the fax media store </param>
+        public Receive(Uri action = null,
+                       Twilio.Http.HttpMethod method = null,
+                       Receive.MediaTypeEnum mediaType = null,
+                       Receive.PageSizeEnum pageSize = null,
+                       bool? storeMedia = null) : base("Receive")
         {
             this.Action = action;
             this.Method = method;
+            this.MediaType = mediaType;
+            this.PageSize = pageSize;
+            this.StoreMedia = storeMedia;
         }
 
         /// <summary>
@@ -51,6 +101,18 @@ namespace Twilio.TwiML.Fax
             if (this.Method != null)
             {
                 attributes.Add(new XAttribute("method", this.Method.ToString()));
+            }
+            if (this.MediaType != null)
+            {
+                attributes.Add(new XAttribute("mediaType", this.MediaType.ToString()));
+            }
+            if (this.PageSize != null)
+            {
+                attributes.Add(new XAttribute("pageSize", this.PageSize.ToString()));
+            }
+            if (this.StoreMedia != null)
+            {
+                attributes.Add(new XAttribute("storeMedia", this.StoreMedia.Value.ToString().ToLower()));
             }
             return attributes;
         }

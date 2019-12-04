@@ -343,7 +343,7 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("to")]
         public string To { get; private set; }
         /// <summary>
-        /// The verification method to use
+        /// The verification method used.
         /// </summary>
         [JsonProperty("channel")]
         [JsonConverter(typeof(StringEnumConverter))]

@@ -267,6 +267,82 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteUserChannelOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.IpMessaging,
+                "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Removes User from selected Channel.
+        /// </summary>
+        /// <param name="options"> Delete UserChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UserChannel </returns>
+        public static bool Delete(DeleteUserChannelOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Removes User from selected Channel.
+        /// </summary>
+        /// <param name="options"> Delete UserChannel parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteUserChannelOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Removes User from selected Channel.
+        /// </summary>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel the resource belongs to </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UserChannel </returns>
+        public static bool Delete(string pathServiceSid,
+                                  string pathUserSid,
+                                  string pathChannelSid,
+                                  ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Removes User from selected Channel.
+        /// </summary>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel the resource belongs to </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UserChannel </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
+                                                                          string pathUserSid,
+                                                                          string pathChannelSid,
+                                                                          ITwilioRestClient client = null)
+        {
+            var options = new DeleteUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         private static Request BuildUpdateRequest(UpdateUserChannelOptions options, ITwilioRestClient client)
         {
             return new Request(

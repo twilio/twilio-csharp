@@ -1,6 +1,30 @@
 twilio-csharp Changelog
 =======================
 
+[2019-12-04] Version 5.36.0
+---------------------------
+**Library**
+- [PR #506](https://github.com/twilio/twilio-csharp/pull/506): docs: add supported language versions to README. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #504](https://github.com/twilio/twilio-csharp/pull/504): fix: Rename child twiml methods to be the tag name and deprecate old methods. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+- [PR #502](https://github.com/twilio/twilio-csharp/pull/502): fix: add new Twiml type to deal with constructor overloading issue. Thanks to [@craigsdennis](https://github.com/craigsdennis)!
+
+**Api**
+- Add optional `twiml` parameter for call create
+
+**Chat**
+- Added `delete` method in UserChannel resource
+
+**Conversations**
+- Allow Messaging Service update
+
+**Taskrouter**
+- Support ReEvaluateTasks parameter on Workflow update
+
+**Twiml**
+- Remove unsupported `mixed_track` value from `<Stream>` **(breaking change)**
+- Add missing fax `<Receive>` optional attributes
+
+
 [2019-11-13] Version 5.35.1
 ---------------------------
 **Library**

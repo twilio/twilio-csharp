@@ -91,6 +91,10 @@ namespace Twilio.Rest.Notify.V1.Service
         /// The destination address specified as a JSON string
         /// </summary>
         public List<string> ToBinding { get; set; }
+        /// <summary>
+        /// URL to send webhooks
+        /// </summary>
+        public string DeliveryCallbackUrl { get; set; }
 
         /// <summary>
         /// Construct a new CreateNotificationOptions
@@ -194,6 +198,11 @@ namespace Twilio.Rest.Notify.V1.Service
             if (ToBinding != null)
             {
                 p.AddRange(ToBinding.Select(prop => new KeyValuePair<string, string>("ToBinding", prop)));
+            }
+
+            if (DeliveryCallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DeliveryCallbackUrl", DeliveryCallbackUrl));
             }
 
             return p;

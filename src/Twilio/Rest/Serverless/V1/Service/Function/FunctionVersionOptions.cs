@@ -15,24 +15,24 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a list of all FunctionVersion resources.
+    /// Retrieve a list of all Function Version resources.
     /// </summary>
     public class ReadFunctionVersionOptions : ReadOptions<FunctionVersionResource>
     {
         /// <summary>
-        /// The SID of the Service to read the FunctionVersion resources from
+        /// The SID of the Service to read the Function Version resources from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the function that is the parent of the FunctionVersion resources to read
+        /// The SID of the function that is the parent of the Function Version resources to read
         /// </summary>
         public string PathFunctionSid { get; }
 
         /// <summary>
         /// Construct a new ReadFunctionVersionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the FunctionVersion resources from </param>
-        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the FunctionVersion resources to read
+        /// <param name="pathServiceSid"> The SID of the Service to read the Function Version resources from </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resources to read
         ///                       </param>
         public ReadFunctionVersionOptions(string pathServiceSid, string pathFunctionSid)
         {
@@ -59,30 +59,30 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific FunctionVersion resource.
+    /// Retrieve a specific Function Version resource.
     /// </summary>
     public class FetchFunctionVersionOptions : IOptions<FunctionVersionResource>
     {
         /// <summary>
-        /// The SID of the Service to fetch the FunctionVersion resource from
+        /// The SID of the Service to fetch the Function Version resource from
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the function that is the parent of the FunctionVersion resource to fetch
+        /// The SID of the function that is the parent of the Function Version resource to fetch
         /// </summary>
         public string PathFunctionSid { get; }
         /// <summary>
-        /// The SID that identifies the FunctionVersion resource to fetch
+        /// The SID that identifies the Function Version resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFunctionVersionOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the FunctionVersion resource from </param>
-        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the FunctionVersion resource to fetch
+        /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version resource from </param>
+        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version resource to fetch
         ///                       </param>
-        /// <param name="pathSid"> The SID that identifies the FunctionVersion resource to fetch </param>
+        /// <param name="pathSid"> The SID that identifies the Function Version resource to fetch </param>
         public FetchFunctionVersionOptions(string pathServiceSid, string pathFunctionSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

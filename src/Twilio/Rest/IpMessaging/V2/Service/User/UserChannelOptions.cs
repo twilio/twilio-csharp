@@ -93,6 +93,47 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     }
 
     /// <summary>
+    /// Removes User from selected Channel.
+    /// </summary>
+    public class DeleteUserChannelOptions : IOptions<UserChannelResource>
+    {
+        /// <summary>
+        /// The SID of the Service to read the resources from
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// The SID of the User to fetch the User Channel resources from
+        /// </summary>
+        public string PathUserSid { get; }
+        /// <summary>
+        /// The SID of the Channel the resource belongs to
+        /// </summary>
+        public string PathChannelSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteUserChannelOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
+        /// <param name="pathChannelSid"> The SID of the Channel the resource belongs to </param>
+        public DeleteUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathUserSid = pathUserSid;
+            PathChannelSid = pathChannelSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
+    /// <summary>
     /// UpdateUserChannelOptions
     /// </summary>
     public class UpdateUserChannelOptions : IOptions<UserChannelResource>

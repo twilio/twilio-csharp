@@ -168,6 +168,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
+        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
         public static ConversationResource Update(string pathSid,
@@ -175,9 +176,10 @@ namespace Twilio.Rest.Conversations.V1
                                                   DateTime? dateCreated = null,
                                                   DateTime? dateUpdated = null,
                                                   string attributes = null,
+                                                  string messagingServiceSid = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid};
             return Update(options, client);
         }
 
@@ -190,6 +192,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
+        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<ConversationResource> UpdateAsync(string pathSid,
@@ -197,9 +200,10 @@ namespace Twilio.Rest.Conversations.V1
                                                                                           DateTime? dateCreated = null,
                                                                                           DateTime? dateUpdated = null,
                                                                                           string attributes = null,
+                                                                                          string messagingServiceSid = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid};
             return await UpdateAsync(options, client);
         }
         #endif

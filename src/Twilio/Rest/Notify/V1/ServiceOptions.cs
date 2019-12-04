@@ -290,6 +290,14 @@ namespace Twilio.Rest.Notify.V1
         /// Deprecated
         /// </summary>
         public string DefaultAlexaNotificationProtocolVersion { get; set; }
+        /// <summary>
+        /// Webhook URL
+        /// </summary>
+        public string DeliveryCallbackUrl { get; set; }
+        /// <summary>
+        /// Enable delivery callbacks
+        /// </summary>
+        public bool? DeliveryCallbackEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -364,6 +372,16 @@ namespace Twilio.Rest.Notify.V1
             if (DefaultAlexaNotificationProtocolVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultAlexaNotificationProtocolVersion", DefaultAlexaNotificationProtocolVersion));
+            }
+
+            if (DeliveryCallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DeliveryCallbackUrl", DeliveryCallbackUrl));
+            }
+
+            if (DeliveryCallbackEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DeliveryCallbackEnabled", DeliveryCallbackEnabled.Value.ToString().ToLower()));
             }
 
             return p;

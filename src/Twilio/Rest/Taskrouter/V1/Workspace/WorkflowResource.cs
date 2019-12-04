@@ -142,6 +142,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow </param>
         /// <param name="taskReservationTimeout"> How long TaskRouter will wait for a confirmation response from your
         ///                              application after it assigns a Task to a Worker </param>
+        /// <param name="reEvaluateTasks"> Whether or not to re-evaluate Tasks </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Workflow </returns>
         public static WorkflowResource Update(string pathWorkspaceSid,
@@ -151,9 +152,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                               Uri fallbackAssignmentCallbackUrl = null,
                                               string configuration = null,
                                               int? taskReservationTimeout = null,
+                                              string reEvaluateTasks = null,
                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkflowOptions(pathWorkspaceSid, pathSid){FriendlyName = friendlyName, AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, Configuration = configuration, TaskReservationTimeout = taskReservationTimeout};
+            var options = new UpdateWorkflowOptions(pathWorkspaceSid, pathSid){FriendlyName = friendlyName, AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, Configuration = configuration, TaskReservationTimeout = taskReservationTimeout, ReEvaluateTasks = reEvaluateTasks};
             return Update(options, client);
         }
 
@@ -170,6 +172,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="configuration"> A JSON string that contains the rules to apply to the Workflow </param>
         /// <param name="taskReservationTimeout"> How long TaskRouter will wait for a confirmation response from your
         ///                              application after it assigns a Task to a Worker </param>
+        /// <param name="reEvaluateTasks"> Whether or not to re-evaluate Tasks </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Workflow </returns>
         public static async System.Threading.Tasks.Task<WorkflowResource> UpdateAsync(string pathWorkspaceSid,
@@ -179,9 +182,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                       Uri fallbackAssignmentCallbackUrl = null,
                                                                                       string configuration = null,
                                                                                       int? taskReservationTimeout = null,
+                                                                                      string reEvaluateTasks = null,
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new UpdateWorkflowOptions(pathWorkspaceSid, pathSid){FriendlyName = friendlyName, AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, Configuration = configuration, TaskReservationTimeout = taskReservationTimeout};
+            var options = new UpdateWorkflowOptions(pathWorkspaceSid, pathSid){FriendlyName = friendlyName, AssignmentCallbackUrl = assignmentCallbackUrl, FallbackAssignmentCallbackUrl = fallbackAssignmentCallbackUrl, Configuration = configuration, TaskReservationTimeout = taskReservationTimeout, ReEvaluateTasks = reEvaluateTasks};
             return await UpdateAsync(options, client);
         }
         #endif
