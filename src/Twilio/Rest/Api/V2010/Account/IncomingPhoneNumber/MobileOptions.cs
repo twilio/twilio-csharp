@@ -153,6 +153,26 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// The SID of the Address resource associated with the phone number
         /// </summary>
         public string AddressSid { get; set; }
+        /// <summary>
+        /// Status determining whether the new phone number is enabled for emergency calling
+        /// </summary>
+        public MobileResource.EmergencyStatusEnum EmergencyStatus { get; set; }
+        /// <summary>
+        /// The emergency address configuration to use for emergency calling
+        /// </summary>
+        public string EmergencyAddressSid { get; set; }
+        /// <summary>
+        /// SID of the trunk to handle calls to the new phone number
+        /// </summary>
+        public string TrunkSid { get; set; }
+        /// <summary>
+        /// Incoming call type: fax or voice
+        /// </summary>
+        public MobileResource.VoiceReceiveModeEnum VoiceReceiveMode { get; set; }
+        /// <summary>
+        /// The SID of the Bundle resource associated with number
+        /// </summary>
+        public string BundleSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateMobileOptions
@@ -257,6 +277,31 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             if (AddressSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
+            }
+
+            if (EmergencyStatus != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyStatus", EmergencyStatus.ToString()));
+            }
+
+            if (EmergencyAddressSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyAddressSid", EmergencyAddressSid.ToString()));
+            }
+
+            if (TrunkSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TrunkSid", TrunkSid.ToString()));
+            }
+
+            if (VoiceReceiveMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("VoiceReceiveMode", VoiceReceiveMode.ToString()));
+            }
+
+            if (BundleSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BundleSid", BundleSid.ToString()));
             }
 
             return p;

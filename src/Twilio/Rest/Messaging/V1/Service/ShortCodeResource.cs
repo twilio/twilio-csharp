@@ -428,7 +428,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// An array of values that describe whether the number can receive calls or messages
         /// </summary>
         [JsonProperty("capabilities")]
-        public List<object> Capabilities { get; private set; }
+        public List<string> Capabilities { get; private set; }
         /// <summary>
         /// The absolute URL of the ShortCode resource
         /// </summary>

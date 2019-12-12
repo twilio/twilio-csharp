@@ -558,6 +558,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
+        /// The unique id of messages's author participant.
+        /// </summary>
+        [JsonProperty("participant_sid")]
+        public string ParticipantSid { get; private set; }
+        /// <summary>
         /// The date that this resource was created.
         /// </summary>
         [JsonProperty("date_created")]

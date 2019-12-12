@@ -112,6 +112,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// The SID of the Address resource associated with the phone number
         /// </summary>
         public string AddressSid { get; set; }
+        /// <summary>
+        /// The SID of the Bundle resource associated with number
+        /// </summary>
+        public string BundleSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateIncomingPhoneNumberOptions
@@ -236,6 +240,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (AddressSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("AddressSid", AddressSid.ToString()));
+            }
+
+            if (BundleSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BundleSid", BundleSid.ToString()));
             }
 
             return p;
@@ -470,6 +479,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Incoming call type: fax or voice
         /// </summary>
         public IncomingPhoneNumberResource.VoiceReceiveModeEnum VoiceReceiveMode { get; set; }
+        /// <summary>
+        /// The SID of the Bundle resource associated with number
+        /// </summary>
+        public string BundleSid { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -590,6 +603,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (VoiceReceiveMode != null)
             {
                 p.Add(new KeyValuePair<string, string>("VoiceReceiveMode", VoiceReceiveMode.ToString()));
+            }
+
+            if (BundleSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BundleSid", BundleSid.ToString()));
             }
 
             return p;

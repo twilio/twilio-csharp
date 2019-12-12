@@ -35,6 +35,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Uri Url { get; set; }
         /// <summary>
+        /// TwiML instructions for the call
+        /// </summary>
+        public Types.Twiml Twiml { get; set; }
+        /// <summary>
         /// The SID of the Application resource that will handle the call
         /// </summary>
         public string ApplicationSid { get; set; }
@@ -126,10 +130,6 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Number of milliseconds of initial silence
         /// </summary>
         public int? MachineDetectionSilenceTimeout { get; set; }
-        /// <summary>
-        /// TwiML instructions for the call
-        /// </summary>
-        public string Twiml { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -163,6 +163,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (Url != null)
             {
                 p.Add(new KeyValuePair<string, string>("Url", Serializers.Url(Url)));
+            }
+
+            if (Twiml != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twiml", Twiml.ToString()));
             }
 
             if (ApplicationSid != null)
@@ -278,11 +283,6 @@ namespace Twilio.Rest.Api.V2010.Account
             if (MachineDetectionSilenceTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("MachineDetectionSilenceTimeout", MachineDetectionSilenceTimeout.ToString()));
-            }
-
-            if (Twiml != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twiml", Twiml));
             }
 
             return p;
@@ -519,7 +519,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// TwiML instructions for the call
         /// </summary>
-        public string Twiml { get; set; }
+        public Types.Twiml Twiml { get; set; }
 
         /// <summary>
         /// Construct a new UpdateCallOptions
@@ -573,7 +573,7 @@ namespace Twilio.Rest.Api.V2010.Account
 
             if (Twiml != null)
             {
-                p.Add(new KeyValuePair<string, string>("Twiml", Twiml));
+                p.Add(new KeyValuePair<string, string>("Twiml", Twiml.ToString()));
             }
 
             return p;

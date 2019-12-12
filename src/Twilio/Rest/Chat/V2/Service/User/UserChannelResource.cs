@@ -390,15 +390,21 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
         /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
         /// <param name="notificationLevel"> The push notification level to assign to the User Channel </param>
+        /// <param name="lastConsumedMessageIndex"> The index of the last Message that the Member has read within the Channel
+        ///                                </param>
+        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string that represents the datetime of the
+        ///                                last Message read event for the Member within the Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserChannel </returns>
         public static UserChannelResource Update(string pathServiceSid,
                                                  string pathUserSid,
                                                  string pathChannelSid,
-                                                 UserChannelResource.NotificationLevelEnum notificationLevel,
+                                                 UserChannelResource.NotificationLevelEnum notificationLevel = null,
+                                                 int? lastConsumedMessageIndex = null,
+                                                 DateTime? lastConsumptionTimestamp = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid, notificationLevel);
+            var options = new UpdateUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid){NotificationLevel = notificationLevel, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp};
             return Update(options, client);
         }
 
@@ -410,15 +416,21 @@ namespace Twilio.Rest.Chat.V2.Service.User
         /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
         /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
         /// <param name="notificationLevel"> The push notification level to assign to the User Channel </param>
+        /// <param name="lastConsumedMessageIndex"> The index of the last Message that the Member has read within the Channel
+        ///                                </param>
+        /// <param name="lastConsumptionTimestamp"> The ISO 8601 based timestamp string that represents the datetime of the
+        ///                                last Message read event for the Member within the Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserChannel </returns>
         public static async System.Threading.Tasks.Task<UserChannelResource> UpdateAsync(string pathServiceSid,
                                                                                          string pathUserSid,
                                                                                          string pathChannelSid,
-                                                                                         UserChannelResource.NotificationLevelEnum notificationLevel,
+                                                                                         UserChannelResource.NotificationLevelEnum notificationLevel = null,
+                                                                                         int? lastConsumedMessageIndex = null,
+                                                                                         DateTime? lastConsumptionTimestamp = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid, notificationLevel);
+            var options = new UpdateUserChannelOptions(pathServiceSid, pathUserSid, pathChannelSid){NotificationLevel = notificationLevel, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp};
             return await UpdateAsync(options, client);
         }
         #endif

@@ -115,6 +115,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="url"> The absolute URL that returns TwiML for this call </param>
+        /// <param name="twiml"> TwiML instructions for the call </param>
         /// <param name="applicationSid"> The SID of the Application resource that will handle the call </param>
         /// <param name="method"> HTTP method to use to fetch TwiML </param>
         /// <param name="fallbackUrl"> Fallback URL in case of error </param>
@@ -143,13 +144,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///                                       speech activity </param>
         /// <param name="machineDetectionSpeechEndThreshold"> Number of milliseconds of silence after speech activity </param>
         /// <param name="machineDetectionSilenceTimeout"> Number of milliseconds of initial silence </param>
-        /// <param name="twiml"> TwiML instructions for the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns>
         public static CallResource Create(IEndpoint to,
                                           IEndpoint from,
                                           string pathAccountSid = null,
                                           Uri url = null,
+                                          Types.Twiml twiml = null,
                                           string applicationSid = null,
                                           Twilio.Http.HttpMethod method = null,
                                           Uri fallbackUrl = null,
@@ -173,10 +174,9 @@ namespace Twilio.Rest.Api.V2010.Account
                                           int? machineDetectionSpeechThreshold = null,
                                           int? machineDetectionSpeechEndThreshold = null,
                                           int? machineDetectionSilenceTimeout = null,
-                                          string twiml = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, Twiml = twiml};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout};
             return Create(options, client);
         }
 
@@ -188,6 +188,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="from"> Twilio number from which to originate the call </param>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
         /// <param name="url"> The absolute URL that returns TwiML for this call </param>
+        /// <param name="twiml"> TwiML instructions for the call </param>
         /// <param name="applicationSid"> The SID of the Application resource that will handle the call </param>
         /// <param name="method"> HTTP method to use to fetch TwiML </param>
         /// <param name="fallbackUrl"> Fallback URL in case of error </param>
@@ -216,13 +217,13 @@ namespace Twilio.Rest.Api.V2010.Account
         ///                                       speech activity </param>
         /// <param name="machineDetectionSpeechEndThreshold"> Number of milliseconds of silence after speech activity </param>
         /// <param name="machineDetectionSilenceTimeout"> Number of milliseconds of initial silence </param>
-        /// <param name="twiml"> TwiML instructions for the call </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
         public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to,
                                                                                   IEndpoint from,
                                                                                   string pathAccountSid = null,
                                                                                   Uri url = null,
+                                                                                  Types.Twiml twiml = null,
                                                                                   string applicationSid = null,
                                                                                   Twilio.Http.HttpMethod method = null,
                                                                                   Uri fallbackUrl = null,
@@ -246,10 +247,9 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   int? machineDetectionSpeechThreshold = null,
                                                                                   int? machineDetectionSpeechEndThreshold = null,
                                                                                   int? machineDetectionSilenceTimeout = null,
-                                                                                  string twiml = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, Twiml = twiml};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout};
             return await CreateAsync(options, client);
         }
         #endif
@@ -641,7 +641,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                           Twilio.Http.HttpMethod fallbackMethod = null,
                                           Uri statusCallback = null,
                                           Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                          string twiml = null,
+                                          Types.Twiml twiml = null,
                                           ITwilioRestClient client = null)
         {
             var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml};
@@ -673,7 +673,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   Twilio.Http.HttpMethod fallbackMethod = null,
                                                                                   Uri statusCallback = null,
                                                                                   Twilio.Http.HttpMethod statusCallbackMethod = null,
-                                                                                  string twiml = null,
+                                                                                  Types.Twiml twiml = null,
                                                                                   ITwilioRestClient client = null)
         {
             var options = new UpdateCallOptions(pathSid){PathAccountSid = pathAccountSid, Url = url, Method = method, Status = status, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, Twiml = twiml};

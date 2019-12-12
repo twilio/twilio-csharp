@@ -36,6 +36,32 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             public static readonly AddressRequirementEnum Foreign = new AddressRequirementEnum("foreign");
         }
 
+        public sealed class EmergencyStatusEnum : StringEnum
+        {
+            private EmergencyStatusEnum(string value) : base(value) {}
+            public EmergencyStatusEnum() {}
+            public static implicit operator EmergencyStatusEnum(string value)
+            {
+                return new EmergencyStatusEnum(value);
+            }
+
+            public static readonly EmergencyStatusEnum Active = new EmergencyStatusEnum("Active");
+            public static readonly EmergencyStatusEnum Inactive = new EmergencyStatusEnum("Inactive");
+        }
+
+        public sealed class VoiceReceiveModeEnum : StringEnum
+        {
+            private VoiceReceiveModeEnum(string value) : base(value) {}
+            public VoiceReceiveModeEnum() {}
+            public static implicit operator VoiceReceiveModeEnum(string value)
+            {
+                return new VoiceReceiveModeEnum(value);
+            }
+
+            public static readonly VoiceReceiveModeEnum Voice = new VoiceReceiveModeEnum("voice");
+            public static readonly VoiceReceiveModeEnum Fax = new VoiceReceiveModeEnum("fax");
+        }
+
         private static Request BuildReadRequest(ReadMobileOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -255,6 +281,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
         /// <param name="identitySid"> The SID of the Identity resource to associate with the new phone number </param>
         /// <param name="addressSid"> The SID of the Address resource associated with the phone number </param>
+        /// <param name="emergencyStatus"> Status determining whether the new phone number is enabled for emergency calling
+        ///                       </param>
+        /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
+        /// <param name="trunkSid"> SID of the trunk to handle calls to the new phone number </param>
+        /// <param name="voiceReceiveMode"> Incoming call type: fax or voice </param>
+        /// <param name="bundleSid"> The SID of the Bundle resource associated with number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Mobile </returns>
         public static MobileResource Create(Types.PhoneNumber phoneNumber,
@@ -276,9 +308,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                                             Uri voiceUrl = null,
                                             string identitySid = null,
                                             string addressSid = null,
+                                            MobileResource.EmergencyStatusEnum emergencyStatus = null,
+                                            string emergencyAddressSid = null,
+                                            string trunkSid = null,
+                                            MobileResource.VoiceReceiveModeEnum voiceReceiveMode = null,
+                                            string bundleSid = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateMobileOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid, AddressSid = addressSid};
+            var options = new CreateMobileOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid, AddressSid = addressSid, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, VoiceReceiveMode = voiceReceiveMode, BundleSid = bundleSid};
             return Create(options, client);
         }
 
@@ -305,6 +342,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// <param name="voiceUrl"> The URL we should call when the phone number receives a call </param>
         /// <param name="identitySid"> The SID of the Identity resource to associate with the new phone number </param>
         /// <param name="addressSid"> The SID of the Address resource associated with the phone number </param>
+        /// <param name="emergencyStatus"> Status determining whether the new phone number is enabled for emergency calling
+        ///                       </param>
+        /// <param name="emergencyAddressSid"> The emergency address configuration to use for emergency calling </param>
+        /// <param name="trunkSid"> SID of the trunk to handle calls to the new phone number </param>
+        /// <param name="voiceReceiveMode"> Incoming call type: fax or voice </param>
+        /// <param name="bundleSid"> The SID of the Bundle resource associated with number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Mobile </returns>
         public static async System.Threading.Tasks.Task<MobileResource> CreateAsync(Types.PhoneNumber phoneNumber,
@@ -326,9 +369,14 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                                                                                     Uri voiceUrl = null,
                                                                                     string identitySid = null,
                                                                                     string addressSid = null,
+                                                                                    MobileResource.EmergencyStatusEnum emergencyStatus = null,
+                                                                                    string emergencyAddressSid = null,
+                                                                                    string trunkSid = null,
+                                                                                    MobileResource.VoiceReceiveModeEnum voiceReceiveMode = null,
+                                                                                    string bundleSid = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateMobileOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid, AddressSid = addressSid};
+            var options = new CreateMobileOptions(phoneNumber){PathAccountSid = pathAccountSid, ApiVersion = apiVersion, FriendlyName = friendlyName, SmsApplicationSid = smsApplicationSid, SmsFallbackMethod = smsFallbackMethod, SmsFallbackUrl = smsFallbackUrl, SmsMethod = smsMethod, SmsUrl = smsUrl, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, VoiceApplicationSid = voiceApplicationSid, VoiceCallerIdLookup = voiceCallerIdLookup, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceUrl = voiceUrl, IdentitySid = identitySid, AddressSid = addressSid, EmergencyStatus = emergencyStatus, EmergencyAddressSid = emergencyAddressSid, TrunkSid = trunkSid, VoiceReceiveMode = voiceReceiveMode, BundleSid = bundleSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -498,6 +546,22 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         [JsonProperty("voice_url")]
         public Uri VoiceUrl { get; private set; }
+        /// <summary>
+        /// Whether the phone number is enabled for emergency calling
+        /// </summary>
+        [JsonProperty("emergency_status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public MobileResource.EmergencyStatusEnum EmergencyStatus { get; private set; }
+        /// <summary>
+        /// The emergency address configuration to use for emergency calling
+        /// </summary>
+        [JsonProperty("emergency_address_sid")]
+        public string EmergencyAddressSid { get; private set; }
+        /// <summary>
+        /// The SID of the Bundle resource associated with number
+        /// </summary>
+        [JsonProperty("bundle_sid")]
+        public string BundleSid { get; private set; }
 
         private MobileResource()
         {

@@ -68,7 +68,6 @@ namespace Twilio.Rest.Api.V2010.Account
             }
 
             public static readonly ContentRetentionEnum Retain = new ContentRetentionEnum("retain");
-            public static readonly ContentRetentionEnum Discard = new ContentRetentionEnum("discard");
         }
 
         public sealed class AddressRetentionEnum : StringEnum
@@ -81,7 +80,6 @@ namespace Twilio.Rest.Api.V2010.Account
             }
 
             public static readonly AddressRetentionEnum Retain = new AddressRetentionEnum("retain");
-            public static readonly AddressRetentionEnum Discard = new AddressRetentionEnum("discard");
         }
 
         public sealed class TrafficTypeEnum : StringEnum

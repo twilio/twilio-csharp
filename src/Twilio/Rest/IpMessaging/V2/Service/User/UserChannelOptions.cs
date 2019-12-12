@@ -153,7 +153,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <summary>
         /// The push notification level to assign to the User Channel
         /// </summary>
-        public UserChannelResource.NotificationLevelEnum NotificationLevel { get; }
+        public UserChannelResource.NotificationLevelEnum NotificationLevel { get; set; }
+        /// <summary>
+        /// The index of the last Message that the Member has read within the Channel
+        /// </summary>
+        public int? LastConsumedMessageIndex { get; set; }
+        /// <summary>
+        /// The ISO 8601 based timestamp string that represents the datetime of the last Message read event for the Member within the Channel
+        /// </summary>
+        public DateTime? LastConsumptionTimestamp { get; set; }
 
         /// <summary>
         /// Construct a new UpdateUserChannelOptions
@@ -161,16 +169,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
         /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
         /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
-        /// <param name="notificationLevel"> The push notification level to assign to the User Channel </param>
-        public UpdateUserChannelOptions(string pathServiceSid,
-                                        string pathUserSid,
-                                        string pathChannelSid,
-                                        UserChannelResource.NotificationLevelEnum notificationLevel)
+        public UpdateUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
             PathUserSid = pathUserSid;
             PathChannelSid = pathChannelSid;
-            NotificationLevel = notificationLevel;
         }
 
         /// <summary>
@@ -182,6 +185,16 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
             if (NotificationLevel != null)
             {
                 p.Add(new KeyValuePair<string, string>("NotificationLevel", NotificationLevel.ToString()));
+            }
+
+            if (LastConsumedMessageIndex != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastConsumedMessageIndex", LastConsumedMessageIndex.ToString()));
+            }
+
+            if (LastConsumptionTimestamp != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastConsumptionTimestamp", Serializers.DateTimeIso8601(LastConsumptionTimestamp)));
             }
 
             return p;

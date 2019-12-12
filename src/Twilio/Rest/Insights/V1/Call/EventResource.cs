@@ -255,16 +255,6 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("name")]
         public string Name { get; private set; }
         /// <summary>
-        /// The client
-        /// </summary>
-        [JsonProperty("client")]
-        public object Client { get; private set; }
-        /// <summary>
-        /// The gateway
-        /// </summary>
-        [JsonProperty("gateway")]
-        public object Gateway { get; private set; }
-        /// <summary>
         /// The carrier_edge
         /// </summary>
         [JsonProperty("carrier_edge")]
