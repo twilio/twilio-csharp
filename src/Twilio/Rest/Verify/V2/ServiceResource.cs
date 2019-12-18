@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// ServiceResource
 /// </summary>
 
@@ -261,7 +259,7 @@ namespace Twilio.Rest.Verify.V2
         }
 
         /// <summary>
-        /// Retrieve a list of all Phone Verification Services for an account.
+        /// Retrieve a list of all Verification Services for an account.
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -277,7 +275,7 @@ namespace Twilio.Rest.Verify.V2
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Phone Verification Services for an account.
+        /// Retrieve a list of all Verification Services for an account.
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -294,7 +292,7 @@ namespace Twilio.Rest.Verify.V2
         #endif
 
         /// <summary>
-        /// Retrieve a list of all Phone Verification Services for an account.
+        /// Retrieve a list of all Verification Services for an account.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -310,7 +308,7 @@ namespace Twilio.Rest.Verify.V2
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all Phone Verification Services for an account.
+        /// Retrieve a list of all Verification Services for an account.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -396,7 +394,7 @@ namespace Twilio.Rest.Verify.V2
         }
 
         /// <summary>
-        /// Update a specific Phone Verification Service.
+        /// Update a specific Verification Service.
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -410,7 +408,7 @@ namespace Twilio.Rest.Verify.V2
 
         #if !NET35
         /// <summary>
-        /// Update a specific Phone Verification Service.
+        /// Update a specific Verification Service.
         /// </summary>
         /// <param name="options"> Update Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -425,7 +423,7 @@ namespace Twilio.Rest.Verify.V2
         #endif
 
         /// <summary>
-        /// Update a specific Phone Verification Service.
+        /// Update a specific Verification Service.
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="friendlyName"> A string to describe the verification service </param>
@@ -454,7 +452,7 @@ namespace Twilio.Rest.Verify.V2
 
         #if !NET35
         /// <summary>
-        /// Update a specific Phone Verification Service.
+        /// Update a specific Verification Service.
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
         /// <param name="friendlyName"> A string to describe the verification service </param>

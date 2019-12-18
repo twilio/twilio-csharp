@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// VerificationResource
 /// </summary>
 
@@ -62,7 +60,7 @@ namespace Twilio.Rest.Verify.V2.Service
         }
 
         /// <summary>
-        /// Create a new Verification for a To number using a Service
+        /// Create a new Verification using a Service
         /// </summary>
         /// <param name="options"> Create Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -76,7 +74,7 @@ namespace Twilio.Rest.Verify.V2.Service
 
         #if !NET35
         /// <summary>
-        /// Create a new Verification for a To number using a Service
+        /// Create a new Verification using a Service
         /// </summary>
         /// <param name="options"> Create Verification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -91,7 +89,7 @@ namespace Twilio.Rest.Verify.V2.Service
         #endif
 
         /// <summary>
-        /// Create a new Verification for a To number using a Service
+        /// Create a new Verification using a Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
         /// <param name="to"> The phone number or email to verify </param>
@@ -125,7 +123,7 @@ namespace Twilio.Rest.Verify.V2.Service
 
         #if !NET35
         /// <summary>
-        /// Create a new Verification for a To number using a Service
+        /// Create a new Verification using a Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
         /// <param name="to"> The phone number or email to verify </param>

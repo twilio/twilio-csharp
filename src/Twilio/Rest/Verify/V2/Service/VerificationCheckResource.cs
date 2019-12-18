@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// VerificationCheckResource
 /// </summary>
 
@@ -83,7 +81,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
         /// <param name="code"> The verification string </param>
-        /// <param name="to"> The phone number to verify </param>
+        /// <param name="to"> The phone number or email to verify </param>
         /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
@@ -107,7 +105,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
         /// <param name="code"> The verification string </param>
-        /// <param name="to"> The phone number to verify </param>
+        /// <param name="to"> The phone number or email to verify </param>
         /// <param name="verificationSid"> A SID that uniquely identifies the Verification Check </param>
         /// <param name="amount"> The amount of the associated PSD2 compliant transaction. </param>
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
@@ -160,7 +158,7 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The phone number being verified
+        /// The phone number or email being verified
         /// </summary>
         [JsonProperty("to")]
         public string To { get; private set; }

@@ -1,6 +1,21 @@
 twilio-csharp Changelog
 =======================
 
+[2019-12-18] Version 5.37.1
+---------------------------
+**Preview**
+- Add `/Insights/SuccessRate` endpoint for Businesses Branded Calls (Verified by Twilio)
+
+**Studio**
+- StudioV2 API in beta
+
+**Verify**
+- Add `MailerSid` property to Verify Service resource.
+
+**Wireless**
+- Added `data_limit_strategy` to Rate Plan resource.
+
+
 [2019-12-12] Version 5.37.0
 ---------------------------
 **Api**

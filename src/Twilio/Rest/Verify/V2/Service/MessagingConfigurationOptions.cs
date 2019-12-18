@@ -12,8 +12,6 @@ namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new MessagingConfiguration for a service.
     /// </summary>
     public class CreateMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
@@ -65,8 +63,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update a specific MessagingConfiguration
     /// </summary>
     public class UpdateMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
@@ -113,8 +109,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific MessagingConfiguration.
     /// </summary>
     public class FetchMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>
@@ -150,8 +144,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Messaging Configurations for a Service.
     /// </summary>
     public class ReadMessagingConfigurationOptions : ReadOptions<MessagingConfigurationResource>
@@ -186,8 +178,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific MessagingConfiguration.
     /// </summary>
     public class DeleteMessagingConfigurationOptions : IOptions<MessagingConfigurationResource>

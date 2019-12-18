@@ -14,12 +14,26 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Wireless.V1
 {
 
     public class RatePlanResource : Resource
     {
+        public sealed class DataLimitStrategyEnum : StringEnum
+        {
+            private DataLimitStrategyEnum(string value) : base(value) {}
+            public DataLimitStrategyEnum() {}
+            public static implicit operator DataLimitStrategyEnum(string value)
+            {
+                return new DataLimitStrategyEnum(value);
+            }
+
+            public static readonly DataLimitStrategyEnum Block = new DataLimitStrategyEnum("block");
+            public static readonly DataLimitStrategyEnum Throttle = new DataLimitStrategyEnum("throttle");
+        }
+
         private static Request BuildReadRequest(ReadRatePlanOptions options, ITwilioRestClient client)
         {
             return new Request(

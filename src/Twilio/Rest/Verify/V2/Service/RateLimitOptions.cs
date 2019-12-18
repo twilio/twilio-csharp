@@ -12,8 +12,6 @@ namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new Rate Limit for a Service
     /// </summary>
     public class CreateRateLimitOptions : IOptions<RateLimitResource>
@@ -63,8 +61,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update a specific Rate Limit.
     /// </summary>
     public class UpdateRateLimitOptions : IOptions<RateLimitResource>
@@ -109,8 +105,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Rate Limit.
     /// </summary>
     public class FetchRateLimitOptions : IOptions<RateLimitResource>
@@ -146,8 +140,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Rate Limits for a service.
     /// </summary>
     public class ReadRateLimitOptions : ReadOptions<RateLimitResource>
@@ -182,8 +174,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific Rate Limit.
     /// </summary>
     public class DeleteRateLimitOptions : IOptions<RateLimitResource>

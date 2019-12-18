@@ -12,9 +12,7 @@ namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// Create a new Verification for a To number using a Service
+    /// Create a new Verification using a Service
     /// </summary>
     public class CreateVerificationOptions : IOptions<VerificationResource>
     {
@@ -137,8 +135,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update a Verification status
     /// </summary>
     public class UpdateVerificationOptions : IOptions<VerificationResource>
@@ -185,8 +181,6 @@ namespace Twilio.Rest.Verify.V2.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Verification
     /// </summary>
     public class FetchVerificationOptions : IOptions<VerificationResource>

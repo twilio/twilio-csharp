@@ -12,8 +12,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new Bucket for a Rate Limit
     /// </summary>
     public class CreateBucketOptions : IOptions<BucketResource>
@@ -71,8 +69,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update a specific Bucket.
     /// </summary>
     public class UpdateBucketOptions : IOptions<BucketResource>
@@ -132,8 +128,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Bucket.
     /// </summary>
     public class FetchBucketOptions : IOptions<BucketResource>
@@ -175,8 +169,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Buckets for a Rate Limit.
     /// </summary>
     public class ReadBucketOptions : ReadOptions<BucketResource>
@@ -217,8 +209,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific Bucket.
     /// </summary>
     public class DeleteBucketOptions : IOptions<BucketResource>

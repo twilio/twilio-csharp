@@ -12,8 +12,6 @@ namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// challenge a specific Verification Check.
     /// </summary>
     public class CreateVerificationCheckOptions : IOptions<VerificationCheckResource>
@@ -27,7 +25,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string Code { get; }
         /// <summary>
-        /// The phone number to verify
+        /// The phone number or email to verify
         /// </summary>
         public string To { get; set; }
         /// <summary>
