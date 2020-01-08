@@ -88,6 +88,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
         /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
         /// <param name="functionSid"> The SID of the function whose invocation produced the Log resources to read </param>
+        /// <param name="startDate"> The date and time after which the Log resources must have been created. </param>
+        /// <param name="endDate"> The date and time before which the Log resource must have been created. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -95,11 +97,13 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         public static ResourceSet<LogResource> Read(string pathServiceSid,
                                                     string pathEnvironmentSid,
                                                     string functionSid = null,
+                                                    DateTime? startDate = null,
+                                                    DateTime? endDate = null,
                                                     int? pageSize = null,
                                                     long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){FunctionSid = functionSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -110,6 +114,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <param name="pathServiceSid"> The SID of the Service to read the Log resource from </param>
         /// <param name="pathEnvironmentSid"> The SID of the environment with the Log resources to read </param>
         /// <param name="functionSid"> The SID of the function whose invocation produced the Log resources to read </param>
+        /// <param name="startDate"> The date and time after which the Log resources must have been created. </param>
+        /// <param name="endDate"> The date and time before which the Log resource must have been created. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -117,11 +123,13 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         public static async System.Threading.Tasks.Task<ResourceSet<LogResource>> ReadAsync(string pathServiceSid,
                                                                                             string pathEnvironmentSid,
                                                                                             string functionSid = null,
+                                                                                            DateTime? startDate = null,
+                                                                                            DateTime? endDate = null,
                                                                                             int? pageSize = null,
                                                                                             long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){FunctionSid = functionSid, PageSize = pageSize, Limit = limit};
+            var options = new ReadLogOptions(pathServiceSid, pathEnvironmentSid){FunctionSid = functionSid, StartDate = startDate, EndDate = endDate, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

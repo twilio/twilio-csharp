@@ -31,6 +31,14 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// The SID of the function whose invocation produced the Log resources to read
         /// </summary>
         public string FunctionSid { get; set; }
+        /// <summary>
+        /// The date and time after which the Log resources must have been created.
+        /// </summary>
+        public DateTime? StartDate { get; set; }
+        /// <summary>
+        /// The date and time before which the Log resource must have been created.
+        /// </summary>
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Construct a new ReadLogOptions
@@ -52,6 +60,16 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
             if (FunctionSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("FunctionSid", FunctionSid.ToString()));
+            }
+
+            if (StartDate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("StartDate", Serializers.DateTimeIso8601(StartDate)));
+            }
+
+            if (EndDate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EndDate", Serializers.DateTimeIso8601(EndDate)));
             }
 
             if (PageSize != null)

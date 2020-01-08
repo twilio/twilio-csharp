@@ -163,6 +163,20 @@ namespace Twilio.TwiML.Voice
             public static readonly LanguageEnum CmnHansCn = new LanguageEnum("cmn-Hans-CN");
         }
 
+        public sealed class SpeechModelEnum : StringEnum
+        {
+            private SpeechModelEnum(string value) : base(value) {}
+            public SpeechModelEnum() {}
+            public static implicit operator SpeechModelEnum(string value)
+            {
+                return new SpeechModelEnum(value);
+            }
+
+            public static readonly SpeechModelEnum Default = new SpeechModelEnum("default");
+            public static readonly SpeechModelEnum NumbersAndCommands = new SpeechModelEnum("numbers_and_commands");
+            public static readonly SpeechModelEnum PhoneCall = new SpeechModelEnum("phone_call");
+        }
+
         /// <summary>
         /// Input type Twilio should accept
         /// </summary>
@@ -227,6 +241,10 @@ namespace Twilio.TwiML.Voice
         /// Force webhook to the action URL event if there is no input
         /// </summary>
         public bool? ActionOnEmptyResult { get; set; }
+        /// <summary>
+        /// Specify the model that is best suited for your use case
+        /// </summary>
+        public Gather.SpeechModelEnum SpeechModel { get; set; }
 
         /// <summary>
         /// Create a new Gather
@@ -248,6 +266,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="bargeIn"> Stop playing media upon speech </param>
         /// <param name="debug"> Allow debug for gather </param>
         /// <param name="actionOnEmptyResult"> Force webhook to the action URL event if there is no input </param>
+        /// <param name="speechModel"> Specify the model that is best suited for your use case </param>
         public Gather(List<Gather.InputEnum> input = null,
                       Uri action = null,
                       Twilio.Http.HttpMethod method = null,
@@ -263,7 +282,8 @@ namespace Twilio.TwiML.Voice
                       string hints = null,
                       bool? bargeIn = null,
                       bool? debug = null,
-                      bool? actionOnEmptyResult = null) : base("Gather")
+                      bool? actionOnEmptyResult = null,
+                      Gather.SpeechModelEnum speechModel = null) : base("Gather")
         {
             this.Input = input;
             this.Action = action;
@@ -281,6 +301,7 @@ namespace Twilio.TwiML.Voice
             this.BargeIn = bargeIn;
             this.Debug = debug;
             this.ActionOnEmptyResult = actionOnEmptyResult;
+            this.SpeechModel = speechModel;
         }
 
         /// <summary>
@@ -352,6 +373,10 @@ namespace Twilio.TwiML.Voice
             if (this.ActionOnEmptyResult != null)
             {
                 attributes.Add(new XAttribute("actionOnEmptyResult", this.ActionOnEmptyResult.Value.ToString().ToLower()));
+            }
+            if (this.SpeechModel != null)
+            {
+                attributes.Add(new XAttribute("speechModel", this.SpeechModel.ToString()));
             }
             return attributes;
         }

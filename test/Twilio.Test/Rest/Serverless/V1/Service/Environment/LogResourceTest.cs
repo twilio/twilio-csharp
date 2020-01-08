@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Serverless.V1.Service.Environment
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"logs\": [],\"meta\": {\"first_page_url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Environments/ZE00000000000000000000000000000000/Logs?FunctionSid=ZH00000000000000000000000000000000&PageSize=50&Page=0\",\"key\": \"logs\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Environments/ZE00000000000000000000000000000000/Logs?FunctionSid=ZH00000000000000000000000000000000&PageSize=50&Page=0\"}}"
+                                         "{\"logs\": [],\"meta\": {\"first_page_url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Environments/ZE00000000000000000000000000000000/Logs?StartDate=2018-11-10T20%3A00%3A00Z&EndDate=2018-12-10T20%3A00%3A00Z&FunctionSid=ZH00000000000000000000000000000000&PageSize=50&Page=0\",\"key\": \"logs\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Environments/ZE00000000000000000000000000000000/Logs?StartDate=2018-11-10T20%3A00%3A00Z&EndDate=2018-12-10T20%3A00%3A00Z&FunctionSid=ZH00000000000000000000000000000000&PageSize=50&Page=0\"}}"
                                      ));
 
             var response = LogResource.Read("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ZEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);

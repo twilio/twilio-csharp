@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2020-01-08] Version 5.37.2
+---------------------------
+**Numbers**
+- Add Regulatory Compliance CRUD APIs
+
+**Studio**
+- Add parameter validation for Studio v2 Flows API
+
+**Twiml**
+- Add support for `speech_model` to `Gather` verb
+
+
 [2019-12-18] Version 5.37.1
 ---------------------------
 **Preview**
