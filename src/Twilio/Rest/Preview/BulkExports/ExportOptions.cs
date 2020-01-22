@@ -15,19 +15,19 @@ namespace Twilio.Rest.Preview.BulkExports
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// FetchExportOptions
+    /// Fetch a specific Export.
     /// </summary>
     public class FetchExportOptions : IOptions<ExportResource>
     {
         /// <summary>
-        /// The resource_type
+        /// The type of communication – Messages, Calls
         /// </summary>
         public string PathResourceType { get; }
 
         /// <summary>
         /// Construct a new FetchExportOptions
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
         public FetchExportOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;

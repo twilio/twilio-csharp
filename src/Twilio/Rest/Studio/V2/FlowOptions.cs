@@ -29,7 +29,7 @@ namespace Twilio.Rest.Studio.V2
         /// <summary>
         /// JSON representation of flow definition
         /// </summary>
-        public string Definition { get; }
+        public object Definition { get; }
         /// <summary>
         /// Description on change made in the revision
         /// </summary>
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
         /// <param name="status"> The status of the Flow </param>
         /// <param name="definition"> JSON representation of flow definition </param>
-        public CreateFlowOptions(string friendlyName, FlowResource.StatusEnum status, string definition)
+        public CreateFlowOptions(string friendlyName, FlowResource.StatusEnum status, object definition)
         {
             FriendlyName = friendlyName;
             Status = status;
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Studio.V2
 
             if (Definition != null)
             {
-                p.Add(new KeyValuePair<string, string>("Definition", Definition));
+                p.Add(new KeyValuePair<string, string>("Definition", Serializers.JsonObject(Definition)));
             }
 
             if (CommitMessage != null)
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Studio.V2
         /// <summary>
         /// JSON representation of flow definition
         /// </summary>
-        public string Definition { get; set; }
+        public object Definition { get; set; }
         /// <summary>
         /// Description on change made in the revision
         /// </summary>
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Studio.V2
 
             if (Definition != null)
             {
-                p.Add(new KeyValuePair<string, string>("Definition", Definition));
+                p.Add(new KeyValuePair<string, string>("Definition", Serializers.JsonObject(Definition)));
             }
 
             if (CommitMessage != null)

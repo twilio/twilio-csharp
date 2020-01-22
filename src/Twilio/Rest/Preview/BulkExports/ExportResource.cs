@@ -35,7 +35,7 @@ namespace Twilio.Rest.Preview.BulkExports
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Export.
         /// </summary>
         /// <param name="options"> Fetch Export parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Preview.BulkExports
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Export.
         /// </summary>
         /// <param name="options"> Fetch Export parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,9 +64,9 @@ namespace Twilio.Rest.Preview.BulkExports
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Export.
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Export </returns>
         public static ExportResource Fetch(string pathResourceType, ITwilioRestClient client = null)
@@ -77,9 +77,9 @@ namespace Twilio.Rest.Preview.BulkExports
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Export.
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Export </returns>
         public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(string pathResourceType,
@@ -109,17 +109,17 @@ namespace Twilio.Rest.Preview.BulkExports
         }
 
         /// <summary>
-        /// The resource_type
+        /// The type of communication – Messages, Calls
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Nested resource URLs.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

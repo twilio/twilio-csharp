@@ -63,6 +63,10 @@ namespace Twilio.TwiML.Voice
         /// Status callback URL method
         /// </summary>
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; set; }
+        /// <summary>
+        /// BYOC trunk SID (Beta)
+        /// </summary>
+        public string Byoc { get; set; }
 
         /// <summary>
         /// Create a new Number
@@ -74,13 +78,15 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackEvent"> Events to call status callback </param>
         /// <param name="statusCallback"> Status callback URL </param>
         /// <param name="statusCallbackMethod"> Status callback URL method </param>
+        /// <param name="byoc"> BYOC trunk SID (Beta) </param>
         public Number(Types.PhoneNumber phoneNumber = null,
                       string sendDigits = null,
                       Uri url = null,
                       Twilio.Http.HttpMethod method = null,
                       List<Number.EventEnum> statusCallbackEvent = null,
                       Uri statusCallback = null,
-                      Twilio.Http.HttpMethod statusCallbackMethod = null) : base("Number")
+                      Twilio.Http.HttpMethod statusCallbackMethod = null,
+                      string byoc = null) : base("Number")
         {
             this.PhoneNumber = phoneNumber;
             this.SendDigits = sendDigits;
@@ -89,6 +95,7 @@ namespace Twilio.TwiML.Voice
             this.StatusCallbackEvent = statusCallbackEvent;
             this.StatusCallback = statusCallback;
             this.StatusCallbackMethod = statusCallbackMethod;
+            this.Byoc = byoc;
         }
 
         /// <summary>
@@ -128,6 +135,10 @@ namespace Twilio.TwiML.Voice
             if (this.StatusCallbackMethod != null)
             {
                 attributes.Add(new XAttribute("statusCallbackMethod", this.StatusCallbackMethod.ToString()));
+            }
+            if (this.Byoc != null)
+            {
+                attributes.Add(new XAttribute("byoc", this.Byoc.ToString()));
             }
             return attributes;
         }

@@ -29,7 +29,7 @@ namespace Twilio.Rest.Studio.V2
         /// <summary>
         /// The definition
         /// </summary>
-        public string Definition { get; }
+        public object Definition { get; }
         /// <summary>
         /// The commit_message
         /// </summary>
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="status"> The status </param>
         /// <param name="definition"> The definition </param>
-        public UpdateFlowValidateOptions(string friendlyName, FlowValidateResource.StatusEnum status, string definition)
+        public UpdateFlowValidateOptions(string friendlyName, FlowValidateResource.StatusEnum status, object definition)
         {
             FriendlyName = friendlyName;
             Status = status;
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Studio.V2
 
             if (Definition != null)
             {
-                p.Add(new KeyValuePair<string, string>("Definition", Definition));
+                p.Add(new KeyValuePair<string, string>("Definition", Serializers.JsonObject(Definition)));
             }
 
             if (CommitMessage != null)

@@ -417,13 +417,15 @@ namespace Twilio.TwiML.Voice
         /// <param name="statusCallbackEvent"> Events to call status callback </param>
         /// <param name="statusCallback"> Status callback URL </param>
         /// <param name="statusCallbackMethod"> Status callback URL method </param>
+        /// <param name="byoc"> BYOC trunk SID (Beta) </param>
         public Dial Number(Types.PhoneNumber phoneNumber = null,
                            string sendDigits = null,
                            Uri url = null,
                            Twilio.Http.HttpMethod method = null,
                            List<Number.EventEnum> statusCallbackEvent = null,
                            Uri statusCallback = null,
-                           Twilio.Http.HttpMethod statusCallbackMethod = null)
+                           Twilio.Http.HttpMethod statusCallbackMethod = null,
+                           string byoc = null)
         {
             var newChild = new Number(
                 phoneNumber,
@@ -432,7 +434,8 @@ namespace Twilio.TwiML.Voice
                 method,
                 statusCallbackEvent,
                 statusCallback,
-                statusCallbackMethod
+                statusCallbackMethod,
+                byoc
             );
             this.Append(newChild);
             return this;

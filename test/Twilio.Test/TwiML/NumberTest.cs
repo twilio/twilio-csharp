@@ -36,11 +36,12 @@ namespace Twilio.Tests.TwiML
                 Twilio.Http.HttpMethod.Get,
                 Promoter.ListOfOne(Number.EventEnum.Initiated),
                 new Uri("https://example.com"),
-                Twilio.Http.HttpMethod.Get
+                Twilio.Http.HttpMethod.Get,
+                "BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\">+15017122661</Number>",
+                "<Number sendDigits=\"send_digits\" url=\"https://example.com\" method=\"GET\" statusCallbackEvent=\"initiated\" statusCallback=\"https://example.com\" statusCallbackMethod=\"GET\" byoc=\"BYXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\">+15017122661</Number>",
                 elem.ToString()
             );
         }

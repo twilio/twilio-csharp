@@ -15,19 +15,19 @@ namespace Twilio.Rest.Preview.BulkExports
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// FetchExportConfigurationOptions
+    /// Fetch a specific Export Configuration.
     /// </summary>
     public class FetchExportConfigurationOptions : IOptions<ExportConfigurationResource>
     {
         /// <summary>
-        /// The resource_type
+        /// The type of communication – Messages, Calls
         /// </summary>
         public string PathResourceType { get; }
 
         /// <summary>
         /// Construct a new FetchExportConfigurationOptions
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
         public FetchExportConfigurationOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;
@@ -47,31 +47,31 @@ namespace Twilio.Rest.Preview.BulkExports
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// UpdateExportConfigurationOptions
+    /// Update a specific Export Configuration.
     /// </summary>
     public class UpdateExportConfigurationOptions : IOptions<ExportConfigurationResource>
     {
         /// <summary>
-        /// The resource_type
+        /// The type of communication – Messages, Calls
         /// </summary>
         public string PathResourceType { get; }
         /// <summary>
-        /// The enabled
+        /// Whether files are automatically generated
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// The webhook_url
+        /// URL targeted at export
         /// </summary>
         public Uri WebhookUrl { get; set; }
         /// <summary>
-        /// The webhook_method
+        /// Whether to GET or POST to the webhook url
         /// </summary>
         public string WebhookMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateExportConfigurationOptions
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
         public UpdateExportConfigurationOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;

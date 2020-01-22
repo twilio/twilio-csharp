@@ -76,13 +76,13 @@ namespace Twilio.Tests.TwiML
 
             elem.Stream("name", "connector_name", "url", Stream.TrackEnum.InboundTrack);
 
-            elem.Siprec("name", "connector_name");
+            elem.Siprec("name", "connector_name", Siprec.TrackEnum.InboundTrack);
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Start>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\"></Stream>" + Environment.NewLine +
-                "  <Siprec name=\"name\" connectorName=\"connector_name\"></Siprec>" + Environment.NewLine +
+                "  <Siprec name=\"name\" connectorName=\"connector_name\" track=\"inbound_track\"></Siprec>" + Environment.NewLine +
                 "</Start>",
                 elem.ToString()
             );

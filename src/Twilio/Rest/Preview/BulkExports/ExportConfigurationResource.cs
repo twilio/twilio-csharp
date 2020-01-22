@@ -35,7 +35,7 @@ namespace Twilio.Rest.Preview.BulkExports
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Export Configuration.
         /// </summary>
         /// <param name="options"> Fetch ExportConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -50,7 +50,7 @@ namespace Twilio.Rest.Preview.BulkExports
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Export Configuration.
         /// </summary>
         /// <param name="options"> Fetch ExportConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -65,9 +65,9 @@ namespace Twilio.Rest.Preview.BulkExports
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Export Configuration.
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExportConfiguration </returns>
         public static ExportConfigurationResource Fetch(string pathResourceType, ITwilioRestClient client = null)
@@ -78,9 +78,9 @@ namespace Twilio.Rest.Preview.BulkExports
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Export Configuration.
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportConfiguration </returns>
         public static async System.Threading.Tasks.Task<ExportConfigurationResource> FetchAsync(string pathResourceType,
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Preview.BulkExports
         }
 
         /// <summary>
-        /// update
+        /// Update a specific Export Configuration.
         /// </summary>
         /// <param name="options"> Update ExportConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Preview.BulkExports
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update a specific Export Configuration.
         /// </summary>
         /// <param name="options"> Update ExportConfiguration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -133,12 +133,12 @@ namespace Twilio.Rest.Preview.BulkExports
         #endif
 
         /// <summary>
-        /// update
+        /// Update a specific Export Configuration.
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="webhookUrl"> The webhook_url </param>
-        /// <param name="webhookMethod"> The webhook_method </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="enabled"> Whether files are automatically generated </param>
+        /// <param name="webhookUrl"> URL targeted at export </param>
+        /// <param name="webhookMethod"> Whether to GET or POST to the webhook url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExportConfiguration </returns>
         public static ExportConfigurationResource Update(string pathResourceType,
@@ -153,12 +153,12 @@ namespace Twilio.Rest.Preview.BulkExports
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update a specific Export Configuration.
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
-        /// <param name="enabled"> The enabled </param>
-        /// <param name="webhookUrl"> The webhook_url </param>
-        /// <param name="webhookMethod"> The webhook_method </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="enabled"> Whether files are automatically generated </param>
+        /// <param name="webhookUrl"> URL targeted at export </param>
+        /// <param name="webhookMethod"> Whether to GET or POST to the webhook url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportConfiguration </returns>
         public static async System.Threading.Tasks.Task<ExportConfigurationResource> UpdateAsync(string pathResourceType,
@@ -191,27 +191,27 @@ namespace Twilio.Rest.Preview.BulkExports
         }
 
         /// <summary>
-        /// The enabled
+        /// Whether files are automatically generated
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
         /// <summary>
-        /// The webhook_url
+        /// URL targeted at export
         /// </summary>
         [JsonProperty("webhook_url")]
         public Uri WebhookUrl { get; private set; }
         /// <summary>
-        /// The webhook_method
+        /// Whether to GET or POST to the webhook url
         /// </summary>
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
         /// <summary>
-        /// The resource_type
+        /// The type of communication – Messages, Calls
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -87,7 +87,7 @@ namespace Twilio.Rest.Studio.V2
         /// <returns> A single instance of Flow </returns>
         public static FlowResource Create(string friendlyName,
                                           FlowResource.StatusEnum status,
-                                          string definition,
+                                          object definition,
                                           string commitMessage = null,
                                           ITwilioRestClient client = null)
         {
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Studio.V2
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<FlowResource> CreateAsync(string friendlyName,
                                                                                   FlowResource.StatusEnum status,
-                                                                                  string definition,
+                                                                                  object definition,
                                                                                   string commitMessage = null,
                                                                                   ITwilioRestClient client = null)
         {
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Studio.V2
         public static FlowResource Update(string pathSid,
                                           FlowResource.StatusEnum status,
                                           string friendlyName = null,
-                                          string definition = null,
+                                          object definition = null,
                                           string commitMessage = null,
                                           ITwilioRestClient client = null)
         {
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Studio.V2
         public static async System.Threading.Tasks.Task<FlowResource> UpdateAsync(string pathSid,
                                                                                   FlowResource.StatusEnum status,
                                                                                   string friendlyName = null,
-                                                                                  string definition = null,
+                                                                                  object definition = null,
                                                                                   string commitMessage = null,
                                                                                   ITwilioRestClient client = null)
         {

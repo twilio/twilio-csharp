@@ -87,7 +87,7 @@ namespace Twilio.Rest.Studio.V2
         /// <returns> A single instance of FlowValidate </returns>
         public static FlowValidateResource Update(string friendlyName,
                                                   FlowValidateResource.StatusEnum status,
-                                                  string definition,
+                                                  object definition,
                                                   string commitMessage = null,
                                                   ITwilioRestClient client = null)
         {
@@ -107,7 +107,7 @@ namespace Twilio.Rest.Studio.V2
         /// <returns> Task that resolves to A single instance of FlowValidate </returns>
         public static async System.Threading.Tasks.Task<FlowValidateResource> UpdateAsync(string friendlyName,
                                                                                           FlowValidateResource.StatusEnum status,
-                                                                                          string definition,
+                                                                                          object definition,
                                                                                           string commitMessage = null,
                                                                                           ITwilioRestClient client = null)
         {

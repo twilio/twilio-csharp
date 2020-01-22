@@ -60,6 +60,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Channel specific configuration in json format.
         /// </summary>
         public object ChannelConfiguration { get; set; }
+        /// <summary>
+        /// App Hash to be included at the end of an SMS.
+        /// </summary>
+        public string AppHash { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationOptions
@@ -128,6 +132,11 @@ namespace Twilio.Rest.Verify.V2.Service
             if (ChannelConfiguration != null)
             {
                 p.Add(new KeyValuePair<string, string>("ChannelConfiguration", Serializers.JsonObject(ChannelConfiguration)));
+            }
+
+            if (AppHash != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AppHash", AppHash));
             }
 
             return p;

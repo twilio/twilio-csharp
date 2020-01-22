@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Linq;
+using Twilio.Types;
 
 namespace Twilio.TwiML.Voice
 {
@@ -16,6 +17,20 @@ namespace Twilio.TwiML.Voice
     /// </summary>
     public class Siprec : TwiML
     {
+        public sealed class TrackEnum : StringEnum
+        {
+            private TrackEnum(string value) : base(value) {}
+            public TrackEnum() {}
+            public static implicit operator TrackEnum(string value)
+            {
+                return new TrackEnum(value);
+            }
+
+            public static readonly TrackEnum InboundTrack = new TrackEnum("inbound_track");
+            public static readonly TrackEnum OutboundTrack = new TrackEnum("outbound_track");
+            public static readonly TrackEnum BothTracks = new TrackEnum("both_tracks");
+        }
+
         /// <summary>
         /// Friendly name given to SIPREC
         /// </summary>
@@ -24,16 +39,22 @@ namespace Twilio.TwiML.Voice
         /// Unique name for Connector
         /// </summary>
         public string ConnectorName { get; set; }
+        /// <summary>
+        /// Track to be streamed to remote service
+        /// </summary>
+        public Siprec.TrackEnum Track { get; set; }
 
         /// <summary>
         /// Create a new Siprec
         /// </summary>
         /// <param name="name"> Friendly name given to SIPREC </param>
         /// <param name="connectorName"> Unique name for Connector </param>
-        public Siprec(string name = null, string connectorName = null) : base("Siprec")
+        /// <param name="track"> Track to be streamed to remote service </param>
+        public Siprec(string name = null, string connectorName = null, Siprec.TrackEnum track = null) : base("Siprec")
         {
             this.Name = name;
             this.ConnectorName = connectorName;
+            this.Track = track;
         }
 
         /// <summary>
@@ -49,6 +70,10 @@ namespace Twilio.TwiML.Voice
             if (this.ConnectorName != null)
             {
                 attributes.Add(new XAttribute("connectorName", this.ConnectorName));
+            }
+            if (this.Track != null)
+            {
+                attributes.Add(new XAttribute("track", this.Track.ToString()));
             }
             return attributes;
         }

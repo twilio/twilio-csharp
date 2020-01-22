@@ -44,6 +44,10 @@ namespace Twilio.Rest.Verify.V2
         /// Whether to pass PSD2 transaction parameters when starting a verification
         /// </summary>
         public bool? Psd2Enabled { get; set; }
+        /// <summary>
+        /// Whether to add a privacy warning at the end of an SMS.
+        /// </summary>
+        public bool? DoNotShareWarningEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -93,6 +97,11 @@ namespace Twilio.Rest.Verify.V2
             if (Psd2Enabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("Psd2Enabled", Psd2Enabled.Value.ToString().ToLower()));
+            }
+
+            if (DoNotShareWarningEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DoNotShareWarningEnabled", DoNotShareWarningEnabled.Value.ToString().ToLower()));
             }
 
             return p;
@@ -214,6 +223,10 @@ namespace Twilio.Rest.Verify.V2
         /// Whether to pass PSD2 transaction parameters when starting a verification
         /// </summary>
         public bool? Psd2Enabled { get; set; }
+        /// <summary>
+        /// Whether to add a privacy warning at the end of an SMS.
+        /// </summary>
+        public bool? DoNotShareWarningEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -263,6 +276,11 @@ namespace Twilio.Rest.Verify.V2
             if (Psd2Enabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("Psd2Enabled", Psd2Enabled.Value.ToString().ToLower()));
+            }
+
+            if (DoNotShareWarningEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DoNotShareWarningEnabled", DoNotShareWarningEnabled.Value.ToString().ToLower()));
             }
 
             return p;

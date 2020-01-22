@@ -56,6 +56,21 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
             var response = VerificationCheckResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "code", client: twilioRestClient);
             Assert.NotNull(response);
         }
+
+        [Test]
+        public void TestEmailVerificationChecksResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"sid\": \"VEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"to\": \"recipient@foo.com\",\"channel\": \"email\",\"status\": \"approved\",\"valid\": true,\"amount\": null,\"payee\": null,\"date_created\": \"2020-01-30T20:00:00Z\",\"date_updated\": \"2020-01-30T20:00:00Z\"}"
+                                     ));
+
+            var response = VerificationCheckResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "code", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
     }
 
 }

@@ -32,12 +32,12 @@ namespace Twilio.Tests.Rest.Studio.V2
             );
             request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             request.AddPostParam("Status", Serialize(FlowValidateResource.StatusEnum.Draft));
-            request.AddPostParam("Definition", Serialize("definition"));
+            request.AddPostParam("Definition", Serialize("{}"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FlowValidateResource.Update("friendly_name", FlowValidateResource.StatusEnum.Draft, "definition", client: twilioRestClient);
+                FlowValidateResource.Update("friendly_name", FlowValidateResource.StatusEnum.Draft, "{}", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -55,7 +55,7 @@ namespace Twilio.Tests.Rest.Studio.V2
                                          "{\"valid\": true}"
                                      ));
 
-            var response = FlowValidateResource.Update("friendly_name", FlowValidateResource.StatusEnum.Draft, "definition", client: twilioRestClient);
+            var response = FlowValidateResource.Update("friendly_name", FlowValidateResource.StatusEnum.Draft, "{}", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

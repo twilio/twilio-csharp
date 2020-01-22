@@ -35,7 +35,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Days for a resource.
         /// </summary>
         /// <param name="options"> Read Day parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Days for a resource.
         /// </summary>
         /// <param name="options"> Read Day parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -68,9 +68,9 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Days for a resource.
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -86,9 +86,9 @@ namespace Twilio.Rest.Preview.BulkExports.Export
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Days for a resource.
         /// </summary>
-        /// <param name="pathResourceType"> The resource_type </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -186,17 +186,17 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         [JsonProperty("redirect_to")]
         public Uri RedirectTo { get; private set; }
         /// <summary>
-        /// The day
+        /// The date of the data in the file
         /// </summary>
         [JsonProperty("day")]
         public string Day { get; private set; }
         /// <summary>
-        /// The size
+        /// Size of the file in bytes
         /// </summary>
         [JsonProperty("size")]
         public int? Size { get; private set; }
         /// <summary>
-        /// The resource_type
+        /// The type of communication – Messages, Calls
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }

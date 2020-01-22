@@ -71,6 +71,7 @@ namespace Twilio.Rest.Verify.V2
         ///                         phone call </param>
         /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
+        /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName,
@@ -80,9 +81,10 @@ namespace Twilio.Rest.Verify.V2
                                              bool? dtmfInputRequired = null,
                                              string ttsName = null,
                                              bool? psd2Enabled = null,
+                                             bool? doNotShareWarningEnabled = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled};
             return Create(options, client);
         }
 
@@ -98,6 +100,7 @@ namespace Twilio.Rest.Verify.V2
         ///                         phone call </param>
         /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
+        /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
@@ -107,9 +110,10 @@ namespace Twilio.Rest.Verify.V2
                                                                                      bool? dtmfInputRequired = null,
                                                                                      string ttsName = null,
                                                                                      bool? psd2Enabled = null,
+                                                                                     bool? doNotShareWarningEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -434,6 +438,7 @@ namespace Twilio.Rest.Verify.V2
         ///                         phone call </param>
         /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
+        /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -444,9 +449,10 @@ namespace Twilio.Rest.Verify.V2
                                              bool? dtmfInputRequired = null,
                                              string ttsName = null,
                                              bool? psd2Enabled = null,
+                                             bool? doNotShareWarningEnabled = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled};
             return Update(options, client);
         }
 
@@ -463,6 +469,7 @@ namespace Twilio.Rest.Verify.V2
         ///                         phone call </param>
         /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
+        /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -473,9 +480,10 @@ namespace Twilio.Rest.Verify.V2
                                                                                      bool? dtmfInputRequired = null,
                                                                                      string ttsName = null,
                                                                                      bool? psd2Enabled = null,
+                                                                                     bool? doNotShareWarningEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -543,6 +551,11 @@ namespace Twilio.Rest.Verify.V2
         /// </summary>
         [JsonProperty("tts_name")]
         public string TtsName { get; private set; }
+        /// <summary>
+        /// Whether to add a privacy warning at the end of an SMS.
+        /// </summary>
+        [JsonProperty("do_not_share_warning_enabled")]
+        public bool? DoNotShareWarningEnabled { get; private set; }
         /// <summary>
         /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>

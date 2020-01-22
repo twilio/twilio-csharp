@@ -88,9 +88,10 @@ namespace Twilio.TwiML.Voice
         /// </summary>
         /// <param name="name"> Friendly name given to SIPREC </param>
         /// <param name="connectorName"> Unique name for Connector </param>
-        public Start Siprec(string name = null, string connectorName = null)
+        /// <param name="track"> Track to be streamed to remote service </param>
+        public Start Siprec(string name = null, string connectorName = null, Siprec.TrackEnum track = null)
         {
-            var newChild = new Siprec(name, connectorName);
+            var newChild = new Siprec(name, connectorName, track);
             this.Append(newChild);
             return this;
         }

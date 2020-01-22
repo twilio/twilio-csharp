@@ -130,6 +130,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Number of milliseconds of initial silence
         /// </summary>
         public int? MachineDetectionSilenceTimeout { get; set; }
+        /// <summary>
+        /// BYOC trunk SID (Beta)
+        /// </summary>
+        public string Byoc { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -283,6 +287,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (MachineDetectionSilenceTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("MachineDetectionSilenceTimeout", MachineDetectionSilenceTimeout.ToString()));
+            }
+
+            if (Byoc != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Byoc", Byoc.ToString()));
             }
 
             return p;

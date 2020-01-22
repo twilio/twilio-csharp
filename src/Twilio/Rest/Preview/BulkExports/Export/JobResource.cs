@@ -205,6 +205,21 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         [JsonProperty("job_sid")]
         public string JobSid { get; private set; }
         /// <summary>
+        /// The optional webhook url called on completion
+        /// </summary>
+        [JsonProperty("webhook_url")]
+        public string WebhookUrl { get; private set; }
+        /// <summary>
+        /// This is the method used to call the webhook
+        /// </summary>
+        [JsonProperty("webhook_method")]
+        public string WebhookMethod { get; private set; }
+        /// <summary>
+        /// The optional email to send the completion notification to
+        /// </summary>
+        [JsonProperty("email")]
+        public string Email { get; private set; }
+        /// <summary>
         /// The url
         /// </summary>
         [JsonProperty("url")]
