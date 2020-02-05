@@ -50,11 +50,11 @@ namespace Twilio.Rest.Monitor.V1
         /// </summary>
         public string LogLevel { get; set; }
         /// <summary>
-        /// Only include alerts that occurred on or after this date
+        /// Only include alerts that occurred on or after this date and time
         /// </summary>
         public DateTime? StartDate { get; set; }
         /// <summary>
-        /// Only include alerts that occurred on or before this date
+        /// Only include alerts that occurred on or before this date and time
         /// </summary>
         public DateTime? EndDate { get; set; }
 

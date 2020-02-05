@@ -41,6 +41,7 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly StatusEnum Accepted = new StatusEnum("accepted");
             public static readonly StatusEnum Scheduled = new StatusEnum("scheduled");
             public static readonly StatusEnum Read = new StatusEnum("read");
+            public static readonly StatusEnum PartiallyDelivered = new StatusEnum("partially_delivered");
         }
 
         public sealed class DirectionEnum : StringEnum
@@ -150,6 +151,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="provideFeedback"> Whether to confirm delivery of the message </param>
         /// <param name="validityPeriod"> The number of seconds that the message can remain in our outgoing queue. </param>
         /// <param name="forceDelivery"> Reserved </param>
+        /// <param name="contentRetention"> Determines if the message content can be stored or redacted based on privacy
+        ///                        settings </param>
+        /// <param name="addressRetention"> Determines if the address can be stored or obfuscated based on privacy settings
+        ///                        </param>
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
         /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
@@ -167,11 +172,13 @@ namespace Twilio.Rest.Api.V2010.Account
                                              bool? provideFeedback = null,
                                              int? validityPeriod = null,
                                              bool? forceDelivery = null,
+                                             MessageResource.ContentRetentionEnum contentRetention = null,
+                                             MessageResource.AddressRetentionEnum addressRetention = null,
                                              bool? smartEncoded = null,
                                              List<string> persistentAction = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
             return Create(options, client);
         }
 
@@ -192,6 +199,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="provideFeedback"> Whether to confirm delivery of the message </param>
         /// <param name="validityPeriod"> The number of seconds that the message can remain in our outgoing queue. </param>
         /// <param name="forceDelivery"> Reserved </param>
+        /// <param name="contentRetention"> Determines if the message content can be stored or redacted based on privacy
+        ///                        settings </param>
+        /// <param name="addressRetention"> Determines if the address can be stored or obfuscated based on privacy settings
+        ///                        </param>
         /// <param name="smartEncoded"> Whether to detect Unicode characters that have a similar GSM-7 character and replace
         ///                    them </param>
         /// <param name="persistentAction"> Rich actions for Channels Messages. </param>
@@ -209,11 +220,13 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      bool? provideFeedback = null,
                                                                                      int? validityPeriod = null,
                                                                                      bool? forceDelivery = null,
+                                                                                     MessageResource.ContentRetentionEnum contentRetention = null,
+                                                                                     MessageResource.AddressRetentionEnum addressRetention = null,
                                                                                      bool? smartEncoded = null,
                                                                                      List<string> persistentAction = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
             return await CreateAsync(options, client);
         }
         #endif

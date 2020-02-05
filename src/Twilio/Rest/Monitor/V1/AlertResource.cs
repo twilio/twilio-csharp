@@ -135,8 +135,8 @@ namespace Twilio.Rest.Monitor.V1
         /// read
         /// </summary>
         /// <param name="logLevel"> Only show alerts for this log-level </param>
-        /// <param name="startDate"> Only include alerts that occurred on or after this date </param>
-        /// <param name="endDate"> Only include alerts that occurred on or before this date </param>
+        /// <param name="startDate"> Only include alerts that occurred on or after this date and time </param>
+        /// <param name="endDate"> Only include alerts that occurred on or before this date and time </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -157,8 +157,8 @@ namespace Twilio.Rest.Monitor.V1
         /// read
         /// </summary>
         /// <param name="logLevel"> Only show alerts for this log-level </param>
-        /// <param name="startDate"> Only include alerts that occurred on or after this date </param>
-        /// <param name="endDate"> Only include alerts that occurred on or before this date </param>
+        /// <param name="startDate"> Only include alerts that occurred on or after this date and time </param>
+        /// <param name="endDate"> Only include alerts that occurred on or before this date and time </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

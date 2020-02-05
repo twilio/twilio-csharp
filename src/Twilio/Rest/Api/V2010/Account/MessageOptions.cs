@@ -66,6 +66,14 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public bool? ForceDelivery { get; set; }
         /// <summary>
+        /// Determines if the message content can be stored or redacted based on privacy settings
+        /// </summary>
+        public MessageResource.ContentRetentionEnum ContentRetention { get; set; }
+        /// <summary>
+        /// Determines if the address can be stored or obfuscated based on privacy settings
+        /// </summary>
+        public MessageResource.AddressRetentionEnum AddressRetention { get; set; }
+        /// <summary>
         /// Whether to detect Unicode characters that have a similar GSM-7 character and replace them
         /// </summary>
         public bool? SmartEncoded { get; set; }
@@ -144,6 +152,16 @@ namespace Twilio.Rest.Api.V2010.Account
             if (ForceDelivery != null)
             {
                 p.Add(new KeyValuePair<string, string>("ForceDelivery", ForceDelivery.Value.ToString().ToLower()));
+            }
+
+            if (ContentRetention != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ContentRetention", ContentRetention.ToString()));
+            }
+
+            if (AddressRetention != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AddressRetention", AddressRetention.ToString()));
             }
 
             if (SmartEncoded != null)

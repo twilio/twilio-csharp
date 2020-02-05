@@ -563,6 +563,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// </summary>
         [JsonProperty("source_channel")]
         public string SourceChannel { get; private set; }
+        /// <summary>
+        /// The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
+        /// </summary>
+        [JsonProperty("dialogue_sid")]
+        public string DialogueSid { get; private set; }
 
         private QueryResource()
         {

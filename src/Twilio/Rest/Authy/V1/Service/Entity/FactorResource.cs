@@ -49,6 +49,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
             public static readonly FactorTypesEnum AppPush = new FactorTypesEnum("app-push");
             public static readonly FactorTypesEnum Sms = new FactorTypesEnum("sms");
             public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
+            public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
         }
 
         public sealed class FactorStrengthsEnum : StringEnum
@@ -113,7 +114,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="binding"> A unique binding for this Factor </param>
+        /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -135,7 +136,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="binding"> A unique binding for this Factor </param>
+        /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
