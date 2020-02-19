@@ -204,6 +204,11 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         [JsonProperty("wait_duration_until_canceled")]
         public object WaitDurationUntilCanceled { get; private set; }
         /// <summary>
+        /// The relative wait duration statistics for Tasks accepted while in the TaskQueue
+        /// </summary>
+        [JsonProperty("wait_duration_in_queue_until_accepted")]
+        public object WaitDurationInQueueUntilAccepted { get; private set; }
+        /// <summary>
         /// The total number of Tasks canceled in the TaskQueue
         /// </summary>
         [JsonProperty("tasks_canceled")]

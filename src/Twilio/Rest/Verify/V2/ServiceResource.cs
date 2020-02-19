@@ -71,7 +71,7 @@ namespace Twilio.Rest.Verify.V2
         ///                         phone call </param>
         /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
-        /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
+        /// <param name="doNotShareWarningEnabled"> Whether to add a security warning at the end of an SMS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName,
@@ -100,7 +100,7 @@ namespace Twilio.Rest.Verify.V2
         ///                         phone call </param>
         /// <param name="ttsName"> The name of an alternative text-to-speech service to use in phone calls </param>
         /// <param name="psd2Enabled"> Whether to pass PSD2 transaction parameters when starting a verification </param>
-        /// <param name="doNotShareWarningEnabled"> Whether to add a privacy warning at the end of an SMS. </param>
+        /// <param name="doNotShareWarningEnabled"> Whether to add a security warning at the end of an SMS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
@@ -552,7 +552,7 @@ namespace Twilio.Rest.Verify.V2
         [JsonProperty("tts_name")]
         public string TtsName { get; private set; }
         /// <summary>
-        /// Whether to add a privacy warning at the end of an SMS.
+        /// Whether to add a security warning at the end of an SMS.
         /// </summary>
         [JsonProperty("do_not_share_warning_enabled")]
         public bool? DoNotShareWarningEnabled { get; private set; }

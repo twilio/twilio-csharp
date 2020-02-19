@@ -45,7 +45,7 @@ namespace Twilio.Rest.Verify.V2
         /// </summary>
         public bool? Psd2Enabled { get; set; }
         /// <summary>
-        /// Whether to add a privacy warning at the end of an SMS.
+        /// Whether to add a security warning at the end of an SMS.
         /// </summary>
         public bool? DoNotShareWarningEnabled { get; set; }
 

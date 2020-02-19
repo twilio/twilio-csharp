@@ -210,7 +210,7 @@ namespace Twilio.Rest.Video.V1
 
             if (AudioSources != null)
             {
-                p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop.ToString())));
+                p.AddRange(AudioSources.Select(prop => new KeyValuePair<string, string>("AudioSources", prop)));
             }
 
             if (AudioSourcesExcluded != null)

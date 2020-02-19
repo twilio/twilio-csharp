@@ -52,14 +52,14 @@ namespace Twilio.Rest.Preview.BulkExports.Export
     public class DeleteJobOptions : IOptions<JobResource>
     {
         /// <summary>
-        /// The job_sid
+        /// The unique string that that we created to identify the Bulk Export job
         /// </summary>
         public string PathJobSid { get; }
 
         /// <summary>
         /// Construct a new DeleteJobOptions
         /// </summary>
-        /// <param name="pathJobSid"> The job_sid </param>
+        /// <param name="pathJobSid"> The unique string that that we created to identify the Bulk Export job </param>
         public DeleteJobOptions(string pathJobSid)
         {
             PathJobSid = pathJobSid;

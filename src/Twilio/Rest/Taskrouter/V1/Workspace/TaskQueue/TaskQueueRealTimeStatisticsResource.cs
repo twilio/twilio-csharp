@@ -136,6 +136,16 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.TaskQueue
         [JsonProperty("longest_task_waiting_sid")]
         public string LongestTaskWaitingSid { get; private set; }
         /// <summary>
+        /// The relative age in the TaskQueue for the longest waiting Task.
+        /// </summary>
+        [JsonProperty("longest_relative_task_age_in_queue")]
+        public int? LongestRelativeTaskAgeInQueue { get; private set; }
+        /// <summary>
+        /// The SID of the Task waiting in the TaskQueue the longest.
+        /// </summary>
+        [JsonProperty("longest_relative_task_sid_in_queue")]
+        public string LongestRelativeTaskSidInQueue { get; private set; }
+        /// <summary>
         /// The SID of the TaskQueue from which these statistics were calculated
         /// </summary>
         [JsonProperty("task_queue_sid")]

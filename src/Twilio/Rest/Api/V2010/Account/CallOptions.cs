@@ -131,6 +131,18 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public int? MachineDetectionSilenceTimeout { get; set; }
         /// <summary>
+        /// Enable asynchronous AMD
+        /// </summary>
+        public string AsyncAmd { get; set; }
+        /// <summary>
+        /// The URL we should call to send amd status information to your application
+        /// </summary>
+        public Uri AsyncAmdStatusCallback { get; set; }
+        /// <summary>
+        /// HTTP Method to use with async_amd_status_callback
+        /// </summary>
+        public Twilio.Http.HttpMethod AsyncAmdStatusCallbackMethod { get; set; }
+        /// <summary>
         /// BYOC trunk SID (Beta)
         /// </summary>
         public string Byoc { get; set; }
@@ -287,6 +299,21 @@ namespace Twilio.Rest.Api.V2010.Account
             if (MachineDetectionSilenceTimeout != null)
             {
                 p.Add(new KeyValuePair<string, string>("MachineDetectionSilenceTimeout", MachineDetectionSilenceTimeout.ToString()));
+            }
+
+            if (AsyncAmd != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AsyncAmd", AsyncAmd));
+            }
+
+            if (AsyncAmdStatusCallback != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AsyncAmdStatusCallback", Serializers.Url(AsyncAmdStatusCallback)));
+            }
+
+            if (AsyncAmdStatusCallbackMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AsyncAmdStatusCallbackMethod", AsyncAmdStatusCallbackMethod.ToString()));
             }
 
             if (Byoc != null)

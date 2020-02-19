@@ -340,6 +340,11 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("ui_attributes")]
         public object UiAttributes { get; private set; }
         /// <summary>
+        /// The object that defines the NPM packages and versions to be used in Hosted Flex
+        /// </summary>
+        [JsonProperty("ui_dependencies")]
+        public object UiDependencies { get; private set; }
+        /// <summary>
         /// The Pinned UI version
         /// </summary>
         [JsonProperty("ui_version")]

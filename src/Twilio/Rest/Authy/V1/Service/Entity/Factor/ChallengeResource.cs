@@ -65,6 +65,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
             public static readonly FactorTypesEnum AppPush = new FactorTypesEnum("app-push");
             public static readonly FactorTypesEnum Sms = new FactorTypesEnum("sms");
             public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
+            public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
         }
 
         public sealed class FactorStrengthsEnum : StringEnum

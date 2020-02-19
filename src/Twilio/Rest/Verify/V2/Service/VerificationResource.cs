@@ -102,7 +102,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
-        /// <param name="appHash"> App Hash to be included at the end of an SMS. </param>
+        /// <param name="appHash"> Your App Hash to be appended at the end of an SMS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(string pathServiceSid,
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="payee"> The payee of the associated PSD2 compliant transaction </param>
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
-        /// <param name="appHash"> App Hash to be included at the end of an SMS. </param>
+        /// <param name="appHash"> Your App Hash to be appended at the end of an SMS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid,

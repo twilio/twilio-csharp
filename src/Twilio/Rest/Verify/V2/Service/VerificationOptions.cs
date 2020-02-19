@@ -61,7 +61,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public object ChannelConfiguration { get; set; }
         /// <summary>
-        /// App Hash to be included at the end of an SMS.
+        /// Your App Hash to be appended at the end of an SMS.
         /// </summary>
         public string AppHash { get; set; }
 

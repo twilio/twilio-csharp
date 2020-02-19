@@ -339,6 +339,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// The SID of the participant who is being `coached`
         /// </summary>
         public string CallSidToCoach { get; set; }
+        /// <summary>
+        /// BYOC trunk SID (Beta)
+        /// </summary>
+        public string Byoc { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -521,6 +525,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (CallSidToCoach != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallSidToCoach", CallSidToCoach.ToString()));
+            }
+
+            if (Byoc != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Byoc", Byoc.ToString()));
             }
 
             return p;

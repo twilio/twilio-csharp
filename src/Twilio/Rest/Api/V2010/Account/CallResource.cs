@@ -144,6 +144,10 @@ namespace Twilio.Rest.Api.V2010.Account
         ///                                       speech activity </param>
         /// <param name="machineDetectionSpeechEndThreshold"> Number of milliseconds of silence after speech activity </param>
         /// <param name="machineDetectionSilenceTimeout"> Number of milliseconds of initial silence </param>
+        /// <param name="asyncAmd"> Enable asynchronous AMD </param>
+        /// <param name="asyncAmdStatusCallback"> The URL we should call to send amd status information to your application
+        ///                              </param>
+        /// <param name="asyncAmdStatusCallbackMethod"> HTTP Method to use with async_amd_status_callback </param>
         /// <param name="byoc"> BYOC trunk SID (Beta) </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns>
@@ -175,10 +179,13 @@ namespace Twilio.Rest.Api.V2010.Account
                                           int? machineDetectionSpeechThreshold = null,
                                           int? machineDetectionSpeechEndThreshold = null,
                                           int? machineDetectionSilenceTimeout = null,
+                                          string asyncAmd = null,
+                                          Uri asyncAmdStatusCallback = null,
+                                          Twilio.Http.HttpMethod asyncAmdStatusCallbackMethod = null,
                                           string byoc = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, Byoc = byoc};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AsyncAmd = asyncAmd, AsyncAmdStatusCallback = asyncAmdStatusCallback, AsyncAmdStatusCallbackMethod = asyncAmdStatusCallbackMethod, Byoc = byoc};
             return Create(options, client);
         }
 
@@ -219,6 +226,10 @@ namespace Twilio.Rest.Api.V2010.Account
         ///                                       speech activity </param>
         /// <param name="machineDetectionSpeechEndThreshold"> Number of milliseconds of silence after speech activity </param>
         /// <param name="machineDetectionSilenceTimeout"> Number of milliseconds of initial silence </param>
+        /// <param name="asyncAmd"> Enable asynchronous AMD </param>
+        /// <param name="asyncAmdStatusCallback"> The URL we should call to send amd status information to your application
+        ///                              </param>
+        /// <param name="asyncAmdStatusCallbackMethod"> HTTP Method to use with async_amd_status_callback </param>
         /// <param name="byoc"> BYOC trunk SID (Beta) </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
@@ -250,10 +261,13 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                   int? machineDetectionSpeechThreshold = null,
                                                                                   int? machineDetectionSpeechEndThreshold = null,
                                                                                   int? machineDetectionSilenceTimeout = null,
+                                                                                  string asyncAmd = null,
+                                                                                  Uri asyncAmdStatusCallback = null,
+                                                                                  Twilio.Http.HttpMethod asyncAmdStatusCallbackMethod = null,
                                                                                   string byoc = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, Byoc = byoc};
+            var options = new CreateCallOptions(to, from){PathAccountSid = pathAccountSid, Url = url, Twiml = twiml, ApplicationSid = applicationSid, Method = method, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StatusCallbackEvent = statusCallbackEvent, StatusCallbackMethod = statusCallbackMethod, SendDigits = sendDigits, Timeout = timeout, Record = record, RecordingChannels = recordingChannels, RecordingStatusCallback = recordingStatusCallback, RecordingStatusCallbackMethod = recordingStatusCallbackMethod, SipAuthUsername = sipAuthUsername, SipAuthPassword = sipAuthPassword, MachineDetection = machineDetection, MachineDetectionTimeout = machineDetectionTimeout, RecordingStatusCallbackEvent = recordingStatusCallbackEvent, Trim = trim, CallerId = callerId, MachineDetectionSpeechThreshold = machineDetectionSpeechThreshold, MachineDetectionSpeechEndThreshold = machineDetectionSpeechEndThreshold, MachineDetectionSilenceTimeout = machineDetectionSilenceTimeout, AsyncAmd = asyncAmd, AsyncAmdStatusCallback = asyncAmdStatusCallback, AsyncAmdStatusCallbackMethod = asyncAmdStatusCallbackMethod, Byoc = byoc};
             return await CreateAsync(options, client);
         }
         #endif
@@ -825,10 +839,20 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("to_formatted")]
         public string ToFormatted { get; private set; }
         /// <summary>
+        /// The (optional) unique identifier of the trunk resource that was used for this call.
+        /// </summary>
+        [JsonProperty("trunk_sid")]
+        public string TrunkSid { get; private set; }
+        /// <summary>
         /// The URI of this resource, relative to `https://api.twilio.com`
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
+        /// <summary>
+        /// The wait time in milliseconds before the call is placed.
+        /// </summary>
+        [JsonProperty("queue_time")]
+        public string QueueTime { get; private set; }
 
         private CallResource()
         {

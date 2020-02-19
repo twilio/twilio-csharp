@@ -561,7 +561,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The number of seconds since the task was created
+        /// The number of seconds since the Task was created
         /// </summary>
         [JsonProperty("age")]
         public int? Age { get; private set; }
@@ -592,12 +592,17 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
+        /// The ISO 8601 date and time in GMT when the Task entered the TaskQueue.
+        /// </summary>
+        [JsonProperty("task_queue_entered_date")]
+        public DateTime? TaskQueueEnteredDate { get; private set; }
+        /// <summary>
         /// Retrieve the list of all Tasks in the Workspace with the specified priority
         /// </summary>
         [JsonProperty("priority")]
         public int? Priority { get; private set; }
         /// <summary>
-        /// The reason the task was canceled or completed
+        /// The reason the Task was canceled or completed
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; private set; }
@@ -627,7 +632,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("task_channel_unique_name")]
         public string TaskChannelUniqueName { get; private set; }
         /// <summary>
-        /// The amount of time in seconds that the task is allowed to live
+        /// The amount of time in seconds that the Task is allowed to live
         /// </summary>
         [JsonProperty("timeout")]
         public int? Timeout { get; private set; }

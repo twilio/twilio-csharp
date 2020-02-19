@@ -12,13 +12,13 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Messaging.V1;
+using Twilio.Rest.Studio.V2.Flow;
 
-namespace Twilio.Tests.Rest.Messaging.V1
+namespace Twilio.Tests.Rest.Studio.V2.Flow
 {
 
     [TestFixture]
-    public class WebhookTest : TwilioTest
+    public class FlowTestUserTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()
@@ -26,15 +26,15 @@ namespace Twilio.Tests.Rest.Messaging.V1
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Messaging,
-                "/v1/Sessions/Webhooks",
+                Twilio.Rest.Domain.Studio,
+                "/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/TestUsers",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                WebhookResource.Fetch(client: twilioRestClient);
+                FlowTestUserResource.Fetch("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Messaging.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"pre_webhook_url\": \"http://pre.url\",\"post_webhook_url\": \"http://post.url\",\"webhook_method\": \"GET\",\"webhook_filters\": [\"onMessageSend\",\"onSessionAdded\"],\"pre_webhook_retry_count\": 1,\"post_webhook_retry_count\": 2,\"target\": \"http\",\"url\": \"https://messaging.twilio.com/v1/Sessions/Webhooks\"}"
+                                         "{\"sid\": \"FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"test_users\": [\"user1\",\"user2\"],\"url\": \"https://studio.twilio.com/v2/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TestUsers\"}"
                                      ));
 
-            var response = WebhookResource.Fetch(client: twilioRestClient);
+            var response = FlowTestUserResource.Fetch("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -62,15 +62,16 @@ namespace Twilio.Tests.Rest.Messaging.V1
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Post,
-                Twilio.Rest.Domain.Messaging,
-                "/v1/Sessions/Webhooks",
+                Twilio.Rest.Domain.Studio,
+                "/v2/Flows/FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/TestUsers",
                 ""
             );
+            request.AddPostParam("TestUsers", Serialize("test_users"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                WebhookResource.Update(client: twilioRestClient);
+                FlowTestUserResource.Update("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", Promoter.ListOfOne("test_users"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -85,10 +86,10 @@ namespace Twilio.Tests.Rest.Messaging.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"pre_webhook_url\": \"http://pre.url\",\"post_webhook_url\": \"http://post.url\",\"webhook_method\": \"GET\",\"webhook_filters\": [\"onSessionAdded\"],\"pre_webhook_retry_count\": 1,\"post_webhook_retry_count\": 2,\"target\": \"flex\",\"url\": \"https://messaging.twilio.com/v1/Sessions/Webhooks\"}"
+                                         "{\"sid\": \"FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"test_users\": [\"user1\",\"user2\"],\"url\": \"https://studio.twilio.com/v2/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TestUsers\"}"
                                      ));
 
-            var response = WebhookResource.Update(client: twilioRestClient);
+            var response = FlowTestUserResource.Update("FWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", Promoter.ListOfOne("test_users"), client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

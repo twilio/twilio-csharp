@@ -543,6 +543,11 @@ namespace Twilio.Rest.Studio.V2
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
+        /// The webhook_url
+        /// </summary>
+        [JsonProperty("webhook_url")]
+        public Uri WebhookUrl { get; private set; }
+        /// <summary>
         /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
