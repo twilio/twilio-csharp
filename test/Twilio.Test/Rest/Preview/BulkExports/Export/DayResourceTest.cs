@@ -21,6 +21,42 @@ namespace Twilio.Tests.Rest.Preview.BulkExports.Export
     public class DayTest : TwilioTest
     {
         [Test]
+        public void TestFetchRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Get,
+                Twilio.Rest.Domain.Preview,
+                "/BulkExports/Exports/resource_type/Days/day",
+                ""
+            );
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                DayResource.Fetch("resource_type", "day", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestFetchResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"redirect_to\": \"https://com.twilio.dev-us1.exports.s3.amazonaws.com/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                     ));
+
+            var response = DayResource.Fetch("resource_type", "day", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestReadRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
@@ -42,14 +78,29 @@ namespace Twilio.Tests.Rest.Preview.BulkExports.Export
         }
 
         [Test]
-        public void TestReadResponse()
+        public void TestReadEmptyResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"days\": [{\"day\": \"2017-05-01\",\"size\": 1234,\"resource_type\": \"Calls\"}],\"meta\": {\"key\": \"days\",\"page_size\": 50,\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"page\": 0,\"first_page_url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"previous_page_url\": null,\"next_page_url\": null}}"
+                                         "{\"days\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"days\"}}"
+                                     ));
+
+            var response = DayResource.Read("resource_type", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestReadFullResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"days\": [{\"day\": \"2017-04-01\",\"size\": 100,\"resource_type\": \"Calls\",\"create_date\": \"2017-04-02\",\"friendly_name\": \"friendly_name\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://preview.twilio.com/BulkExports/Exports/Calls/Days?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"days\"}}"
                                      ));
 
             var response = DayResource.Read("resource_type", client: twilioRestClient);

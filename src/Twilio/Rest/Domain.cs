@@ -44,6 +44,7 @@ namespace Twilio.Rest
         public static readonly Domain Video = new Domain("video");
         public static readonly Domain Voice = new Domain("voice");
         public static readonly Domain Wireless = new Domain("wireless");
+        public static readonly Domain Supersim = new Domain("supersim");
     }
 
 }

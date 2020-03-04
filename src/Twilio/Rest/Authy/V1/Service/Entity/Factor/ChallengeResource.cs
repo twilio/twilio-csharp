@@ -68,23 +68,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
             public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
         }
 
-        public sealed class FactorStrengthsEnum : StringEnum
-        {
-            private FactorStrengthsEnum(string value) : base(value) {}
-            public FactorStrengthsEnum() {}
-            public static implicit operator FactorStrengthsEnum(string value)
-            {
-                return new FactorStrengthsEnum(value);
-            }
-
-            public static readonly FactorStrengthsEnum Unknown = new FactorStrengthsEnum("unknown");
-            public static readonly FactorStrengthsEnum VeryLow = new FactorStrengthsEnum("very_low");
-            public static readonly FactorStrengthsEnum Low = new FactorStrengthsEnum("low");
-            public static readonly FactorStrengthsEnum Medium = new FactorStrengthsEnum("medium");
-            public static readonly FactorStrengthsEnum High = new FactorStrengthsEnum("high");
-            public static readonly FactorStrengthsEnum VeryHigh = new FactorStrengthsEnum("very_high");
-        }
-
         private static Request BuildCreateRequest(CreateChallengeOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -513,12 +496,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         [JsonProperty("factor_type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ChallengeResource.FactorTypesEnum FactorType { get; private set; }
-        /// <summary>
-        /// The Factor Strength of this Challenge
-        /// </summary>
-        [JsonProperty("factor_strength")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ChallengeResource.FactorStrengthsEnum FactorStrength { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>

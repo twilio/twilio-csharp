@@ -1,6 +1,34 @@
 twilio-csharp Changelog
 =======================
 
+[2020-03-04] Version 5.37.6
+---------------------------
+**Authy**
+- Added the `configuration` property to services to return the service level configurations
+- Added optional parameter `Push` when creating a service to send the service level push factor configuration
+- Remove FactorStrength support for Factors and Challenges **(breaking change)**
+
+**Messaging**
+- Correct the alpha sender capabilities property type **(breaking change)**
+
+**Preview**
+- Removed `/Devices` register Branded Calls endpoint, as per iOS sample app deprecation **(breaking change)**
+- Removed `Twilio-Sandbox-Mode` request header from the Branded Calls endpoints, as not officially supported **(breaking change)**
+- Removed `Verify` version from `preview` subdomain in favor to `verify` subdomain. **(breaking change)**
+
+**Serverless**
+- Add UI-Editable field to Services
+
+**Supersim**
+- Add `inactive` status for Super SIM which is an alias for `deactivated`
+
+**Taskrouter**
+- Adding value range to `priority` in task endpoint
+
+**Verify**
+- Fix `SendCodeAttempts` type. It's an array of objects instead of a unique object. **(breaking change)**
+
+
 [2020-02-19] Version 5.37.5
 ---------------------------
 **Api**

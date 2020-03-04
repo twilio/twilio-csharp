@@ -15,6 +15,44 @@ namespace Twilio.Rest.Preview.BulkExports.Export
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
+    /// Fetch a specific Day.
+    /// </summary>
+    public class FetchDayOptions : IOptions<DayResource>
+    {
+        /// <summary>
+        /// The type of communication – Messages, Calls
+        /// </summary>
+        public string PathResourceType { get; }
+        /// <summary>
+        /// The date of the data in the file
+        /// </summary>
+        public string PathDay { get; }
+
+        /// <summary>
+        /// Construct a new FetchDayOptions
+        /// </summary>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathDay"> The date of the data in the file </param>
+        public FetchDayOptions(string pathResourceType, string pathDay)
+        {
+            PathResourceType = pathResourceType;
+            PathDay = pathDay;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+    /// currently do not have developer preview access, please contact help@twilio.com.
+    ///
     /// Retrieve a list of all Days for a resource.
     /// </summary>
     public class ReadDayOptions : ReadOptions<DayResource>
@@ -23,6 +61,14 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// The type of communication – Messages, Calls
         /// </summary>
         public string PathResourceType { get; }
+        /// <summary>
+        /// The next_token
+        /// </summary>
+        public string NextToken { get; set; }
+        /// <summary>
+        /// The previous_token
+        /// </summary>
+        public string PreviousToken { get; set; }
 
         /// <summary>
         /// Construct a new ReadDayOptions
@@ -39,6 +85,16 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (NextToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NextToken", NextToken));
+            }
+
+            if (PreviousToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PreviousToken", PreviousToken));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

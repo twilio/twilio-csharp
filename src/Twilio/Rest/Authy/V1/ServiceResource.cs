@@ -67,11 +67,12 @@ namespace Twilio.Rest.Authy.V1
         /// Create a new Service for the Account
         /// </summary>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
+        /// <param name="push"> Optional service level push factors configuration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
-        public static ServiceResource Create(string friendlyName, ITwilioRestClient client = null)
+        public static ServiceResource Create(string friendlyName, string push = null, ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName);
+            var options = new CreateServiceOptions(friendlyName){Push = push};
             return Create(options, client);
         }
 
@@ -80,12 +81,14 @@ namespace Twilio.Rest.Authy.V1
         /// Create a new Service for the Account
         /// </summary>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
+        /// <param name="push"> Optional service level push factors configuration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
+                                                                                     string push = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName);
+            var options = new CreateServiceOptions(friendlyName){Push = push};
             return await CreateAsync(options, client);
         }
         #endif
@@ -481,6 +484,11 @@ namespace Twilio.Rest.Authy.V1
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+        /// <summary>
+        /// The service level configuration of all the factor types.
+        /// </summary>
+        [JsonProperty("configuration")]
+        public object Configuration { get; private set; }
 
         private ServiceResource()
         {

@@ -118,6 +118,10 @@ namespace Twilio.Rest.Serverless.V1
         /// Whether to inject Account credentials into a function invocation context
         /// </summary>
         public bool? IncludeCredentials { get; set; }
+        /// <summary>
+        /// Whether the Service's properties and subresources can be edited via the UI
+        /// </summary>
+        public bool? UiEditable { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -151,6 +155,11 @@ namespace Twilio.Rest.Serverless.V1
                 p.Add(new KeyValuePair<string, string>("IncludeCredentials", IncludeCredentials.Value.ToString().ToLower()));
             }
 
+            if (UiEditable != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UiEditable", UiEditable.Value.ToString().ToLower()));
+            }
+
             return p;
         }
     }
@@ -175,6 +184,10 @@ namespace Twilio.Rest.Serverless.V1
         /// A string to describe the Service resource
         /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// Whether the Service's properties and subresources can be edited via the UI
+        /// </summary>
+        public bool? UiEditable { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -199,6 +212,11 @@ namespace Twilio.Rest.Serverless.V1
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (UiEditable != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UiEditable", UiEditable.Value.ToString().ToLower()));
             }
 
             return p;

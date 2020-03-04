@@ -23,6 +23,76 @@ namespace Twilio.Rest.Preview.BulkExports.Export
 
     public class DayResource : Resource
     {
+        private static Request BuildFetchRequest(FetchDayOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Preview,
+                "/BulkExports/Exports/" + options.PathResourceType + "/Days/" + options.PathDay + "",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Fetch a specific Day.
+        /// </summary>
+        /// <param name="options"> Fetch Day parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Day </returns>
+        public static DayResource Fetch(FetchDayOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Fetch a specific Day.
+        /// </summary>
+        /// <param name="options"> Fetch Day parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Day </returns>
+        public static async System.Threading.Tasks.Task<DayResource> FetchAsync(FetchDayOptions options,
+                                                                                ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Fetch a specific Day.
+        /// </summary>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathDay"> The date of the data in the file </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Day </returns>
+        public static DayResource Fetch(string pathResourceType, string pathDay, ITwilioRestClient client = null)
+        {
+            var options = new FetchDayOptions(pathResourceType, pathDay);
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Fetch a specific Day.
+        /// </summary>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathDay"> The date of the data in the file </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Day </returns>
+        public static async System.Threading.Tasks.Task<DayResource> FetchAsync(string pathResourceType,
+                                                                                string pathDay,
+                                                                                ITwilioRestClient client = null)
+        {
+            var options = new FetchDayOptions(pathResourceType, pathDay);
+            return await FetchAsync(options, client);
+        }
+        #endif
+
         private static Request BuildReadRequest(ReadDayOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -71,16 +141,20 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// Retrieve a list of all Days for a resource.
         /// </summary>
         /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="nextToken"> The next_token </param>
+        /// <param name="previousToken"> The previous_token </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Day </returns>
         public static ResourceSet<DayResource> Read(string pathResourceType,
+                                                    string nextToken = null,
+                                                    string previousToken = null,
                                                     int? pageSize = null,
                                                     long? limit = null,
                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadDayOptions(pathResourceType){PageSize = pageSize, Limit = limit};
+            var options = new ReadDayOptions(pathResourceType){NextToken = nextToken, PreviousToken = previousToken, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -89,16 +163,20 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// Retrieve a list of all Days for a resource.
         /// </summary>
         /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="nextToken"> The next_token </param>
+        /// <param name="previousToken"> The previous_token </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DayResource>> ReadAsync(string pathResourceType,
+                                                                                            string nextToken = null,
+                                                                                            string previousToken = null,
                                                                                             int? pageSize = null,
                                                                                             long? limit = null,
                                                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadDayOptions(pathResourceType){PageSize = pageSize, Limit = limit};
+            var options = new ReadDayOptions(pathResourceType){NextToken = nextToken, PreviousToken = previousToken, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -195,6 +273,16 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// </summary>
         [JsonProperty("size")]
         public int? Size { get; private set; }
+        /// <summary>
+        /// The date when resource is created
+        /// </summary>
+        [JsonProperty("create_date")]
+        public string CreateDate { get; private set; }
+        /// <summary>
+        /// The friendly name specified when creating the job
+        /// </summary>
+        [JsonProperty("friendly_name")]
+        public string FriendlyName { get; private set; }
         /// <summary>
         /// The type of communication – Messages, Calls
         /// </summary>

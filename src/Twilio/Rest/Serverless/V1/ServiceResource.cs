@@ -337,14 +337,16 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the Service resource </param>
         /// <param name="friendlyName"> A string to describe the Service resource </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a function invocation context </param>
+        /// <param name="uiEditable"> Whether the Service's properties and subresources can be edited via the UI </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string uniqueName,
                                              string friendlyName,
                                              bool? includeCredentials = null,
+                                             bool? uiEditable = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(uniqueName, friendlyName){IncludeCredentials = includeCredentials};
+            var options = new CreateServiceOptions(uniqueName, friendlyName){IncludeCredentials = includeCredentials, UiEditable = uiEditable};
             return Create(options, client);
         }
 
@@ -355,14 +357,16 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the Service resource </param>
         /// <param name="friendlyName"> A string to describe the Service resource </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a function invocation context </param>
+        /// <param name="uiEditable"> Whether the Service's properties and subresources can be edited via the UI </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string uniqueName,
                                                                                      string friendlyName,
                                                                                      bool? includeCredentials = null,
+                                                                                     bool? uiEditable = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(uniqueName, friendlyName){IncludeCredentials = includeCredentials};
+            var options = new CreateServiceOptions(uniqueName, friendlyName){IncludeCredentials = includeCredentials, UiEditable = uiEditable};
             return await CreateAsync(options, client);
         }
         #endif
@@ -413,14 +417,16 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="pathSid"> The SID of the Service resource to update </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a function invocation context </param>
         /// <param name="friendlyName"> A string to describe the Service resource </param>
+        /// <param name="uiEditable"> Whether the Service's properties and subresources can be edited via the UI </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
                                              bool? includeCredentials = null,
                                              string friendlyName = null,
+                                             bool? uiEditable = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){IncludeCredentials = includeCredentials, FriendlyName = friendlyName};
+            var options = new UpdateServiceOptions(pathSid){IncludeCredentials = includeCredentials, FriendlyName = friendlyName, UiEditable = uiEditable};
             return Update(options, client);
         }
 
@@ -431,14 +437,16 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="pathSid"> The SID of the Service resource to update </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a function invocation context </param>
         /// <param name="friendlyName"> A string to describe the Service resource </param>
+        /// <param name="uiEditable"> Whether the Service's properties and subresources can be edited via the UI </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
                                                                                      bool? includeCredentials = null,
                                                                                      string friendlyName = null,
+                                                                                     bool? uiEditable = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){IncludeCredentials = includeCredentials, FriendlyName = friendlyName};
+            var options = new UpdateServiceOptions(pathSid){IncludeCredentials = includeCredentials, FriendlyName = friendlyName, UiEditable = uiEditable};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -486,6 +494,11 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         [JsonProperty("include_credentials")]
         public bool? IncludeCredentials { get; private set; }
+        /// <summary>
+        /// Whether the Service's properties and subresources can be edited via the UI
+        /// </summary>
+        [JsonProperty("ui_editable")]
+        public bool? UiEditable { get; private set; }
         /// <summary>
         /// The ISO 8601 date and time in GMT when the Service resource was created
         /// </summary>

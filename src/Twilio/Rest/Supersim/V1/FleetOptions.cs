@@ -8,34 +8,37 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Authy.V1
+namespace Twilio.Rest.Supersim.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Create a new Service for the Account
+    /// Create a Fleet
     /// </summary>
-    public class CreateServiceOptions : IOptions<ServiceResource>
+    public class CreateFleetOptions : IOptions<FleetResource>
     {
         /// <summary>
-        /// A human readable description of this resource.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
-        public string FriendlyName { get; }
+        public string UniqueName { get; set; }
         /// <summary>
-        /// Optional service level push factors configuration
+        /// Defines whether SIMs in the Fleet are capable of using data connectivity
         /// </summary>
-        public string Push { get; set; }
-
+        public bool? DataEnabled { get; set; }
         /// <summary>
-        /// Construct a new CreateServiceOptions
+        /// Defines whether SIMs in the Fleet are capable of sending and receiving Commands via SMS
         /// </summary>
-        /// <param name="friendlyName"> A human readable description of this resource. </param>
-        public CreateServiceOptions(string friendlyName)
-        {
-            FriendlyName = friendlyName;
-        }
+        public bool? CommandsEnabled { get; set; }
+        /// <summary>
+        /// The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine Command
+        /// </summary>
+        public Uri CommandsUrl { get; set; }
+        /// <summary>
+        /// A string representing the HTTP method to use when making a request to `commands_url`
+        /// </summary>
+        public Twilio.Http.HttpMethod CommandsMethod { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -43,14 +46,29 @@ namespace Twilio.Rest.Authy.V1
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
+            if (UniqueName != null)
             {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
-            if (Push != null)
+            if (DataEnabled != null)
             {
-                p.Add(new KeyValuePair<string, string>("Push", Push));
+                p.Add(new KeyValuePair<string, string>("DataEnabled", DataEnabled.Value.ToString().ToLower()));
+            }
+
+            if (CommandsEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CommandsEnabled", CommandsEnabled.Value.ToString().ToLower()));
+            }
+
+            if (CommandsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CommandsUrl", Serializers.Url(CommandsUrl)));
+            }
+
+            if (CommandsMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
             }
 
             return p;
@@ -61,20 +79,20 @@ namespace Twilio.Rest.Authy.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Delete a specific Service.
+    /// Fetch a Fleet instance from your account.
     /// </summary>
-    public class DeleteServiceOptions : IOptions<ServiceResource>
+    public class FetchFleetOptions : IOptions<FleetResource>
     {
         /// <summary>
-        /// A string that uniquely identifies this Service.
+        /// The SID that identifies the resource to fetch
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
-        /// Construct a new DeleteServiceOptions
+        /// Construct a new FetchFleetOptions
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
-        public DeleteServiceOptions(string pathSid)
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
+        public FetchFleetOptions(string pathSid)
         {
             PathSid = pathSid;
         }
@@ -93,41 +111,9 @@ namespace Twilio.Rest.Authy.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Fetch a specific Service.
+    /// Retrieve a list of Fleets from your account.
     /// </summary>
-    public class FetchServiceOptions : IOptions<ServiceResource>
-    {
-        /// <summary>
-        /// A string that uniquely identifies this Service.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchServiceOptions
-        /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
-        public FetchServiceOptions(string pathSid)
-        {
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-    }
-
-    /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
-    /// Retrieve a list of all Services for an Account.
-    /// </summary>
-    public class ReadServiceOptions : ReadOptions<ServiceResource>
+    public class ReadFleetOptions : ReadOptions<FleetResource>
     {
         /// <summary>
         /// Generate the necessary parameters
@@ -148,24 +134,24 @@ namespace Twilio.Rest.Authy.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Update a specific Service.
+    /// Updates the given properties of a Super SIM Fleet instance from your account.
     /// </summary>
-    public class UpdateServiceOptions : IOptions<ServiceResource>
+    public class UpdateFleetOptions : IOptions<FleetResource>
     {
         /// <summary>
-        /// A string that uniquely identifies this Service.
+        /// The SID that identifies the resource to update
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A human readable description of this resource.
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
-        public string FriendlyName { get; set; }
+        public string UniqueName { get; set; }
 
         /// <summary>
-        /// Construct a new UpdateServiceOptions
+        /// Construct a new UpdateFleetOptions
         /// </summary>
-        /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
-        public UpdateServiceOptions(string pathSid)
+        /// <param name="pathSid"> The SID that identifies the resource to update </param>
+        public UpdateFleetOptions(string pathSid)
         {
             PathSid = pathSid;
         }
@@ -176,9 +162,9 @@ namespace Twilio.Rest.Authy.V1
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
+            if (UniqueName != null)
             {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
             return p;

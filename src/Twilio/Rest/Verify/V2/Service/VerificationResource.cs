@@ -379,7 +379,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// An array of verification attempt objects.
         /// </summary>
         [JsonProperty("send_code_attempts")]
-        public object SendCodeAttempts { get; private set; }
+        public List<object> SendCodeAttempts { get; private set; }
         /// <summary>
         /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>
