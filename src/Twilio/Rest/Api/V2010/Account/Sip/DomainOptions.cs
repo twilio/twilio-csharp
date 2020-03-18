@@ -81,6 +81,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Whether SIP registration is allowed
         /// </summary>
         public bool? SipRegistration { get; set; }
+        /// <summary>
+        /// Whether emergency calling is enabled for the domain.
+        /// </summary>
+        public bool? EmergencyCallingEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateDomainOptions
@@ -140,6 +144,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             if (SipRegistration != null)
             {
                 p.Add(new KeyValuePair<string, string>("SipRegistration", SipRegistration.Value.ToString().ToLower()));
+            }
+
+            if (EmergencyCallingEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyCallingEnabled", EmergencyCallingEnabled.Value.ToString().ToLower()));
             }
 
             return p;
@@ -228,6 +237,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// The unique address on Twilio to route SIP traffic
         /// </summary>
         public string DomainName { get; set; }
+        /// <summary>
+        /// Whether emergency calling is enabled for the domain.
+        /// </summary>
+        public bool? EmergencyCallingEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateDomainOptions
@@ -287,6 +300,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             if (DomainName != null)
             {
                 p.Add(new KeyValuePair<string, string>("DomainName", DomainName));
+            }
+
+            if (EmergencyCallingEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyCallingEnabled", EmergencyCallingEnabled.Value.ToString().ToLower()));
             }
 
             return p;

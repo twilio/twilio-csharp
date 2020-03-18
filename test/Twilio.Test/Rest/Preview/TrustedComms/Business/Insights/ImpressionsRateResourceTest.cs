@@ -18,7 +18,7 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms.Business.Insights
 {
 
     [TestFixture]
-    public class SuccessRateTest : TwilioTest
+    public class ImpressionsRateTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()
@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms.Business.Insights
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Insights/SuccessRate",
+                "/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Insights/ImpressionsRate",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SuccessRateResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                ImpressionsRateResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms.Business.Insights
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"business_sid\": \"BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"start\": \"2015-07-30T20:00:00Z\",\"end\": \"2015-07-30T21:00:00Z\",\"interval\": \"minute\",\"reports\": {\"success_rate\": {\"timestamp\": \"2015-07-30T20:00:00\",\"calls\": 1200,\"branded\": 800,\"value\": 66.67}},\"url\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Insights/SuccessRate\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"business_sid\": \"BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"start\": \"2015-07-30T20:00:00Z\",\"end\": \"2015-07-30T21:00:00Z\",\"interval\": \"minute\",\"reports\": {\"impressions_rate\": {\"timestamp\": \"2015-07-30T20:00:00\",\"calls\": 1200,\"impressions\": 800}},\"url\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Insights/ImpressionsRate\"}"
                                      ));
 
-            var response = SuccessRateResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = ImpressionsRateResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

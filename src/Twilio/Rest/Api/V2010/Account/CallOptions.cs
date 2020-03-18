@@ -146,6 +146,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// BYOC trunk SID (Beta)
         /// </summary>
         public string Byoc { get; set; }
+        /// <summary>
+        /// Reason for the call (Beta)
+        /// </summary>
+        public string CallReason { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -319,6 +323,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (Byoc != null)
             {
                 p.Add(new KeyValuePair<string, string>("Byoc", Byoc.ToString()));
+            }
+
+            if (CallReason != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallReason", CallReason));
             }
 
             return p;

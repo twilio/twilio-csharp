@@ -212,6 +212,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceStatusCallbackUrl"> The URL that we should call to pass status updates </param>
         /// <param name="voiceStatusCallbackMethod"> The HTTP method we should use to call `voice_status_callback_url` </param>
         /// <param name="sipRegistration"> Whether SIP registration is allowed </param>
+        /// <param name="emergencyCallingEnabled"> Whether emergency calling is enabled for the domain. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Domain </returns>
         public static DomainResource Create(string domainName,
@@ -224,9 +225,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                             Uri voiceStatusCallbackUrl = null,
                                             Twilio.Http.HttpMethod voiceStatusCallbackMethod = null,
                                             bool? sipRegistration = null,
+                                            bool? emergencyCallingEnabled = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, SipRegistration = sipRegistration};
+            var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, SipRegistration = sipRegistration, EmergencyCallingEnabled = emergencyCallingEnabled};
             return Create(options, client);
         }
 
@@ -244,6 +246,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceStatusCallbackUrl"> The URL that we should call to pass status updates </param>
         /// <param name="voiceStatusCallbackMethod"> The HTTP method we should use to call `voice_status_callback_url` </param>
         /// <param name="sipRegistration"> Whether SIP registration is allowed </param>
+        /// <param name="emergencyCallingEnabled"> Whether emergency calling is enabled for the domain. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Domain </returns>
         public static async System.Threading.Tasks.Task<DomainResource> CreateAsync(string domainName,
@@ -256,9 +259,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                                                                     Uri voiceStatusCallbackUrl = null,
                                                                                     Twilio.Http.HttpMethod voiceStatusCallbackMethod = null,
                                                                                     bool? sipRegistration = null,
+                                                                                    bool? emergencyCallingEnabled = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, SipRegistration = sipRegistration};
+            var options = new CreateDomainOptions(domainName){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceUrl = voiceUrl, VoiceMethod = voiceMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceFallbackMethod = voiceFallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, SipRegistration = sipRegistration, EmergencyCallingEnabled = emergencyCallingEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -387,6 +391,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
         /// <param name="sipRegistration"> Whether SIP registration is allowed </param>
         /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
+        /// <param name="emergencyCallingEnabled"> Whether emergency calling is enabled for the domain. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Domain </returns>
         public static DomainResource Update(string pathSid,
@@ -400,9 +405,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                             Uri voiceUrl = null,
                                             bool? sipRegistration = null,
                                             string domainName = null,
+                                            bool? emergencyCallingEnabled = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl, SipRegistration = sipRegistration, DomainName = domainName};
+            var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl, SipRegistration = sipRegistration, DomainName = domainName, EmergencyCallingEnabled = emergencyCallingEnabled};
             return Update(options, client);
         }
 
@@ -421,6 +427,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// <param name="voiceUrl"> The URL we should call when receiving a call </param>
         /// <param name="sipRegistration"> Whether SIP registration is allowed </param>
         /// <param name="domainName"> The unique address on Twilio to route SIP traffic </param>
+        /// <param name="emergencyCallingEnabled"> Whether emergency calling is enabled for the domain. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Domain </returns>
         public static async System.Threading.Tasks.Task<DomainResource> UpdateAsync(string pathSid,
@@ -434,9 +441,10 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
                                                                                     Uri voiceUrl = null,
                                                                                     bool? sipRegistration = null,
                                                                                     string domainName = null,
+                                                                                    bool? emergencyCallingEnabled = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl, SipRegistration = sipRegistration, DomainName = domainName};
+            var options = new UpdateDomainOptions(pathSid){PathAccountSid = pathAccountSid, FriendlyName = friendlyName, VoiceFallbackMethod = voiceFallbackMethod, VoiceFallbackUrl = voiceFallbackUrl, VoiceMethod = voiceMethod, VoiceStatusCallbackMethod = voiceStatusCallbackMethod, VoiceStatusCallbackUrl = voiceStatusCallbackUrl, VoiceUrl = voiceUrl, SipRegistration = sipRegistration, DomainName = domainName, EmergencyCallingEnabled = emergencyCallingEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -617,6 +625,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// </summary>
         [JsonProperty("sip_registration")]
         public bool? SipRegistration { get; private set; }
+        /// <summary>
+        /// Whether emergency calling is enabled for the domain.
+        /// </summary>
+        [JsonProperty("emergency_calling_enabled")]
+        public bool? EmergencyCallingEnabled { get; private set; }
 
         private DomainResource()
         {

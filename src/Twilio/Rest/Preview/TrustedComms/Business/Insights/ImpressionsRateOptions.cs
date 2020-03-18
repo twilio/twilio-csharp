@@ -15,9 +15,9 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Insights
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Fetch a specific Success Rate.
+    /// Fetch a specific Impressions Rate.
     /// </summary>
-    public class FetchSuccessRateOptions : IOptions<SuccessRateResource>
+    public class FetchImpressionsRateOptions : IOptions<ImpressionsRateResource>
     {
         /// <summary>
         /// Business Sid.
@@ -40,23 +40,23 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Insights
         /// </summary>
         public string Country { get; set; }
         /// <summary>
-        /// The start date that for this Success Rate.
+        /// The start date that for this Impressions Rate.
         /// </summary>
         public DateTime? Start { get; set; }
         /// <summary>
-        /// The end date that for this Success Rate.
+        /// The end date that for this Impressions Rate.
         /// </summary>
         public DateTime? End { get; set; }
         /// <summary>
-        /// The Interval of this Success Rate.
+        /// The Interval of this Impressions Rate.
         /// </summary>
-        public SuccessRateResource.IntervalsEnum Interval { get; set; }
+        public ImpressionsRateResource.IntervalsEnum Interval { get; set; }
 
         /// <summary>
-        /// Construct a new FetchSuccessRateOptions
+        /// Construct a new FetchImpressionsRateOptions
         /// </summary>
         /// <param name="pathBusinessSid"> Business Sid. </param>
-        public FetchSuccessRateOptions(string pathBusinessSid)
+        public FetchImpressionsRateOptions(string pathBusinessSid)
         {
             PathBusinessSid = pathBusinessSid;
         }

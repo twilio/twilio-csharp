@@ -100,6 +100,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
+        /// <param name="config"> The config for this Factor as a json string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static FactorResource Create(string pathServiceSid,
@@ -107,9 +108,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
                                             string binding,
                                             string friendlyName,
                                             FactorResource.FactorTypesEnum factorType,
+                                            string config,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType);
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config);
             return Create(options, client);
         }
 
@@ -122,6 +124,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
+        /// <param name="config"> The config for this Factor as a json string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(string pathServiceSid,
@@ -129,9 +132,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
                                                                                     string binding,
                                                                                     string friendlyName,
                                                                                     FactorResource.FactorTypesEnum factorType,
+                                                                                    string config,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType);
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config);
             return await CreateAsync(options, client);
         }
         #endif
@@ -478,15 +482,19 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
+        /// <param name="friendlyName"> The friendly name of this Factor </param>
+        /// <param name="config"> The config for this Factor as a json string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static FactorResource Update(string pathServiceSid,
                                             string pathIdentity,
                                             string pathSid,
                                             string authPayload = null,
+                                            string friendlyName = null,
+                                            string config = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, Config = config};
             return Update(options, client);
         }
 
@@ -498,15 +506,19 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="pathIdentity"> Unique identity of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
+        /// <param name="friendlyName"> The friendly name of this Factor </param>
+        /// <param name="config"> The config for this Factor as a json string </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<FactorResource> UpdateAsync(string pathServiceSid,
                                                                                     string pathIdentity,
                                                                                     string pathSid,
                                                                                     string authPayload = null,
+                                                                                    string friendlyName = null,
+                                                                                    string config = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, Config = config};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -581,6 +593,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         [JsonProperty("factor_type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public FactorResource.FactorTypesEnum FactorType { get; private set; }
+        /// <summary>
+        /// The config
+        /// </summary>
+        [JsonProperty("config")]
+        public object Config { get; private set; }
         /// <summary>
         /// The URL of this resource.
         /// </summary>

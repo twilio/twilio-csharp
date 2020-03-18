@@ -39,6 +39,10 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// The Type of this Factor
         /// </summary>
         public FactorResource.FactorTypesEnum FactorType { get; }
+        /// <summary>
+        /// The config for this Factor as a json string
+        /// </summary>
+        public string Config { get; }
 
         /// <summary>
         /// Construct a new CreateFactorOptions
@@ -48,17 +52,20 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
+        /// <param name="config"> The config for this Factor as a json string </param>
         public CreateFactorOptions(string pathServiceSid,
                                    string pathIdentity,
                                    string binding,
                                    string friendlyName,
-                                   FactorResource.FactorTypesEnum factorType)
+                                   FactorResource.FactorTypesEnum factorType,
+                                   string config)
         {
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
             Binding = binding;
             FriendlyName = friendlyName;
             FactorType = factorType;
+            Config = config;
         }
 
         /// <summary>
@@ -80,6 +87,11 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
             if (FactorType != null)
             {
                 p.Add(new KeyValuePair<string, string>("FactorType", FactorType.ToString()));
+            }
+
+            if (Config != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config", Config));
             }
 
             return p;
@@ -241,6 +253,14 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         /// Optional payload to verify the Factor for the first time
         /// </summary>
         public string AuthPayload { get; set; }
+        /// <summary>
+        /// The friendly name of this Factor
+        /// </summary>
+        public string FriendlyName { get; set; }
+        /// <summary>
+        /// The config for this Factor as a json string
+        /// </summary>
+        public string Config { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFactorOptions
@@ -264,6 +284,16 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
             if (AuthPayload != null)
             {
                 p.Add(new KeyValuePair<string, string>("AuthPayload", AuthPayload));
+            }
+
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (Config != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config", Config));
             }
 
             return p;
