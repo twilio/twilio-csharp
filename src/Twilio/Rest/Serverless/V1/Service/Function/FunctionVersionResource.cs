@@ -322,6 +322,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private FunctionVersionResource()
         {

@@ -160,6 +160,10 @@ namespace Twilio.Rest.Authy.V1
         /// A human readable description of this resource.
         /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// Optional service level push factors configuration
+        /// </summary>
+        public string Push { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -179,6 +183,11 @@ namespace Twilio.Rest.Authy.V1
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (Push != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Push", Push));
             }
 
             return p;

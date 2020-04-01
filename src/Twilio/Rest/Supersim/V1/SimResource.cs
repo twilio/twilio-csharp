@@ -36,10 +36,7 @@ namespace Twilio.Rest.Supersim.V1
             public static readonly StatusEnum New = new StatusEnum("new");
             public static readonly StatusEnum Ready = new StatusEnum("ready");
             public static readonly StatusEnum Active = new StatusEnum("active");
-            public static readonly StatusEnum Suspended = new StatusEnum("suspended");
-            public static readonly StatusEnum Deactivated = new StatusEnum("deactivated");
             public static readonly StatusEnum Inactive = new StatusEnum("inactive");
-            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
             public static readonly StatusEnum Scheduled = new StatusEnum("scheduled");
         }
 
@@ -53,8 +50,6 @@ namespace Twilio.Rest.Supersim.V1
             }
 
             public static readonly StatusUpdateEnum Active = new StatusUpdateEnum("active");
-            public static readonly StatusUpdateEnum Suspended = new StatusUpdateEnum("suspended");
-            public static readonly StatusUpdateEnum Deactivated = new StatusUpdateEnum("deactivated");
             public static readonly StatusUpdateEnum Inactive = new StatusUpdateEnum("inactive");
         }
 

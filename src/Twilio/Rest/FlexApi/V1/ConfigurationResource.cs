@@ -420,6 +420,16 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("serverless_service_sids")]
         public List<string> ServerlessServiceSids { get; private set; }
         /// <summary>
+        /// A list of objects that contain the configurations for the WFM Integrations supported in this configuration
+        /// </summary>
+        [JsonProperty("wfm_integrations")]
+        public List<object> WfmIntegrations { get; private set; }
+        /// <summary>
+        /// Configurable parameters for Queues Statistics
+        /// </summary>
+        [JsonProperty("queue_stats_configuration")]
+        public object QueueStatsConfiguration { get; private set; }
+        /// <summary>
         /// The absolute URL of the Configuration resource
         /// </summary>
         [JsonProperty("url")]

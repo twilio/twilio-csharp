@@ -117,19 +117,17 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <summary>
         /// The SID of the build for the deployment
         /// </summary>
-        public string BuildSid { get; }
+        public string BuildSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateDeploymentOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Deployment resource under </param>
         /// <param name="pathEnvironmentSid"> The SID of the environment for the deployment </param>
-        /// <param name="buildSid"> The SID of the build for the deployment </param>
-        public CreateDeploymentOptions(string pathServiceSid, string pathEnvironmentSid, string buildSid)
+        public CreateDeploymentOptions(string pathServiceSid, string pathEnvironmentSid)
         {
             PathServiceSid = pathServiceSid;
             PathEnvironmentSid = pathEnvironmentSid;
-            BuildSid = buildSid;
         }
 
         /// <summary>

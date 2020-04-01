@@ -406,11 +406,15 @@ namespace Twilio.Rest.Authy.V1
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
+        /// <param name="push"> Optional service level push factors configuration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
-        public static ServiceResource Update(string pathSid, string friendlyName = null, ITwilioRestClient client = null)
+        public static ServiceResource Update(string pathSid,
+                                             string friendlyName = null,
+                                             string push = null,
+                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, Push = push};
             return Update(options, client);
         }
 
@@ -420,13 +424,15 @@ namespace Twilio.Rest.Authy.V1
         /// </summary>
         /// <param name="pathSid"> A string that uniquely identifies this Service. </param>
         /// <param name="friendlyName"> A human readable description of this resource. </param>
+        /// <param name="push"> Optional service level push factors configuration </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
                                                                                      string friendlyName = null,
+                                                                                     string push = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, Push = push};
             return await UpdateAsync(options, client);
         }
         #endif

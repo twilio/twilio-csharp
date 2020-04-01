@@ -525,7 +525,7 @@ namespace Twilio.Rest.Chat.V2.Service
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The SID of the assigned to the user
+        /// The SID of the Role assigned to the user
         /// </summary>
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }

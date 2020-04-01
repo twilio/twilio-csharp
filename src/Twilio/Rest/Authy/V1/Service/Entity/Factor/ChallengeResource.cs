@@ -316,6 +316,157 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         }
         #endif
 
+        private static Request BuildReadRequest(ReadChallengeOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Authy,
+                "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges",
+                client.Region,
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Retrieve a list of all Challenges for a Factor.
+        /// </summary>
+        /// <param name="options"> Read Challenge parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Challenge </returns>
+        public static ResourceSet<ChallengeResource> Read(ReadChallengeOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+
+            var page = Page<ChallengeResource>.FromJson("challenges", response.Content);
+            return new ResourceSet<ChallengeResource>(page, options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Retrieve a list of all Challenges for a Factor.
+        /// </summary>
+        /// <param name="options"> Read Challenge parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ChallengeResource>> ReadAsync(ReadChallengeOptions options,
+                                                                                                  ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<ChallengeResource>.FromJson("challenges", response.Content);
+            return new ResourceSet<ChallengeResource>(page, options, client);
+        }
+        #endif
+
+        /// <summary>
+        /// Retrieve a list of all Challenges for a Factor.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathFactorSid"> Factor Sid. </param>
+        /// <param name="status"> The Status of theChallenges to fetch </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Challenge </returns>
+        public static ResourceSet<ChallengeResource> Read(string pathServiceSid,
+                                                          string pathIdentity,
+                                                          string pathFactorSid,
+                                                          ChallengeResource.ChallengeStatusesEnum status = null,
+                                                          int? pageSize = null,
+                                                          long? limit = null,
+                                                          ITwilioRestClient client = null)
+        {
+            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid){Status = status, PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Retrieve a list of all Challenges for a Factor.
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathFactorSid"> Factor Sid. </param>
+        /// <param name="status"> The Status of theChallenges to fetch </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Challenge </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<ChallengeResource>> ReadAsync(string pathServiceSid,
+                                                                                                  string pathIdentity,
+                                                                                                  string pathFactorSid,
+                                                                                                  ChallengeResource.ChallengeStatusesEnum status = null,
+                                                                                                  int? pageSize = null,
+                                                                                                  long? limit = null,
+                                                                                                  ITwilioRestClient client = null)
+        {
+            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid){Status = status, PageSize = pageSize, Limit = limit};
+            return await ReadAsync(options, client);
+        }
+        #endif
+
+        /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns>
+        public static Page<ChallengeResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<ChallengeResource>.FromJson("challenges", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns>
+        public static Page<ChallengeResource> NextPage(Page<ChallengeResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(
+                    Rest.Domain.Authy,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<ChallengeResource>.FromJson("challenges", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns>
+        public static Page<ChallengeResource> PreviousPage(Page<ChallengeResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(
+                    Rest.Domain.Authy,
+                    client.Region
+                )
+            );
+
+            var response = client.Request(request);
+            return Page<ChallengeResource>.FromJson("challenges", response.Content);
+        }
+
         private static Request BuildUpdateRequest(UpdateChallengeOptions options, ITwilioRestClient client)
         {
             return new Request(

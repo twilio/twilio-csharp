@@ -292,10 +292,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <returns> A single instance of Deployment </returns>
         public static DeploymentResource Create(string pathServiceSid,
                                                 string pathEnvironmentSid,
-                                                string buildSid,
+                                                string buildSid = null,
                                                 ITwilioRestClient client = null)
         {
-            var options = new CreateDeploymentOptions(pathServiceSid, pathEnvironmentSid, buildSid);
+            var options = new CreateDeploymentOptions(pathServiceSid, pathEnvironmentSid){BuildSid = buildSid};
             return Create(options, client);
         }
 
@@ -310,10 +310,10 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// <returns> Task that resolves to A single instance of Deployment </returns>
         public static async System.Threading.Tasks.Task<DeploymentResource> CreateAsync(string pathServiceSid,
                                                                                         string pathEnvironmentSid,
-                                                                                        string buildSid,
+                                                                                        string buildSid = null,
                                                                                         ITwilioRestClient client = null)
         {
-            var options = new CreateDeploymentOptions(pathServiceSid, pathEnvironmentSid, buildSid);
+            var options = new CreateDeploymentOptions(pathServiceSid, pathEnvironmentSid){BuildSid = buildSid};
             return await CreateAsync(options, client);
         }
         #endif

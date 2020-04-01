@@ -186,6 +186,64 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
+    /// Retrieve a list of all Challenges for a Factor.
+    /// </summary>
+    public class ReadChallengeOptions : ReadOptions<ChallengeResource>
+    {
+        /// <summary>
+        /// Service Sid.
+        /// </summary>
+        public string PathServiceSid { get; }
+        /// <summary>
+        /// Unique identity of the Entity
+        /// </summary>
+        public string PathIdentity { get; }
+        /// <summary>
+        /// Factor Sid.
+        /// </summary>
+        public string PathFactorSid { get; }
+        /// <summary>
+        /// The Status of theChallenges to fetch
+        /// </summary>
+        public ChallengeResource.ChallengeStatusesEnum Status { get; set; }
+
+        /// <summary>
+        /// Construct a new ReadChallengeOptions
+        /// </summary>
+        /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathFactorSid"> Factor Sid. </param>
+        public ReadChallengeOptions(string pathServiceSid, string pathIdentity, string pathFactorSid)
+        {
+            PathServiceSid = pathServiceSid;
+            PathIdentity = pathIdentity;
+            PathFactorSid = pathFactorSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
+    /// currently do not have developer preview access, please contact help@twilio.com.
+    ///
     /// Verify a specific Challenge.
     /// </summary>
     public class UpdateChallengeOptions : IOptions<ChallengeResource>
