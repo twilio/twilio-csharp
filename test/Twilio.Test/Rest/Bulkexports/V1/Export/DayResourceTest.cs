@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1.Export
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"redirect_to\": \"https://api.bulkexports.s3.amazonaws.com/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"redirect_to\": \"https://www.twilio.com\"}"
                                      ));
 
             var response = DayResource.Fetch("resource_type", "day", client: twilioRestClient);
