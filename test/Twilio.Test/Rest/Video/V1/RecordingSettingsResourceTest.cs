@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Video.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"string\",\"aws_credentials_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"encryption_key_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"aws_s3_url\": \"https://my-super-duper-bucket.s3.amazonaws.com/my/path/\",\"aws_storage_enabled\": true,\"encryption_enabled\": true,\"url\": \"https://video.twilio.com/v1/RecordingSettings/Default\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"string\",\"aws_credentials_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"encryption_key_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"aws_s3_url\": \"https://www.twilio.com\",\"aws_storage_enabled\": true,\"encryption_enabled\": true,\"url\": \"https://video.twilio.com/v1/RecordingSettings/Default\"}"
                                      ));
 
             var response = RecordingSettingsResource.Fetch(client: twilioRestClient);
@@ -86,7 +86,7 @@ namespace Twilio.Tests.Rest.Video.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"aws_credentials_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"encryption_key_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"aws_s3_url\": \"https://my-super-duper-bucket.s3.amazonaws.com/my/path/\",\"aws_storage_enabled\": true,\"encryption_enabled\": true,\"url\": \"https://video.twilio.com/v1/RecordingSettings/Default\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"aws_credentials_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"encryption_key_sid\": \"CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"aws_s3_url\": \"https://www.twilio.com\",\"aws_storage_enabled\": true,\"encryption_enabled\": true,\"url\": \"https://video.twilio.com/v1/RecordingSettings/Default\"}"
                                      ));
 
             var response = RecordingSettingsResource.Create("friendly_name", client: twilioRestClient);
