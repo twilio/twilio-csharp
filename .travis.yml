@@ -23,3 +23,11 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+
+notifications:
+  slack:
+    if: branch = master
+    on_success: never
+    on_failure: change
+    rooms:
+      - secure: VvnsqrTi9RKxxlZtOL3fAXlXCcKTGbXo6UrB9AGtYRx8xjFgwnKt+RONthbiYXr8auk8XbX5JKyyFB6Vzuc8zzu3a15BlXMtgaiPcRd2KKR4J8RzJbfNw2Ncx+M27mB+/8gXh+4XedjjsurXbJsNj2AUAz/oW4LPgjdURj/H6M0=
