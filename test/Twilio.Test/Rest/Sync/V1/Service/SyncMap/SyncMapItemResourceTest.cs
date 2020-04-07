@@ -103,12 +103,12 @@ namespace Twilio.Tests.Rest.Sync.V1.Service.SyncMap
                 ""
             );
             request.AddPostParam("Key", Serialize("key"));
-            request.AddPostParam("Data", Serialize("{}"));
+            request.AddPostParam("Data", Serialize(new Dictionary<string, Object>()));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SyncMapItemResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "key", "{}", client: twilioRestClient);
+                SyncMapItemResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "key", new Dictionary<string, Object>(), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -126,7 +126,7 @@ namespace Twilio.Tests.Rest.Sync.V1.Service.SyncMap
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"created_by\": \"created_by\",\"data\": {},\"date_expires\": \"2015-07-30T21:00:00Z\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"key\": \"key\",\"map_sid\": \"MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"revision\": \"revision\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://sync.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Maps/MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/key\"}"
                                      ));
 
-            var response = SyncMapItemResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "key", "{}", client: twilioRestClient);
+            var response = SyncMapItemResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "MPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "key", new Dictionary<string, Object>(), client: twilioRestClient);
             Assert.NotNull(response);
         }
 

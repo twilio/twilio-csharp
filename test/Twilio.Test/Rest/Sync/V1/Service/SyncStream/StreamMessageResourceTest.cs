@@ -30,12 +30,12 @@ namespace Twilio.Tests.Rest.Sync.V1.Service.SyncStream
                 "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Streams/TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages",
                 ""
             );
-            request.AddPostParam("Data", Serialize("{}"));
+            request.AddPostParam("Data", Serialize(new Dictionary<string, Object>()));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                StreamMessageResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "{}", client: twilioRestClient);
+                StreamMessageResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Dictionary<string, Object>(), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -53,7 +53,7 @@ namespace Twilio.Tests.Rest.Sync.V1.Service.SyncStream
                                          "{\"sid\": \"TZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"data\": {}}"
                                      ));
 
-            var response = StreamMessageResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "{}", client: twilioRestClient);
+            var response = StreamMessageResource.Create("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "TOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Dictionary<string, Object>(), client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

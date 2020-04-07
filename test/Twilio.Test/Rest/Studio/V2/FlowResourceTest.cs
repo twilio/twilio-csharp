@@ -32,12 +32,12 @@ namespace Twilio.Tests.Rest.Studio.V2
             );
             request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             request.AddPostParam("Status", Serialize(FlowResource.StatusEnum.Draft));
-            request.AddPostParam("Definition", Serialize("{}"));
+            request.AddPostParam("Definition", Serialize(new Dictionary<string, Object>()));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FlowResource.Create("friendly_name", FlowResource.StatusEnum.Draft, "{}", client: twilioRestClient);
+                FlowResource.Create("friendly_name", FlowResource.StatusEnum.Draft, new Dictionary<string, Object>(), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -55,7 +55,7 @@ namespace Twilio.Tests.Rest.Studio.V2
                                          "{\"sid\": \"FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"definition\": {\"initial_state\": \"Trigger\"},\"friendly_name\": \"Test Flow\",\"status\": \"published\",\"revision\": 1,\"commit_message\": null,\"valid\": true,\"errors\": [],\"webhook_url\": \"http://webhooks.twilio.com/v1/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2017-11-06T12:00:00Z\",\"date_updated\": null,\"url\": \"https://studio.twilio.com/v2/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"test_users\": \"https://studio.twilio.com/v2/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/TestUsers\",\"revisions\": \"https://studio.twilio.com/v2/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Revisions\",\"executions\": \"https://studio.twilio.com/v2/Flows/FWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Executions\"}}"
                                      ));
 
-            var response = FlowResource.Create("friendly_name", FlowResource.StatusEnum.Draft, "{}", client: twilioRestClient);
+            var response = FlowResource.Create("friendly_name", FlowResource.StatusEnum.Draft, new Dictionary<string, Object>(), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
