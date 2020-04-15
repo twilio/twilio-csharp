@@ -533,6 +533,11 @@ namespace Twilio.Rest.Studio.V2
         [JsonProperty("errors")]
         public List<object> Errors { get; private set; }
         /// <summary>
+        /// List of warnings in the flow definition
+        /// </summary>
+        [JsonProperty("warnings")]
+        public List<object> Warnings { get; private set; }
+        /// <summary>
         /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]

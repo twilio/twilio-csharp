@@ -194,4 +194,50 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
     }
 
+    /// <summary>
+    /// Update the status of an Execution to `ended`.
+    /// </summary>
+    public class UpdateExecutionOptions : IOptions<ExecutionResource>
+    {
+        /// <summary>
+        /// The SID of the Flow
+        /// </summary>
+        public string PathFlowSid { get; }
+        /// <summary>
+        /// The SID of the Execution resource to update
+        /// </summary>
+        public string PathSid { get; }
+        /// <summary>
+        /// The status of the Execution
+        /// </summary>
+        public ExecutionResource.StatusEnum Status { get; }
+
+        /// <summary>
+        /// Construct a new UpdateExecutionOptions
+        /// </summary>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathSid"> The SID of the Execution resource to update </param>
+        /// <param name="status"> The status of the Execution </param>
+        public UpdateExecutionOptions(string pathFlowSid, string pathSid, ExecutionResource.StatusEnum status)
+        {
+            PathFlowSid = pathFlowSid;
+            PathSid = pathSid;
+            Status = status;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            return p;
+        }
+    }
+
 }

@@ -14,24 +14,24 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// ReadExecutionStepOptions
+    /// Retrieve a list of all Steps for an Execution.
     /// </summary>
     public class ReadExecutionStepOptions : ReadOptions<ExecutionStepResource>
     {
         /// <summary>
-        /// The flow_sid
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The execution_sid
+        /// The SID of the Execution
         /// </summary>
         public string PathExecutionSid { get; }
 
         /// <summary>
         /// Construct a new ReadExecutionStepOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathExecutionSid"> The execution_sid </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
         public ReadExecutionStepOptions(string pathFlowSid, string pathExecutionSid)
         {
             PathFlowSid = pathFlowSid;
@@ -56,29 +56,29 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// FetchExecutionStepOptions
+    /// Retrieve a Step.
     /// </summary>
     public class FetchExecutionStepOptions : IOptions<ExecutionStepResource>
     {
         /// <summary>
-        /// The flow_sid
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The execution_sid
+        /// The SID of the Execution
         /// </summary>
         public string PathExecutionSid { get; }
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchExecutionStepOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathExecutionSid"> The execution_sid </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
         public FetchExecutionStepOptions(string pathFlowSid, string pathExecutionSid, string pathSid)
         {
             PathFlowSid = pathFlowSid;

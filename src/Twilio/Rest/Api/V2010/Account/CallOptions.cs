@@ -147,7 +147,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string Byoc { get; set; }
         /// <summary>
-        /// Reason for the call (Beta)
+        /// Reason for the call (Branded Calls Beta)
         /// </summary>
         public string CallReason { get; set; }
 

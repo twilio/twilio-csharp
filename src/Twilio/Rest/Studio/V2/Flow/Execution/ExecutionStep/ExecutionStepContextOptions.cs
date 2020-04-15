@@ -14,29 +14,29 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution.ExecutionStep
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// FetchExecutionStepContextOptions
+    /// Retrieve the context for an Execution Step.
     /// </summary>
     public class FetchExecutionStepContextOptions : IOptions<ExecutionStepContextResource>
     {
         /// <summary>
-        /// The flow_sid
+        /// The SID of the Flow
         /// </summary>
         public string PathFlowSid { get; }
         /// <summary>
-        /// The execution_sid
+        /// The SID of the Execution
         /// </summary>
         public string PathExecutionSid { get; }
         /// <summary>
-        /// The step_sid
+        /// Step SID
         /// </summary>
         public string PathStepSid { get; }
 
         /// <summary>
         /// Construct a new FetchExecutionStepContextOptions
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathExecutionSid"> The execution_sid </param>
-        /// <param name="pathStepSid"> The step_sid </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
+        /// <param name="pathStepSid"> Step SID </param>
         public FetchExecutionStepContextOptions(string pathFlowSid, string pathExecutionSid, string pathStepSid)
         {
             PathFlowSid = pathFlowSid;

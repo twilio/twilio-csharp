@@ -245,6 +245,10 @@ namespace Twilio.TwiML.Voice
         /// Specify the model that is best suited for your use case
         /// </summary>
         public Gather.SpeechModelEnum SpeechModel { get; set; }
+        /// <summary>
+        /// Use enhanced speech model
+        /// </summary>
+        public bool? Enhanced { get; set; }
 
         /// <summary>
         /// Create a new Gather
@@ -267,6 +271,7 @@ namespace Twilio.TwiML.Voice
         /// <param name="debug"> Allow debug for gather </param>
         /// <param name="actionOnEmptyResult"> Force webhook to the action URL event if there is no input </param>
         /// <param name="speechModel"> Specify the model that is best suited for your use case </param>
+        /// <param name="enhanced"> Use enhanced speech model </param>
         public Gather(List<Gather.InputEnum> input = null,
                       Uri action = null,
                       Twilio.Http.HttpMethod method = null,
@@ -283,7 +288,8 @@ namespace Twilio.TwiML.Voice
                       bool? bargeIn = null,
                       bool? debug = null,
                       bool? actionOnEmptyResult = null,
-                      Gather.SpeechModelEnum speechModel = null) : base("Gather")
+                      Gather.SpeechModelEnum speechModel = null,
+                      bool? enhanced = null) : base("Gather")
         {
             this.Input = input;
             this.Action = action;
@@ -302,6 +308,7 @@ namespace Twilio.TwiML.Voice
             this.Debug = debug;
             this.ActionOnEmptyResult = actionOnEmptyResult;
             this.SpeechModel = speechModel;
+            this.Enhanced = enhanced;
         }
 
         /// <summary>
@@ -377,6 +384,10 @@ namespace Twilio.TwiML.Voice
             if (this.SpeechModel != null)
             {
                 attributes.Add(new XAttribute("speechModel", this.SpeechModel.ToString()));
+            }
+            if (this.Enhanced != null)
+            {
+                attributes.Add(new XAttribute("enhanced", this.Enhanced.Value.ToString().ToLower()));
             }
             return attributes;
         }

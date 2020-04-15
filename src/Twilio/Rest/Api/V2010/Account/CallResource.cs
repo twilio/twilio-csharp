@@ -149,7 +149,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///                              </param>
         /// <param name="asyncAmdStatusCallbackMethod"> HTTP Method to use with async_amd_status_callback </param>
         /// <param name="byoc"> BYOC trunk SID (Beta) </param>
-        /// <param name="callReason"> Reason for the call (Beta) </param>
+        /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Call </returns>
         public static CallResource Create(IEndpoint to,
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Api.V2010.Account
         ///                              </param>
         /// <param name="asyncAmdStatusCallbackMethod"> HTTP Method to use with async_amd_status_callback </param>
         /// <param name="byoc"> BYOC trunk SID (Beta) </param>
-        /// <param name="callReason"> Reason for the call (Beta) </param>
+        /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Call </returns>
         public static async System.Threading.Tasks.Task<CallResource> CreateAsync(IEndpoint to,

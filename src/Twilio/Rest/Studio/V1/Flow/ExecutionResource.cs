@@ -403,6 +403,82 @@ namespace Twilio.Rest.Studio.V1.Flow
         }
         #endif
 
+        private static Request BuildUpdateRequest(UpdateExecutionOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Studio,
+                "/v1/Flows/" + options.PathFlowSid + "/Executions/" + options.PathSid + "",
+                client.Region,
+                postParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Update the status of an Execution to `ended`.
+        /// </summary>
+        /// <param name="options"> Update Execution parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Execution </returns>
+        public static ExecutionResource Update(UpdateExecutionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update the status of an Execution to `ended`.
+        /// </summary>
+        /// <param name="options"> Update Execution parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<ExecutionResource> UpdateAsync(UpdateExecutionOptions options,
+                                                                                       ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Update the status of an Execution to `ended`.
+        /// </summary>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathSid"> The SID of the Execution resource to update </param>
+        /// <param name="status"> The status of the Execution </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Execution </returns>
+        public static ExecutionResource Update(string pathFlowSid,
+                                               string pathSid,
+                                               ExecutionResource.StatusEnum status,
+                                               ITwilioRestClient client = null)
+        {
+            var options = new UpdateExecutionOptions(pathFlowSid, pathSid, status);
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update the status of an Execution to `ended`.
+        /// </summary>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathSid"> The SID of the Execution resource to update </param>
+        /// <param name="status"> The status of the Execution </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Execution </returns>
+        public static async System.Threading.Tasks.Task<ExecutionResource> UpdateAsync(string pathFlowSid,
+                                                                                       string pathSid,
+                                                                                       ExecutionResource.StatusEnum status,
+                                                                                       ITwilioRestClient client = null)
+        {
+            var options = new UpdateExecutionOptions(pathFlowSid, pathSid, status);
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a ExecutionResource object
         /// </summary>

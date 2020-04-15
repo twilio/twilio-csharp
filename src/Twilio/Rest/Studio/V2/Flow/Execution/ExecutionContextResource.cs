@@ -34,7 +34,7 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         }
 
         /// <summary>
-        /// fetch
+        /// Retrieve the most recent context for an Execution.
         /// </summary>
         /// <param name="options"> Fetch ExecutionContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve the most recent context for an Execution.
         /// </summary>
         /// <param name="options"> Fetch ExecutionContext parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,10 +63,10 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         #endif
 
         /// <summary>
-        /// fetch
+        /// Retrieve the most recent context for an Execution.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathExecutionSid"> The execution_sid </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExecutionContext </returns>
         public static ExecutionContextResource Fetch(string pathFlowSid,
@@ -79,10 +79,10 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Retrieve the most recent context for an Execution.
         /// </summary>
-        /// <param name="pathFlowSid"> The flow_sid </param>
-        /// <param name="pathExecutionSid"> The execution_sid </param>
+        /// <param name="pathFlowSid"> The SID of the Flow </param>
+        /// <param name="pathExecutionSid"> The SID of the Execution </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExecutionContext </returns>
         public static async System.Threading.Tasks.Task<ExecutionContextResource> FetchAsync(string pathFlowSid,
@@ -113,27 +113,27 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
         }
 
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The context
+        /// The current state of the flow
         /// </summary>
         [JsonProperty("context")]
         public object Context { get; private set; }
         /// <summary>
-        /// The flow_sid
+        /// The SID of the Flow
         /// </summary>
         [JsonProperty("flow_sid")]
         public string FlowSid { get; private set; }
         /// <summary>
-        /// The execution_sid
+        /// The SID of the Execution
         /// </summary>
         [JsonProperty("execution_sid")]
         public string ExecutionSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
