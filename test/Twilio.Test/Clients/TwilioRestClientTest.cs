@@ -73,12 +73,12 @@ namespace Twilio.Tests.Clients
                                     ""more_info"": ""https://www.twilio.com/docs/errors/20001"",
                                     ""status"": 400,
                                     ""details"": {
-                                        ""foo"":""bar""
+                                        ""foo"": ""bar""
                                     }}";
             client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.BadRequest, jsonResponse));
             try {
                 Request request =  new Request(HttpMethod.Get,"https://www.contoso.com");
-                TwilioRestClient twilioClient = new TwilioRestClient("foo","bar",null,null,client);
+                TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", null, null, client);
                 twilioClient.Request(request);
                 Assert.Fail("Should have failed");
             } catch (ApiException e) {
@@ -86,7 +86,7 @@ namespace Twilio.Tests.Clients
                 Assert.AreEqual(20001, e.Code);
                 Assert.AreEqual("https://www.twilio.com/docs/errors/20001", e.MoreInfo);
                 Assert.AreEqual(400, e.Status);
-                var expectedDetails = new Dictionary<string,object>();
+                var expectedDetails = new Dictionary<string, object>();
                 expectedDetails.Add("foo","bar");
                 Assert.AreEqual(expectedDetails, e.Details);
             }

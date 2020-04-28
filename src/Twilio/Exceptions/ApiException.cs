@@ -24,9 +24,9 @@ namespace Twilio.Exceptions
         public string MoreInfo { get; }
 
         /// <summary>
-        /// Any more details about the error, if any was provided
+        /// Any more details about the error, if any were provided
         /// </summary>
-        public Dictionary<string,object> Details { get; }
+        public Dictionary<string, object> Details { get; }
 
         /// <summary>
         /// Create a ApiException with message
@@ -55,7 +55,7 @@ namespace Twilio.Exceptions
             int status,
             string message,
             string moreInfo,
-            Dictionary<string,object> details = null,
+            Dictionary<string, object> details = null,
             Exception exception = null
         ) : base(message, exception)
         {
