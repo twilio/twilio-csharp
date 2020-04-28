@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace Twilio.Exceptions
 {
@@ -27,7 +28,7 @@ namespace Twilio.Exceptions
             get
             {
                 return _message;
-            }        
+            }
         }
 
         [JsonProperty("message")]
@@ -41,7 +42,13 @@ namespace Twilio.Exceptions
         /// </summary>
         [JsonProperty("more_info")]
         public string MoreInfo { get; private set; }
-        
+
+        /// <summary>
+        /// Details if provided
+        /// </summary>
+        [JsonProperty("details")]
+        public Dictionary<string, object> Details { get; private set; }
+
         /// <summary>
         /// Create an empty RestException
         /// </summary>
@@ -54,12 +61,15 @@ namespace Twilio.Exceptions
             [JsonProperty("code")]
             int code,
             [JsonProperty("more_info")]
-            string moreInfo
+            string moreInfo,
+            [JsonProperty("details")]
+            Dictionary<string, object> details
         ) {
             Status = status;
             Code = code;
             _message = message;
             MoreInfo = moreInfo;
+            Details = details;
         }
 
         /// <summary>

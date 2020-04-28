@@ -152,7 +152,8 @@ namespace Twilio.Clients
                 restException.Code,
                 (int)response.StatusCode,
                 restException.Message ?? "Unable to make request, " + response.StatusCode,
-                restException.MoreInfo
+                restException.MoreInfo,
+                restException.Details
             );
         }
 

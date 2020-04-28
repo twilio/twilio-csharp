@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Twilio.Exceptions
 {
@@ -23,6 +24,11 @@ namespace Twilio.Exceptions
         public string MoreInfo { get; }
 
         /// <summary>
+        /// Any more details about the error, if any were provided
+        /// </summary>
+        public Dictionary<string, object> Details { get; }
+
+        /// <summary>
         /// Create a ApiException with message
         /// </summary>
         /// <param name="message">Exception message</param>
@@ -42,19 +48,21 @@ namespace Twilio.Exceptions
         /// <param name="status">HTTP status code</param>
         /// <param name="message">Error message</param>
         /// <param name="moreInfo">More info if provided</param>
+        /// <param name="details">Details if provided</param>
         /// <param name="exception">Original exception</param>
         public ApiException(
             int code,
             int status,
             string message,
             string moreInfo,
+            Dictionary<string, object> details = null,
             Exception exception = null
         ) : base(message, exception)
         {
             Code = code;
             Status = status;
             MoreInfo = moreInfo;
+            Details = details;
         }
     }
 }
-
