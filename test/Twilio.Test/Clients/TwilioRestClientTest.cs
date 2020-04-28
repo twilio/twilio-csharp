@@ -87,7 +87,7 @@ namespace Twilio.Tests.Clients
                 Assert.AreEqual("https://www.twilio.com/docs/errors/20001", e.MoreInfo);
                 Assert.AreEqual(400, e.Status);
                 var expectedDetails = new Dictionary<string, object>();
-                expectedDetails.Add("foo","bar");
+                expectedDetails.Add("foo", "bar");
                 Assert.AreEqual(expectedDetails, e.Details);
             }
         }
