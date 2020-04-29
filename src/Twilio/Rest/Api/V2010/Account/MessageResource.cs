@@ -149,6 +149,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="maxPrice"> The total maximum price up to 4 decimal places in US dollars acceptable for the message to
         ///                be delivered. </param>
         /// <param name="provideFeedback"> Whether to confirm delivery of the message </param>
+        /// <param name="attempt"> Total numer of attempts made , this inclusive to send out the message </param>
         /// <param name="validityPeriod"> The number of seconds that the message can remain in our outgoing queue. </param>
         /// <param name="forceDelivery"> Reserved </param>
         /// <param name="contentRetention"> Determines if the message content can be stored or redacted based on privacy
@@ -170,6 +171,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                              string applicationSid = null,
                                              decimal? maxPrice = null,
                                              bool? provideFeedback = null,
+                                             int? attempt = null,
                                              int? validityPeriod = null,
                                              bool? forceDelivery = null,
                                              MessageResource.ContentRetentionEnum contentRetention = null,
@@ -178,7 +180,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                              List<string> persistentAction = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
             return Create(options, client);
         }
 
@@ -197,6 +199,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="maxPrice"> The total maximum price up to 4 decimal places in US dollars acceptable for the message to
         ///                be delivered. </param>
         /// <param name="provideFeedback"> Whether to confirm delivery of the message </param>
+        /// <param name="attempt"> Total numer of attempts made , this inclusive to send out the message </param>
         /// <param name="validityPeriod"> The number of seconds that the message can remain in our outgoing queue. </param>
         /// <param name="forceDelivery"> Reserved </param>
         /// <param name="contentRetention"> Determines if the message content can be stored or redacted based on privacy
@@ -218,6 +221,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      string applicationSid = null,
                                                                                      decimal? maxPrice = null,
                                                                                      bool? provideFeedback = null,
+                                                                                     int? attempt = null,
                                                                                      int? validityPeriod = null,
                                                                                      bool? forceDelivery = null,
                                                                                      MessageResource.ContentRetentionEnum contentRetention = null,
@@ -226,7 +230,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      List<string> persistentAction = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
+            var options = new CreateMessageOptions(to){PathAccountSid = pathAccountSid, From = from, MessagingServiceSid = messagingServiceSid, Body = body, MediaUrl = mediaUrl, StatusCallback = statusCallback, ApplicationSid = applicationSid, MaxPrice = maxPrice, ProvideFeedback = provideFeedback, Attempt = attempt, ValidityPeriod = validityPeriod, ForceDelivery = forceDelivery, ContentRetention = contentRetention, AddressRetention = addressRetention, SmartEncoded = smartEncoded, PersistentAction = persistentAction};
             return await CreateAsync(options, client);
         }
         #endif

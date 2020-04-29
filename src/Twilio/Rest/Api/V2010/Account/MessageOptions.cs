@@ -58,6 +58,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public bool? ProvideFeedback { get; set; }
         /// <summary>
+        /// Total numer of attempts made , this inclusive to send out the message
+        /// </summary>
+        public int? Attempt { get; set; }
+        /// <summary>
         /// The number of seconds that the message can remain in our outgoing queue.
         /// </summary>
         public int? ValidityPeriod { get; set; }
@@ -142,6 +146,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (ProvideFeedback != null)
             {
                 p.Add(new KeyValuePair<string, string>("ProvideFeedback", ProvideFeedback.Value.ToString().ToLower()));
+            }
+
+            if (Attempt != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Attempt", Attempt.ToString()));
             }
 
             if (ValidityPeriod != null)

@@ -315,8 +315,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
         /// <param name="integrationPriority"> The task priority of a new task </param>
         /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
-        /// <param name="longLived"> Whether new channels are long-lived </param>
-        /// <param name="janitorEnabled"> Boolean flag for enabling or disabling the Janitor </param>
+        /// <param name="longLived"> Reuse this chat channel for future interactions with a contact </param>
+        /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted </param>
         /// <param name="integrationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
@@ -361,8 +361,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
         /// <param name="integrationPriority"> The task priority of a new task </param>
         /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
-        /// <param name="longLived"> Whether new channels are long-lived </param>
-        /// <param name="janitorEnabled"> Boolean flag for enabling or disabling the Janitor </param>
+        /// <param name="longLived"> Reuse this chat channel for future interactions with a contact </param>
+        /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted </param>
         /// <param name="integrationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
@@ -448,8 +448,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
         /// <param name="integrationPriority"> The task priority of a new task </param>
         /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
-        /// <param name="longLived"> Whether new channels created are long-lived </param>
-        /// <param name="janitorEnabled"> Boolean flag for enabling or disabling the Janitor </param>
+        /// <param name="longLived"> Reuse this chat channel for future interactions with a contact </param>
+        /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted. </param>
         /// <param name="integrationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
@@ -496,8 +496,8 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
         /// <param name="integrationPriority"> The task priority of a new task </param>
         /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
-        /// <param name="longLived"> Whether new channels created are long-lived </param>
-        /// <param name="janitorEnabled"> Boolean flag for enabling or disabling the Janitor </param>
+        /// <param name="longLived"> Reuse this chat channel for future interactions with a contact </param>
+        /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted. </param>
         /// <param name="integrationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
@@ -668,12 +668,12 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("integration")]
         public object Integration { get; private set; }
         /// <summary>
-        /// Whether new channels are long-lived
+        /// Re-use this chat channel for future interactions with a contact
         /// </summary>
         [JsonProperty("long_lived")]
         public bool? LongLived { get; private set; }
         /// <summary>
-        /// Boolean flag for enabling or disabling the Janitor
+        /// Remove active Proxy sessions if the corresponding Task is deleted.
         /// </summary>
         [JsonProperty("janitor_enabled")]
         public bool? JanitorEnabled { get; private set; }

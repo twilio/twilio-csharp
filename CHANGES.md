@@ -1,6 +1,21 @@
 twilio-csharp Changelog
 =======================
 
+[2020-04-29] Version 5.40.0
+---------------------------
+**Library - Feature**
+- [PR #519](https://github.com/twilio/twilio-csharp/pull/519): add details to api exception. Thanks to [@ashish-s](https://github.com/ashish-s)!
+
+**Preview**
+- Added `Dispatch` version to `preview`
+
+**Studio**
+- Reroute Create Execution for V2 to the V2 downstream
+
+**Supersim**
+- Add Networks resource
+
+
 [2020-04-15] Version 5.39.1
 ---------------------------
 **Library - Chore**

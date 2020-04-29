@@ -132,11 +132,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public bool? IntegrationCreationOnMessage { get; set; }
         /// <summary>
-        /// Whether new channels are long-lived
+        /// Reuse this chat channel for future interactions with a contact
         /// </summary>
         public bool? LongLived { get; set; }
         /// <summary>
-        /// Boolean flag for enabling or disabling the Janitor
+        /// Remove active Proxy sessions if the corresponding Task is deleted
         /// </summary>
         public bool? JanitorEnabled { get; set; }
         /// <summary>
@@ -320,11 +320,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public bool? IntegrationCreationOnMessage { get; set; }
         /// <summary>
-        /// Whether new channels created are long-lived
+        /// Reuse this chat channel for future interactions with a contact
         /// </summary>
         public bool? LongLived { get; set; }
         /// <summary>
-        /// Boolean flag for enabling or disabling the Janitor
+        /// Remove active Proxy sessions if the corresponding Task is deleted.
         /// </summary>
         public bool? JanitorEnabled { get; set; }
         /// <summary>

@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.Serverless.V1.Service.Asset
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"sid\": \"ZN00000000000000000000000000000000\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ZS00000000000000000000000000000000\",\"asset_sid\": \"ZH00000000000000000000000000000000\",\"path\": \"test-path\",\"visibility\": \"public\",\"date_created\": \"2018-11-10T20:00:00Z\",\"url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Assets/ZH00000000000000000000000000000000/Versions/ZN00000000000000000000000000000000\"}"
+                                         "{\"sid\": \"ZN00000000000000000000000000000000\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"ZS00000000000000000000000000000000\",\"asset_sid\": \"ZH00000000000000000000000000000000\",\"path\": \"/test-path\",\"visibility\": \"public\",\"date_created\": \"2018-11-10T20:00:00Z\",\"url\": \"https://serverless.twilio.com/v1/Services/ZS00000000000000000000000000000000/Assets/ZH00000000000000000000000000000000/Versions/ZN00000000000000000000000000000000\"}"
                                      ));
 
             var response = AssetVersionResource.Fetch("ZSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ZHXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ZNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);

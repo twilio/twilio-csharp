@@ -38,6 +38,10 @@ namespace Twilio.Rest.Conversations.V1
         /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// Current state of this conversation.
+        /// </summary>
+        public ConversationResource.StateEnum State { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -68,6 +72,11 @@ namespace Twilio.Rest.Conversations.V1
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+            }
+
+            if (State != null)
+            {
+                p.Add(new KeyValuePair<string, string>("State", State.ToString()));
             }
 
             return p;
@@ -105,6 +114,10 @@ namespace Twilio.Rest.Conversations.V1
         /// The unique id of the SMS Service this conversation belongs to.
         /// </summary>
         public string MessagingServiceSid { get; set; }
+        /// <summary>
+        /// Current state of this conversation.
+        /// </summary>
+        public ConversationResource.StateEnum State { get; set; }
 
         /// <summary>
         /// Construct a new UpdateConversationOptions
@@ -144,6 +157,11 @@ namespace Twilio.Rest.Conversations.V1
             if (MessagingServiceSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessagingServiceSid", MessagingServiceSid.ToString()));
+            }
+
+            if (State != null)
+            {
+                p.Add(new KeyValuePair<string, string>("State", State.ToString()));
             }
 
             return p;
