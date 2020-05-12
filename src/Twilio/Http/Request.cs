@@ -17,29 +17,44 @@ namespace Twilio.Http
     /// </summary>
     public class Request
     {
+        private static readonly string DEFAULT_REGION = "us1";
+
         /// <summary>
         /// HTTP Method
         /// </summary>
         public HttpMethod Method { get; }
 
+        private Uri Uri;
+
         /// <summary>
         /// Auth username
         /// </summary>
         public string Username { get; set; }
-        
+
         /// <summary>
         /// Auth password
         /// </summary>
         public string Password { get; set; }
-        
+
+        /// <summary>
+        /// Twilio region
+        /// </summary>
+        public string Region { get; set; }
+
+        /// <summary>
+        /// Twilio edge
+        /// </summary>
+        public string Edge { get; set; }
+
+        /// <summary>
+        /// Query params
+        /// </summary>
+        public List<KeyValuePair<string, string>> QueryParams { get; private set; }
+
         /// <summary>
         /// Post params
         /// </summary>
-        public List<KeyValuePair<string, string>> PostParams { get { return _postParams; } } 
-
-        private readonly Uri _uri;
-        private readonly List<KeyValuePair<string, string>> _queryParams;
-        private readonly List<KeyValuePair<string, string>> _postParams;
+        public List<KeyValuePair<string, string>> PostParams { get; private set; }
 
         /// <summary>
         /// Create a new Twilio request
@@ -49,9 +64,9 @@ namespace Twilio.Http
         public Request(HttpMethod method, string url)
         {
             Method = method;
-            _uri = new Uri(url);
-            _queryParams = new List<KeyValuePair<string, string>>();
-            _postParams = new List<KeyValuePair<string, string>>();
+            Uri = new Uri(url);
+            QueryParams = new List<KeyValuePair<string, string>>();
+            PostParams = new List<KeyValuePair<string, string>>();
         }
 
         /// <summary>
@@ -63,28 +78,24 @@ namespace Twilio.Http
         /// <param name="region">Twilio region</param>
         /// <param name="queryParams">Query parameters</param>
         /// <param name="postParams">Post data</param>
+        /// <param name="edge">Twilio edge</param>
         public Request(
             HttpMethod method,
             Domain domain,
             string uri,
-            string region,
-            List<KeyValuePair<string, string>> queryParams=null,
-            List<KeyValuePair<string, string>> postParams=null
+            string region = null,
+            List<KeyValuePair<string, string>> queryParams = null,
+            List<KeyValuePair<string, string>> postParams = null,
+            string edge = null
         )
         {
             Method = method;
+            Uri = new Uri("https://" + domain + ".twilio.com" + uri);
+            Region = region;
+            Edge = edge;
 
-            var b = new StringBuilder();
-            b.Append("https://").Append(domain);
-            if (!string.IsNullOrEmpty(region))
-            {
-                b.Append(".").Append(region);
-            }
-            b.Append(".twilio.com").Append(uri);
-
-            _uri = new Uri(b.ToString());
-            _queryParams = queryParams ?? new List<KeyValuePair<string, string>>();
-            _postParams = postParams ?? new List<KeyValuePair<string, string>>();
+            QueryParams = queryParams ?? new List<KeyValuePair<string, string>>();
+            PostParams = postParams ?? new List<KeyValuePair<string, string>>();
         }
 
         /// <summary>
@@ -93,9 +104,44 @@ namespace Twilio.Http
         /// <returns>Built URL including query parameters</returns>
         public Uri ConstructUrl()
         {
-            return _queryParams.Count > 0 ?
-                new Uri(_uri.AbsoluteUri + "?" + EncodeParameters(_queryParams)) :
-                new Uri(_uri.AbsoluteUri);
+            var uri = buildUri();
+            return QueryParams.Count > 0 ?
+                new Uri(uri.AbsoluteUri + "?" + EncodeParameters(QueryParams)) :
+                new Uri(uri.AbsoluteUri);
+        }
+
+        public Uri buildUri()
+        {
+            if (Region != null || Edge != null)
+            {
+                var uriBuilder = new UriBuilder(Uri);
+                var pieces = uriBuilder.Host.Split('.');
+                var product = pieces[0];
+                var domain = String.Join(".", pieces.Skip(pieces.Length - 2).ToArray());
+
+                var region = Region;
+                var edge = Edge;
+
+                if (pieces.Length == 4) // product.region.twilio.com
+                {
+                    region = region ?? pieces[1];
+                }
+                else if (pieces.Length == 5) // product.edge.region.twilio.com
+                {
+                    edge = edge ?? pieces[1];
+                    region = region ?? pieces[2];
+                }
+
+                if (edge != null && region == null)
+                    region = DEFAULT_REGION;
+
+                string[] parts = { product, edge, region, domain };
+
+                uriBuilder.Host = String.Join(".", parts.Where(part => !string.IsNullOrEmpty(part)));
+                return uriBuilder.Uri;
+            }
+
+            return Uri;
         }
 
         /// <summary>
@@ -108,7 +154,7 @@ namespace Twilio.Http
             Username = username;
             Password = password;
         }
-        
+
         private static string EncodeParameters(IEnumerable<KeyValuePair<string, string>> data)
         {
             var result = "";
@@ -133,14 +179,14 @@ namespace Twilio.Http
 
             return result;
         }
-        
+
         /// <summary>
         /// Encode POST data for transfer
         /// </summary>
         /// <returns>Encoded byte array</returns>
         public byte[] EncodePostParams()
         {
-            return Encoding.UTF8.GetBytes(EncodeParameters(_postParams));
+            return Encoding.UTF8.GetBytes(EncodeParameters(PostParams));
         }
 
         /// <summary>
@@ -150,7 +196,7 @@ namespace Twilio.Http
         /// <param name="value">value of parameter</param>
         public void AddQueryParam(string name, string value)
         {
-            AddParam(_queryParams, name, value);
+            AddParam(QueryParams, name, value);
         }
 
         /// <summary>
@@ -160,12 +206,12 @@ namespace Twilio.Http
         /// <param name="value">value of parameter</param>
         public void AddPostParam(string name, string value)
         {
-            AddParam(_postParams, name, value);
+            AddParam(PostParams, name, value);
         }
 
         private static void AddParam(ICollection<KeyValuePair<string, string>> list, string name, string value)
         {
-            list.Add(new KeyValuePair<string, string> (name, value));
+            list.Add(new KeyValuePair<string, string>(name, value));
         }
 
         /// <summary>
@@ -191,11 +237,10 @@ namespace Twilio.Http
 
             var other = (Request)obj;
             return Method.Equals(other.Method) &&
-                   _uri.Equals(other._uri) &&
-                   _queryParams.All(other._queryParams.Contains) &&
-                   _postParams.All(other._postParams.Contains);
+                   buildUri().Equals(other.buildUri()) &&
+                   QueryParams.All(other.QueryParams.Contains) &&
+                   PostParams.All(other.PostParams.Contains);
         }
-            
 
         /// <summary>
         /// Generate hash code for request
@@ -206,9 +251,9 @@ namespace Twilio.Http
             unchecked
             {
                 return (Method?.GetHashCode() ?? 0) ^
-                       (_uri?.GetHashCode() ?? 0) ^
-                       (_queryParams?.GetHashCode() ?? 0) ^
-                       (_postParams?.GetHashCode() ?? 0);
+                       (buildUri()?.GetHashCode() ?? 0) ^
+                       (QueryParams?.GetHashCode() ?? 0) ^
+                       (PostParams?.GetHashCode() ?? 0);
             }
         }
     }

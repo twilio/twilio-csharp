@@ -66,6 +66,15 @@ var message = MessageResource.Create(
 Console.WriteLine(message.Sid);
 ```
 
+### Specify Region and/or Edge
+
+```csharp
+TwilioClient.SetRegion("au1");
+TwilioClient.SetEdge("sydney");
+```
+
+This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
+
 ## Generating TwiML
 
 To control phone calls, your application needs to output [TwiML][twiml].

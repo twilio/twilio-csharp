@@ -35,6 +35,11 @@ namespace Twilio.Clients
         /// </summary>
         public string Region { get; }
 
+        /// <summary>
+        /// Twilio edge to make requests to
+        /// </summary>
+        public string Edge { get; set; }
+
         private readonly string _username;
         private readonly string _password;
 
@@ -47,12 +52,14 @@ namespace Twilio.Clients
         /// <param name="accountSid">account sid to make requests for</param>
         /// <param name="region">region to make requests for</param>
         /// <param name="httpClient">http client used to make the requests</param>
+        /// <param name="edge">edge to make requests for</param>
         public TwilioRestClient(
             string username,
             string password,
             string accountSid = null,
             string region = null,
-            HttpClient httpClient = null
+            HttpClient httpClient = null,
+            string edge = null
         )
         {
             _username = username;
@@ -60,7 +67,9 @@ namespace Twilio.Clients
 
             AccountSid = accountSid ?? username;
             HttpClient = httpClient ?? DefaultClient();
+
             Region = region;
+            Edge = edge;
         }
 
         /// <summary>
@@ -72,6 +81,13 @@ namespace Twilio.Clients
         public Response Request(Request request)
         {
             request.SetAuth(_username, _password);
+
+            if (Region != null)
+                request.Region = Region;
+
+            if (Edge != null)
+                request.Edge = Edge;
+
             Response response;
             try
             {
@@ -191,7 +207,8 @@ namespace Twilio.Clients
                     );
                 }
             }
-            catch (CertificateValidationException e) {
+            catch (CertificateValidationException e)
+            {
                 throw e;
             }
             catch (Exception e)
