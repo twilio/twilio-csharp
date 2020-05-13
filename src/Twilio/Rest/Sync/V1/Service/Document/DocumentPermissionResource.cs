@@ -28,7 +28,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Documents/" + options.PathDocumentSid + "/Permissions/" + options.PathIdentity + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -107,7 +106,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
                 HttpMethod.Delete,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Documents/" + options.PathDocumentSid + "/Permissions/" + options.PathIdentity + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -185,7 +183,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Documents/" + options.PathDocumentSid + "/Permissions",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -294,10 +291,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Sync,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Sync)
             );
 
             var response = client.Request(request);
@@ -315,10 +309,7 @@ namespace Twilio.Rest.Sync.V1.Service.Document
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Sync,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Sync)
             );
 
             var response = client.Request(request);
@@ -331,7 +322,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Documents/" + options.PathDocumentSid + "/Permissions/" + options.PathIdentity + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

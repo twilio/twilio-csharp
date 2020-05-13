@@ -41,7 +41,6 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -140,10 +139,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
@@ -160,10 +156,7 @@ namespace Twilio.Rest.IpMessaging.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
@@ -176,7 +169,6 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -270,7 +262,6 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -337,7 +328,6 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -431,7 +421,6 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

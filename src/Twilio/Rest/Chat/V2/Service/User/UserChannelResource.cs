@@ -54,7 +54,6 @@ namespace Twilio.Rest.Chat.V2.Service.User
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -161,10 +160,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Chat,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Chat)
             );
 
             var response = client.Request(request);
@@ -181,10 +177,7 @@ namespace Twilio.Rest.Chat.V2.Service.User
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Chat,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Chat)
             );
 
             var response = client.Request(request);
@@ -197,7 +190,6 @@ namespace Twilio.Rest.Chat.V2.Service.User
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -273,7 +265,6 @@ namespace Twilio.Rest.Chat.V2.Service.User
                 HttpMethod.Delete,
                 Rest.Domain.Chat,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -349,7 +340,6 @@ namespace Twilio.Rest.Chat.V2.Service.User
                 HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

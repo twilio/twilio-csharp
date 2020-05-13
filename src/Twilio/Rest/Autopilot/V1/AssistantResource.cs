@@ -29,7 +29,6 @@ namespace Twilio.Rest.Autopilot.V1
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -96,7 +95,6 @@ namespace Twilio.Rest.Autopilot.V1
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -195,10 +193,7 @@ namespace Twilio.Rest.Autopilot.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Autopilot,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Autopilot)
             );
 
             var response = client.Request(request);
@@ -215,10 +210,7 @@ namespace Twilio.Rest.Autopilot.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Autopilot,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Autopilot)
             );
 
             var response = client.Request(request);
@@ -231,7 +223,6 @@ namespace Twilio.Rest.Autopilot.V1
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -323,7 +314,6 @@ namespace Twilio.Rest.Autopilot.V1
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -425,7 +415,6 @@ namespace Twilio.Rest.Autopilot.V1
                 HttpMethod.Delete,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

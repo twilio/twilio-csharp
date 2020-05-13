@@ -26,7 +26,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -106,7 +105,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -190,7 +188,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -266,7 +263,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -373,10 +369,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Verify,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Verify)
             );
 
             var response = client.Request(request);
@@ -393,10 +386,7 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Verify,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Verify)
             );
 
             var response = client.Request(request);
@@ -409,7 +399,6 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Delete,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

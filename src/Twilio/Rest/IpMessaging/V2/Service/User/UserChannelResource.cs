@@ -54,7 +54,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -161,10 +160,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
@@ -181,10 +177,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
@@ -197,7 +190,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -273,7 +265,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -349,7 +340,6 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

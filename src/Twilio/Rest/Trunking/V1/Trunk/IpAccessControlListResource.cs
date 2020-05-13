@@ -26,7 +26,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathTrunkSid + "/IpAccessControlLists/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -97,7 +96,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathTrunkSid + "/IpAccessControlLists/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -167,7 +165,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathTrunkSid + "/IpAccessControlLists",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -242,7 +239,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathTrunkSid + "/IpAccessControlLists",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -347,10 +343,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Trunking,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Trunking)
             );
 
             var response = client.Request(request);
@@ -368,10 +361,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Trunking,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Trunking)
             );
 
             var response = client.Request(request);

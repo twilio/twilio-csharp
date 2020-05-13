@@ -44,7 +44,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathEnvironmentSid + "/Logs",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -163,10 +162,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Serverless,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Serverless)
             );
 
             var response = client.Request(request);
@@ -183,10 +179,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Serverless,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Serverless)
             );
 
             var response = client.Request(request);
@@ -199,7 +192,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathEnvironmentSid + "/Logs/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

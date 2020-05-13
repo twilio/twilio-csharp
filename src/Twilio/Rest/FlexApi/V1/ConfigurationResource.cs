@@ -41,7 +41,6 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
                 "/v1/Configuration",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -108,7 +107,6 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 "/v1/Configuration",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -172,7 +170,6 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 "/v1/Configuration",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

@@ -54,7 +54,6 @@ namespace Twilio.Rest.Api.V2010
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts.json",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -121,7 +120,6 @@ namespace Twilio.Rest.Api.V2010
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathSid ?? client.AccountSid) + ".json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -188,7 +186,6 @@ namespace Twilio.Rest.Api.V2010
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts.json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -295,10 +292,7 @@ namespace Twilio.Rest.Api.V2010
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Api,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Api)
             );
 
             var response = client.Request(request);
@@ -315,10 +309,7 @@ namespace Twilio.Rest.Api.V2010
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Api,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Api)
             );
 
             var response = client.Request(request);
@@ -331,7 +322,6 @@ namespace Twilio.Rest.Api.V2010
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathSid ?? client.AccountSid) + ".json",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

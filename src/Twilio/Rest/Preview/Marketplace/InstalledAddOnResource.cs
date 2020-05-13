@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.Marketplace
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -109,7 +108,6 @@ namespace Twilio.Rest.Preview.Marketplace
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -175,7 +173,6 @@ namespace Twilio.Rest.Preview.Marketplace
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -242,7 +239,6 @@ namespace Twilio.Rest.Preview.Marketplace
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -318,7 +314,6 @@ namespace Twilio.Rest.Preview.Marketplace
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -418,10 +413,7 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -438,10 +430,7 @@ namespace Twilio.Rest.Preview.Marketplace
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);

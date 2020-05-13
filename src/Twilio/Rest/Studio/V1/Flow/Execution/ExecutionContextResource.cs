@@ -26,7 +26,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Execution
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v1/Flows/" + options.PathFlowSid + "/Executions/" + options.PathExecutionSid + "/Context",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

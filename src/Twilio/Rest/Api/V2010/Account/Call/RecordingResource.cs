@@ -62,7 +62,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Recordings.json",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -156,7 +155,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Recordings/" + options.PathSid + ".json",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -244,7 +242,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Recordings/" + options.PathSid + ".json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -320,7 +317,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Recordings/" + options.PathSid + ".json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -396,7 +392,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Recordings.json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -515,10 +510,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Api,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Api)
             );
 
             var response = client.Request(request);
@@ -535,10 +527,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Api,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Api)
             );
 
             var response = client.Request(request);

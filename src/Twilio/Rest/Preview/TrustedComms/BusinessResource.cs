@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.TrustedComms
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/TrustedComms/Businesses/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

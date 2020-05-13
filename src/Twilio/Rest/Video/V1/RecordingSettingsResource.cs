@@ -26,7 +26,6 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/RecordingSettings/Default",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -90,7 +89,6 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 "/v1/RecordingSettings/Default",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

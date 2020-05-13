@@ -26,7 +26,6 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/MessagingConfigurations",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -103,7 +102,6 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/MessagingConfigurations/" + options.PathCountry + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -180,7 +178,6 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/MessagingConfigurations/" + options.PathCountry + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -253,7 +250,6 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/MessagingConfigurations",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -358,10 +354,7 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Verify,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Verify)
             );
 
             var response = client.Request(request);
@@ -379,10 +372,7 @@ namespace Twilio.Rest.Verify.V2.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Verify,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Verify)
             );
 
             var response = client.Request(request);
@@ -395,7 +385,6 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Delete,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/MessagingConfigurations/" + options.PathCountry + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

@@ -56,7 +56,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Maps/" + options.PathMapSid + "/Items/" + options.PathKey + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -132,7 +131,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Maps/" + options.PathMapSid + "/Items/" + options.PathKey + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -205,7 +203,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Maps/" + options.PathMapSid + "/Items",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -285,7 +282,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Maps/" + options.PathMapSid + "/Items",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -404,10 +400,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -424,10 +417,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -440,7 +430,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncMap
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Maps/" + options.PathMapSid + "/Items/" + options.PathKey + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

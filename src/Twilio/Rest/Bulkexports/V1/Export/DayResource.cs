@@ -28,7 +28,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                 HttpMethod.Get,
                 Rest.Domain.Bulkexports,
                 "/v1/Exports/" + options.PathResourceType + "/Days/" + options.PathDay + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -98,7 +97,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                 HttpMethod.Get,
                 Rest.Domain.Bulkexports,
                 "/v1/Exports/" + options.PathResourceType + "/Days",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -209,10 +207,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Bulkexports,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Bulkexports)
             );
 
             var response = client.Request(request);
@@ -229,10 +224,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Bulkexports,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Bulkexports)
             );
 
             var response = client.Request(request);

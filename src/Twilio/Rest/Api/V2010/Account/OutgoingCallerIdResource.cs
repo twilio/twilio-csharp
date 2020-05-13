@@ -26,7 +26,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/OutgoingCallerIds/" + options.PathSid + ".json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -98,7 +97,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/OutgoingCallerIds/" + options.PathSid + ".json",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -174,7 +172,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/OutgoingCallerIds/" + options.PathSid + ".json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -244,7 +241,6 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/OutgoingCallerIds.json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -356,10 +352,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Api,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Api)
             );
 
             var response = client.Request(request);
@@ -377,10 +370,7 @@ namespace Twilio.Rest.Api.V2010.Account
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Api,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Api)
             );
 
             var response = client.Request(request);

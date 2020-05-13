@@ -43,7 +43,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Export",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

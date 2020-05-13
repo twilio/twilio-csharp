@@ -44,7 +44,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathAssetSid + "/Versions",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -154,10 +153,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Serverless,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Serverless)
             );
 
             var response = client.Request(request);
@@ -174,10 +170,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Serverless,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Serverless)
             );
 
             var response = client.Request(request);
@@ -190,7 +183,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathAssetSid + "/Versions/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

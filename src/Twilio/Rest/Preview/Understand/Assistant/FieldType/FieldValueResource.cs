@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -105,7 +104,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -216,10 +214,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -236,10 +231,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -252,7 +244,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -340,7 +331,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.FieldType
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

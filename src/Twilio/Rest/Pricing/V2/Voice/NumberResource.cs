@@ -27,7 +27,6 @@ namespace Twilio.Rest.Pricing.V2.Voice
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
                 "/v2/Voice/Numbers/" + options.PathDestinationNumber + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

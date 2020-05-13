@@ -42,7 +42,6 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v2/Flows",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -122,7 +121,6 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -206,7 +204,6 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v2/Flows",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -305,10 +302,7 @@ namespace Twilio.Rest.Studio.V2
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Studio,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Studio)
             );
 
             var response = client.Request(request);
@@ -325,10 +319,7 @@ namespace Twilio.Rest.Studio.V2
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Studio,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Studio)
             );
 
             var response = client.Request(request);
@@ -341,7 +332,6 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -408,7 +398,6 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Delete,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

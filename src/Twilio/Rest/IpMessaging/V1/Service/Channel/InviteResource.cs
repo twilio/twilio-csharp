@@ -26,7 +26,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Invites/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -102,7 +101,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Invites",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -182,7 +180,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Invites",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -293,10 +290,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
@@ -313,10 +307,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
@@ -329,7 +320,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Invites/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

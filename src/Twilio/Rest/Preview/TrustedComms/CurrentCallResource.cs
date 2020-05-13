@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.TrustedComms
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/TrustedComms/CurrentCall",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

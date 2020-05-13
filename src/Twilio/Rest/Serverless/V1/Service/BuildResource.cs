@@ -44,7 +44,6 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Builds",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -147,10 +146,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Serverless,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Serverless)
             );
 
             var response = client.Request(request);
@@ -167,10 +163,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Serverless,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Serverless)
             );
 
             var response = client.Request(request);
@@ -183,7 +176,6 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Builds/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -253,7 +245,6 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Builds/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -323,7 +314,6 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Builds",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

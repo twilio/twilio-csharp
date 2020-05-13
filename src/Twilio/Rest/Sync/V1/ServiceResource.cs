@@ -28,7 +28,6 @@ namespace Twilio.Rest.Sync.V1
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -95,7 +94,6 @@ namespace Twilio.Rest.Sync.V1
                 HttpMethod.Delete,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -161,7 +159,6 @@ namespace Twilio.Rest.Sync.V1
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -261,7 +258,6 @@ namespace Twilio.Rest.Sync.V1
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -360,10 +356,7 @@ namespace Twilio.Rest.Sync.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Sync,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Sync)
             );
 
             var response = client.Request(request);
@@ -380,10 +373,7 @@ namespace Twilio.Rest.Sync.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Sync,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Sync)
             );
 
             var response = client.Request(request);
@@ -396,7 +386,6 @@ namespace Twilio.Rest.Sync.V1
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Permissions/" + options.PathIdentity + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -106,7 +105,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Permissions/" + options.PathIdentity + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -182,7 +180,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Permissions",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -291,10 +288,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -312,10 +306,7 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -328,7 +319,6 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Permissions/" + options.PathIdentity + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

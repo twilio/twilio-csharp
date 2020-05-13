@@ -40,7 +40,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Regulations",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -151,10 +150,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Numbers,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Numbers)
             );
 
             var response = client.Request(request);
@@ -171,10 +167,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Numbers,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Numbers)
             );
 
             var response = client.Request(request);
@@ -187,7 +180,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Regulations/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

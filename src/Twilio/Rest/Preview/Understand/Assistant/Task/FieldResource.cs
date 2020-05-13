@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Fields/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -105,7 +104,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Fields",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -212,10 +210,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -232,10 +227,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -248,7 +240,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Fields",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -332,7 +323,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Fields/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

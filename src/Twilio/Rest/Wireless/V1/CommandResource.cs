@@ -82,7 +82,6 @@ namespace Twilio.Rest.Wireless.V1
                 HttpMethod.Get,
                 Rest.Domain.Wireless,
                 "/v1/Commands/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -149,7 +148,6 @@ namespace Twilio.Rest.Wireless.V1
                 HttpMethod.Get,
                 Rest.Domain.Wireless,
                 "/v1/Commands",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -264,10 +262,7 @@ namespace Twilio.Rest.Wireless.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Wireless,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Wireless)
             );
 
             var response = client.Request(request);
@@ -284,10 +279,7 @@ namespace Twilio.Rest.Wireless.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Wireless,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Wireless)
             );
 
             var response = client.Request(request);
@@ -300,7 +292,6 @@ namespace Twilio.Rest.Wireless.V1
                 HttpMethod.Post,
                 Rest.Domain.Wireless,
                 "/v1/Commands",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -392,7 +383,6 @@ namespace Twilio.Rest.Wireless.V1
                 HttpMethod.Delete,
                 Rest.Domain.Wireless,
                 "/v1/Commands/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

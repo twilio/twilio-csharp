@@ -74,7 +74,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
                 HttpMethod.Post,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -162,7 +161,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
                 HttpMethod.Delete,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -242,7 +240,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
                 HttpMethod.Get,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -322,7 +319,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
                 HttpMethod.Get,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -437,10 +433,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Authy,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Authy)
             );
 
             var response = client.Request(request);
@@ -457,10 +450,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Authy,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Authy)
             );
 
             var response = client.Request(request);
@@ -473,7 +463,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity.Factor
                 HttpMethod.Post,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

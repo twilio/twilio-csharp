@@ -44,7 +44,6 @@ namespace Twilio.Rest.Authy.V1
                 HttpMethod.Get,
                 Rest.Domain.Authy,
                 "/v1/Forms/" + options.PathFormType + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

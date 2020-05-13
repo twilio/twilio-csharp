@@ -41,7 +41,6 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -108,7 +107,6 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -174,7 +172,6 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -268,7 +265,6 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -367,10 +363,7 @@ namespace Twilio.Rest.Trunking.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Trunking,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Trunking)
             );
 
             var response = client.Request(request);
@@ -387,10 +380,7 @@ namespace Twilio.Rest.Trunking.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Trunking,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Trunking)
             );
 
             var response = client.Request(request);
@@ -403,7 +393,6 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

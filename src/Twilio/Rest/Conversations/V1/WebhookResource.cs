@@ -55,7 +55,6 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/Webhooks",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -119,7 +118,6 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/Webhooks",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

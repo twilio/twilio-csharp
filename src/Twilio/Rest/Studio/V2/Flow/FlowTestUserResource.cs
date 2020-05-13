@@ -28,7 +28,6 @@ namespace Twilio.Rest.Studio.V2.Flow
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "/TestUsers",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -95,7 +94,6 @@ namespace Twilio.Rest.Studio.V2.Flow
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "/TestUsers",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

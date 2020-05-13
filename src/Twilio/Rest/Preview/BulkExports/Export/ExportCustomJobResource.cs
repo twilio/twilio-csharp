@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/BulkExports/Exports/" + options.PathResourceType + "/Jobs",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -141,10 +140,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -162,10 +158,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -178,7 +171,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/BulkExports/Exports/" + options.PathResourceType + "/Jobs",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

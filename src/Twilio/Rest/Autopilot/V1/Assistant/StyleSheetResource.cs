@@ -29,7 +29,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/StyleSheet",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -96,7 +95,6 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/StyleSheet",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

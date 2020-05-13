@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -99,7 +98,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -202,10 +200,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -222,10 +217,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -238,7 +230,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -328,7 +319,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -422,7 +412,6 @@ namespace Twilio.Rest.Preview.Understand.Assistant
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

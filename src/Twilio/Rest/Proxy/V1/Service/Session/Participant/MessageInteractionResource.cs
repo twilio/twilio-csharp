@@ -75,7 +75,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSessionSid + "/Participants/" + options.PathParticipantSid + "/MessageInteractions",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -168,7 +167,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSessionSid + "/Participants/" + options.PathParticipantSid + "/MessageInteractions/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -249,7 +247,6 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSessionSid + "/Participants/" + options.PathParticipantSid + "/MessageInteractions",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -362,10 +359,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Proxy,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Proxy)
             );
 
             var response = client.Request(request);
@@ -383,10 +377,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session.Participant
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Proxy,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Proxy)
             );
 
             var response = client.Request(request);

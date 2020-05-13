@@ -42,7 +42,6 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v2/Flows/Validate",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

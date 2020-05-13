@@ -42,7 +42,6 @@ namespace Twilio.Rest.Studio.V2.Flow
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathFlowSid + "/Executions",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -153,10 +152,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Studio,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Studio)
             );
 
             var response = client.Request(request);
@@ -173,10 +169,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Studio,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Studio)
             );
 
             var response = client.Request(request);
@@ -189,7 +182,6 @@ namespace Twilio.Rest.Studio.V2.Flow
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathFlowSid + "/Executions/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -259,7 +251,6 @@ namespace Twilio.Rest.Studio.V2.Flow
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathFlowSid + "/Executions",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -341,7 +332,6 @@ namespace Twilio.Rest.Studio.V2.Flow
                 HttpMethod.Delete,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathFlowSid + "/Executions/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -411,7 +401,6 @@ namespace Twilio.Rest.Studio.V2.Flow
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathFlowSid + "/Executions/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

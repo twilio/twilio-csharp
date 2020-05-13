@@ -28,7 +28,6 @@ namespace Twilio.Rest.Messaging.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 "/v1/Services/" + options.PathServiceSid + "/ShortCodes",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -98,7 +97,6 @@ namespace Twilio.Rest.Messaging.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Messaging,
                 "/v1/Services/" + options.PathServiceSid + "/ShortCodes/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -168,7 +166,6 @@ namespace Twilio.Rest.Messaging.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Messaging,
                 "/v1/Services/" + options.PathServiceSid + "/ShortCodes",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -271,10 +268,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Messaging,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Messaging)
             );
 
             var response = client.Request(request);
@@ -291,10 +285,7 @@ namespace Twilio.Rest.Messaging.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Messaging,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Messaging)
             );
 
             var response = client.Request(request);
@@ -307,7 +298,6 @@ namespace Twilio.Rest.Messaging.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Messaging,
                 "/v1/Services/" + options.PathServiceSid + "/ShortCodes/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

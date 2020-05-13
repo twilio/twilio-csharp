@@ -26,7 +26,6 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
                 "/v1/Channels",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -125,10 +124,7 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.FlexApi,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.FlexApi)
             );
 
             var response = client.Request(request);
@@ -145,10 +141,7 @@ namespace Twilio.Rest.FlexApi.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.FlexApi,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.FlexApi)
             );
 
             var response = client.Request(request);
@@ -161,7 +154,6 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
                 "/v1/Channels/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -228,7 +220,6 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 "/v1/Channels",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -332,7 +323,6 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Delete,
                 Rest.Domain.FlexApi,
                 "/v1/Channels/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

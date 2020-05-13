@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Deployments/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -99,7 +98,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Deployments/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -169,7 +167,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Deployments",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -249,7 +246,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Deployments",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -352,10 +348,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -372,10 +365,7 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -388,7 +378,6 @@ namespace Twilio.Rest.Preview.DeployedDevices.Fleet
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets/" + options.PathFleetSid + "/Deployments/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
