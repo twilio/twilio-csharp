@@ -11,9 +11,11 @@ namespace Twilio
         private static string _username;
         private static string _password;
         private static string _accountSid;
+        private static string _region;
+        private static string _edge;
         private static ITwilioRestClient _restClient;
 
-        private TwilioClient() {}
+        private TwilioClient() { }
 
         /// <summary>
         /// Initialize base client with username and password
@@ -62,7 +64,8 @@ namespace Twilio
         /// Set the client password
         /// </summary>
         /// <param name="password">Auth password</param>
-        public static void SetPassword(string password) {
+        public static void SetPassword(string password)
+        {
             if (password == null)
             {
                 throw new AuthenticationException("Password can not be null");
@@ -96,6 +99,34 @@ namespace Twilio
         }
 
         /// <summary>
+        /// Set the client region
+        /// </summary>
+        /// <param name="region">Client region</param>
+        public static void SetRegion(string region)
+        {
+            if (region != _region)
+            {
+                Invalidate();
+            }
+
+            _region = region;
+        }
+
+        /// <summary>
+        /// Set the client edge
+        /// </summary>
+        /// <param name="edge">Client edge</param>
+        public static void SetEdge(string edge)
+        {
+            if (edge != _edge)
+            {
+                Invalidate();
+            }
+
+            _edge = edge;
+        }
+
+        /// <summary>
         /// Get the rest client
         /// </summary>
         /// <returns>The rest client</returns>
@@ -108,12 +139,12 @@ namespace Twilio
 
             if (_username == null || _password == null)
             {
-                throw new AuthenticationException (
+                throw new AuthenticationException(
                     "TwilioRestClient was used before AccountSid and AuthToken were set, please call TwilioClient.init()"
                 );
             }
 
-            _restClient = new TwilioRestClient(_username, _password, accountSid: _accountSid);
+            _restClient = new TwilioRestClient(_username, _password, accountSid: _accountSid, region: _region, edge: _edge);
             return _restClient;
         }
 

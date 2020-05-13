@@ -36,14 +36,14 @@ namespace Twilio.Base
         private Page(
             List<T> records,
             int pageSize,
-            string uri=null,
-            string url=null,
-            string firstPageUri=null,
-            string firstPageUrl=null,
-            string previousPageUri=null,
-            string previousPageUrl=null,
-            string nextPageUri=null,
-            string nextPageUrl=null
+            string uri = null,
+            string url = null,
+            string firstPageUri = null,
+            string firstPageUrl = null,
+            string previousPageUri = null,
+            string previousPageUrl = null,
+            string nextPageUri = null,
+            string nextPageUrl = null
         )
         {
             Records = records;
@@ -58,18 +58,9 @@ namespace Twilio.Base
             _previousPageUrl = previousPageUrl;
         }
 
-        private static string UrlFromUri(Domain domain, string region, string uri)
+        private static string UrlFromUri(Domain domain, string uri)
         {
-            var b = new StringBuilder();
-            b.Append("https://").Append(domain);
-            
-            if (!IsNullOrEmpty(region))
-            {
-                b.Append(".").Append(region);
-            }
-
-            b.Append(".twilio.com").Append(uri);
-            return b.ToString();
+            return "https://" + domain + ".twilio.com" + uri;
         }
 
         /// <summary>
@@ -78,9 +69,9 @@ namespace Twilio.Base
         /// <param name="domain">Twilio subdomain</param>
         /// <param name="region">Twilio region</param>
         /// <returns>URL for the first page of results</returns>
-        public string GetFirstPageUrl(Domain domain, string region)
+        public string GetFirstPageUrl(Domain domain, string region = null)
         {
-            return _firstPageUrl ?? UrlFromUri(domain, region, _firstPageUri);
+            return _firstPageUrl ?? UrlFromUri(domain, _firstPageUri);
         }
 
         /// <summary>
@@ -89,9 +80,9 @@ namespace Twilio.Base
         /// <param name="domain">Twilio subdomain</param>
         /// <param name="region">Twilio region</param>
         /// <returns>URL for the next page of results</returns>
-        public string GetNextPageUrl(Domain domain, string region)
+        public string GetNextPageUrl(Domain domain, string region = null)
         {
-            return _nextPageUrl ?? UrlFromUri(domain, region, _nextPageUri);
+            return _nextPageUrl ?? UrlFromUri(domain, _nextPageUri);
         }
 
         /// <summary>
@@ -100,9 +91,9 @@ namespace Twilio.Base
         /// <param name="domain">Twilio subdomain</param>
         /// <param name="region">Twilio region</param>
         /// <returns>URL for the previous page of results</returns>
-        public string GetPreviousPageUrl(Domain domain, string region)
+        public string GetPreviousPageUrl(Domain domain, string region = null)
         {
-            return _previousPageUrl ?? UrlFromUri(domain, region, _previousPageUri);
+            return _previousPageUrl ?? UrlFromUri(domain, _previousPageUri);
         }
 
         /// <summary>
@@ -111,9 +102,9 @@ namespace Twilio.Base
         /// <param name="domain">Twilio subdomain</param>
         /// <param name="region">Twilio region</param>
         /// <returns>URL for the current page of results</returns>
-        public string GetUrl(Domain domain, string region)
+        public string GetUrl(Domain domain, string region = null)
         {
-            return _url ?? UrlFromUri(domain, region, _uri);
+            return _url ?? UrlFromUri(domain, _uri);
         }
 
         /// <summary>
