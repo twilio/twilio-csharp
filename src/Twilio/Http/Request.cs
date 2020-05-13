@@ -137,7 +137,7 @@ namespace Twilio.Http
 
                 string[] parts = { product, edge, region, domain };
 
-                uriBuilder.Host = String.Join(".", parts.Where(part => !string.IsNullOrEmpty(part)));
+                uriBuilder.Host = String.Join(".", Array.FindAll(parts, part => !string.IsNullOrEmpty(part)));
                 return uriBuilder.Uri;
             }
 
