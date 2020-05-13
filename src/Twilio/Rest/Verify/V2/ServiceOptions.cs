@@ -48,6 +48,10 @@ namespace Twilio.Rest.Verify.V2
         /// Whether to add a security warning at the end of an SMS.
         /// </summary>
         public bool? DoNotShareWarningEnabled { get; set; }
+        /// <summary>
+        /// Whether to allow sending verifications with a custom code.
+        /// </summary>
+        public bool? CustomCodeEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -102,6 +106,11 @@ namespace Twilio.Rest.Verify.V2
             if (DoNotShareWarningEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("DoNotShareWarningEnabled", DoNotShareWarningEnabled.Value.ToString().ToLower()));
+            }
+
+            if (CustomCodeEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
             }
 
             return p;
@@ -227,6 +236,10 @@ namespace Twilio.Rest.Verify.V2
         /// Whether to add a privacy warning at the end of an SMS.
         /// </summary>
         public bool? DoNotShareWarningEnabled { get; set; }
+        /// <summary>
+        /// Whether to allow sending verifications with a custom code.
+        /// </summary>
+        public bool? CustomCodeEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -281,6 +294,11 @@ namespace Twilio.Rest.Verify.V2
             if (DoNotShareWarningEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("DoNotShareWarningEnabled", DoNotShareWarningEnabled.Value.ToString().ToLower()));
+            }
+
+            if (CustomCodeEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
             }
 
             return p;

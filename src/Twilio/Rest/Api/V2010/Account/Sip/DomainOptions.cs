@@ -89,6 +89,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Whether secure SIP is enabled for the domain
         /// </summary>
         public bool? Secure { get; set; }
+        /// <summary>
+        /// The SID of the BYOC Trunk resource.
+        /// </summary>
+        public string ByocTrunkSid { get; set; }
+        /// <summary>
+        /// Whether an emergency caller sid is configured for the domain.
+        /// </summary>
+        public string EmergencyCallerSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateDomainOptions
@@ -158,6 +166,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             if (Secure != null)
             {
                 p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
+            }
+
+            if (ByocTrunkSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ByocTrunkSid", ByocTrunkSid.ToString()));
+            }
+
+            if (EmergencyCallerSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyCallerSid", EmergencyCallerSid.ToString()));
             }
 
             return p;
@@ -254,6 +272,14 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
         /// Whether secure SIP is enabled for the domain
         /// </summary>
         public bool? Secure { get; set; }
+        /// <summary>
+        /// The SID of the BYOC Trunk resource.
+        /// </summary>
+        public string ByocTrunkSid { get; set; }
+        /// <summary>
+        /// Whether an emergency caller sid is configured for the domain.
+        /// </summary>
+        public string EmergencyCallerSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateDomainOptions
@@ -323,6 +349,16 @@ namespace Twilio.Rest.Api.V2010.Account.Sip
             if (Secure != null)
             {
                 p.Add(new KeyValuePair<string, string>("Secure", Secure.Value.ToString().ToLower()));
+            }
+
+            if (ByocTrunkSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ByocTrunkSid", ByocTrunkSid.ToString()));
+            }
+
+            if (EmergencyCallerSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmergencyCallerSid", EmergencyCallerSid.ToString()));
             }
 
             return p;

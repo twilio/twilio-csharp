@@ -86,6 +86,7 @@ namespace Twilio.Rest.Supersim.V1
         ///                   machine-to-machine Command </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fleet </returns>
         public static FleetResource Create(string uniqueName = null,
@@ -93,9 +94,10 @@ namespace Twilio.Rest.Supersim.V1
                                            bool? commandsEnabled = null,
                                            Uri commandsUrl = null,
                                            Twilio.Http.HttpMethod commandsMethod = null,
+                                           string networkAccessProfile = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateFleetOptions(){UniqueName = uniqueName, DataEnabled = dataEnabled, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod};
+            var options = new CreateFleetOptions(){UniqueName = uniqueName, DataEnabled = dataEnabled, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, NetworkAccessProfile = networkAccessProfile};
             return Create(options, client);
         }
 
@@ -111,6 +113,7 @@ namespace Twilio.Rest.Supersim.V1
         ///                   machine-to-machine Command </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(string uniqueName = null,
@@ -118,9 +121,10 @@ namespace Twilio.Rest.Supersim.V1
                                                                                    bool? commandsEnabled = null,
                                                                                    Uri commandsUrl = null,
                                                                                    Twilio.Http.HttpMethod commandsMethod = null,
+                                                                                   string networkAccessProfile = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateFleetOptions(){UniqueName = uniqueName, DataEnabled = dataEnabled, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod};
+            var options = new CreateFleetOptions(){UniqueName = uniqueName, DataEnabled = dataEnabled, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, NetworkAccessProfile = networkAccessProfile};
             return await CreateAsync(options, client);
         }
         #endif
@@ -237,15 +241,17 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// Retrieve a list of Fleets from your account.
         /// </summary>
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fleet </returns>
-        public static ResourceSet<FleetResource> Read(int? pageSize = null,
+        public static ResourceSet<FleetResource> Read(string networkAccessProfile = null,
+                                                      int? pageSize = null,
                                                       long? limit = null,
                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadFleetOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadFleetOptions(){NetworkAccessProfile = networkAccessProfile, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -253,15 +259,17 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// Retrieve a list of Fleets from your account.
         /// </summary>
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(int? pageSize = null,
+        public static async System.Threading.Tasks.Task<ResourceSet<FleetResource>> ReadAsync(string networkAccessProfile = null,
+                                                                                              int? pageSize = null,
                                                                                               long? limit = null,
                                                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadFleetOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadFleetOptions(){NetworkAccessProfile = networkAccessProfile, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -363,11 +371,15 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         /// <param name="pathSid"> The SID that identifies the resource to update </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fleet </returns>
-        public static FleetResource Update(string pathSid, string uniqueName = null, ITwilioRestClient client = null)
+        public static FleetResource Update(string pathSid,
+                                           string uniqueName = null,
+                                           string networkAccessProfile = null,
+                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName};
+            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile};
             return Update(options, client);
         }
 
@@ -377,13 +389,15 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         /// <param name="pathSid"> The SID that identifies the resource to update </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(string pathSid,
                                                                                    string uniqueName = null,
+                                                                                   string networkAccessProfile = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName};
+            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -463,6 +477,11 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("commands_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod CommandsMethod { get; private set; }
+        /// <summary>
+        /// The SID of the Network Access Profile of the Fleet
+        /// </summary>
+        [JsonProperty("network_access_profile_sid")]
+        public string NetworkAccessProfileSid { get; private set; }
 
         private FleetResource()
         {

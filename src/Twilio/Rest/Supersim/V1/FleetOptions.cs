@@ -39,6 +39,10 @@ namespace Twilio.Rest.Supersim.V1
         /// A string representing the HTTP method to use when making a request to `commands_url`
         /// </summary>
         public Twilio.Http.HttpMethod CommandsMethod { get; set; }
+        /// <summary>
+        /// The SID or unique name of the Network Access Profile of the Fleet
+        /// </summary>
+        public string NetworkAccessProfile { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -69,6 +73,11 @@ namespace Twilio.Rest.Supersim.V1
             if (CommandsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
+            }
+
+            if (NetworkAccessProfile != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
             }
 
             return p;
@@ -116,11 +125,21 @@ namespace Twilio.Rest.Supersim.V1
     public class ReadFleetOptions : ReadOptions<FleetResource>
     {
         /// <summary>
+        /// The SID or unique name of the Network Access Profile of the Fleet
+        /// </summary>
+        public string NetworkAccessProfile { get; set; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (NetworkAccessProfile != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
@@ -146,6 +165,10 @@ namespace Twilio.Rest.Supersim.V1
         /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
+        /// <summary>
+        /// The SID or unique name of the Network Access Profile of the Fleet
+        /// </summary>
+        public string NetworkAccessProfile { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFleetOptions
@@ -165,6 +188,11 @@ namespace Twilio.Rest.Supersim.V1
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
+            }
+
+            if (NetworkAccessProfile != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
             }
 
             return p;
