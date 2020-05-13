@@ -26,7 +26,6 @@ namespace Twilio.Rest.Monitor.V1
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Events/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -93,7 +92,6 @@ namespace Twilio.Rest.Monitor.V1
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Events",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -216,10 +214,7 @@ namespace Twilio.Rest.Monitor.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Monitor,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Monitor)
             );
 
             var response = client.Request(request);
@@ -236,10 +231,7 @@ namespace Twilio.Rest.Monitor.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Monitor,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Monitor)
             );
 
             var response = client.Request(request);

@@ -28,7 +28,6 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -98,7 +97,6 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -168,7 +166,6 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -248,7 +245,6 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -328,7 +324,6 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -431,10 +426,7 @@ namespace Twilio.Rest.Sync.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Sync,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Sync)
             );
 
             var response = client.Request(request);
@@ -451,10 +443,7 @@ namespace Twilio.Rest.Sync.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Sync,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Sync)
             );
 
             var response = client.Request(request);

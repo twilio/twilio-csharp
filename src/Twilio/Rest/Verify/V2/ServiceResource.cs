@@ -26,7 +26,6 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -124,7 +123,6 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -191,7 +189,6 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Delete,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -257,7 +254,6 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -356,10 +352,7 @@ namespace Twilio.Rest.Verify.V2
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Verify,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Verify)
             );
 
             var response = client.Request(request);
@@ -376,10 +369,7 @@ namespace Twilio.Rest.Verify.V2
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Verify,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Verify)
             );
 
             var response = client.Request(request);
@@ -392,7 +382,6 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

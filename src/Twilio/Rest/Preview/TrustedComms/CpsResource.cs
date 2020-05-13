@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.TrustedComms
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/TrustedComms/CPS",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

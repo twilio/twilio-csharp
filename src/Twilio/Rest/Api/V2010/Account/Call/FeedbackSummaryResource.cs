@@ -42,7 +42,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary.json",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -130,7 +129,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary/" + options.PathSid + ".json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -202,7 +200,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/FeedbackSummary/" + options.PathSid + ".json",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

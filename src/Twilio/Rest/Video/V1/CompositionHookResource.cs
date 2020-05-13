@@ -43,7 +43,6 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -110,7 +109,6 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -232,10 +230,7 @@ namespace Twilio.Rest.Video.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Video,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Video)
             );
 
             var response = client.Request(request);
@@ -253,10 +248,7 @@ namespace Twilio.Rest.Video.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Video,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Video)
             );
 
             var response = client.Request(request);
@@ -269,7 +261,6 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Delete,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -335,7 +326,6 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -445,7 +435,6 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

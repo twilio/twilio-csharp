@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -96,7 +95,6 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -162,7 +160,6 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -242,7 +239,6 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -341,10 +337,7 @@ namespace Twilio.Rest.Preview.Sync
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -361,10 +354,7 @@ namespace Twilio.Rest.Preview.Sync
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -377,7 +367,6 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

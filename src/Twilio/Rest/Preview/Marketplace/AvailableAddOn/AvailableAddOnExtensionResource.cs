@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/marketplace/AvailableAddOns/" + options.PathAvailableAddOnSid + "/Extensions/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -102,7 +101,6 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/marketplace/AvailableAddOns/" + options.PathAvailableAddOnSid + "/Extensions",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -207,10 +205,7 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -228,10 +223,7 @@ namespace Twilio.Rest.Preview.Marketplace.AvailableAddOn
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);

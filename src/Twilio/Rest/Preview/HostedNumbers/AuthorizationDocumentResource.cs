@@ -46,7 +46,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/HostedNumbers/AuthorizationDocuments/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -114,7 +113,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/HostedNumbers/AuthorizationDocuments/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -211,7 +209,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/HostedNumbers/AuthorizationDocuments",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -320,10 +317,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -341,10 +335,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -357,7 +348,6 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/HostedNumbers/AuthorizationDocuments",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

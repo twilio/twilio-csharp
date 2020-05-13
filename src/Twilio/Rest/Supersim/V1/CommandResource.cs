@@ -59,7 +59,6 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 "/v1/Commands",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -139,7 +138,6 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/Commands/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -206,7 +204,6 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/Commands",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -317,10 +314,7 @@ namespace Twilio.Rest.Supersim.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Supersim,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Supersim)
             );
 
             var response = client.Request(request);
@@ -337,10 +331,7 @@ namespace Twilio.Rest.Supersim.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Supersim,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Supersim)
             );
 
             var response = client.Request(request);

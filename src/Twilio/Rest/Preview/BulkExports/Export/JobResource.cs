@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/BulkExports/Exports/Jobs/" + options.PathJobSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -96,7 +95,6 @@ namespace Twilio.Rest.Preview.BulkExports.Export
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/BulkExports/Exports/Jobs/" + options.PathJobSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

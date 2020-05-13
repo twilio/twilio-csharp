@@ -40,7 +40,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -110,7 +109,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -180,7 +178,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -260,7 +257,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -363,10 +359,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
@@ -383,10 +376,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
@@ -399,7 +389,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

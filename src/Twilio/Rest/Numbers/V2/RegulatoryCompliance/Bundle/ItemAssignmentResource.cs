@@ -26,7 +26,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/ItemAssignments",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -96,7 +95,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/ItemAssignments",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -200,10 +198,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Numbers,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Numbers)
             );
 
             var response = client.Request(request);
@@ -220,10 +215,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Numbers,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Numbers)
             );
 
             var response = client.Request(request);
@@ -236,7 +228,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/ItemAssignments/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -306,7 +297,6 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Delete,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/ItemAssignments/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

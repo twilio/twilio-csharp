@@ -58,7 +58,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
                 HttpMethod.Post,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -146,7 +145,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
                 HttpMethod.Delete,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -222,7 +220,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
                 HttpMethod.Get,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -298,7 +295,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
                 HttpMethod.Get,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -405,10 +401,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Authy,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Authy)
             );
 
             var response = client.Request(request);
@@ -425,10 +418,7 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Authy,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Authy)
             );
 
             var response = client.Request(request);
@@ -441,7 +431,6 @@ namespace Twilio.Rest.Authy.V1.Service.Entity
                 HttpMethod.Post,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

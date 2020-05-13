@@ -40,7 +40,6 @@ namespace Twilio.Rest.Api.V2010.Account.Message
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathMessageSid + "/Feedback.json",
-                client.Region,
                 postParams: options.GetParams()
             );
         }

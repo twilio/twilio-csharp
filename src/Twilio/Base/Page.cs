@@ -67,9 +67,8 @@ namespace Twilio.Base
         /// Generate the first page URL
         /// </summary>
         /// <param name="domain">Twilio subdomain</param>
-        /// <param name="region">Twilio region</param>
         /// <returns>URL for the first page of results</returns>
-        public string GetFirstPageUrl(Domain domain, string region = null)
+        public string GetFirstPageUrl(Domain domain)
         {
             return _firstPageUrl ?? UrlFromUri(domain, _firstPageUri);
         }
@@ -78,9 +77,8 @@ namespace Twilio.Base
         /// Get the next page URL
         /// </summary>
         /// <param name="domain">Twilio subdomain</param>
-        /// <param name="region">Twilio region</param>
         /// <returns>URL for the next page of results</returns>
-        public string GetNextPageUrl(Domain domain, string region = null)
+        public string GetNextPageUrl(Domain domain)
         {
             return _nextPageUrl ?? UrlFromUri(domain, _nextPageUri);
         }
@@ -89,9 +87,8 @@ namespace Twilio.Base
         /// Get the previous page URL
         /// </summary>
         /// <param name="domain">Twilio subdomain</param>
-        /// <param name="region">Twilio region</param>
         /// <returns>URL for the previous page of results</returns>
-        public string GetPreviousPageUrl(Domain domain, string region = null)
+        public string GetPreviousPageUrl(Domain domain)
         {
             return _previousPageUrl ?? UrlFromUri(domain, _previousPageUri);
         }
@@ -100,9 +97,8 @@ namespace Twilio.Base
         /// Get the URL for the current page
         /// </summary>
         /// <param name="domain">Twilio subdomain</param>
-        /// <param name="region">Twilio region</param>
         /// <returns>URL for the current page of results</returns>
-        public string GetUrl(Domain domain, string region = null)
+        public string GetUrl(Domain domain)
         {
             return _url ?? UrlFromUri(domain, _uri);
         }

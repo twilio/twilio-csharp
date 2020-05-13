@@ -89,7 +89,6 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Get,
                 Rest.Domain.Fax,
                 "/v1/Faxes/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -156,7 +155,6 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Get,
                 Rest.Domain.Fax,
                 "/v1/Faxes",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -271,10 +269,7 @@ namespace Twilio.Rest.Fax.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Fax,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Fax)
             );
 
             var response = client.Request(request);
@@ -291,10 +286,7 @@ namespace Twilio.Rest.Fax.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Fax,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Fax)
             );
 
             var response = client.Request(request);
@@ -307,7 +299,6 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Post,
                 Rest.Domain.Fax,
                 "/v1/Faxes",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -407,7 +398,6 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Post,
                 Rest.Domain.Fax,
                 "/v1/Faxes/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -479,7 +469,6 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Delete,
                 Rest.Domain.Fax,
                 "/v1/Faxes/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

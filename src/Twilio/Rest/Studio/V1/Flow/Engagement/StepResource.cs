@@ -26,7 +26,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v1/Flows/" + options.PathFlowSid + "/Engagements/" + options.PathEngagementSid + "/Steps",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -133,10 +132,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Studio,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Studio)
             );
 
             var response = client.Request(request);
@@ -153,10 +149,7 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Studio,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Studio)
             );
 
             var response = client.Request(request);
@@ -169,7 +162,6 @@ namespace Twilio.Rest.Studio.V1.Flow.Engagement
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v1/Flows/" + options.PathFlowSid + "/Engagements/" + options.PathEngagementSid + "/Steps/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

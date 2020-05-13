@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns/" + options.PathInstalledAddOnSid + "/Extensions/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -102,7 +101,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns/" + options.PathInstalledAddOnSid + "/Extensions/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -179,7 +177,6 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns/" + options.PathInstalledAddOnSid + "/Extensions",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -284,10 +281,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -305,10 +299,7 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);

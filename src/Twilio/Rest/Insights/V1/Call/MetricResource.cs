@@ -61,7 +61,6 @@ namespace Twilio.Rest.Insights.V1.Call
                 HttpMethod.Get,
                 Rest.Domain.Insights,
                 "/v1/Voice/" + options.PathCallSid + "/Metrics",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -172,10 +171,7 @@ namespace Twilio.Rest.Insights.V1.Call
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Insights,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Insights)
             );
 
             var response = client.Request(request);
@@ -192,10 +188,7 @@ namespace Twilio.Rest.Insights.V1.Call
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Insights,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Insights)
             );
 
             var response = client.Request(request);

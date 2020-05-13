@@ -56,7 +56,6 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -144,7 +143,6 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -236,7 +234,6 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Delete,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -302,7 +299,6 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -369,7 +365,6 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -469,10 +464,7 @@ namespace Twilio.Rest.Conversations.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Conversations,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Conversations)
             );
 
             var response = client.Request(request);
@@ -489,10 +481,7 @@ namespace Twilio.Rest.Conversations.V1
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Conversations,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Conversations)
             );
 
             var response = client.Request(request);

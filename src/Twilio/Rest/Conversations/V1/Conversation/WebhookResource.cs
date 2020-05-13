@@ -56,7 +56,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -159,10 +158,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Conversations,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Conversations)
             );
 
             var response = client.Request(request);
@@ -179,10 +175,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Conversations,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Conversations)
             );
 
             var response = client.Request(request);
@@ -195,7 +188,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -265,7 +257,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -363,7 +354,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -455,7 +445,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Delete,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

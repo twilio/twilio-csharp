@@ -40,7 +40,6 @@ namespace Twilio.Rest.Studio.V1.Flow
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v1/Flows/" + options.PathFlowSid + "/Engagements",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -143,10 +142,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Studio,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Studio)
             );
 
             var response = client.Request(request);
@@ -163,10 +159,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Studio,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Studio)
             );
 
             var response = client.Request(request);
@@ -179,7 +172,6 @@ namespace Twilio.Rest.Studio.V1.Flow
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v1/Flows/" + options.PathFlowSid + "/Engagements/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -249,7 +241,6 @@ namespace Twilio.Rest.Studio.V1.Flow
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v1/Flows/" + options.PathFlowSid + "/Engagements",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -333,7 +324,6 @@ namespace Twilio.Rest.Studio.V1.Flow
                 HttpMethod.Delete,
                 Rest.Domain.Studio,
                 "/v1/Flows/" + options.PathFlowSid + "/Engagements/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

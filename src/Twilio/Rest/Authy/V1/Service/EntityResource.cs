@@ -29,7 +29,6 @@ namespace Twilio.Rest.Authy.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -99,7 +98,6 @@ namespace Twilio.Rest.Authy.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -169,7 +167,6 @@ namespace Twilio.Rest.Authy.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -239,7 +236,6 @@ namespace Twilio.Rest.Authy.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Authy,
                 "/v1/Services/" + options.PathServiceSid + "/Entities",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -342,10 +338,7 @@ namespace Twilio.Rest.Authy.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Authy,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Authy)
             );
 
             var response = client.Request(request);
@@ -362,10 +355,7 @@ namespace Twilio.Rest.Authy.V1.Service
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Authy,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Authy)
             );
 
             var response = client.Request(request);

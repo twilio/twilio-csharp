@@ -29,7 +29,6 @@ namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Functions/" + options.PathFunctionSid + "/Versions/" + options.PathSid + "/Content",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

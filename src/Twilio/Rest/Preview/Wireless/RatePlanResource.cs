@@ -29,7 +29,6 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -128,10 +127,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -148,10 +144,7 @@ namespace Twilio.Rest.Preview.Wireless
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Preview,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Preview)
             );
 
             var response = client.Request(request);
@@ -164,7 +157,6 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -231,7 +223,6 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -335,7 +326,6 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans/" + options.PathSid + "",
-                client.Region,
                 postParams: options.GetParams()
             );
         }
@@ -411,7 +401,6 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans/" + options.PathSid + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

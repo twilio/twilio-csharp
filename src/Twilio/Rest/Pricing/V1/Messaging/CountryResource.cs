@@ -27,7 +27,6 @@ namespace Twilio.Rest.Pricing.V1.Messaging
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
                 "/v1/Messaging/Countries",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -126,10 +125,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.Pricing,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.Pricing)
             );
 
             var response = client.Request(request);
@@ -146,10 +142,7 @@ namespace Twilio.Rest.Pricing.V1.Messaging
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.Pricing,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.Pricing)
             );
 
             var response = client.Request(request);
@@ -162,7 +155,6 @@ namespace Twilio.Rest.Pricing.V1.Messaging
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
                 "/v1/Messaging/Countries/" + options.PathIsoCountry + "",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }

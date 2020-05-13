@@ -41,7 +41,6 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels",
-                client.Region,
                 queryParams: options.GetParams()
             );
         }
@@ -148,10 +147,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetNextPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetNextPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
@@ -168,10 +164,7 @@ namespace Twilio.Rest.IpMessaging.V1.Service.User
         {
             var request = new Request(
                 HttpMethod.Get,
-                page.GetPreviousPageUrl(
-                    Rest.Domain.IpMessaging,
-                    client.Region
-                )
+                page.GetPreviousPageUrl(Rest.Domain.IpMessaging)
             );
 
             var response = client.Request(request);
