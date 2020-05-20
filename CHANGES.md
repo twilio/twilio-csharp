@@ -1,6 +1,12 @@
 twilio-csharp Changelog
 =======================
 
+[2020-05-20] Version 5.41.1
+---------------------------
+**Library - Docs**
+- [PR #516](https://github.com/twilio/twilio-csharp/pull/516): add troubleshooting guide. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+
 [2020-05-13] Version 5.41.0
 ---------------------------
 **Library - Chore**
