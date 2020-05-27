@@ -12,13 +12,13 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.TrustedComms;
+using Twilio.Rest.Preview.TrustedComms.Business;
 
-namespace Twilio.Tests.Rest.Preview.TrustedComms
+namespace Twilio.Tests.Rest.Preview.TrustedComms.Business
 {
 
     [TestFixture]
-    public class BusinessTest : TwilioTest
+    public class BrandTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()
@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Preview,
-                "/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Brands/BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                BusinessResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                BrandResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"brands\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Brands\",\"insights\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Insights\"}}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"business_sid\": \"BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"branded_channels\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Brands/BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BrandedChannels\"},\"url\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Brands/BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = BusinessResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = BrandResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -618,35 +618,15 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The SID of the Account that created the resource
-        /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The API version used to process the message
-        /// </summary>
-        [JsonProperty("api_version")]
-        public string ApiVersion { get; private set; }
-        /// <summary>
         /// The message text
         /// </summary>
         [JsonProperty("body")]
         public string Body { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was created
+        /// The number of messages used to deliver the message body
         /// </summary>
-        [JsonProperty("date_created")]
-        public DateTime? DateCreated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT that the resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// The RFC 2822 date and time in GMT when the message was sent
-        /// </summary>
-        [JsonProperty("date_sent")]
-        public DateTime? DateSent { get; private set; }
+        [JsonProperty("num_segments")]
+        public string NumSegments { get; private set; }
         /// <summary>
         /// The direction of the message
         /// </summary>
@@ -654,51 +634,46 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonConverter(typeof(StringEnumConverter))]
         public MessageResource.DirectionEnum Direction { get; private set; }
         /// <summary>
-        /// The error code associated with the message
-        /// </summary>
-        [JsonProperty("error_code")]
-        public int? ErrorCode { get; private set; }
-        /// <summary>
-        /// The description of the error_code
-        /// </summary>
-        [JsonProperty("error_message")]
-        public string ErrorMessage { get; private set; }
-        /// <summary>
         /// The phone number that initiated the message
         /// </summary>
         [JsonProperty("from")]
         [JsonConverter(typeof(PhoneNumberConverter))]
         public Types.PhoneNumber From { get; private set; }
         /// <summary>
-        /// The SID of the Messaging Service used with the message.
+        /// The phone number that received the message
         /// </summary>
-        [JsonProperty("messaging_service_sid")]
-        public string MessagingServiceSid { get; private set; }
+        [JsonProperty("to")]
+        public string To { get; private set; }
         /// <summary>
-        /// The number of media files associated with the message
+        /// The RFC 2822 date and time in GMT that the resource was last updated
         /// </summary>
-        [JsonProperty("num_media")]
-        public string NumMedia { get; private set; }
-        /// <summary>
-        /// The number of messages used to deliver the message body
-        /// </summary>
-        [JsonProperty("num_segments")]
-        public string NumSegments { get; private set; }
+        [JsonProperty("date_updated")]
+        public DateTime? DateUpdated { get; private set; }
         /// <summary>
         /// The amount billed for the message
         /// </summary>
         [JsonProperty("price")]
         public string Price { get; private set; }
         /// <summary>
-        /// The currency in which price is measured
+        /// The description of the error_code
         /// </summary>
-        [JsonProperty("price_unit")]
-        public string PriceUnit { get; private set; }
+        [JsonProperty("error_message")]
+        public string ErrorMessage { get; private set; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The URI of the resource, relative to `https://api.twilio.com`
         /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
+        [JsonProperty("uri")]
+        public string Uri { get; private set; }
+        /// <summary>
+        /// The SID of the Account that created the resource
+        /// </summary>
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+        /// <summary>
+        /// The number of media files associated with the message
+        /// </summary>
+        [JsonProperty("num_media")]
+        public string NumMedia { get; private set; }
         /// <summary>
         /// The status of the message
         /// </summary>
@@ -706,20 +681,45 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonConverter(typeof(StringEnumConverter))]
         public MessageResource.StatusEnum Status { get; private set; }
         /// <summary>
+        /// The SID of the Messaging Service used with the message.
+        /// </summary>
+        [JsonProperty("messaging_service_sid")]
+        public string MessagingServiceSid { get; private set; }
+        /// <summary>
+        /// The unique string that identifies the resource
+        /// </summary>
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
+        /// <summary>
+        /// The RFC 2822 date and time in GMT when the message was sent
+        /// </summary>
+        [JsonProperty("date_sent")]
+        public DateTime? DateSent { get; private set; }
+        /// <summary>
+        /// The RFC 2822 date and time in GMT that the resource was created
+        /// </summary>
+        [JsonProperty("date_created")]
+        public DateTime? DateCreated { get; private set; }
+        /// <summary>
+        /// The error code associated with the message
+        /// </summary>
+        [JsonProperty("error_code")]
+        public int? ErrorCode { get; private set; }
+        /// <summary>
+        /// The currency in which price is measured
+        /// </summary>
+        [JsonProperty("price_unit")]
+        public string PriceUnit { get; private set; }
+        /// <summary>
+        /// The API version used to process the message
+        /// </summary>
+        [JsonProperty("api_version")]
+        public string ApiVersion { get; private set; }
+        /// <summary>
         /// A list of related resources identified by their relative URIs
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
-        /// <summary>
-        /// The phone number that received the message
-        /// </summary>
-        [JsonProperty("to")]
-        public string To { get; private set; }
-        /// <summary>
-        /// The URI of the resource, relative to `https://api.twilio.com`
-        /// </summary>
-        [JsonProperty("uri")]
-        public string Uri { get; private set; }
 
         private MessageResource()
         {

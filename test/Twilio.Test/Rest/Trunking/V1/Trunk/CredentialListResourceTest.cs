@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Trunking,
-                "/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CredentialListResource.Fetch("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                CredentialListResource.Fetch("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -52,7 +52,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-04-28T00:10:23Z\",\"date_updated\": \"2018-04-28T00:10:23Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = CredentialListResource.Fetch("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = CredentialListResource.Fetch("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -63,14 +63,14 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Trunking,
-                "/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists/CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CredentialListResource.Delete("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                CredentialListResource.Delete("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -88,7 +88,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
                                          "null"
                                      ));
 
-            var response = CredentialListResource.Delete("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = CredentialListResource.Delete("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -99,7 +99,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Trunking,
-                "/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists",
+                "/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists",
                 ""
             );
             request.AddPostParam("CredentialListSid", Serialize("CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
@@ -107,7 +107,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
 
             try
             {
-                CredentialListResource.Create("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                CredentialListResource.Create("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +125,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-05-02T17:29:30Z\",\"date_updated\": \"2018-05-02T17:29:30Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = CredentialListResource.Create("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = CredentialListResource.Create("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "CLXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -136,14 +136,14 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Trunking,
-                "/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists",
+                "/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/CredentialLists",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CredentialListResource.Read("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                CredentialListResource.Read("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -161,7 +161,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
                                          "{\"credential_lists\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-04-27T22:02:11Z\",\"date_updated\": \"2018-04-27T22:02:11Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists/CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"credential_lists\"}}"
                                      ));
 
-            var response = CredentialListResource.Read("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = CredentialListResource.Read("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -176,7 +176,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
                                          "{\"credential_lists\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/CredentialLists?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"credential_lists\"}}"
                                      ));
 
-            var response = CredentialListResource.Read("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = CredentialListResource.Read("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -711,30 +711,10 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
-        /// The SID of the Account that created this resource
+        /// The unique string that identifies this resource
         /// </summary>
-        [JsonProperty("account_sid")]
-        public string AccountSid { get; private set; }
-        /// <summary>
-        /// The annotation provided for the call
-        /// </summary>
-        [JsonProperty("annotation")]
-        public string Annotation { get; private set; }
-        /// <summary>
-        /// Either `human` or `machine` if this call was initiated with answering machine detection. Empty otherwise.
-        /// </summary>
-        [JsonProperty("answered_by")]
-        public string AnsweredBy { get; private set; }
-        /// <summary>
-        /// The API Version used to create the call
-        /// </summary>
-        [JsonProperty("api_version")]
-        public string ApiVersion { get; private set; }
-        /// <summary>
-        /// The caller's name if this call was an incoming call to a phone number with caller ID Lookup enabled. Otherwise, empty.
-        /// </summary>
-        [JsonProperty("caller_name")]
-        public string CallerName { get; private set; }
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
         /// <summary>
         /// The RFC 2822 date and time in GMT that this resource was created
         /// </summary>
@@ -746,81 +726,15 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// A string describing the direction of the call. `inbound` for inbound calls, `outbound-api` for calls initiated via the REST API or `outbound-dial` for calls initiated by a `Dial` verb.
-        /// </summary>
-        [JsonProperty("direction")]
-        public string Direction { get; private set; }
-        /// <summary>
-        /// The length of the call in seconds.
-        /// </summary>
-        [JsonProperty("duration")]
-        public string Duration { get; private set; }
-        /// <summary>
-        /// The end time of the call. Null if the call did not complete successfully.
-        /// </summary>
-        [JsonProperty("end_time")]
-        public DateTime? EndTime { get; private set; }
-        /// <summary>
-        /// The forwarding phone number if this call was an incoming call forwarded from another number (depends on carrier supporting forwarding). Otherwise, empty.
-        /// </summary>
-        [JsonProperty("forwarded_from")]
-        public string ForwardedFrom { get; private set; }
-        /// <summary>
-        /// The phone number, SIP address or Client identifier that made this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
-        /// </summary>
-        [JsonProperty("from")]
-        public string From { get; private set; }
-        /// <summary>
-        /// The calling phone number, SIP address, or Client identifier formatted for display.
-        /// </summary>
-        [JsonProperty("from_formatted")]
-        public string FromFormatted { get; private set; }
-        /// <summary>
-        /// The Group SID associated with this call. If no Group is associated with the call, the field is empty.
-        /// </summary>
-        [JsonProperty("group_sid")]
-        public string GroupSid { get; private set; }
-        /// <summary>
         /// The SID that identifies the call that created this leg.
         /// </summary>
         [JsonProperty("parent_call_sid")]
         public string ParentCallSid { get; private set; }
         /// <summary>
-        /// If the call was inbound, this is the SID of the IncomingPhoneNumber resource that received the call. If the call was outbound, it is the SID of the OutgoingCallerId resource from which the call was placed.
+        /// The SID of the Account that created this resource
         /// </summary>
-        [JsonProperty("phone_number_sid")]
-        public string PhoneNumberSid { get; private set; }
-        /// <summary>
-        /// The charge for this call, in the currency associated with the account. Populated after the call is completed. May not be immediately available.
-        /// </summary>
-        [JsonProperty("price")]
-        public string Price { get; private set; }
-        /// <summary>
-        /// The currency in which `Price` is measured.
-        /// </summary>
-        [JsonProperty("price_unit")]
-        public string PriceUnit { get; private set; }
-        /// <summary>
-        /// The unique string that identifies this resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The start time of the call. Null if the call has not yet been dialed.
-        /// </summary>
-        [JsonProperty("start_time")]
-        public DateTime? StartTime { get; private set; }
-        /// <summary>
-        /// The status of this call.
-        /// </summary>
-        [JsonProperty("status")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public CallResource.StatusEnum Status { get; private set; }
-        /// <summary>
-        /// A list of related subresources identified by their relative URIs
-        /// </summary>
-        [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> SubresourceUris { get; private set; }
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
         /// <summary>
         /// The phone number, SIP address or Client identifier that received this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
         /// </summary>
@@ -832,6 +746,92 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("to_formatted")]
         public string ToFormatted { get; private set; }
         /// <summary>
+        /// The phone number, SIP address or Client identifier that made this call. Phone numbers are in E.164 format (e.g., +16175551212). SIP addresses are formatted as `name@company.com`. Client identifiers are formatted `client:name`.
+        /// </summary>
+        [JsonProperty("from")]
+        public string From { get; private set; }
+        /// <summary>
+        /// The calling phone number, SIP address, or Client identifier formatted for display.
+        /// </summary>
+        [JsonProperty("from_formatted")]
+        public string FromFormatted { get; private set; }
+        /// <summary>
+        /// If the call was inbound, this is the SID of the IncomingPhoneNumber resource that received the call. If the call was outbound, it is the SID of the OutgoingCallerId resource from which the call was placed.
+        /// </summary>
+        [JsonProperty("phone_number_sid")]
+        public string PhoneNumberSid { get; private set; }
+        /// <summary>
+        /// The status of this call.
+        /// </summary>
+        [JsonProperty("status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public CallResource.StatusEnum Status { get; private set; }
+        /// <summary>
+        /// The start time of the call. Null if the call has not yet been dialed.
+        /// </summary>
+        [JsonProperty("start_time")]
+        public DateTime? StartTime { get; private set; }
+        /// <summary>
+        /// The end time of the call. Null if the call did not complete successfully.
+        /// </summary>
+        [JsonProperty("end_time")]
+        public DateTime? EndTime { get; private set; }
+        /// <summary>
+        /// The length of the call in seconds.
+        /// </summary>
+        [JsonProperty("duration")]
+        public string Duration { get; private set; }
+        /// <summary>
+        /// The charge for this call, in the currency associated with the account. Populated after the call is completed. May not be immediately available.
+        /// </summary>
+        [JsonProperty("price")]
+        public string Price { get; private set; }
+        /// <summary>
+        /// The currency in which `Price` is measured.
+        /// </summary>
+        [JsonProperty("price_unit")]
+        public string PriceUnit { get; private set; }
+        /// <summary>
+        /// A string describing the direction of the call. `inbound` for inbound calls, `outbound-api` for calls initiated via the REST API or `outbound-dial` for calls initiated by a `Dial` verb.
+        /// </summary>
+        [JsonProperty("direction")]
+        public string Direction { get; private set; }
+        /// <summary>
+        /// Either `human` or `machine` if this call was initiated with answering machine detection. Empty otherwise.
+        /// </summary>
+        [JsonProperty("answered_by")]
+        public string AnsweredBy { get; private set; }
+        /// <summary>
+        /// The annotation provided for the call
+        /// </summary>
+        [JsonProperty("annotation")]
+        public string Annotation { get; private set; }
+        /// <summary>
+        /// The API Version used to create the call
+        /// </summary>
+        [JsonProperty("api_version")]
+        public string ApiVersion { get; private set; }
+        /// <summary>
+        /// The forwarding phone number if this call was an incoming call forwarded from another number (depends on carrier supporting forwarding). Otherwise, empty.
+        /// </summary>
+        [JsonProperty("forwarded_from")]
+        public string ForwardedFrom { get; private set; }
+        /// <summary>
+        /// The Group SID associated with this call. If no Group is associated with the call, the field is empty.
+        /// </summary>
+        [JsonProperty("group_sid")]
+        public string GroupSid { get; private set; }
+        /// <summary>
+        /// The caller's name if this call was an incoming call to a phone number with caller ID Lookup enabled. Otherwise, empty.
+        /// </summary>
+        [JsonProperty("caller_name")]
+        public string CallerName { get; private set; }
+        /// <summary>
+        /// The wait time in milliseconds before the call is placed.
+        /// </summary>
+        [JsonProperty("queue_time")]
+        public string QueueTime { get; private set; }
+        /// <summary>
         /// The (optional) unique identifier of the trunk resource that was used for this call.
         /// </summary>
         [JsonProperty("trunk_sid")]
@@ -842,10 +842,10 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
-        /// The wait time in milliseconds before the call is placed.
+        /// A list of related subresources identified by their relative URIs
         /// </summary>
-        [JsonProperty("queue_time")]
-        public string QueueTime { get; private set; }
+        [JsonProperty("subresource_uris")]
+        public Dictionary<string, string> SubresourceUris { get; private set; }
 
         private CallResource()
         {

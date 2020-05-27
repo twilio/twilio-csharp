@@ -28,6 +28,10 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public bool? DataEnabled { get; set; }
         /// <summary>
+        /// The data_limit
+        /// </summary>
+        public int? DataLimit { get; set; }
+        /// <summary>
         /// Defines whether SIMs in the Fleet are capable of sending and receiving Commands via SMS
         /// </summary>
         public bool? CommandsEnabled { get; set; }
@@ -58,6 +62,11 @@ namespace Twilio.Rest.Supersim.V1
             if (DataEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("DataEnabled", DataEnabled.Value.ToString().ToLower()));
+            }
+
+            if (DataLimit != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DataLimit", DataLimit.ToString()));
             }
 
             if (CommandsEnabled != null)

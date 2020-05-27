@@ -300,6 +300,11 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         [JsonProperty("environment_sid")]
         public string EnvironmentSid { get; private set; }
         /// <summary>
+        /// The SID of the build that corresponds to the log
+        /// </summary>
+        [JsonProperty("build_sid")]
+        public string BuildSid { get; private set; }
+        /// <summary>
         /// The SID of the deployment that corresponds to the log
         /// </summary>
         [JsonProperty("deployment_sid")]

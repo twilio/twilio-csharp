@@ -327,6 +327,11 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("chat_service_instance_sid")]
         public string ChatServiceInstanceSid { get; private set; }
         /// <summary>
+        /// The SID of the Flex service instance
+        /// </summary>
+        [JsonProperty("flex_service_instance_sid")]
+        public string FlexServiceInstanceSid { get; private set; }
+        /// <summary>
         /// The primary language of the Flex UI
         /// </summary>
         [JsonProperty("ui_language")]

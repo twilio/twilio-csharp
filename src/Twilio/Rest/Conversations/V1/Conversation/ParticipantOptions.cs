@@ -50,6 +50,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// The address of the Twilio phone number that is used in Group MMS.
         /// </summary>
         public string MessagingBindingProjectedAddress { get; set; }
+        /// <summary>
+        /// The SID of the Role to assign to the participant
+        /// </summary>
+        public string RoleSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -101,6 +105,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
             }
 
+            if (RoleSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+            }
+
             return p;
         }
     }
@@ -132,6 +141,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The SID of the Role to assign to the participant
+        /// </summary>
+        public string RoleSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
@@ -163,6 +176,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             if (Attributes != null)
             {
                 p.Add(new KeyValuePair<string, string>("Attributes", Attributes));
+            }
+
+            if (RoleSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
             }
 
             return p;

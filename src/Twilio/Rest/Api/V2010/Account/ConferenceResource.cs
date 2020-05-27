@@ -47,6 +47,22 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly UpdateStatusEnum Completed = new UpdateStatusEnum("completed");
         }
 
+        public sealed class ReasonConferenceEndedEnum : StringEnum
+        {
+            private ReasonConferenceEndedEnum(string value) : base(value) {}
+            public ReasonConferenceEndedEnum() {}
+            public static implicit operator ReasonConferenceEndedEnum(string value)
+            {
+                return new ReasonConferenceEndedEnum(value);
+            }
+
+            public static readonly ReasonConferenceEndedEnum ConferenceEndedViaApi = new ReasonConferenceEndedEnum("conference-ended-via-api");
+            public static readonly ReasonConferenceEndedEnum ParticipantWithEndConferenceOnExitLeft = new ReasonConferenceEndedEnum("participant-with-end-conference-on-exit-left");
+            public static readonly ReasonConferenceEndedEnum ParticipantWithEndConferenceOnExitKicked = new ReasonConferenceEndedEnum("participant-with-end-conference-on-exit-kicked");
+            public static readonly ReasonConferenceEndedEnum LastParticipantKicked = new ReasonConferenceEndedEnum("last-participant-kicked");
+            public static readonly ReasonConferenceEndedEnum LastParticipantLeft = new ReasonConferenceEndedEnum("last-participant-left");
+        }
+
         private static Request BuildFetchRequest(FetchConferenceOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -432,6 +448,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("subresource_uris")]
         public Dictionary<string, string> SubresourceUris { get; private set; }
+        /// <summary>
+        /// The reason why a conference ended.
+        /// </summary>
+        [JsonProperty("reason_conference_ended")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public ConferenceResource.ReasonConferenceEndedEnum ReasonConferenceEnded { get; private set; }
+        /// <summary>
+        /// The call SID that caused the conference to end
+        /// </summary>
+        [JsonProperty("call_sid_ending_conference")]
+        public string CallSidEndingConference { get; private set; }
 
         private ConferenceResource()
         {

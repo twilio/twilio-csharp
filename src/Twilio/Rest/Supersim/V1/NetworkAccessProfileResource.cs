@@ -34,7 +34,7 @@ namespace Twilio.Rest.Supersim.V1
         }
 
         /// <summary>
-        /// create
+        /// Create a new Network Access Profile
         /// </summary>
         /// <param name="options"> Create NetworkAccessProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -49,7 +49,7 @@ namespace Twilio.Rest.Supersim.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Network Access Profile
         /// </summary>
         /// <param name="options"> Create NetworkAccessProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -64,10 +64,10 @@ namespace Twilio.Rest.Supersim.V1
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Network Access Profile
         /// </summary>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="networks"> The networks </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="networks"> List of Network SIDs that this Network Access Profile will allow connections to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NetworkAccessProfile </returns>
         public static NetworkAccessProfileResource Create(string uniqueName = null,
@@ -80,10 +80,10 @@ namespace Twilio.Rest.Supersim.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Network Access Profile
         /// </summary>
-        /// <param name="uniqueName"> The unique_name </param>
-        /// <param name="networks"> The networks </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
+        /// <param name="networks"> List of Network SIDs that this Network Access Profile will allow connections to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfile </returns>
         public static async System.Threading.Tasks.Task<NetworkAccessProfileResource> CreateAsync(string uniqueName = null,
@@ -106,7 +106,7 @@ namespace Twilio.Rest.Supersim.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a Network Access Profile instance from your account.
         /// </summary>
         /// <param name="options"> Fetch NetworkAccessProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Supersim.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a Network Access Profile instance from your account.
         /// </summary>
         /// <param name="options"> Fetch NetworkAccessProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -136,9 +136,9 @@ namespace Twilio.Rest.Supersim.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a Network Access Profile instance from your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NetworkAccessProfile </returns>
         public static NetworkAccessProfileResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -149,9 +149,9 @@ namespace Twilio.Rest.Supersim.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a Network Access Profile instance from your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID that identifies the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfile </returns>
         public static async System.Threading.Tasks.Task<NetworkAccessProfileResource> FetchAsync(string pathSid,
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Supersim.V1
         }
 
         /// <summary>
-        /// update
+        /// Updates the given properties of a Network Access Profile in your account.
         /// </summary>
         /// <param name="options"> Update NetworkAccessProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -188,7 +188,7 @@ namespace Twilio.Rest.Supersim.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Updates the given properties of a Network Access Profile in your account.
         /// </summary>
         /// <param name="options"> Update NetworkAccessProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -203,10 +203,10 @@ namespace Twilio.Rest.Supersim.V1
         #endif
 
         /// <summary>
-        /// update
+        /// Updates the given properties of a Network Access Profile in your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
+        /// <param name="uniqueName"> The new unique name of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NetworkAccessProfile </returns>
         public static NetworkAccessProfileResource Update(string pathSid,
@@ -219,10 +219,10 @@ namespace Twilio.Rest.Supersim.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Updates the given properties of a Network Access Profile in your account.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="uniqueName"> The unique_name </param>
+        /// <param name="pathSid"> The SID of the resource to update </param>
+        /// <param name="uniqueName"> The new unique name of the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfile </returns>
         public static async System.Threading.Tasks.Task<NetworkAccessProfileResource> UpdateAsync(string pathSid,
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Supersim.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of Network Access Profiles from your account.
         /// </summary>
         /// <param name="options"> Read NetworkAccessProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -262,7 +262,7 @@ namespace Twilio.Rest.Supersim.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of Network Access Profiles from your account.
         /// </summary>
         /// <param name="options"> Read NetworkAccessProfile parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -279,7 +279,7 @@ namespace Twilio.Rest.Supersim.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of Network Access Profiles from your account.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -295,7 +295,7 @@ namespace Twilio.Rest.Supersim.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of Network Access Profiles from your account.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -384,35 +384,40 @@ namespace Twilio.Rest.Supersim.V1
         }
 
         /// <summary>
-        /// The sid
+        /// The unique string that identifies the resource
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique_name
+        /// An application-defined string that uniquely identifies the resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// The SID of the Account that the Network Access Profile belongs to
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The url
+        /// The absolute URL of the resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private NetworkAccessProfileResource()
         {

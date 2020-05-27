@@ -463,6 +463,26 @@ namespace Twilio.Rest.Api.V2010.Account
         }
 
         /// <summary>
+        /// The RFC 2822 date and time in GMT that this resource was last updated
+        /// </summary>
+        [JsonProperty("date_updated")]
+        public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// The number of calls currently in the queue.
+        /// </summary>
+        [JsonProperty("current_size")]
+        public int? CurrentSize { get; private set; }
+        /// <summary>
+        /// A string that you assigned to describe this resource
+        /// </summary>
+        [JsonProperty("friendly_name")]
+        public string FriendlyName { get; private set; }
+        /// <summary>
+        /// The URI of this resource, relative to `https://api.twilio.com`
+        /// </summary>
+        [JsonProperty("uri")]
+        public string Uri { get; private set; }
+        /// <summary>
         /// The SID of the Account that created this resource
         /// </summary>
         [JsonProperty("account_sid")]
@@ -473,40 +493,20 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("average_wait_time")]
         public int? AverageWaitTime { get; private set; }
         /// <summary>
-        /// The number of calls currently in the queue.
+        /// The unique string that identifies this resource
         /// </summary>
-        [JsonProperty("current_size")]
-        public int? CurrentSize { get; private set; }
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
         /// <summary>
         /// The RFC 2822 date and time in GMT that this resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT that this resource was last updated
-        /// </summary>
-        [JsonProperty("date_updated")]
-        public DateTime? DateUpdated { get; private set; }
-        /// <summary>
-        /// A string that you assigned to describe this resource
-        /// </summary>
-        [JsonProperty("friendly_name")]
-        public string FriendlyName { get; private set; }
-        /// <summary>
         /// The max number of calls allowed in the queue
         /// </summary>
         [JsonProperty("max_size")]
         public int? MaxSize { get; private set; }
-        /// <summary>
-        /// The unique string that identifies this resource
-        /// </summary>
-        [JsonProperty("sid")]
-        public string Sid { get; private set; }
-        /// <summary>
-        /// The URI of this resource, relative to `https://api.twilio.com`
-        /// </summary>
-        [JsonProperty("uri")]
-        public string Uri { get; private set; }
 
         private QueueResource()
         {

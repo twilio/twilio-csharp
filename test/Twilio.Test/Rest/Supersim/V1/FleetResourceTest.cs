@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_metering\": \"payg\",\"date_created\": \"2019-07-30T20:00:00Z\",\"date_updated\": \"2019-07-30T20:00:00Z\",\"commands_enabled\": true,\"commands_method\": \"GET\",\"commands_url\": \"https://google.com\",\"network_access_profile_sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_limit\": 1000,\"data_metering\": \"payg\",\"date_created\": \"2019-07-30T20:00:00Z\",\"date_updated\": \"2019-07-30T20:00:00Z\",\"commands_enabled\": true,\"commands_method\": \"GET\",\"commands_url\": \"https://google.com\",\"network_access_profile_sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
             var response = FleetResource.Create(client: twilioRestClient);
@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_metering\": \"payg\",\"date_created\": \"2019-07-30T20:00:00Z\",\"date_updated\": \"2019-07-30T20:00:00Z\",\"commands_enabled\": true,\"commands_method\": \"POST\",\"commands_url\": null,\"network_access_profile_sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_limit\": 1000,\"data_metering\": \"payg\",\"date_created\": \"2019-07-30T20:00:00Z\",\"date_updated\": \"2019-07-30T20:00:00Z\",\"commands_enabled\": true,\"commands_method\": \"POST\",\"commands_url\": null,\"network_access_profile_sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
             var response = FleetResource.Fetch("HFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -136,7 +136,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"meta\": {\"first_page_url\": \"https://supersim.twilio.com/v1/Fleets?NetworkAccessProfile=HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0\",\"key\": \"fleets\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://supersim.twilio.com/v1/Fleets?NetworkAccessProfile=HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0\"},\"fleets\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"Pilot Fleet\",\"data_enabled\": true,\"data_metering\": \"payg\",\"date_created\": \"2019-10-15T20:00:00Z\",\"date_updated\": \"2019-10-15T20:00:00Z\",\"commands_enabled\": true,\"commands_method\": \"POST\",\"commands_url\": null,\"network_access_profile_sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"
+                                         "{\"meta\": {\"first_page_url\": \"https://supersim.twilio.com/v1/Fleets?NetworkAccessProfile=HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0\",\"key\": \"fleets\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://supersim.twilio.com/v1/Fleets?NetworkAccessProfile=HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=50&Page=0\"},\"fleets\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"Pilot Fleet\",\"data_enabled\": true,\"data_limit\": 1000,\"data_metering\": \"payg\",\"date_created\": \"2019-10-15T20:00:00Z\",\"date_updated\": \"2019-10-15T20:00:00Z\",\"commands_enabled\": true,\"commands_method\": \"POST\",\"commands_url\": null,\"network_access_profile_sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"
                                      ));
 
             var response = FleetResource.Read(client: twilioRestClient);
@@ -172,7 +172,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_metering\": \"payg\",\"date_created\": \"2019-10-15T20:00:00Z\",\"date_updated\": \"2019-10-15T20:00:00Z\",\"commands_enabled\": true,\"commands_method\": \"POST\",\"commands_url\": null,\"network_access_profile_sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_limit\": 1000,\"data_metering\": \"payg\",\"date_created\": \"2019-10-15T20:00:00Z\",\"date_updated\": \"2019-10-15T20:00:00Z\",\"commands_enabled\": true,\"commands_method\": \"POST\",\"commands_url\": null,\"network_access_profile_sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
             var response = FleetResource.Update("HFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);

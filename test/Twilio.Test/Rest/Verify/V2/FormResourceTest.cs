@@ -12,13 +12,13 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.TrustedComms;
+using Twilio.Rest.Verify.V2;
 
-namespace Twilio.Tests.Rest.Preview.TrustedComms
+namespace Twilio.Tests.Rest.Verify.V2
 {
 
     [TestFixture]
-    public class BusinessTest : TwilioTest
+    public class FormTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()
@@ -26,15 +26,15 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                Twilio.Rest.Domain.Verify,
+                "/v2/Forms/form-app-push",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                BusinessResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                FormResource.Fetch(FormResource.FormTypesEnum.FormAppPush, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"brands\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Brands\",\"insights\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Insights\"}}"
+                                         "{\"form_type\": \"form-sms\",\"forms\": {\"create_factor\": {},\"verify_factor\": {},\"create_challenge\": {}},\"form_meta\": {},\"url\": \"https://verify.twilio.com/v2/Forms/form-sms\"}"
                                      ));
 
-            var response = BusinessResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = FormResource.Fetch(FormResource.FormTypesEnum.FormAppPush, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

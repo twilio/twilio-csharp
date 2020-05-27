@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Trunking,
-                "/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                IpAccessControlListResource.Fetch("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                IpAccessControlListResource.Fetch("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-05-02T17:29:34Z\",\"date_updated\": \"2018-05-02T17:29:34Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-05-02T17:29:34Z\",\"date_updated\": \"2018-05-02T17:29:34Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = IpAccessControlListResource.Fetch("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = IpAccessControlListResource.Fetch("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -63,14 +63,14 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Trunking,
-                "/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                "/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists/ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                IpAccessControlListResource.Delete("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                IpAccessControlListResource.Delete("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -88,7 +88,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
                                          "null"
                                      ));
 
-            var response = IpAccessControlListResource.Delete("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = IpAccessControlListResource.Delete("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -99,7 +99,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Trunking,
-                "/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists",
+                "/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists",
                 ""
             );
             request.AddPostParam("IpAccessControlListSid", Serialize("ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
@@ -107,7 +107,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
 
             try
             {
-                IpAccessControlListResource.Create("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                IpAccessControlListResource.Create("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -122,10 +122,10 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-04-30T20:59:06Z\",\"date_updated\": \"2018-04-30T20:59:06Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-04-30T20:59:06Z\",\"date_updated\": \"2018-04-30T20:59:06Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = IpAccessControlListResource.Create("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = IpAccessControlListResource.Create("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ALXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -136,14 +136,14 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Trunking,
-                "/v1/Trunks/TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists",
+                "/v1/Trunks/TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/IpAccessControlLists",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                IpAccessControlListResource.Read("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                IpAccessControlListResource.Read("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -158,10 +158,10 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"ip_access_control_lists\": [],\"meta\": {\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0\",\"key\": \"ip_access_control_lists\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0\"}}"
+                                         "{\"ip_access_control_lists\": [],\"meta\": {\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0\",\"key\": \"ip_access_control_lists\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0\"}}"
                                      ));
 
-            var response = IpAccessControlListResource.Read("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = IpAccessControlListResource.Read("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -173,10 +173,10 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"ip_access_control_lists\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-05-02T17:29:34Z\",\"date_updated\": \"2018-05-02T17:29:34Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0\",\"key\": \"ip_access_control_lists\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0\"}}"
+                                         "{\"ip_access_control_lists\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2018-05-02T17:29:34Z\",\"date_updated\": \"2018-05-02T17:29:34Z\",\"friendly_name\": \"friendly_name\",\"sid\": \"ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists/ALaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"first_page_url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0\",\"key\": \"ip_access_control_lists\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/IpAccessControlLists?PageSize=50&Page=0\"}}"
                                      ));
 
-            var response = IpAccessControlListResource.Read("TRXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = IpAccessControlListResource.Read("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

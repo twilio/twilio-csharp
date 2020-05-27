@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"unique_name\": null,\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"unique_name\": null,\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"networks\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks\"}}"
                                      ));
 
             var response = NetworkAccessProfileResource.Create(client: twilioRestClient);
@@ -64,7 +64,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"unique_name\": \"My Network Access Profile\",\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"unique_name\": \"My Network Access Profile\",\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"networks\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks\"}}"
                                      ));
 
             var response = NetworkAccessProfileResource.Create(client: twilioRestClient);
@@ -100,7 +100,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"unique_name\": \"My Network Access Profile\",\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"unique_name\": \"My Network Access Profile\",\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"networks\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks\"}}"
                                      ));
 
             var response = NetworkAccessProfileResource.Fetch("HAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -136,7 +136,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"unique_name\": \"My Network Access Profile\",\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"unique_name\": \"My Network Access Profile\",\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"networks\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks\"}}"
                                      ));
 
             var response = NetworkAccessProfileResource.Update("HAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -187,7 +187,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"meta\": {\"first_page_url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles?PageSize=50&Page=0\",\"key\": \"network_access_profiles\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles?PageSize=50&Page=0\"},\"network_access_profiles\": [{\"unique_name\": \"My Network Access Profile\",\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}]}"
+                                         "{\"meta\": {\"first_page_url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles?PageSize=50&Page=0\",\"key\": \"network_access_profiles\",\"next_page_url\": null,\"page\": 0,\"page_size\": 50,\"previous_page_url\": null,\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles?PageSize=50&Page=0\"},\"network_access_profiles\": [{\"unique_name\": \"My Network Access Profile\",\"sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2020-05-01T20:00:00Z\",\"date_updated\": \"2020-05-01T20:00:00Z\",\"url\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"networks\": \"https://supersim.twilio.com/v1/NetworkAccessProfiles/HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Networks\"}}]}"
                                      ));
 
             var response = NetworkAccessProfileResource.Read(client: twilioRestClient);
