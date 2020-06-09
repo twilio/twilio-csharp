@@ -13,7 +13,7 @@ branches:
 deploy:
   provider: NuGet
   api_key:
-    secure: xi7DNs4Cj7fnCrY1m7l5LjwkTNe1hhchwUXQT6p6OX7TBLgpPf9uanNaYQ9Lbsi5
+    secure: VFvsLn6PF6HuLGwrGuXTuuRa8L4CjBmvPfwffdQdQ4oiKF3elGVtdiGY2JrEfTlw
   skip_symbols: false
   artifact: /Twilio\..*\.nupkg/
   on:
