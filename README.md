@@ -66,7 +66,7 @@ var message = MessageResource.Create(
 Console.WriteLine(message.Sid);
 ```
 
-### Specify Region and/or Edge
+## Specify Region and/or Edge
 
 To take advantage of Twilio's [Global Infrastructure](https://www.twilio.com/docs/global-infrastructure), specify the target Region and/or Edge for the client:
 
@@ -117,7 +117,7 @@ Console.WriteLine(response);
 */
 ```
 
-### Using a Custom HTTP Client
+## Using a Custom HTTP Client
 
 To use a custom HTTP client with this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/csharp-dotnet/custom-http-clients-dot-net-framework).
 
