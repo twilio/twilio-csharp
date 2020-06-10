@@ -26,7 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The Call SID of the resource to fetch
+        /// The Call SID or URL encoded label of the participant to fetch
         /// </summary>
         public string PathCallSid { get; }
 
@@ -34,7 +34,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new FetchParticipantOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the conference with the participant to fetch </param>
-        /// <param name="pathCallSid"> The Call SID of the resource to fetch </param>
+        /// <param name="pathCallSid"> The Call SID or URL encoded label of the participant to fetch </param>
         public FetchParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The Call SID of the resources to update
+        /// The Call SID or URL encoded label of the participant to update
         /// </summary>
         public string PathCallSid { get; }
         /// <summary>
@@ -121,7 +121,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new UpdateParticipantOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the conference with the participant to update </param>
-        /// <param name="pathCallSid"> The Call SID of the resources to update </param>
+        /// <param name="pathCallSid"> The Call SID or URL encoded label of the participant to update </param>
         public UpdateParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
             PathConferenceSid = pathConferenceSid;
@@ -550,7 +550,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The Call SID of the resources to delete
+        /// The Call SID or URL encoded label of the participant to delete
         /// </summary>
         public string PathCallSid { get; }
 
@@ -558,7 +558,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Construct a new DeleteParticipantOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the conference with the participants to delete </param>
-        /// <param name="pathCallSid"> The Call SID of the resources to delete </param>
+        /// <param name="pathCallSid"> The Call SID or URL encoded label of the participant to delete </param>
         public DeleteParticipantOptions(string pathConferenceSid, string pathCallSid)
         {
             PathConferenceSid = pathConferenceSid;

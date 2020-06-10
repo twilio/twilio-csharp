@@ -79,6 +79,8 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="logEnabled"> Whether to log notifications </param>
         /// <param name="alexaSkillId"> Deprecated </param>
         /// <param name="defaultAlexaNotificationProtocolVersion"> Deprecated </param>
+        /// <param name="deliveryCallbackUrl"> Webhook URL </param>
+        /// <param name="deliveryCallbackEnabled"> Enable delivery callbacks </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName = null,
@@ -93,9 +95,11 @@ namespace Twilio.Rest.Notify.V1
                                              bool? logEnabled = null,
                                              string alexaSkillId = null,
                                              string defaultAlexaNotificationProtocolVersion = null,
+                                             string deliveryCallbackUrl = null,
+                                             bool? deliveryCallbackEnabled = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion, DeliveryCallbackUrl = deliveryCallbackUrl, DeliveryCallbackEnabled = deliveryCallbackEnabled};
             return Create(options, client);
         }
 
@@ -118,6 +122,8 @@ namespace Twilio.Rest.Notify.V1
         /// <param name="logEnabled"> Whether to log notifications </param>
         /// <param name="alexaSkillId"> Deprecated </param>
         /// <param name="defaultAlexaNotificationProtocolVersion"> Deprecated </param>
+        /// <param name="deliveryCallbackUrl"> Webhook URL </param>
+        /// <param name="deliveryCallbackEnabled"> Enable delivery callbacks </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName = null,
@@ -132,9 +138,11 @@ namespace Twilio.Rest.Notify.V1
                                                                                      bool? logEnabled = null,
                                                                                      string alexaSkillId = null,
                                                                                      string defaultAlexaNotificationProtocolVersion = null,
+                                                                                     string deliveryCallbackUrl = null,
+                                                                                     bool? deliveryCallbackEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion};
+            var options = new CreateServiceOptions(){FriendlyName = friendlyName, ApnCredentialSid = apnCredentialSid, GcmCredentialSid = gcmCredentialSid, MessagingServiceSid = messagingServiceSid, FacebookMessengerPageId = facebookMessengerPageId, DefaultApnNotificationProtocolVersion = defaultApnNotificationProtocolVersion, DefaultGcmNotificationProtocolVersion = defaultGcmNotificationProtocolVersion, FcmCredentialSid = fcmCredentialSid, DefaultFcmNotificationProtocolVersion = defaultFcmNotificationProtocolVersion, LogEnabled = logEnabled, AlexaSkillId = alexaSkillId, DefaultAlexaNotificationProtocolVersion = defaultAlexaNotificationProtocolVersion, DeliveryCallbackUrl = deliveryCallbackUrl, DeliveryCallbackEnabled = deliveryCallbackEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -639,6 +647,16 @@ namespace Twilio.Rest.Notify.V1
         /// </summary>
         [JsonProperty("default_alexa_notification_protocol_version")]
         public string DefaultAlexaNotificationProtocolVersion { get; private set; }
+        /// <summary>
+        /// Webhook URL
+        /// </summary>
+        [JsonProperty("delivery_callback_url")]
+        public string DeliveryCallbackUrl { get; private set; }
+        /// <summary>
+        /// Enable delivery callbacks
+        /// </summary>
+        [JsonProperty("delivery_callback_enabled")]
+        public bool? DeliveryCallbackEnabled { get; private set; }
 
         private ServiceResource()
         {

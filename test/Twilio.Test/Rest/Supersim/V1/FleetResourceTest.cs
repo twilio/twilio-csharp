@@ -30,11 +30,12 @@ namespace Twilio.Tests.Rest.Supersim.V1
                 "/v1/Fleets",
                 ""
             );
+            request.AddPostParam("NetworkAccessProfile", Serialize("HAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FleetResource.Create(client: twilioRestClient);
+                FleetResource.Create("HAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -52,7 +53,7 @@ namespace Twilio.Tests.Rest.Supersim.V1
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"unique_name\": \"unique_name\",\"data_enabled\": true,\"data_limit\": 1000,\"data_metering\": \"payg\",\"date_created\": \"2019-07-30T20:00:00Z\",\"date_updated\": \"2019-07-30T20:00:00Z\",\"commands_enabled\": true,\"commands_method\": \"GET\",\"commands_url\": \"https://google.com\",\"network_access_profile_sid\": \"HAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://supersim.twilio.com/v1/Fleets/HFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = FleetResource.Create(client: twilioRestClient);
+            var response = FleetResource.Create("HAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

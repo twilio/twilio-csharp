@@ -136,26 +136,26 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The phone number to verify in E.164 format
+        /// The SID of the Call the resource is associated with
         /// </summary>
-        [JsonProperty("phone_number")]
-        [JsonConverter(typeof(PhoneNumberConverter))]
-        public Types.PhoneNumber PhoneNumber { get; private set; }
+        [JsonProperty("call_sid")]
+        public string CallSid { get; private set; }
         /// <summary>
         /// The string that you assigned to describe the resource
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
+        /// The phone number to verify in E.164 format
+        /// </summary>
+        [JsonProperty("phone_number")]
+        [JsonConverter(typeof(PhoneNumberConverter))]
+        public Types.PhoneNumber PhoneNumber { get; private set; }
+        /// <summary>
         /// The 6 digit validation code that someone must enter to validate the Caller ID  when `phone_number` is called
         /// </summary>
         [JsonProperty("validation_code")]
-        public int? ValidationCode { get; private set; }
-        /// <summary>
-        /// The SID of the Call the resource is associated with
-        /// </summary>
-        [JsonProperty("call_sid")]
-        public string CallSid { get; private set; }
+        public string ValidationCode { get; private set; }
 
         private ValidationRequestResource()
         {

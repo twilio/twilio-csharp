@@ -20,6 +20,10 @@ namespace Twilio.Rest.Supersim.V1
     public class CreateFleetOptions : IOptions<FleetResource>
     {
         /// <summary>
+        /// The SID or unique name of the Network Access Profile of the Fleet
+        /// </summary>
+        public string NetworkAccessProfile { get; }
+        /// <summary>
         /// An application-defined string that uniquely identifies the resource
         /// </summary>
         public string UniqueName { get; set; }
@@ -28,25 +32,30 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public bool? DataEnabled { get; set; }
         /// <summary>
-        /// The data_limit
+        /// The total data usage (download and upload combined) in Megabytes that each Sim resource assigned to the Fleet resource can consume
         /// </summary>
         public int? DataLimit { get; set; }
         /// <summary>
-        /// Defines whether SIMs in the Fleet are capable of sending and receiving Commands via SMS
+        /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
         /// </summary>
         public bool? CommandsEnabled { get; set; }
         /// <summary>
-        /// The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine Command
+        /// The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine SMS via Commands
         /// </summary>
         public Uri CommandsUrl { get; set; }
         /// <summary>
         /// A string representing the HTTP method to use when making a request to `commands_url`
         /// </summary>
         public Twilio.Http.HttpMethod CommandsMethod { get; set; }
+
         /// <summary>
-        /// The SID or unique name of the Network Access Profile of the Fleet
+        /// Construct a new CreateFleetOptions
         /// </summary>
-        public string NetworkAccessProfile { get; set; }
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
+        public CreateFleetOptions(string networkAccessProfile)
+        {
+            NetworkAccessProfile = networkAccessProfile;
+        }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -54,6 +63,11 @@ namespace Twilio.Rest.Supersim.V1
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (NetworkAccessProfile != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
+            }
+
             if (UniqueName != null)
             {
                 p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
@@ -82,11 +96,6 @@ namespace Twilio.Rest.Supersim.V1
             if (CommandsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
-            }
-
-            if (NetworkAccessProfile != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
             }
 
             return p;

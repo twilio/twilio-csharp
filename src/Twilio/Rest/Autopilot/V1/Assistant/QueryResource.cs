@@ -143,6 +143,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         ///                read </param>
         /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
         /// <param name="status"> The status of the resources to read </param>
+        /// <param name="dialogueSid"> The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue). </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -151,11 +152,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                                                       string language = null,
                                                       string modelBuild = null,
                                                       string status = null,
+                                                      string dialogueSid = null,
                                                       int? pageSize = null,
                                                       long? limit = null,
                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadQueryOptions(pathAssistantSid){Language = language, ModelBuild = modelBuild, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadQueryOptions(pathAssistantSid){Language = language, ModelBuild = modelBuild, Status = status, DialogueSid = dialogueSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -168,6 +170,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         ///                read </param>
         /// <param name="modelBuild"> The SID or unique name of the Model Build to be queried </param>
         /// <param name="status"> The status of the resources to read </param>
+        /// <param name="dialogueSid"> The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue). </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -176,11 +179,12 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                                                                                               string language = null,
                                                                                               string modelBuild = null,
                                                                                               string status = null,
+                                                                                              string dialogueSid = null,
                                                                                               int? pageSize = null,
                                                                                               long? limit = null,
                                                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadQueryOptions(pathAssistantSid){Language = language, ModelBuild = modelBuild, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadQueryOptions(pathAssistantSid){Language = language, ModelBuild = modelBuild, Status = status, DialogueSid = dialogueSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

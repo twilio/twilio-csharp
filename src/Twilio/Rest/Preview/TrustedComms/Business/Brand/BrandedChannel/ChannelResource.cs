@@ -69,17 +69,15 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
         /// <param name="pathBrandSid"> Brand Sid. </param>
         /// <param name="pathBrandedChannelSid"> Branded Channel Sid. </param>
         /// <param name="phoneNumberSid"> Phone Number Sid to be branded. </param>
-        /// <param name="phoneNumber"> Twilio number to assign to the Branded Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
         public static ChannelResource Create(string pathBusinessSid,
                                              string pathBrandSid,
                                              string pathBrandedChannelSid,
                                              string phoneNumberSid,
-                                             string phoneNumber,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateChannelOptions(pathBusinessSid, pathBrandSid, pathBrandedChannelSid, phoneNumberSid, phoneNumber);
+            var options = new CreateChannelOptions(pathBusinessSid, pathBrandSid, pathBrandedChannelSid, phoneNumberSid);
             return Create(options, client);
         }
 
@@ -91,17 +89,15 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
         /// <param name="pathBrandSid"> Brand Sid. </param>
         /// <param name="pathBrandedChannelSid"> Branded Channel Sid. </param>
         /// <param name="phoneNumberSid"> Phone Number Sid to be branded. </param>
-        /// <param name="phoneNumber"> Twilio number to assign to the Branded Channel </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(string pathBusinessSid,
                                                                                      string pathBrandSid,
                                                                                      string pathBrandedChannelSid,
                                                                                      string phoneNumberSid,
-                                                                                     string phoneNumber,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateChannelOptions(pathBusinessSid, pathBrandSid, pathBrandedChannelSid, phoneNumberSid, phoneNumber);
+            var options = new CreateChannelOptions(pathBusinessSid, pathBrandSid, pathBrandedChannelSid, phoneNumberSid);
             return await CreateAsync(options, client);
         }
         #endif

@@ -73,6 +73,10 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
         /// The status of the resources to read
         /// </summary>
         public string Status { get; set; }
+        /// <summary>
+        /// The SID of the [Dialogue](https://www.twilio.com/docs/autopilot/api/dialogue).
+        /// </summary>
+        public string DialogueSid { get; set; }
 
         /// <summary>
         /// Construct a new ReadQueryOptions
@@ -102,6 +106,11 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status));
+            }
+
+            if (DialogueSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DialogueSid", DialogueSid.ToString()));
             }
 
             if (PageSize != null)

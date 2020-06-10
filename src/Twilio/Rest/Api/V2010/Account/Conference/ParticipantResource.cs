@@ -81,7 +81,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Fetch an instance of a participant
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the conference with the participant to fetch </param>
-        /// <param name="pathCallSid"> The Call SID of the resource to fetch </param>
+        /// <param name="pathCallSid"> The Call SID or URL encoded label of the participant to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
@@ -99,7 +99,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Fetch an instance of a participant
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the conference with the participant to fetch </param>
-        /// <param name="pathCallSid"> The Call SID of the resource to fetch </param>
+        /// <param name="pathCallSid"> The Call SID or URL encoded label of the participant to fetch </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
@@ -156,7 +156,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Update the properties of the participant
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the conference with the participant to update </param>
-        /// <param name="pathCallSid"> The Call SID of the resources to update </param>
+        /// <param name="pathCallSid"> The Call SID or URL encoded label of the participant to update </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="muted"> Whether the participant should be muted </param>
         /// <param name="hold"> Whether the participant should be on hold </param>
@@ -200,7 +200,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Update the properties of the participant
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the conference with the participant to update </param>
-        /// <param name="pathCallSid"> The Call SID of the resources to update </param>
+        /// <param name="pathCallSid"> The Call SID or URL encoded label of the participant to update </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
         /// <param name="muted"> Whether the participant should be muted </param>
         /// <param name="hold"> Whether the participant should be on hold </param>
@@ -506,7 +506,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Kick a participant from a given conference
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the conference with the participants to delete </param>
-        /// <param name="pathCallSid"> The Call SID of the resources to delete </param>
+        /// <param name="pathCallSid"> The Call SID or URL encoded label of the participant to delete </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
@@ -524,7 +524,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Kick a participant from a given conference
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the conference with the participants to delete </param>
-        /// <param name="pathCallSid"> The Call SID of the resources to delete </param>
+        /// <param name="pathCallSid"> The Call SID or URL encoded label of the participant to delete </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>

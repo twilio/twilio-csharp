@@ -61,8 +61,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum ConversationsEvents = new UsageCategoryEnum("conversations-events");
             public static readonly UsageCategoryEnum ConversationsParticipantEvents = new UsageCategoryEnum("conversations-participant-events");
             public static readonly UsageCategoryEnum ConversationsParticipants = new UsageCategoryEnum("conversations-participants");
-            public static readonly UsageCategoryEnum FraudLookups = new UsageCategoryEnum("fraud-lookups");
             public static readonly UsageCategoryEnum Cps = new UsageCategoryEnum("cps");
+            public static readonly UsageCategoryEnum FraudLookups = new UsageCategoryEnum("fraud-lookups");
             public static readonly UsageCategoryEnum GroupRooms = new UsageCategoryEnum("group-rooms");
             public static readonly UsageCategoryEnum GroupRoomsDataTrack = new UsageCategoryEnum("group-rooms-data-track");
             public static readonly UsageCategoryEnum GroupRoomsEncryptedMediaRecorded = new UsageCategoryEnum("group-rooms-encrypted-media-recorded");
@@ -80,17 +80,20 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum Lookups = new UsageCategoryEnum("lookups");
             public static readonly UsageCategoryEnum Marketplace = new UsageCategoryEnum("marketplace");
             public static readonly UsageCategoryEnum MarketplaceAlgorithmiaNamedEntityRecognition = new UsageCategoryEnum("marketplace-algorithmia-named-entity-recognition");
+            public static readonly UsageCategoryEnum MarketplaceCadenceTranscription = new UsageCategoryEnum("marketplace-cadence-transcription");
+            public static readonly UsageCategoryEnum MarketplaceCadenceTranslation = new UsageCategoryEnum("marketplace-cadence-translation");
+            public static readonly UsageCategoryEnum MarketplaceCapioSpeechToText = new UsageCategoryEnum("marketplace-capio-speech-to-text");
+            public static readonly UsageCategoryEnum MarketplaceConvrizaAbaba = new UsageCategoryEnum("marketplace-convriza-ababa");
+            public static readonly UsageCategoryEnum MarketplaceDeepgramPhraseDetector = new UsageCategoryEnum("marketplace-deepgram-phrase-detector");
             public static readonly UsageCategoryEnum MarketplaceDigitalSegmentBusinessInfo = new UsageCategoryEnum("marketplace-digital-segment-business-info");
+            public static readonly UsageCategoryEnum MarketplaceFacebookOfflineConversions = new UsageCategoryEnum("marketplace-facebook-offline-conversions");
             public static readonly UsageCategoryEnum MarketplaceGoogleSpeechToText = new UsageCategoryEnum("marketplace-google-speech-to-text");
             public static readonly UsageCategoryEnum MarketplaceIbmWatsonMessageInsights = new UsageCategoryEnum("marketplace-ibm-watson-message-insights");
             public static readonly UsageCategoryEnum MarketplaceIbmWatsonMessageSentiment = new UsageCategoryEnum("marketplace-ibm-watson-message-sentiment");
             public static readonly UsageCategoryEnum MarketplaceIbmWatsonRecordingAnalysis = new UsageCategoryEnum("marketplace-ibm-watson-recording-analysis");
+            public static readonly UsageCategoryEnum MarketplaceIbmWatsonToneAnalyzer = new UsageCategoryEnum("marketplace-ibm-watson-tone-analyzer");
             public static readonly UsageCategoryEnum MarketplaceIcehookSystemsScout = new UsageCategoryEnum("marketplace-icehook-systems-scout");
             public static readonly UsageCategoryEnum MarketplaceInfogroupDataaxleBizinfo = new UsageCategoryEnum("marketplace-infogroup-dataaxle-bizinfo");
-            public static readonly UsageCategoryEnum MarketplaceCadenceTranscription = new UsageCategoryEnum("marketplace-cadence-transcription");
-            public static readonly UsageCategoryEnum MarketplaceCadenceTranslation = new UsageCategoryEnum("marketplace-cadence-translation");
-            public static readonly UsageCategoryEnum MarketplaceCapioSpeechToText = new UsageCategoryEnum("marketplace-capio-speech-to-text");
-            public static readonly UsageCategoryEnum MarketplaceFacebookOfflineConversions = new UsageCategoryEnum("marketplace-facebook-offline-conversions");
             public static readonly UsageCategoryEnum MarketplaceKeenIoContactCenterAnalytics = new UsageCategoryEnum("marketplace-keen-io-contact-center-analytics");
             public static readonly UsageCategoryEnum MarketplaceMarchexCleancall = new UsageCategoryEnum("marketplace-marchex-cleancall");
             public static readonly UsageCategoryEnum MarketplaceMarchexSentimentAnalysisForSms = new UsageCategoryEnum("marketplace-marchex-sentiment-analysis-for-sms");
@@ -100,23 +103,20 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum MarketplaceNextcallerAdvancedCallerIdentification = new UsageCategoryEnum("marketplace-nextcaller-advanced-caller-identification");
             public static readonly UsageCategoryEnum MarketplaceNomoroboSpamScore = new UsageCategoryEnum("marketplace-nomorobo-spam-score");
             public static readonly UsageCategoryEnum MarketplacePayfoneTcpaCompliance = new UsageCategoryEnum("marketplace-payfone-tcpa-compliance");
+            public static readonly UsageCategoryEnum MarketplaceRemeetingAutomaticSpeechRecognition = new UsageCategoryEnum("marketplace-remeeting-automatic-speech-recognition");
+            public static readonly UsageCategoryEnum MarketplaceTcpaDefenseSolutionsBlacklistFeed = new UsageCategoryEnum("marketplace-tcpa-defense-solutions-blacklist-feed");
             public static readonly UsageCategoryEnum MarketplaceTeloOpencnam = new UsageCategoryEnum("marketplace-telo-opencnam");
             public static readonly UsageCategoryEnum MarketplaceTruecnamTrueSpam = new UsageCategoryEnum("marketplace-truecnam-true-spam");
             public static readonly UsageCategoryEnum MarketplaceTwilioCallerNameLookupUs = new UsageCategoryEnum("marketplace-twilio-caller-name-lookup-us");
             public static readonly UsageCategoryEnum MarketplaceTwilioCarrierInformationLookup = new UsageCategoryEnum("marketplace-twilio-carrier-information-lookup");
             public static readonly UsageCategoryEnum MarketplaceVoicebasePci = new UsageCategoryEnum("marketplace-voicebase-pci");
             public static readonly UsageCategoryEnum MarketplaceVoicebaseTranscription = new UsageCategoryEnum("marketplace-voicebase-transcription");
+            public static readonly UsageCategoryEnum MarketplaceVoicebaseTranscriptionCustomVocabulary = new UsageCategoryEnum("marketplace-voicebase-transcription-custom-vocabulary");
             public static readonly UsageCategoryEnum MarketplaceWhitepagesProCallerIdentification = new UsageCategoryEnum("marketplace-whitepages-pro-caller-identification");
             public static readonly UsageCategoryEnum MarketplaceWhitepagesProPhoneIntelligence = new UsageCategoryEnum("marketplace-whitepages-pro-phone-intelligence");
             public static readonly UsageCategoryEnum MarketplaceWhitepagesProPhoneReputation = new UsageCategoryEnum("marketplace-whitepages-pro-phone-reputation");
-            public static readonly UsageCategoryEnum MarketplaceWolframShortAnswer = new UsageCategoryEnum("marketplace-wolfram-short-answer");
             public static readonly UsageCategoryEnum MarketplaceWolfarmSpokenResults = new UsageCategoryEnum("marketplace-wolfarm-spoken-results");
-            public static readonly UsageCategoryEnum MarketplaceDeepgramPhraseDetector = new UsageCategoryEnum("marketplace-deepgram-phrase-detector");
-            public static readonly UsageCategoryEnum MarketplaceConvrizaAbaba = new UsageCategoryEnum("marketplace-convriza-ababa");
-            public static readonly UsageCategoryEnum MarketplaceIbmWatsonToneAnalyzer = new UsageCategoryEnum("marketplace-ibm-watson-tone-analyzer");
-            public static readonly UsageCategoryEnum MarketplaceRemeetingAutomaticSpeechRecognition = new UsageCategoryEnum("marketplace-remeeting-automatic-speech-recognition");
-            public static readonly UsageCategoryEnum MarketplaceTcpaDefenseSolutionsBlacklistFeed = new UsageCategoryEnum("marketplace-tcpa-defense-solutions-blacklist-feed");
-            public static readonly UsageCategoryEnum MarketplaceVoicebaseTranscriptionCustomVocabulary = new UsageCategoryEnum("marketplace-voicebase-transcription-custom-vocabulary");
+            public static readonly UsageCategoryEnum MarketplaceWolframShortAnswer = new UsageCategoryEnum("marketplace-wolfram-short-answer");
             public static readonly UsageCategoryEnum MarketplaceYticaContactCenterReportingAnalytics = new UsageCategoryEnum("marketplace-ytica-contact-center-reporting-analytics");
             public static readonly UsageCategoryEnum Mediastorage = new UsageCategoryEnum("mediastorage");
             public static readonly UsageCategoryEnum Mms = new UsageCategoryEnum("mms");
@@ -137,10 +137,10 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum Pchat = new UsageCategoryEnum("pchat");
             public static readonly UsageCategoryEnum PchatActions = new UsageCategoryEnum("pchat-actions");
             public static readonly UsageCategoryEnum PchatAps = new UsageCategoryEnum("pchat-aps");
+            public static readonly UsageCategoryEnum PchatMessages = new UsageCategoryEnum("pchat-messages");
             public static readonly UsageCategoryEnum PchatNotifications = new UsageCategoryEnum("pchat-notifications");
             public static readonly UsageCategoryEnum PchatReads = new UsageCategoryEnum("pchat-reads");
             public static readonly UsageCategoryEnum PchatUsers = new UsageCategoryEnum("pchat-users");
-            public static readonly UsageCategoryEnum PchatMessages = new UsageCategoryEnum("pchat-messages");
             public static readonly UsageCategoryEnum PeerToPeerRoomsParticipantMinutes = new UsageCategoryEnum("peer-to-peer-rooms-participant-minutes");
             public static readonly UsageCategoryEnum Pfax = new UsageCategoryEnum("pfax");
             public static readonly UsageCategoryEnum PfaxMinutes = new UsageCategoryEnum("pfax-minutes");
@@ -157,6 +157,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum Premiumsupport = new UsageCategoryEnum("premiumsupport");
             public static readonly UsageCategoryEnum Proxy = new UsageCategoryEnum("proxy");
             public static readonly UsageCategoryEnum ProxyActiveSessions = new UsageCategoryEnum("proxy-active-sessions");
+            public static readonly UsageCategoryEnum Pstnconnectivity = new UsageCategoryEnum("pstnconnectivity");
             public static readonly UsageCategoryEnum Pv = new UsageCategoryEnum("pv");
             public static readonly UsageCategoryEnum PvCompositionMediaDownloaded = new UsageCategoryEnum("pv-composition-media-downloaded");
             public static readonly UsageCategoryEnum PvCompositionMediaEncrypted = new UsageCategoryEnum("pv-composition-media-encrypted");
@@ -175,8 +176,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum PvSipEndpointRegistrations = new UsageCategoryEnum("pv-sip-endpoint-registrations");
             public static readonly UsageCategoryEnum Recordings = new UsageCategoryEnum("recordings");
             public static readonly UsageCategoryEnum Recordingstorage = new UsageCategoryEnum("recordingstorage");
-            public static readonly UsageCategoryEnum RoomsGroupMinutes = new UsageCategoryEnum("rooms-group-minutes");
             public static readonly UsageCategoryEnum RoomsGroupBandwidth = new UsageCategoryEnum("rooms-group-bandwidth");
+            public static readonly UsageCategoryEnum RoomsGroupMinutes = new UsageCategoryEnum("rooms-group-minutes");
             public static readonly UsageCategoryEnum RoomsPeerToPeerMinutes = new UsageCategoryEnum("rooms-peer-to-peer-minutes");
             public static readonly UsageCategoryEnum Shortcodes = new UsageCategoryEnum("shortcodes");
             public static readonly UsageCategoryEnum ShortcodesCustomerowned = new UsageCategoryEnum("shortcodes-customerowned");
@@ -273,8 +274,8 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum WirelessUsageMrcIndividual = new UsageCategoryEnum("wireless-usage-mrc-individual");
             public static readonly UsageCategoryEnum WirelessUsageMrcPooled = new UsageCategoryEnum("wireless-usage-mrc-pooled");
             public static readonly UsageCategoryEnum WirelessUsageMrcSuspended = new UsageCategoryEnum("wireless-usage-mrc-suspended");
-            public static readonly UsageCategoryEnum WirelessUsageVoice = new UsageCategoryEnum("wireless-usage-voice");
             public static readonly UsageCategoryEnum WirelessUsageSms = new UsageCategoryEnum("wireless-usage-sms");
+            public static readonly UsageCategoryEnum WirelessUsageVoice = new UsageCategoryEnum("wireless-usage-voice");
         }
 
         public sealed class RecurringEnum : StringEnum

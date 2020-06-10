@@ -35,10 +35,6 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
         /// Phone Number Sid to be branded.
         /// </summary>
         public string PhoneNumberSid { get; }
-        /// <summary>
-        /// Twilio number to assign to the Branded Channel
-        /// </summary>
-        public string PhoneNumber { get; }
 
         /// <summary>
         /// Construct a new CreateChannelOptions
@@ -47,18 +43,15 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
         /// <param name="pathBrandSid"> Brand Sid. </param>
         /// <param name="pathBrandedChannelSid"> Branded Channel Sid. </param>
         /// <param name="phoneNumberSid"> Phone Number Sid to be branded. </param>
-        /// <param name="phoneNumber"> Twilio number to assign to the Branded Channel </param>
         public CreateChannelOptions(string pathBusinessSid,
                                     string pathBrandSid,
                                     string pathBrandedChannelSid,
-                                    string phoneNumberSid,
-                                    string phoneNumber)
+                                    string phoneNumberSid)
         {
             PathBusinessSid = pathBusinessSid;
             PathBrandSid = pathBrandSid;
             PathBrandedChannelSid = pathBrandedChannelSid;
             PhoneNumberSid = phoneNumberSid;
-            PhoneNumber = phoneNumber;
         }
 
         /// <summary>
@@ -70,11 +63,6 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
             if (PhoneNumberSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("PhoneNumberSid", PhoneNumberSid.ToString()));
-            }
-
-            if (PhoneNumber != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PhoneNumber", PhoneNumber));
             }
 
             return p;

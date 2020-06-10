@@ -78,28 +78,29 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// Create a Fleet
         /// </summary>
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="dataEnabled"> Defines whether SIMs in the Fleet are capable of using data connectivity </param>
-        /// <param name="dataLimit"> The data_limit </param>
-        /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving Commands via
-        ///                       SMS </param>
+        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Sim resource
+        ///                 assigned to the Fleet resource can consume </param>
+        /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
+        ///                       machine-to-machine SMS via Commands </param>
         /// <param name="commandsUrl"> The URL that will receive a webhook when a SIM in the Fleet originates a
-        ///                   machine-to-machine Command </param>
+        ///                   machine-to-machine SMS via Commands </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fleet </returns>
-        public static FleetResource Create(string uniqueName = null,
+        public static FleetResource Create(string networkAccessProfile,
+                                           string uniqueName = null,
                                            bool? dataEnabled = null,
                                            int? dataLimit = null,
                                            bool? commandsEnabled = null,
                                            Uri commandsUrl = null,
                                            Twilio.Http.HttpMethod commandsMethod = null,
-                                           string networkAccessProfile = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateFleetOptions(){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, NetworkAccessProfile = networkAccessProfile};
+            var options = new CreateFleetOptions(networkAccessProfile){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod};
             return Create(options, client);
         }
 
@@ -107,28 +108,29 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// Create a Fleet
         /// </summary>
+        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="dataEnabled"> Defines whether SIMs in the Fleet are capable of using data connectivity </param>
-        /// <param name="dataLimit"> The data_limit </param>
-        /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving Commands via
-        ///                       SMS </param>
+        /// <param name="dataLimit"> The total data usage (download and upload combined) in Megabytes that each Sim resource
+        ///                 assigned to the Fleet resource can consume </param>
+        /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
+        ///                       machine-to-machine SMS via Commands </param>
         /// <param name="commandsUrl"> The URL that will receive a webhook when a SIM in the Fleet originates a
-        ///                   machine-to-machine Command </param>
+        ///                   machine-to-machine SMS via Commands </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
-        /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
-        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(string uniqueName = null,
+        public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(string networkAccessProfile,
+                                                                                   string uniqueName = null,
                                                                                    bool? dataEnabled = null,
                                                                                    int? dataLimit = null,
                                                                                    bool? commandsEnabled = null,
                                                                                    Uri commandsUrl = null,
                                                                                    Twilio.Http.HttpMethod commandsMethod = null,
-                                                                                   string networkAccessProfile = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateFleetOptions(){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, NetworkAccessProfile = networkAccessProfile};
+            var options = new CreateFleetOptions(networkAccessProfile){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod};
             return await CreateAsync(options, client);
         }
         #endif
@@ -471,12 +473,12 @@ namespace Twilio.Rest.Supersim.V1
         [JsonConverter(typeof(StringEnumConverter))]
         public FleetResource.DataMeteringEnum DataMetering { get; private set; }
         /// <summary>
-        /// Defines whether SIMs in the Fleet are capable of sending and receiving Commands via SMS
+        /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
         /// </summary>
         [JsonProperty("commands_enabled")]
         public bool? CommandsEnabled { get; private set; }
         /// <summary>
-        /// The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine Command
+        /// The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine SMS via Commands
         /// </summary>
         [JsonProperty("commands_url")]
         public Uri CommandsUrl { get; private set; }

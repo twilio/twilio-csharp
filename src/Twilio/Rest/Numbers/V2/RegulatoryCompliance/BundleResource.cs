@@ -35,6 +35,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             public static readonly StatusEnum InReview = new StatusEnum("in-review");
             public static readonly StatusEnum TwilioRejected = new StatusEnum("twilio-rejected");
             public static readonly StatusEnum TwilioApproved = new StatusEnum("twilio-approved");
+            public static readonly StatusEnum ProvisionallyApproved = new StatusEnum("provisionally-approved");
         }
 
         public sealed class EndUserTypeEnum : StringEnum
