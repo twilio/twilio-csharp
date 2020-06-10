@@ -77,6 +77,10 @@ TwilioClient.SetEdge("sydney");
 
 This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
 
+## Handling Exceptions
+
+For an example on how to handle exceptions in this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/csharp-dotnet/usage-guide#handling-errors).
+
 ## Generating TwiML
 
 To control phone calls, your application needs to output [TwiML][twiml].
