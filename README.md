@@ -117,6 +117,10 @@ Console.WriteLine(response);
 */
 ```
 
+### Using a Custom HTTP Client
+
+To use a custom HTTP client with this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/csharp-dotnet/custom-http-clients-dot-net-framework).
+
 ## Docker Image
 
 The `Dockerfile` present in this repository and its respective `twilio/twilio-csharp` Docker image are currently used by Twilio for testing purposes only.
