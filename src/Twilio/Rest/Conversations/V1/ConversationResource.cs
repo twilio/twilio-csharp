@@ -98,6 +98,8 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="state"> Current state of this conversation. </param>
+        /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
+        /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
         public static ConversationResource Create(string friendlyName = null,
@@ -106,9 +108,11 @@ namespace Twilio.Rest.Conversations.V1
                                                   string messagingServiceSid = null,
                                                   string attributes = null,
                                                   ConversationResource.StateEnum state = null,
+                                                  string timersInactive = null,
+                                                  string timersClosed = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state};
+            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
             return Create(options, client);
         }
 
@@ -122,6 +126,8 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="state"> Current state of this conversation. </param>
+        /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
+        /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<ConversationResource> CreateAsync(string friendlyName = null,
@@ -130,9 +136,11 @@ namespace Twilio.Rest.Conversations.V1
                                                                                           string messagingServiceSid = null,
                                                                                           string attributes = null,
                                                                                           ConversationResource.StateEnum state = null,
+                                                                                          string timersInactive = null,
+                                                                                          string timersClosed = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state};
+            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
             return await CreateAsync(options, client);
         }
         #endif
@@ -186,6 +194,8 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
         /// <param name="state"> Current state of this conversation. </param>
+        /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
+        /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
         public static ConversationResource Update(string pathSid,
@@ -195,9 +205,11 @@ namespace Twilio.Rest.Conversations.V1
                                                   string attributes = null,
                                                   string messagingServiceSid = null,
                                                   ConversationResource.StateEnum state = null,
+                                                  string timersInactive = null,
+                                                  string timersClosed = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
             return Update(options, client);
         }
 
@@ -212,6 +224,8 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
         /// <param name="state"> Current state of this conversation. </param>
+        /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
+        /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<ConversationResource> UpdateAsync(string pathSid,
@@ -221,9 +235,11 @@ namespace Twilio.Rest.Conversations.V1
                                                                                           string attributes = null,
                                                                                           string messagingServiceSid = null,
                                                                                           ConversationResource.StateEnum state = null,
+                                                                                          string timersInactive = null,
+                                                                                          string timersClosed = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -552,6 +568,11 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// Timer date values for this conversation.
+        /// </summary>
+        [JsonProperty("timers")]
+        public object Timers { get; private set; }
         /// <summary>
         /// An absolute URL for this conversation.
         /// </summary>

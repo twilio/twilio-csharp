@@ -42,6 +42,14 @@ namespace Twilio.Rest.Conversations.V1
         /// Current state of this conversation.
         /// </summary>
         public ConversationResource.StateEnum State { get; set; }
+        /// <summary>
+        /// ISO8601 duration when conversation will be switched to `inactive` state.
+        /// </summary>
+        public string TimersInactive { get; set; }
+        /// <summary>
+        /// ISO8601 duration when conversation will be switched to `closed` state.
+        /// </summary>
+        public string TimersClosed { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -77,6 +85,16 @@ namespace Twilio.Rest.Conversations.V1
             if (State != null)
             {
                 p.Add(new KeyValuePair<string, string>("State", State.ToString()));
+            }
+
+            if (TimersInactive != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Timers.Inactive", TimersInactive));
+            }
+
+            if (TimersClosed != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Timers.Closed", TimersClosed));
             }
 
             return p;
@@ -118,6 +136,14 @@ namespace Twilio.Rest.Conversations.V1
         /// Current state of this conversation.
         /// </summary>
         public ConversationResource.StateEnum State { get; set; }
+        /// <summary>
+        /// ISO8601 duration when conversation will be switched to `inactive` state.
+        /// </summary>
+        public string TimersInactive { get; set; }
+        /// <summary>
+        /// ISO8601 duration when conversation will be switched to `closed` state.
+        /// </summary>
+        public string TimersClosed { get; set; }
 
         /// <summary>
         /// Construct a new UpdateConversationOptions
@@ -162,6 +188,16 @@ namespace Twilio.Rest.Conversations.V1
             if (State != null)
             {
                 p.Add(new KeyValuePair<string, string>("State", State.ToString()));
+            }
+
+            if (TimersInactive != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Timers.Inactive", TimersInactive));
+            }
+
+            if (TimersClosed != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Timers.Closed", TimersClosed));
             }
 
             return p;

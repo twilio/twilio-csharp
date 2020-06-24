@@ -212,11 +212,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string PathConferenceSid { get; }
         /// <summary>
-        /// The `from` phone number used to invite a participant
+        /// The phone number, Client identifier, or username portion of SIP address that made this call.
         /// </summary>
         public Types.PhoneNumber From { get; }
         /// <summary>
-        /// The number, client id, or sip address of the new participant
+        /// The phone number, SIP address or Client identifier that received this call.
         /// </summary>
         public Types.PhoneNumber To { get; }
         /// <summary>
@@ -231,6 +231,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Set state change events that will trigger a callback
         /// </summary>
         public List<string> StatusCallbackEvent { get; set; }
+        /// <summary>
+        /// The label of this participant
+        /// </summary>
+        public string Label { get; set; }
         /// <summary>
         /// he number of seconds that we should wait for an answer
         /// </summary>
@@ -340,16 +344,25 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string CallSidToCoach { get; set; }
         /// <summary>
+        /// Jitter Buffer size for the connecting participant
+        /// </summary>
+        public string JitterBufferSize { get; set; }
+        /// <summary>
         /// BYOC trunk SID (Beta)
         /// </summary>
         public string Byoc { get; set; }
+        /// <summary>
+        /// The phone number, Client identifier, or username portion of SIP address that made this call.
+        /// </summary>
+        public string CallerId { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
         /// </summary>
         /// <param name="pathConferenceSid"> The SID of the participant's conference </param>
-        /// <param name="from"> The `from` phone number used to invite a participant </param>
-        /// <param name="to"> The number, client id, or sip address of the new participant </param>
+        /// <param name="from"> The phone number, Client identifier, or username portion of SIP address that made this call.
+        ///            </param>
+        /// <param name="to"> The phone number, SIP address or Client identifier that received this call. </param>
         public CreateParticipantOptions(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
         {
             PathConferenceSid = pathConferenceSid;
@@ -390,6 +403,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (StatusCallbackEvent != null)
             {
                 p.AddRange(StatusCallbackEvent.Select(prop => new KeyValuePair<string, string>("StatusCallbackEvent", prop)));
+            }
+
+            if (Label != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Label", Label));
             }
 
             if (Timeout != null)
@@ -527,9 +545,19 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
                 p.Add(new KeyValuePair<string, string>("CallSidToCoach", CallSidToCoach.ToString()));
             }
 
+            if (JitterBufferSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("JitterBufferSize", JitterBufferSize));
+            }
+
             if (Byoc != null)
             {
                 p.Add(new KeyValuePair<string, string>("Byoc", Byoc.ToString()));
+            }
+
+            if (CallerId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallerId", CallerId));
             }
 
             return p;
