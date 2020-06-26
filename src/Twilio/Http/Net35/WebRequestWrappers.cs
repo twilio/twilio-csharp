@@ -7,10 +7,10 @@ using System.Net;
 namespace Twilio.Http.Net35
 {
     /// <summary>
-    /// These classes exist to wrap MSFT's WebRequest interfaces to enable unit testing of 
+    /// These classes exist to wrap MSFT's WebRequest interfaces to enable unit testing of
     /// WebRequestClient.
     /// </summary>
-    
+
     public class HttpWebRequestFactory
     {
         public virtual IHttpWebRequestWrapper Create(Uri uri)
