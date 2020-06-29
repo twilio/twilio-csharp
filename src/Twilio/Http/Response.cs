@@ -1,5 +1,11 @@
 using System.Net;
 
+#if NET35
+using Headers = System.Net.WebHeaderCollection;
+#else
+using Headers = System.Net.Http.Headers.HttpResponseHeaders;
+#endif
+
 namespace Twilio.Http
 {
     /// <summary>
@@ -18,14 +24,21 @@ namespace Twilio.Http
         public string Content { get; }
 
         /// <summary>
-        /// Create a new Response 
+        /// Headers
+        /// </summary>
+        public Headers Headers { get; }
+
+        /// <summary>
+        /// Create a new Response
         /// </summary>
         /// <param name="statusCode">HTTP status code</param>
         /// <param name="content">Content string</param>
-        public Response (HttpStatusCode statusCode, string content)
+        /// <param name="headers">Headers</param>
+        public Response(HttpStatusCode statusCode, string content, Headers headers = null)
         {
             StatusCode = statusCode;
             Content = content;
+            Headers = headers;
         }
     }
 }
