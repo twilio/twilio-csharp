@@ -49,6 +49,7 @@ namespace Twilio.Rest.Supersim.V1
                 return new StatusUpdateEnum(value);
             }
 
+            public static readonly StatusUpdateEnum Ready = new StatusUpdateEnum("ready");
             public static readonly StatusUpdateEnum Active = new StatusUpdateEnum("active");
             public static readonly StatusUpdateEnum Inactive = new StatusUpdateEnum("inactive");
         }

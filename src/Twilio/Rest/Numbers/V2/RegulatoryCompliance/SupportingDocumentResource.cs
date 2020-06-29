@@ -35,6 +35,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
             public static readonly StatusEnum Rejected = new StatusEnum("rejected");
             public static readonly StatusEnum Approved = new StatusEnum("approved");
             public static readonly StatusEnum Expired = new StatusEnum("expired");
+            public static readonly StatusEnum ProvisionallyApproved = new StatusEnum("provisionally-approved");
         }
 
         private static Request BuildCreateRequest(CreateSupportingDocumentOptions options, ITwilioRestClient client)
