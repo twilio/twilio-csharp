@@ -10,7 +10,7 @@ using System.Web;
 namespace Twilio.Jwt.Client
 {
     /// <summary>
-    /// Event stream scope for client capabilites
+    /// Event stream scope for client capabilities
     /// </summary>
     public class EventStreamScope : IScope
     {
