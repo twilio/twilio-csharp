@@ -3,7 +3,7 @@
 namespace Twilio.Types
 {
     /// <summary>
-    /// Capabilites of a phone number
+    /// Capabilities of a phone number
     /// </summary>
     public class PhoneNumberCapabilities
     {
@@ -26,16 +26,24 @@ namespace Twilio.Types
         public bool Voice { get; }
 
         /// <summary>
+        /// Fax capable
+        /// </summary>
+        [JsonProperty("fax")]
+        public bool Fax { get; }
+
+        /// <summary>
         /// Create a new PhoneNumberCapability
         /// </summary>
         /// <param name="mms">MMS capable</param>
         /// <param name="sms">SMS capable</param>
         /// <param name="voice">Voice capable</param>
-        public PhoneNumberCapabilities (bool mms, bool sms, bool voice)
+        /// <param name="fax">Fax capable</param>
+        public PhoneNumberCapabilities (bool mms, bool sms, bool voice, bool fax)
         {
             Mms = mms;
             Sms = sms;
             Voice = voice;
+            Fax = fax;
         }
     }
 }

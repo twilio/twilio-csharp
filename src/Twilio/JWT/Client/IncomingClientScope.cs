@@ -3,7 +3,7 @@
 namespace Twilio.Jwt.Client
 {
     /// <summary>
-    /// Incoming client scope for client capabilites
+    /// Incoming client scope for client capabilities
     /// </summary>
     public class IncomingClientScope : IScope
     {
