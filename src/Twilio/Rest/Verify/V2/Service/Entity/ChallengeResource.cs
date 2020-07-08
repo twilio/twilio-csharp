@@ -19,7 +19,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
+namespace Twilio.Rest.Verify.V2.Service.Entity
 {
 
     public class ChallengeResource : Resource
@@ -62,9 +62,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
                 return new FactorTypesEnum(value);
             }
 
-            public static readonly FactorTypesEnum AppPush = new FactorTypesEnum("app-push");
-            public static readonly FactorTypesEnum Sms = new FactorTypesEnum("sms");
-            public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
             public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
         }
 
@@ -73,7 +70,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
-                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges",
+                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges",
                 postParams: options.GetParams()
             );
         }
@@ -111,8 +108,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Create a new Challenge for the Factor
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="expirationDate"> The future date in which this Challenge will expire </param>
         /// <param name="details"> Public details provided to contextualize the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
@@ -120,13 +117,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Create(string pathServiceSid,
                                                string pathIdentity,
-                                               string pathFactorSid,
+                                               string factorSid,
                                                DateTime? expirationDate = null,
                                                string details = null,
                                                string hiddenDetails = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails};
+            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails};
             return Create(options, client);
         }
 
@@ -135,8 +132,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Create a new Challenge for the Factor
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="expirationDate"> The future date in which this Challenge will expire </param>
         /// <param name="details"> Public details provided to contextualize the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
@@ -144,93 +141,14 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(string pathServiceSid,
                                                                                        string pathIdentity,
-                                                                                       string pathFactorSid,
+                                                                                       string factorSid,
                                                                                        DateTime? expirationDate = null,
                                                                                        string details = null,
                                                                                        string hiddenDetails = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails};
+            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails};
             return await CreateAsync(options, client);
-        }
-        #endif
-
-        private static Request BuildDeleteRequest(DeleteChallengeOptions options, ITwilioRestClient client)
-        {
-            return new Request(
-                HttpMethod.Delete,
-                Rest.Domain.Verify,
-                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges/" + options.PathSid + "",
-                queryParams: options.GetParams()
-            );
-        }
-
-        /// <summary>
-        /// Delete a specific Challenge.
-        /// </summary>
-        /// <param name="options"> Delete Challenge parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns>
-        public static bool Delete(DeleteChallengeOptions options, ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = client.Request(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete a specific Challenge.
-        /// </summary>
-        /// <param name="options"> Delete Challenge parameters </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteChallengeOptions options,
-                                                                          ITwilioRestClient client = null)
-        {
-            client = client ?? TwilioClient.GetRestClient();
-            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
-            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
-        }
-        #endif
-
-        /// <summary>
-        /// Delete a specific Challenge.
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Challenge </returns>
-        public static bool Delete(string pathServiceSid,
-                                  string pathIdentity,
-                                  string pathFactorSid,
-                                  string pathSid,
-                                  ITwilioRestClient client = null)
-        {
-            var options = new DeleteChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid);
-            return Delete(options, client);
-        }
-
-        #if !NET35
-        /// <summary>
-        /// Delete a specific Challenge.
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
-        /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Challenge </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
-                                                                          string pathIdentity,
-                                                                          string pathFactorSid,
-                                                                          string pathSid,
-                                                                          ITwilioRestClient client = null)
-        {
-            var options = new DeleteChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid);
-            return await DeleteAsync(options, client);
         }
         #endif
 
@@ -239,7 +157,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Verify,
-                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges/" + options.PathSid + "",
+                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges/" + options.PathSid + "",
                 queryParams: options.GetParams()
             );
         }
@@ -277,18 +195,16 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Fetch a specific Challenge.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Fetch(string pathServiceSid,
                                               string pathIdentity,
-                                              string pathFactorSid,
                                               string pathSid,
                                               ITwilioRestClient client = null)
         {
-            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid);
+            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid);
             return Fetch(options, client);
         }
 
@@ -297,18 +213,16 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Fetch a specific Challenge.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(string pathServiceSid,
                                                                                       string pathIdentity,
-                                                                                      string pathFactorSid,
                                                                                       string pathSid,
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid);
+            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -318,7 +232,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Verify,
-                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges",
+                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges",
                 queryParams: options.GetParams()
             );
         }
@@ -360,8 +274,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Retrieve a list of all Challenges for a Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="status"> The Status of theChallenges to fetch </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -369,13 +283,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// <returns> A single instance of Challenge </returns>
         public static ResourceSet<ChallengeResource> Read(string pathServiceSid,
                                                           string pathIdentity,
-                                                          string pathFactorSid,
+                                                          string factorSid = null,
                                                           ChallengeResource.ChallengeStatusesEnum status = null,
                                                           int? pageSize = null,
                                                           long? limit = null,
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid){Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -384,8 +298,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Retrieve a list of all Challenges for a Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="status"> The Status of theChallenges to fetch </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -393,13 +307,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ChallengeResource>> ReadAsync(string pathServiceSid,
                                                                                                   string pathIdentity,
-                                                                                                  string pathFactorSid,
+                                                                                                  string factorSid = null,
                                                                                                   ChallengeResource.ChallengeStatusesEnum status = null,
                                                                                                   int? pageSize = null,
                                                                                                   long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid){Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -462,7 +376,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
-                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathFactorSid + "/Challenges/" + options.PathSid + "",
+                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges/" + options.PathSid + "",
                 postParams: options.GetParams()
             );
         }
@@ -500,20 +414,18 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Verify a specific Challenge.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Update(string pathServiceSid,
                                                string pathIdentity,
-                                               string pathFactorSid,
                                                string pathSid,
                                                string authPayload = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid){AuthPayload = authPayload};
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
             return Update(options, client);
         }
 
@@ -522,20 +434,18 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Verify a specific Challenge.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(string pathServiceSid,
                                                                                        string pathIdentity,
-                                                                                       string pathFactorSid,
                                                                                        string pathSid,
                                                                                        string authPayload = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathFactorSid, pathSid){AuthPayload = authPayload};
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -579,7 +489,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         [JsonProperty("entity_sid")]
         public string EntitySid { get; private set; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }

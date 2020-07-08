@@ -66,7 +66,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Create a new Entity for the Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="identity"> Unique identity of the Entity </param>
+        /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Entity </returns>
         public static EntityResource Create(string pathServiceSid, string identity, ITwilioRestClient client = null)
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Create a new Entity for the Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="identity"> Unique identity of the Entity </param>
+        /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<EntityResource> CreateAsync(string pathServiceSid,
@@ -135,7 +135,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Delete a specific Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Entity </returns>
         public static bool Delete(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
@@ -149,7 +149,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Delete a specific Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -204,7 +204,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Fetch a specific Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Entity </returns>
         public static EntityResource Fetch(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
@@ -218,7 +218,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Fetch a specific Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<EntityResource> FetchAsync(string pathServiceSid,
@@ -386,7 +386,7 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }

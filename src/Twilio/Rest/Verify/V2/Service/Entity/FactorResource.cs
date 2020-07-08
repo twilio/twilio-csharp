@@ -46,9 +46,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 return new FactorTypesEnum(value);
             }
 
-            public static readonly FactorTypesEnum AppPush = new FactorTypesEnum("app-push");
-            public static readonly FactorTypesEnum Sms = new FactorTypesEnum("sms");
-            public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
             public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
         }
 
@@ -95,7 +92,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Create a new Factor for the Entity
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
@@ -119,7 +116,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Create a new Factor for the Entity
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
@@ -182,7 +179,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Delete a specific Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
@@ -200,7 +197,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Delete a specific Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
@@ -257,7 +254,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Fetch a specific Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
@@ -275,7 +272,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Fetch a specific Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
@@ -336,7 +333,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Retrieve a list of all Factors for an Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -356,7 +353,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Retrieve a list of all Factors for an Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -468,7 +465,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
@@ -492,7 +489,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
@@ -551,7 +548,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         [JsonProperty("entity_sid")]
         public string EntitySid { get; private set; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
@@ -592,11 +589,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-        /// <summary>
-        /// Nested resource URLs.
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
 
         private FactorResource()
         {

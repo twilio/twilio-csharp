@@ -33,9 +33,7 @@ namespace Twilio.Rest.Verify.V2
                 return new FormTypesEnum(value);
             }
 
-            public static readonly FormTypesEnum FormAppPush = new FormTypesEnum("form-app-push");
-            public static readonly FormTypesEnum FormSms = new FormTypesEnum("form-sms");
-            public static readonly FormTypesEnum FormTotp = new FormTypesEnum("form-totp");
+            public static readonly FormTypesEnum FormPush = new FormTypesEnum("form-push");
         }
 
         private static Request BuildFetchRequest(FetchFormOptions options, ITwilioRestClient client)

@@ -145,6 +145,14 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// The SID of the Role to assign to the participant
         /// </summary>
         public string RoleSid { get; set; }
+        /// <summary>
+        /// The address of the Twilio phone number that the participant is in contact with.
+        /// </summary>
+        public string MessagingBindingProxyAddress { get; set; }
+        /// <summary>
+        /// The address of the Twilio phone number that is used in Group MMS.
+        /// </summary>
+        public string MessagingBindingProjectedAddress { get; set; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
@@ -181,6 +189,16 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             if (RoleSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("RoleSid", RoleSid.ToString()));
+            }
+
+            if (MessagingBindingProxyAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProxyAddress", MessagingBindingProxyAddress));
+            }
+
+            if (MessagingBindingProjectedAddress != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
             }
 
             return p;

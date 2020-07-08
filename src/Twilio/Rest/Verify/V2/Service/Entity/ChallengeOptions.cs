@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
+namespace Twilio.Rest.Verify.V2.Service.Entity
 {
 
     /// <summary>
@@ -24,13 +24,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
         /// Factor Sid.
         /// </summary>
-        public string PathFactorSid { get; }
+        public string FactorSid { get; }
         /// <summary>
         /// The future date in which this Challenge will expire
         /// </summary>
@@ -48,13 +48,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Construct a new CreateChallengeOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        public CreateChallengeOptions(string pathServiceSid, string pathIdentity, string pathFactorSid)
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="factorSid"> Factor Sid. </param>
+        public CreateChallengeOptions(string pathServiceSid, string pathIdentity, string factorSid)
         {
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
-            PathFactorSid = pathFactorSid;
+            FactorSid = factorSid;
         }
 
         /// <summary>
@@ -63,6 +63,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (FactorSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FactorSid", FactorSid.ToString()));
+            }
+
             if (ExpirationDate != null)
             {
                 p.Add(new KeyValuePair<string, string>("ExpirationDate", Serializers.DateTimeIso8601(ExpirationDate)));
@@ -86,56 +91,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Delete a specific Challenge.
-    /// </summary>
-    public class DeleteChallengeOptions : IOptions<ChallengeResource>
-    {
-        /// <summary>
-        /// Service Sid.
-        /// </summary>
-        public string PathServiceSid { get; }
-        /// <summary>
-        /// Unique identity of the Entity
-        /// </summary>
-        public string PathIdentity { get; }
-        /// <summary>
-        /// Factor Sid.
-        /// </summary>
-        public string PathFactorSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies this Challenge.
-        /// </summary>
-        public string PathSid { get; }
-
-        /// <summary>
-        /// Construct a new DeleteChallengeOptions
-        /// </summary>
-        /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
-        public DeleteChallengeOptions(string pathServiceSid, string pathIdentity, string pathFactorSid, string pathSid)
-        {
-            PathServiceSid = pathServiceSid;
-            PathIdentity = pathIdentity;
-            PathFactorSid = pathFactorSid;
-            PathSid = pathSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-    }
-
-    /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// Fetch a specific Challenge.
     /// </summary>
     public class FetchChallengeOptions : IOptions<ChallengeResource>
@@ -145,15 +100,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
-        /// Factor Sid.
-        /// </summary>
-        public string PathFactorSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies this Challenge, or `latest`.
+        /// A string that uniquely identifies this Challenge.
         /// </summary>
         public string PathSid { get; }
 
@@ -161,14 +112,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Construct a new FetchChallengeOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
-        public FetchChallengeOptions(string pathServiceSid, string pathIdentity, string pathFactorSid, string pathSid)
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
+        public FetchChallengeOptions(string pathServiceSid, string pathIdentity, string pathSid)
         {
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
-            PathFactorSid = pathFactorSid;
             PathSid = pathSid;
         }
 
@@ -195,13 +144,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
         /// Factor Sid.
         /// </summary>
-        public string PathFactorSid { get; }
+        public string FactorSid { get; set; }
         /// <summary>
         /// The Status of theChallenges to fetch
         /// </summary>
@@ -211,13 +160,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Construct a new ReadChallengeOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        public ReadChallengeOptions(string pathServiceSid, string pathIdentity, string pathFactorSid)
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        public ReadChallengeOptions(string pathServiceSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
-            PathFactorSid = pathFactorSid;
         }
 
         /// <summary>
@@ -226,6 +173,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (FactorSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FactorSid", FactorSid.ToString()));
+            }
+
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
@@ -253,15 +205,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
-        /// Factor Sid.
-        /// </summary>
-        public string PathFactorSid { get; }
-        /// <summary>
-        /// A string that uniquely identifies this Challenge, or `latest`.
+        /// A string that uniquely identifies this Challenge.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -273,14 +221,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Factor
         /// Construct a new UpdateChallengeOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
-        /// <param name="pathFactorSid"> Factor Sid. </param>
-        /// <param name="pathSid"> A string that uniquely identifies this Challenge, or `latest`. </param>
-        public UpdateChallengeOptions(string pathServiceSid, string pathIdentity, string pathFactorSid, string pathSid)
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
+        public UpdateChallengeOptions(string pathServiceSid, string pathIdentity, string pathSid)
         {
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
-            PathFactorSid = pathFactorSid;
             PathSid = pathSid;
         }
 

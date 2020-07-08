@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Verify.V2.Service.Entity
+namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
@@ -24,9 +24,9 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
-        public string PathIdentity { get; }
+        public string Identity { get; }
         /// <summary>
         /// The Type of this Factor
         /// </summary>
@@ -36,14 +36,14 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Construct a new CreateAccessTokenOptions
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
         public CreateAccessTokenOptions(string pathServiceSid,
-                                        string pathIdentity,
+                                        string identity,
                                         AccessTokenResource.FactorTypesEnum factorType)
         {
             PathServiceSid = pathServiceSid;
-            PathIdentity = pathIdentity;
+            Identity = identity;
             FactorType = factorType;
         }
 
@@ -53,6 +53,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (Identity != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Identity", Identity));
+            }
+
             if (FactorType != null)
             {
                 p.Add(new KeyValuePair<string, string>("FactorType", FactorType.ToString()));

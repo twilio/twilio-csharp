@@ -19,7 +19,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Verify.V2.Service.Entity
+namespace Twilio.Rest.Verify.V2.Service
 {
 
     public class AccessTokenResource : Resource
@@ -41,7 +41,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Verify,
-                "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/AccessTokens",
+                "/v2/Services/" + options.PathServiceSid + "/AccessTokens",
                 postParams: options.GetParams()
             );
         }
@@ -79,16 +79,16 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Create a new enrollment Access Token for the Entity
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AccessToken </returns>
         public static AccessTokenResource Create(string pathServiceSid,
-                                                 string pathIdentity,
+                                                 string identity,
                                                  AccessTokenResource.FactorTypesEnum factorType,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateAccessTokenOptions(pathServiceSid, pathIdentity, factorType);
+            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType);
             return Create(options, client);
         }
 
@@ -97,16 +97,16 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Create a new enrollment Access Token for the Entity
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccessToken </returns>
         public static async System.Threading.Tasks.Task<AccessTokenResource> CreateAsync(string pathServiceSid,
-                                                                                         string pathIdentity,
+                                                                                         string identity,
                                                                                          AccessTokenResource.FactorTypesEnum factorType,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateAccessTokenOptions(pathServiceSid, pathIdentity, factorType);
+            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType);
             return await CreateAsync(options, client);
         }
         #endif

@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Verify.V2
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Verify,
-                "/v2/Forms/form-app-push",
+                "/v2/Forms/form-push",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                FormResource.Fetch(FormResource.FormTypesEnum.FormAppPush, client: twilioRestClient);
+                FormResource.Fetch(FormResource.FormTypesEnum.FormPush, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Verify.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"form_type\": \"form-sms\",\"forms\": {\"create_factor\": {},\"verify_factor\": {},\"create_challenge\": {}},\"form_meta\": {},\"url\": \"https://verify.twilio.com/v2/Forms/form-sms\"}"
+                                         "{\"form_type\": \"form-push\",\"forms\": {\"create_factor\": {},\"verify_factor\": {},\"create_challenge\": {}},\"form_meta\": {},\"url\": \"https://verify.twilio.com/v2/Forms/form-push\"}"
                                      ));
 
-            var response = FormResource.Fetch(FormResource.FormTypesEnum.FormAppPush, client: twilioRestClient);
+            var response = FormResource.Fetch(FormResource.FormTypesEnum.FormPush, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

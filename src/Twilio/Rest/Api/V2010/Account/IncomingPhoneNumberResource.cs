@@ -820,6 +820,12 @@ namespace Twilio.Rest.Api.V2010.Account
         [JsonProperty("uri")]
         public string Uri { get; private set; }
         /// <summary>
+        /// The voice_receive_mode
+        /// </summary>
+        [JsonProperty("voice_receive_mode")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public IncomingPhoneNumberResource.VoiceReceiveModeEnum VoiceReceiveMode { get; private set; }
+        /// <summary>
         /// The SID of the application that handles calls to the phone number
         /// </summary>
         [JsonProperty("voice_application_sid")]
@@ -867,6 +873,11 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         [JsonProperty("bundle_sid")]
         public string BundleSid { get; private set; }
+        /// <summary>
+        /// The status
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; private set; }
 
         private IncomingPhoneNumberResource()
         {

@@ -24,7 +24,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Construct a new CreateFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
@@ -123,7 +123,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Construct a new DeleteFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         public DeleteFactorOptions(string pathServiceSid, string pathIdentity, string pathSid)
         {
@@ -155,7 +155,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
@@ -167,7 +167,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Construct a new FetchFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         public FetchFactorOptions(string pathServiceSid, string pathIdentity, string pathSid)
         {
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
 
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Construct a new ReadFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         public ReadFactorOptions(string pathServiceSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -242,7 +242,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
@@ -266,7 +266,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Construct a new UpdateFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         public UpdateFactorOptions(string pathServiceSid, string pathIdentity, string pathSid)
         {

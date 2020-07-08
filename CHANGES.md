@@ -1,6 +1,36 @@
 twilio-csharp Changelog
 =======================
 
+[2020-07-08] Version 5.45.0
+---------------------------
+**Library - Feature**
+- [PR #528](https://github.com/twilio/twilio-csharp/pull/528): add fax capability to deserialized phone number capabilities. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #526](https://github.com/twilio/twilio-csharp/pull/526): include API response headers in 'Last Response'. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Conversations**
+- Allow Address updates for Participants
+- Message delivery receipts
+
+**Events**
+- Add account_sid to subscription and subscribed_events resources
+
+**Flex**
+- Changed `wfm_integrations` Flex Configuration key to private **(breaking change)**
+
+**Messaging**
+- Add error states to WhatsApp Sender status with failed reason **(breaking change)**
+- Delete WhatsApp Template API
+- Update WhatsApp Template API
+- Add WhatsApp Template Get Api (fetch and read)
+
+**Numbers**
+- Add `valid_until` in the Bundles resource
+- Add API for Bundle deletion
+
+**Verify**
+- Removed support for `sms`, `totp` and `app-push` factor types in Verify push **(breaking change)**
+
+
 [2020-06-24] Version 5.44.0
 ---------------------------
 **Api**

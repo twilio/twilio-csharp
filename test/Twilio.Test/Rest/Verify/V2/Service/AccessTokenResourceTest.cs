@@ -12,9 +12,9 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Verify.V2.Service.Entity;
+using Twilio.Rest.Verify.V2.Service;
 
-namespace Twilio.Tests.Rest.Verify.V2.Service.Entity
+namespace Twilio.Tests.Rest.Verify.V2.Service
 {
 
     [TestFixture]
@@ -27,9 +27,10 @@ namespace Twilio.Tests.Rest.Verify.V2.Service.Entity
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Verify,
-                "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity/AccessTokens",
+                "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/AccessTokens",
                 ""
             );
+            request.AddPostParam("Identity", Serialize("identity"));
             request.AddPostParam("FactorType", Serialize(AccessTokenResource.FactorTypesEnum.Push));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 

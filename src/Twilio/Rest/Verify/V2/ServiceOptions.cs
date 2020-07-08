@@ -52,6 +52,10 @@ namespace Twilio.Rest.Verify.V2
         /// Whether to allow sending verifications with a custom code.
         /// </summary>
         public bool? CustomCodeEnabled { get; set; }
+        /// <summary>
+        /// Optional service level push factors configuration
+        /// </summary>
+        public object Push { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -111,6 +115,11 @@ namespace Twilio.Rest.Verify.V2
             if (CustomCodeEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
+            }
+
+            if (Push != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Push", Serializers.JsonObject(Push)));
             }
 
             return p;
@@ -240,6 +249,10 @@ namespace Twilio.Rest.Verify.V2
         /// Whether to allow sending verifications with a custom code.
         /// </summary>
         public bool? CustomCodeEnabled { get; set; }
+        /// <summary>
+        /// Optional service level push factors configuration
+        /// </summary>
+        public object Push { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -299,6 +312,11 @@ namespace Twilio.Rest.Verify.V2
             if (CustomCodeEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
+            }
+
+            if (Push != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Push", Serializers.JsonObject(Push)));
             }
 
             return p;

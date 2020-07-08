@@ -566,6 +566,16 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// An object that contains the summary of delivery statuses for the message to non-chat participants.
+        /// </summary>
+        [JsonProperty("delivery")]
+        public object Delivery { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private MessageResource()
         {

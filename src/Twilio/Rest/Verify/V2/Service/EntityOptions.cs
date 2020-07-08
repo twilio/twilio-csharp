@@ -24,7 +24,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string Identity { get; }
 
@@ -32,7 +32,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Construct a new CreateEntityOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="identity"> Unique identity of the Entity </param>
+        /// <param name="identity"> Unique external identifier of the Entity </param>
         public CreateEntityOptions(string pathServiceSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
 
@@ -75,7 +75,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Construct a new DeleteEntityOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         public DeleteEntityOptions(string pathServiceSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -105,7 +105,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
 
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Construct a new FetchEntityOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         public FetchEntityOptions(string pathServiceSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;

@@ -439,6 +439,71 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteBundleOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Numbers,
+                "/v2/RegulatoryCompliance/Bundles/" + options.PathSid + "",
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a specific Bundle.
+        /// </summary>
+        /// <param name="options"> Delete Bundle parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Bundle </returns>
+        public static bool Delete(DeleteBundleOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Bundle.
+        /// </summary>
+        /// <param name="options"> Delete Bundle parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Bundle </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteBundleOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a specific Bundle.
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Bundle </returns>
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBundleOptions(pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Bundle.
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Bundle </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteBundleOptions(pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a BundleResource object
         /// </summary>
@@ -483,6 +548,11 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public BundleResource.StatusEnum Status { get; private set; }
+        /// <summary>
+        /// The ISO 8601 date and time in GMT when the resource will be valid until.
+        /// </summary>
+        [JsonProperty("valid_until")]
+        public DateTime? ValidUntil { get; private set; }
         /// <summary>
         /// The email address
         /// </summary>

@@ -187,6 +187,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="roleSid"> The SID of the Role to assign to the participant </param>
+        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
+        ///                                    contact with. </param>
+        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
+        ///                                        </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Update(string pathConversationSid,
@@ -195,9 +199,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                  DateTime? dateUpdated = null,
                                                  string attributes = null,
                                                  string roleSid = null,
+                                                 string messagingBindingProxyAddress = null,
+                                                 string messagingBindingProjectedAddress = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid};
+            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress};
             return Update(options, client);
         }
 
@@ -211,6 +217,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="roleSid"> The SID of the Role to assign to the participant </param>
+        /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
+        ///                                    contact with. </param>
+        /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
+        ///                                        </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConversationSid,
@@ -219,9 +229,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                                                          DateTime? dateUpdated = null,
                                                                                          string attributes = null,
                                                                                          string roleSid = null,
+                                                                                         string messagingBindingProxyAddress = null,
+                                                                                         string messagingBindingProjectedAddress = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid};
+            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress};
             return await UpdateAsync(options, client);
         }
         #endif
