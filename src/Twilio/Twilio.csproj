@@ -16,7 +16,7 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Twilio</AssemblyName>
     <PackageTags>REST;SMS;voice;telephony;phone;twilio;twiml;video;wireless;api</PackageTags>
-    <PackageIconUrl>https://www.twilio.com/marketing/bundles/marketing/img/favicons/favicon.ico</PackageIconUrl>
+    <PackageIconUrl>https://www.twilio.com/docs/static/company/img/logos/red/twilio-mark-red.898073bba.png</PackageIconUrl>
     <PackageProjectUrl>http://github.com/twilio/twilio-csharp</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/twilio/twilio-csharp/blob/master/LICENSE.md</PackageLicenseUrl>
     <RepositoryUrl>http://github.com/twilio/twilio-csharp</RepositoryUrl>
