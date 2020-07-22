@@ -67,6 +67,14 @@ namespace Twilio.Rest.Supersim.V1
         /// The SID or unique name of the Fleet to which the SIM resource should be assigned
         /// </summary>
         public string Fleet { get; set; }
+        /// <summary>
+        /// The URL we should call after the update has finished
+        /// </summary>
+        public Uri CallbackUrl { get; set; }
+        /// <summary>
+        /// The HTTP method we should use to call callback_url
+        /// </summary>
+        public Twilio.Http.HttpMethod CallbackMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSimOptions
@@ -96,6 +104,16 @@ namespace Twilio.Rest.Supersim.V1
             if (Fleet != null)
             {
                 p.Add(new KeyValuePair<string, string>("Fleet", Fleet.ToString()));
+            }
+
+            if (CallbackUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallbackUrl", Serializers.Url(CallbackUrl)));
+            }
+
+            if (CallbackMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
             }
 
             return p;

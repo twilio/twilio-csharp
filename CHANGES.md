@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2020-07-22] Version 5.45.1
+---------------------------
+**Library - Fix**
+- [PR #530](https://github.com/twilio/twilio-csharp/pull/530): Change Default Logo from .ico to .png in NuGet. Thanks to [@garethpaul](https://github.com/garethpaul)!
+
+**Api**
+- Add optional Click Tracking and Scheduling parameters to Create action of Message resource
+
+**Supersim**
+- Add callback_url and callback_method parameters to Sim resource update request
+
+
 [2020-07-08] Version 5.45.0
 ---------------------------
 **Library - Feature**

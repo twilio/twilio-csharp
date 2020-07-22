@@ -166,15 +166,19 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="status"> The new status of the Super SIM </param>
         /// <param name="fleet"> The SID or unique name of the Fleet to which the SIM resource should be assigned </param>
+        /// <param name="callbackUrl"> The URL we should call after the update has finished </param>
+        /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns>
         public static SimResource Update(string pathSid,
                                          string uniqueName = null,
                                          SimResource.StatusUpdateEnum status = null,
                                          string fleet = null,
+                                         Uri callbackUrl = null,
+                                         Twilio.Http.HttpMethod callbackMethod = null,
                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, Status = status, Fleet = fleet};
+            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, Status = status, Fleet = fleet, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod};
             return Update(options, client);
         }
 
@@ -186,15 +190,19 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="status"> The new status of the Super SIM </param>
         /// <param name="fleet"> The SID or unique name of the Fleet to which the SIM resource should be assigned </param>
+        /// <param name="callbackUrl"> The URL we should call after the update has finished </param>
+        /// <param name="callbackMethod"> The HTTP method we should use to call callback_url </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
         public static async System.Threading.Tasks.Task<SimResource> UpdateAsync(string pathSid,
                                                                                  string uniqueName = null,
                                                                                  SimResource.StatusUpdateEnum status = null,
                                                                                  string fleet = null,
+                                                                                 Uri callbackUrl = null,
+                                                                                 Twilio.Http.HttpMethod callbackMethod = null,
                                                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, Status = status, Fleet = fleet};
+            var options = new UpdateSimOptions(pathSid){UniqueName = uniqueName, Status = status, Fleet = fleet, CallbackUrl = callbackUrl, CallbackMethod = callbackMethod};
             return await UpdateAsync(options, client);
         }
         #endif

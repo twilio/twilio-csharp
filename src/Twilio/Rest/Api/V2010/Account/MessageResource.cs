@@ -95,6 +95,19 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly TrafficTypeEnum Free = new TrafficTypeEnum("free");
         }
 
+        public sealed class ScheduleTypeEnum : StringEnum
+        {
+            private ScheduleTypeEnum(string value) : base(value) {}
+            public ScheduleTypeEnum() {}
+            public static implicit operator ScheduleTypeEnum(string value)
+            {
+                return new ScheduleTypeEnum(value);
+            }
+
+            public static readonly ScheduleTypeEnum Fixed = new ScheduleTypeEnum("fixed");
+            public static readonly ScheduleTypeEnum Optimize = new ScheduleTypeEnum("optimize");
+        }
+
         private static Request BuildCreateRequest(CreateMessageOptions options, ITwilioRestClient client)
         {
             return new Request(
