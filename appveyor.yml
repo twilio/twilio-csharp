@@ -8,8 +8,7 @@ artifacts:
 - path: .\Twilio.*.nupkg
 branches:
   only:
-    - master
-    - alpha
+    - main
 deploy:
   provider: NuGet
   api_key:
@@ -17,5 +16,5 @@ deploy:
   skip_symbols: false
   artifact: /Twilio\..*\.nupkg/
   on:
-    branch: master
+    branch: main
     APPVEYOR_REPO_TAG: true
