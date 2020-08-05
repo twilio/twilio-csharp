@@ -468,7 +468,7 @@ twilio-csharp Changelog
 ---------------------------
 **Library**
 - [PR #499](https://github.com/twilio/twilio-csharp/pull/499): Update resources after sorting. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
-- [PR #498](https://github.com/twilio/twilio-csharp/pull/498): Auto-deploy via Appveyor upon tagged commit to master. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #498](https://github.com/twilio/twilio-csharp/pull/498): Auto-deploy via Appveyor upon tagged commit to main. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
 
 **Api**
 - Add new usage categories to the public api `sms-messages-carrierfees` and `mms-messages-carrierfees`
