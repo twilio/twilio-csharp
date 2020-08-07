@@ -235,6 +235,10 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// The new status of the resource
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
+        /// <summary>
+        /// Opt-in to enable Proxy to return 400 on detected conflict on re-open request.
+        /// </summary>
+        public bool? FailOnParticipantConflict { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSessionOptions
@@ -266,6 +270,11 @@ namespace Twilio.Rest.Proxy.V1.Service
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (FailOnParticipantConflict != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
             }
 
             return p;

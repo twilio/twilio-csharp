@@ -137,25 +137,33 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// create an instance of payments. This will start a new payments session
         /// </summary>
         /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
-        /// <param name="idempotencyKey"> A unique token for each payment session that should be provided to maintain
-        ///                      idempotency of the session. </param>
-        /// <param name="statusCallback"> The URL we should call to send status of payment session. </param>
+        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+        ///                      information do not result in multiple transactions. </param>
+        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+        ///                      session.. </param>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="bankAccountType"> If Payment source is ACH, type of bank account. </param>
-        /// <param name="chargeAmount"> If this field is present and greater than `0.0` payment source will be charged. </param>
-        /// <param name="currency"> Currency `charge_amount` is in. </param>
-        /// <param name="description"> Decription of the charge. </param>
-        /// <param name="input"> Kind of medium customer would enter payment source information in. </param>
-        /// <param name="minPostalCodeLength"> If postal code is expected, minimum length of the postal code. </param>
-        /// <param name="parameter"> Additonal data to be sent over to payment provider. </param>
-        /// <param name="paymentConnector"> Payment connector that you would like Twilio to use for processing payments.
-        ///                        </param>
-        /// <param name="paymentMethod"> Payment source type. </param>
-        /// <param name="postalCode"> Whether to expect postal code during payment source data gathering. </param>
-        /// <param name="securityCode"> Whether to expect security code during payment source data gathering. </param>
-        /// <param name="timeout"> The number of seconds that we should allow customer to enter payment information </param>
-        /// <param name="tokenType"> If tokenization of payment source is desired, this represents type of token. </param>
-        /// <param name="validCardTypes"> List of card types accepted with each card types separated by space. </param>
+        /// <param name="bankAccountType"> Type of bank account if payment source is ACH. </param>
+        /// <param name="chargeAmount"> A positive decimal value less than 1,000,000 to charge against the credit card or bank
+        ///                    account. </param>
+        /// <param name="currency"> The currency of the `charge_amount`. </param>
+        /// <param name="description"> The description can be used to provide more details regarding the transaction. </param>
+        /// <param name="input"> A list of inputs that should be accepted. Currently only `dtmf` is supported. </param>
+        /// <param name="minPostalCodeLength"> A positive integer that is used to validate the length of the `PostalCode`
+        ///                           inputted by the user. </param>
+        /// <param name="parameter"> A single level JSON string that is required when accepting certain information specific
+        ///                 only to ACH payments. </param>
+        /// <param name="paymentConnector"> This is the unique name corresponding to the Payment Gateway Connector installed in
+        ///                        the Twilio Add-ons. </param>
+        /// <param name="paymentMethod"> Type of payment being captured. </param>
+        /// <param name="postalCode"> Indicates whether the credit card PostalCode (zip code) is a required piece of payment
+        ///                  information that must be provided by the caller. </param>
+        /// <param name="securityCode"> Indicates whether the credit card security code is a required piece of payment
+        ///                    information that must be provided by the caller. </param>
+        /// <param name="timeout"> The number of seconds that <Pay> should wait for the caller to press a digit between each
+        ///               subsequent digit, after the first one, before moving on to validate the digits captured. </param>
+        /// <param name="tokenType"> Indicates whether the payment method should be tokenized as a `one-time` or `reusable`
+        ///                 token. </param>
+        /// <param name="validCardTypes"> Credit card types separated by space that Pay should accept. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Payment </returns>
         public static PaymentResource Create(string pathCallSid,
@@ -187,25 +195,33 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// create an instance of payments. This will start a new payments session
         /// </summary>
         /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
-        /// <param name="idempotencyKey"> A unique token for each payment session that should be provided to maintain
-        ///                      idempotency of the session. </param>
-        /// <param name="statusCallback"> The URL we should call to send status of payment session. </param>
+        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+        ///                      information do not result in multiple transactions. </param>
+        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+        ///                      session.. </param>
         /// <param name="pathAccountSid"> The SID of the Account that will create the resource </param>
-        /// <param name="bankAccountType"> If Payment source is ACH, type of bank account. </param>
-        /// <param name="chargeAmount"> If this field is present and greater than `0.0` payment source will be charged. </param>
-        /// <param name="currency"> Currency `charge_amount` is in. </param>
-        /// <param name="description"> Decription of the charge. </param>
-        /// <param name="input"> Kind of medium customer would enter payment source information in. </param>
-        /// <param name="minPostalCodeLength"> If postal code is expected, minimum length of the postal code. </param>
-        /// <param name="parameter"> Additonal data to be sent over to payment provider. </param>
-        /// <param name="paymentConnector"> Payment connector that you would like Twilio to use for processing payments.
-        ///                        </param>
-        /// <param name="paymentMethod"> Payment source type. </param>
-        /// <param name="postalCode"> Whether to expect postal code during payment source data gathering. </param>
-        /// <param name="securityCode"> Whether to expect security code during payment source data gathering. </param>
-        /// <param name="timeout"> The number of seconds that we should allow customer to enter payment information </param>
-        /// <param name="tokenType"> If tokenization of payment source is desired, this represents type of token. </param>
-        /// <param name="validCardTypes"> List of card types accepted with each card types separated by space. </param>
+        /// <param name="bankAccountType"> Type of bank account if payment source is ACH. </param>
+        /// <param name="chargeAmount"> A positive decimal value less than 1,000,000 to charge against the credit card or bank
+        ///                    account. </param>
+        /// <param name="currency"> The currency of the `charge_amount`. </param>
+        /// <param name="description"> The description can be used to provide more details regarding the transaction. </param>
+        /// <param name="input"> A list of inputs that should be accepted. Currently only `dtmf` is supported. </param>
+        /// <param name="minPostalCodeLength"> A positive integer that is used to validate the length of the `PostalCode`
+        ///                           inputted by the user. </param>
+        /// <param name="parameter"> A single level JSON string that is required when accepting certain information specific
+        ///                 only to ACH payments. </param>
+        /// <param name="paymentConnector"> This is the unique name corresponding to the Payment Gateway Connector installed in
+        ///                        the Twilio Add-ons. </param>
+        /// <param name="paymentMethod"> Type of payment being captured. </param>
+        /// <param name="postalCode"> Indicates whether the credit card PostalCode (zip code) is a required piece of payment
+        ///                  information that must be provided by the caller. </param>
+        /// <param name="securityCode"> Indicates whether the credit card security code is a required piece of payment
+        ///                    information that must be provided by the caller. </param>
+        /// <param name="timeout"> The number of seconds that <Pay> should wait for the caller to press a digit between each
+        ///               subsequent digit, after the first one, before moving on to validate the digits captured. </param>
+        /// <param name="tokenType"> Indicates whether the payment method should be tokenized as a `one-time` or `reusable`
+        ///                 token. </param>
+        /// <param name="validCardTypes"> Credit card types separated by space that Pay should accept. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payment </returns>
         public static async System.Threading.Tasks.Task<PaymentResource> CreateAsync(string pathCallSid,
@@ -277,12 +293,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
         /// <param name="pathSid"> The SID of Payments session </param>
-        /// <param name="idempotencyKey"> A unique token for each payment session that should be provided to maintain
-        ///                      idempotency of the session. </param>
-        /// <param name="statusCallback"> The URL we should call to send status of payment session. </param>
+        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+        ///                      information do not result in multiple transactions. </param>
+        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+        ///                      session. </param>
         /// <param name="pathAccountSid"> The SID of the Account that will update the resource </param>
-        /// <param name="capture"> Specific payment source information to expect. </param>
-        /// <param name="status"> Instruction to complete or cancel the transaction. </param>
+        /// <param name="capture"> The piece of payment information that you wish the caller to enter. </param>
+        /// <param name="status"> Indicates whether the current payment session should be cancelled or completed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Payment </returns>
         public static PaymentResource Update(string pathCallSid,
@@ -304,12 +321,13 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         /// <param name="pathCallSid"> The SID of the call that will create the resource. </param>
         /// <param name="pathSid"> The SID of Payments session </param>
-        /// <param name="idempotencyKey"> A unique token for each payment session that should be provided to maintain
-        ///                      idempotency of the session. </param>
-        /// <param name="statusCallback"> The URL we should call to send status of payment session. </param>
+        /// <param name="idempotencyKey"> A unique token that will be used to ensure that multiple API calls with the same
+        ///                      information do not result in multiple transactions. </param>
+        /// <param name="statusCallback"> Provide an absolute or relative URL to receive status updates regarding your Pay
+        ///                      session. </param>
         /// <param name="pathAccountSid"> The SID of the Account that will update the resource </param>
-        /// <param name="capture"> Specific payment source information to expect. </param>
-        /// <param name="status"> Instruction to complete or cancel the transaction. </param>
+        /// <param name="capture"> The piece of payment information that you wish the caller to enter. </param>
+        /// <param name="status"> Indicates whether the current payment session should be cancelled or completed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Payment </returns>
         public static async System.Threading.Tasks.Task<PaymentResource> UpdateAsync(string pathCallSid,

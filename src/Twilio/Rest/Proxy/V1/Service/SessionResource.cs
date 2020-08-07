@@ -461,6 +461,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
         /// <param name="ttl"> When the session will expire </param>
         /// <param name="status"> The new status of the resource </param>
+        /// <param name="failOnParticipantConflict"> Opt-in to enable Proxy to return 400 on detected conflict on re-open
+        ///                                 request. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static SessionResource Update(string pathServiceSid,
@@ -468,9 +470,10 @@ namespace Twilio.Rest.Proxy.V1.Service
                                              DateTime? dateExpiry = null,
                                              int? ttl = null,
                                              SessionResource.StatusEnum status = null,
+                                             bool? failOnParticipantConflict = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status, FailOnParticipantConflict = failOnParticipantConflict};
             return Update(options, client);
         }
 
@@ -483,6 +486,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
         /// <param name="ttl"> When the session will expire </param>
         /// <param name="status"> The new status of the resource </param>
+        /// <param name="failOnParticipantConflict"> Opt-in to enable Proxy to return 400 on detected conflict on re-open
+        ///                                 request. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathServiceSid,
@@ -490,9 +495,10 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                      DateTime? dateExpiry = null,
                                                                                      int? ttl = null,
                                                                                      SessionResource.StatusEnum status = null,
+                                                                                     bool? failOnParticipantConflict = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status, FailOnParticipantConflict = failOnParticipantConflict};
             return await UpdateAsync(options, client);
         }
         #endif

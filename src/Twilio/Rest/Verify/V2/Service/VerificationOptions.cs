@@ -29,6 +29,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string Channel { get; }
         /// <summary>
+        /// A custom user defined friendly name
+        /// </summary>
+        public string CustomFriendlyName { get; set; }
+        /// <summary>
         /// The text of a custom message to use for the verification
         /// </summary>
         public string CustomMessage { get; set; }
@@ -92,6 +96,11 @@ namespace Twilio.Rest.Verify.V2.Service
             if (Channel != null)
             {
                 p.Add(new KeyValuePair<string, string>("Channel", Channel));
+            }
+
+            if (CustomFriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CustomFriendlyName", CustomFriendlyName));
             }
 
             if (CustomMessage != null)
