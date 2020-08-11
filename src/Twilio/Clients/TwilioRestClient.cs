@@ -28,7 +28,7 @@ namespace Twilio.Clients
         /// <summary>
         /// Account SID to use for requests
         /// </summary>
-        public string AccountSid { get; }
+        public string AccountSid => _accountSid ?? throw new ArgumentException("AccountSID not set in " + nameof(TwilioClient) + "." + nameof(TwilioClient.Init));
 
         /// <summary>
         /// Twilio region to make requests to
@@ -42,6 +42,7 @@ namespace Twilio.Clients
 
         private readonly string _username;
         private readonly string _password;
+        private readonly string _accountSid;
 
         /// <summary>
         /// Constructor for a TwilioRestClient
@@ -65,7 +66,16 @@ namespace Twilio.Clients
             _username = username;
             _password = password;
 
-            AccountSid = accountSid ?? username;
+            _accountSid = accountSid;
+            //Validate prefix in accountSid, https://www.twilio.com/docs/glossary/what-is-a-sid#common-sid-prefixes
+            if (_accountSid?.StartsWith("AC", StringComparison.Ordinal) == false)
+                throw new ArgumentException("AccountSid must start with \"AC\"", nameof(accountSid));
+            if (_accountSid == null)
+            {
+                if (username.StartsWith("AC", StringComparison.Ordinal))
+                    _accountSid = username;
+            }
+
             HttpClient = httpClient ?? DefaultClient();
 
             Region = region;
