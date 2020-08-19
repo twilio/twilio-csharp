@@ -191,6 +191,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///                                    contact with. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
         ///                                        </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as Chat User. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Update(string pathConversationSid,
@@ -201,9 +202,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                  string roleSid = null,
                                                  string messagingBindingProxyAddress = null,
                                                  string messagingBindingProjectedAddress = null,
+                                                 string identity = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress};
+            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, Identity = identity};
             return Update(options, client);
         }
 
@@ -221,6 +223,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         ///                                    contact with. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
         ///                                        </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as Chat User. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> UpdateAsync(string pathConversationSid,
@@ -231,9 +234,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                                                          string roleSid = null,
                                                                                          string messagingBindingProxyAddress = null,
                                                                                          string messagingBindingProjectedAddress = null,
+                                                                                         string identity = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress};
+            var options = new UpdateParticipantOptions(pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, Identity = identity};
             return await UpdateAsync(options, client);
         }
         #endif

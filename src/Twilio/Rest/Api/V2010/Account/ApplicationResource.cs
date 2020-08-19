@@ -480,7 +480,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
         /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
         /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
-        /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
+        /// <param name="smsStatusCallback"> Same as message_status_callback. Deprecated, included for backwards compatibility.
+        ///                         </param>
         /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Application </returns>
@@ -526,7 +527,8 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="smsMethod"> The HTTP method to use with sms_url </param>
         /// <param name="smsFallbackUrl"> The URL to call when an error occurs while retrieving or executing the TwiML </param>
         /// <param name="smsFallbackMethod"> The HTTP method to use with sms_fallback_url </param>
-        /// <param name="smsStatusCallback"> The URL to send status information to your application </param>
+        /// <param name="smsStatusCallback"> Same as message_status_callback. Deprecated, included for backwards compatibility.
+        ///                         </param>
         /// <param name="messageStatusCallback"> The URL to send message status information to your application </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Application </returns>

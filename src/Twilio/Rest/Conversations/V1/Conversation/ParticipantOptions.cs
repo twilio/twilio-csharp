@@ -153,6 +153,10 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// The address of the Twilio phone number that is used in Group MMS.
         /// </summary>
         public string MessagingBindingProjectedAddress { get; set; }
+        /// <summary>
+        /// A unique string identifier for the conversation participant as Chat User.
+        /// </summary>
+        public string Identity { get; set; }
 
         /// <summary>
         /// Construct a new UpdateParticipantOptions
@@ -199,6 +203,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             if (MessagingBindingProjectedAddress != null)
             {
                 p.Add(new KeyValuePair<string, string>("MessagingBinding.ProjectedAddress", MessagingBindingProjectedAddress));
+            }
+
+            if (Identity != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Identity", Identity));
             }
 
             return p;

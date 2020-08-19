@@ -332,7 +332,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; set; }
         /// <summary>
-        /// The URL to send status information to your application
+        /// Same as message_status_callback. Deprecated, included for backwards compatibility.
         /// </summary>
         public Uri SmsStatusCallback { get; set; }
         /// <summary>

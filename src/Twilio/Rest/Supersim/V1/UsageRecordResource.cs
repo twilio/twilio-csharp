@@ -48,6 +48,9 @@ namespace Twilio.Rest.Supersim.V1
             }
 
             public static readonly GroupEnum Sim = new GroupEnum("sim");
+            public static readonly GroupEnum Fleet = new GroupEnum("fleet");
+            public static readonly GroupEnum Network = new GroupEnum("network");
+            public static readonly GroupEnum Isocountry = new GroupEnum("isoCountry");
         }
 
         public sealed class SortByEnum : StringEnum
@@ -60,19 +63,6 @@ namespace Twilio.Rest.Supersim.V1
             }
 
             public static readonly SortByEnum Time = new SortByEnum("time");
-        }
-
-        public sealed class SortOrderEnum : StringEnum
-        {
-            private SortOrderEnum(string value) : base(value) {}
-            public SortOrderEnum() {}
-            public static implicit operator SortOrderEnum(string value)
-            {
-                return new SortOrderEnum(value);
-            }
-
-            public static readonly SortOrderEnum Desc = new SortOrderEnum("desc");
-            public static readonly SortOrderEnum Asc = new SortOrderEnum("asc");
         }
 
         private static Request BuildReadRequest(ReadUsageRecordOptions options, ITwilioRestClient client)
@@ -121,8 +111,15 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// List UsageRecords
         /// </summary>
-        /// <param name="sim"> SID of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM.
-        ///           </param>
+        /// <param name="sim"> SID or unique name of a Sim resource. Only show UsageRecords representing usage incurred by this
+        ///           Super SIM. </param>
+        /// <param name="fleet"> SID or unique name of a Fleet resource. Only show UsageRecords representing usage for Super
+        ///             SIMs belonging to this Fleet resource at the time the usage occurred. </param>
+        /// <param name="network"> SID of a Network resource. Only show UsageRecords representing usage on this network.
+        ///               </param>
+        /// <param name="isoCountry"> Alpha-2 ISO Country Code. Only show UsageRecords representing usage in this country.
+        ///                  </param>
+        /// <param name="group"> Dimension over which to aggregate usage records. </param>
         /// <param name="granularity"> Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or
         ///                   `all`. Default is `all`. </param>
         /// <param name="startTime"> Only include usage that occurred at or after this time. </param>
@@ -132,6 +129,10 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsageRecord </returns>
         public static ResourceSet<UsageRecordResource> Read(string sim = null,
+                                                            string fleet = null,
+                                                            string network = null,
+                                                            string isoCountry = null,
+                                                            UsageRecordResource.GroupEnum group = null,
                                                             UsageRecordResource.GranularityEnum granularity = null,
                                                             DateTime? startTime = null,
                                                             DateTime? endTime = null,
@@ -139,7 +140,7 @@ namespace Twilio.Rest.Supersim.V1
                                                             long? limit = null,
                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadUsageRecordOptions(){Sim = sim, Granularity = granularity, StartTime = startTime, EndTime = endTime, PageSize = pageSize, Limit = limit};
+            var options = new ReadUsageRecordOptions(){Sim = sim, Fleet = fleet, Network = network, IsoCountry = isoCountry, Group = group, Granularity = granularity, StartTime = startTime, EndTime = endTime, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -147,8 +148,15 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// List UsageRecords
         /// </summary>
-        /// <param name="sim"> SID of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM.
-        ///           </param>
+        /// <param name="sim"> SID or unique name of a Sim resource. Only show UsageRecords representing usage incurred by this
+        ///           Super SIM. </param>
+        /// <param name="fleet"> SID or unique name of a Fleet resource. Only show UsageRecords representing usage for Super
+        ///             SIMs belonging to this Fleet resource at the time the usage occurred. </param>
+        /// <param name="network"> SID of a Network resource. Only show UsageRecords representing usage on this network.
+        ///               </param>
+        /// <param name="isoCountry"> Alpha-2 ISO Country Code. Only show UsageRecords representing usage in this country.
+        ///                  </param>
+        /// <param name="group"> Dimension over which to aggregate usage records. </param>
         /// <param name="granularity"> Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or
         ///                   `all`. Default is `all`. </param>
         /// <param name="startTime"> Only include usage that occurred at or after this time. </param>
@@ -158,6 +166,10 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsageRecord </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<UsageRecordResource>> ReadAsync(string sim = null,
+                                                                                                    string fleet = null,
+                                                                                                    string network = null,
+                                                                                                    string isoCountry = null,
+                                                                                                    UsageRecordResource.GroupEnum group = null,
                                                                                                     UsageRecordResource.GranularityEnum granularity = null,
                                                                                                     DateTime? startTime = null,
                                                                                                     DateTime? endTime = null,
@@ -165,7 +177,7 @@ namespace Twilio.Rest.Supersim.V1
                                                                                                     long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadUsageRecordOptions(){Sim = sim, Granularity = granularity, StartTime = startTime, EndTime = endTime, PageSize = pageSize, Limit = limit};
+            var options = new ReadUsageRecordOptions(){Sim = sim, Fleet = fleet, Network = network, IsoCountry = isoCountry, Group = group, Granularity = granularity, StartTime = startTime, EndTime = endTime, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -251,6 +263,21 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         [JsonProperty("sim_sid")]
         public string SimSid { get; private set; }
+        /// <summary>
+        /// SID of the Network resource on which the usage occurred.
+        /// </summary>
+        [JsonProperty("network_sid")]
+        public string NetworkSid { get; private set; }
+        /// <summary>
+        /// SID of the Fleet resource on which the usage occurred.
+        /// </summary>
+        [JsonProperty("fleet_sid")]
+        public string FleetSid { get; private set; }
+        /// <summary>
+        /// Alpha-2 ISO Country Code of the country the usage occurred in.
+        /// </summary>
+        [JsonProperty("iso_country")]
+        public string IsoCountry { get; private set; }
         /// <summary>
         /// The time period for which the usage is reported.
         /// </summary>
