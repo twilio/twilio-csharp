@@ -120,6 +120,10 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// The Participant objects to include in the new session
         /// </summary>
         public List<object> Participants { get; set; }
+        /// <summary>
+        /// An experimental flag that instructs Proxy to reject a Session create request when it detects a Participant conflict.
+        /// </summary>
+        public bool? FailOnParticipantConflict { get; set; }
 
         /// <summary>
         /// Construct a new CreateSessionOptions
@@ -165,6 +169,11 @@ namespace Twilio.Rest.Proxy.V1.Service
             if (Participants != null)
             {
                 p.AddRange(Participants.Select(prop => new KeyValuePair<string, string>("Participants", Serializers.JsonObject(prop))));
+            }
+
+            if (FailOnParticipantConflict != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FailOnParticipantConflict", FailOnParticipantConflict.Value.ToString().ToLower()));
             }
 
             return p;
@@ -236,7 +245,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// Opt-in to enable Proxy to return 400 on detected conflict on re-open request.
+        /// An experimental flag that instructs Proxy to return 400 instead of 200 when it detects that conflicts would result from re-open requests.
         /// </summary>
         public bool? FailOnParticipantConflict { get; set; }
 

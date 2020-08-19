@@ -281,6 +281,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="friendlyName"> The string that you assigned to describe the participant </param>
         /// <param name="proxyIdentifier"> The proxy phone number to use for the Participant </param>
         /// <param name="proxyIdentifierSid"> The Proxy Identifier Sid </param>
+        /// <param name="failOnParticipantConflict"> An experimental flag that instructs Proxy to reject a Participant create
+        ///                                 request when it detects a conflict. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Create(string pathServiceSid,
@@ -289,9 +291,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                                                  string friendlyName = null,
                                                  string proxyIdentifier = null,
                                                  string proxyIdentifierSid = null,
+                                                 bool? failOnParticipantConflict = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
+            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid, FailOnParticipantConflict = failOnParticipantConflict};
             return Create(options, client);
         }
 
@@ -305,6 +308,8 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// <param name="friendlyName"> The string that you assigned to describe the participant </param>
         /// <param name="proxyIdentifier"> The proxy phone number to use for the Participant </param>
         /// <param name="proxyIdentifierSid"> The Proxy Identifier Sid </param>
+        /// <param name="failOnParticipantConflict"> An experimental flag that instructs Proxy to reject a Participant create
+        ///                                 request when it detects a conflict. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathServiceSid,
@@ -313,9 +318,10 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
                                                                                          string friendlyName = null,
                                                                                          string proxyIdentifier = null,
                                                                                          string proxyIdentifierSid = null,
+                                                                                         bool? failOnParticipantConflict = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid};
+            var options = new CreateParticipantOptions(pathServiceSid, pathSessionSid, identifier){FriendlyName = friendlyName, ProxyIdentifier = proxyIdentifier, ProxyIdentifierSid = proxyIdentifierSid, FailOnParticipantConflict = failOnParticipantConflict};
             return await CreateAsync(options, client);
         }
         #endif

@@ -67,20 +67,16 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// read
         /// </summary>
         /// <param name="pathSimSid"> The SID of the Sim resource with the Data Sessions to read </param>
-        /// <param name="end"> The date that the record ended, given as GMT in ISO 8601 format </param>
-        /// <param name="start"> The date that the Data Session started, given as GMT in ISO 8601 format </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DataSession </returns>
         public static ResourceSet<DataSessionResource> Read(string pathSimSid,
-                                                            DateTime? end = null,
-                                                            DateTime? start = null,
                                                             int? pageSize = null,
                                                             long? limit = null,
                                                             ITwilioRestClient client = null)
         {
-            var options = new ReadDataSessionOptions(pathSimSid){End = end, Start = start, PageSize = pageSize, Limit = limit};
+            var options = new ReadDataSessionOptions(pathSimSid){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -89,20 +85,16 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// read
         /// </summary>
         /// <param name="pathSimSid"> The SID of the Sim resource with the Data Sessions to read </param>
-        /// <param name="end"> The date that the record ended, given as GMT in ISO 8601 format </param>
-        /// <param name="start"> The date that the Data Session started, given as GMT in ISO 8601 format </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DataSession </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<DataSessionResource>> ReadAsync(string pathSimSid,
-                                                                                                    DateTime? end = null,
-                                                                                                    DateTime? start = null,
                                                                                                     int? pageSize = null,
                                                                                                     long? limit = null,
                                                                                                     ITwilioRestClient client = null)
         {
-            var options = new ReadDataSessionOptions(pathSimSid){End = end, Start = start, PageSize = pageSize, Limit = limit};
+            var options = new ReadDataSessionOptions(pathSimSid){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
