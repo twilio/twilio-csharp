@@ -29,7 +29,7 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 ### Supported .NET versions
 
-This library supports .NET applications written in C#, VB.Net, and F# that utilize .NET Framework 3.5 or above or any [supported version](https://dotnet.microsoft.com/platform/support/policy/dotnet-core#lifecycle) of .NET Core (.NET Standard v1.4).
+This library supports .NET applications that utilize .NET Framework 3.5+ or .NET Core 1.0+ (.NET Standard 1.4).
 
 ## Installation
 
