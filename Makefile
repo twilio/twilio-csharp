@@ -8,15 +8,11 @@ install:
 	dotnet restore
 
 test:
-	dotnet restore
-	dotnet build --framework netstandard1.4 src/Twilio/Twilio.csproj
-	dotnet build --framework netstandard2.0 src/Twilio/Twilio.csproj
-	dotnet build --framework netcoreapp2.0 test/Twilio.Test/Twilio.Test.csproj
-	dotnet run --framework netcoreapp2.0 --project test/Twilio.Test/Twilio.Test.csproj
-
-release: test
 	dotnet build -c Release
-	dotnet pack src/Twilio/Twilio.csproj -c Release -o .
+	dotnet test -c Release
+
+release:
+	dotnet pack -c Release
 
 docs:
 	doxygen Doxyfile
