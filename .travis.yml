@@ -1,31 +1,28 @@
 language: csharp
 solution: Twilio.sln
-mono: latest
-dotnet: 3.1
-
-env:
-  - FrameworkPathOverride=/usr/lib/mono/4.5/
+dist: xenial
+sudo: required
+mono: none
+dotnet: 2.1
 
 services:
   - docker
 
+install:
+  - dotnet restore
+  - dotnet build --framework netstandard1.4 src/Twilio/Twilio.csproj
+  - dotnet build --framework netstandard2.0 src/Twilio/Twilio.csproj
+  - dotnet build --framework netcoreapp2.0 test/Twilio.Test/Twilio.Test.csproj
+
 script:
-  - make test
-  - make release
+  - dotnet run --framework netcoreapp2.0 --project test/Twilio.Test/Twilio.Test.csproj
 
 deploy:
-  - provider: script
-    script: make docker-build && make docker-push
-    skip_cleanup: true
-    on:
-      branch: main
-      tags: true
-  - provider: script
-    script: dotnet nuget push **/*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
-    skip_cleanup: true
-    on:
-      branch: main
-      tags: true
+  provider: script
+  script: make docker-build && make docker-push
+  skip_cleanup: true
+  on:
+    tags: true
 
 notifications:
   slack:
