@@ -34,7 +34,7 @@ namespace Twilio.Rest.Events.V1.Sink
         }
 
         /// <summary>
-        /// create
+        /// Validate that a test event for a Sink was received.
         /// </summary>
         /// <param name="options"> Create SinkValidate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Events.V1.Sink
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Validate that a test event for a Sink was received.
         /// </summary>
         /// <param name="options"> Create SinkValidate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,10 +63,10 @@ namespace Twilio.Rest.Events.V1.Sink
         #endif
 
         /// <summary>
-        /// create
+        /// Validate that a test event for a Sink was received.
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="testId"> The test_id </param>
+        /// <param name="testId"> A string that uniquely identifies the test event for a Sink being validated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SinkValidate </returns>
         public static SinkValidateResource Create(string pathSid, string testId, ITwilioRestClient client = null)
@@ -77,10 +77,10 @@ namespace Twilio.Rest.Events.V1.Sink
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Validate that a test event for a Sink was received.
         /// </summary>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="testId"> The test_id </param>
+        /// <param name="testId"> A string that uniquely identifies the test event for a Sink being validated. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SinkValidate </returns>
         public static async System.Threading.Tasks.Task<SinkValidateResource> CreateAsync(string pathSid,
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Events.V1.Sink
         }
 
         /// <summary>
-        /// The result
+        /// Feedback indicating whether the given Sink was validated.
         /// </summary>
         [JsonProperty("result")]
         public string Result { get; private set; }

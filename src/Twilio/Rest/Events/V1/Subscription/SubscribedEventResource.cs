@@ -34,7 +34,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Subscribed Event types for a Subscription.
         /// </summary>
         /// <param name="options"> Read SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Subscribed Event types for a Subscription.
         /// </summary>
         /// <param name="options"> Read SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -68,9 +68,9 @@ namespace Twilio.Rest.Events.V1.Subscription
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all Subscribed Event types for a Subscription.
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -86,9 +86,9 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all Subscribed Event types for a Subscription.
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
         /// <summary>
-        /// create
+        /// Create a new Subscribed Event type for the subscription
         /// </summary>
         /// <param name="options"> Create SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -182,7 +182,7 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Subscribed Event type for the subscription
         /// </summary>
         /// <param name="options"> Create SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -197,11 +197,11 @@ namespace Twilio.Rest.Events.V1.Subscription
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Subscribed Event type for the subscription
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
-        /// <param name="type"> The type </param>
-        /// <param name="version"> The version </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
+        /// <param name="type"> Type of event being subscribed to. </param>
+        /// <param name="version"> The schema version that the subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
         public static SubscribedEventResource Create(string pathSubscriptionSid,
@@ -215,11 +215,11 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Subscribed Event type for the subscription
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
-        /// <param name="type"> The type </param>
-        /// <param name="version"> The version </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
+        /// <param name="type"> Type of event being subscribed to. </param>
+        /// <param name="version"> The schema version that the subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<SubscribedEventResource> CreateAsync(string pathSubscriptionSid,
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
         /// <summary>
-        /// update
+        /// Update an Event for a Subscription.
         /// </summary>
         /// <param name="options"> Update SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -257,7 +257,7 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an Event for a Subscription.
         /// </summary>
         /// <param name="options"> Update SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -272,11 +272,11 @@ namespace Twilio.Rest.Events.V1.Subscription
         #endif
 
         /// <summary>
-        /// update
+        /// Update an Event for a Subscription.
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
-        /// <param name="pathType"> The type </param>
-        /// <param name="version"> The version </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
+        /// <param name="pathType"> Type of event being subscribed to. </param>
+        /// <param name="version"> The schema version that the subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
         public static SubscribedEventResource Update(string pathSubscriptionSid,
@@ -290,11 +290,11 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an Event for a Subscription.
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
-        /// <param name="pathType"> The type </param>
-        /// <param name="version"> The version </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
+        /// <param name="pathType"> Type of event being subscribed to. </param>
+        /// <param name="version"> The schema version that the subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<SubscribedEventResource> UpdateAsync(string pathSubscriptionSid,
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
         /// <summary>
-        /// delete
+        /// Remove an event type from a subscription.
         /// </summary>
         /// <param name="options"> Delete SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -332,7 +332,7 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove an event type from a subscription.
         /// </summary>
         /// <param name="options"> Delete SubscribedEvent parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -347,10 +347,10 @@ namespace Twilio.Rest.Events.V1.Subscription
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove an event type from a subscription.
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
-        /// <param name="pathType"> The type </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
+        /// <param name="pathType"> Type of event being subscribed to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
         public static bool Delete(string pathSubscriptionSid, string pathType, ITwilioRestClient client = null)
@@ -361,10 +361,10 @@ namespace Twilio.Rest.Events.V1.Subscription
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove an event type from a subscription.
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
-        /// <param name="pathType"> The type </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
+        /// <param name="pathType"> Type of event being subscribed to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSubscriptionSid,
@@ -395,27 +395,27 @@ namespace Twilio.Rest.Events.V1.Subscription
         }
 
         /// <summary>
-        /// The account_sid
+        /// Account SID.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The type
+        /// Type of event being subscribed to.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; private set; }
         /// <summary>
-        /// The version
+        /// The schema version that the subscription should use.
         /// </summary>
         [JsonProperty("version")]
         public int? Version { get; private set; }
         /// <summary>
-        /// The subscription_sid
+        /// Subscription SID.
         /// </summary>
         [JsonProperty("subscription_sid")]
         public string SubscriptionSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"url\": \"https://bulkexports.twilio.com/v1/Exports/Calls/Configuration\",\"enabled\": true,\"webhook_url\": \"\",\"webhook_method\": \"\",\"resource_type\": \"Calls\"}"
+                                         "{\"url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Configuration\",\"enabled\": true,\"webhook_url\": \"\",\"webhook_method\": \"\",\"resource_type\": \"Messages\"}"
                                      ));
 
             var response = ExportConfigurationResource.Fetch("resource_type", client: twilioRestClient);
@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"url\": \"https://bulkexports.twilio.com/v1/Exports/Calls/Configuration\",\"enabled\": true,\"webhook_url\": \"\",\"resource_type\": \"Calls\",\"webhook_method\": \"\"}"
+                                         "{\"url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Configuration\",\"enabled\": true,\"webhook_url\": \"\",\"resource_type\": \"Messages\",\"webhook_method\": \"\"}"
                                      ));
 
             var response = ExportConfigurationResource.Update("resource_type", client: twilioRestClient);

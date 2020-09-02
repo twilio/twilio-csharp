@@ -15,19 +15,19 @@ namespace Twilio.Rest.Events.V1.Sink
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// CreateSinkTestOptions
+    /// Create a new Sink Test Event for the given Sink.
     /// </summary>
     public class CreateSinkTestOptions : IOptions<SinkTestResource>
     {
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies the Sink to be Tested.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new CreateSinkTestOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies the Sink to be Tested. </param>
         public CreateSinkTestOptions(string pathSid)
         {
             PathSid = pathSid;

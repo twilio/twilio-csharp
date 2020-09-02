@@ -62,7 +62,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Sink.
         /// </summary>
         /// <param name="options"> Fetch Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -76,7 +76,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Sink.
         /// </summary>
         /// <param name="options"> Fetch Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -91,9 +91,9 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Sink.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Sink. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sink </returns>
         public static SinkResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -104,9 +104,9 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Sink.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Sink. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
         public static async System.Threading.Tasks.Task<SinkResource> FetchAsync(string pathSid,
@@ -128,7 +128,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// create
+        /// Create a new Sink
         /// </summary>
         /// <param name="options"> Create Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -142,7 +142,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Sink
         /// </summary>
         /// <param name="options"> Create Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -157,11 +157,11 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Sink
         /// </summary>
-        /// <param name="description"> The description </param>
-        /// <param name="sinkConfiguration"> The sink_configuration </param>
-        /// <param name="sinkType"> The sink_type </param>
+        /// <param name="description"> Sink Description </param>
+        /// <param name="sinkConfiguration"> JSON Sink configuration. </param>
+        /// <param name="sinkType"> Sink type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sink </returns>
         public static SinkResource Create(string description,
@@ -175,11 +175,11 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Sink
         /// </summary>
-        /// <param name="description"> The description </param>
-        /// <param name="sinkConfiguration"> The sink_configuration </param>
-        /// <param name="sinkType"> The sink_type </param>
+        /// <param name="description"> Sink Description </param>
+        /// <param name="sinkConfiguration"> JSON Sink configuration. </param>
+        /// <param name="sinkType"> Sink type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
         public static async System.Threading.Tasks.Task<SinkResource> CreateAsync(string description,
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// delete
+        /// Delete a specific Sink.
         /// </summary>
         /// <param name="options"> Delete Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -217,7 +217,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a specific Sink.
         /// </summary>
         /// <param name="options"> Delete Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -232,9 +232,9 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete a specific Sink.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Sink. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sink </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -245,9 +245,9 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a specific Sink.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Sink. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of Sinks belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Read Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -284,7 +284,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of Sinks belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Read Sink parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -301,7 +301,7 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of Sinks belonging to the account used to make the request.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of Sinks belonging to the account used to make the request.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -404,49 +404,49 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// The date_created
+        /// The date this Sink was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this Sink was updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The description
+        /// Sink Description
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Sink.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The sink_configuration
+        /// JSON Sink configuration.
         /// </summary>
         [JsonProperty("sink_configuration")]
         public object SinkConfiguration { get; private set; }
         /// <summary>
-        /// The sink_type
+        /// Sink type.
         /// </summary>
         [JsonProperty("sink_type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public SinkResource.SinkTypeEnum SinkType { get; private set; }
         /// <summary>
-        /// The status
+        /// The Status of this Sink
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public SinkResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Nested resource URLs.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

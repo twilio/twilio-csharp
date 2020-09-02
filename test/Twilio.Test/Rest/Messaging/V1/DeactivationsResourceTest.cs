@@ -12,13 +12,13 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Bulkexports.V1;
+using Twilio.Rest.Messaging.V1;
 
-namespace Twilio.Tests.Rest.Bulkexports.V1
+namespace Twilio.Tests.Rest.Messaging.V1
 {
 
     [TestFixture]
-    public class ExportTest : TwilioTest
+    public class DeactivationsTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()
@@ -26,15 +26,15 @@ namespace Twilio.Tests.Rest.Bulkexports.V1
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
                 HttpMethod.Get,
-                Twilio.Rest.Domain.Bulkexports,
-                "/v1/Exports/resource_type",
+                Twilio.Rest.Domain.Messaging,
+                "/v1/Deactivations",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ExportResource.Fetch("resource_type", client: twilioRestClient);
+                DeactivationsResource.Fetch(client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Bulkexports.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"resource_type\": \"Messages\",\"url\": \"https://bulkexports.twilio.com/v1/Exports/Messages\",\"links\": {\"days\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Days\"}}"
+                                         "{\"redirect_to\": \"https://www.twilio.com\"}"
                                      ));
 
-            var response = ExportResource.Fetch("resource_type", client: twilioRestClient);
+            var response = DeactivationsResource.Fetch(client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

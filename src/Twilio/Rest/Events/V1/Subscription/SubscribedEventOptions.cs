@@ -15,19 +15,19 @@ namespace Twilio.Rest.Events.V1.Subscription
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// ReadSubscribedEventOptions
+    /// Retrieve a list of all Subscribed Event types for a Subscription.
     /// </summary>
     public class ReadSubscribedEventOptions : ReadOptions<SubscribedEventResource>
     {
         /// <summary>
-        /// The subscription_sid
+        /// Subscription SID.
         /// </summary>
         public string PathSubscriptionSid { get; }
 
         /// <summary>
         /// Construct a new ReadSubscribedEventOptions
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
         public ReadSubscribedEventOptions(string pathSubscriptionSid)
         {
             PathSubscriptionSid = pathSubscriptionSid;
@@ -52,28 +52,28 @@ namespace Twilio.Rest.Events.V1.Subscription
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// CreateSubscribedEventOptions
+    /// Create a new Subscribed Event type for the subscription
     /// </summary>
     public class CreateSubscribedEventOptions : IOptions<SubscribedEventResource>
     {
         /// <summary>
-        /// The subscription_sid
+        /// Subscription SID.
         /// </summary>
         public string PathSubscriptionSid { get; }
         /// <summary>
-        /// The type
+        /// Type of event being subscribed to.
         /// </summary>
         public string Type { get; }
         /// <summary>
-        /// The version
+        /// The schema version that the subscription should use.
         /// </summary>
         public int? Version { get; set; }
 
         /// <summary>
         /// Construct a new CreateSubscribedEventOptions
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
-        /// <param name="type"> The type </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
+        /// <param name="type"> Type of event being subscribed to. </param>
         public CreateSubscribedEventOptions(string pathSubscriptionSid, string type)
         {
             PathSubscriptionSid = pathSubscriptionSid;
@@ -104,29 +104,29 @@ namespace Twilio.Rest.Events.V1.Subscription
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// UpdateSubscribedEventOptions
+    /// Update an Event for a Subscription.
     /// </summary>
     public class UpdateSubscribedEventOptions : IOptions<SubscribedEventResource>
     {
         /// <summary>
-        /// The subscription_sid
+        /// Subscription SID.
         /// </summary>
         public string PathSubscriptionSid { get; }
         /// <summary>
-        /// The type
+        /// Type of event being subscribed to.
         /// </summary>
         public string PathType { get; }
         /// <summary>
-        /// The version
+        /// The schema version that the subscription should use.
         /// </summary>
         public int? Version { get; }
 
         /// <summary>
         /// Construct a new UpdateSubscribedEventOptions
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
-        /// <param name="pathType"> The type </param>
-        /// <param name="version"> The version </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
+        /// <param name="pathType"> Type of event being subscribed to. </param>
+        /// <param name="version"> The schema version that the subscription should use. </param>
         public UpdateSubscribedEventOptions(string pathSubscriptionSid, string pathType, int? version)
         {
             PathSubscriptionSid = pathSubscriptionSid;
@@ -153,24 +153,24 @@ namespace Twilio.Rest.Events.V1.Subscription
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// DeleteSubscribedEventOptions
+    /// Remove an event type from a subscription.
     /// </summary>
     public class DeleteSubscribedEventOptions : IOptions<SubscribedEventResource>
     {
         /// <summary>
-        /// The subscription_sid
+        /// Subscription SID.
         /// </summary>
         public string PathSubscriptionSid { get; }
         /// <summary>
-        /// The type
+        /// Type of event being subscribed to.
         /// </summary>
         public string PathType { get; }
 
         /// <summary>
         /// Construct a new DeleteSubscribedEventOptions
         /// </summary>
-        /// <param name="pathSubscriptionSid"> The subscription_sid </param>
-        /// <param name="pathType"> The type </param>
+        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
+        /// <param name="pathType"> Type of event being subscribed to. </param>
         public DeleteSubscribedEventOptions(string pathSubscriptionSid, string pathType)
         {
             PathSubscriptionSid = pathSubscriptionSid;

@@ -95,6 +95,10 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         public TrunkResource.RecordingSettingEnum Recording { get; set; }
         /// <summary>
+        /// The call transfer settings for the trunk
+        /// </summary>
+        public TrunkResource.TransferSettingEnum TransferMode { get; set; }
+        /// <summary>
         /// Whether Secure Trunking is enabled for the trunk
         /// </summary>
         public bool? Secure { get; set; }
@@ -132,6 +136,11 @@ namespace Twilio.Rest.Trunking.V1
             if (Recording != null)
             {
                 p.Add(new KeyValuePair<string, string>("Recording", Recording.ToString()));
+            }
+
+            if (TransferMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TransferMode", TransferMode.ToString()));
             }
 
             if (Secure != null)
@@ -198,6 +207,10 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         public TrunkResource.RecordingSettingEnum Recording { get; set; }
         /// <summary>
+        /// The call transfer settings for the trunk
+        /// </summary>
+        public TrunkResource.TransferSettingEnum TransferMode { get; set; }
+        /// <summary>
         /// Whether Secure Trunking is enabled for the trunk
         /// </summary>
         public bool? Secure { get; set; }
@@ -244,6 +257,11 @@ namespace Twilio.Rest.Trunking.V1
             if (Recording != null)
             {
                 p.Add(new KeyValuePair<string, string>("Recording", Recording.ToString()));
+            }
+
+            if (TransferMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TransferMode", TransferMode.ToString()));
             }
 
             if (Secure != null)

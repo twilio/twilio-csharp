@@ -378,6 +378,71 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
         #endif
 
+        private static Request BuildDeleteRequest(DeleteEndUserOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Numbers,
+                "/v2/RegulatoryCompliance/EndUsers/" + options.PathSid + "",
+                queryParams: options.GetParams()
+            );
+        }
+
+        /// <summary>
+        /// Delete a specific End User.
+        /// </summary>
+        /// <param name="options"> Delete EndUser parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of EndUser </returns>
+        public static bool Delete(DeleteEndUserOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific End User.
+        /// </summary>
+        /// <param name="options"> Delete EndUser parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of EndUser </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteEndUserOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a specific End User.
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of EndUser </returns>
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteEndUserOptions(pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific End User.
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of EndUser </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteEndUserOptions(pathSid);
+            return await DeleteAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a EndUserResource object
         /// </summary>

@@ -34,7 +34,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Read Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
         /// </summary>
         /// <param name="options"> Read Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Subscription.
         /// </summary>
         /// <param name="options"> Fetch Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -177,7 +177,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Subscription.
         /// </summary>
         /// <param name="options"> Fetch Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -192,9 +192,9 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Subscription.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Subscription </returns>
         public static SubscriptionResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -205,9 +205,9 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Subscription.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<SubscriptionResource> FetchAsync(string pathSid,
@@ -229,7 +229,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// create
+        /// Create a new Subscription.
         /// </summary>
         /// <param name="options"> Create Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -243,7 +243,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Subscription.
         /// </summary>
         /// <param name="options"> Create Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -258,11 +258,11 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Subscription.
         /// </summary>
-        /// <param name="description"> The description </param>
-        /// <param name="sinkSid"> The sink_sid </param>
-        /// <param name="types"> The types </param>
+        /// <param name="description"> Subscription description </param>
+        /// <param name="sinkSid"> Sink SID. </param>
+        /// <param name="types"> Nested resource URLs. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Subscription </returns>
         public static SubscriptionResource Create(string description,
@@ -276,11 +276,11 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Subscription.
         /// </summary>
-        /// <param name="description"> The description </param>
-        /// <param name="sinkSid"> The sink_sid </param>
-        /// <param name="types"> The types </param>
+        /// <param name="description"> Subscription description </param>
+        /// <param name="sinkSid"> Sink SID. </param>
+        /// <param name="types"> Nested resource URLs. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<SubscriptionResource> CreateAsync(string description,
@@ -304,7 +304,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// delete
+        /// Delete a specific Subscription.
         /// </summary>
         /// <param name="options"> Delete Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -318,7 +318,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a specific Subscription.
         /// </summary>
         /// <param name="options"> Delete Subscription parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -333,9 +333,9 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// delete
+        /// Delete a specific Subscription.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Subscription </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -346,9 +346,9 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Delete a specific Subscription.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -377,42 +377,42 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// The account_sid
+        /// Account SID.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Subscription.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Subscription was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this Subscription was updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The description
+        /// Subscription description
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The sink_sid
+        /// Sink SID.
         /// </summary>
         [JsonProperty("sink_sid")]
         public string SinkSid { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Nested resource URLs.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

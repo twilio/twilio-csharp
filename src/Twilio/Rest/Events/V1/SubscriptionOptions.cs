@@ -16,7 +16,7 @@ namespace Twilio.Rest.Events.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// ReadSubscriptionOptions
+    /// Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
     /// </summary>
     public class ReadSubscriptionOptions : ReadOptions<SubscriptionResource>
     {
@@ -39,19 +39,19 @@ namespace Twilio.Rest.Events.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// FetchSubscriptionOptions
+    /// Fetch a specific Subscription.
     /// </summary>
     public class FetchSubscriptionOptions : IOptions<SubscriptionResource>
     {
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Subscription.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchSubscriptionOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
         public FetchSubscriptionOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -71,29 +71,29 @@ namespace Twilio.Rest.Events.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// CreateSubscriptionOptions
+    /// Create a new Subscription.
     /// </summary>
     public class CreateSubscriptionOptions : IOptions<SubscriptionResource>
     {
         /// <summary>
-        /// The description
+        /// Subscription description
         /// </summary>
         public string Description { get; }
         /// <summary>
-        /// The sink_sid
+        /// Sink SID.
         /// </summary>
         public string SinkSid { get; }
         /// <summary>
-        /// The types
+        /// Nested resource URLs.
         /// </summary>
         public List<object> Types { get; }
 
         /// <summary>
         /// Construct a new CreateSubscriptionOptions
         /// </summary>
-        /// <param name="description"> The description </param>
-        /// <param name="sinkSid"> The sink_sid </param>
-        /// <param name="types"> The types </param>
+        /// <param name="description"> Subscription description </param>
+        /// <param name="sinkSid"> Sink SID. </param>
+        /// <param name="types"> Nested resource URLs. </param>
         public CreateSubscriptionOptions(string description, string sinkSid, List<object> types)
         {
             Description = description;
@@ -130,19 +130,19 @@ namespace Twilio.Rest.Events.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// DeleteSubscriptionOptions
+    /// Delete a specific Subscription.
     /// </summary>
     public class DeleteSubscriptionOptions : IOptions<SubscriptionResource>
     {
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Subscription.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteSubscriptionOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
         public DeleteSubscriptionOptions(string pathSid)
         {
             PathSid = pathSid;

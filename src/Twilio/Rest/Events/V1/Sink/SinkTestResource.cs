@@ -34,7 +34,7 @@ namespace Twilio.Rest.Events.V1.Sink
         }
 
         /// <summary>
-        /// create
+        /// Create a new Sink Test Event for the given Sink.
         /// </summary>
         /// <param name="options"> Create SinkTest parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Events.V1.Sink
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Sink Test Event for the given Sink.
         /// </summary>
         /// <param name="options"> Create SinkTest parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,9 +63,9 @@ namespace Twilio.Rest.Events.V1.Sink
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new Sink Test Event for the given Sink.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies the Sink to be Tested. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SinkTest </returns>
         public static SinkTestResource Create(string pathSid, ITwilioRestClient client = null)
@@ -76,9 +76,9 @@ namespace Twilio.Rest.Events.V1.Sink
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new Sink Test Event for the given Sink.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies the Sink to be Tested. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SinkTest </returns>
         public static async System.Threading.Tasks.Task<SinkTestResource> CreateAsync(string pathSid,
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Events.V1.Sink
         }
 
         /// <summary>
-        /// The result
+        /// Feedback indicating whether the test event was generated.
         /// </summary>
         [JsonProperty("result")]
         public string Result { get; private set; }

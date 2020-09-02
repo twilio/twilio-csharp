@@ -15,19 +15,19 @@ namespace Twilio.Rest.Events.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// FetchSinkOptions
+    /// Fetch a specific Sink.
     /// </summary>
     public class FetchSinkOptions : IOptions<SinkResource>
     {
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Sink.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchSinkOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Sink. </param>
         public FetchSinkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -47,29 +47,29 @@ namespace Twilio.Rest.Events.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// CreateSinkOptions
+    /// Create a new Sink
     /// </summary>
     public class CreateSinkOptions : IOptions<SinkResource>
     {
         /// <summary>
-        /// The description
+        /// Sink Description
         /// </summary>
         public string Description { get; }
         /// <summary>
-        /// The sink_configuration
+        /// JSON Sink configuration.
         /// </summary>
         public object SinkConfiguration { get; }
         /// <summary>
-        /// The sink_type
+        /// Sink type.
         /// </summary>
         public SinkResource.SinkTypeEnum SinkType { get; }
 
         /// <summary>
         /// Construct a new CreateSinkOptions
         /// </summary>
-        /// <param name="description"> The description </param>
-        /// <param name="sinkConfiguration"> The sink_configuration </param>
-        /// <param name="sinkType"> The sink_type </param>
+        /// <param name="description"> Sink Description </param>
+        /// <param name="sinkConfiguration"> JSON Sink configuration. </param>
+        /// <param name="sinkType"> Sink type. </param>
         public CreateSinkOptions(string description, object sinkConfiguration, SinkResource.SinkTypeEnum sinkType)
         {
             Description = description;
@@ -106,19 +106,19 @@ namespace Twilio.Rest.Events.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// DeleteSinkOptions
+    /// Delete a specific Sink.
     /// </summary>
     public class DeleteSinkOptions : IOptions<SinkResource>
     {
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Sink.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteSinkOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Sink. </param>
         public DeleteSinkOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -138,7 +138,7 @@ namespace Twilio.Rest.Events.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// ReadSinkOptions
+    /// Retrieve a paginated list of Sinks belonging to the account used to make the request.
     /// </summary>
     public class ReadSinkOptions : ReadOptions<SinkResource>
     {

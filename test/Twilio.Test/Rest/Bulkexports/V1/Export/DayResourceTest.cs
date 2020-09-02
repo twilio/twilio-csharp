@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1.Export
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"days\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://bulkexports.twilio.com/v1/Exports/Calls/Days?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://bulkexports.twilio.com/v1/Exports/Calls/Days?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"days\"}}"
+                                         "{\"days\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"days\"}}"
                                      ));
 
             var response = DayResource.Read("resource_type", client: twilioRestClient);
@@ -100,7 +100,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1.Export
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"days\": [{\"day\": \"2017-04-01\",\"size\": 100,\"resource_type\": \"Calls\",\"create_date\": \"2017-04-02\",\"friendly_name\": \"friendly_name\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://bulkexports.twilio.com/v1/Exports/Calls/Days?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://bulkexports.twilio.com/v1/Exports/Calls/Days?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"days\"}}"
+                                         "{\"days\": [{\"day\": \"2017-04-01\",\"size\": 100,\"resource_type\": \"Messages\",\"create_date\": \"2017-04-02\",\"friendly_name\": \"friendly_name\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Days?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"days\"}}"
                                      ));
 
             var response = DayResource.Read("resource_type", client: twilioRestClient);
