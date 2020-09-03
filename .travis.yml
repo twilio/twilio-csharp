@@ -3,9 +3,6 @@ solution: Twilio.sln
 mono: latest
 dotnet: 3.1
 
-env:
-  - FrameworkPathOverride=/usr/lib/mono/4.5/
-
 services:
   - docker
 
