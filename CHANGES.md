@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2020-09-03] Version 5.46.2
+---------------------------
+**Library - Fix**
+- [PR #538](https://github.com/twilio/twilio-csharp/pull/538): use ReferenceAssemblies NuGet packages. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Messaging**
+- Add domain cert API's(fetch, update, create) for link tracker
+
+**Supersim**
+- Add `ready` status as an available status for a Sim resource
+
+
 [2020-09-02] Version 5.46.1
 ---------------------------
 **Library - Chore**
