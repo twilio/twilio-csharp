@@ -41,7 +41,8 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -169,7 +170,8 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -262,7 +264,8 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -328,7 +331,8 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -421,7 +425,8 @@ namespace Twilio.Rest.IpMessaging.V1
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v1/Credentials/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

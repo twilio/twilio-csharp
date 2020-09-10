@@ -29,7 +29,8 @@ namespace Twilio.Rest.Events.V1.Sink
                 HttpMethod.Post,
                 Rest.Domain.Events,
                 "/v1/Sinks/" + options.PathSid + "/Test",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

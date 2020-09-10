@@ -75,6 +75,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// The index
         /// </summary>
         public int? PathIndex { get; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new DeleteSyncListItemOptions
@@ -95,6 +99,20 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+            }
+
             return p;
         }
     }
@@ -242,6 +260,10 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
         /// The data
         /// </summary>
         public object Data { get; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions
@@ -267,6 +289,20 @@ namespace Twilio.Rest.Preview.Sync.Service.SyncList
             if (Data != null)
             {
                 p.Add(new KeyValuePair<string, string>("Data", Serializers.JsonObject(Data)));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
             }
 
             return p;

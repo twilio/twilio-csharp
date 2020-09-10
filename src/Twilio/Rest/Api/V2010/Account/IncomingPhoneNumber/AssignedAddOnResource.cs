@@ -28,7 +28,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/" + options.PathResourceSid + "/AssignedAddOns/" + options.PathSid + ".json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -103,7 +104,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/" + options.PathResourceSid + "/AssignedAddOns.json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -240,7 +242,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/" + options.PathResourceSid + "/AssignedAddOns.json",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -315,7 +318,8 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/" + options.PathResourceSid + "/AssignedAddOns/" + options.PathSid + ".json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

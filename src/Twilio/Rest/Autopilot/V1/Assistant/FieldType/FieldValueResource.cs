@@ -29,7 +29,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -106,7 +107,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -248,7 +250,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -333,7 +336,8 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.FieldType
                 HttpMethod.Delete,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/FieldTypes/" + options.PathFieldTypeSid + "/FieldValues/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

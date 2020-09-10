@@ -56,7 +56,8 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -100,6 +101,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
         public static ConversationResource Create(string friendlyName = null,
@@ -110,9 +112,10 @@ namespace Twilio.Rest.Conversations.V1
                                                   ConversationResource.StateEnum state = null,
                                                   string timersInactive = null,
                                                   string timersClosed = null,
+                                                  ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
+            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Create(options, client);
         }
 
@@ -128,6 +131,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<ConversationResource> CreateAsync(string friendlyName = null,
@@ -138,9 +142,10 @@ namespace Twilio.Rest.Conversations.V1
                                                                                           ConversationResource.StateEnum state = null,
                                                                                           string timersInactive = null,
                                                                                           string timersClosed = null,
+                                                                                          ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
+            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -151,7 +156,8 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -196,6 +202,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
         public static ConversationResource Update(string pathSid,
@@ -207,9 +214,10 @@ namespace Twilio.Rest.Conversations.V1
                                                   ConversationResource.StateEnum state = null,
                                                   string timersInactive = null,
                                                   string timersClosed = null,
+                                                  ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Update(options, client);
         }
 
@@ -226,6 +234,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<ConversationResource> UpdateAsync(string pathSid,
@@ -237,9 +246,10 @@ namespace Twilio.Rest.Conversations.V1
                                                                                           ConversationResource.StateEnum state = null,
                                                                                           string timersInactive = null,
                                                                                           string timersClosed = null,
+                                                                                          ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -250,7 +260,8 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Delete,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -287,11 +298,14 @@ namespace Twilio.Rest.Conversations.V1
         /// delete
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
-        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid,
+                                  ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteConversationOptions(pathSid);
+            var options = new DeleteConversationOptions(pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Delete(options, client);
         }
 
@@ -300,11 +314,14 @@ namespace Twilio.Rest.Conversations.V1
         /// delete
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid,
+                                                                          ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                                                          ITwilioRestClient client = null)
         {
-            var options = new DeleteConversationOptions(pathSid);
+            var options = new DeleteConversationOptions(pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -315,7 +332,8 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -381,7 +399,8 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

@@ -46,7 +46,8 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Insights
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/TrustedComms/Businesses/" + options.PathBusinessSid + "/Insights/ImpressionsRate",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

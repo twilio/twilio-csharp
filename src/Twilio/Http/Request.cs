@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Twilio.Rest;
@@ -257,9 +258,12 @@ namespace Twilio.Http
             var other = (Request)obj;
             return Method.Equals(other.Method) &&
                    buildUri().Equals(other.buildUri()) &&
-                   QueryParams.All(other.QueryParams.Contains) &&
-                   PostParams.All(other.PostParams.Contains) &&
-                   HeaderParams.All(other.HeaderParams.Contains);
+                   QueryParams.All(q => other.QueryParams.Contains(q)) &&
+                   other.QueryParams.All(qOther => QueryParams.Contains(qOther)) &&
+                   PostParams.All(p => other.PostParams.Contains(p)) &&
+                   other.PostParams.All(pOther => PostParams.Contains(pOther)) &&
+                   HeaderParams.All(h => other.HeaderParams.Contains(h)) &&
+                   other.HeaderParams.All(hOther => HeaderParams.Contains(hOther));
         }
 
         /// <summary>

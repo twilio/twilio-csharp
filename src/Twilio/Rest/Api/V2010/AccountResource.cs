@@ -54,7 +54,8 @@ namespace Twilio.Rest.Api.V2010
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts.json",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -120,7 +121,8 @@ namespace Twilio.Rest.Api.V2010
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathSid ?? client.AccountSid) + ".json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -186,7 +188,8 @@ namespace Twilio.Rest.Api.V2010
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts.json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -322,7 +325,8 @@ namespace Twilio.Rest.Api.V2010
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathSid ?? client.AccountSid) + ".json",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

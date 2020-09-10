@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.BulkExports
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/BulkExports/Exports/" + options.PathResourceType + "/Configuration",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -96,7 +97,8 @@ namespace Twilio.Rest.Preview.BulkExports
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/BulkExports/Exports/" + options.PathResourceType + "/Configuration",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

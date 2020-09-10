@@ -73,6 +73,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// The index of the Sync List Item resource to delete
         /// </summary>
         public int? PathIndex { get; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new DeleteSyncListItemOptions
@@ -93,6 +97,20 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+            }
+
             return p;
         }
     }
@@ -277,6 +295,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// How long, in seconds, before the List Item's parent Sync List expires
         /// </summary>
         public int? CollectionTtl { get; set; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSyncListItemOptions
@@ -315,6 +337,20 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
             if (CollectionTtl != null)
             {
                 p.Add(new KeyValuePair<string, string>("CollectionTtl", CollectionTtl.ToString()));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
             }
 
             return p;

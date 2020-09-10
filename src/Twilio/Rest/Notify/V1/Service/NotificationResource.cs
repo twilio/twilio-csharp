@@ -42,7 +42,8 @@ namespace Twilio.Rest.Notify.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Services/" + options.PathServiceSid + "/Notifications",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

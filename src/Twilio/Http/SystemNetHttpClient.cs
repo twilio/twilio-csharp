@@ -95,7 +95,7 @@ namespace Twilio.Http
             httpRequest.Headers.TryAddWithoutValidation("User-Agent", libraryVersion);
 
             foreach (var header in request.HeaderParams) {
-                httpRequest.Headers.Add(header.Key, header.Value);
+                httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
             }
 
             return httpRequest;

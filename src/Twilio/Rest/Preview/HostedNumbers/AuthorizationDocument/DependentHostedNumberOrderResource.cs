@@ -63,7 +63,8 @@ namespace Twilio.Rest.Preview.HostedNumbers.AuthorizationDocument
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/HostedNumbers/AuthorizationDocuments/" + options.PathSigningDocumentSid + "/DependentHostedNumberOrders",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

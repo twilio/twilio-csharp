@@ -26,7 +26,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Invites/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -101,7 +102,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Invites",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -180,7 +182,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Invites",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -320,7 +323,8 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 HttpMethod.Delete,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Invites/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

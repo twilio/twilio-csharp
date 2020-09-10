@@ -55,7 +55,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Items/" + options.PathIndex + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -130,7 +131,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                 HttpMethod.Delete,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Items/" + options.PathIndex + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -169,11 +171,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to delete </param>
         /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to delete </param>
         /// <param name="pathIndex"> The index of the Sync List Item resource to delete </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns>
-        public static bool Delete(string pathServiceSid, string pathListSid, int? pathIndex, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid,
+                                  string pathListSid,
+                                  int? pathIndex,
+                                  string ifMatch = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteSyncListItemOptions(pathServiceSid, pathListSid, pathIndex);
+            var options = new DeleteSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){IfMatch = ifMatch};
             return Delete(options, client);
         }
 
@@ -184,14 +191,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync List Item resource to delete </param>
         /// <param name="pathListSid"> The SID of the Sync List with the Sync List Item resource to delete </param>
         /// <param name="pathIndex"> The index of the Sync List Item resource to delete </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathListSid,
                                                                           int? pathIndex,
+                                                                          string ifMatch = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteSyncListItemOptions(pathServiceSid, pathListSid, pathIndex);
+            var options = new DeleteSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){IfMatch = ifMatch};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -202,7 +211,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Items",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -291,7 +301,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Items",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -440,7 +451,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Items/" + options.PathIndex + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -484,6 +496,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="ttl"> An alias for item_ttl </param>
         /// <param name="itemTtl"> How long, in seconds, before the List Item expires </param>
         /// <param name="collectionTtl"> How long, in seconds, before the List Item's parent Sync List expires </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncListItem </returns>
         public static SyncListItemResource Update(string pathServiceSid,
@@ -493,9 +506,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                                                   int? ttl = null,
                                                   int? itemTtl = null,
                                                   int? collectionTtl = null,
+                                                  string ifMatch = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
+            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl, IfMatch = ifMatch};
             return Update(options, client);
         }
 
@@ -511,6 +525,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="ttl"> An alias for item_ttl </param>
         /// <param name="itemTtl"> How long, in seconds, before the List Item expires </param>
         /// <param name="collectionTtl"> How long, in seconds, before the List Item's parent Sync List expires </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncListItem </returns>
         public static async System.Threading.Tasks.Task<SyncListItemResource> UpdateAsync(string pathServiceSid,
@@ -520,9 +535,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                                                                                           int? ttl = null,
                                                                                           int? itemTtl = null,
                                                                                           int? collectionTtl = null,
+                                                                                          string ifMatch = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
+            var options = new UpdateSyncListItemOptions(pathServiceSid, pathListSid, pathIndex){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl, IfMatch = ifMatch};
             return await UpdateAsync(options, client);
         }
         #endif

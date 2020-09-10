@@ -43,6 +43,14 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The config for this Factor as a json string
         /// </summary>
         public string Config { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
+        /// <summary>
+        /// The Authorization HTTP request header
+        /// </summary>
+        public string Authorization { get; set; }
 
         /// <summary>
         /// Construct a new CreateFactorOptions
@@ -96,6 +104,25 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
+            if (Authorization != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
@@ -118,6 +145,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// A string that uniquely identifies this Factor.
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new DeleteFactorOptions
@@ -138,6 +169,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
             return p;
         }
     }
@@ -162,6 +207,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// A string that uniquely identifies this Factor.
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new FetchFactorOptions
@@ -184,6 +233,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
@@ -202,6 +265,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new ReadFactorOptions
@@ -223,6 +290,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
             }
 
             return p;
@@ -261,6 +342,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The config for this Factor as a json string
         /// </summary>
         public string Config { get; set; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFactorOptions
@@ -294,6 +379,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (Config != null)
             {
                 p.Add(new KeyValuePair<string, string>("Config", Config));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
             }
 
             return p;

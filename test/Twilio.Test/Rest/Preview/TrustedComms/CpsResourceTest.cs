@@ -30,11 +30,12 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
                 "/TrustedComms/CPS",
                 ""
             );
+            request.AddHeaderParam("X-Xcnam-Sensitive-Phone-Number", Serialize("x_xcnam_sensitive_phone_number"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                CpsResource.Fetch(client: twilioRestClient);
+                CpsResource.Fetch(xXcnamSensitivePhoneNumber: Serialize("x_xcnam_sensitive_phone_number"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -52,7 +53,7 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
                                          "{\"cps_url\": \"https://preview.twilio.com/TrustedComms/CurrentCall\",\"phone_number\": \"+1500123\",\"url\": \"https://preview.twilio.com/TrustedComms/CPS\"}"
                                      ));
 
-            var response = CpsResource.Fetch(client: twilioRestClient);
+            var response = CpsResource.Fetch(xXcnamSensitivePhoneNumber: Serialize("x_xcnam_sensitive_phone_number"), client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

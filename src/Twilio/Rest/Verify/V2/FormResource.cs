@@ -42,7 +42,8 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Forms/" + options.PathFormType + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

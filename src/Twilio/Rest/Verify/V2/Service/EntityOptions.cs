@@ -27,6 +27,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Unique external identifier of the Entity
         /// </summary>
         public string Identity { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new CreateEntityOptions
@@ -52,6 +56,20 @@ namespace Twilio.Rest.Verify.V2.Service
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
@@ -70,6 +88,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new DeleteEntityOptions
@@ -90,6 +112,20 @@ namespace Twilio.Rest.Verify.V2.Service
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
@@ -108,6 +144,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new FetchEntityOptions
@@ -128,6 +168,20 @@ namespace Twilio.Rest.Verify.V2.Service
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
@@ -142,6 +196,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new ReadEntityOptions
@@ -161,6 +219,20 @@ namespace Twilio.Rest.Verify.V2.Service
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
             }
 
             return p;

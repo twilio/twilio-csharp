@@ -40,7 +40,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Evaluations",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -106,7 +107,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Evaluations",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -238,7 +240,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/Evaluations/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

@@ -20,11 +20,30 @@ namespace Twilio.Rest.Preview.TrustedComms
     public class FetchBrandsInformationOptions : IOptions<BrandsInformationResource>
     {
         /// <summary>
+        /// Standard `If-None-Match` HTTP header
+        /// </summary>
+        public string IfNoneMatch { get; set; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfNoneMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-None-Match", IfNoneMatch));
+            }
+
             return p;
         }
     }

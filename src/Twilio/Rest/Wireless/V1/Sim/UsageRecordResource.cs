@@ -41,7 +41,8 @@ namespace Twilio.Rest.Wireless.V1.Sim
                 HttpMethod.Get,
                 Rest.Domain.Wireless,
                 "/v1/Sims/" + options.PathSimSid + "/UsageRecords",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

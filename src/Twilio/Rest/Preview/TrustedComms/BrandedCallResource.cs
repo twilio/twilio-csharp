@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.TrustedComms
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/TrustedComms/Business/BrandedCalls",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
