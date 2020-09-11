@@ -29,8 +29,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/Networks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -96,8 +95,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/Networks",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

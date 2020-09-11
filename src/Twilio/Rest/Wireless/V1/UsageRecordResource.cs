@@ -41,8 +41,7 @@ namespace Twilio.Rest.Wireless.V1
                 HttpMethod.Get,
                 Rest.Domain.Wireless,
                 "/v1/UsageRecords",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

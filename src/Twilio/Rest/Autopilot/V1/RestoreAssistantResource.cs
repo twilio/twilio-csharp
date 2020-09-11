@@ -29,8 +29,7 @@ namespace Twilio.Rest.Autopilot.V1
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/Restore",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

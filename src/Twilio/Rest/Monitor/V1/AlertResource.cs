@@ -26,8 +26,7 @@ namespace Twilio.Rest.Monitor.V1
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Alerts/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -93,8 +92,7 @@ namespace Twilio.Rest.Monitor.V1
                 HttpMethod.Get,
                 Rest.Domain.Monitor,
                 "/v1/Alerts",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

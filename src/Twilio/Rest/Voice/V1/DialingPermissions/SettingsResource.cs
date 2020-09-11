@@ -29,8 +29,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/Settings",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -93,8 +92,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/Settings",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

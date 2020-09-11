@@ -28,8 +28,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                 HttpMethod.Get,
                 Rest.Domain.Bulkexports,
                 "/v1/Exports/" + options.PathResourceType + "/Days/" + options.PathDay + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -98,8 +97,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                 HttpMethod.Get,
                 Rest.Domain.Bulkexports,
                 "/v1/Exports/" + options.PathResourceType + "/Days",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

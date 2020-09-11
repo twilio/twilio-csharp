@@ -284,8 +284,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Usage/Records.json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

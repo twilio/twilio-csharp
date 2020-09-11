@@ -27,8 +27,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Tokens.json",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

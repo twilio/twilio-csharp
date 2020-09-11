@@ -258,12 +258,12 @@ namespace Twilio.Http
             var other = (Request)obj;
             return Method.Equals(other.Method) &&
                    buildUri().Equals(other.buildUri()) &&
-                   QueryParams.All(q => other.QueryParams.Contains(q)) &&
-                   other.QueryParams.All(qOther => QueryParams.Contains(qOther)) &&
-                   PostParams.All(p => other.PostParams.Contains(p)) &&
-                   other.PostParams.All(pOther => PostParams.Contains(pOther)) &&
-                   HeaderParams.All(h => other.HeaderParams.Contains(h)) &&
-                   other.HeaderParams.All(hOther => HeaderParams.Contains(hOther));
+                   QueryParams.All(other.QueryParams.Contains) &&
+                   other.QueryParams.All(QueryParams.Contains) &&
+                   PostParams.All(other.PostParams.Contains) &&
+                   other.PostParams.All(PostParams.Contains) &&
+                   HeaderParams.All(other.HeaderParams.Contains) &&
+                   other.HeaderParams.All(HeaderParams.Contains);
         }
 
         /// <summary>

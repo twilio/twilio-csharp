@@ -29,8 +29,7 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/Commands/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -96,8 +95,7 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/Commands",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -241,8 +239,7 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/Commands",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

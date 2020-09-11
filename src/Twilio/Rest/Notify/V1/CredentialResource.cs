@@ -43,8 +43,7 @@ namespace Twilio.Rest.Notify.V1
                 HttpMethod.Get,
                 Rest.Domain.Notify,
                 "/v1/Credentials",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -172,8 +171,7 @@ namespace Twilio.Rest.Notify.V1
                 HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Credentials",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -268,8 +266,7 @@ namespace Twilio.Rest.Notify.V1
                 HttpMethod.Get,
                 Rest.Domain.Notify,
                 "/v1/Credentials/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -335,8 +332,7 @@ namespace Twilio.Rest.Notify.V1
                 HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Credentials/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -431,8 +427,7 @@ namespace Twilio.Rest.Notify.V1
                 HttpMethod.Delete,
                 Rest.Domain.Notify,
                 "/v1/Credentials/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

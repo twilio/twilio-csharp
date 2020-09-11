@@ -44,8 +44,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathEnvironmentSid + "/Logs",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -193,8 +192,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathEnvironmentSid + "/Logs/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

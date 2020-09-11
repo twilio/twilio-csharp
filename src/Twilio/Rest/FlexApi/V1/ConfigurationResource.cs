@@ -41,8 +41,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
                 "/v1/Configuration",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -108,8 +107,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 "/v1/Configuration",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -172,8 +170,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 "/v1/Configuration",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

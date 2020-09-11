@@ -53,8 +53,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -233,8 +232,7 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Messages",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

@@ -28,8 +28,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Messaging,
                 "/v1/Services/" + options.PathServiceSid + "/ShortCodes",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -98,8 +97,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Messaging,
                 "/v1/Services/" + options.PathServiceSid + "/ShortCodes/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -168,8 +166,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Messaging,
                 "/v1/Services/" + options.PathServiceSid + "/ShortCodes",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -301,8 +298,7 @@ namespace Twilio.Rest.Messaging.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Messaging,
                 "/v1/Services/" + options.PathServiceSid + "/ShortCodes/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

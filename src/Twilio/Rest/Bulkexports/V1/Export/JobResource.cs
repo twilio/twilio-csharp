@@ -28,8 +28,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                 HttpMethod.Get,
                 Rest.Domain.Bulkexports,
                 "/v1/Exports/Jobs/" + options.PathJobSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -95,8 +94,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
                 HttpMethod.Delete,
                 Rest.Domain.Bulkexports,
                 "/v1/Exports/Jobs/" + options.PathJobSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

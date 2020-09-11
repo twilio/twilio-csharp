@@ -26,8 +26,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies/" + options.PathConnectionPolicySid + "/Targets",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -117,8 +116,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies/" + options.PathConnectionPolicySid + "/Targets/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -190,8 +188,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies/" + options.PathConnectionPolicySid + "/Targets",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -326,8 +323,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies/" + options.PathConnectionPolicySid + "/Targets/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -421,8 +417,7 @@ namespace Twilio.Rest.Voice.V1.ConnectionPolicy
                 HttpMethod.Delete,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies/" + options.PathConnectionPolicySid + "/Targets/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

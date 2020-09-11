@@ -26,8 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/IpAccessControlListMappings/" + options.PathSid + ".json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -103,8 +102,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/IpAccessControlListMappings.json",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -180,8 +178,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/IpAccessControlListMappings.json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -320,8 +317,7 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
                 HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/Domains/" + options.PathDomainSid + "/IpAccessControlListMappings/" + options.PathSid + ".json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

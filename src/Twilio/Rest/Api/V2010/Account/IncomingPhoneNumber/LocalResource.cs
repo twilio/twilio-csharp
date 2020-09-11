@@ -68,8 +68,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/Local.json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -219,8 +218,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/IncomingPhoneNumbers/Local.json",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

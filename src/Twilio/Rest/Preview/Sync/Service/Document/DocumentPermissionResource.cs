@@ -29,8 +29,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Documents/" + options.PathDocumentSid + "/Permissions/" + options.PathIdentity + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -106,8 +105,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Documents/" + options.PathDocumentSid + "/Permissions/" + options.PathIdentity + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -182,8 +180,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Documents/" + options.PathDocumentSid + "/Permissions",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -322,8 +319,7 @@ namespace Twilio.Rest.Preview.Sync.Service.Document
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Documents/" + options.PathDocumentSid + "/Permissions/" + options.PathIdentity + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

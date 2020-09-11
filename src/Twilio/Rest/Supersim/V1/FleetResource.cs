@@ -42,8 +42,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 "/v1/Fleets",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -142,8 +141,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/Fleets/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -209,8 +207,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/Fleets",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -342,8 +339,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 "/v1/Fleets/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

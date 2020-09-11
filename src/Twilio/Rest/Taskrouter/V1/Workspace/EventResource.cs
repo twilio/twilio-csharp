@@ -26,8 +26,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathWorkspaceSid + "/Events/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -96,8 +95,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathWorkspaceSid + "/Events",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

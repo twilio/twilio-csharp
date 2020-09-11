@@ -26,8 +26,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 HttpMethod.Get,
                 Rest.Domain.Accounts,
                 "/v1/Credentials/PublicKeys",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -155,8 +154,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 HttpMethod.Post,
                 Rest.Domain.Accounts,
                 "/v1/Credentials/PublicKeys",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -231,8 +229,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 HttpMethod.Get,
                 Rest.Domain.Accounts,
                 "/v1/Credentials/PublicKeys/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -298,8 +295,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 HttpMethod.Post,
                 Rest.Domain.Accounts,
                 "/v1/Credentials/PublicKeys/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -368,8 +364,7 @@ namespace Twilio.Rest.Accounts.V1.Credential
                 HttpMethod.Delete,
                 Rest.Domain.Accounts,
                 "/v1/Credentials/PublicKeys/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

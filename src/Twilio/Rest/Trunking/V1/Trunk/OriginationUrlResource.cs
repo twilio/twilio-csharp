@@ -26,8 +26,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -96,8 +95,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -166,8 +164,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -256,8 +253,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -390,8 +386,7 @@ namespace Twilio.Rest.Trunking.V1.Trunk
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathTrunkSid + "/OriginationUrls/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

@@ -55,8 +55,7 @@ namespace Twilio.Rest.Api.V2010.Account.Address
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Addresses/" + options.PathAddressSid + "/DependentPhoneNumbers.json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

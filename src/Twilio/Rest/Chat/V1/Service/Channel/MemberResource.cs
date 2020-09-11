@@ -26,8 +26,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -102,8 +101,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -182,8 +180,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -323,8 +320,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 HttpMethod.Delete,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -399,8 +395,7 @@ namespace Twilio.Rest.Chat.V1.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

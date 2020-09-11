@@ -29,8 +29,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Defaults",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -96,8 +95,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Defaults",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

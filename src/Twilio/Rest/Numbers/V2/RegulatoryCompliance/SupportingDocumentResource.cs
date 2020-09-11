@@ -44,8 +44,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocuments",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -121,8 +120,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocuments",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -253,8 +251,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocuments/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -321,8 +318,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocuments/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

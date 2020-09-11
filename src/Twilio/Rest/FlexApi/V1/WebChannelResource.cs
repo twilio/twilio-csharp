@@ -39,8 +39,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
                 "/v1/WebChannels",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -168,8 +167,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
                 "/v1/WebChannels/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -235,8 +233,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 "/v1/WebChannels",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -323,8 +320,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 "/v1/WebChannels/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -399,8 +395,7 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Delete,
                 Rest.Domain.FlexApi,
                 "/v1/WebChannels/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

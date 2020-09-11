@@ -26,8 +26,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/AvailablePhoneNumbers.json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -164,8 +163,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/AvailablePhoneNumbers/" + options.PathCountryCode + ".json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

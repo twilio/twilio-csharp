@@ -89,8 +89,7 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Get,
                 Rest.Domain.Fax,
                 "/v1/Faxes/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -156,8 +155,7 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Get,
                 Rest.Domain.Fax,
                 "/v1/Faxes",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -301,8 +299,7 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Post,
                 Rest.Domain.Fax,
                 "/v1/Faxes",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -401,8 +398,7 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Post,
                 Rest.Domain.Fax,
                 "/v1/Faxes/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -473,8 +469,7 @@ namespace Twilio.Rest.Fax.V1
                 HttpMethod.Delete,
                 Rest.Domain.Fax,
                 "/v1/Faxes/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

@@ -29,8 +29,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/NetworkAccessProfiles/" + options.PathNetworkAccessProfileSid + "/Networks",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -167,8 +166,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 "/v1/NetworkAccessProfiles/" + options.PathNetworkAccessProfileSid + "/Networks",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -242,8 +240,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
                 HttpMethod.Delete,
                 Rest.Domain.Supersim,
                 "/v1/NetworkAccessProfiles/" + options.PathNetworkAccessProfileSid + "/Networks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -314,8 +311,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/NetworkAccessProfiles/" + options.PathNetworkAccessProfileSid + "/Networks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

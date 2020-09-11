@@ -29,8 +29,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Statistics",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

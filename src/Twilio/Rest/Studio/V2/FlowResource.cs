@@ -42,8 +42,7 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v2/Flows",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -122,8 +121,7 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -206,8 +204,7 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v2/Flows",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -335,8 +332,7 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -402,8 +398,7 @@ namespace Twilio.Rest.Studio.V2
                 HttpMethod.Delete,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

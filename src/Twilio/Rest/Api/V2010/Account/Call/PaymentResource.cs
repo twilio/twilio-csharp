@@ -100,8 +100,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Payments.json",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -256,8 +255,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Calls/" + options.PathCallSid + "/Payments/" + options.PathSid + ".json",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

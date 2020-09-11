@@ -46,8 +46,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathReferenceSid + "/AddOnResults/" + options.PathSid + ".json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -122,8 +121,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathReferenceSid + "/AddOnResults.json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -259,8 +257,7 @@ namespace Twilio.Rest.Api.V2010.Account.Recording
                 HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Recordings/" + options.PathReferenceSid + "/AddOnResults/" + options.PathSid + ".json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

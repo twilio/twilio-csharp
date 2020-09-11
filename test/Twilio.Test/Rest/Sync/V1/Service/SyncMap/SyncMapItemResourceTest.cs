@@ -8,7 +8,6 @@ using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
-using Twilio;
 using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;

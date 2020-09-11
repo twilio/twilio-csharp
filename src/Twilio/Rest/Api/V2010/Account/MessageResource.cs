@@ -114,8 +114,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages.json",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -254,8 +253,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathSid + ".json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -324,8 +322,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathSid + ".json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -394,8 +391,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages.json",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -547,8 +543,7 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathSid + ".json",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

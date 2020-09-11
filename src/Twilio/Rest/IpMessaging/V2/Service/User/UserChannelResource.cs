@@ -54,8 +54,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -191,8 +190,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -267,8 +265,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -343,8 +340,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels/" + options.PathChannelSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

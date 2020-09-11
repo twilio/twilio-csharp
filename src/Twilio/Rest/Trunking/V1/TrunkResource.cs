@@ -55,8 +55,7 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -122,8 +121,7 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -188,8 +186,7 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -286,8 +283,7 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -415,8 +411,7 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

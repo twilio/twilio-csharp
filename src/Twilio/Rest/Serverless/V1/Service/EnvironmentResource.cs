@@ -29,8 +29,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -162,8 +161,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -232,8 +230,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -308,8 +305,7 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

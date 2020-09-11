@@ -56,8 +56,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -189,8 +188,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -259,8 +257,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -357,8 +354,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -449,8 +445,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Delete,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Webhooks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

@@ -53,8 +53,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -299,8 +298,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

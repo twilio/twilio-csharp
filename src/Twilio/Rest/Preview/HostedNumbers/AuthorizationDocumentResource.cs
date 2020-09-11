@@ -46,8 +46,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/HostedNumbers/AuthorizationDocuments/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -114,8 +113,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/HostedNumbers/AuthorizationDocuments/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -211,8 +209,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/HostedNumbers/AuthorizationDocuments",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -351,8 +348,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/HostedNumbers/AuthorizationDocuments",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

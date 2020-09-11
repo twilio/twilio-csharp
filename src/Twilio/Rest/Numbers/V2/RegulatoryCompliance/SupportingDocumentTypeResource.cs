@@ -26,8 +26,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocumentTypes",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -158,8 +157,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocumentTypes/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

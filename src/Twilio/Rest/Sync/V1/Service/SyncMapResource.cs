@@ -28,8 +28,7 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -98,8 +97,7 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -168,8 +166,7 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Maps",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -248,8 +245,7 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -328,8 +324,7 @@ namespace Twilio.Rest.Sync.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Maps",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

@@ -29,8 +29,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -107,8 +106,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -250,8 +248,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -336,8 +333,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -426,8 +422,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
                 HttpMethod.Delete,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

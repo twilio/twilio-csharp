@@ -26,8 +26,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/ItemAssignments",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -96,8 +95,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/ItemAssignments",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -230,8 +228,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/ItemAssignments/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -300,8 +297,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
                 HttpMethod.Delete,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/Bundles/" + options.PathBundleSid + "/ItemAssignments/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

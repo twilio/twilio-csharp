@@ -60,8 +60,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/Sims/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -127,8 +126,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Post,
                 Rest.Domain.Supersim,
                 "/v1/Sims/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -215,8 +213,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/Sims",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

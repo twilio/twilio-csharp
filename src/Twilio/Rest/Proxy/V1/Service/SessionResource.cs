@@ -59,8 +59,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -129,8 +128,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -262,8 +260,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -360,8 +357,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -430,8 +426,7 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

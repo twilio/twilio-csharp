@@ -29,8 +29,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/InitiationActions",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -97,8 +96,7 @@ namespace Twilio.Rest.Preview.Understand.Assistant
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/InitiationActions",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

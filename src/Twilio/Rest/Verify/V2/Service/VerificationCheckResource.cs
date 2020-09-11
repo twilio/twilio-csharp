@@ -41,8 +41,7 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/VerificationCheck",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

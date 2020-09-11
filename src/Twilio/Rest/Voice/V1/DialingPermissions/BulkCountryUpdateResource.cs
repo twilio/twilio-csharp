@@ -29,8 +29,7 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/DialingPermissions/BulkCountryUpdates",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

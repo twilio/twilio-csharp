@@ -29,8 +29,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -99,8 +98,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -232,8 +230,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -318,8 +315,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Post,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -408,8 +404,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant
                 HttpMethod.Delete,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

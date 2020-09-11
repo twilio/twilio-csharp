@@ -26,8 +26,7 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/CompositionSettings/Default",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -91,8 +90,7 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 "/v1/CompositionSettings/Default",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

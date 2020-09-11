@@ -28,8 +28,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Streams/" + options.PathStreamSid + "/Messages",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

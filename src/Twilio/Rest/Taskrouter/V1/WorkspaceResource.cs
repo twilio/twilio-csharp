@@ -40,8 +40,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -107,8 +106,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -209,8 +207,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -342,8 +339,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -432,8 +428,7 @@ namespace Twilio.Rest.Taskrouter.V1
                 HttpMethod.Delete,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

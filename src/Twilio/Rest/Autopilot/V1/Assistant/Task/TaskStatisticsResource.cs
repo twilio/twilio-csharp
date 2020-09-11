@@ -29,8 +29,7 @@ namespace Twilio.Rest.Autopilot.V1.Assistant.Task
                 HttpMethod.Get,
                 Rest.Domain.Autopilot,
                 "/v1/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Statistics",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

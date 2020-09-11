@@ -40,8 +40,7 @@ namespace Twilio.Rest.Video.V1.Room
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -110,8 +109,7 @@ namespace Twilio.Rest.Video.V1.Room
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/Rooms/" + options.PathRoomSid + "/Participants",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -259,8 +257,7 @@ namespace Twilio.Rest.Video.V1.Room
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 "/v1/Rooms/" + options.PathRoomSid + "/Participants/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

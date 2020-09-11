@@ -27,8 +27,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
                 "/v1/Voice/Countries",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -156,8 +155,7 @@ namespace Twilio.Rest.Pricing.V1.Voice
                 HttpMethod.Get,
                 Rest.Domain.Pricing,
                 "/v1/Voice/Countries/" + options.PathIsoCountry + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

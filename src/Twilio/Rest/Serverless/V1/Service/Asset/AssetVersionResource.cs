@@ -44,8 +44,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathAssetSid + "/Versions",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -184,8 +183,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathAssetSid + "/Versions/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

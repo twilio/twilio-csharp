@@ -41,8 +41,7 @@ namespace Twilio.Rest.Chat.V1.Service.User
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Users/" + options.PathUserSid + "/Channels",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

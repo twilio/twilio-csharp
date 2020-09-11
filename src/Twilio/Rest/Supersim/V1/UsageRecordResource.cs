@@ -71,8 +71,7 @@ namespace Twilio.Rest.Supersim.V1
                 HttpMethod.Get,
                 Rest.Domain.Supersim,
                 "/v1/UsageRecords",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

@@ -63,8 +63,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/HostedNumbers/HostedNumberOrders/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -130,8 +129,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/HostedNumbers/HostedNumberOrders/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -196,8 +194,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/HostedNumbers/HostedNumberOrders/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -307,8 +304,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/HostedNumbers/HostedNumberOrders",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -459,8 +455,7 @@ namespace Twilio.Rest.Preview.HostedNumbers
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/HostedNumbers/HostedNumberOrders",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

@@ -26,8 +26,7 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/IpRecords",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -106,8 +105,7 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/IpRecords/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -173,8 +171,7 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/IpRecords",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -302,8 +299,7 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/IpRecords/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -372,8 +368,7 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Delete,
                 Rest.Domain.Voice,
                 "/v1/IpRecords/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

@@ -26,8 +26,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Users/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -96,8 +95,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Users/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -166,8 +164,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Users",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 
@@ -250,8 +247,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Users",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -383,8 +379,7 @@ namespace Twilio.Rest.Chat.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Chat,
                 "/v1/Services/" + options.PathServiceSid + "/Users/" + options.PathSid + "",
-                postParams: options.GetParams(),
-                headerParams: null
+                postParams: options.GetParams()
             );
         }
 

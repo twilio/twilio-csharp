@@ -26,8 +26,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/EndUserTypes",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
@@ -155,8 +154,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/EndUserTypes/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 

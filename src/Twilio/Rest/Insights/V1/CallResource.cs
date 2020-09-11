@@ -29,8 +29,7 @@ namespace Twilio.Rest.Insights.V1
                 HttpMethod.Get,
                 Rest.Domain.Insights,
                 "/v1/Voice/" + options.PathSid + "",
-                queryParams: options.GetParams(),
-                headerParams: null
+                queryParams: options.GetParams()
             );
         }
 
