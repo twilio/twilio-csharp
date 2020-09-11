@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.TrustedComms
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/TrustedComms/CPS",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -65,11 +66,12 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header.
         /// </summary>
+        /// <param name="xXcnamSensitivePhoneNumber"> Phone number to retrieve CPS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Cps </returns>
-        public static CpsResource Fetch(ITwilioRestClient client = null)
+        public static CpsResource Fetch(string xXcnamSensitivePhoneNumber = null, ITwilioRestClient client = null)
         {
-            var options = new FetchCpsOptions();
+            var options = new FetchCpsOptions(){XXcnamSensitivePhoneNumber = xXcnamSensitivePhoneNumber};
             return Fetch(options, client);
         }
 
@@ -77,11 +79,13 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Fetch a specific Call Placement Service (CPS) given a phone number via `X-XCNAM-Sensitive-Phone-Number` header.
         /// </summary>
+        /// <param name="xXcnamSensitivePhoneNumber"> Phone number to retrieve CPS. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Cps </returns>
-        public static async System.Threading.Tasks.Task<CpsResource> FetchAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CpsResource> FetchAsync(string xXcnamSensitivePhoneNumber = null,
+                                                                                ITwilioRestClient client = null)
         {
-            var options = new FetchCpsOptions();
+            var options = new FetchCpsOptions(){XXcnamSensitivePhoneNumber = xXcnamSensitivePhoneNumber};
             return await FetchAsync(options, client);
         }
         #endif

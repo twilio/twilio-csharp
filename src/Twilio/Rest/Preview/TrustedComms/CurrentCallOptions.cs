@@ -21,11 +21,39 @@ namespace Twilio.Rest.Preview.TrustedComms
     public class FetchCurrentCallOptions : IOptions<CurrentCallResource>
     {
         /// <summary>
+        /// The originating Phone Number
+        /// </summary>
+        public string XXcnamSensitivePhoneNumberFrom { get; set; }
+        /// <summary>
+        /// The terminating Phone Number
+        /// </summary>
+        public string XXcnamSensitivePhoneNumberTo { get; set; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XXcnamSensitivePhoneNumberFrom != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Xcnam-Sensitive-Phone-Number-From", XXcnamSensitivePhoneNumberFrom));
+            }
+
+            if (XXcnamSensitivePhoneNumberTo != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Xcnam-Sensitive-Phone-Number-To", XXcnamSensitivePhoneNumberTo));
+            }
+
             return p;
         }
     }

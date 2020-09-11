@@ -130,7 +130,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                 HttpMethod.Delete,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathMapSid + "/Items/" + options.PathKey + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -169,11 +170,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to delete </param>
         /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to delete </param>
         /// <param name="pathKey"> The key value of the Sync Map Item resource to delete </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns>
-        public static bool Delete(string pathServiceSid, string pathMapSid, string pathKey, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid,
+                                  string pathMapSid,
+                                  string pathKey,
+                                  string ifMatch = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey);
+            var options = new DeleteSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){IfMatch = ifMatch};
             return Delete(options, client);
         }
 
@@ -184,14 +190,16 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map Item resource to delete </param>
         /// <param name="pathMapSid"> The SID of the Sync Map with the Sync Map Item resource to delete </param>
         /// <param name="pathKey"> The key value of the Sync Map Item resource to delete </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathMapSid,
                                                                           string pathKey,
+                                                                          string ifMatch = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey);
+            var options = new DeleteSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){IfMatch = ifMatch};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -443,7 +451,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Maps/" + options.PathMapSid + "/Items/" + options.PathKey + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -487,6 +496,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="itemTtl"> How long, in seconds, before the Map Item expires </param>
         /// <param name="collectionTtl"> How long, in seconds, before the Map Item's parent Sync Map expires and is deleted
         ///                     </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMapItem </returns>
         public static SyncMapItemResource Update(string pathServiceSid,
@@ -496,9 +506,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                                                  int? ttl = null,
                                                  int? itemTtl = null,
                                                  int? collectionTtl = null,
+                                                 string ifMatch = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
+            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl, IfMatch = ifMatch};
             return Update(options, client);
         }
 
@@ -514,6 +525,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// <param name="itemTtl"> How long, in seconds, before the Map Item expires </param>
         /// <param name="collectionTtl"> How long, in seconds, before the Map Item's parent Sync Map expires and is deleted
         ///                     </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMapItem </returns>
         public static async System.Threading.Tasks.Task<SyncMapItemResource> UpdateAsync(string pathServiceSid,
@@ -523,9 +535,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
                                                                                          int? ttl = null,
                                                                                          int? itemTtl = null,
                                                                                          int? collectionTtl = null,
+                                                                                         string ifMatch = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl};
+            var options = new UpdateSyncMapItemOptions(pathServiceSid, pathMapSid, pathKey){Data = data, Ttl = ttl, ItemTtl = itemTtl, CollectionTtl = collectionTtl, IfMatch = ifMatch};
             return await UpdateAsync(options, client);
         }
         #endif

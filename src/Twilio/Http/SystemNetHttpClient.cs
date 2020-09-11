@@ -94,6 +94,10 @@ namespace Twilio.Http
             var libraryVersion = "twilio-csharp/" + AssemblyInfomation.AssemblyInformationalVersion + PlatVersion;
             httpRequest.Headers.TryAddWithoutValidation("User-Agent", libraryVersion);
 
+            foreach (var header in request.HeaderParams) {
+                httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            }
+
             return httpRequest;
         }
     }

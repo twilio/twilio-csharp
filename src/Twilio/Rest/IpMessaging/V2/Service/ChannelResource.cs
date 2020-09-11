@@ -122,7 +122,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -160,11 +161,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of the Channel resource to delete </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
-        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid,
+                                  string pathSid,
+                                  ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteChannelOptions(pathServiceSid, pathSid);
+            var options = new DeleteChannelOptions(pathServiceSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Delete(options, client);
         }
 
@@ -174,13 +179,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of the Channel resource to delete </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathSid,
+                                                                          ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteChannelOptions(pathServiceSid, pathSid);
+            var options = new DeleteChannelOptions(pathServiceSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -191,7 +198,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -235,6 +243,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="createdBy"> The identity of the User that created the Channel </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
         public static ChannelResource Create(string pathServiceSid,
@@ -245,9 +254,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                              DateTime? dateCreated = null,
                                              DateTime? dateUpdated = null,
                                              string createdBy = null,
+                                             ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateChannelOptions(pathServiceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
+            var options = new CreateChannelOptions(pathServiceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Create(options, client);
         }
 
@@ -263,6 +273,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="createdBy"> The identity of the User that created the Channel </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(string pathServiceSid,
@@ -273,9 +284,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                                                                      DateTime? dateCreated = null,
                                                                                      DateTime? dateUpdated = null,
                                                                                      string createdBy = null,
+                                                                                     ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateChannelOptions(pathServiceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
+            var options = new CreateChannelOptions(pathServiceSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, Type = type, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -422,7 +434,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -466,6 +479,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="createdBy"> The identity of the User that created the Channel </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
         public static ChannelResource Update(string pathServiceSid,
@@ -476,9 +490,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                              DateTime? dateCreated = null,
                                              DateTime? dateUpdated = null,
                                              string createdBy = null,
+                                             ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateChannelOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
+            var options = new UpdateChannelOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Update(options, client);
         }
 
@@ -494,6 +509,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="createdBy"> The identity of the User that created the Channel </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
         public static async System.Threading.Tasks.Task<ChannelResource> UpdateAsync(string pathServiceSid,
@@ -504,9 +520,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                                                                      DateTime? dateCreated = null,
                                                                                      DateTime? dateUpdated = null,
                                                                                      string createdBy = null,
+                                                                                     ChannelResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateChannelOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy};
+            var options = new UpdateChannelOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, UniqueName = uniqueName, Attributes = attributes, DateCreated = dateCreated, DateUpdated = dateUpdated, CreatedBy = createdBy, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await UpdateAsync(options, client);
         }
         #endif

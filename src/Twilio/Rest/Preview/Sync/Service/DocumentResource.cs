@@ -98,7 +98,8 @@ namespace Twilio.Rest.Preview.Sync.Service
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Documents/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -136,11 +137,15 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns>
-        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid,
+                                  string pathSid,
+                                  string ifMatch = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteDocumentOptions(pathServiceSid, pathSid);
+            var options = new DeleteDocumentOptions(pathServiceSid, pathSid){IfMatch = ifMatch};
             return Delete(options, client);
         }
 
@@ -150,13 +155,15 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathSid,
+                                                                          string ifMatch = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteDocumentOptions(pathServiceSid, pathSid);
+            var options = new DeleteDocumentOptions(pathServiceSid, pathSid){IfMatch = ifMatch};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -374,7 +381,8 @@ namespace Twilio.Rest.Preview.Sync.Service
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Documents/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -413,14 +421,16 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="data"> The data </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns>
         public static DocumentResource Update(string pathServiceSid,
                                               string pathSid,
                                               object data,
+                                              string ifMatch = null,
                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateDocumentOptions(pathServiceSid, pathSid, data);
+            var options = new UpdateDocumentOptions(pathServiceSid, pathSid, data){IfMatch = ifMatch};
             return Update(options, client);
         }
 
@@ -431,14 +441,16 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
         /// <param name="data"> The data </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns>
         public static async System.Threading.Tasks.Task<DocumentResource> UpdateAsync(string pathServiceSid,
                                                                                       string pathSid,
                                                                                       object data,
+                                                                                      string ifMatch = null,
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new UpdateDocumentOptions(pathServiceSid, pathSid, data);
+            var options = new UpdateDocumentOptions(pathServiceSid, pathSid, data){IfMatch = ifMatch};
             return await UpdateAsync(options, client);
         }
         #endif

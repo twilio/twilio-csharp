@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.TrustedComms
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/TrustedComms/BrandsInformation",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -65,11 +66,12 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Retrieve the newest available BrandInformation
         /// </summary>
+        /// <param name="ifNoneMatch"> Standard `If-None-Match` HTTP header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandsInformation </returns>
-        public static BrandsInformationResource Fetch(ITwilioRestClient client = null)
+        public static BrandsInformationResource Fetch(string ifNoneMatch = null, ITwilioRestClient client = null)
         {
-            var options = new FetchBrandsInformationOptions();
+            var options = new FetchBrandsInformationOptions(){IfNoneMatch = ifNoneMatch};
             return Fetch(options, client);
         }
 
@@ -77,11 +79,13 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// <summary>
         /// Retrieve the newest available BrandInformation
         /// </summary>
+        /// <param name="ifNoneMatch"> Standard `If-None-Match` HTTP header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandsInformation </returns>
-        public static async System.Threading.Tasks.Task<BrandsInformationResource> FetchAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<BrandsInformationResource> FetchAsync(string ifNoneMatch = null,
+                                                                                              ITwilioRestClient client = null)
         {
-            var options = new FetchBrandsInformationOptions();
+            var options = new FetchBrandsInformationOptions(){IfNoneMatch = ifNoneMatch};
             return await FetchAsync(options, client);
         }
         #endif

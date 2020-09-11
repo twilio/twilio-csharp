@@ -30,11 +30,12 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
                 "/TrustedComms/BrandsInformation",
                 ""
             );
+            request.AddHeaderParam("If-None-Match", Serialize("if_none_match"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                BrandsInformationResource.Fetch(client: twilioRestClient);
+                BrandsInformationResource.Fetch(ifNoneMatch: Serialize("if_none_match"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -52,7 +53,7 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms
                                          "{\"update_time\": \"2020-05-19T19:47:51Z\",\"file_link\": \"https://www.twilio.com\",\"file_link_ttl_in_seconds\": \"900\",\"url\": \"https://preview.twilio.com/TrustedComms/BrandsInformation\"}"
                                      ));
 
-            var response = BrandsInformationResource.Fetch(client: twilioRestClient);
+            var response = BrandsInformationResource.Fetch(ifNoneMatch: Serialize("if_none_match"), client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

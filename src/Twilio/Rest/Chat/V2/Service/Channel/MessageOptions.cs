@@ -93,6 +93,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         ///  The Media Sid to be attached to the new Message
         /// </summary>
         public string MediaSid { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
@@ -144,6 +148,20 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             if (MediaSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("MediaSid", MediaSid.ToString()));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
             }
 
             return p;
@@ -216,6 +234,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// The SID of the Message resource to delete
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new DeleteMessageOptions
@@ -236,6 +258,20 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
             return p;
         }
     }
@@ -281,6 +317,10 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
         /// The Identity of the message's author
         /// </summary>
         public string From { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions
@@ -329,6 +369,20 @@ namespace Twilio.Rest.Chat.V2.Service.Channel
             if (From != null)
             {
                 p.Add(new KeyValuePair<string, string>("From", From));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
             }
 
             return p;

@@ -71,7 +71,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -113,6 +114,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="expirationDate"> The future date in which this Challenge will expire </param>
         /// <param name="details"> Public details provided to contextualize the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Create(string pathServiceSid,
@@ -121,9 +123,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                DateTime? expirationDate = null,
                                                string details = null,
                                                string hiddenDetails = null,
+                                               string twilioSandboxMode = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails};
+            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails, TwilioSandboxMode = twilioSandboxMode};
             return Create(options, client);
         }
 
@@ -137,6 +140,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="expirationDate"> The future date in which this Challenge will expire </param>
         /// <param name="details"> Public details provided to contextualize the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(string pathServiceSid,
@@ -145,9 +149,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                        DateTime? expirationDate = null,
                                                                                        string details = null,
                                                                                        string hiddenDetails = null,
+                                                                                       string twilioSandboxMode = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails};
+            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails, TwilioSandboxMode = twilioSandboxMode};
             return await CreateAsync(options, client);
         }
         #endif
@@ -158,7 +163,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -197,14 +203,16 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Fetch(string pathServiceSid,
                                               string pathIdentity,
                                               string pathSid,
+                                              string twilioSandboxMode = null,
                                               ITwilioRestClient client = null)
         {
-            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid);
+            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid){TwilioSandboxMode = twilioSandboxMode};
             return Fetch(options, client);
         }
 
@@ -215,14 +223,16 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ChallengeResource> FetchAsync(string pathServiceSid,
                                                                                       string pathIdentity,
                                                                                       string pathSid,
+                                                                                      string twilioSandboxMode = null,
                                                                                       ITwilioRestClient client = null)
         {
-            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid);
+            var options = new FetchChallengeOptions(pathServiceSid, pathIdentity, pathSid){TwilioSandboxMode = twilioSandboxMode};
             return await FetchAsync(options, client);
         }
         #endif
@@ -233,7 +243,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -277,6 +288,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="status"> The Status of theChallenges to fetch </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -285,11 +297,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                           string pathIdentity,
                                                           string factorSid = null,
                                                           ChallengeResource.ChallengeStatusesEnum status = null,
+                                                          string twilioSandboxMode = null,
                                                           int? pageSize = null,
                                                           long? limit = null,
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, TwilioSandboxMode = twilioSandboxMode, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -301,6 +314,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="status"> The Status of theChallenges to fetch </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -309,11 +323,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                                   string pathIdentity,
                                                                                                   string factorSid = null,
                                                                                                   ChallengeResource.ChallengeStatusesEnum status = null,
+                                                                                                  string twilioSandboxMode = null,
                                                                                                   int? pageSize = null,
                                                                                                   long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, PageSize = pageSize, Limit = limit};
+            var options = new ReadChallengeOptions(pathServiceSid, pathIdentity){FactorSid = factorSid, Status = status, TwilioSandboxMode = twilioSandboxMode, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -377,7 +392,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Challenges/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -417,15 +433,17 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Update(string pathServiceSid,
                                                string pathIdentity,
                                                string pathSid,
                                                string authPayload = null,
+                                               string twilioSandboxMode = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, TwilioSandboxMode = twilioSandboxMode};
             return Update(options, client);
         }
 
@@ -437,15 +455,17 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Challenge. </param>
         /// <param name="authPayload"> Optional payload to verify the Challenge </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ChallengeResource> UpdateAsync(string pathServiceSid,
                                                                                        string pathIdentity,
                                                                                        string pathSid,
                                                                                        string authPayload = null,
+                                                                                       string twilioSandboxMode = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload};
+            var options = new UpdateChallengeOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, TwilioSandboxMode = twilioSandboxMode};
             return await UpdateAsync(options, client);
         }
         #endif
