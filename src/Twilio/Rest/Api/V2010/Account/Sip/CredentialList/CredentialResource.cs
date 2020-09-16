@@ -26,7 +26,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.PathCredentialListSid + "/Credentials.json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -164,7 +165,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.PathCredentialListSid + "/Credentials.json",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -245,7 +247,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.PathCredentialListSid + "/Credentials/" + options.PathSid + ".json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -322,7 +325,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.PathCredentialListSid + "/Credentials/" + options.PathSid + ".json",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -403,7 +407,8 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.CredentialList
                 HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/SIP/CredentialLists/" + options.PathCredentialListSid + "/Credentials/" + options.PathSid + ".json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

@@ -54,7 +54,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -190,7 +191,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -265,7 +267,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -366,7 +369,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -469,7 +473,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Webhooks/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

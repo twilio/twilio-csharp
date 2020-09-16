@@ -29,7 +29,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -161,7 +162,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -230,7 +232,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -299,7 +302,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -368,7 +372,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -491,7 +496,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links to the nested resources of the asset
+        /// The URLs of the Asset resource's nested resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

@@ -1,6 +1,31 @@
 twilio-csharp Changelog
 =======================
 
+[2020-09-16] Version 5.47.0
+---------------------------
+**Library - Feature**
+- [PR #540](https://github.com/twilio/twilio-csharp/pull/540): add custom header support. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Conversations**
+- Expose Configuration and Service Configuration resources
+- Add Unique Name support for Conversations
+- Add Services Push Notification resource
+- Add Service scoped Conversation resources
+- Support Identity in Users resource endpoint
+
+**Messaging**
+- GA Deactivation List API
+
+**Numbers**
+- Add API endpoint for Supporting Document deletion
+
+**Proxy**
+- Updated usage of FailOnParticipantConflict param to apply only to accounts with ProxyAllowParticipantConflict account flag
+
+**Supersim**
+- Add `AccountSid` parameter to Sim resource update request
+
+
 [2020-09-03] Version 5.46.2
 ---------------------------
 **Library - Fix**

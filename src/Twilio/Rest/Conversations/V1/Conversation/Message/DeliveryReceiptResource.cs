@@ -45,7 +45,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Messages/" + options.PathMessageSid + "/Receipts/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -82,7 +83,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// fetch
         /// </summary>
         /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to </param>
+        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DeliveryReceipt </returns>
@@ -100,7 +101,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// fetch
         /// </summary>
         /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to </param>
+        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeliveryReceipt </returns>
@@ -120,7 +121,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Messages/" + options.PathMessageSid + "/Receipts",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -162,7 +164,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// read
         /// </summary>
         /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to </param>
+        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -182,7 +184,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// read
         /// </summary>
         /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to </param>
+        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -271,6 +273,16 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         }
 
         /// <summary>
+        /// The unique id of the Account responsible for this participant.
+        /// </summary>
+        [JsonProperty("account_sid")]
+        public string AccountSid { get; private set; }
+        /// <summary>
+        /// The unique id of the Conversation for this message.
+        /// </summary>
+        [JsonProperty("conversation_sid")]
+        public string ConversationSid { get; private set; }
+        /// <summary>
         /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         [JsonProperty("sid")]
@@ -280,11 +292,6 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// </summary>
         [JsonProperty("message_sid")]
         public string MessageSid { get; private set; }
-        /// <summary>
-        /// The conversation_sid
-        /// </summary>
-        [JsonProperty("conversation_sid")]
-        public string ConversationSid { get; private set; }
         /// <summary>
         /// A messaging channel-specific identifier for the message delivered to participant
         /// </summary>

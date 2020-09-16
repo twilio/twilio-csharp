@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.Understand
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -95,7 +96,8 @@ namespace Twilio.Rest.Preview.Understand
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -223,7 +225,8 @@ namespace Twilio.Rest.Preview.Understand
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/understand/Assistants",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -330,7 +333,8 @@ namespace Twilio.Rest.Preview.Understand
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -441,7 +445,8 @@ namespace Twilio.Rest.Preview.Understand
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

@@ -121,7 +121,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public List<object> Participants { get; set; }
         /// <summary>
-        /// An experimental flag that instructs Proxy to reject a Session create request when it detects a Participant conflict.
+        /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
         /// </summary>
         public bool? FailOnParticipantConflict { get; set; }
 
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// </summary>
         public SessionResource.StatusEnum Status { get; set; }
         /// <summary>
-        /// An experimental flag that instructs Proxy to return 400 instead of 200 when it detects that conflicts would result from re-open requests.
+        /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
         /// </summary>
         public bool? FailOnParticipantConflict { get; set; }
 

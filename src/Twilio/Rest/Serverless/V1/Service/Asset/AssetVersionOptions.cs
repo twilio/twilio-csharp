@@ -15,7 +15,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a list of all asset versions.
+    /// Retrieve a list of all Asset Versions.
     /// </summary>
     public class ReadAssetVersionOptions : ReadOptions<AssetVersionResource>
     {
@@ -59,7 +59,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific asset version.
+    /// Retrieve a specific Asset Version.
     /// </summary>
     public class FetchAssetVersionOptions : IOptions<AssetVersionResource>
     {

@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -104,7 +105,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -244,7 +246,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -331,7 +334,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -422,7 +426,8 @@ namespace Twilio.Rest.Preview.Understand.Assistant.Task
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/understand/Assistants/" + options.PathAssistantSid + "/Tasks/" + options.PathTaskSid + "/Samples/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

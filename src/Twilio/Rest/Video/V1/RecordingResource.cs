@@ -84,7 +84,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/Recordings/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -150,7 +151,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/Recordings",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -306,7 +308,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Delete,
                 Rest.Domain.Video,
                 "/v1/Recordings/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

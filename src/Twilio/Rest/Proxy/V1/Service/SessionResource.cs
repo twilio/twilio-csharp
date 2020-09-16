@@ -59,7 +59,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -128,7 +129,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -260,7 +262,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -303,8 +306,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="mode"> The Mode of the Session </param>
         /// <param name="status"> Session status </param>
         /// <param name="participants"> The Participant objects to include in the new session </param>
-        /// <param name="failOnParticipantConflict"> An experimental flag that instructs Proxy to reject a Session create
-        ///                                 request when it detects a Participant conflict. </param>
+        /// <param name="failOnParticipantConflict"> An experimental parameter to override the ProxyAllowParticipantConflict
+        ///                                 account flag on a per-request basis. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static SessionResource Create(string pathServiceSid,
@@ -332,8 +335,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="mode"> The Mode of the Session </param>
         /// <param name="status"> Session status </param>
         /// <param name="participants"> The Participant objects to include in the new session </param>
-        /// <param name="failOnParticipantConflict"> An experimental flag that instructs Proxy to reject a Session create
-        ///                                 request when it detects a Participant conflict. </param>
+        /// <param name="failOnParticipantConflict"> An experimental parameter to override the ProxyAllowParticipantConflict
+        ///                                 account flag on a per-request basis. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(string pathServiceSid,
@@ -357,7 +360,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -426,7 +430,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -467,8 +472,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
         /// <param name="ttl"> When the session will expire </param>
         /// <param name="status"> The new status of the resource </param>
-        /// <param name="failOnParticipantConflict"> An experimental flag that instructs Proxy to return 400 instead of 200
-        ///                                 when it detects that conflicts would result from re-open requests. </param>
+        /// <param name="failOnParticipantConflict"> An experimental parameter to override the ProxyAllowParticipantConflict
+        ///                                 account flag on a per-request basis. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static SessionResource Update(string pathServiceSid,
@@ -492,8 +497,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
         /// <param name="ttl"> When the session will expire </param>
         /// <param name="status"> The new status of the resource </param>
-        /// <param name="failOnParticipantConflict"> An experimental flag that instructs Proxy to return 400 instead of 200
-        ///                                 when it detects that conflicts would result from re-open requests. </param>
+        /// <param name="failOnParticipantConflict"> An experimental parameter to override the ProxyAllowParticipantConflict
+        ///                                 account flag on a per-request basis. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathServiceSid,

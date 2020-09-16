@@ -26,7 +26,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -92,7 +93,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -158,7 +160,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -288,7 +291,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -359,7 +363,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Delete,
                 Rest.Domain.Voice,
                 "/v1/ConnectionPolicies/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

@@ -310,7 +310,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Messages/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -379,7 +380,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathConversationSid + "/Messages",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

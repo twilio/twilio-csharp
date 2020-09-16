@@ -41,7 +41,8 @@ namespace Twilio.Rest.Lookups.V1
                 HttpMethod.Get,
                 Rest.Domain.Lookups,
                 "/v1/PhoneNumbers/" + options.PathPhoneNumber + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

@@ -29,7 +29,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/DialingPermissions/Countries/" + options.PathIsoCode + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -95,7 +96,8 @@ namespace Twilio.Rest.Voice.V1.DialingPermissions
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/DialingPermissions/Countries",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

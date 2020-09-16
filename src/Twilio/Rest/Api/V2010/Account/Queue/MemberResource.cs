@@ -26,7 +26,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Queues/" + options.PathQueueSid + "/Members/" + options.PathCallSid + ".json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -101,7 +102,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Queues/" + options.PathQueueSid + "/Members/" + options.PathCallSid + ".json",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -184,7 +186,8 @@ namespace Twilio.Rest.Api.V2010.Account.Queue
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Queues/" + options.PathQueueSid + "/Members.json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

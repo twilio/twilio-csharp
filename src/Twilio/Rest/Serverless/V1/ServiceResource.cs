@@ -29,7 +29,8 @@ namespace Twilio.Rest.Serverless.V1
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -157,7 +158,8 @@ namespace Twilio.Rest.Serverless.V1
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -223,7 +225,8 @@ namespace Twilio.Rest.Serverless.V1
                 HttpMethod.Delete,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -288,7 +291,8 @@ namespace Twilio.Rest.Serverless.V1
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 "/v1/Services",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -324,7 +328,7 @@ namespace Twilio.Rest.Serverless.V1
         /// <summary>
         /// Create a new Service resource.
         /// </summary>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Service resource </param>
+        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Service resource </param>
         /// <param name="friendlyName"> A string to describe the Service resource </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a function invocation context </param>
         /// <param name="uiEditable"> Whether the Service's properties and subresources can be edited via the UI </param>
@@ -344,7 +348,7 @@ namespace Twilio.Rest.Serverless.V1
         /// <summary>
         /// Create a new Service resource.
         /// </summary>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Service resource </param>
+        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Service resource </param>
         /// <param name="friendlyName"> A string to describe the Service resource </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a function invocation context </param>
         /// <param name="uiEditable"> Whether the Service's properties and subresources can be edited via the UI </param>
@@ -367,7 +371,8 @@ namespace Twilio.Rest.Serverless.V1
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -406,7 +411,8 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="pathSid"> The SID of the Service resource to update </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a function invocation context </param>
         /// <param name="friendlyName"> A string to describe the Service resource </param>
-        /// <param name="uiEditable"> Whether the Service's properties and subresources can be edited via the UI </param>
+        /// <param name="uiEditable"> Whether the Service resource's properties and subresources can be edited via the UI
+        ///                  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -426,7 +432,8 @@ namespace Twilio.Rest.Serverless.V1
         /// <param name="pathSid"> The SID of the Service resource to update </param>
         /// <param name="includeCredentials"> Whether to inject Account credentials into a function invocation context </param>
         /// <param name="friendlyName"> A string to describe the Service resource </param>
-        /// <param name="uiEditable"> Whether the Service's properties and subresources can be edited via the UI </param>
+        /// <param name="uiEditable"> Whether the Service resource's properties and subresources can be edited via the UI
+        ///                  </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -474,7 +481,7 @@ namespace Twilio.Rest.Serverless.V1
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// An application-defined string that uniquely identifies the Service resource
+        /// A user-defined string that uniquely identifies the Service resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
@@ -484,7 +491,7 @@ namespace Twilio.Rest.Serverless.V1
         [JsonProperty("include_credentials")]
         public bool? IncludeCredentials { get; private set; }
         /// <summary>
-        /// Whether the Service's properties and subresources can be edited via the UI
+        /// Whether the Service resource's properties and subresources can be edited via the UI
         /// </summary>
         [JsonProperty("ui_editable")]
         public bool? UiEditable { get; private set; }

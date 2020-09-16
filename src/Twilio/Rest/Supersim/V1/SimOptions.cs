@@ -75,6 +75,10 @@ namespace Twilio.Rest.Supersim.V1
         /// The HTTP method we should use to call callback_url
         /// </summary>
         public Twilio.Http.HttpMethod CallbackMethod { get; set; }
+        /// <summary>
+        /// The SID of the Account to which the Sim resource should belong
+        /// </summary>
+        public string AccountSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSimOptions
@@ -114,6 +118,11 @@ namespace Twilio.Rest.Supersim.V1
             if (CallbackMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallbackMethod", CallbackMethod.ToString()));
+            }
+
+            if (AccountSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AccountSid", AccountSid.ToString()));
             }
 
             return p;

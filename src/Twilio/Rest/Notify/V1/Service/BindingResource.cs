@@ -46,7 +46,8 @@ namespace Twilio.Rest.Notify.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Notify,
                 "/v1/Services/" + options.PathServiceSid + "/Bindings/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -115,7 +116,8 @@ namespace Twilio.Rest.Notify.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Notify,
                 "/v1/Services/" + options.PathServiceSid + "/Bindings/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -184,7 +186,8 @@ namespace Twilio.Rest.Notify.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Notify,
                 "/v1/Services/" + options.PathServiceSid + "/Bindings",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -281,7 +284,8 @@ namespace Twilio.Rest.Notify.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Notify,
                 "/v1/Services/" + options.PathServiceSid + "/Bindings",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

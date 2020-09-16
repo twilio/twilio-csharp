@@ -26,7 +26,8 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -131,7 +132,8 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -197,7 +199,8 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Delete,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -262,7 +265,8 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -390,7 +394,8 @@ namespace Twilio.Rest.Verify.V2
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

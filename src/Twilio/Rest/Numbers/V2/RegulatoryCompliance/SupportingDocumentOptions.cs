@@ -161,4 +161,33 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
     }
 
+    /// <summary>
+    /// Delete a specific Supporting Document.
+    /// </summary>
+    public class DeleteSupportingDocumentOptions : IOptions<SupportingDocumentResource>
+    {
+        /// <summary>
+        /// The unique string that identifies the resource
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteSupportingDocumentOptions
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        public DeleteSupportingDocumentOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

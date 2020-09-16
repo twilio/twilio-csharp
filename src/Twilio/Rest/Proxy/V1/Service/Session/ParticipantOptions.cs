@@ -128,7 +128,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         /// </summary>
         public string ProxyIdentifierSid { get; set; }
         /// <summary>
-        /// An experimental flag that instructs Proxy to reject a Participant create request when it detects a conflict.
+        /// An experimental parameter to override the ProxyAllowParticipantConflict account flag on a per-request basis.
         /// </summary>
         public bool? FailOnParticipantConflict { get; set; }
 

@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -95,7 +96,8 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -160,7 +162,8 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -239,7 +242,8 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/Sync/Services",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -367,7 +371,8 @@ namespace Twilio.Rest.Preview.Sync
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

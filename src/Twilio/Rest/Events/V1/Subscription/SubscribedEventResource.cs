@@ -29,7 +29,8 @@ namespace Twilio.Rest.Events.V1.Subscription
                 HttpMethod.Get,
                 Rest.Domain.Events,
                 "/v1/Subscriptions/" + options.PathSubscriptionSid + "/SubscribedEvents",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -163,7 +164,8 @@ namespace Twilio.Rest.Events.V1.Subscription
                 HttpMethod.Post,
                 Rest.Domain.Events,
                 "/v1/Subscriptions/" + options.PathSubscriptionSid + "/SubscribedEvents",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -238,7 +240,8 @@ namespace Twilio.Rest.Events.V1.Subscription
                 HttpMethod.Post,
                 Rest.Domain.Events,
                 "/v1/Subscriptions/" + options.PathSubscriptionSid + "/SubscribedEvents/" + options.PathType + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -313,7 +316,8 @@ namespace Twilio.Rest.Events.V1.Subscription
                 HttpMethod.Delete,
                 Rest.Domain.Events,
                 "/v1/Subscriptions/" + options.PathSubscriptionSid + "/SubscribedEvents/" + options.PathType + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

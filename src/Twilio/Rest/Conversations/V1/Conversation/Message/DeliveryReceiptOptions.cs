@@ -23,7 +23,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
-        /// The sid of the message the delivery receipt belongs to
+        /// The sid of the message the delivery receipt belongs to.
         /// </summary>
         public string PathMessageSid { get; }
         /// <summary>
@@ -35,7 +35,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// Construct a new FetchDeliveryReceiptOptions
         /// </summary>
         /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to </param>
+        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchDeliveryReceiptOptions(string pathConversationSid, string pathMessageSid, string pathSid)
         {
@@ -66,7 +66,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
-        /// The sid of the message the delivery receipt belongs to
+        /// The sid of the message the delivery receipt belongs to.
         /// </summary>
         public string PathMessageSid { get; }
 
@@ -74,7 +74,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// Construct a new ReadDeliveryReceiptOptions
         /// </summary>
         /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to </param>
+        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
         public ReadDeliveryReceiptOptions(string pathConversationSid, string pathMessageSid)
         {
             PathConversationSid = pathConversationSid;

@@ -55,7 +55,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Items/" + options.PathIndex + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -210,7 +211,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                 HttpMethod.Post,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Items",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -299,7 +301,8 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                 HttpMethod.Get,
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Lists/" + options.PathListSid + "/Items",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

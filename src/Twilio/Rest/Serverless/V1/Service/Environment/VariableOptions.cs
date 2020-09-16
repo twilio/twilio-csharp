@@ -24,7 +24,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the environment with the Variable resources to read
+        /// The SID of the Environment with the Variable resources to read
         /// </summary>
         public string PathEnvironmentSid { get; }
 
@@ -32,7 +32,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// Construct a new ReadVariableOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the Variable resources from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Variable resources to read </param>
+        /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variable resources to read </param>
         public ReadVariableOptions(string pathServiceSid, string pathEnvironmentSid)
         {
             PathServiceSid = pathServiceSid;
@@ -58,7 +58,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific variable.
+    /// Retrieve a specific Variable.
     /// </summary>
     public class FetchVariableOptions : IOptions<VariableResource>
     {
@@ -67,7 +67,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the environment with the Variable resource to fetch
+        /// The SID of the Environment with the Variable resource to fetch
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// Construct a new FetchVariableOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the Variable resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Variable resource to fetch </param>
+        /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variable resource to fetch </param>
         /// <param name="pathSid"> The SID of the Variable resource to fetch </param>
         public FetchVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
         {
@@ -102,7 +102,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Create a new variable.
+    /// Create a new Variable.
     /// </summary>
     public class CreateVariableOptions : IOptions<VariableResource>
     {
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the environment in which the variable exists
+        /// The SID of the Environment in which the Variable exists
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
@@ -119,7 +119,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         public string Key { get; }
         /// <summary>
-        /// A string that contains the actual value of the variable
+        /// A string that contains the actual value of the Variable
         /// </summary>
         public string Value { get; }
 
@@ -127,9 +127,9 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// Construct a new CreateVariableOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Variable resource under </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment in which the variable exists </param>
+        /// <param name="pathEnvironmentSid"> The SID of the Environment in which the Variable exists </param>
         /// <param name="key"> A string by which the Variable resource can be referenced </param>
-        /// <param name="value"> A string that contains the actual value of the variable </param>
+        /// <param name="value"> A string that contains the actual value of the Variable </param>
         public CreateVariableOptions(string pathServiceSid, string pathEnvironmentSid, string key, string value)
         {
             PathServiceSid = pathServiceSid;
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Update a specific variable.
+    /// Update a specific Variable.
     /// </summary>
     public class UpdateVariableOptions : IOptions<VariableResource>
     {
@@ -171,7 +171,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the environment with the Variable resource to update
+        /// The SID of the Environment with the Variable resource to update
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         public string Key { get; set; }
         /// <summary>
-        /// A string that contains the actual value of the variable
+        /// A string that contains the actual value of the Variable
         /// </summary>
         public string Value { get; set; }
 
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// Construct a new UpdateVariableOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to update the Variable resource under </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Variable resource to update </param>
+        /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variable resource to update </param>
         /// <param name="pathSid"> The SID of the Variable resource to update </param>
         public UpdateVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
         {
@@ -224,7 +224,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Delete a specific variable.
+    /// Delete a specific Variable.
     /// </summary>
     public class DeleteVariableOptions : IOptions<VariableResource>
     {
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the environment with the Variables to delete
+        /// The SID of the Environment with the Variables to delete
         /// </summary>
         public string PathEnvironmentSid { get; }
         /// <summary>
@@ -245,7 +245,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Environment
         /// Construct a new DeleteVariableOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to delete the Variable resource from </param>
-        /// <param name="pathEnvironmentSid"> The SID of the environment with the Variables to delete </param>
+        /// <param name="pathEnvironmentSid"> The SID of the Environment with the Variables to delete </param>
         /// <param name="pathSid"> The SID of the Variable resource to delete </param>
         public DeleteVariableOptions(string pathServiceSid, string pathEnvironmentSid, string pathSid)
         {

@@ -23,6 +23,10 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
+        /// An application-defined string that uniquely identifies the resource
+        /// </summary>
+        public string UniqueName { get; set; }
+        /// <summary>
         /// The date that this resource was created.
         /// </summary>
         public DateTime? DateCreated { get; set; }
@@ -64,6 +68,11 @@ namespace Twilio.Rest.Conversations.V1
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (UniqueName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
             if (DateCreated != null)

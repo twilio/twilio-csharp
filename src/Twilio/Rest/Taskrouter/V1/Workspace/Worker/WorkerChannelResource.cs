@@ -26,7 +26,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Channels",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -163,7 +164,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 HttpMethod.Get,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Channels/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -238,7 +240,8 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
                 HttpMethod.Post,
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathWorkspaceSid + "/Workers/" + options.PathWorkerSid + "/Channels/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

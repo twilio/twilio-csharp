@@ -29,7 +29,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Functions/" + options.PathFunctionSid + "/Versions/" + options.PathSid + "/Content",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -67,7 +68,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
         /// Retrieve a the content of a specific Function Version resource.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version content from </param>
-        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version content to fetch
+        /// <param name="pathFunctionSid"> The SID of the Function that is the parent of the Function Version content to fetch
         ///                       </param>
         /// <param name="pathSid"> The SID that identifies the Function Version content to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -86,7 +87,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Function.FunctionVersion
         /// Retrieve a the content of a specific Function Version resource.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the Function Version content from </param>
-        /// <param name="pathFunctionSid"> The SID of the function that is the parent of the Function Version content to fetch
+        /// <param name="pathFunctionSid"> The SID of the Function that is the parent of the Function Version content to fetch
         ///                       </param>
         /// <param name="pathSid"> The SID that identifies the Function Version content to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>

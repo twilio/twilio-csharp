@@ -94,6 +94,7 @@ namespace Twilio.Rest.Conversations.V1
         /// create
         /// </summary>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
@@ -105,6 +106,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
         public static ConversationResource Create(string friendlyName = null,
+                                                  string uniqueName = null,
                                                   DateTime? dateCreated = null,
                                                   DateTime? dateUpdated = null,
                                                   string messagingServiceSid = null,
@@ -115,7 +117,7 @@ namespace Twilio.Rest.Conversations.V1
                                                   ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
+            var options = new CreateConversationOptions(){FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Create(options, client);
         }
 
@@ -124,6 +126,7 @@ namespace Twilio.Rest.Conversations.V1
         /// create
         /// </summary>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
@@ -135,6 +138,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<ConversationResource> CreateAsync(string friendlyName = null,
+                                                                                          string uniqueName = null,
                                                                                           DateTime? dateCreated = null,
                                                                                           DateTime? dateUpdated = null,
                                                                                           string messagingServiceSid = null,
@@ -145,7 +149,7 @@ namespace Twilio.Rest.Conversations.V1
                                                                                           ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
+            var options = new CreateConversationOptions(){FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -332,7 +336,8 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -398,7 +403,8 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -565,6 +571,11 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
+        /// An application-defined string that uniquely identifies the resource
+        /// </summary>
+        [JsonProperty("unique_name")]
+        public string UniqueName { get; private set; }
+        /// <summary>
         /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
         [JsonProperty("attributes")]
@@ -596,7 +607,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Absolute URLs to access the Participants of this Conversation.
+        /// Absolute URLs to access the Participants, Messages and Webhooks of this Conversation.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
