@@ -27,7 +27,7 @@ namespace Twilio.Http
         /// <param name="httpClient">HTTP client to use</param>
         public SystemNetHttpClient(System.Net.Http.HttpClient httpClient = null)
         {
-            _httpClient = httpClient ?? new System.Net.Http.HttpClient();
+            _httpClient = httpClient ?? new System.Net.Http.HttpClient(new HttpClientHandler() { AllowAutoRedirect = false });
         }
 
         /// <summary>
@@ -94,7 +94,8 @@ namespace Twilio.Http
             var libraryVersion = "twilio-csharp/" + AssemblyInfomation.AssemblyInformationalVersion + PlatVersion;
             httpRequest.Headers.TryAddWithoutValidation("User-Agent", libraryVersion);
 
-            foreach (var header in request.HeaderParams) {
+            foreach (var header in request.HeaderParams)
+            {
                 httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
             }
 

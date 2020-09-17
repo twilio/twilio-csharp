@@ -34,15 +34,20 @@ namespace Twilio.Tests.Clients
             // Exception type doesn't matter, just needs to match in IsInstanceOf below.
             client.MakeRequest(Arg.Any<Request>()).Throws(new InvalidOperationException());
 
-            try {
+            try
+            {
                 TwilioRestClient.ValidateSslCertificate(client);
                 Assert.Fail("Should have failed ssl verification");
-            } catch (CertificateValidationException e) {
+            }
+            catch (CertificateValidationException e)
+            {
                 Assert.IsInstanceOf(typeof(InvalidOperationException), e.GetBaseException());
                 Assert.AreEqual("Connection to api.twilio.com:8443 failed", e.Message);
                 Assert.IsNull(e.Response);
                 Assert.IsNotNull(e.Request);
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 Assert.Fail("Threw an unknown exception");
             }
         }
@@ -52,14 +57,19 @@ namespace Twilio.Tests.Clients
         {
             client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.SwitchingProtocols, "NOTOK"));
 
-            try {
+            try
+            {
                 TwilioRestClient.ValidateSslCertificate(client);
                 Assert.Fail("Should have failed ssl verification");
-            } catch (CertificateValidationException e) {
+            }
+            catch (CertificateValidationException e)
+            {
                 Assert.AreEqual("Unexpected response from certificate endpoint", e.Message);
                 Assert.IsNotNull(e.Response);
                 Assert.IsNotNull(e.Request);
-            } catch (Exception) {
+            }
+            catch (Exception)
+            {
                 Assert.Fail("Threw an unknown exception");
             }
         }
@@ -76,12 +86,15 @@ namespace Twilio.Tests.Clients
                                         ""foo"": ""bar""
                                     }}";
             client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.BadRequest, jsonResponse));
-            try {
-                Request request =  new Request(HttpMethod.Get,"https://www.contoso.com");
+            try
+            {
+                Request request = new Request(HttpMethod.Get, "https://www.contoso.com");
                 TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", null, null, client);
                 twilioClient.Request(request);
                 Assert.Fail("Should have failed");
-            } catch (ApiException e) {
+            }
+            catch (ApiException e)
+            {
                 Assert.AreEqual("Bad request", e.Message);
                 Assert.AreEqual(20001, e.Code);
                 Assert.AreEqual("https://www.twilio.com/docs/errors/20001", e.MoreInfo);
@@ -90,6 +103,15 @@ namespace Twilio.Tests.Clients
                 expectedDetails.Add("foo", "bar");
                 Assert.AreEqual(expectedDetails, e.Details);
             }
+        }
+
+        [Test]
+        public void TestRedirectResponse()
+        {
+            client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.RedirectKeepVerb, "REDIRECT"));
+            Request request = new Request(HttpMethod.Get, "https://www.contoso.com");
+            TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", null, null, client);
+            twilioClient.Request(request);
         }
     }
 }
