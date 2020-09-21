@@ -93,14 +93,14 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="target"> The target of this webhook. </param>
         /// <param name="configurationUrl"> The absolute url the webhook request should be sent to. </param>
         /// <param name="configurationMethod"> The HTTP method to be used when sending a webhook request. </param>
         /// <param name="configurationFilters"> The list of events, firing webhook event for this Conversation. </param>
         /// <param name="configurationTriggers"> The list of keywords, firing webhook event for this Conversation. </param>
-        /// <param name="configurationFlowSid"> The studio flow sid, where the webhook should be sent to. </param>
+        /// <param name="configurationFlowSid"> The studio flow SID, where the webhook should be sent to. </param>
         /// <param name="configurationReplayAfter"> The message index for which and it's successors the webhook will be
         ///                                replayed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -124,14 +124,14 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="target"> The target of this webhook. </param>
         /// <param name="configurationUrl"> The absolute url the webhook request should be sent to. </param>
         /// <param name="configurationMethod"> The HTTP method to be used when sending a webhook request. </param>
         /// <param name="configurationFilters"> The list of events, firing webhook event for this Conversation. </param>
         /// <param name="configurationTriggers"> The list of keywords, firing webhook event for this Conversation. </param>
-        /// <param name="configurationFlowSid"> The studio flow sid, where the webhook should be sent to. </param>
+        /// <param name="configurationFlowSid"> The studio flow SID, where the webhook should be sent to. </param>
         /// <param name="configurationReplayAfter"> The message index for which and it's successors the webhook will be
         ///                                replayed. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -195,14 +195,14 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="configurationUrl"> The absolute url the webhook request should be sent to. </param>
         /// <param name="configurationMethod"> The HTTP method to be used when sending a webhook request. </param>
         /// <param name="configurationFilters"> The list of events, firing webhook event for this Conversation. </param>
         /// <param name="configurationTriggers"> The list of keywords, firing webhook event for this Conversation. </param>
-        /// <param name="configurationFlowSid"> The studio flow sid, where the webhook should be sent to. </param>
+        /// <param name="configurationFlowSid"> The studio flow SID, where the webhook should be sent to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Update(string pathChatServiceSid,
@@ -223,14 +223,14 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="configurationUrl"> The absolute url the webhook request should be sent to. </param>
         /// <param name="configurationMethod"> The HTTP method to be used when sending a webhook request. </param>
         /// <param name="configurationFilters"> The list of events, firing webhook event for this Conversation. </param>
         /// <param name="configurationTriggers"> The list of keywords, firing webhook event for this Conversation. </param>
-        /// <param name="configurationFlowSid"> The studio flow sid, where the webhook should be sent to. </param>
+        /// <param name="configurationFlowSid"> The studio flow SID, where the webhook should be sent to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string pathChatServiceSid,
@@ -291,8 +291,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
@@ -309,8 +309,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
@@ -367,8 +367,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
@@ -385,8 +385,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
@@ -447,8 +447,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -467,8 +467,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -561,17 +561,17 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique id of the Account responsible for this conversation.
+        /// The unique ID of the Account responsible for this conversation.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         [JsonProperty("conversation_sid")]
         public string ConversationSid { get; private set; }

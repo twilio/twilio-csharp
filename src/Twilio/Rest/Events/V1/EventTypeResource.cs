@@ -35,7 +35,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of all the available Event Types.
         /// </summary>
         /// <param name="options"> Read EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of all the available Event Types.
         /// </summary>
         /// <param name="options"> Read EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of all the available Event Types.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -84,7 +84,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a paginated list of all the available Event Types.
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Event Type.
         /// </summary>
         /// <param name="options"> Fetch EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -178,7 +178,7 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Event Type.
         /// </summary>
         /// <param name="options"> Fetch EventType parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -193,9 +193,9 @@ namespace Twilio.Rest.Events.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a specific Event Type.
         /// </summary>
-        /// <param name="pathType"> The type </param>
+        /// <param name="pathType"> A string that uniquely identifies this Event Type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EventType </returns>
         public static EventTypeResource Fetch(string pathType, ITwilioRestClient client = null)
@@ -206,9 +206,9 @@ namespace Twilio.Rest.Events.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a specific Event Type.
         /// </summary>
-        /// <param name="pathType"> The type </param>
+        /// <param name="pathType"> A string that uniquely identifies this Event Type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EventType </returns>
         public static async System.Threading.Tasks.Task<EventTypeResource> FetchAsync(string pathType,
@@ -238,32 +238,32 @@ namespace Twilio.Rest.Events.V1
         }
 
         /// <summary>
-        /// The type
+        /// The Event Type identifier.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; private set; }
         /// <summary>
-        /// The schema_id
+        /// The Schema identifier for this Event Type.
         /// </summary>
         [JsonProperty("schema_id")]
         public string SchemaId { get; private set; }
         /// <summary>
-        /// The date_created
+        /// The date this Event Type was created.
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The date_updated
+        /// The date this Event Type was updated.
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The description
+        /// Event Type description.
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

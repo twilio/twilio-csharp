@@ -97,7 +97,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the Messaging Service this conversation belongs to. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="state"> Current state of this conversation. </param>
@@ -131,7 +131,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the Messaging Service this conversation belongs to. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="state"> Current state of this conversation. </param>
@@ -207,7 +207,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the Messaging Service this conversation belongs to. </param>
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the Messaging Service this conversation belongs to. </param>
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
@@ -565,17 +565,17 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this conversation.
+        /// The unique ID of the Account responsible for this conversation.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique id of the Chat Service this conversation belongs to.
+        /// The unique ID of the Conversation Service this conversation belongs to.
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
         /// <summary>
-        /// The unique id of the SMS Service this conversation belongs to.
+        /// The unique ID of the Messaging Service this conversation belongs to.
         /// </summary>
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }

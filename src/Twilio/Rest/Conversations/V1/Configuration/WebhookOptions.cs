@@ -9,7 +9,7 @@ using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Conversations.V1
+namespace Twilio.Rest.Conversations.V1.Configuration
 {
 
     /// <summary>

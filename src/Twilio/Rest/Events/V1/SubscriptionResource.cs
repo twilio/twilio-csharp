@@ -296,6 +296,82 @@ namespace Twilio.Rest.Events.V1
         }
         #endif
 
+        private static Request BuildUpdateRequest(UpdateSubscriptionOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Events,
+                "/v1/Subscriptions/" + options.PathSid + "",
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// Update a Subscription.
+        /// </summary>
+        /// <param name="options"> Update Subscription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Subscription </returns>
+        public static SubscriptionResource Update(UpdateSubscriptionOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a Subscription.
+        /// </summary>
+        /// <param name="options"> Update Subscription parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Subscription </returns>
+        public static async System.Threading.Tasks.Task<SubscriptionResource> UpdateAsync(UpdateSubscriptionOptions options,
+                                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Update a Subscription.
+        /// </summary>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="description"> Subscription description. </param>
+        /// <param name="sinkSid"> Sink SID. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Subscription </returns>
+        public static SubscriptionResource Update(string pathSid,
+                                                  string description = null,
+                                                  string sinkSid = null,
+                                                  ITwilioRestClient client = null)
+        {
+            var options = new UpdateSubscriptionOptions(pathSid){Description = description, SinkSid = sinkSid};
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a Subscription.
+        /// </summary>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="description"> Subscription description. </param>
+        /// <param name="sinkSid"> Sink SID. </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Subscription </returns>
+        public static async System.Threading.Tasks.Task<SubscriptionResource> UpdateAsync(string pathSid,
+                                                                                          string description = null,
+                                                                                          string sinkSid = null,
+                                                                                          ITwilioRestClient client = null)
+        {
+            var options = new UpdateSubscriptionOptions(pathSid){Description = description, SinkSid = sinkSid};
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
         private static Request BuildDeleteRequest(DeleteSubscriptionOptions options, ITwilioRestClient client)
         {
             return new Request(

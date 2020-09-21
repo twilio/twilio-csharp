@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Conversations.V1
+namespace Twilio.Rest.Conversations.V1.Service.Configuration
 {
 
     /// <summary>
@@ -19,7 +19,7 @@ namespace Twilio.Rest.Conversations.V1
     public class UpdateNotificationOptions : IOptions<NotificationResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the Configuration applies to.
+        /// The SID of the Conversation Service that the Configuration applies to.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
@@ -70,7 +70,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary>
         /// Construct a new UpdateNotificationOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the Configuration applies to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         public UpdateNotificationOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -149,14 +149,14 @@ namespace Twilio.Rest.Conversations.V1
     public class FetchNotificationOptions : IOptions<NotificationResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the Configuration applies to.
+        /// The SID of the Conversation Service that the Configuration applies to.
         /// </summary>
         public string PathChatServiceSid { get; }
 
         /// <summary>
         /// Construct a new FetchNotificationOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the Configuration applies to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         public FetchNotificationOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;

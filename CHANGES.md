@@ -1,6 +1,21 @@
 twilio-csharp Changelog
 =======================
 
+[2020-09-21] Version 5.47.1
+---------------------------
+**Library - Fix**
+- [PR #542](https://github.com/twilio/twilio-csharp/pull/542): allow API redirect responses. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Accounts**
+- Add Auth Token rotation API
+
+**Conversations**
+- Change resource path for Webhook Configuration
+
+**Events**
+- Schemas API get all Schemas names and versions
+
+
 [2020-09-16] Version 5.47.0
 ---------------------------
 **Library - Feature**

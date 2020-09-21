@@ -19,11 +19,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class CreateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -47,7 +47,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The Media Sid to be attached to the new Message.
+        /// The Media SID to be attached to the new Message.
         /// </summary>
         public string MediaSid { get; set; }
         /// <summary>
@@ -58,8 +58,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         public CreateMessageOptions(string pathChatServiceSid, string pathConversationSid)
         {
             PathChatServiceSid = pathChatServiceSid;
@@ -128,11 +128,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class UpdateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -167,8 +167,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateMessageOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
@@ -234,11 +234,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class DeleteMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -253,8 +253,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteMessageOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
@@ -295,11 +295,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class FetchMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -310,8 +310,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchMessageOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
@@ -338,19 +338,19 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class ReadMessageOptions : ReadOptions<MessageResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for messages.
+        /// The unique ID of the Conversation for messages.
         /// </summary>
         public string PathConversationSid { get; }
 
         /// <summary>
         /// Construct a new ReadMessageOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for messages. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
         public ReadMessageOptions(string pathChatServiceSid, string pathConversationSid)
         {
             PathChatServiceSid = pathChatServiceSid;

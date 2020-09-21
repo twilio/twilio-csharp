@@ -8,17 +8,31 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Events.V1
+namespace Twilio.Rest.Events.V1.Schema
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a paginated list of all the available Event Types.
+    /// Retrieve a paginated list of versions of the schema.
     /// </summary>
-    public class ReadEventTypeOptions : ReadOptions<EventTypeResource>
+    public class ReadVersionOptions : ReadOptions<VersionResource>
     {
+        /// <summary>
+        /// The unique identifier of the schema.
+        /// </summary>
+        public string PathId { get; }
+
+        /// <summary>
+        /// Construct a new ReadVersionOptions
+        /// </summary>
+        /// <param name="pathId"> The unique identifier of the schema. </param>
+        public ReadVersionOptions(string pathId)
+        {
+            PathId = pathId;
+        }
+
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
@@ -38,22 +52,28 @@ namespace Twilio.Rest.Events.V1
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Fetch a specific Event Type.
+    /// Fetch a specific schema and version.
     /// </summary>
-    public class FetchEventTypeOptions : IOptions<EventTypeResource>
+    public class FetchVersionOptions : IOptions<VersionResource>
     {
         /// <summary>
-        /// A string that uniquely identifies this Event Type.
+        /// The unique identifier of the schema.
         /// </summary>
-        public string PathType { get; }
+        public string PathId { get; }
+        /// <summary>
+        /// The version of the schema
+        /// </summary>
+        public int? PathSchemaVersion { get; }
 
         /// <summary>
-        /// Construct a new FetchEventTypeOptions
+        /// Construct a new FetchVersionOptions
         /// </summary>
-        /// <param name="pathType"> A string that uniquely identifies this Event Type. </param>
-        public FetchEventTypeOptions(string pathType)
+        /// <param name="pathId"> The unique identifier of the schema. </param>
+        /// <param name="pathSchemaVersion"> The version of the schema </param>
+        public FetchVersionOptions(string pathId, int? pathSchemaVersion)
         {
-            PathType = pathType;
+            PathId = pathId;
+            PathSchemaVersion = pathSchemaVersion;
         }
 
         /// <summary>

@@ -79,9 +79,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as Chat User. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
         /// <param name="messagingBindingAddress"> The address of the participant's device. </param>
         /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
         ///                                    contact with. </param>
@@ -90,7 +90,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
         ///                                        </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the participant </param>
+        /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
@@ -115,9 +115,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as Chat User. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
         /// <param name="messagingBindingAddress"> The address of the participant's device. </param>
         /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
         ///                                    contact with. </param>
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
         ///                                        </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the participant </param>
+        /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
@@ -191,14 +191,14 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as Chat User. </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the participant </param>
+        /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
         /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
         ///                                    contact with. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
@@ -227,14 +227,14 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="identity"> A unique string identifier for the conversation participant as Chat User. </param>
+        /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the participant </param>
+        /// <param name="roleSid"> The SID of a conversation-level Role to assign to the participant </param>
         /// <param name="messagingBindingProxyAddress"> The address of the Twilio phone number that the participant is in
         ///                                    contact with. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
@@ -303,8 +303,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -323,8 +323,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -383,8 +383,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
@@ -401,8 +401,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
@@ -463,8 +463,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for participants. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -483,8 +483,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for participants. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -572,17 +572,17 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this participant.
+        /// The unique ID of the Account responsible for this participant.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
         /// <summary>
-        /// The unique id of the Conversation for this participant.
+        /// The unique ID of the Conversation for this participant.
         /// </summary>
         [JsonProperty("conversation_sid")]
         public string ConversationSid { get; private set; }
@@ -592,7 +592,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// A unique string identifier for the conversation participant as Chat User.
+        /// A unique string identifier for the conversation participant as Conversation User.
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
@@ -607,7 +607,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         [JsonProperty("messaging_binding")]
         public object MessagingBinding { get; private set; }
         /// <summary>
-        /// The SID of the Role to assign to the participant
+        /// The SID of a conversation-level Role to assign to the participant
         /// </summary>
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }

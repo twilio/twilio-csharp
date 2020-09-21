@@ -91,10 +91,6 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
         /// <summary>
-        /// The recording settings for the trunk
-        /// </summary>
-        public TrunkResource.RecordingSettingEnum Recording { get; set; }
-        /// <summary>
         /// The call transfer settings for the trunk
         /// </summary>
         public TrunkResource.TransferSettingEnum TransferMode { get; set; }
@@ -131,11 +127,6 @@ namespace Twilio.Rest.Trunking.V1
             if (DisasterRecoveryMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("DisasterRecoveryMethod", DisasterRecoveryMethod.ToString()));
-            }
-
-            if (Recording != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Recording", Recording.ToString()));
             }
 
             if (TransferMode != null)
@@ -203,10 +194,6 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
         /// <summary>
-        /// The recording settings for the trunk
-        /// </summary>
-        public TrunkResource.RecordingSettingEnum Recording { get; set; }
-        /// <summary>
         /// The call transfer settings for the trunk
         /// </summary>
         public TrunkResource.TransferSettingEnum TransferMode { get; set; }
@@ -252,11 +239,6 @@ namespace Twilio.Rest.Trunking.V1
             if (DisasterRecoveryMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("DisasterRecoveryMethod", DisasterRecoveryMethod.ToString()));
-            }
-
-            if (Recording != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Recording", Recording.ToString()));
             }
 
             if (TransferMode != null)

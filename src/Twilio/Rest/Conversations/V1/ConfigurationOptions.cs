@@ -36,7 +36,7 @@ namespace Twilio.Rest.Conversations.V1
     public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
     {
         /// <summary>
-        /// The SID of the default Chat Service that every new conversation will be associated with.
+        /// The SID of the default Conversation Service that every new conversation will be associated with.
         /// </summary>
         public string DefaultChatServiceSid { get; set; }
         /// <summary>

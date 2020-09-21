@@ -19,7 +19,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     public class CreateUserOptions : IOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The SID of the Conversation Service that the resource is associated with
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
@@ -35,14 +35,14 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The SID of the Role to assign to the user
+        /// The SID of a service-level Role to assign to the user
         /// </summary>
         public string RoleSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateUserOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service that the resource is associated with </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="identity"> The string that identifies the resource's User </param>
         public CreateUserOptions(string pathChatServiceSid, string identity)
         {
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     public class UpdateUserOptions : IOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The SID of the Conversation Service that the resource is associated with
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
@@ -104,14 +104,14 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The SID of the Role to assign to the user
+        /// The SID of a service-level Role to assign to the user
         /// </summary>
         public string RoleSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateUserOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service that the resource is associated with </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="pathSid"> The SID of the User resource to update </param>
         public UpdateUserOptions(string pathChatServiceSid, string pathSid)
         {
@@ -152,7 +152,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     public class DeleteUserOptions : IOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service to delete the resource from
+        /// The SID of the Conversation Service to delete the resource from
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
@@ -163,7 +163,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Construct a new DeleteUserOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of  the User resource to delete </param>
         public DeleteUserOptions(string pathChatServiceSid, string pathSid)
         {
@@ -189,7 +189,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     public class FetchUserOptions : IOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service to fetch the resource from
+        /// The SID of the Conversation Service to fetch the resource from
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
@@ -200,7 +200,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Construct a new FetchUserOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
         /// <param name="pathSid"> The SID of the User resource to fetch </param>
         public FetchUserOptions(string pathChatServiceSid, string pathSid)
         {
@@ -226,14 +226,14 @@ namespace Twilio.Rest.Conversations.V1.Service
     public class ReadUserOptions : ReadOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service to read the User resources from
+        /// The SID of the Conversation Service to read the User resources from
         /// </summary>
         public string PathChatServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadUserOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service to read the User resources from </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the User resources from </param>
         public ReadUserOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;

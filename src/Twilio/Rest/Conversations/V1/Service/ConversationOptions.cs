@@ -35,7 +35,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The unique id of the SMS Service this conversation belongs to.
+        /// The unique ID of the Messaging Service this conversation belongs to.
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>
@@ -173,7 +173,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The unique id of the SMS Service this conversation belongs to.
+        /// The unique ID of the Messaging Service this conversation belongs to.
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>

@@ -19,11 +19,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class CreateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this participant.
+        /// The unique ID of the Conversation for this participant.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
-        /// A unique string identifier for the conversation participant as Chat User.
+        /// A unique string identifier for the conversation participant as Conversation User.
         /// </summary>
         public string Identity { get; set; }
         /// <summary>
@@ -51,7 +51,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         public string MessagingBindingProjectedAddress { get; set; }
         /// <summary>
-        /// The SID of the Role to assign to the participant
+        /// The SID of a conversation-level Role to assign to the participant
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
@@ -62,7 +62,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new CreateParticipantOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         public CreateParticipantOptions(string pathConversationSid)
         {
             PathConversationSid = pathConversationSid;
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class UpdateParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this participant.
+        /// The unique ID of the Conversation for this participant.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -160,7 +160,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The SID of the Role to assign to the participant
+        /// The SID of a conversation-level Role to assign to the participant
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         public string MessagingBindingProjectedAddress { get; set; }
         /// <summary>
-        /// A unique string identifier for the conversation participant as Chat User.
+        /// A unique string identifier for the conversation participant as Conversation User.
         /// </summary>
         public string Identity { get; set; }
         /// <summary>
@@ -183,7 +183,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new UpdateParticipantOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateParticipantOptions(string pathConversationSid, string pathSid)
         {
@@ -258,7 +258,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class DeleteParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this participant.
+        /// The unique ID of the Conversation for this participant.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -273,7 +273,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new DeleteParticipantOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteParticipantOptions(string pathConversationSid, string pathSid)
         {
@@ -313,7 +313,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class FetchParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this participant.
+        /// The unique ID of the Conversation for this participant.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -324,7 +324,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new FetchParticipantOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this participant. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchParticipantOptions(string pathConversationSid, string pathSid)
         {
@@ -350,14 +350,14 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class ReadParticipantOptions : ReadOptions<ParticipantResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for participants.
+        /// The unique ID of the Conversation for participants.
         /// </summary>
         public string PathConversationSid { get; }
 
         /// <summary>
         /// Construct a new ReadParticipantOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for participants. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
         public ReadParticipantOptions(string pathConversationSid)
         {
             PathConversationSid = pathConversationSid;

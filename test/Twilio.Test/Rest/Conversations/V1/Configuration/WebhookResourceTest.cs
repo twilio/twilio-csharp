@@ -12,13 +12,13 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Conversations.V1;
+using Twilio.Rest.Conversations.V1.Configuration;
 
-namespace Twilio.Tests.Rest.Conversations.V1
+namespace Twilio.Tests.Rest.Conversations.V1.Configuration
 {
 
     [TestFixture]
-    public class ConfigurationTest : TwilioTest
+    public class WebhookTest : TwilioTest
     {
         [Test]
         public void TestFetchRequest()
@@ -27,14 +27,14 @@ namespace Twilio.Tests.Rest.Conversations.V1
             var request = new Request(
                 HttpMethod.Get,
                 Twilio.Rest.Domain.Conversations,
-                "/v1/Configuration",
+                "/v1/Configuration/Webhooks",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ConfigurationResource.Fetch(client: twilioRestClient);
+                WebhookResource.Fetch(client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Conversations.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_chat_service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_inactive_timer\": \"PT1M\",\"default_closed_timer\": \"PT10M\",\"url\": \"https://conversations.twilio.com/v1/Configuration\",\"links\": {\"service\": \"https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Configuration\",\"webhooks\": \"https://conversations.twilio.com/v1/Configuration/Webhooks\"}}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"pre_webhook_url\": \"https://example.com/pre\",\"post_webhook_url\": \"https://example.com/post\",\"method\": \"GET\",\"filters\": [\"onMessageSend\",\"onConversationUpdated\"],\"target\": \"webhook\",\"url\": \"https://conversations.twilio.com/v1/Configuration/Webhooks\"}"
                                      ));
 
-            var response = ConfigurationResource.Fetch(client: twilioRestClient);
+            var response = WebhookResource.Fetch(client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -63,14 +63,14 @@ namespace Twilio.Tests.Rest.Conversations.V1
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Conversations,
-                "/v1/Configuration",
+                "/v1/Configuration/Webhooks",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ConfigurationResource.Update(client: twilioRestClient);
+                WebhookResource.Update(client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -85,10 +85,10 @@ namespace Twilio.Tests.Rest.Conversations.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_chat_service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"default_inactive_timer\": \"PT1M\",\"default_closed_timer\": \"PT10M\",\"url\": \"https://conversations.twilio.com/v1/Configuration\",\"links\": {\"service\": \"https://conversations.twilio.com/v1/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Configuration\",\"webhooks\": \"https://conversations.twilio.com/v1/Configuration/Webhooks\"}}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"pre_webhook_url\": \"https://example.com/pre\",\"post_webhook_url\": \"http://example.com/post\",\"method\": \"GET\",\"filters\": [\"onConversationUpdated\"],\"target\": \"webhook\",\"url\": \"https://conversations.twilio.com/v1/Configuration/Webhooks\"}"
                                      ));
 
-            var response = ConfigurationResource.Update(client: twilioRestClient);
+            var response = WebhookResource.Update(client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

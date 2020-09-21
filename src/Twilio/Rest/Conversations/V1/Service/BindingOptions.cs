@@ -57,7 +57,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     public class FetchBindingOptions : IOptions<BindingResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
@@ -68,7 +68,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Construct a new FetchBindingOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchBindingOptions(string pathChatServiceSid, string pathSid)
         {
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     public class ReadBindingOptions : ReadOptions<BindingResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
@@ -102,14 +102,14 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// </summary>
         public List<BindingResource.BindingTypeEnum> BindingType { get; set; }
         /// <summary>
-        /// The `identity` value of the resources to read.
+        /// The identity of Conversation User associated with this binding.
         /// </summary>
         public List<string> Identity { get; set; }
 
         /// <summary>
         /// Construct a new ReadBindingOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         public ReadBindingOptions(string pathChatServiceSid)
         {
             PathChatServiceSid = pathChatServiceSid;

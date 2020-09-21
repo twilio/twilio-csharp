@@ -18,7 +18,7 @@ using Twilio.Exceptions;
 using Twilio.Http;
 using Twilio.Types;
 
-namespace Twilio.Rest.Conversations.V1
+namespace Twilio.Rest.Conversations.V1.Configuration
 {
 
     public class WebhookResource : Resource
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Conversations.V1
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
-                "/v1/Conversations/Webhooks",
+                "/v1/Configuration/Webhooks",
                 queryParams: options.GetParams(),
                 headerParams: null
             );
@@ -118,7 +118,7 @@ namespace Twilio.Rest.Conversations.V1
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
-                "/v1/Conversations/Webhooks",
+                "/v1/Configuration/Webhooks",
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -216,7 +216,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this conversation.
+        /// The unique ID of the Account responsible for this conversation.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }

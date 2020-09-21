@@ -17,7 +17,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Conversations.V1
+namespace Twilio.Rest.Conversations.V1.Service.Configuration
 {
 
     public class NotificationResource : Resource
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the Configuration applies to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         /// <param name="logEnabled"> Weather the notification logging is enabled. </param>
         /// <param name="newMessageEnabled"> Whether to send a notification when a new message is added to a conversation.
         ///                         </param>
@@ -109,7 +109,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the Configuration applies to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         /// <param name="logEnabled"> Weather the notification logging is enabled. </param>
         /// <param name="newMessageEnabled"> Whether to send a notification when a new message is added to a conversation.
         ///                         </param>
@@ -193,7 +193,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the Configuration applies to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Notification </returns>
         public static NotificationResource Fetch(string pathChatServiceSid, ITwilioRestClient client = null)
@@ -206,7 +206,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the Configuration applies to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
         public static async System.Threading.Tasks.Task<NotificationResource> FetchAsync(string pathChatServiceSid,
@@ -236,12 +236,12 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this configuration.
+        /// The unique ID of the Account responsible for this configuration.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Chat Service that the Configuration applies to.
+        /// The SID of the Conversation Service that the Configuration applies to.
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }

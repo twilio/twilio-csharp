@@ -8,42 +8,37 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Events.V1.Subscription
+namespace Twilio.Rest.Events.V1
 {
 
     /// <summary>
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a list of all Subscribed Event types for a Subscription.
+    /// Fetch a specific schema with its nested versions.
     /// </summary>
-    public class ReadSubscribedEventOptions : ReadOptions<SubscribedEventResource>
+    public class FetchSchemaOptions : IOptions<SchemaResource>
     {
         /// <summary>
-        /// Subscription SID.
+        /// The unique identifier of the schema.
         /// </summary>
-        public string PathSubscriptionSid { get; }
+        public string PathId { get; }
 
         /// <summary>
-        /// Construct a new ReadSubscribedEventOptions
+        /// Construct a new FetchSchemaOptions
         /// </summary>
-        /// <param name="pathSubscriptionSid"> Subscription SID. </param>
-        public ReadSubscribedEventOptions(string pathSubscriptionSid)
+        /// <param name="pathId"> The unique identifier of the schema. </param>
+        public FetchSchemaOptions(string pathId)
         {
-            PathSubscriptionSid = pathSubscriptionSid;
+            PathId = pathId;
         }
 
         /// <summary>
         /// Generate the necessary parameters
         /// </summary>
-        public override List<KeyValuePair<string, string>> GetParams()
+        public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (PageSize != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
-            }
-
             return p;
         }
     }

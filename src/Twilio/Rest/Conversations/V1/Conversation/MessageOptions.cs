@@ -19,7 +19,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class CreateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -43,7 +43,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The Media Sid to be attached to the new Message.
+        /// The Media SID to be attached to the new Message.
         /// </summary>
         public string MediaSid { get; set; }
         /// <summary>
@@ -54,7 +54,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         public CreateMessageOptions(string pathConversationSid)
         {
             PathConversationSid = pathConversationSid;
@@ -122,7 +122,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class UpdateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -157,7 +157,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateMessageOptions(string pathConversationSid, string pathSid)
         {
@@ -222,7 +222,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class DeleteMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -237,7 +237,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteMessageOptions(string pathConversationSid, string pathSid)
         {
@@ -277,7 +277,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class FetchMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -288,7 +288,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchMessageOptions(string pathConversationSid, string pathSid)
         {
@@ -314,14 +314,14 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     public class ReadMessageOptions : ReadOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for messages.
+        /// The unique ID of the Conversation for messages.
         /// </summary>
         public string PathConversationSid { get; }
 
         /// <summary>
         /// Construct a new ReadMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for messages. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
         public ReadMessageOptions(string pathConversationSid)
         {
             PathConversationSid = pathConversationSid;

@@ -370,7 +370,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this service.
+        /// The unique ID of the Account responsible for this service.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }

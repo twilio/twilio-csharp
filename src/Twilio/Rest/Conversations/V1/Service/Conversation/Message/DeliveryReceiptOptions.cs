@@ -19,15 +19,15 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
     public class FetchDeliveryReceiptOptions : IOptions<DeliveryReceiptResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this delivery receipt.
+        /// The unique ID of the Conversation for this delivery receipt.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
-        /// The sid of the message the delivery receipt belongs to.
+        /// The SID of the message the delivery receipt belongs to.
         /// </summary>
         public string PathMessageSid { get; }
         /// <summary>
@@ -38,9 +38,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         /// <summary>
         /// Construct a new FetchDeliveryReceiptOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
+        /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchDeliveryReceiptOptions(string pathChatServiceSid,
                                            string pathConversationSid,
@@ -71,24 +71,24 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
     public class ReadDeliveryReceiptOptions : ReadOptions<DeliveryReceiptResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this delivery receipt.
+        /// The unique ID of the Conversation for this delivery receipt.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
-        /// The sid of the message the delivery receipt belongs to.
+        /// The SID of the message the delivery receipt belongs to.
         /// </summary>
         public string PathMessageSid { get; }
 
         /// <summary>
         /// Construct a new ReadDeliveryReceiptOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
+        /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
         public ReadDeliveryReceiptOptions(string pathChatServiceSid, string pathConversationSid, string pathMessageSid)
         {
             PathChatServiceSid = pathChatServiceSid;

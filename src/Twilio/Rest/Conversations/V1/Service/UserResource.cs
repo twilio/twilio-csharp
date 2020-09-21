@@ -65,11 +65,11 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service that the resource is associated with </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="identity"> The string that identifies the resource's User </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the user </param>
+        /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Create(string pathChatServiceSid,
@@ -87,11 +87,11 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service that the resource is associated with </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="identity"> The string that identifies the resource's User </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the user </param>
+        /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathChatServiceSid,
@@ -149,11 +149,11 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service that the resource is associated with </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="pathSid"> The SID of the User resource to update </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the user </param>
+        /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Update(string pathChatServiceSid,
@@ -171,11 +171,11 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service that the resource is associated with </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="pathSid"> The SID of the User resource to update </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the user </param>
+        /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string pathChatServiceSid,
@@ -233,7 +233,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of  the User resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -247,7 +247,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service to delete the resource from </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of  the User resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -303,7 +303,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
         /// <param name="pathSid"> The SID of the User resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -317,7 +317,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service to fetch the resource from </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
         /// <param name="pathSid"> The SID of the User resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -377,7 +377,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service to read the User resources from </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the User resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -395,7 +395,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Service to read the User resources from </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the User resources from </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -492,12 +492,12 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The SID of the Conversation Service that the resource is associated with
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
         /// <summary>
-        /// The SID of the Role assigned to the user
+        /// The SID of a service-level Role assigned to the user
         /// </summary>
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }

@@ -12,9 +12,9 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Conversations.V1;
+using Twilio.Rest.Conversations.V1.Service.Configuration;
 
-namespace Twilio.Tests.Rest.Conversations.V1
+namespace Twilio.Tests.Rest.Conversations.V1.Service.Configuration
 {
 
     [TestFixture]

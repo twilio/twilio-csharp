@@ -129,8 +129,8 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="defaultChatServiceSid"> The SID of the default Chat Service that every new conversation will be
-        ///                             associated with. </param>
+        /// <param name="defaultChatServiceSid"> The SID of the default Conversation Service that every new conversation will
+        ///                             be associated with. </param>
         /// <param name="defaultMessagingServiceSid"> The SID of the default Messaging Service that every new conversation will
         ///                                  be associated with. </param>
         /// <param name="defaultInactiveTimer"> Default ISO8601 duration when conversation will be switched to `inactive`
@@ -153,8 +153,8 @@ namespace Twilio.Rest.Conversations.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="defaultChatServiceSid"> The SID of the default Chat Service that every new conversation will be
-        ///                             associated with. </param>
+        /// <param name="defaultChatServiceSid"> The SID of the default Conversation Service that every new conversation will
+        ///                             be associated with. </param>
         /// <param name="defaultMessagingServiceSid"> The SID of the default Messaging Service that every new conversation will
         ///                                  be associated with. </param>
         /// <param name="defaultInactiveTimer"> Default ISO8601 duration when conversation will be switched to `inactive`
@@ -198,7 +198,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the default Chat Service that every new conversation is associated with.
+        /// The SID of the default Conversation Service that every new conversation is associated with.
         /// </summary>
         [JsonProperty("default_chat_service_sid")]
         public string DefaultChatServiceSid { get; private set; }

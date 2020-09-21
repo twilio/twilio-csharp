@@ -68,7 +68,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="identity"> The string that identifies the resource's User </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the user </param>
+        /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Create(string identity,
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="identity"> The string that identifies the resource's User </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the user </param>
+        /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string identity,
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="pathSid"> The SID of the User resource to update </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the user </param>
+        /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Update(string pathSid,
@@ -168,7 +168,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="pathSid"> The SID of the User resource to update </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
-        /// <param name="roleSid"> The SID of the Role to assign to the user </param>
+        /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string pathSid,
@@ -473,12 +473,12 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The SID of the Conversation Service that the resource is associated with
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
         /// <summary>
-        /// The SID of the Role assigned to the user
+        /// The SID of a service-level Role assigned to the user
         /// </summary>
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }

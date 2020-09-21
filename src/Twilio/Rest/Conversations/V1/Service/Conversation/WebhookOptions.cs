@@ -20,11 +20,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class CreateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -48,7 +48,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// </summary>
         public List<string> ConfigurationTriggers { get; set; }
         /// <summary>
-        /// The studio flow sid, where the webhook should be sent to.
+        /// The studio flow SID, where the webhook should be sent to.
         /// </summary>
         public string ConfigurationFlowSid { get; set; }
         /// <summary>
@@ -59,8 +59,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// Construct a new CreateWebhookOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="target"> The target of this webhook. </param>
         public CreateWebhookOptions(string pathChatServiceSid, string pathConversationSid, WebhookResource.TargetEnum target)
         {
@@ -124,11 +124,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class UpdateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -152,15 +152,15 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// </summary>
         public List<string> ConfigurationTriggers { get; set; }
         /// <summary>
-        /// The studio flow sid, where the webhook should be sent to.
+        /// The studio flow SID, where the webhook should be sent to.
         /// </summary>
         public string ConfigurationFlowSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWebhookOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateWebhookOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
@@ -214,11 +214,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class DeleteWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -229,8 +229,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// Construct a new DeleteWebhookOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteWebhookOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
@@ -257,11 +257,11 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class FetchWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -272,8 +272,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// <summary>
         /// Construct a new FetchWebhookOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchWebhookOptions(string pathChatServiceSid, string pathConversationSid, string pathSid)
         {
@@ -300,19 +300,19 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     public class ReadWebhookOptions : ReadOptions<WebhookResource>
     {
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
 
         /// <summary>
         /// Construct a new ReadWebhookOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         public ReadWebhookOptions(string pathChatServiceSid, string pathConversationSid)
         {
             PathChatServiceSid = pathChatServiceSid;

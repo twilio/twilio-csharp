@@ -31,7 +31,7 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The SID of the Role to assign to the user
+        /// The SID of a service-level Role to assign to the user
         /// </summary>
         public string RoleSid { get; set; }
 
@@ -94,7 +94,7 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The SID of the Role to assign to the user
+        /// The SID of a service-level Role to assign to the user
         /// </summary>
         public string RoleSid { get; set; }
 

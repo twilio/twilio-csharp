@@ -150,7 +150,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns>
@@ -164,7 +164,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>
@@ -224,9 +224,9 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="bindingType"> The push technology used by the Binding resources to read. </param>
-        /// <param name="identity"> The `identity` value of the resources to read. </param>
+        /// <param name="identity"> The identity of Conversation User associated with this binding. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -246,9 +246,9 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="bindingType"> The push technology used by the Binding resources to read. </param>
-        /// <param name="identity"> The `identity` value of the resources to read. </param>
+        /// <param name="identity"> The identity of Conversation User associated with this binding. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -342,12 +342,12 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique id of the Account responsible for this binding.
+        /// The unique ID of the Account responsible for this binding.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
@@ -372,7 +372,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("endpoint")]
         public string Endpoint { get; private set; }
         /// <summary>
-        /// The string that identifies the resource's User.
+        /// The identity of Conversation User associated with this binding.
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
@@ -383,7 +383,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonConverter(typeof(StringEnumConverter))]
         public BindingResource.BindingTypeEnum BindingType { get; private set; }
         /// <summary>
-        /// The Chat message types the binding is subscribed to.
+        /// The Conversation message types the binding is subscribed to.
         /// </summary>
         [JsonProperty("message_types")]
         public List<string> MessageTypes { get; private set; }

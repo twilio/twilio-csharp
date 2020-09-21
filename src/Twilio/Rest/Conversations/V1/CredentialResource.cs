@@ -515,7 +515,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The unique id of the Account responsible for this credential.
+        /// The unique ID of the Account responsible for this credential.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }

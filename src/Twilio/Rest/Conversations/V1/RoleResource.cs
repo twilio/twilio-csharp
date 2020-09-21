@@ -473,7 +473,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The SID of the Conversation Service that the resource is associated with
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }

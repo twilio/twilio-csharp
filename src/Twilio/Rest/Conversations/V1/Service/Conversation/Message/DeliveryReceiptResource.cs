@@ -82,9 +82,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
+        /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of DeliveryReceipt </returns>
@@ -102,9 +102,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
+        /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of DeliveryReceipt </returns>
@@ -167,9 +167,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
+        /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -189,9 +189,9 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathChatServiceSid"> The SID of the Chat Service that the resource is associated with. </param>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
+        /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -281,22 +281,22 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this participant.
+        /// The unique ID of the Account responsible for this participant.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Chat Service that the resource is associated with.
+        /// The SID of the Conversation Service that the resource is associated with.
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         [JsonProperty("conversation_sid")]
         public string ConversationSid { get; private set; }
         /// <summary>
-        /// The sid of the message the delivery receipt belongs to
+        /// The SID of the message the delivery receipt belongs to
         /// </summary>
         [JsonProperty("message_sid")]
         public string MessageSid { get; private set; }
@@ -311,7 +311,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
         [JsonProperty("channel_message_sid")]
         public string ChannelMessageSid { get; private set; }
         /// <summary>
-        /// The unique id of the participant the delivery receipt belongs to.
+        /// The unique ID of the participant the delivery receipt belongs to.
         /// </summary>
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }

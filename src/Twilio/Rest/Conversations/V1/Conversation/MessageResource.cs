@@ -79,13 +79,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="author"> The channel specific identifier of the message's author. </param>
         /// <param name="body"> The content of the message. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. </param>
-        /// <param name="mediaSid"> The Media Sid to be attached to the new Message. </param>
+        /// <param name="mediaSid"> The Media SID to be attached to the new Message. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -107,13 +107,13 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="author"> The channel specific identifier of the message's author. </param>
         /// <param name="body"> The content of the message. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> A string metadata field you can use to store any data you wish. </param>
-        /// <param name="mediaSid"> The Media Sid to be attached to the new Message. </param>
+        /// <param name="mediaSid"> The Media SID to be attached to the new Message. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="author"> The channel specific identifier of the message's author. </param>
         /// <param name="body"> The content of the message. </param>
@@ -203,7 +203,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="author"> The channel specific identifier of the message's author. </param>
         /// <param name="body"> The content of the message. </param>
@@ -271,7 +271,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -289,7 +289,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -347,7 +347,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -361,7 +361,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -421,7 +421,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for messages. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -439,7 +439,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for messages. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -526,12 +526,12 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this message.
+        /// The unique ID of the Account responsible for this message.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         [JsonProperty("conversation_sid")]
         public string ConversationSid { get; private set; }
@@ -566,7 +566,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// The unique id of messages's author participant.
+        /// The unique ID of messages's author participant.
         /// </summary>
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }

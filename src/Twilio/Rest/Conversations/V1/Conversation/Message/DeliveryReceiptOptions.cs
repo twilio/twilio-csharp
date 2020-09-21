@@ -19,11 +19,11 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
     public class FetchDeliveryReceiptOptions : IOptions<DeliveryReceiptResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this delivery receipt.
+        /// The unique ID of the Conversation for this delivery receipt.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
-        /// The sid of the message the delivery receipt belongs to.
+        /// The SID of the message the delivery receipt belongs to.
         /// </summary>
         public string PathMessageSid { get; }
         /// <summary>
@@ -34,8 +34,8 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         /// <summary>
         /// Construct a new FetchDeliveryReceiptOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
+        /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchDeliveryReceiptOptions(string pathConversationSid, string pathMessageSid, string pathSid)
         {
@@ -62,19 +62,19 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
     public class ReadDeliveryReceiptOptions : ReadOptions<DeliveryReceiptResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this delivery receipt.
+        /// The unique ID of the Conversation for this delivery receipt.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
-        /// The sid of the message the delivery receipt belongs to.
+        /// The SID of the message the delivery receipt belongs to.
         /// </summary>
         public string PathMessageSid { get; }
 
         /// <summary>
         /// Construct a new ReadDeliveryReceiptOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this delivery receipt. </param>
-        /// <param name="pathMessageSid"> The sid of the message the delivery receipt belongs to. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
+        /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
         public ReadDeliveryReceiptOptions(string pathConversationSid, string pathMessageSid)
         {
             PathConversationSid = pathConversationSid;
