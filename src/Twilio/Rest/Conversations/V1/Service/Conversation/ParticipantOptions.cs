@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateParticipantOptions
+    /// Add a new participant to the conversation in a specific service
     /// </summary>
     public class CreateParticipantOptions : IOptions<ParticipantResource>
     {
@@ -139,9 +137,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateParticipantOptions
+    /// Update an existing participant in the conversation
     /// </summary>
     public class UpdateParticipantOptions : IOptions<ParticipantResource>
     {
@@ -263,9 +259,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteParticipantOptions
+    /// Remove a participant from the conversation
     /// </summary>
     public class DeleteParticipantOptions : IOptions<ParticipantResource>
     {
@@ -324,9 +318,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchParticipantOptions
+    /// Fetch a participant of the conversation
     /// </summary>
     public class FetchParticipantOptions : IOptions<ParticipantResource>
     {
@@ -367,9 +359,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadParticipantOptions
+    /// Retrieve a list of all participants of the conversation
     /// </summary>
     public class ReadParticipantOptions : ReadOptions<ParticipantResource>
     {

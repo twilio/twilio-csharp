@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// RoleResource
 /// </summary>
 
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// create
+        /// Create a new user role in your service
         /// </summary>
         /// <param name="options"> Create Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,7 +60,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new user role in your service
         /// </summary>
         /// <param name="options"> Create Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,7 +75,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new user role in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to create the resource under </param>
         /// <param name="friendlyName"> A string to describe the new resource </param>
@@ -97,7 +95,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new user role in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to create the resource under </param>
         /// <param name="friendlyName"> A string to describe the new resource </param>
@@ -128,7 +126,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// update
+        /// Update an existing user role in your service
         /// </summary>
         /// <param name="options"> Update Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -142,7 +140,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing user role in your service
         /// </summary>
         /// <param name="options"> Update Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -157,7 +155,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing user role in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to update the resource from </param>
         /// <param name="pathSid"> The SID of the Role resource to update </param>
@@ -175,7 +173,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing user role in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to update the resource from </param>
         /// <param name="pathSid"> The SID of the Role resource to update </param>
@@ -204,7 +202,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// delete
+        /// Remove a user role from your service
         /// </summary>
         /// <param name="options"> Delete Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -218,7 +216,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a user role from your service
         /// </summary>
         /// <param name="options"> Delete Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -233,7 +231,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a user role from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of the Role resource to delete </param>
@@ -247,7 +245,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a user role from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of the Role resource to delete </param>
@@ -274,7 +272,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a user role from your service
         /// </summary>
         /// <param name="options"> Fetch Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -288,7 +286,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a user role from your service
         /// </summary>
         /// <param name="options"> Fetch Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -303,7 +301,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a user role from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
         /// <param name="pathSid"> The SID of the Role resource to fetch </param>
@@ -317,7 +315,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a user role from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
         /// <param name="pathSid"> The SID of the Role resource to fetch </param>
@@ -344,7 +342,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all user roles in your service
         /// </summary>
         /// <param name="options"> Read Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -360,7 +358,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all user roles in your service
         /// </summary>
         /// <param name="options"> Read Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -377,7 +375,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all user roles in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the resources from </param>
         /// <param name="pageSize"> Page size </param>
@@ -395,7 +393,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all user roles in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the resources from </param>
         /// <param name="pageSize"> Page size </param>
@@ -525,7 +523,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The absolute URL of the Role resource
+        /// An absolute URL for this user role.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

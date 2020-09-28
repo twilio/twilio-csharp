@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// BindingResource
 /// </summary>
 
@@ -49,7 +47,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// delete
+        /// Remove a push notification binding from the conversation service
         /// </summary>
         /// <param name="options"> Delete Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,7 +61,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a push notification binding from the conversation service
         /// </summary>
         /// <param name="options"> Delete Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -78,7 +76,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a push notification binding from the conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pathSid"> The SID of the resource to delete </param>
@@ -92,7 +90,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a push notification binding from the conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pathSid"> The SID of the resource to delete </param>
@@ -119,7 +117,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a push notification binding from the conversation service
         /// </summary>
         /// <param name="options"> Fetch Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -133,7 +131,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a push notification binding from the conversation service
         /// </summary>
         /// <param name="options"> Fetch Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -148,7 +146,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a push notification binding from the conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -162,7 +160,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a push notification binding from the conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -189,7 +187,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all push notification bindings in the conversation service
         /// </summary>
         /// <param name="options"> Read Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -205,7 +203,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all push notification bindings in the conversation service
         /// </summary>
         /// <param name="options"> Read Binding parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -222,7 +220,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all push notification bindings in the conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="bindingType"> The push technology used by the Binding resources to read. </param>
@@ -244,7 +242,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all push notification bindings in the conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="bindingType"> The push technology used by the Binding resources to read. </param>

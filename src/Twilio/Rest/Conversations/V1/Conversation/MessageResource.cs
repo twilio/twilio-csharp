@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// MessageResource
 /// </summary>
 
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// create
+        /// Add a new message to the conversation
         /// </summary>
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,7 +60,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new message to the conversation
         /// </summary>
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,7 +75,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// create
+        /// Add a new message to the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="author"> The channel specific identifier of the message's author. </param>
@@ -105,7 +103,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new message to the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="author"> The channel specific identifier of the message's author. </param>
@@ -144,7 +142,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// update
+        /// Update an existing message in the conversation
         /// </summary>
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -158,7 +156,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing message in the conversation
         /// </summary>
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -173,7 +171,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing message in the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -201,7 +199,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing message in the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -240,7 +238,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// delete
+        /// Remove a message from the conversation
         /// </summary>
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -254,7 +252,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a message from the conversation
         /// </summary>
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -269,7 +267,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a message from the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -287,7 +285,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a message from the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -316,7 +314,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a message from the conversation
         /// </summary>
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -330,7 +328,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a message from the conversation
         /// </summary>
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -345,7 +343,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a message from the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -359,7 +357,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a message from the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -386,7 +384,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -402,7 +400,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -419,7 +417,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
         /// <param name="pageSize"> Page size </param>
@@ -437,7 +435,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
         /// <param name="pageSize"> Page size </param>
@@ -581,7 +579,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// An absolute URL for this message.
+        /// An absolute API URL for this message.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
@@ -591,7 +589,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         [JsonProperty("delivery")]
         public object Delivery { get; private set; }
         /// <summary>
-        /// The links
+        /// Absolute URL to access the receipts of this message.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

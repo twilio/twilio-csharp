@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateMessageOptions
+    /// Add a new message to the conversation in a specific service
     /// </summary>
     public class CreateMessageOptions : IOptions<MessageResource>
     {
@@ -121,9 +119,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateMessageOptions
+    /// Update an existing message in the conversation
     /// </summary>
     public class UpdateMessageOptions : IOptions<MessageResource>
     {
@@ -227,9 +223,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteMessageOptions
+    /// Remove a message from the conversation
     /// </summary>
     public class DeleteMessageOptions : IOptions<MessageResource>
     {
@@ -288,9 +282,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchMessageOptions
+    /// Fetch a message from the conversation
     /// </summary>
     public class FetchMessageOptions : IOptions<MessageResource>
     {
@@ -331,9 +323,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadMessageOptions
+    /// Retrieve a list of all messages in the conversation
     /// </summary>
     public class ReadMessageOptions : ReadOptions<MessageResource>
     {

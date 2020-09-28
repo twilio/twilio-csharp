@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateNotificationOptions
+    /// Update push notification service settings
     /// </summary>
     public class UpdateNotificationOptions : IOptions<NotificationResource>
     {
@@ -142,9 +140,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchNotificationOptions
+    /// Fetch push notification service settings
     /// </summary>
     public class FetchNotificationOptions : IOptions<NotificationResource>
     {

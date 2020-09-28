@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// MessageResource
 /// </summary>
 
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// create
+        /// Add a new message to the conversation in a specific service
         /// </summary>
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,7 +60,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new message to the conversation in a specific service
         /// </summary>
         /// <param name="options"> Create Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,7 +75,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// create
+        /// Add a new message to the conversation in a specific service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
@@ -107,7 +105,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new message to the conversation in a specific service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
@@ -148,7 +146,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// update
+        /// Update an existing message in the conversation
         /// </summary>
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -162,7 +160,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing message in the conversation
         /// </summary>
         /// <param name="options"> Update Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -177,7 +175,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing message in the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
@@ -207,7 +205,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing message in the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
@@ -248,7 +246,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// delete
+        /// Remove a message from the conversation
         /// </summary>
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -262,7 +260,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a message from the conversation
         /// </summary>
         /// <param name="options"> Delete Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -277,7 +275,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a message from the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
@@ -297,7 +295,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a message from the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
@@ -328,7 +326,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a message from the conversation
         /// </summary>
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -342,7 +340,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a message from the conversation
         /// </summary>
         /// <param name="options"> Fetch Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -357,7 +355,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a message from the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
@@ -375,7 +373,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a message from the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
@@ -404,7 +402,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -420,7 +418,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="options"> Read Message parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -437,7 +435,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
@@ -457,7 +455,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all messages in the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
@@ -618,7 +616,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Absolute URLs to access the Receipts of this Message.
+        /// Absolute URL to access the receipts of this message.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// ParticipantResource
 /// </summary>
 
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// create
+        /// Add a new participant to the conversation in a specific service
         /// </summary>
         /// <param name="options"> Create Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,7 +60,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new participant to the conversation in a specific service
         /// </summary>
         /// <param name="options"> Create Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,7 +75,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// create
+        /// Add a new participant to the conversation in a specific service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
@@ -113,7 +111,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new participant to the conversation in a specific service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
@@ -160,7 +158,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// update
+        /// Update an existing participant in the conversation
         /// </summary>
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -174,7 +172,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing participant in the conversation
         /// </summary>
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -189,7 +187,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing participant in the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
@@ -225,7 +223,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing participant in the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
@@ -272,7 +270,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// delete
+        /// Remove a participant from the conversation
         /// </summary>
         /// <param name="options"> Delete Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -286,7 +284,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a participant from the conversation
         /// </summary>
         /// <param name="options"> Delete Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -301,7 +299,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a participant from the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
@@ -321,7 +319,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a participant from the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
@@ -352,7 +350,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a participant of the conversation
         /// </summary>
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -366,7 +364,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a participant of the conversation
         /// </summary>
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -381,7 +379,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a participant of the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
@@ -399,7 +397,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a participant of the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
@@ -428,7 +426,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all participants of the conversation
         /// </summary>
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -444,7 +442,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all participants of the conversation
         /// </summary>
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -461,7 +459,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all participants of the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
@@ -481,7 +479,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all participants of the conversation
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>

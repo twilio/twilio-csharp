@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// ConversationResource
 /// </summary>
 
@@ -62,7 +60,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// create
+        /// Create a new conversation in your service
         /// </summary>
         /// <param name="options"> Create Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -76,7 +74,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new conversation in your service
         /// </summary>
         /// <param name="options"> Create Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -91,7 +89,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new conversation in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
@@ -125,7 +123,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new conversation in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
@@ -170,7 +168,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// update
+        /// Update an existing conversation in your service
         /// </summary>
         /// <param name="options"> Update Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -184,7 +182,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing conversation in your service
         /// </summary>
         /// <param name="options"> Update Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -199,7 +197,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing conversation in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -233,7 +231,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing conversation in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -278,7 +276,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// delete
+        /// Remove a conversation from your service
         /// </summary>
         /// <param name="options"> Delete Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -292,7 +290,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a conversation from your service
         /// </summary>
         /// <param name="options"> Delete Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -307,7 +305,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a conversation from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -325,7 +323,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a conversation from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -354,7 +352,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a conversation from your service
         /// </summary>
         /// <param name="options"> Fetch Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -368,7 +366,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a conversation from your service
         /// </summary>
         /// <param name="options"> Fetch Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -383,7 +381,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a conversation from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -397,7 +395,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a conversation from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -424,7 +422,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of conversations in your service
         /// </summary>
         /// <param name="options"> Read Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -441,7 +439,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of conversations in your service
         /// </summary>
         /// <param name="options"> Read Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -458,7 +456,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of conversations in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pageSize"> Page size </param>
@@ -476,7 +474,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of conversations in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The chat_service_sid </param>
         /// <param name="pageSize"> Page size </param>
@@ -626,7 +624,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Absolute URLs to access the Participants, Messages and Webhooks of this Conversation.
+        /// Absolute URLs to access the participants, messages and webhooks of this conversation.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

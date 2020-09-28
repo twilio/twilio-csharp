@@ -31,11 +31,12 @@ namespace Twilio.Tests.Rest.Conversations.V1
                 ""
             );
             request.AddPostParam("Identity", Serialize("identity"));
+            request.AddHeaderParam("X-Twilio-Webhook-Enabled", Serialize(UserResource.WebhookEnabledTypeEnum.True));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                UserResource.Create("identity", client: twilioRestClient);
+                UserResource.Create("identity", xTwilioWebhookEnabled: Serialize(UserResource.WebhookEnabledTypeEnum.True), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -53,7 +54,7 @@ namespace Twilio.Tests.Rest.Conversations.V1
                                          "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"chat_service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"admin\",\"friendly_name\": \"name\",\"attributes\": \"{ \\\"duty\\\": \\\"tech\\\" }\",\"is_online\": null,\"date_created\": \"2019-12-16T22:18:37Z\",\"date_updated\": \"2019-12-16T22:18:38Z\",\"url\": \"https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = UserResource.Create("identity", client: twilioRestClient);
+            var response = UserResource.Create("identity", xTwilioWebhookEnabled: Serialize(UserResource.WebhookEnabledTypeEnum.True), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -67,11 +68,12 @@ namespace Twilio.Tests.Rest.Conversations.V1
                 "/v1/Users/USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
+            request.AddHeaderParam("X-Twilio-Webhook-Enabled", Serialize(UserResource.WebhookEnabledTypeEnum.True));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                UserResource.Update("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                UserResource.Update("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", xTwilioWebhookEnabled: Serialize(UserResource.WebhookEnabledTypeEnum.True), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -89,7 +91,7 @@ namespace Twilio.Tests.Rest.Conversations.V1
                                          "{\"sid\": \"USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"chat_service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"role_sid\": \"RLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"admin\",\"friendly_name\": \"new name\",\"attributes\": \"{ \\\"duty\\\": \\\"tech\\\", \\\"team\\\": \\\"internals\\\" }\",\"is_online\": null,\"date_created\": \"2019-12-16T22:18:37Z\",\"date_updated\": \"2019-12-16T22:18:38Z\",\"url\": \"https://conversations.twilio.com/v1/Users/USaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
                                      ));
 
-            var response = UserResource.Update("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = UserResource.Update("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", xTwilioWebhookEnabled: Serialize(UserResource.WebhookEnabledTypeEnum.True), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -103,11 +105,12 @@ namespace Twilio.Tests.Rest.Conversations.V1
                 "/v1/Users/USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
+            request.AddHeaderParam("X-Twilio-Webhook-Enabled", Serialize(UserResource.WebhookEnabledTypeEnum.True));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                UserResource.Delete("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                UserResource.Delete("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", xTwilioWebhookEnabled: Serialize(UserResource.WebhookEnabledTypeEnum.True), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +128,7 @@ namespace Twilio.Tests.Rest.Conversations.V1
                                          "null"
                                      ));
 
-            var response = UserResource.Delete("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = UserResource.Delete("USXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", xTwilioWebhookEnabled: Serialize(UserResource.WebhookEnabledTypeEnum.True), client: twilioRestClient);
             Assert.NotNull(response);
         }
 

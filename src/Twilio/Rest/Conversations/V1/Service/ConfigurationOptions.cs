@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchConfigurationOptions
+    /// Fetch the configuration of a conversation service
     /// </summary>
     public class FetchConfigurationOptions : IOptions<ConfigurationResource>
     {
@@ -43,9 +41,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateConfigurationOptions
+    /// Update configuration settings of a conversation service
     /// </summary>
     public class UpdateConfigurationOptions : IOptions<ConfigurationResource>
     {

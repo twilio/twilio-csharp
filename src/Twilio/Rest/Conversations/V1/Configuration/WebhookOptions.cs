@@ -13,8 +13,6 @@ namespace Twilio.Rest.Conversations.V1.Configuration
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// FetchWebhookOptions
     /// </summary>
     public class FetchWebhookOptions : IOptions<WebhookResource>
@@ -30,8 +28,6 @@ namespace Twilio.Rest.Conversations.V1.Configuration
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// UpdateWebhookOptions
     /// </summary>
     public class UpdateWebhookOptions : IOptions<WebhookResource>

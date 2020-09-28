@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// RoleResource
 /// </summary>
 
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// create
+        /// Create a new user role in your account's default service
         /// </summary>
         /// <param name="options"> Create Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,7 +60,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new user role in your account's default service
         /// </summary>
         /// <param name="options"> Create Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,7 +75,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new user role in your account's default service
         /// </summary>
         /// <param name="friendlyName"> A string to describe the new resource </param>
         /// <param name="type"> The type of role </param>
@@ -95,7 +93,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new user role in your account's default service
         /// </summary>
         /// <param name="friendlyName"> A string to describe the new resource </param>
         /// <param name="type"> The type of role </param>
@@ -124,7 +122,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// update
+        /// Update an existing user role in your account's default service
         /// </summary>
         /// <param name="options"> Update Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -138,7 +136,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing user role in your account's default service
         /// </summary>
         /// <param name="options"> Update Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -153,7 +151,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing user role in your account's default service
         /// </summary>
         /// <param name="pathSid"> The SID of the Role resource to update </param>
         /// <param name="permission"> A permission the role should have </param>
@@ -167,7 +165,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing user role in your account's default service
         /// </summary>
         /// <param name="pathSid"> The SID of the Role resource to update </param>
         /// <param name="permission"> A permission the role should have </param>
@@ -194,7 +192,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// delete
+        /// Remove a user role from your account's default service
         /// </summary>
         /// <param name="options"> Delete Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -208,7 +206,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a user role from your account's default service
         /// </summary>
         /// <param name="options"> Delete Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -223,7 +221,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a user role from your account's default service
         /// </summary>
         /// <param name="pathSid"> The SID of the Role resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -236,7 +234,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a user role from your account's default service
         /// </summary>
         /// <param name="pathSid"> The SID of the Role resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -260,7 +258,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a user role from your account's default service
         /// </summary>
         /// <param name="options"> Fetch Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -274,7 +272,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a user role from your account's default service
         /// </summary>
         /// <param name="options"> Fetch Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -289,7 +287,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a user role from your account's default service
         /// </summary>
         /// <param name="pathSid"> The SID of the Role resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -302,7 +300,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a user role from your account's default service
         /// </summary>
         /// <param name="pathSid"> The SID of the Role resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -327,7 +325,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all user roles in your account's default service
         /// </summary>
         /// <param name="options"> Read Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -343,7 +341,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all user roles in your account's default service
         /// </summary>
         /// <param name="options"> Read Role parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -360,7 +358,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all user roles in your account's default service
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -376,7 +374,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all user roles in your account's default service
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -504,7 +502,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The absolute URL of the Role resource
+        /// An absolute URL for this user role.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

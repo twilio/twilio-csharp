@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateConversationOptions
+    /// Create a new conversation in your account's default service
     /// </summary>
     public class CreateConversationOptions : IOptions<ConversationResource>
     {
@@ -129,9 +127,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateConversationOptions
+    /// Update an existing conversation in your account's default service
     /// </summary>
     public class UpdateConversationOptions : IOptions<ConversationResource>
     {
@@ -250,9 +246,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteConversationOptions
+    /// Remove a conversation from your account's default service
     /// </summary>
     public class DeleteConversationOptions : IOptions<ConversationResource>
     {
@@ -299,9 +293,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchConversationOptions
+    /// Fetch a conversation from your account's default service
     /// </summary>
     public class FetchConversationOptions : IOptions<ConversationResource>
     {
@@ -330,9 +322,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadConversationOptions
+    /// Retrieve a list of conversations in your account's default service
     /// </summary>
     public class ReadConversationOptions : ReadOptions<ConversationResource>
     {

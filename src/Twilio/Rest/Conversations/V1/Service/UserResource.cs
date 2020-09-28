@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// UserResource
 /// </summary>
 
@@ -16,12 +14,26 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Conversations.V1.Service
 {
 
     public class UserResource : Resource
     {
+        public sealed class WebhookEnabledTypeEnum : StringEnum
+        {
+            private WebhookEnabledTypeEnum(string value) : base(value) {}
+            public WebhookEnabledTypeEnum() {}
+            public static implicit operator WebhookEnabledTypeEnum(string value)
+            {
+                return new WebhookEnabledTypeEnum(value);
+            }
+
+            public static readonly WebhookEnabledTypeEnum True = new WebhookEnabledTypeEnum("true");
+            public static readonly WebhookEnabledTypeEnum False = new WebhookEnabledTypeEnum("false");
+        }
+
         private static Request BuildCreateRequest(CreateUserOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -29,12 +41,12 @@ namespace Twilio.Rest.Conversations.V1.Service
                 Rest.Domain.Conversations,
                 "/v1/Services/" + options.PathChatServiceSid + "/Users",
                 postParams: options.GetParams(),
-                headerParams: null
+                headerParams: options.GetHeaderParams()
             );
         }
 
         /// <summary>
-        /// create
+        /// Add a new conversation user to your service
         /// </summary>
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +60,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new conversation user to your service
         /// </summary>
         /// <param name="options"> Create User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,13 +75,14 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// create
+        /// Add a new conversation user to your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="identity"> The string that identifies the resource's User </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
         /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Create(string pathChatServiceSid,
@@ -77,21 +90,23 @@ namespace Twilio.Rest.Conversations.V1.Service
                                           string friendlyName = null,
                                           string attributes = null,
                                           string roleSid = null,
+                                          UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateUserOptions(pathChatServiceSid, identity){FriendlyName = friendlyName, Attributes = attributes, RoleSid = roleSid};
+            var options = new CreateUserOptions(pathChatServiceSid, identity){FriendlyName = friendlyName, Attributes = attributes, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new conversation user to your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="identity"> The string that identifies the resource's User </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
         /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathChatServiceSid,
@@ -99,9 +114,10 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                   string friendlyName = null,
                                                                                   string attributes = null,
                                                                                   string roleSid = null,
+                                                                                  UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateUserOptions(pathChatServiceSid, identity){FriendlyName = friendlyName, Attributes = attributes, RoleSid = roleSid};
+            var options = new CreateUserOptions(pathChatServiceSid, identity){FriendlyName = friendlyName, Attributes = attributes, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -113,12 +129,12 @@ namespace Twilio.Rest.Conversations.V1.Service
                 Rest.Domain.Conversations,
                 "/v1/Services/" + options.PathChatServiceSid + "/Users/" + options.PathSid + "",
                 postParams: options.GetParams(),
-                headerParams: null
+                headerParams: options.GetHeaderParams()
             );
         }
 
         /// <summary>
-        /// update
+        /// Update an existing conversation user in your service
         /// </summary>
         /// <param name="options"> Update User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -132,7 +148,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing conversation user in your service
         /// </summary>
         /// <param name="options"> Update User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -147,13 +163,14 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing conversation user in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="pathSid"> The SID of the User resource to update </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
         /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Update(string pathChatServiceSid,
@@ -161,21 +178,23 @@ namespace Twilio.Rest.Conversations.V1.Service
                                           string friendlyName = null,
                                           string attributes = null,
                                           string roleSid = null,
+                                          UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateUserOptions(pathChatServiceSid, pathSid){FriendlyName = friendlyName, Attributes = attributes, RoleSid = roleSid};
+            var options = new UpdateUserOptions(pathChatServiceSid, pathSid){FriendlyName = friendlyName, Attributes = attributes, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing conversation user in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with </param>
         /// <param name="pathSid"> The SID of the User resource to update </param>
         /// <param name="friendlyName"> The string that you assigned to describe the resource </param>
         /// <param name="attributes"> The JSON Object string that stores application-specific data </param>
         /// <param name="roleSid"> The SID of a service-level Role to assign to the user </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string pathChatServiceSid,
@@ -183,9 +202,10 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                   string friendlyName = null,
                                                                                   string attributes = null,
                                                                                   string roleSid = null,
+                                                                                  UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateUserOptions(pathChatServiceSid, pathSid){FriendlyName = friendlyName, Attributes = attributes, RoleSid = roleSid};
+            var options = new UpdateUserOptions(pathChatServiceSid, pathSid){FriendlyName = friendlyName, Attributes = attributes, RoleSid = roleSid, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -197,12 +217,12 @@ namespace Twilio.Rest.Conversations.V1.Service
                 Rest.Domain.Conversations,
                 "/v1/Services/" + options.PathChatServiceSid + "/Users/" + options.PathSid + "",
                 queryParams: options.GetParams(),
-                headerParams: null
+                headerParams: options.GetHeaderParams()
             );
         }
 
         /// <summary>
-        /// delete
+        /// Remove a conversation user from your service
         /// </summary>
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -216,7 +236,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a conversation user from your service
         /// </summary>
         /// <param name="options"> Delete User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -231,31 +251,37 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a conversation user from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of  the User resource to delete </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
-        public static bool Delete(string pathChatServiceSid, string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathChatServiceSid,
+                                  string pathSid,
+                                  UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteUserOptions(pathChatServiceSid, pathSid);
+            var options = new DeleteUserOptions(pathChatServiceSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Delete(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a conversation user from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of  the User resource to delete </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathChatServiceSid,
                                                                           string pathSid,
+                                                                          UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteUserOptions(pathChatServiceSid, pathSid);
+            var options = new DeleteUserOptions(pathChatServiceSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -272,7 +298,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a conversation user from your service
         /// </summary>
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -286,7 +312,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a conversation user from your service
         /// </summary>
         /// <param name="options"> Fetch User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -301,7 +327,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a conversation user from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
         /// <param name="pathSid"> The SID of the User resource to fetch </param>
@@ -315,7 +341,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a conversation user from your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to fetch the resource from </param>
         /// <param name="pathSid"> The SID of the User resource to fetch </param>
@@ -342,7 +368,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all conversation users in your service
         /// </summary>
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -358,7 +384,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all conversation users in your service
         /// </summary>
         /// <param name="options"> Read User parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -375,7 +401,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all conversation users in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the User resources from </param>
         /// <param name="pageSize"> Page size </param>
@@ -393,7 +419,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all conversation users in your service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service to read the User resources from </param>
         /// <param name="pageSize"> Page size </param>
@@ -532,7 +558,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The absolute URL of the User resource
+        /// An absolute URL for this user.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

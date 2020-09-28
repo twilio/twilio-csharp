@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// DeliveryReceiptResource
 /// </summary>
 
@@ -51,7 +49,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch the delivery and read receipts of the conversation message
         /// </summary>
         /// <param name="options"> Fetch DeliveryReceipt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -65,7 +63,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the delivery and read receipts of the conversation message
         /// </summary>
         /// <param name="options"> Fetch DeliveryReceipt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -80,7 +78,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch the delivery and read receipts of the conversation message
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
         /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
@@ -98,7 +96,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the delivery and read receipts of the conversation message
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
         /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
@@ -127,7 +125,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all delivery and read receipts of the conversation message
         /// </summary>
         /// <param name="options"> Read DeliveryReceipt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -144,7 +142,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all delivery and read receipts of the conversation message
         /// </summary>
         /// <param name="options"> Read DeliveryReceipt parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -161,7 +159,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all delivery and read receipts of the conversation message
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
         /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>
@@ -181,7 +179,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation.Message
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all delivery and read receipts of the conversation message
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this delivery receipt. </param>
         /// <param name="pathMessageSid"> The SID of the message the delivery receipt belongs to. </param>

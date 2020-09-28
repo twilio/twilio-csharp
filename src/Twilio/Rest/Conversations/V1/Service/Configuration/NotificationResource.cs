@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// NotificationResource
 /// </summary>
 
@@ -34,7 +32,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         }
 
         /// <summary>
-        /// update
+        /// Update push notification service settings
         /// </summary>
         /// <param name="options"> Update Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update push notification service settings
         /// </summary>
         /// <param name="options"> Update Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,7 +61,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         #endif
 
         /// <summary>
-        /// update
+        /// Update push notification service settings
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         /// <param name="logEnabled"> Weather the notification logging is enabled. </param>
@@ -107,7 +105,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update push notification service settings
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         /// <param name="logEnabled"> Weather the notification logging is enabled. </param>
@@ -162,7 +160,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch push notification service settings
         /// </summary>
         /// <param name="options"> Fetch Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -176,7 +174,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch push notification service settings
         /// </summary>
         /// <param name="options"> Fetch Notification parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -191,7 +189,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch push notification service settings
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -204,7 +202,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch push notification service settings
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the Configuration applies to. </param>
         /// <param name="client"> Client to make requests to Twilio </param>

@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateServiceOptions
+    /// Create a new conversation service on your account
     /// </summary>
     public class CreateServiceOptions : IOptions<ServiceResource>
     {
@@ -48,9 +46,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteServiceOptions
+    /// Remove a conversation service with all its nested resources from your account
     /// </summary>
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {
@@ -79,9 +75,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchServiceOptions
+    /// Fetch a conversation service from your account
     /// </summary>
     public class FetchServiceOptions : IOptions<ServiceResource>
     {
@@ -110,9 +104,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadServiceOptions
+    /// Retrieve a list of all conversation services on your account
     /// </summary>
     public class ReadServiceOptions : ReadOptions<ServiceResource>
     {

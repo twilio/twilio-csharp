@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// ServiceResource
 /// </summary>
 
@@ -34,7 +32,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// create
+        /// Create a new conversation service on your account
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new conversation service on your account
         /// </summary>
         /// <param name="options"> Create Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,7 +61,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new conversation service on your account
         /// </summary>
         /// <param name="friendlyName"> The human-readable name of this service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -76,7 +74,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new conversation service on your account
         /// </summary>
         /// <param name="friendlyName"> The human-readable name of this service. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -101,7 +99,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// delete
+        /// Remove a conversation service with all its nested resources from your account
         /// </summary>
         /// <param name="options"> Delete Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -115,7 +113,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a conversation service with all its nested resources from your account
         /// </summary>
         /// <param name="options"> Delete Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -130,7 +128,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a conversation service with all its nested resources from your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -143,7 +141,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a conversation service with all its nested resources from your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -167,7 +165,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a conversation service from your account
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -181,7 +179,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a conversation service from your account
         /// </summary>
         /// <param name="options"> Fetch Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -196,7 +194,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a conversation service from your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -209,7 +207,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a conversation service from your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -234,7 +232,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all conversation services on your account
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -250,7 +248,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all conversation services on your account
         /// </summary>
         /// <param name="options"> Read Service parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -267,7 +265,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all conversation services on your account
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -283,7 +281,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all conversation services on your account
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -400,7 +398,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Absolute URLs to access the Conversations, Users, Roles and Bindings of this Service.
+        /// Absolute URLs to access the conversations, users, roles, bindings and configuration of this service.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

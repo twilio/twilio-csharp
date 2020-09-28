@@ -44,7 +44,7 @@ namespace Twilio.Rest.Video.V1
                 return new RoomTypeEnum(value);
             }
 
-            public static readonly RoomTypeEnum PeerToPeerBasic = new RoomTypeEnum("peer-to-peer-basic");
+            public static readonly RoomTypeEnum Go = new RoomTypeEnum("go");
             public static readonly RoomTypeEnum PeerToPeer = new RoomTypeEnum("peer-to-peer");
             public static readonly RoomTypeEnum Group = new RoomTypeEnum("group");
             public static readonly RoomTypeEnum GroupSmall = new RoomTypeEnum("group-small");

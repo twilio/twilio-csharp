@@ -183,7 +183,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         }
 
         /// <summary>
-        /// Retrieve a specific Buildn resource.
+        /// Retrieve a specific Build resource.
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -197,7 +197,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Buildn resource.
+        /// Retrieve a specific Build resource.
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -212,7 +212,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a specific Buildn resource.
+        /// Retrieve a specific Build resource.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
         /// <param name="pathSid"> The SID of the Build resource to fetch </param>
@@ -226,7 +226,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Buildn resource.
+        /// Retrieve a specific Build resource.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
         /// <param name="pathSid"> The SID of the Build resource to fetch </param>
@@ -460,6 +460,11 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private BuildResource()
         {

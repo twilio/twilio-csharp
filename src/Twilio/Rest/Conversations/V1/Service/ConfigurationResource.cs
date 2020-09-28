@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// ConfigurationResource
 /// </summary>
 
@@ -34,7 +32,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch the configuration of a conversation service
         /// </summary>
         /// <param name="options"> Fetch Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the configuration of a conversation service
         /// </summary>
         /// <param name="options"> Fetch Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,7 +61,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch the configuration of a conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -76,7 +74,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the configuration of a conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -101,7 +99,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         }
 
         /// <summary>
-        /// update
+        /// Update configuration settings of a conversation service
         /// </summary>
         /// <param name="options"> Update Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -115,7 +113,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update configuration settings of a conversation service
         /// </summary>
         /// <param name="options"> Update Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -130,7 +128,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         #endif
 
         /// <summary>
-        /// update
+        /// Update configuration settings of a conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to update </param>
         /// <param name="defaultConversationCreatorRoleSid"> The role assigned to a conversation creator when they join a new
@@ -152,7 +150,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update configuration settings of a conversation service
         /// </summary>
         /// <param name="pathChatServiceSid"> The SID of the Service configuration resource to update </param>
         /// <param name="defaultConversationCreatorRoleSid"> The role assigned to a conversation creator when they join a new
@@ -212,12 +210,12 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("default_chat_service_role_sid")]
         public string DefaultChatServiceRoleSid { get; private set; }
         /// <summary>
-        /// The absolute URL of the Service configuration resource
+        /// An absolute URL for this service configuration.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Absolute URL to access the Push Notifications configuration of this Service.
+        /// Absolute URL to access the push notifications configuration of this service.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

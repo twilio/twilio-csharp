@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateUserOptions
+    /// Add a new conversation user to your service
     /// </summary>
     public class CreateUserOptions : IOptions<UserResource>
     {
@@ -38,6 +36,10 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// The SID of a service-level Role to assign to the user
         /// </summary>
         public string RoleSid { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateUserOptions
@@ -78,12 +80,24 @@ namespace Twilio.Rest.Conversations.V1.Service
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateUserOptions
+    /// Update an existing conversation user in your service
     /// </summary>
     public class UpdateUserOptions : IOptions<UserResource>
     {
@@ -107,6 +121,10 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// The SID of a service-level Role to assign to the user
         /// </summary>
         public string RoleSid { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateUserOptions
@@ -142,12 +160,24 @@ namespace Twilio.Rest.Conversations.V1.Service
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteUserOptions
+    /// Remove a conversation user from your service
     /// </summary>
     public class DeleteUserOptions : IOptions<UserResource>
     {
@@ -159,6 +189,10 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// The SID of  the User resource to delete
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public UserResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new DeleteUserOptions
@@ -179,12 +213,24 @@ namespace Twilio.Rest.Conversations.V1.Service
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchUserOptions
+    /// Fetch a conversation user from your service
     /// </summary>
     public class FetchUserOptions : IOptions<UserResource>
     {
@@ -219,9 +265,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadUserOptions
+    /// Retrieve a list of all conversation users in your service
     /// </summary>
     public class ReadUserOptions : ReadOptions<UserResource>
     {

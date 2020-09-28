@@ -13,9 +13,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateRoleOptions
+    /// Create a new user role in your service
     /// </summary>
     public class CreateRoleOptions : IOptions<RoleResource>
     {
@@ -80,9 +78,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateRoleOptions
+    /// Update an existing user role in your service
     /// </summary>
     public class UpdateRoleOptions : IOptions<RoleResource>
     {
@@ -128,9 +124,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteRoleOptions
+    /// Remove a user role from your service
     /// </summary>
     public class DeleteRoleOptions : IOptions<RoleResource>
     {
@@ -165,9 +159,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchRoleOptions
+    /// Fetch a user role from your service
     /// </summary>
     public class FetchRoleOptions : IOptions<RoleResource>
     {
@@ -202,9 +194,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadRoleOptions
+    /// Retrieve a list of all user roles in your service
     /// </summary>
     public class ReadRoleOptions : ReadOptions<RoleResource>
     {

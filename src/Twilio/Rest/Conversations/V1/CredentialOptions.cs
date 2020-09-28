@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateCredentialOptions
+    /// Add a new push notification credential to your account
     /// </summary>
     public class CreateCredentialOptions : IOptions<CredentialResource>
     {
@@ -102,9 +100,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateCredentialOptions
+    /// Update an existing push notification credential on your account
     /// </summary>
     public class UpdateCredentialOptions : IOptions<CredentialResource>
     {
@@ -196,9 +192,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteCredentialOptions
+    /// Remove a push notification credential from your account
     /// </summary>
     public class DeleteCredentialOptions : IOptions<CredentialResource>
     {
@@ -227,9 +221,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchCredentialOptions
+    /// Fetch a push notification credential from your account
     /// </summary>
     public class FetchCredentialOptions : IOptions<CredentialResource>
     {
@@ -258,9 +250,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadCredentialOptions
+    /// Retrieve a list of all push notification credentials on your account
     /// </summary>
     public class ReadCredentialOptions : ReadOptions<CredentialResource>
     {

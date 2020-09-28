@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// CredentialResource
 /// </summary>
 
@@ -49,7 +47,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// create
+        /// Add a new push notification credential to your account
         /// </summary>
         /// <param name="options"> Create Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,7 +61,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new push notification credential to your account
         /// </summary>
         /// <param name="options"> Create Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -78,7 +76,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// create
+        /// Add a new push notification credential to your account
         /// </summary>
         /// <param name="type"> The type of push-notification service the credential is for. </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
@@ -105,7 +103,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new push notification credential to your account
         /// </summary>
         /// <param name="type"> The type of push-notification service the credential is for. </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
@@ -143,7 +141,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// update
+        /// Update an existing push notification credential on your account
         /// </summary>
         /// <param name="options"> Update Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -157,7 +155,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing push notification credential on your account
         /// </summary>
         /// <param name="options"> Update Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -172,7 +170,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing push notification credential on your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="type"> The type of push-notification service the credential is for. </param>
@@ -201,7 +199,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing push notification credential on your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="type"> The type of push-notification service the credential is for. </param>
@@ -241,7 +239,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// delete
+        /// Remove a push notification credential from your account
         /// </summary>
         /// <param name="options"> Delete Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -255,7 +253,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a push notification credential from your account
         /// </summary>
         /// <param name="options"> Delete Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -270,7 +268,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a push notification credential from your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -283,7 +281,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a push notification credential from your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -307,7 +305,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a push notification credential from your account
         /// </summary>
         /// <param name="options"> Fetch Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -321,7 +319,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a push notification credential from your account
         /// </summary>
         /// <param name="options"> Fetch Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -336,7 +334,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a push notification credential from your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -349,7 +347,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a push notification credential from your account
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -374,7 +372,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all push notification credentials on your account
         /// </summary>
         /// <param name="options"> Read Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -390,7 +388,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all push notification credentials on your account
         /// </summary>
         /// <param name="options"> Read Credential parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -407,7 +405,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all push notification credentials on your account
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -423,7 +421,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all push notification credentials on your account
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>

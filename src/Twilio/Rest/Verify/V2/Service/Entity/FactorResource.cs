@@ -99,7 +99,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="config"> The config for this Factor as a json string </param>
         /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
-        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static FactorResource Create(string pathServiceSid,
@@ -109,10 +108,9 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                             FactorResource.FactorTypesEnum factorType,
                                             string config,
                                             string twilioSandboxMode = null,
-                                            string authorization = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config){TwilioSandboxMode = twilioSandboxMode, Authorization = authorization};
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config){TwilioSandboxMode = twilioSandboxMode};
             return Create(options, client);
         }
 
@@ -127,7 +125,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="config"> The config for this Factor as a json string </param>
         /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
-        /// <param name="authorization"> The Authorization HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(string pathServiceSid,
@@ -137,10 +134,9 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                     FactorResource.FactorTypesEnum factorType,
                                                                                     string config,
                                                                                     string twilioSandboxMode = null,
-                                                                                    string authorization = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config){TwilioSandboxMode = twilioSandboxMode, Authorization = authorization};
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config){TwilioSandboxMode = twilioSandboxMode};
             return await CreateAsync(options, client);
         }
         #endif

@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// ConfigurationResource
 /// </summary>
 
@@ -34,7 +32,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch the global configuration of conversations on your account
         /// </summary>
         /// <param name="options"> Fetch Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the global configuration of conversations on your account
         /// </summary>
         /// <param name="options"> Fetch Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,7 +61,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch the global configuration of conversations on your account
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Configuration </returns>
@@ -75,7 +73,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch the global configuration of conversations on your account
         /// </summary>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Configuration </returns>
@@ -98,7 +96,7 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// update
+        /// Update the global configuration of conversations on your account
         /// </summary>
         /// <param name="options"> Update Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -112,7 +110,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update the global configuration of conversations on your account
         /// </summary>
         /// <param name="options"> Update Configuration parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -127,7 +125,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// update
+        /// Update the global configuration of conversations on your account
         /// </summary>
         /// <param name="defaultChatServiceSid"> The SID of the default Conversation Service that every new conversation will
         ///                             be associated with. </param>
@@ -151,7 +149,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update the global configuration of conversations on your account
         /// </summary>
         /// <param name="defaultChatServiceSid"> The SID of the default Conversation Service that every new conversation will
         ///                             be associated with. </param>
@@ -218,12 +216,12 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("default_closed_timer")]
         public string DefaultClosedTimer { get; private set; }
         /// <summary>
-        /// The url
+        /// An absolute URL for this global configuration.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Absolute URLs to access the webhook and default service configurations.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

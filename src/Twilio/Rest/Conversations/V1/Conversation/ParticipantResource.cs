@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// ParticipantResource
 /// </summary>
 
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// create
+        /// Add a new participant to the conversation
         /// </summary>
         /// <param name="options"> Create Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,7 +60,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new participant to the conversation
         /// </summary>
         /// <param name="options"> Create Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,7 +75,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// create
+        /// Add a new participant to the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
@@ -111,7 +109,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Add a new participant to the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="identity"> A unique string identifier for the conversation participant as Conversation User. </param>
@@ -156,7 +154,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// update
+        /// Update an existing participant in the conversation
         /// </summary>
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -170,7 +168,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing participant in the conversation
         /// </summary>
         /// <param name="options"> Update Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -185,7 +183,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing participant in the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -219,7 +217,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing participant in the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -264,7 +262,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// delete
+        /// Remove a participant from the conversation
         /// </summary>
         /// <param name="options"> Delete Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -278,7 +276,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a participant from the conversation
         /// </summary>
         /// <param name="options"> Delete Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -293,7 +291,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a participant from the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -311,7 +309,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a participant from the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -340,7 +338,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a participant of the conversation
         /// </summary>
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -354,7 +352,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a participant of the conversation
         /// </summary>
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -369,7 +367,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a participant of the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -383,7 +381,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a participant of the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for this participant. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
@@ -410,7 +408,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all participants of the conversation
         /// </summary>
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -426,7 +424,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all participants of the conversation
         /// </summary>
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -443,7 +441,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of all participants of the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
         /// <param name="pageSize"> Page size </param>
@@ -461,7 +459,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of all participants of the conversation
         /// </summary>
         /// <param name="pathConversationSid"> The unique ID of the Conversation for participants. </param>
         /// <param name="pageSize"> Page size </param>

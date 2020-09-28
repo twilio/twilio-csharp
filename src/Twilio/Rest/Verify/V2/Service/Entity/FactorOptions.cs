@@ -47,10 +47,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The Twilio-Sandbox-Mode HTTP request header
         /// </summary>
         public string TwilioSandboxMode { get; set; }
-        /// <summary>
-        /// The Authorization HTTP request header
-        /// </summary>
-        public string Authorization { get; set; }
 
         /// <summary>
         /// Construct a new CreateFactorOptions
@@ -114,11 +110,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (TwilioSandboxMode != null)
             {
                 p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
-            }
-
-            if (Authorization != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Authorization", Authorization));
             }
 
             return p;

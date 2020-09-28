@@ -13,9 +13,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadWebhookOptions
+    /// Retrieve a list of all webhooks scoped to the conversation
     /// </summary>
     public class ReadWebhookOptions : ReadOptions<WebhookResource>
     {
@@ -49,9 +47,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchWebhookOptions
+    /// Fetch the configuration of a conversation-scoped webhook
     /// </summary>
     public class FetchWebhookOptions : IOptions<WebhookResource>
     {
@@ -86,9 +82,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateWebhookOptions
+    /// Create a new webhook scoped to the conversation
     /// </summary>
     public class CreateWebhookOptions : IOptions<WebhookResource>
     {
@@ -184,9 +178,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateWebhookOptions
+    /// Update an existing conversation-scoped webhook
     /// </summary>
     public class UpdateWebhookOptions : IOptions<WebhookResource>
     {
@@ -268,9 +260,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteWebhookOptions
+    /// Remove an existing webhook scoped to the conversation
     /// </summary>
     public class DeleteWebhookOptions : IOptions<WebhookResource>
     {

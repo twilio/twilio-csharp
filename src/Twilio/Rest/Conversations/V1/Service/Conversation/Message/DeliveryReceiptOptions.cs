@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchDeliveryReceiptOptions
+    /// Fetch the delivery and read receipts of the conversation message
     /// </summary>
     public class FetchDeliveryReceiptOptions : IOptions<DeliveryReceiptResource>
     {
@@ -64,9 +62,7 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation.Message
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadDeliveryReceiptOptions
+    /// Retrieve a list of all delivery and read receipts of the conversation message
     /// </summary>
     public class ReadDeliveryReceiptOptions : ReadOptions<DeliveryReceiptResource>
     {

@@ -13,9 +13,7 @@ namespace Twilio.Rest.Conversations.V1.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteBindingOptions
+    /// Remove a push notification binding from the conversation service
     /// </summary>
     public class DeleteBindingOptions : IOptions<BindingResource>
     {
@@ -50,9 +48,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchBindingOptions
+    /// Fetch a push notification binding from the conversation service
     /// </summary>
     public class FetchBindingOptions : IOptions<BindingResource>
     {
@@ -87,9 +83,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadBindingOptions
+    /// Retrieve a list of all push notification bindings in the conversation service
     /// </summary>
     public class ReadBindingOptions : ReadOptions<BindingResource>
     {
