@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Twilio.Converters;
 
+/// <summary>
+/// Recording Rule Update - Used to update the list of Recording Rules
+/// </summary>
 namespace Twilio.Types
 {
     public class RecordingRulesUpdate

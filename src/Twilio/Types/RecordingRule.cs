@@ -2,10 +2,14 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using Twilio.Converters;
 
+/// <summary>
+/// Recording Rule - A single Recording Rule for a Room
+/// </summary>
 namespace Twilio.Types
 {
     public class RecordingRule
     {
+
         public sealed class TypeEnum : StringEnum
         {
             private TypeEnum(string value) : base(value) {}
