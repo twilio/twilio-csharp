@@ -355,6 +355,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// The phone number, Client identifier, or username portion of SIP address that made this call.
         /// </summary>
         public string CallerId { get; set; }
+        /// <summary>
+        /// Reason for the call (Branded Calls Beta)
+        /// </summary>
+        public string CallReason { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -558,6 +562,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (CallerId != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallerId", CallerId));
+            }
+
+            if (CallReason != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallReason", CallReason));
             }
 
             return p;

@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -95,7 +96,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -164,7 +166,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -230,7 +233,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -358,7 +362,8 @@ namespace Twilio.Rest.Preview.DeployedDevices
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/DeployedDevices/Fleets/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

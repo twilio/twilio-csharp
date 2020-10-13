@@ -13,21 +13,19 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadWebhookOptions
+    /// Retrieve a list of all webhooks scoped to the conversation
     /// </summary>
     public class ReadWebhookOptions : ReadOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
 
         /// <summary>
         /// Construct a new ReadWebhookOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         public ReadWebhookOptions(string pathConversationSid)
         {
             PathConversationSid = pathConversationSid;
@@ -49,14 +47,12 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchWebhookOptions
+    /// Fetch the configuration of a conversation-scoped webhook
     /// </summary>
     public class FetchWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -67,7 +63,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new FetchWebhookOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchWebhookOptions(string pathConversationSid, string pathSid)
         {
@@ -86,14 +82,12 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateWebhookOptions
+    /// Create a new webhook scoped to the conversation
     /// </summary>
     public class CreateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -117,7 +111,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         public List<string> ConfigurationTriggers { get; set; }
         /// <summary>
-        /// The studio flow sid, where the webhook should be sent to.
+        /// The studio flow SID, where the webhook should be sent to.
         /// </summary>
         public string ConfigurationFlowSid { get; set; }
         /// <summary>
@@ -128,7 +122,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new CreateWebhookOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="target"> The target of this webhook. </param>
         public CreateWebhookOptions(string pathConversationSid, WebhookResource.TargetEnum target)
         {
@@ -184,14 +178,12 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateWebhookOptions
+    /// Update an existing conversation-scoped webhook
     /// </summary>
     public class UpdateWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -215,14 +207,14 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         public List<string> ConfigurationTriggers { get; set; }
         /// <summary>
-        /// The studio flow sid, where the webhook should be sent to.
+        /// The studio flow SID, where the webhook should be sent to.
         /// </summary>
         public string ConfigurationFlowSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateWebhookOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateWebhookOptions(string pathConversationSid, string pathSid)
         {
@@ -268,14 +260,12 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteWebhookOptions
+    /// Remove an existing webhook scoped to the conversation
     /// </summary>
     public class DeleteWebhookOptions : IOptions<WebhookResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this webhook.
+        /// The unique ID of the Conversation for this webhook.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -286,7 +276,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new DeleteWebhookOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this webhook. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this webhook. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteWebhookOptions(string pathConversationSid, string pathSid)
         {

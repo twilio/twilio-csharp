@@ -41,7 +41,8 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Get,
                 Rest.Domain.FlexApi,
                 "/v1/Configuration",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -107,7 +108,8 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 "/v1/Configuration",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -170,7 +172,8 @@ namespace Twilio.Rest.FlexApi.V1
                 HttpMethod.Post,
                 Rest.Domain.FlexApi,
                 "/v1/Configuration",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -421,11 +424,6 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         [JsonProperty("serverless_service_sids")]
         public List<string> ServerlessServiceSids { get; private set; }
-        /// <summary>
-        /// A list of objects that contain the configurations for the WFM Integrations supported in this configuration
-        /// </summary>
-        [JsonProperty("wfm_integrations")]
-        public List<object> WfmIntegrations { get; private set; }
         /// <summary>
         /// Configurable parameters for Queues Statistics
         /// </summary>

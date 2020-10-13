@@ -1,6 +1,180 @@
 twilio-csharp Changelog
 =======================
 
+[2020-09-28] Version 5.47.2
+---------------------------
+**Api**
+- Add optional property `call_reason` in the participant create request
+- Make sip-domain-service endpoints available in stage-au1 and prod-au1
+
+**Messaging**
+- Removed beta feature gate from WhatsApp Templates API
+
+**Serverless**
+- Add Build Status endpoint
+
+**Video**
+- [Rooms] Add new room type "go" for WebRTC Go
+
+
+[2020-09-21] Version 5.47.1
+---------------------------
+**Library - Fix**
+- [PR #542](https://github.com/twilio/twilio-csharp/pull/542): allow API redirect responses. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Accounts**
+- Add Auth Token rotation API
+
+**Conversations**
+- Change resource path for Webhook Configuration
+
+**Events**
+- Schemas API get all Schemas names and versions
+
+
+[2020-09-16] Version 5.47.0
+---------------------------
+**Library - Feature**
+- [PR #540](https://github.com/twilio/twilio-csharp/pull/540): add custom header support. Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Conversations**
+- Expose Configuration and Service Configuration resources
+- Add Unique Name support for Conversations
+- Add Services Push Notification resource
+- Add Service scoped Conversation resources
+- Support Identity in Users resource endpoint
+
+**Messaging**
+- GA Deactivation List API
+
+**Numbers**
+- Add API endpoint for Supporting Document deletion
+
+**Proxy**
+- Updated usage of FailOnParticipantConflict param to apply only to accounts with ProxyAllowParticipantConflict account flag
+
+**Supersim**
+- Add `AccountSid` parameter to Sim resource update request
+
+
+[2020-09-03] Version 5.46.2
+---------------------------
+**Library - Fix**
+- [PR #538](https://github.com/twilio/twilio-csharp/pull/538): use ReferenceAssemblies NuGet packages. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Messaging**
+- Add domain cert API's(fetch, update, create) for link tracker
+
+**Supersim**
+- Add `ready` status as an available status for a Sim resource
+
+
+[2020-09-02] Version 5.46.1
+---------------------------
+**Library - Chore**
+- [PR #535](https://github.com/twilio/twilio-csharp/pull/535): simplify the build-test-pack-release process. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Ai**
+- Initial release
+
+**Bulkexports**
+- removing public beta feature flag from BulkExports Jobs API
+
+**Messaging**
+- Add Deactivation List API
+- Added page token parameter for fetch in WhatsApp Templates API
+
+**Numbers**
+- Add API endpoint for End User deletion
+
+**Routes**
+- Add Resource Route Configurations API
+- Add Route Configurations API
+- Initial Release
+
+**Trunking**
+- Added `transfer_mode` property on Trunks.
+
+
+[2020-08-19] Version 5.46.0
+---------------------------
+**Library - Chore**
+- [PR #532](https://github.com/twilio/twilio-csharp/pull/532): update GitHub branch references to use HEAD. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Conversations**
+- Allow Identity addition to Participants
+
+**Events**
+- Sinks API Get all Sinks
+
+**Proxy**
+- Clarified usage of FailOnParticipantConflict param as experimental
+- Add FailOnParticipantConflict param to Proxy Session create and Proxy Participant create
+
+**Supersim**
+- Add fleet, network, and isoCountryCode to the UsageRecords resource
+- Change sort order of UsageRecords from ascending to descending with respect to start time field, records are now returned newest to oldest
+
+**Wireless**
+- Removed `Start` and `End` parameters from the Data Sessions list endpoint. **(breaking change)**
+
+
+[2020-08-05] Version 5.45.2
+---------------------------
+**Messaging**
+- Add rejection reason support to WhatsApp API
+- Removed status parameter for create and update in WhatsApp Templates API
+
+**Proxy**
+- Add FailOnParticipantConflict param to Proxy Session update
+
+**Verify**
+- Add `CustomFriendlyName` optional parameter on Verification creation.
+- Changes in `Challenge` resource to update documentation of both `details` and `hidden_details` properties.
+
+
+[2020-07-22] Version 5.45.1
+---------------------------
+**Library - Fix**
+- [PR #530](https://github.com/twilio/twilio-csharp/pull/530): Change Default Logo from .ico to .png in NuGet. Thanks to [@garethpaul](https://github.com/garethpaul)!
+
+**Api**
+- Add optional Click Tracking and Scheduling parameters to Create action of Message resource
+
+**Supersim**
+- Add callback_url and callback_method parameters to Sim resource update request
+
+
+[2020-07-08] Version 5.45.0
+---------------------------
+**Library - Feature**
+- [PR #528](https://github.com/twilio/twilio-csharp/pull/528): add fax capability to deserialized phone number capabilities. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+- [PR #526](https://github.com/twilio/twilio-csharp/pull/526): include API response headers in 'Last Response'. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Conversations**
+- Allow Address updates for Participants
+- Message delivery receipts
+
+**Events**
+- Add account_sid to subscription and subscribed_events resources
+
+**Flex**
+- Changed `wfm_integrations` Flex Configuration key to private **(breaking change)**
+
+**Messaging**
+- Add error states to WhatsApp Sender status with failed reason **(breaking change)**
+- Delete WhatsApp Template API
+- Update WhatsApp Template API
+- Add WhatsApp Template Get Api (fetch and read)
+
+**Numbers**
+- Add `valid_until` in the Bundles resource
+- Add API for Bundle deletion
+
+**Verify**
+- Removed support for `sms`, `totp` and `app-push` factor types in Verify push **(breaking change)**
+
+
 [2020-06-24] Version 5.44.0
 ---------------------------
 **Api**
@@ -426,7 +600,7 @@ twilio-csharp Changelog
 ---------------------------
 **Library**
 - [PR #499](https://github.com/twilio/twilio-csharp/pull/499): Update resources after sorting. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
-- [PR #498](https://github.com/twilio/twilio-csharp/pull/498): Auto-deploy via Appveyor upon tagged commit to master. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+- [PR #498](https://github.com/twilio/twilio-csharp/pull/498): Auto-deploy via Appveyor upon tagged commit to main. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
 
 **Api**
 - Add new usage categories to the public api `sms-messages-carrierfees` and `mms-messages-carrierfees`

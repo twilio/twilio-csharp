@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -157,7 +158,8 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -223,7 +225,8 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -326,7 +329,8 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -401,7 +405,8 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Delete,
                 Rest.Domain.Preview,
                 "/wireless/RatePlans/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

@@ -28,7 +28,8 @@ namespace Twilio.Rest.Studio.V2.Flow
                 HttpMethod.Get,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "/TestUsers",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -94,7 +95,8 @@ namespace Twilio.Rest.Studio.V2.Flow
                 HttpMethod.Post,
                 Rest.Domain.Studio,
                 "/v2/Flows/" + options.PathSid + "/TestUsers",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

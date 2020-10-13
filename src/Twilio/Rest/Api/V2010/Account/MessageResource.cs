@@ -95,13 +95,27 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly TrafficTypeEnum Free = new TrafficTypeEnum("free");
         }
 
+        public sealed class ScheduleTypeEnum : StringEnum
+        {
+            private ScheduleTypeEnum(string value) : base(value) {}
+            public ScheduleTypeEnum() {}
+            public static implicit operator ScheduleTypeEnum(string value)
+            {
+                return new ScheduleTypeEnum(value);
+            }
+
+            public static readonly ScheduleTypeEnum Fixed = new ScheduleTypeEnum("fixed");
+            public static readonly ScheduleTypeEnum Optimize = new ScheduleTypeEnum("optimize");
+        }
+
         private static Request BuildCreateRequest(CreateMessageOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages.json",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -240,7 +254,8 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Delete,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathSid + ".json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -309,7 +324,8 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathSid + ".json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -378,7 +394,8 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Get,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages.json",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -530,7 +547,8 @@ namespace Twilio.Rest.Api.V2010.Account
                 HttpMethod.Post,
                 Rest.Domain.Api,
                 "/2010-04-01/Accounts/" + (options.PathAccountSid ?? client.AccountSid) + "/Messages/" + options.PathSid + ".json",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

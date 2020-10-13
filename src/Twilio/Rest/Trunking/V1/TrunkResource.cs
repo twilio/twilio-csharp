@@ -21,18 +21,18 @@ namespace Twilio.Rest.Trunking.V1
 
     public class TrunkResource : Resource
     {
-        public sealed class RecordingSettingEnum : StringEnum
+        public sealed class TransferSettingEnum : StringEnum
         {
-            private RecordingSettingEnum(string value) : base(value) {}
-            public RecordingSettingEnum() {}
-            public static implicit operator RecordingSettingEnum(string value)
+            private TransferSettingEnum(string value) : base(value) {}
+            public TransferSettingEnum() {}
+            public static implicit operator TransferSettingEnum(string value)
             {
-                return new RecordingSettingEnum(value);
+                return new TransferSettingEnum(value);
             }
 
-            public static readonly RecordingSettingEnum DoNotRecord = new RecordingSettingEnum("do-not-record");
-            public static readonly RecordingSettingEnum RecordFromRinging = new RecordingSettingEnum("record-from-ringing");
-            public static readonly RecordingSettingEnum RecordFromAnswer = new RecordingSettingEnum("record-from-answer");
+            public static readonly TransferSettingEnum DisableAll = new TransferSettingEnum("disable-all");
+            public static readonly TransferSettingEnum EnableAll = new TransferSettingEnum("enable-all");
+            public static readonly TransferSettingEnum SipOnly = new TransferSettingEnum("sip-only");
         }
 
         private static Request BuildFetchRequest(FetchTrunkOptions options, ITwilioRestClient client)
@@ -41,7 +41,8 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -107,7 +108,8 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Delete,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -172,7 +174,8 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -213,7 +216,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="disasterRecoveryUrl"> The HTTP URL that we should call if an error occurs while sending SIP traffic
         ///                           towards your configured Origination URL </param>
         /// <param name="disasterRecoveryMethod"> The HTTP method we should use to call the disaster_recovery_url </param>
-        /// <param name="recording"> The recording settings for the trunk </param>
+        /// <param name="transferMode"> The call transfer settings for the trunk </param>
         /// <param name="secure"> Whether Secure Trunking is enabled for the trunk </param>
         /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup should be enabled for the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -222,12 +225,12 @@ namespace Twilio.Rest.Trunking.V1
                                            string domainName = null,
                                            Uri disasterRecoveryUrl = null,
                                            Twilio.Http.HttpMethod disasterRecoveryMethod = null,
-                                           TrunkResource.RecordingSettingEnum recording = null,
+                                           TrunkResource.TransferSettingEnum transferMode = null,
                                            bool? secure = null,
                                            bool? cnamLookupEnabled = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
+            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
             return Create(options, client);
         }
 
@@ -240,7 +243,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="disasterRecoveryUrl"> The HTTP URL that we should call if an error occurs while sending SIP traffic
         ///                           towards your configured Origination URL </param>
         /// <param name="disasterRecoveryMethod"> The HTTP method we should use to call the disaster_recovery_url </param>
-        /// <param name="recording"> The recording settings for the trunk </param>
+        /// <param name="transferMode"> The call transfer settings for the trunk </param>
         /// <param name="secure"> Whether Secure Trunking is enabled for the trunk </param>
         /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup should be enabled for the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -249,12 +252,12 @@ namespace Twilio.Rest.Trunking.V1
                                                                                    string domainName = null,
                                                                                    Uri disasterRecoveryUrl = null,
                                                                                    Twilio.Http.HttpMethod disasterRecoveryMethod = null,
-                                                                                   TrunkResource.RecordingSettingEnum recording = null,
+                                                                                   TrunkResource.TransferSettingEnum transferMode = null,
                                                                                    bool? secure = null,
                                                                                    bool? cnamLookupEnabled = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
+            var options = new CreateTrunkOptions(){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -265,7 +268,8 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Get,
                 Rest.Domain.Trunking,
                 "/v1/Trunks",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -393,7 +397,8 @@ namespace Twilio.Rest.Trunking.V1
                 HttpMethod.Post,
                 Rest.Domain.Trunking,
                 "/v1/Trunks/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -435,7 +440,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="disasterRecoveryUrl"> The HTTP URL that we should call if an error occurs while sending SIP traffic
         ///                           towards your configured Origination URL </param>
         /// <param name="disasterRecoveryMethod"> The HTTP method we should use to call the disaster_recovery_url </param>
-        /// <param name="recording"> The recording settings for the trunk </param>
+        /// <param name="transferMode"> The call transfer settings for the trunk </param>
         /// <param name="secure"> Whether Secure Trunking is enabled for the trunk </param>
         /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup should be enabled for the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -445,12 +450,12 @@ namespace Twilio.Rest.Trunking.V1
                                            string domainName = null,
                                            Uri disasterRecoveryUrl = null,
                                            Twilio.Http.HttpMethod disasterRecoveryMethod = null,
-                                           TrunkResource.RecordingSettingEnum recording = null,
+                                           TrunkResource.TransferSettingEnum transferMode = null,
                                            bool? secure = null,
                                            bool? cnamLookupEnabled = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
+            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
             return Update(options, client);
         }
 
@@ -464,7 +469,7 @@ namespace Twilio.Rest.Trunking.V1
         /// <param name="disasterRecoveryUrl"> The HTTP URL that we should call if an error occurs while sending SIP traffic
         ///                           towards your configured Origination URL </param>
         /// <param name="disasterRecoveryMethod"> The HTTP method we should use to call the disaster_recovery_url </param>
-        /// <param name="recording"> The recording settings for the trunk </param>
+        /// <param name="transferMode"> The call transfer settings for the trunk </param>
         /// <param name="secure"> Whether Secure Trunking is enabled for the trunk </param>
         /// <param name="cnamLookupEnabled"> Whether Caller ID Name (CNAM) lookup should be enabled for the trunk </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -474,12 +479,12 @@ namespace Twilio.Rest.Trunking.V1
                                                                                    string domainName = null,
                                                                                    Uri disasterRecoveryUrl = null,
                                                                                    Twilio.Http.HttpMethod disasterRecoveryMethod = null,
-                                                                                   TrunkResource.RecordingSettingEnum recording = null,
+                                                                                   TrunkResource.TransferSettingEnum transferMode = null,
                                                                                    bool? secure = null,
                                                                                    bool? cnamLookupEnabled = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, Recording = recording, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
+            var options = new UpdateTrunkOptions(pathSid){FriendlyName = friendlyName, DomainName = domainName, DisasterRecoveryUrl = disasterRecoveryUrl, DisasterRecoveryMethod = disasterRecoveryMethod, TransferMode = transferMode, Secure = secure, CnamLookupEnabled = cnamLookupEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -538,6 +543,12 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         [JsonProperty("recording")]
         public object Recording { get; private set; }
+        /// <summary>
+        /// The call transfer settings for the trunk
+        /// </summary>
+        [JsonProperty("transfer_mode")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public TrunkResource.TransferSettingEnum TransferMode { get; private set; }
         /// <summary>
         /// Whether Caller ID Name (CNAM) lookup is enabled for the trunk
         /// </summary>

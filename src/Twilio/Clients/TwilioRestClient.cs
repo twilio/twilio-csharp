@@ -146,7 +146,7 @@ namespace Twilio.Clients
                 throw new ApiConnectionException("Connection Error: No response received.");
             }
 
-            if (response.StatusCode >= HttpStatusCode.OK && response.StatusCode < HttpStatusCode.Ambiguous)
+            if (response.StatusCode >= HttpStatusCode.OK && response.StatusCode < HttpStatusCode.BadRequest)
             {
                 return response;
             }

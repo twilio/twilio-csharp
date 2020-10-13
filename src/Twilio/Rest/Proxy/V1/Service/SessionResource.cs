@@ -59,7 +59,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -128,7 +129,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -260,7 +262,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -303,6 +306,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="mode"> The Mode of the Session </param>
         /// <param name="status"> Session status </param>
         /// <param name="participants"> The Participant objects to include in the new session </param>
+        /// <param name="failOnParticipantConflict"> An experimental parameter to override the ProxyAllowParticipantConflict
+        ///                                 account flag on a per-request basis. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static SessionResource Create(string pathServiceSid,
@@ -312,9 +317,10 @@ namespace Twilio.Rest.Proxy.V1.Service
                                              SessionResource.ModeEnum mode = null,
                                              SessionResource.StatusEnum status = null,
                                              List<object> participants = null,
+                                             bool? failOnParticipantConflict = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateSessionOptions(pathServiceSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
+            var options = new CreateSessionOptions(pathServiceSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants, FailOnParticipantConflict = failOnParticipantConflict};
             return Create(options, client);
         }
 
@@ -329,6 +335,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="mode"> The Mode of the Session </param>
         /// <param name="status"> Session status </param>
         /// <param name="participants"> The Participant objects to include in the new session </param>
+        /// <param name="failOnParticipantConflict"> An experimental parameter to override the ProxyAllowParticipantConflict
+        ///                                 account flag on a per-request basis. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<SessionResource> CreateAsync(string pathServiceSid,
@@ -338,9 +346,10 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                      SessionResource.ModeEnum mode = null,
                                                                                      SessionResource.StatusEnum status = null,
                                                                                      List<object> participants = null,
+                                                                                     bool? failOnParticipantConflict = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateSessionOptions(pathServiceSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants};
+            var options = new CreateSessionOptions(pathServiceSid){UniqueName = uniqueName, DateExpiry = dateExpiry, Ttl = ttl, Mode = mode, Status = status, Participants = participants, FailOnParticipantConflict = failOnParticipantConflict};
             return await CreateAsync(options, client);
         }
         #endif
@@ -351,7 +360,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -420,7 +430,8 @@ namespace Twilio.Rest.Proxy.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Proxy,
                 "/v1/Services/" + options.PathServiceSid + "/Sessions/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -461,6 +472,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
         /// <param name="ttl"> When the session will expire </param>
         /// <param name="status"> The new status of the resource </param>
+        /// <param name="failOnParticipantConflict"> An experimental parameter to override the ProxyAllowParticipantConflict
+        ///                                 account flag on a per-request basis. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Session </returns>
         public static SessionResource Update(string pathServiceSid,
@@ -468,9 +481,10 @@ namespace Twilio.Rest.Proxy.V1.Service
                                              DateTime? dateExpiry = null,
                                              int? ttl = null,
                                              SessionResource.StatusEnum status = null,
+                                             bool? failOnParticipantConflict = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status, FailOnParticipantConflict = failOnParticipantConflict};
             return Update(options, client);
         }
 
@@ -483,6 +497,8 @@ namespace Twilio.Rest.Proxy.V1.Service
         /// <param name="dateExpiry"> The ISO 8601 date when the Session should expire </param>
         /// <param name="ttl"> When the session will expire </param>
         /// <param name="status"> The new status of the resource </param>
+        /// <param name="failOnParticipantConflict"> An experimental parameter to override the ProxyAllowParticipantConflict
+        ///                                 account flag on a per-request basis. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Session </returns>
         public static async System.Threading.Tasks.Task<SessionResource> UpdateAsync(string pathServiceSid,
@@ -490,9 +506,10 @@ namespace Twilio.Rest.Proxy.V1.Service
                                                                                      DateTime? dateExpiry = null,
                                                                                      int? ttl = null,
                                                                                      SessionResource.StatusEnum status = null,
+                                                                                     bool? failOnParticipantConflict = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status};
+            var options = new UpdateSessionOptions(pathServiceSid, pathSid){DateExpiry = dateExpiry, Ttl = ttl, Status = status, FailOnParticipantConflict = failOnParticipantConflict};
             return await UpdateAsync(options, client);
         }
         #endif

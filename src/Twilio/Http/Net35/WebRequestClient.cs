@@ -37,7 +37,7 @@ namespace Twilio.Http.Net35
             {
                 IHttpWebResponseWrapper response = httpRequest.GetResponse();
                 string content = GetResponseContent(response);
-                this.LastResponse = new Response(response.StatusCode, content);
+                this.LastResponse = new Response(response.StatusCode, content, response.Headers);
             }
             catch (WebExceptionWrapper e)
             {
@@ -48,7 +48,7 @@ namespace Twilio.Http.Net35
                 }
                 // Non 2XX status code
                 IHttpWebResponseWrapper errorResponse = e.Response;
-                this.LastResponse = new Response(errorResponse.StatusCode, GetResponseContent(errorResponse));
+                this.LastResponse = new Response(errorResponse.StatusCode, GetResponseContent(errorResponse), errorResponse.Headers);
             }
             return this.LastResponse;
         }

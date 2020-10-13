@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns/" + options.PathInstalledAddOnSid + "/Extensions/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -101,7 +102,8 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns/" + options.PathInstalledAddOnSid + "/Extensions/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -177,7 +179,8 @@ namespace Twilio.Rest.Preview.Marketplace.InstalledAddOn
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/marketplace/InstalledAddOns/" + options.PathInstalledAddOnSid + "/Extensions",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

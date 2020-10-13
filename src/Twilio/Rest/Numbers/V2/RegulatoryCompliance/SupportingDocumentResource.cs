@@ -44,7 +44,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocuments",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -120,7 +121,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocuments",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -251,7 +253,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Get,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocuments/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -318,7 +321,8 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
                 HttpMethod.Post,
                 Rest.Domain.Numbers,
                 "/v2/RegulatoryCompliance/SupportingDocuments/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -385,6 +389,72 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         {
             var options = new UpdateSupportingDocumentOptions(pathSid){FriendlyName = friendlyName, Attributes = attributes};
             return await UpdateAsync(options, client);
+        }
+        #endif
+
+        private static Request BuildDeleteRequest(DeleteSupportingDocumentOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Delete,
+                Rest.Domain.Numbers,
+                "/v2/RegulatoryCompliance/SupportingDocuments/" + options.PathSid + "",
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// Delete a specific Supporting Document.
+        /// </summary>
+        /// <param name="options"> Delete SupportingDocument parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SupportingDocument </returns>
+        public static bool Delete(DeleteSupportingDocumentOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Supporting Document.
+        /// </summary>
+        /// <param name="options"> Delete SupportingDocument parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(DeleteSupportingDocumentOptions options,
+                                                                          ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildDeleteRequest(options, client));
+            return response.StatusCode == System.Net.HttpStatusCode.NoContent;
+        }
+        #endif
+
+        /// <summary>
+        /// Delete a specific Supporting Document.
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of SupportingDocument </returns>
+        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSupportingDocumentOptions(pathSid);
+            return Delete(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Delete a specific Supporting Document.
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of SupportingDocument </returns>
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        {
+            var options = new DeleteSupportingDocumentOptions(pathSid);
+            return await DeleteAsync(options, client);
         }
         #endif
 

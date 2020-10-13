@@ -12,14 +12,12 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateMessageOptions
+    /// Add a new message to the conversation
     /// </summary>
     public class CreateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -43,14 +41,18 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The Media Sid to be attached to the new Message.
+        /// The Media SID to be attached to the new Message.
         /// </summary>
         public string MediaSid { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         public CreateMessageOptions(string pathConversationSid)
         {
             PathConversationSid = pathConversationSid;
@@ -94,17 +96,29 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateMessageOptions
+    /// Update an existing message in the conversation
     /// </summary>
     public class UpdateMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -131,11 +145,15 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// A string metadata field you can use to store any data you wish.
         /// </summary>
         public string Attributes { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public UpdateMessageOptions(string pathConversationSid, string pathSid)
         {
@@ -176,28 +194,44 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteMessageOptions
+    /// Remove a message from the conversation
     /// </summary>
     public class DeleteMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
         /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public MessageResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new DeleteMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public DeleteMessageOptions(string pathConversationSid, string pathSid)
         {
@@ -213,17 +247,29 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchMessageOptions
+    /// Fetch a message from the conversation
     /// </summary>
     public class FetchMessageOptions : IOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for this message.
+        /// The unique ID of the Conversation for this message.
         /// </summary>
         public string PathConversationSid { get; }
         /// <summary>
@@ -234,7 +280,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Construct a new FetchMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for this message. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for this message. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         public FetchMessageOptions(string pathConversationSid, string pathSid)
         {
@@ -253,21 +299,19 @@ namespace Twilio.Rest.Conversations.V1.Conversation
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadMessageOptions
+    /// Retrieve a list of all messages in the conversation
     /// </summary>
     public class ReadMessageOptions : ReadOptions<MessageResource>
     {
         /// <summary>
-        /// The unique id of the Conversation for messages.
+        /// The unique ID of the Conversation for messages.
         /// </summary>
         public string PathConversationSid { get; }
 
         /// <summary>
         /// Construct a new ReadMessageOptions
         /// </summary>
-        /// <param name="pathConversationSid"> The unique id of the Conversation for messages. </param>
+        /// <param name="pathConversationSid"> The unique ID of the Conversation for messages. </param>
         public ReadMessageOptions(string pathConversationSid)
         {
             PathConversationSid = pathConversationSid;

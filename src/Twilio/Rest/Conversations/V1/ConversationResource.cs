@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// ConversationResource
 /// </summary>
 
@@ -56,12 +54,13 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
         /// <summary>
-        /// create
+        /// Create a new conversation in your account's default service
         /// </summary>
         /// <param name="options"> Create Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -75,7 +74,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new conversation in your account's default service
         /// </summary>
         /// <param name="options"> Create Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -90,19 +89,22 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// create
+        /// Create a new conversation in your account's default service
         /// </summary>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the Messaging Service this conversation belongs to. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
         public static ConversationResource Create(string friendlyName = null,
+                                                  string uniqueName = null,
                                                   DateTime? dateCreated = null,
                                                   DateTime? dateUpdated = null,
                                                   string messagingServiceSid = null,
@@ -110,27 +112,31 @@ namespace Twilio.Rest.Conversations.V1
                                                   ConversationResource.StateEnum state = null,
                                                   string timersInactive = null,
                                                   string timersClosed = null,
+                                                  ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
+            var options = new CreateConversationOptions(){FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Create(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Create a new conversation in your account's default service
         /// </summary>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the Messaging Service this conversation belongs to. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<ConversationResource> CreateAsync(string friendlyName = null,
+                                                                                          string uniqueName = null,
                                                                                           DateTime? dateCreated = null,
                                                                                           DateTime? dateUpdated = null,
                                                                                           string messagingServiceSid = null,
@@ -138,9 +144,10 @@ namespace Twilio.Rest.Conversations.V1
                                                                                           ConversationResource.StateEnum state = null,
                                                                                           string timersInactive = null,
                                                                                           string timersClosed = null,
+                                                                                          ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateConversationOptions(){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
+            var options = new CreateConversationOptions(){FriendlyName = friendlyName, UniqueName = uniqueName, DateCreated = dateCreated, DateUpdated = dateUpdated, MessagingServiceSid = messagingServiceSid, Attributes = attributes, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -151,12 +158,13 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Post,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
         /// <summary>
-        /// update
+        /// Update an existing conversation in your account's default service
         /// </summary>
         /// <param name="options"> Update Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -170,7 +178,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing conversation in your account's default service
         /// </summary>
         /// <param name="options"> Update Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -185,17 +193,18 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// update
+        /// Update an existing conversation in your account's default service
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the Messaging Service this conversation belongs to. </param>
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
         public static ConversationResource Update(string pathSid,
@@ -207,25 +216,27 @@ namespace Twilio.Rest.Conversations.V1
                                                   ConversationResource.StateEnum state = null,
                                                   string timersInactive = null,
                                                   string timersClosed = null,
+                                                  ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Update(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update an existing conversation in your account's default service
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
         /// <param name="dateUpdated"> The date that this resource was last updated. </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
-        /// <param name="messagingServiceSid"> The unique id of the SMS Service this conversation belongs to. </param>
+        /// <param name="messagingServiceSid"> The unique ID of the Messaging Service this conversation belongs to. </param>
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
         public static async System.Threading.Tasks.Task<ConversationResource> UpdateAsync(string pathSid,
@@ -237,9 +248,10 @@ namespace Twilio.Rest.Conversations.V1
                                                                                           ConversationResource.StateEnum state = null,
                                                                                           string timersInactive = null,
                                                                                           string timersClosed = null,
+                                                                                          ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -250,12 +262,13 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Delete,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
         /// <summary>
-        /// delete
+        /// Remove a conversation from your account's default service
         /// </summary>
         /// <param name="options"> Delete Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -269,7 +282,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a conversation from your account's default service
         /// </summary>
         /// <param name="options"> Delete Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -284,27 +297,33 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// delete
+        /// Remove a conversation from your account's default service
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
-        public static bool Delete(string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathSid,
+                                  ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteConversationOptions(pathSid);
+            var options = new DeleteConversationOptions(pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Delete(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// delete
+        /// Remove a conversation from your account's default service
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
-        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid,
+                                                                          ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
+                                                                          ITwilioRestClient client = null)
         {
-            var options = new DeleteConversationOptions(pathSid);
+            var options = new DeleteConversationOptions(pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -315,12 +334,13 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch a conversation from your account's default service
         /// </summary>
         /// <param name="options"> Fetch Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -334,7 +354,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a conversation from your account's default service
         /// </summary>
         /// <param name="options"> Fetch Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -349,7 +369,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch a conversation from your account's default service
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -362,7 +382,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch a conversation from your account's default service
         /// </summary>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -381,12 +401,13 @@ namespace Twilio.Rest.Conversations.V1
                 HttpMethod.Get,
                 Rest.Domain.Conversations,
                 "/v1/Conversations",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
         /// <summary>
-        /// read
+        /// Retrieve a list of conversations in your account's default service
         /// </summary>
         /// <param name="options"> Read Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -403,7 +424,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of conversations in your account's default service
         /// </summary>
         /// <param name="options"> Read Conversation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -420,7 +441,7 @@ namespace Twilio.Rest.Conversations.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Retrieve a list of conversations in your account's default service
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -436,7 +457,7 @@ namespace Twilio.Rest.Conversations.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Retrieve a list of conversations in your account's default service
         /// </summary>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
@@ -523,17 +544,17 @@ namespace Twilio.Rest.Conversations.V1
         }
 
         /// <summary>
-        /// The unique id of the Account responsible for this conversation.
+        /// The unique ID of the Account responsible for this conversation.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The unique id of the Chat Service this conversation belongs to.
+        /// The unique ID of the Conversation Service this conversation belongs to.
         /// </summary>
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
         /// <summary>
-        /// The unique id of the SMS Service this conversation belongs to.
+        /// The unique ID of the Messaging Service this conversation belongs to.
         /// </summary>
         [JsonProperty("messaging_service_sid")]
         public string MessagingServiceSid { get; private set; }
@@ -547,6 +568,11 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
+        /// <summary>
+        /// An application-defined string that uniquely identifies the resource
+        /// </summary>
+        [JsonProperty("unique_name")]
+        public string UniqueName { get; private set; }
         /// <summary>
         /// An optional string metadata field you can use to store any data you wish.
         /// </summary>
@@ -579,7 +605,7 @@ namespace Twilio.Rest.Conversations.V1
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// Absolute URLs to access the Participants of this Conversation.
+        /// Absolute URLs to access the participants, messages and webhooks of this conversation.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

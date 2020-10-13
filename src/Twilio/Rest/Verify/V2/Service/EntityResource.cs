@@ -29,7 +29,8 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -66,12 +67,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Create a new Entity for the Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="identity"> Unique identity of the Entity </param>
+        /// <param name="identity"> Unique external identifier of the Entity </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Entity </returns>
-        public static EntityResource Create(string pathServiceSid, string identity, ITwilioRestClient client = null)
+        public static EntityResource Create(string pathServiceSid,
+                                            string identity,
+                                            string twilioSandboxMode = null,
+                                            ITwilioRestClient client = null)
         {
-            var options = new CreateEntityOptions(pathServiceSid, identity);
+            var options = new CreateEntityOptions(pathServiceSid, identity){TwilioSandboxMode = twilioSandboxMode};
             return Create(options, client);
         }
 
@@ -80,14 +85,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Create a new Entity for the Service
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="identity"> Unique identity of the Entity </param>
+        /// <param name="identity"> Unique external identifier of the Entity </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<EntityResource> CreateAsync(string pathServiceSid,
                                                                                     string identity,
+                                                                                    string twilioSandboxMode = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateEntityOptions(pathServiceSid, identity);
+            var options = new CreateEntityOptions(pathServiceSid, identity){TwilioSandboxMode = twilioSandboxMode};
             return await CreateAsync(options, client);
         }
         #endif
@@ -98,7 +105,8 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Delete,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -135,12 +143,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Delete a specific Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Entity </returns>
-        public static bool Delete(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid,
+                                  string pathIdentity,
+                                  string twilioSandboxMode = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteEntityOptions(pathServiceSid, pathIdentity);
+            var options = new DeleteEntityOptions(pathServiceSid, pathIdentity){TwilioSandboxMode = twilioSandboxMode};
             return Delete(options, client);
         }
 
@@ -149,14 +161,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Delete a specific Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathIdentity,
+                                                                          string twilioSandboxMode = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteEntityOptions(pathServiceSid, pathIdentity);
+            var options = new DeleteEntityOptions(pathServiceSid, pathIdentity){TwilioSandboxMode = twilioSandboxMode};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -167,7 +181,8 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -204,12 +219,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Fetch a specific Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Entity </returns>
-        public static EntityResource Fetch(string pathServiceSid, string pathIdentity, ITwilioRestClient client = null)
+        public static EntityResource Fetch(string pathServiceSid,
+                                           string pathIdentity,
+                                           string twilioSandboxMode = null,
+                                           ITwilioRestClient client = null)
         {
-            var options = new FetchEntityOptions(pathServiceSid, pathIdentity);
+            var options = new FetchEntityOptions(pathServiceSid, pathIdentity){TwilioSandboxMode = twilioSandboxMode};
             return Fetch(options, client);
         }
 
@@ -218,14 +237,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Fetch a specific Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<EntityResource> FetchAsync(string pathServiceSid,
                                                                                    string pathIdentity,
+                                                                                   string twilioSandboxMode = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new FetchEntityOptions(pathServiceSid, pathIdentity);
+            var options = new FetchEntityOptions(pathServiceSid, pathIdentity){TwilioSandboxMode = twilioSandboxMode};
             return await FetchAsync(options, client);
         }
         #endif
@@ -236,7 +257,8 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -277,16 +299,18 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Retrieve a list of all Entities for a Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Entity </returns>
         public static ResourceSet<EntityResource> Read(string pathServiceSid,
+                                                       string twilioSandboxMode = null,
                                                        int? pageSize = null,
                                                        long? limit = null,
                                                        ITwilioRestClient client = null)
         {
-            var options = new ReadEntityOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadEntityOptions(pathServiceSid){TwilioSandboxMode = twilioSandboxMode, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -295,16 +319,18 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Retrieve a list of all Entities for a Service.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Entity </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<EntityResource>> ReadAsync(string pathServiceSid,
+                                                                                               string twilioSandboxMode = null,
                                                                                                int? pageSize = null,
                                                                                                long? limit = null,
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new ReadEntityOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadEntityOptions(pathServiceSid){TwilioSandboxMode = twilioSandboxMode, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -386,7 +412,7 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }

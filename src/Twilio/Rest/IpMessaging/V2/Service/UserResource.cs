@@ -40,7 +40,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -109,7 +110,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -178,7 +180,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -219,6 +222,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="roleSid"> The SID of the Role assigned to this user </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Create(string pathServiceSid,
@@ -226,9 +230,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                           string roleSid = null,
                                           string attributes = null,
                                           string friendlyName = null,
+                                          UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateUserOptions(pathServiceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new CreateUserOptions(pathServiceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Create(options, client);
         }
 
@@ -241,6 +246,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="roleSid"> The SID of the Role assigned to this user </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> CreateAsync(string pathServiceSid,
@@ -248,9 +254,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                                                                   string roleSid = null,
                                                                                   string attributes = null,
                                                                                   string friendlyName = null,
+                                                                                  UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateUserOptions(pathServiceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new CreateUserOptions(pathServiceSid, identity){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -261,7 +268,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -393,7 +401,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Users/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -434,6 +443,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="roleSid"> The SID id of the Role assigned to this user </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Update(string pathServiceSid,
@@ -441,9 +451,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                           string roleSid = null,
                                           string attributes = null,
                                           string friendlyName = null,
+                                          UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateUserOptions(pathServiceSid, pathSid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new UpdateUserOptions(pathServiceSid, pathSid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Update(options, client);
         }
 
@@ -456,6 +467,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <param name="roleSid"> The SID id of the Role assigned to this user </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string pathServiceSid,
@@ -463,9 +475,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service
                                                                                   string roleSid = null,
                                                                                   string attributes = null,
                                                                                   string friendlyName = null,
+                                                                                  UserResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateUserOptions(pathServiceSid, pathSid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName};
+            var options = new UpdateUserOptions(pathServiceSid, pathSid){RoleSid = roleSid, Attributes = attributes, FriendlyName = friendlyName, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await UpdateAsync(options, client);
         }
         #endif

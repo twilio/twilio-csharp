@@ -107,7 +107,7 @@ namespace Twilio.Rest.Serverless.V1
     public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// An application-defined string that uniquely identifies the Service resource
+        /// A user-defined string that uniquely identifies the Service resource
         /// </summary>
         public string UniqueName { get; }
         /// <summary>
@@ -126,7 +126,7 @@ namespace Twilio.Rest.Serverless.V1
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Service resource </param>
+        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Service resource </param>
         /// <param name="friendlyName"> A string to describe the Service resource </param>
         public CreateServiceOptions(string uniqueName, string friendlyName)
         {
@@ -185,7 +185,7 @@ namespace Twilio.Rest.Serverless.V1
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// Whether the Service's properties and subresources can be edited via the UI
+        /// Whether the Service resource's properties and subresources can be edited via the UI
         /// </summary>
         public bool? UiEditable { get; set; }
 

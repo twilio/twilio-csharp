@@ -40,7 +40,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -109,7 +110,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -178,7 +180,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -257,7 +260,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -389,7 +393,8 @@ namespace Twilio.Rest.IpMessaging.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v1/Services/" + options.PathServiceSid + "/Roles/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

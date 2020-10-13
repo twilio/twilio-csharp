@@ -53,7 +53,7 @@ namespace Twilio.Rest.Serverless.V1.Service
     /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
     /// currently do not have developer preview access, please contact help@twilio.com.
     ///
-    /// Retrieve a specific Buildn resource.
+    /// Retrieve a specific Build resource.
     /// </summary>
     public class FetchBuildOptions : IOptions<BuildResource>
     {
@@ -138,15 +138,15 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The list of Asset Version resource SIDs to include in the build
+        /// The list of Asset Version resource SIDs to include in the Build
         /// </summary>
         public List<string> AssetVersions { get; set; }
         /// <summary>
-        /// The list of the Variable resource SIDs to include in the build
+        /// The list of the Function Version resource SIDs to include in the Build
         /// </summary>
         public List<string> FunctionVersions { get; set; }
         /// <summary>
-        /// A list of objects that describe the Dependencies included in the build
+        /// A list of objects that describe the Dependencies included in the Build
         /// </summary>
         public string Dependencies { get; set; }
 

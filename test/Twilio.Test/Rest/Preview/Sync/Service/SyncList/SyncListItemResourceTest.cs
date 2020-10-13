@@ -66,11 +66,12 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
                 "/Sync/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Lists/ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Items/1",
                 ""
             );
+            request.AddHeaderParam("If-Match", Serialize("if_match"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SyncListItemResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, client: twilioRestClient);
+                SyncListItemResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, ifMatch: Serialize("if_match"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -88,7 +89,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
                                          "null"
                                      ));
 
-            var response = SyncListItemResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, client: twilioRestClient);
+            var response = SyncListItemResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, ifMatch: Serialize("if_match"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -191,11 +192,12 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
                 ""
             );
             request.AddPostParam("Data", Serialize("{}"));
+            request.AddHeaderParam("If-Match", Serialize("if_match"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                SyncListItemResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, "{}", client: twilioRestClient);
+                SyncListItemResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, "{}", ifMatch: Serialize("if_match"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -213,7 +215,7 @@ namespace Twilio.Tests.Rest.Preview.Sync.Service.SyncList
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"created_by\": \"created_by\",\"data\": {},\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"index\": 100,\"list_sid\": \"ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"revision\": \"revision\",\"service_sid\": \"ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://preview.twilio.com/Sync/Services/ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Lists/ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Items/100\"}"
                                      ));
 
-            var response = SyncListItemResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, "{}", client: twilioRestClient);
+            var response = SyncListItemResource.Update("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ESXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", 1, "{}", ifMatch: Serialize("if_match"), client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

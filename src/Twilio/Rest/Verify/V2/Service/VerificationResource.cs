@@ -54,7 +54,8 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Verifications",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -93,6 +94,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
         /// <param name="to"> The phone number or email to verify </param>
         /// <param name="channel"> The verification method to use </param>
+        /// <param name="customFriendlyName"> A custom user defined friendly name </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
         /// <param name="locale"> The locale to use for the verification SMS or call </param>
@@ -107,6 +109,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static VerificationResource Create(string pathServiceSid,
                                                   string to,
                                                   string channel,
+                                                  string customFriendlyName = null,
                                                   string customMessage = null,
                                                   string sendDigits = null,
                                                   string locale = null,
@@ -118,7 +121,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                   string appHash = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash};
             return Create(options, client);
         }
 
@@ -129,6 +132,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathServiceSid"> The SID of the verification Service to create the resource under </param>
         /// <param name="to"> The phone number or email to verify </param>
         /// <param name="channel"> The verification method to use </param>
+        /// <param name="customFriendlyName"> A custom user defined friendly name </param>
         /// <param name="customMessage"> The text of a custom message to use for the verification </param>
         /// <param name="sendDigits"> The digits to send after a phone call is answered </param>
         /// <param name="locale"> The locale to use for the verification SMS or call </param>
@@ -143,6 +147,7 @@ namespace Twilio.Rest.Verify.V2.Service
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid,
                                                                                           string to,
                                                                                           string channel,
+                                                                                          string customFriendlyName = null,
                                                                                           string customMessage = null,
                                                                                           string sendDigits = null,
                                                                                           string locale = null,
@@ -154,7 +159,7 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                           string appHash = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash};
             return await CreateAsync(options, client);
         }
         #endif
@@ -165,7 +170,8 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Verifications/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -240,7 +246,8 @@ namespace Twilio.Rest.Verify.V2.Service
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Verifications/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

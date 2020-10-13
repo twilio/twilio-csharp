@@ -99,7 +99,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// An application-defined string that uniquely identifies the Environment resource
+        /// A user-defined string that uniquely identifies the Environment resource
         /// </summary>
         public string UniqueName { get; }
         /// <summary>
@@ -111,7 +111,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// Construct a new CreateEnvironmentOptions
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Environment resource under </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Environment resource </param>
+        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Environment resource </param>
         public CreateEnvironmentOptions(string pathServiceSid, string uniqueName)
         {
             PathServiceSid = pathServiceSid;

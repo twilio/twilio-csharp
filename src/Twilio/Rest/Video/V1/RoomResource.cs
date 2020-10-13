@@ -44,6 +44,7 @@ namespace Twilio.Rest.Video.V1
                 return new RoomTypeEnum(value);
             }
 
+            public static readonly RoomTypeEnum Go = new RoomTypeEnum("go");
             public static readonly RoomTypeEnum PeerToPeer = new RoomTypeEnum("peer-to-peer");
             public static readonly RoomTypeEnum Group = new RoomTypeEnum("group");
             public static readonly RoomTypeEnum GroupSmall = new RoomTypeEnum("group-small");
@@ -68,7 +69,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/Rooms/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -134,7 +136,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 "/v1/Rooms",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -235,7 +238,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/Rooms",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -379,7 +383,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 "/v1/Rooms/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

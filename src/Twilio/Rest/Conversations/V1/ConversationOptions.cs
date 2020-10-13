@@ -12,9 +12,7 @@ namespace Twilio.Rest.Conversations.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// CreateConversationOptions
+    /// Create a new conversation in your account's default service
     /// </summary>
     public class CreateConversationOptions : IOptions<ConversationResource>
     {
@@ -22,6 +20,10 @@ namespace Twilio.Rest.Conversations.V1
         /// The human-readable name of this conversation.
         /// </summary>
         public string FriendlyName { get; set; }
+        /// <summary>
+        /// An application-defined string that uniquely identifies the resource
+        /// </summary>
+        public string UniqueName { get; set; }
         /// <summary>
         /// The date that this resource was created.
         /// </summary>
@@ -31,7 +33,7 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         public DateTime? DateUpdated { get; set; }
         /// <summary>
-        /// The unique id of the SMS Service this conversation belongs to.
+        /// The unique ID of the Messaging Service this conversation belongs to.
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>
@@ -50,6 +52,10 @@ namespace Twilio.Rest.Conversations.V1
         /// ISO8601 duration when conversation will be switched to `closed` state.
         /// </summary>
         public string TimersClosed { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public ConversationResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -60,6 +66,11 @@ namespace Twilio.Rest.Conversations.V1
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
+            }
+
+            if (UniqueName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
             if (DateCreated != null)
@@ -99,12 +110,24 @@ namespace Twilio.Rest.Conversations.V1
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateConversationOptions
+    /// Update an existing conversation in your account's default service
     /// </summary>
     public class UpdateConversationOptions : IOptions<ConversationResource>
     {
@@ -129,7 +152,7 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The unique id of the SMS Service this conversation belongs to.
+        /// The unique ID of the Messaging Service this conversation belongs to.
         /// </summary>
         public string MessagingServiceSid { get; set; }
         /// <summary>
@@ -144,6 +167,10 @@ namespace Twilio.Rest.Conversations.V1
         /// ISO8601 duration when conversation will be switched to `closed` state.
         /// </summary>
         public string TimersClosed { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public ConversationResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateConversationOptions
@@ -202,12 +229,24 @@ namespace Twilio.Rest.Conversations.V1
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// DeleteConversationOptions
+    /// Remove a conversation from your account's default service
     /// </summary>
     public class DeleteConversationOptions : IOptions<ConversationResource>
     {
@@ -215,6 +254,10 @@ namespace Twilio.Rest.Conversations.V1
         /// A 34 character string that uniquely identifies this resource.
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public ConversationResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new DeleteConversationOptions
@@ -233,12 +276,24 @@ namespace Twilio.Rest.Conversations.V1
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchConversationOptions
+    /// Fetch a conversation from your account's default service
     /// </summary>
     public class FetchConversationOptions : IOptions<ConversationResource>
     {
@@ -267,9 +322,7 @@ namespace Twilio.Rest.Conversations.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// ReadConversationOptions
+    /// Retrieve a list of conversations in your account's default service
     /// </summary>
     public class ReadConversationOptions : ReadOptions<ConversationResource>
     {

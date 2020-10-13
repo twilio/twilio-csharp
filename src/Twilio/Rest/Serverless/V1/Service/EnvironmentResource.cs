@@ -29,7 +29,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -161,7 +162,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -230,7 +232,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -267,7 +270,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// Create a new environment.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Environment resource under </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Environment resource </param>
+        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Environment resource </param>
         /// <param name="domainSuffix"> A URL-friendly name that represents the environment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Environment </returns>
@@ -285,7 +288,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// Create a new environment.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Environment resource under </param>
-        /// <param name="uniqueName"> An application-defined string that uniquely identifies the Environment resource </param>
+        /// <param name="uniqueName"> A user-defined string that uniquely identifies the Environment resource </param>
         /// <param name="domainSuffix"> A URL-friendly name that represents the environment </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Environment </returns>
@@ -305,7 +308,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Environments/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -407,7 +411,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         [JsonProperty("build_sid")]
         public string BuildSid { get; private set; }
         /// <summary>
-        /// An application-defined string that uniquely identifies the Environment resource
+        /// A user-defined string that uniquely identifies the Environment resource
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
@@ -417,7 +421,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         [JsonProperty("domain_suffix")]
         public string DomainSuffix { get; private set; }
         /// <summary>
-        /// The base domain name for all Functions and Assets deployed in the environment
+        /// The base domain name for all Functions and Assets deployed in the Environment
         /// </summary>
         [JsonProperty("domain_name")]
         public string DomainName { get; private set; }
@@ -437,7 +441,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The URLs of the environment's nested resources
+        /// The URLs of the Environment resource's nested resources
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

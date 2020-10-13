@@ -26,7 +26,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/ByocTrunks",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -131,7 +132,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/ByocTrunks/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -197,7 +199,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Get,
                 Rest.Domain.Voice,
                 "/v1/ByocTrunks",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -325,7 +328,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Post,
                 Rest.Domain.Voice,
                 "/v1/ByocTrunks/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -434,7 +438,8 @@ namespace Twilio.Rest.Voice.V1
                 HttpMethod.Delete,
                 Rest.Domain.Voice,
                 "/v1/ByocTrunks/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

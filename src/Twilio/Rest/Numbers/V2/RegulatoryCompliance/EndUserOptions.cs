@@ -161,4 +161,33 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         }
     }
 
+    /// <summary>
+    /// Delete a specific End User.
+    /// </summary>
+    public class DeleteEndUserOptions : IOptions<EndUserResource>
+    {
+        /// <summary>
+        /// The unique string that identifies the resource
+        /// </summary>
+        public string PathSid { get; }
+
+        /// <summary>
+        /// Construct a new DeleteEndUserOptions
+        /// </summary>
+        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        public DeleteEndUserOptions(string pathSid)
+        {
+            PathSid = pathSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

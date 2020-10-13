@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/Sims/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -95,7 +96,8 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/wireless/Sims",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -243,7 +245,8 @@ namespace Twilio.Rest.Preview.Wireless
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/wireless/Sims/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

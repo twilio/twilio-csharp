@@ -24,15 +24,19 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string Identity { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new CreateEntityOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="identity"> Unique identity of the Entity </param>
+        /// <param name="identity"> Unique external identifier of the Entity </param>
         public CreateEntityOptions(string pathServiceSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -52,6 +56,20 @@ namespace Twilio.Rest.Verify.V2.Service
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
@@ -67,15 +85,19 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new DeleteEntityOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         public DeleteEntityOptions(string pathServiceSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -88,6 +110,20 @@ namespace Twilio.Rest.Verify.V2.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
             return p;
         }
     }
@@ -105,15 +141,19 @@ namespace Twilio.Rest.Verify.V2.Service
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new FetchEntityOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         public FetchEntityOptions(string pathServiceSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -126,6 +166,20 @@ namespace Twilio.Rest.Verify.V2.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
             return p;
         }
     }
@@ -142,6 +196,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new ReadEntityOptions
@@ -161,6 +219,20 @@ namespace Twilio.Rest.Verify.V2.Service
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
             }
 
             return p;

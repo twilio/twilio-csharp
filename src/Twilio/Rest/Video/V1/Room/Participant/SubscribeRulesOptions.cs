@@ -12,8 +12,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Returns a list of Subscribe Rules for the Participant.
     /// </summary>
     public class FetchSubscribeRulesOptions : IOptions<SubscribeRulesResource>
@@ -49,8 +47,6 @@ namespace Twilio.Rest.Video.V1.Room.Participant
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update the Subscribe Rules for the Participant
     /// </summary>
     public class UpdateSubscribeRulesOptions : IOptions<SubscribeRulesResource>

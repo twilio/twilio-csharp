@@ -13,11 +13,11 @@ namespace Twilio.Http
     /// </summary>
     public class SystemNetHttpClient : HttpClient
     {
-        #if NET451
+#if NET451
         private string PlatVersion = " (.NET Framework 4.5.1+)";
-        #else
+#else
         private string PlatVersion = $" ({RuntimeInformation.FrameworkDescription})";
-        #endif
+#endif
 
         private readonly System.Net.Http.HttpClient _httpClient;
 
@@ -27,7 +27,7 @@ namespace Twilio.Http
         /// <param name="httpClient">HTTP client to use</param>
         public SystemNetHttpClient(System.Net.Http.HttpClient httpClient = null)
         {
-            _httpClient = httpClient ?? new System.Net.Http.HttpClient();
+            _httpClient = httpClient ?? new System.Net.Http.HttpClient(new HttpClientHandler() { AllowAutoRedirect = false });
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Twilio.Http
             // Create and return a new Response. Keep a reference to the last
             // response for debugging, but don't return it as it may be shared
             // among threads.
-            var response = new Response(httpResponse.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false));
+            var response = new Response(httpResponse.StatusCode, await reader.ReadToEndAsync().ConfigureAwait(false), httpResponse.Headers);
             this.LastResponse = response;
             return response;
         }
@@ -93,6 +93,11 @@ namespace Twilio.Http
 
             var libraryVersion = "twilio-csharp/" + AssemblyInfomation.AssemblyInformationalVersion + PlatVersion;
             httpRequest.Headers.TryAddWithoutValidation("User-Agent", libraryVersion);
+
+            foreach (var header in request.HeaderParams)
+            {
+                httpRequest.Headers.TryAddWithoutValidation(header.Key, header.Value);
+            }
 
             return httpRequest;
         }

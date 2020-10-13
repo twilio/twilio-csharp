@@ -26,7 +26,8 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -105,7 +106,8 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -188,7 +190,8 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -263,7 +266,8 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -399,7 +403,8 @@ namespace Twilio.Rest.Verify.V2.Service.RateLimit
                 HttpMethod.Delete,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/RateLimits/" + options.PathRateLimitSid + "/Buckets/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 

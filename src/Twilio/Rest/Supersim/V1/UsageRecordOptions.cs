@@ -20,9 +20,25 @@ namespace Twilio.Rest.Supersim.V1
     public class ReadUsageRecordOptions : ReadOptions<UsageRecordResource>
     {
         /// <summary>
-        /// SID of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM.
+        /// SID or unique name of a Sim resource. Only show UsageRecords representing usage incurred by this Super SIM.
         /// </summary>
         public string Sim { get; set; }
+        /// <summary>
+        /// SID or unique name of a Fleet resource. Only show UsageRecords representing usage for Super SIMs belonging to this Fleet resource at the time the usage occurred.
+        /// </summary>
+        public string Fleet { get; set; }
+        /// <summary>
+        /// SID of a Network resource. Only show UsageRecords representing usage on this network.
+        /// </summary>
+        public string Network { get; set; }
+        /// <summary>
+        /// Alpha-2 ISO Country Code. Only show UsageRecords representing usage in this country.
+        /// </summary>
+        public string IsoCountry { get; set; }
+        /// <summary>
+        /// Dimension over which to aggregate usage records.
+        /// </summary>
+        public UsageRecordResource.GroupEnum Group { get; set; }
         /// <summary>
         /// Time-based grouping that UsageRecords should be aggregated by. Can be: `hour`, `day`, or `all`. Default is `all`.
         /// </summary>
@@ -45,6 +61,26 @@ namespace Twilio.Rest.Supersim.V1
             if (Sim != null)
             {
                 p.Add(new KeyValuePair<string, string>("Sim", Sim.ToString()));
+            }
+
+            if (Fleet != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Fleet", Fleet.ToString()));
+            }
+
+            if (Network != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Network", Network.ToString()));
+            }
+
+            if (IsoCountry != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsoCountry", IsoCountry.ToString()));
+            }
+
+            if (Group != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Group", Group.ToString()));
             }
 
             if (Granularity != null)

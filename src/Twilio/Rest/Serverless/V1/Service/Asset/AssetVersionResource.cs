@@ -44,12 +44,13 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathAssetSid + "/Versions",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
         /// <summary>
-        /// Retrieve a list of all asset versions.
+        /// Retrieve a list of all Asset Versions.
         /// </summary>
         /// <param name="options"> Read AssetVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -66,7 +67,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all asset versions.
+        /// Retrieve a list of all Asset Versions.
         /// </summary>
         /// <param name="options"> Read AssetVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -83,7 +84,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         #endif
 
         /// <summary>
-        /// Retrieve a list of all asset versions.
+        /// Retrieve a list of all Asset Versions.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the Asset Version resource from </param>
         /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resources to read
@@ -104,7 +105,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
 
         #if !NET35
         /// <summary>
-        /// Retrieve a list of all asset versions.
+        /// Retrieve a list of all Asset Versions.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to read the Asset Version resource from </param>
         /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resources to read
@@ -183,12 +184,13 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Assets/" + options.PathAssetSid + "/Versions/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
         /// <summary>
-        /// Retrieve a specific asset version.
+        /// Retrieve a specific Asset Version.
         /// </summary>
         /// <param name="options"> Fetch AssetVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -202,7 +204,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific asset version.
+        /// Retrieve a specific Asset Version.
         /// </summary>
         /// <param name="options"> Fetch AssetVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -217,7 +219,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         #endif
 
         /// <summary>
-        /// Retrieve a specific asset version.
+        /// Retrieve a specific Asset Version.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset Version resource from </param>
         /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resource to fetch
@@ -236,7 +238,7 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific asset version.
+        /// Retrieve a specific Asset Version.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the Asset Version resource from </param>
         /// <param name="pathAssetSid"> The SID of the Asset resource that is the parent of the Asset Version resource to fetch
@@ -288,17 +290,17 @@ namespace Twilio.Rest.Serverless.V1.Service.Asset
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The SID of the Asset resource that is the parent of the asset version
+        /// The SID of the Asset resource that is the parent of the Asset Version
         /// </summary>
         [JsonProperty("asset_sid")]
         public string AssetSid { get; private set; }
         /// <summary>
-        /// The URL-friendly string by which the asset version can be referenced
+        /// The URL-friendly string by which the Asset Version can be referenced
         /// </summary>
         [JsonProperty("path")]
         public string Path { get; private set; }
         /// <summary>
-        /// The access control that determines how the asset version can be accessed
+        /// The access control that determines how the Asset Version can be accessed
         /// </summary>
         [JsonProperty("visibility")]
         [JsonConverter(typeof(StringEnumConverter))]

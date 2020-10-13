@@ -91,9 +91,9 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
         /// <summary>
-        /// The recording settings for the trunk
+        /// The call transfer settings for the trunk
         /// </summary>
-        public TrunkResource.RecordingSettingEnum Recording { get; set; }
+        public TrunkResource.TransferSettingEnum TransferMode { get; set; }
         /// <summary>
         /// Whether Secure Trunking is enabled for the trunk
         /// </summary>
@@ -129,9 +129,9 @@ namespace Twilio.Rest.Trunking.V1
                 p.Add(new KeyValuePair<string, string>("DisasterRecoveryMethod", DisasterRecoveryMethod.ToString()));
             }
 
-            if (Recording != null)
+            if (TransferMode != null)
             {
-                p.Add(new KeyValuePair<string, string>("Recording", Recording.ToString()));
+                p.Add(new KeyValuePair<string, string>("TransferMode", TransferMode.ToString()));
             }
 
             if (Secure != null)
@@ -194,9 +194,9 @@ namespace Twilio.Rest.Trunking.V1
         /// </summary>
         public Twilio.Http.HttpMethod DisasterRecoveryMethod { get; set; }
         /// <summary>
-        /// The recording settings for the trunk
+        /// The call transfer settings for the trunk
         /// </summary>
-        public TrunkResource.RecordingSettingEnum Recording { get; set; }
+        public TrunkResource.TransferSettingEnum TransferMode { get; set; }
         /// <summary>
         /// Whether Secure Trunking is enabled for the trunk
         /// </summary>
@@ -241,9 +241,9 @@ namespace Twilio.Rest.Trunking.V1
                 p.Add(new KeyValuePair<string, string>("DisasterRecoveryMethod", DisasterRecoveryMethod.ToString()));
             }
 
-            if (Recording != null)
+            if (TransferMode != null)
             {
-                p.Add(new KeyValuePair<string, string>("Recording", Recording.ToString()));
+                p.Add(new KeyValuePair<string, string>("TransferMode", TransferMode.ToString()));
             }
 
             if (Secure != null)

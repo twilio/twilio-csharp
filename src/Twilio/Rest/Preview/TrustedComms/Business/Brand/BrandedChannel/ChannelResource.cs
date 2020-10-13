@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
                 HttpMethod.Post,
                 Rest.Domain.Preview,
                 "/TrustedComms/Businesses/" + options.PathBusinessSid + "/Brands/" + options.PathBrandSid + "/BrandedChannels/" + options.PathBrandedChannelSid + "/Channels",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

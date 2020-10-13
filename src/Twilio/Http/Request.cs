@@ -57,6 +57,11 @@ namespace Twilio.Http
         public List<KeyValuePair<string, string>> PostParams { get; private set; }
 
         /// <summary>
+        /// Header params
+        /// </summary>
+        public List<KeyValuePair<string, string>> HeaderParams { get; private set; }
+
+        /// <summary>
         /// Create a new Twilio request
         /// </summary>
         /// <param name="method">HTTP Method</param>
@@ -67,6 +72,7 @@ namespace Twilio.Http
             Uri = new Uri(url);
             QueryParams = new List<KeyValuePair<string, string>>();
             PostParams = new List<KeyValuePair<string, string>>();
+            HeaderParams = new List<KeyValuePair<string, string>>();
         }
 
         /// <summary>
@@ -79,6 +85,7 @@ namespace Twilio.Http
         /// <param name="queryParams">Query parameters</param>
         /// <param name="postParams">Post data</param>
         /// <param name="edge">Twilio edge</param>
+        /// <param name="headerParams">Custom header data</param>
         public Request(
             HttpMethod method,
             Domain domain,
@@ -86,7 +93,8 @@ namespace Twilio.Http
             string region = null,
             List<KeyValuePair<string, string>> queryParams = null,
             List<KeyValuePair<string, string>> postParams = null,
-            string edge = null
+            string edge = null,
+            List<KeyValuePair<string, string>> headerParams = null
         )
         {
             Method = method;
@@ -96,6 +104,7 @@ namespace Twilio.Http
 
             QueryParams = queryParams ?? new List<KeyValuePair<string, string>>();
             PostParams = postParams ?? new List<KeyValuePair<string, string>>();
+            HeaderParams = headerParams ?? new List<KeyValuePair<string, string>>();
         }
 
         /// <summary>
@@ -209,6 +218,16 @@ namespace Twilio.Http
             AddParam(PostParams, name, value);
         }
 
+        /// <summary>
+        /// Add a header parameter
+        /// </summary>
+        /// <param name="name">name of parameter</param>
+        /// <param name="value">value of parameter</param>
+        public void AddHeaderParam(string name, string value)
+        {
+            AddParam(HeaderParams, name, value);
+        }
+
         private static void AddParam(ICollection<KeyValuePair<string, string>> list, string name, string value)
         {
             list.Add(new KeyValuePair<string, string>(name, value));
@@ -239,7 +258,11 @@ namespace Twilio.Http
             return Method.Equals(other.Method) &&
                    buildUri().Equals(other.buildUri()) &&
                    QueryParams.All(other.QueryParams.Contains) &&
-                   PostParams.All(other.PostParams.Contains);
+                   other.QueryParams.All(QueryParams.Contains) &&
+                   PostParams.All(other.PostParams.Contains) &&
+                   other.PostParams.All(PostParams.Contains) &&
+                   HeaderParams.All(other.HeaderParams.Contains) &&
+                   other.HeaderParams.All(HeaderParams.Contains);
         }
 
         /// <summary>
@@ -253,7 +276,8 @@ namespace Twilio.Http
                 return (Method?.GetHashCode() ?? 0) ^
                        (buildUri()?.GetHashCode() ?? 0) ^
                        (QueryParams?.GetHashCode() ?? 0) ^
-                       (PostParams?.GetHashCode() ?? 0);
+                       (PostParams?.GetHashCode() ?? 0) ^
+                       (HeaderParams?.GetHashCode() ?? 0);
             }
         }
     }

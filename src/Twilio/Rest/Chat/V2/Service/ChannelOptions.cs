@@ -60,6 +60,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// The SID of the Channel resource to delete
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new DeleteChannelOptions
@@ -78,6 +82,20 @@ namespace Twilio.Rest.Chat.V2.Service
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
+            }
+
             return p;
         }
     }
@@ -119,6 +137,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// The identity of the User that created the Channel
         /// </summary>
         public string CreatedBy { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new CreateChannelOptions
@@ -168,6 +190,20 @@ namespace Twilio.Rest.Chat.V2.Service
             if (CreatedBy != null)
             {
                 p.Add(new KeyValuePair<string, string>("CreatedBy", CreatedBy));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
             }
 
             return p;
@@ -255,6 +291,10 @@ namespace Twilio.Rest.Chat.V2.Service
         /// The identity of the User that created the Channel
         /// </summary>
         public string CreatedBy { get; set; }
+        /// <summary>
+        /// The X-Twilio-Webhook-Enabled HTTP request header
+        /// </summary>
+        public ChannelResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateChannelOptions
@@ -301,6 +341,20 @@ namespace Twilio.Rest.Chat.V2.Service
             if (CreatedBy != null)
             {
                 p.Add(new KeyValuePair<string, string>("CreatedBy", CreatedBy));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XTwilioWebhookEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Twilio-Webhook-Enabled", XTwilioWebhookEnabled.ToString()));
             }
 
             return p;

@@ -40,7 +40,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -115,7 +116,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -161,6 +163,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns>
         public static MemberResource Create(string pathServiceSid,
@@ -172,9 +175,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                                             DateTime? dateCreated = null,
                                             DateTime? dateUpdated = null,
                                             string attributes = null,
+                                            MemberResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Create(options, client);
         }
 
@@ -192,6 +196,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns>
         public static async System.Threading.Tasks.Task<MemberResource> CreateAsync(string pathServiceSid,
@@ -203,9 +208,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                                                                                     DateTime? dateCreated = null,
                                                                                     DateTime? dateUpdated = null,
                                                                                     string attributes = null,
+                                                                                    MemberResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new CreateMemberOptions(pathServiceSid, pathChannelSid, identity){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await CreateAsync(options, client);
         }
         #endif
@@ -216,7 +222,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Get,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -356,7 +363,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Delete,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -395,14 +403,16 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathChannelSid"> The SID of the channel the Member resource to delete belongs to </param>
         /// <param name="pathSid"> The SID of the Member resource to delete </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns>
         public static bool Delete(string pathServiceSid,
                                   string pathChannelSid,
                                   string pathSid,
+                                  MemberResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                   ITwilioRestClient client = null)
         {
-            var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid);
+            var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Delete(options, client);
         }
 
@@ -413,14 +423,16 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
         /// <param name="pathChannelSid"> The SID of the channel the Member resource to delete belongs to </param>
         /// <param name="pathSid"> The SID of the Member resource to delete </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathChannelSid,
                                                                           string pathSid,
+                                                                          MemberResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid);
+            var options = new DeleteMemberOptions(pathServiceSid, pathChannelSid, pathSid){XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -431,7 +443,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                 HttpMethod.Post,
                 Rest.Domain.IpMessaging,
                 "/v2/Services/" + options.PathServiceSid + "/Channels/" + options.PathChannelSid + "/Members/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -478,6 +491,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Member </returns>
         public static MemberResource Update(string pathServiceSid,
@@ -489,9 +503,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                                             DateTime? dateCreated = null,
                                             DateTime? dateUpdated = null,
                                             string attributes = null,
+                                            MemberResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Update(options, client);
         }
 
@@ -510,6 +525,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
         /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
         /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
+        /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Member </returns>
         public static async System.Threading.Tasks.Task<MemberResource> UpdateAsync(string pathServiceSid,
@@ -521,9 +537,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
                                                                                     DateTime? dateCreated = null,
                                                                                     DateTime? dateUpdated = null,
                                                                                     string attributes = null,
+                                                                                    MemberResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes};
+            var options = new UpdateMemberOptions(pathServiceSid, pathChannelSid, pathSid){RoleSid = roleSid, LastConsumedMessageIndex = lastConsumedMessageIndex, LastConsumptionTimestamp = lastConsumptionTimestamp, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await UpdateAsync(options, client);
         }
         #endif

@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"resource_type\": \"Calls\",\"url\": \"https://bulkexports.twilio.com/v1/Exports/Calls\",\"links\": {\"days\": \"https://bulkexports.twilio.com/v1/Exports/Calls/Days\"}}"
+                                         "{\"resource_type\": \"Messages\",\"url\": \"https://bulkexports.twilio.com/v1/Exports/Messages\",\"links\": {\"days\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Days\"}}"
                                      ));
 
             var response = ExportResource.Fetch("resource_type", client: twilioRestClient);

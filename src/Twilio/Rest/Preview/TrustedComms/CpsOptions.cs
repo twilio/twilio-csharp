@@ -20,11 +20,30 @@ namespace Twilio.Rest.Preview.TrustedComms
     public class FetchCpsOptions : IOptions<CpsResource>
     {
         /// <summary>
+        /// Phone number to retrieve CPS.
+        /// </summary>
+        public string XXcnamSensitivePhoneNumber { get; set; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (XXcnamSensitivePhoneNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("X-Xcnam-Sensitive-Phone-Number", XXcnamSensitivePhoneNumber));
+            }
+
             return p;
         }
     }

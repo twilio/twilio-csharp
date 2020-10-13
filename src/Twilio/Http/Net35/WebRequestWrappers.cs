@@ -35,6 +35,7 @@ namespace Twilio.Http.Net35
     {
         HttpStatusCode StatusCode { get; set; }
         Stream GetResponseStream();
+        WebHeaderCollection Headers { get; }
     }
 
     public class HttpWebRequestWrapper : IHttpWebRequestWrapper
@@ -47,6 +48,7 @@ namespace Twilio.Http.Net35
         public HttpWebRequestWrapper(Uri uri)
         {
             this._httpWebRequest = (HttpWebRequest) WebRequest.Create(uri);
+            this._httpWebRequest.AllowAutoRedirect=false;
         }
 
         public string UserAgent
@@ -124,6 +126,11 @@ namespace Twilio.Http.Net35
         public Stream GetResponseStream()
         {
             return this._httpWebResponse.GetResponseStream();
+        }
+
+        public WebHeaderCollection Headers
+        {
+            get { return this._httpWebResponse.Headers; }
         }
     }
 

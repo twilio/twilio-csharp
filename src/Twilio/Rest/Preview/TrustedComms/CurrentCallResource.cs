@@ -29,7 +29,8 @@ namespace Twilio.Rest.Preview.TrustedComms
                 HttpMethod.Get,
                 Rest.Domain.Preview,
                 "/TrustedComms/CurrentCall",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -68,11 +69,15 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and
         /// `X-XCNAM-Sensitive-Phone-Number-To` headers.
         /// </summary>
+        /// <param name="xXcnamSensitivePhoneNumberFrom"> The originating Phone Number </param>
+        /// <param name="xXcnamSensitivePhoneNumberTo"> The terminating Phone Number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of CurrentCall </returns>
-        public static CurrentCallResource Fetch(ITwilioRestClient client = null)
+        public static CurrentCallResource Fetch(string xXcnamSensitivePhoneNumberFrom = null,
+                                                string xXcnamSensitivePhoneNumberTo = null,
+                                                ITwilioRestClient client = null)
         {
-            var options = new FetchCurrentCallOptions();
+            var options = new FetchCurrentCallOptions(){XXcnamSensitivePhoneNumberFrom = xXcnamSensitivePhoneNumberFrom, XXcnamSensitivePhoneNumberTo = xXcnamSensitivePhoneNumberTo};
             return Fetch(options, client);
         }
 
@@ -81,11 +86,15 @@ namespace Twilio.Rest.Preview.TrustedComms
         /// Retrieve a current call given the originating and terminating number via `X-XCNAM-Sensitive-Phone-Number-From` and
         /// `X-XCNAM-Sensitive-Phone-Number-To` headers.
         /// </summary>
+        /// <param name="xXcnamSensitivePhoneNumberFrom"> The originating Phone Number </param>
+        /// <param name="xXcnamSensitivePhoneNumberTo"> The terminating Phone Number </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of CurrentCall </returns>
-        public static async System.Threading.Tasks.Task<CurrentCallResource> FetchAsync(ITwilioRestClient client = null)
+        public static async System.Threading.Tasks.Task<CurrentCallResource> FetchAsync(string xXcnamSensitivePhoneNumberFrom = null,
+                                                                                        string xXcnamSensitivePhoneNumberTo = null,
+                                                                                        ITwilioRestClient client = null)
         {
-            var options = new FetchCurrentCallOptions();
+            var options = new FetchCurrentCallOptions(){XXcnamSensitivePhoneNumberFrom = xXcnamSensitivePhoneNumberFrom, XXcnamSensitivePhoneNumberTo = xXcnamSensitivePhoneNumberTo};
             return await FetchAsync(options, client);
         }
         #endif

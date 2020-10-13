@@ -46,9 +46,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 return new FactorTypesEnum(value);
             }
 
-            public static readonly FactorTypesEnum AppPush = new FactorTypesEnum("app-push");
-            public static readonly FactorTypesEnum Sms = new FactorTypesEnum("sms");
-            public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
             public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
         }
 
@@ -58,7 +55,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -95,11 +93,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Create a new Factor for the Entity
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="config"> The config for this Factor as a json string </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static FactorResource Create(string pathServiceSid,
@@ -108,9 +107,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                             string friendlyName,
                                             FactorResource.FactorTypesEnum factorType,
                                             string config,
+                                            string twilioSandboxMode = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config);
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config){TwilioSandboxMode = twilioSandboxMode};
             return Create(options, client);
         }
 
@@ -119,11 +119,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Create a new Factor for the Entity
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
         /// <param name="config"> The config for this Factor as a json string </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(string pathServiceSid,
@@ -132,9 +133,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                     string friendlyName,
                                                                                     FactorResource.FactorTypesEnum factorType,
                                                                                     string config,
+                                                                                    string twilioSandboxMode = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config);
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config){TwilioSandboxMode = twilioSandboxMode};
             return await CreateAsync(options, client);
         }
         #endif
@@ -145,7 +147,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Delete,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -182,16 +185,18 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Delete a specific Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static bool Delete(string pathServiceSid,
                                   string pathIdentity,
                                   string pathSid,
+                                  string twilioSandboxMode = null,
                                   ITwilioRestClient client = null)
         {
-            var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid);
+            var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid){TwilioSandboxMode = twilioSandboxMode};
             return Delete(options, client);
         }
 
@@ -200,16 +205,18 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Delete a specific Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathIdentity,
                                                                           string pathSid,
+                                                                          string twilioSandboxMode = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid);
+            var options = new DeleteFactorOptions(pathServiceSid, pathIdentity, pathSid){TwilioSandboxMode = twilioSandboxMode};
             return await DeleteAsync(options, client);
         }
         #endif
@@ -220,7 +227,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -257,16 +265,18 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Fetch a specific Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static FactorResource Fetch(string pathServiceSid,
                                            string pathIdentity,
                                            string pathSid,
+                                           string twilioSandboxMode = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid);
+            var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid){TwilioSandboxMode = twilioSandboxMode};
             return Fetch(options, client);
         }
 
@@ -275,16 +285,18 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Fetch a specific Factor.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<FactorResource> FetchAsync(string pathServiceSid,
                                                                                    string pathIdentity,
                                                                                    string pathSid,
+                                                                                   string twilioSandboxMode = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid);
+            var options = new FetchFactorOptions(pathServiceSid, pathIdentity, pathSid){TwilioSandboxMode = twilioSandboxMode};
             return await FetchAsync(options, client);
         }
         #endif
@@ -295,7 +307,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Get,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -336,18 +349,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Retrieve a list of all Factors for an Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static ResourceSet<FactorResource> Read(string pathServiceSid,
                                                        string pathIdentity,
+                                                       string twilioSandboxMode = null,
                                                        int? pageSize = null,
                                                        long? limit = null,
                                                        ITwilioRestClient client = null)
         {
-            var options = new ReadFactorOptions(pathServiceSid, pathIdentity){PageSize = pageSize, Limit = limit};
+            var options = new ReadFactorOptions(pathServiceSid, pathIdentity){TwilioSandboxMode = twilioSandboxMode, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -356,18 +371,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Retrieve a list of all Factors for an Entity.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<FactorResource>> ReadAsync(string pathServiceSid,
                                                                                                string pathIdentity,
+                                                                                               string twilioSandboxMode = null,
                                                                                                int? pageSize = null,
                                                                                                long? limit = null,
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new ReadFactorOptions(pathServiceSid, pathIdentity){PageSize = pageSize, Limit = limit};
+            var options = new ReadFactorOptions(pathServiceSid, pathIdentity){TwilioSandboxMode = twilioSandboxMode, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -431,7 +448,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 HttpMethod.Post,
                 Rest.Domain.Verify,
                 "/v2/Services/" + options.PathServiceSid + "/Entities/" + options.PathIdentity + "/Factors/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -468,11 +486,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="config"> The config for this Factor as a json string </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static FactorResource Update(string pathServiceSid,
@@ -481,9 +500,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                             string authPayload = null,
                                             string friendlyName = null,
                                             string config = null,
+                                            string twilioSandboxMode = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, Config = config};
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, Config = config, TwilioSandboxMode = twilioSandboxMode};
             return Update(options, client);
         }
 
@@ -492,11 +512,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="config"> The config for this Factor as a json string </param>
+        /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<FactorResource> UpdateAsync(string pathServiceSid,
@@ -505,9 +526,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                     string authPayload = null,
                                                                                     string friendlyName = null,
                                                                                     string config = null,
+                                                                                    string twilioSandboxMode = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, Config = config};
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, Config = config, TwilioSandboxMode = twilioSandboxMode};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -551,7 +573,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         [JsonProperty("entity_sid")]
         public string EntitySid { get; private set; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
@@ -592,11 +614,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
-        /// <summary>
-        /// Nested resource URLs.
-        /// </summary>
-        [JsonProperty("links")]
-        public Dictionary<string, string> Links { get; private set; }
 
         private FactorResource()
         {

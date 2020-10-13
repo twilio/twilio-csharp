@@ -43,7 +43,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -109,7 +110,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Get,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -261,7 +263,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Delete,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -326,7 +329,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -435,7 +439,8 @@ namespace Twilio.Rest.Video.V1
                 HttpMethod.Post,
                 Rest.Domain.Video,
                 "/v1/CompositionHooks/" + options.PathSid + "",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 

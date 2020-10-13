@@ -24,7 +24,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
@@ -43,12 +43,16 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The config for this Factor as a json string
         /// </summary>
         public string Config { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new CreateFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
@@ -96,6 +100,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
@@ -111,19 +129,23 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
         /// A string that uniquely identifies this Factor.
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new DeleteFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         public DeleteFactorOptions(string pathServiceSid, string pathIdentity, string pathSid)
         {
@@ -138,6 +160,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
             return p;
         }
     }
@@ -155,19 +191,23 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
         /// A string that uniquely identifies this Factor.
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new FetchFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         public FetchFactorOptions(string pathServiceSid, string pathIdentity, string pathSid)
         {
@@ -182,6 +222,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
             return p;
         }
     }
@@ -199,15 +253,19 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new ReadFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         public ReadFactorOptions(string pathServiceSid, string pathIdentity)
         {
             PathServiceSid = pathServiceSid;
@@ -227,6 +285,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
             return p;
         }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
+            }
+
+            return p;
+        }
     }
 
     /// <summary>
@@ -242,7 +314,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// Unique identity of the Entity
+        /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
@@ -261,12 +333,16 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The config for this Factor as a json string
         /// </summary>
         public string Config { get; set; }
+        /// <summary>
+        /// The Twilio-Sandbox-Mode HTTP request header
+        /// </summary>
+        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFactorOptions
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
-        /// <param name="pathIdentity"> Unique identity of the Entity </param>
+        /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         public UpdateFactorOptions(string pathServiceSid, string pathIdentity, string pathSid)
         {
@@ -294,6 +370,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (Config != null)
             {
                 p.Add(new KeyValuePair<string, string>("Config", Config));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (TwilioSandboxMode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
             }
 
             return p;

@@ -44,7 +44,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Functions/" + options.PathFunctionSid + "/Versions",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -184,7 +185,8 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Functions/" + options.PathFunctionSid + "/Versions/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -289,17 +291,17 @@ namespace Twilio.Rest.Serverless.V1.Service.Function
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The SID of the function that is the parent of the function version
+        /// The SID of the Function resource that is the parent of the Function Version resource
         /// </summary>
         [JsonProperty("function_sid")]
         public string FunctionSid { get; private set; }
         /// <summary>
-        /// The URL-friendly string by which the function version can be referenced
+        /// The URL-friendly string by which the Function Version resource can be referenced
         /// </summary>
         [JsonProperty("path")]
         public string Path { get; private set; }
         /// <summary>
-        /// The access control that determines how the function version can be accessed
+        /// The access control that determines how the Function Version resource can be accessed
         /// </summary>
         [JsonProperty("visibility")]
         [JsonConverter(typeof(StringEnumConverter))]

@@ -44,7 +44,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Builds",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -176,12 +177,13 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Get,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Builds/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
         /// <summary>
-        /// Retrieve a specific Buildn resource.
+        /// Retrieve a specific Build resource.
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -195,7 +197,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Buildn resource.
+        /// Retrieve a specific Build resource.
         /// </summary>
         /// <param name="options"> Fetch Build parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -210,7 +212,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         #endif
 
         /// <summary>
-        /// Retrieve a specific Buildn resource.
+        /// Retrieve a specific Build resource.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
         /// <param name="pathSid"> The SID of the Build resource to fetch </param>
@@ -224,7 +226,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 
         #if !NET35
         /// <summary>
-        /// Retrieve a specific Buildn resource.
+        /// Retrieve a specific Build resource.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to fetch the Build resource from </param>
         /// <param name="pathSid"> The SID of the Build resource to fetch </param>
@@ -245,7 +247,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Delete,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Builds/" + options.PathSid + "",
-                queryParams: options.GetParams()
+                queryParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -314,7 +317,8 @@ namespace Twilio.Rest.Serverless.V1.Service
                 HttpMethod.Post,
                 Rest.Domain.Serverless,
                 "/v1/Services/" + options.PathServiceSid + "/Builds",
-                postParams: options.GetParams()
+                postParams: options.GetParams(),
+                headerParams: null
             );
         }
 
@@ -351,9 +355,9 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// Create a new Build resource. At least one function version or asset version is required.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
-        /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the build </param>
-        /// <param name="functionVersions"> The list of the Variable resource SIDs to include in the build </param>
-        /// <param name="dependencies"> A list of objects that describe the Dependencies included in the build </param>
+        /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the Build </param>
+        /// <param name="functionVersions"> The list of the Function Version resource SIDs to include in the Build </param>
+        /// <param name="dependencies"> A list of objects that describe the Dependencies included in the Build </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Build </returns>
         public static BuildResource Create(string pathServiceSid,
@@ -371,9 +375,9 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// Create a new Build resource. At least one function version or asset version is required.
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Service to create the Build resource under </param>
-        /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the build </param>
-        /// <param name="functionVersions"> The list of the Variable resource SIDs to include in the build </param>
-        /// <param name="dependencies"> A list of objects that describe the Dependencies included in the build </param>
+        /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the Build </param>
+        /// <param name="functionVersions"> The list of the Function Version resource SIDs to include in the Build </param>
+        /// <param name="dependencies"> A list of objects that describe the Dependencies included in the Build </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
         public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(string pathServiceSid,
@@ -421,23 +425,23 @@ namespace Twilio.Rest.Serverless.V1.Service
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The status of the build
+        /// The status of the Build
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public BuildResource.StatusEnum Status { get; private set; }
         /// <summary>
-        /// The list of Asset Version resource SIDs that are included in the build
+        /// The list of Asset Version resource SIDs that are included in the Build
         /// </summary>
         [JsonProperty("asset_versions")]
         public List<object> AssetVersions { get; private set; }
         /// <summary>
-        /// The list of Function Version resource SIDs that are included in the build
+        /// The list of Function Version resource SIDs that are included in the Build
         /// </summary>
         [JsonProperty("function_versions")]
         public List<object> FunctionVersions { get; private set; }
         /// <summary>
-        /// A list of objects that describe the Dependencies included in the build
+        /// A list of objects that describe the Dependencies included in the Build
         /// </summary>
         [JsonProperty("dependencies")]
         public List<object> Dependencies { get; private set; }
@@ -456,6 +460,11 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private BuildResource()
         {

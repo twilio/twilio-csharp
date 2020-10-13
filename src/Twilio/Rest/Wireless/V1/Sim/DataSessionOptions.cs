@@ -20,14 +20,6 @@ namespace Twilio.Rest.Wireless.V1.Sim
         /// The SID of the Sim resource with the Data Sessions to read
         /// </summary>
         public string PathSimSid { get; }
-        /// <summary>
-        /// The date that the record ended, given as GMT in ISO 8601 format
-        /// </summary>
-        public DateTime? End { get; set; }
-        /// <summary>
-        /// The date that the Data Session started, given as GMT in ISO 8601 format
-        /// </summary>
-        public DateTime? Start { get; set; }
 
         /// <summary>
         /// Construct a new ReadDataSessionOptions
@@ -44,16 +36,6 @@ namespace Twilio.Rest.Wireless.V1.Sim
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (End != null)
-            {
-                p.Add(new KeyValuePair<string, string>("End", Serializers.DateTimeIso8601(End)));
-            }
-
-            if (Start != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Start", Serializers.DateTimeIso8601(Start)));
-            }
-
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
