@@ -28,10 +28,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string PathIdentity { get; }
         /// <summary>
-        /// A unique binding for this Factor as a json string
-        /// </summary>
-        public string Binding { get; }
-        /// <summary>
         /// The friendly name of this Factor
         /// </summary>
         public string FriendlyName { get; }
@@ -40,9 +36,29 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public FactorResource.FactorTypesEnum FactorType { get; }
         /// <summary>
-        /// The config for this Factor as a json string
+        /// The algorithm used when `factor_type` is `push`
         /// </summary>
-        public string Config { get; }
+        public string BindingAlg { get; set; }
+        /// <summary>
+        /// The public key encoded in Base64
+        /// </summary>
+        public string BindingPublicKey { get; set; }
+        /// <summary>
+        /// The ID that uniquely identifies your app in the Google or Apple store
+        /// </summary>
+        public string ConfigAppId { get; set; }
+        /// <summary>
+        /// The transport technology used to generate the Notification Token
+        /// </summary>
+        public FactorResource.NotificationPlatformsEnum ConfigNotificationPlatform { get; set; }
+        /// <summary>
+        /// For APN, the device token. For FCM the registration token
+        /// </summary>
+        public string ConfigNotificationToken { get; set; }
+        /// <summary>
+        /// The Verify Push SDK version used to configure the factor
+        /// </summary>
+        public string ConfigSdkVersion { get; set; }
         /// <summary>
         /// The Twilio-Sandbox-Mode HTTP request header
         /// </summary>
@@ -53,23 +69,17 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
-        /// <param name="config"> The config for this Factor as a json string </param>
         public CreateFactorOptions(string pathServiceSid,
                                    string pathIdentity,
-                                   string binding,
                                    string friendlyName,
-                                   FactorResource.FactorTypesEnum factorType,
-                                   string config)
+                                   FactorResource.FactorTypesEnum factorType)
         {
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
-            Binding = binding;
             FriendlyName = friendlyName;
             FactorType = factorType;
-            Config = config;
         }
 
         /// <summary>
@@ -78,11 +88,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Binding != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Binding", Binding));
-            }
-
             if (FriendlyName != null)
             {
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
@@ -93,9 +98,34 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 p.Add(new KeyValuePair<string, string>("FactorType", FactorType.ToString()));
             }
 
-            if (Config != null)
+            if (BindingAlg != null)
             {
-                p.Add(new KeyValuePair<string, string>("Config", Config));
+                p.Add(new KeyValuePair<string, string>("Binding.Alg", BindingAlg));
+            }
+
+            if (BindingPublicKey != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Binding.PublicKey", BindingPublicKey.ToString()));
+            }
+
+            if (ConfigAppId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.AppId", ConfigAppId));
+            }
+
+            if (ConfigNotificationPlatform != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.NotificationPlatform", ConfigNotificationPlatform.ToString()));
+            }
+
+            if (ConfigNotificationToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.NotificationToken", ConfigNotificationToken));
+            }
+
+            if (ConfigSdkVersion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.SdkVersion", ConfigSdkVersion));
             }
 
             return p;
@@ -330,9 +360,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The config for this Factor as a json string
+        /// For APN, the device token. For FCM the registration token
         /// </summary>
-        public string Config { get; set; }
+        public string ConfigNotificationToken { get; set; }
+        /// <summary>
+        /// The Verify Push SDK version used to configure the factor
+        /// </summary>
+        public string ConfigSdkVersion { get; set; }
         /// <summary>
         /// The Twilio-Sandbox-Mode HTTP request header
         /// </summary>
@@ -367,9 +401,14 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
-            if (Config != null)
+            if (ConfigNotificationToken != null)
             {
-                p.Add(new KeyValuePair<string, string>("Config", Config));
+                p.Add(new KeyValuePair<string, string>("Config.NotificationToken", ConfigNotificationToken));
+            }
+
+            if (ConfigSdkVersion != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.SdkVersion", ConfigSdkVersion));
             }
 
             return p;

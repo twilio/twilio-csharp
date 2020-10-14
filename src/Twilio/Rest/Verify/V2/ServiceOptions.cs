@@ -53,9 +53,17 @@ namespace Twilio.Rest.Verify.V2
         /// </summary>
         public bool? CustomCodeEnabled { get; set; }
         /// <summary>
-        /// Optional service level push factors configuration
+        /// Optional. Include the date in the Challenge's reponse. Default: true
         /// </summary>
-        public object Push { get; set; }
+        public bool? PushIncludeDate { get; set; }
+        /// <summary>
+        /// Optional. Set APN Credential for this service.
+        /// </summary>
+        public string PushApnCredentialSid { get; set; }
+        /// <summary>
+        /// Optional. Set FCM Credential for this service.
+        /// </summary>
+        public string PushFcmCredentialSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -117,9 +125,19 @@ namespace Twilio.Rest.Verify.V2
                 p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
             }
 
-            if (Push != null)
+            if (PushIncludeDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("Push", Serializers.JsonObject(Push)));
+                p.Add(new KeyValuePair<string, string>("Push.IncludeDate", PushIncludeDate.Value.ToString().ToLower()));
+            }
+
+            if (PushApnCredentialSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Push.ApnCredentialSid", PushApnCredentialSid.ToString()));
+            }
+
+            if (PushFcmCredentialSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid.ToString()));
             }
 
             return p;
@@ -250,9 +268,17 @@ namespace Twilio.Rest.Verify.V2
         /// </summary>
         public bool? CustomCodeEnabled { get; set; }
         /// <summary>
-        /// Optional service level push factors configuration
+        /// Optional. Include the date in the Challenge's reponse. Default: true
         /// </summary>
-        public object Push { get; set; }
+        public bool? PushIncludeDate { get; set; }
+        /// <summary>
+        /// Optional. Set APN Credential for this service.
+        /// </summary>
+        public string PushApnCredentialSid { get; set; }
+        /// <summary>
+        /// Optional. Set FCM Credential for this service.
+        /// </summary>
+        public string PushFcmCredentialSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -314,9 +340,19 @@ namespace Twilio.Rest.Verify.V2
                 p.Add(new KeyValuePair<string, string>("CustomCodeEnabled", CustomCodeEnabled.Value.ToString().ToLower()));
             }
 
-            if (Push != null)
+            if (PushIncludeDate != null)
             {
-                p.Add(new KeyValuePair<string, string>("Push", Serializers.JsonObject(Push)));
+                p.Add(new KeyValuePair<string, string>("Push.IncludeDate", PushIncludeDate.Value.ToString().ToLower()));
+            }
+
+            if (PushApnCredentialSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Push.ApnCredentialSid", PushApnCredentialSid.ToString()));
+            }
+
+            if (PushFcmCredentialSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid.ToString()));
             }
 
             return p;

@@ -168,6 +168,10 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         public string TimersClosed { get; set; }
         /// <summary>
+        /// An application-defined string that uniquely identifies the resource
+        /// </summary>
+        public string UniqueName { get; set; }
+        /// <summary>
         /// The X-Twilio-Webhook-Enabled HTTP request header
         /// </summary>
         public ConversationResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
@@ -225,6 +229,11 @@ namespace Twilio.Rest.Conversations.V1
             if (TimersClosed != null)
             {
                 p.Add(new KeyValuePair<string, string>("Timers.Closed", TimersClosed));
+            }
+
+            if (UniqueName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UniqueName", UniqueName));
             }
 
             return p;

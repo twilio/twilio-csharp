@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.TrustedComms.Business.Brand
+namespace Twilio.Rest.Preview.TrustedComms
 {
 
     /// <summary>
@@ -20,14 +20,6 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand
     public class FetchBrandedChannelOptions : IOptions<BrandedChannelResource>
     {
         /// <summary>
-        /// Business Sid.
-        /// </summary>
-        public string PathBusinessSid { get; }
-        /// <summary>
-        /// Brand Sid.
-        /// </summary>
-        public string PathBrandSid { get; }
-        /// <summary>
         /// Branded Channel Sid.
         /// </summary>
         public string PathSid { get; }
@@ -35,13 +27,9 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand
         /// <summary>
         /// Construct a new FetchBrandedChannelOptions
         /// </summary>
-        /// <param name="pathBusinessSid"> Business Sid. </param>
-        /// <param name="pathBrandSid"> Brand Sid. </param>
         /// <param name="pathSid"> Branded Channel Sid. </param>
-        public FetchBrandedChannelOptions(string pathBusinessSid, string pathBrandSid, string pathSid)
+        public FetchBrandedChannelOptions(string pathSid)
         {
-            PathBusinessSid = pathBusinessSid;
-            PathBrandSid = pathBrandSid;
             PathSid = pathSid;
         }
 

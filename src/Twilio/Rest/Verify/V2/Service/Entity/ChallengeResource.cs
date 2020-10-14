@@ -112,7 +112,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="expirationDate"> The future date in which this Challenge will expire </param>
-        /// <param name="details"> Public details provided to contextualize the Challenge </param>
+        /// <param name="detailsMessage"> Shown to the user when the push notification arrives </param>
+        /// <param name="detailsFields"> A list of objects that describe the Fields included in the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
         /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -121,12 +122,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                string pathIdentity,
                                                string factorSid,
                                                DateTime? expirationDate = null,
-                                               string details = null,
-                                               string hiddenDetails = null,
+                                               string detailsMessage = null,
+                                               List<object> detailsFields = null,
+                                               object hiddenDetails = null,
                                                string twilioSandboxMode = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails, TwilioSandboxMode = twilioSandboxMode};
+            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails, TwilioSandboxMode = twilioSandboxMode};
             return Create(options, client);
         }
 
@@ -138,7 +140,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="factorSid"> Factor Sid. </param>
         /// <param name="expirationDate"> The future date in which this Challenge will expire </param>
-        /// <param name="details"> Public details provided to contextualize the Challenge </param>
+        /// <param name="detailsMessage"> Shown to the user when the push notification arrives </param>
+        /// <param name="detailsFields"> A list of objects that describe the Fields included in the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
         /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -147,12 +150,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                        string pathIdentity,
                                                                                        string factorSid,
                                                                                        DateTime? expirationDate = null,
-                                                                                       string details = null,
-                                                                                       string hiddenDetails = null,
+                                                                                       string detailsMessage = null,
+                                                                                       List<object> detailsFields = null,
+                                                                                       object hiddenDetails = null,
                                                                                        string twilioSandboxMode = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, Details = details, HiddenDetails = hiddenDetails, TwilioSandboxMode = twilioSandboxMode};
+            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails, TwilioSandboxMode = twilioSandboxMode};
             return await CreateAsync(options, client);
         }
         #endif
@@ -551,15 +555,15 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         [JsonConverter(typeof(StringEnumConverter))]
         public ChallengeResource.ChallengeReasonsEnum RespondedReason { get; private set; }
         /// <summary>
-        /// Public details provided to contextualize the Challenge
+        /// The details
         /// </summary>
         [JsonProperty("details")]
-        public string Details { get; private set; }
+        public object Details { get; private set; }
         /// <summary>
         /// Hidden details provided to contextualize the Challenge
         /// </summary>
         [JsonProperty("hidden_details")]
-        public string HiddenDetails { get; private set; }
+        public object HiddenDetails { get; private set; }
         /// <summary>
         /// The Factor Type of this Challenge
         /// </summary>

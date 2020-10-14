@@ -12,9 +12,9 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel;
+using Twilio.Rest.Preview.TrustedComms.BrandedChannel;
 
-namespace Twilio.Tests.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
+namespace Twilio.Tests.Rest.Preview.TrustedComms.BrandedChannel
 {
 
     [TestFixture]
@@ -27,7 +27,7 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
             var request = new Request(
                 HttpMethod.Post,
                 Twilio.Rest.Domain.Preview,
-                "/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Brands/BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/BrandedChannels/BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels",
+                "/TrustedComms/BrandedChannels/BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Channels",
                 ""
             );
             request.AddPostParam("PhoneNumberSid", Serialize("PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"));
@@ -35,7 +35,7 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
 
             try
             {
-                ChannelResource.Create("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                ChannelResource.Create("BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -50,10 +50,10 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"business_sid\": \"BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"brand_sid\": \"BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"branded_channel_sid\": \"BWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phone_number_sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phone_number\": \"+15000000000\",\"url\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Brands/BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BrandedChannels/BWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"business_sid\": \"BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"brand_sid\": \"BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"branded_channel_sid\": \"BWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phone_number_sid\": \"PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"phone_number\": \"+15000000000\",\"url\": \"https://preview.twilio.com/TrustedComms/BrandedChannels/BWaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Channels\"}"
                                      ));
 
-            var response = ChannelResource.Create("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = ChannelResource.Create("BWXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "PNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

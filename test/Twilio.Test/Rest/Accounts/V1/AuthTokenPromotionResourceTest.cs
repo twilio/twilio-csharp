@@ -12,29 +12,29 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Preview.TrustedComms.Business;
+using Twilio.Rest.Accounts.V1;
 
-namespace Twilio.Tests.Rest.Preview.TrustedComms.Business
+namespace Twilio.Tests.Rest.Accounts.V1
 {
 
     [TestFixture]
-    public class BrandTest : TwilioTest
+    public class AuthTokenPromotionTest : TwilioTest
     {
         [Test]
-        public void TestFetchRequest()
+        public void TestUpdateRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
-                HttpMethod.Get,
-                Twilio.Rest.Domain.Preview,
-                "/TrustedComms/Businesses/BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Brands/BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Accounts,
+                "/v1/AuthTokens/Promote",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                BrandResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                AuthTokenPromotionResource.Update(client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -42,17 +42,17 @@ namespace Twilio.Tests.Rest.Preview.TrustedComms.Business
         }
 
         [Test]
-        public void TestFetchResponse()
+        public void TestUpdateResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"business_sid\": \"BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sid\": \"BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"branded_channels\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Brands/BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/BrandedChannels\"},\"url\": \"https://preview.twilio.com/TrustedComms/Businesses/BXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Brands/BZaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"auth_token\": \"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"date_created\": \"2015-07-31T04:00:00Z\",\"date_updated\": \"2015-07-31T04:00:00Z\",\"url\": \"https://accounts.twilio.com/v1/AuthTokens/Promote\"}"
                                      ));
 
-            var response = BrandResource.Fetch("BXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "BZXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = AuthTokenPromotionResource.Update(client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

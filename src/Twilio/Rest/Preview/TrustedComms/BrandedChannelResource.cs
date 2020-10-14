@@ -6,7 +6,7 @@
 /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
 /// currently do not have developer preview access, please contact help@twilio.com.
 ///
-/// BrandResource
+/// BrandedChannelResource
 /// </summary>
 
 using Newtonsoft.Json;
@@ -18,29 +18,29 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.TrustedComms.Business
+namespace Twilio.Rest.Preview.TrustedComms
 {
 
-    public class BrandResource : Resource
+    public class BrandedChannelResource : Resource
     {
-        private static Request BuildFetchRequest(FetchBrandOptions options, ITwilioRestClient client)
+        private static Request BuildFetchRequest(FetchBrandedChannelOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Preview,
-                "/TrustedComms/Businesses/" + options.PathBusinessSid + "/Brands/" + options.PathSid + "",
+                "/TrustedComms/BrandedChannels/" + options.PathSid + "",
                 queryParams: options.GetParams(),
                 headerParams: null
             );
         }
 
         /// <summary>
-        /// Fetch a specific a Brand.
+        /// Fetch a specific Branded Channel.
         /// </summary>
-        /// <param name="options"> Fetch Brand parameters </param>
+        /// <param name="options"> Fetch BrandedChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Brand </returns>
-        public static BrandResource Fetch(FetchBrandOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of BrandedChannel </returns>
+        public static BrandedChannelResource Fetch(FetchBrandedChannelOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -49,13 +49,13 @@ namespace Twilio.Rest.Preview.TrustedComms.Business
 
         #if !NET35
         /// <summary>
-        /// Fetch a specific a Brand.
+        /// Fetch a specific Branded Channel.
         /// </summary>
-        /// <param name="options"> Fetch Brand parameters </param>
+        /// <param name="options"> Fetch BrandedChannel parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Brand </returns>
-        public static async System.Threading.Tasks.Task<BrandResource> FetchAsync(FetchBrandOptions options,
-                                                                                  ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of BrandedChannel </returns>
+        public static async System.Threading.Tasks.Task<BrandedChannelResource> FetchAsync(FetchBrandedChannelOptions options,
+                                                                                           ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -64,46 +64,43 @@ namespace Twilio.Rest.Preview.TrustedComms.Business
         #endif
 
         /// <summary>
-        /// Fetch a specific a Brand.
+        /// Fetch a specific Branded Channel.
         /// </summary>
-        /// <param name="pathBusinessSid"> Business Sid. </param>
-        /// <param name="pathSid"> Brand Sid. </param>
+        /// <param name="pathSid"> Branded Channel Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Brand </returns>
-        public static BrandResource Fetch(string pathBusinessSid, string pathSid, ITwilioRestClient client = null)
+        /// <returns> A single instance of BrandedChannel </returns>
+        public static BrandedChannelResource Fetch(string pathSid, ITwilioRestClient client = null)
         {
-            var options = new FetchBrandOptions(pathBusinessSid, pathSid);
+            var options = new FetchBrandedChannelOptions(pathSid);
             return Fetch(options, client);
         }
 
         #if !NET35
         /// <summary>
-        /// Fetch a specific a Brand.
+        /// Fetch a specific Branded Channel.
         /// </summary>
-        /// <param name="pathBusinessSid"> Business Sid. </param>
-        /// <param name="pathSid"> Brand Sid. </param>
+        /// <param name="pathSid"> Branded Channel Sid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Brand </returns>
-        public static async System.Threading.Tasks.Task<BrandResource> FetchAsync(string pathBusinessSid,
-                                                                                  string pathSid,
-                                                                                  ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of BrandedChannel </returns>
+        public static async System.Threading.Tasks.Task<BrandedChannelResource> FetchAsync(string pathSid,
+                                                                                           ITwilioRestClient client = null)
         {
-            var options = new FetchBrandOptions(pathBusinessSid, pathSid);
+            var options = new FetchBrandedChannelOptions(pathSid);
             return await FetchAsync(options, client);
         }
         #endif
 
         /// <summary>
-        /// Converts a JSON string into a BrandResource object
+        /// Converts a JSON string into a BrandedChannelResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> BrandResource object represented by the provided JSON </returns>
-        public static BrandResource FromJson(string json)
+        /// <returns> BrandedChannelResource object represented by the provided JSON </returns>
+        public static BrandedChannelResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime
             try
             {
-                return JsonConvert.DeserializeObject<BrandResource>(json);
+                return JsonConvert.DeserializeObject<BrandedChannelResource>(json);
             }
             catch (JsonException e)
             {
@@ -124,6 +121,11 @@ namespace Twilio.Rest.Preview.TrustedComms.Business
         /// <summary>
         /// Brand Sid.
         /// </summary>
+        [JsonProperty("brand_sid")]
+        public string BrandSid { get; private set; }
+        /// <summary>
+        /// Branded Channel Sid.
+        /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
@@ -137,7 +139,7 @@ namespace Twilio.Rest.Preview.TrustedComms.Business
         [JsonProperty("url")]
         public Uri Url { get; private set; }
 
-        private BrandResource()
+        private BrandedChannelResource()
         {
 
         }

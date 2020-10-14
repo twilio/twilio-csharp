@@ -5,6 +5,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
@@ -36,13 +37,17 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public DateTime? ExpirationDate { get; set; }
         /// <summary>
-        /// Public details provided to contextualize the Challenge
+        /// Shown to the user when the push notification arrives
         /// </summary>
-        public string Details { get; set; }
+        public string DetailsMessage { get; set; }
+        /// <summary>
+        /// A list of objects that describe the Fields included in the Challenge
+        /// </summary>
+        public List<object> DetailsFields { get; set; }
         /// <summary>
         /// Hidden details provided to contextualize the Challenge
         /// </summary>
-        public string HiddenDetails { get; set; }
+        public object HiddenDetails { get; set; }
         /// <summary>
         /// The Twilio-Sandbox-Mode HTTP request header
         /// </summary>
@@ -59,6 +64,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             PathServiceSid = pathServiceSid;
             PathIdentity = pathIdentity;
             FactorSid = factorSid;
+            DetailsFields = new List<object>();
         }
 
         /// <summary>
@@ -77,14 +83,19 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                 p.Add(new KeyValuePair<string, string>("ExpirationDate", Serializers.DateTimeIso8601(ExpirationDate)));
             }
 
-            if (Details != null)
+            if (DetailsMessage != null)
             {
-                p.Add(new KeyValuePair<string, string>("Details", Details));
+                p.Add(new KeyValuePair<string, string>("Details.Message", DetailsMessage));
+            }
+
+            if (DetailsFields != null)
+            {
+                p.AddRange(DetailsFields.Select(prop => new KeyValuePair<string, string>("Details.Fields", Serializers.JsonObject(prop))));
             }
 
             if (HiddenDetails != null)
             {
-                p.Add(new KeyValuePair<string, string>("HiddenDetails", HiddenDetails));
+                p.Add(new KeyValuePair<string, string>("HiddenDetails", Serializers.JsonObject(HiddenDetails)));
             }
 
             return p;

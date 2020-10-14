@@ -78,7 +78,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Remove a push notification binding from the conversation service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Binding </returns>
@@ -92,7 +92,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Remove a push notification binding from the conversation service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of the resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Binding </returns>

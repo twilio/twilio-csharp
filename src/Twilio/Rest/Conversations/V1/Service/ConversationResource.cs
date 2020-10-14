@@ -91,7 +91,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Create a new conversation in your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
@@ -125,7 +125,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Create a new conversation in your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="attributes"> An optional string metadata field you can use to store any data you wish. </param>
@@ -199,7 +199,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Update an existing conversation in your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
@@ -209,6 +209,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -222,10 +223,11 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                   ConversationResource.StateEnum state = null,
                                                   string timersInactive = null,
                                                   string timersClosed = null,
+                                                  string uniqueName = null,
                                                   ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathChatServiceSid, pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
+            var options = new UpdateConversationOptions(pathChatServiceSid, pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Update(options, client);
         }
 
@@ -233,7 +235,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Update an existing conversation in your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="friendlyName"> The human-readable name of this conversation. </param>
         /// <param name="dateCreated"> The date that this resource was created. </param>
@@ -243,6 +245,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -256,10 +259,11 @@ namespace Twilio.Rest.Conversations.V1.Service
                                                                                           ConversationResource.StateEnum state = null,
                                                                                           string timersInactive = null,
                                                                                           string timersClosed = null,
+                                                                                          string uniqueName = null,
                                                                                           ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathChatServiceSid, pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
+            var options = new UpdateConversationOptions(pathChatServiceSid, pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -307,7 +311,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Remove a conversation from your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -325,7 +329,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Remove a conversation from your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -383,7 +387,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Fetch a conversation from your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -397,7 +401,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Fetch a conversation from your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pathSid"> A 34 character string that uniquely identifies this resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -458,7 +462,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Retrieve a list of conversations in your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -476,7 +480,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Retrieve a list of conversations in your service
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service that the resource is associated with. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

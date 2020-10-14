@@ -49,6 +49,19 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
         }
 
+        public sealed class NotificationPlatformsEnum : StringEnum
+        {
+            private NotificationPlatformsEnum(string value) : base(value) {}
+            public NotificationPlatformsEnum() {}
+            public static implicit operator NotificationPlatformsEnum(string value)
+            {
+                return new NotificationPlatformsEnum(value);
+            }
+
+            public static readonly NotificationPlatformsEnum Apn = new NotificationPlatformsEnum("apn");
+            public static readonly NotificationPlatformsEnum Fcm = new NotificationPlatformsEnum("fcm");
+        }
+
         private static Request BuildCreateRequest(CreateFactorOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -94,23 +107,31 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
-        /// <param name="config"> The config for this Factor as a json string </param>
+        /// <param name="bindingAlg"> The algorithm used when `factor_type` is `push` </param>
+        /// <param name="bindingPublicKey"> The public key encoded in Base64 </param>
+        /// <param name="configAppId"> The ID that uniquely identifies your app in the Google or Apple store </param>
+        /// <param name="configNotificationPlatform"> The transport technology used to generate the Notification Token </param>
+        /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
+        /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
         /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static FactorResource Create(string pathServiceSid,
                                             string pathIdentity,
-                                            string binding,
                                             string friendlyName,
                                             FactorResource.FactorTypesEnum factorType,
-                                            string config,
+                                            string bindingAlg = null,
+                                            string bindingPublicKey = null,
+                                            string configAppId = null,
+                                            FactorResource.NotificationPlatformsEnum configNotificationPlatform = null,
+                                            string configNotificationToken = null,
+                                            string configSdkVersion = null,
                                             string twilioSandboxMode = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config){TwilioSandboxMode = twilioSandboxMode};
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, TwilioSandboxMode = twilioSandboxMode};
             return Create(options, client);
         }
 
@@ -120,23 +141,31 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
-        /// <param name="binding"> A unique binding for this Factor as a json string </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="factorType"> The Type of this Factor </param>
-        /// <param name="config"> The config for this Factor as a json string </param>
+        /// <param name="bindingAlg"> The algorithm used when `factor_type` is `push` </param>
+        /// <param name="bindingPublicKey"> The public key encoded in Base64 </param>
+        /// <param name="configAppId"> The ID that uniquely identifies your app in the Google or Apple store </param>
+        /// <param name="configNotificationPlatform"> The transport technology used to generate the Notification Token </param>
+        /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
+        /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
         /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(string pathServiceSid,
                                                                                     string pathIdentity,
-                                                                                    string binding,
                                                                                     string friendlyName,
                                                                                     FactorResource.FactorTypesEnum factorType,
-                                                                                    string config,
+                                                                                    string bindingAlg = null,
+                                                                                    string bindingPublicKey = null,
+                                                                                    string configAppId = null,
+                                                                                    FactorResource.NotificationPlatformsEnum configNotificationPlatform = null,
+                                                                                    string configNotificationToken = null,
+                                                                                    string configSdkVersion = null,
                                                                                     string twilioSandboxMode = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, binding, friendlyName, factorType, config){TwilioSandboxMode = twilioSandboxMode};
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, TwilioSandboxMode = twilioSandboxMode};
             return await CreateAsync(options, client);
         }
         #endif
@@ -490,7 +519,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
-        /// <param name="config"> The config for this Factor as a json string </param>
+        /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
+        /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
         /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
@@ -499,11 +529,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                             string pathSid,
                                             string authPayload = null,
                                             string friendlyName = null,
-                                            string config = null,
+                                            string configNotificationToken = null,
+                                            string configSdkVersion = null,
                                             string twilioSandboxMode = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, Config = config, TwilioSandboxMode = twilioSandboxMode};
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, TwilioSandboxMode = twilioSandboxMode};
             return Update(options, client);
         }
 
@@ -516,7 +547,8 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
-        /// <param name="config"> The config for this Factor as a json string </param>
+        /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
+        /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
         /// <param name="twilioSandboxMode"> The Twilio-Sandbox-Mode HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
@@ -525,11 +557,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                     string pathSid,
                                                                                     string authPayload = null,
                                                                                     string friendlyName = null,
-                                                                                    string config = null,
+                                                                                    string configNotificationToken = null,
+                                                                                    string configSdkVersion = null,
                                                                                     string twilioSandboxMode = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, Config = config, TwilioSandboxMode = twilioSandboxMode};
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, TwilioSandboxMode = twilioSandboxMode};
             return await UpdateAsync(options, client);
         }
         #endif

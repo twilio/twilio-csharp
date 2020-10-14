@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using Twilio.Base;
 using Twilio.Converters;
 
-namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
+namespace Twilio.Rest.Preview.TrustedComms.BrandedChannel
 {
 
     /// <summary>
@@ -19,14 +19,6 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
     /// </summary>
     public class CreateChannelOptions : IOptions<ChannelResource>
     {
-        /// <summary>
-        /// Business Sid.
-        /// </summary>
-        public string PathBusinessSid { get; }
-        /// <summary>
-        /// Brand Sid.
-        /// </summary>
-        public string PathBrandSid { get; }
         /// <summary>
         /// Branded Channel Sid.
         /// </summary>
@@ -39,17 +31,10 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
         /// <summary>
         /// Construct a new CreateChannelOptions
         /// </summary>
-        /// <param name="pathBusinessSid"> Business Sid. </param>
-        /// <param name="pathBrandSid"> Brand Sid. </param>
         /// <param name="pathBrandedChannelSid"> Branded Channel Sid. </param>
         /// <param name="phoneNumberSid"> Phone Number Sid to be branded. </param>
-        public CreateChannelOptions(string pathBusinessSid,
-                                    string pathBrandSid,
-                                    string pathBrandedChannelSid,
-                                    string phoneNumberSid)
+        public CreateChannelOptions(string pathBrandedChannelSid, string phoneNumberSid)
         {
-            PathBusinessSid = pathBusinessSid;
-            PathBrandSid = pathBrandSid;
             PathBrandedChannelSid = pathBrandedChannelSid;
             PhoneNumberSid = phoneNumberSid;
         }

@@ -18,7 +18,7 @@ using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
 
-namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
+namespace Twilio.Rest.Preview.TrustedComms.BrandedChannel
 {
 
     public class ChannelResource : Resource
@@ -28,7 +28,7 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
             return new Request(
                 HttpMethod.Post,
                 Rest.Domain.Preview,
-                "/TrustedComms/Businesses/" + options.PathBusinessSid + "/Brands/" + options.PathBrandSid + "/BrandedChannels/" + options.PathBrandedChannelSid + "/Channels",
+                "/TrustedComms/BrandedChannels/" + options.PathBrandedChannelSid + "/Channels",
                 postParams: options.GetParams(),
                 headerParams: null
             );
@@ -66,19 +66,15 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
         /// <summary>
         /// Associate a channel to a branded channel
         /// </summary>
-        /// <param name="pathBusinessSid"> Business Sid. </param>
-        /// <param name="pathBrandSid"> Brand Sid. </param>
         /// <param name="pathBrandedChannelSid"> Branded Channel Sid. </param>
         /// <param name="phoneNumberSid"> Phone Number Sid to be branded. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
-        public static ChannelResource Create(string pathBusinessSid,
-                                             string pathBrandSid,
-                                             string pathBrandedChannelSid,
+        public static ChannelResource Create(string pathBrandedChannelSid,
                                              string phoneNumberSid,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateChannelOptions(pathBusinessSid, pathBrandSid, pathBrandedChannelSid, phoneNumberSid);
+            var options = new CreateChannelOptions(pathBrandedChannelSid, phoneNumberSid);
             return Create(options, client);
         }
 
@@ -86,19 +82,15 @@ namespace Twilio.Rest.Preview.TrustedComms.Business.Brand.BrandedChannel
         /// <summary>
         /// Associate a channel to a branded channel
         /// </summary>
-        /// <param name="pathBusinessSid"> Business Sid. </param>
-        /// <param name="pathBrandSid"> Brand Sid. </param>
         /// <param name="pathBrandedChannelSid"> Branded Channel Sid. </param>
         /// <param name="phoneNumberSid"> Phone Number Sid to be branded. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
-        public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(string pathBusinessSid,
-                                                                                     string pathBrandSid,
-                                                                                     string pathBrandedChannelSid,
+        public static async System.Threading.Tasks.Task<ChannelResource> CreateAsync(string pathBrandedChannelSid,
                                                                                      string phoneNumberSid,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateChannelOptions(pathBusinessSid, pathBrandSid, pathBrandedChannelSid, phoneNumberSid);
+            var options = new CreateChannelOptions(pathBrandedChannelSid, phoneNumberSid);
             return await CreateAsync(options, client);
         }
         #endif

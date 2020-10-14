@@ -18,7 +18,7 @@ namespace Twilio.Rest.Conversations.V1.Service
     public class DeleteBindingOptions : IOptions<BindingResource>
     {
         /// <summary>
-        /// The chat_service_sid
+        /// The SID of the Conversation Service to delete the resource from
         /// </summary>
         public string PathChatServiceSid { get; }
         /// <summary>
@@ -29,7 +29,7 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <summary>
         /// Construct a new DeleteBindingOptions
         /// </summary>
-        /// <param name="pathChatServiceSid"> The chat_service_sid </param>
+        /// <param name="pathChatServiceSid"> The SID of the Conversation Service to delete the resource from </param>
         /// <param name="pathSid"> The SID of the resource to delete </param>
         public DeleteBindingOptions(string pathChatServiceSid, string pathSid)
         {

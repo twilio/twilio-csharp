@@ -204,6 +204,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Conversation </returns>
@@ -216,10 +217,11 @@ namespace Twilio.Rest.Conversations.V1
                                                   ConversationResource.StateEnum state = null,
                                                   string timersInactive = null,
                                                   string timersClosed = null,
+                                                  string uniqueName = null,
                                                   ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Update(options, client);
         }
 
@@ -236,6 +238,7 @@ namespace Twilio.Rest.Conversations.V1
         /// <param name="state"> Current state of this conversation. </param>
         /// <param name="timersInactive"> ISO8601 duration when conversation will be switched to `inactive` state. </param>
         /// <param name="timersClosed"> ISO8601 duration when conversation will be switched to `closed` state. </param>
+        /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Conversation </returns>
@@ -248,10 +251,11 @@ namespace Twilio.Rest.Conversations.V1
                                                                                           ConversationResource.StateEnum state = null,
                                                                                           string timersInactive = null,
                                                                                           string timersClosed = null,
+                                                                                          string uniqueName = null,
                                                                                           ConversationResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
+            var options = new UpdateConversationOptions(pathSid){FriendlyName = friendlyName, DateCreated = dateCreated, DateUpdated = dateUpdated, Attributes = attributes, MessagingServiceSid = messagingServiceSid, State = state, TimersInactive = timersInactive, TimersClosed = timersClosed, UniqueName = uniqueName, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
