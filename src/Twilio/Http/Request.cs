@@ -24,7 +24,7 @@ namespace Twilio.Http
         /// </summary>
         public HttpMethod Method { get; }
 
-        private Uri Uri;
+        public Uri Uri;
 
         /// <summary>
         /// Auth username

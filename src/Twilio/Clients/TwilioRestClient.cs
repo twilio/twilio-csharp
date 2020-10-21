@@ -40,6 +40,11 @@ namespace Twilio.Clients
         /// </summary>
         public string Edge { get; set; }
 
+        /// <summary>
+        /// Log level for logging
+        /// </summary>
+        public string LogLevel { get; }
+
         private readonly string _username;
         private readonly string _password;
 
@@ -53,13 +58,16 @@ namespace Twilio.Clients
         /// <param name="region">region to make requests for</param>
         /// <param name="httpClient">http client used to make the requests</param>
         /// <param name="edge">edge to make requests for</param>
+        /// <param name="logLevel">log level for http logging</param>
+
         public TwilioRestClient(
             string username,
             string password,
             string accountSid = null,
             string region = null,
             HttpClient httpClient = null,
-            string edge = null
+            string edge = null,
+            string logLevel = null
         )
         {
             _username = username;
@@ -70,6 +78,10 @@ namespace Twilio.Clients
 
             Region = region;
             Edge = edge;
+            LogLevel = logLevel;
+            if (Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL") != null){
+                LogLevel = Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
+            }
         }
 
         /// <summary>
@@ -82,6 +94,9 @@ namespace Twilio.Clients
         {
             request.SetAuth(_username, _password);
 
+            if (LogLevel == "debug")
+                logRequest(request);
+
             if (Region != null)
                 request.Region = Region;
 
@@ -92,6 +107,12 @@ namespace Twilio.Clients
             try
             {
                 response = HttpClient.MakeRequest(request);
+                if(LogLevel == "debug")
+                {
+                    Console.WriteLine("response.status: " + response.StatusCode);
+                    Console.WriteLine("response.headers: " + "{"+ response.Headers + "}");
+                    Console.WriteLine("response.data: " + response.Content);
+                }
             }
             catch (Exception clientException)
             {
@@ -219,6 +240,27 @@ namespace Twilio.Clients
                     request
                 );
             }
+        }
+
+        /// <summary>
+        /// Format request information when LogLevel is set to debug
+        /// </summary>
+        ///
+        /// <param name="request">HTTP request</param>
+        private static void logRequest(Request request){
+                Console.WriteLine("-- BEGIN Twilio API Request --");
+                Console.Write(request.Method + " ");
+                Console.WriteLine(request.Uri);
+                if (request.PostParams != null){
+                    request.PostParams.ForEach(kpv => Console.WriteLine(kpv.Key+ ":"+ kpv.Value));
+                }
+                if (request.QueryParams != null){
+                    request.QueryParams.ForEach(kpv => Console.WriteLine(kpv.Key+ ":"+ kpv.Value));
+                }
+                if (request.HeaderParams != null){
+                    request.HeaderParams.ForEach(kpv => Console.WriteLine(kpv.Key+ ":"+ kpv.Value));
+                }
+                Console.WriteLine("-- END Twilio API Request --");
         }
     }
 }
