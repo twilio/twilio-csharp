@@ -111,7 +111,6 @@ namespace Twilio.Clients
                 {
                     Console.WriteLine("response.status: " + response.StatusCode);
                     Console.WriteLine("response.headers: " + "{"+ response.Headers + "}");
-                    Console.WriteLine("response.data: " + response.Content);
                 }
             }
             catch (Exception clientException)
@@ -248,19 +247,27 @@ namespace Twilio.Clients
         ///
         /// <param name="request">HTTP request</param>
         private static void logRequest(Request request){
-                Console.WriteLine("-- BEGIN Twilio API Request --");
-                Console.Write(request.Method + " ");
-                Console.WriteLine(request.Uri);
-                if (request.PostParams != null){
-                    request.PostParams.ForEach(kpv => Console.WriteLine(kpv.Key+ ":"+ kpv.Value));
+            Console.WriteLine("-- BEGIN Twilio API Request --");
+            Console.Write(request.Method + " ");
+            Console.WriteLine(request.Uri);
+
+            if (request.QueryParams != null)
+            {
+                request.QueryParams.ForEach(kpv => Console.WriteLine(kpv.Key+ ":"+ kpv.Value));
+            }  
+
+            if (request.HeaderParams != null){
+                for(int i=0; i<request.HeaderParams.Count; i++)
+                {
+                    var lowercaseHeader = request.HeaderParams[i].Key.ToLower();
+                    if(lowercaseHeader.Contains("authorization") == false)
+                    {
+                        Console.WriteLine(request.HeaderParams[i].Key+":"+request.HeaderParams[i].Value);
+                    }
                 }
-                if (request.QueryParams != null){
-                    request.QueryParams.ForEach(kpv => Console.WriteLine(kpv.Key+ ":"+ kpv.Value));
-                }
-                if (request.HeaderParams != null){
-                    request.HeaderParams.ForEach(kpv => Console.WriteLine(kpv.Key+ ":"+ kpv.Value));
-                }
-                Console.WriteLine("-- END Twilio API Request --");
+            }
+
+            Console.WriteLine("-- END Twilio API Request --");
         }
     }
 }
