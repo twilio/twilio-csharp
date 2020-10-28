@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Net;
+using System.Diagnostics;
 using Newtonsoft.Json;
 using Twilio.Exceptions;
 
@@ -43,8 +44,7 @@ namespace Twilio.Clients
         /// <summary>
         /// Log level for logging
         /// </summary>
-        public string LogLevel { get; }
-
+        private string _logLevel;
         private readonly string _username;
         private readonly string _password;
 
@@ -58,7 +58,6 @@ namespace Twilio.Clients
         /// <param name="region">region to make requests for</param>
         /// <param name="httpClient">http client used to make the requests</param>
         /// <param name="edge">edge to make requests for</param>
-        /// <param name="logLevel">log level for http logging</param>
 
         public TwilioRestClient(
             string username,
@@ -66,8 +65,7 @@ namespace Twilio.Clients
             string accountSid = null,
             string region = null,
             HttpClient httpClient = null,
-            string edge = null,
-            string logLevel = null
+            string edge = null
         )
         {
             _username = username;
@@ -78,10 +76,9 @@ namespace Twilio.Clients
 
             Region = region;
             Edge = edge;
-            LogLevel = logLevel;
-            if (Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL") != null){
-                LogLevel = Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
-            }
+
+            _logLevel = TwilioClient.logLevel ?? Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
+
         }
 
         /// <summary>
@@ -94,8 +91,8 @@ namespace Twilio.Clients
         {
             request.SetAuth(_username, _password);
 
-            if (LogLevel == "debug")
-                logRequest(request);
+            if (_logLevel == "debug")
+                LogRequest(request);
 
             if (Region != null)
                 request.Region = Region;
@@ -107,10 +104,10 @@ namespace Twilio.Clients
             try
             {
                 response = HttpClient.MakeRequest(request);
-                if(LogLevel == "debug")
+                if (_logLevel == "debug")
                 {
                     Console.WriteLine("response.status: " + response.StatusCode);
-                    Console.WriteLine("response.headers: " + "{"+ response.Headers + "}");
+                    Console.WriteLine("response.headers: " + response.Headers);
                 }
             }
             catch (Exception clientException)
@@ -246,10 +243,11 @@ namespace Twilio.Clients
         /// </summary>
         ///
         /// <param name="request">HTTP request</param>
-        private static void logRequest(Request request){
+        private static void LogRequest(Request request){
             Console.WriteLine("-- BEGIN Twilio API Request --");
-            Console.Write(request.Method + " ");
-            Console.WriteLine(request.Uri);
+            Console.WriteLine("request.method: " + request.Method);
+            Console.WriteLine("rquest.URI: " + request.Uri);
+            
 
             if (request.QueryParams != null)
             {
