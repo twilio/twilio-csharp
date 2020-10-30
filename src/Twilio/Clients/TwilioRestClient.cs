@@ -1,7 +1,6 @@
 ﻿
 using System;
 using System.Net;
-using System.Diagnostics;
 using Newtonsoft.Json;
 using Twilio.Exceptions;
 
@@ -44,7 +43,7 @@ namespace Twilio.Clients
         /// <summary>
         /// Log level for logging
         /// </summary>
-        private string _logLevel;
+        public string LogLevel { get; set; } = Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
         private readonly string _username;
         private readonly string _password;
 
@@ -58,7 +57,6 @@ namespace Twilio.Clients
         /// <param name="region">region to make requests for</param>
         /// <param name="httpClient">http client used to make the requests</param>
         /// <param name="edge">edge to make requests for</param>
-
         public TwilioRestClient(
             string username,
             string password,
@@ -76,9 +74,6 @@ namespace Twilio.Clients
 
             Region = region;
             Edge = edge;
-
-            _logLevel = TwilioClient.logLevel ?? Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
-
         }
 
         /// <summary>
@@ -91,7 +86,7 @@ namespace Twilio.Clients
         {
             request.SetAuth(_username, _password);
 
-            if (_logLevel == "debug")
+            if (LogLevel == "debug")
                 LogRequest(request);
 
             if (Region != null)
@@ -104,7 +99,7 @@ namespace Twilio.Clients
             try
             {
                 response = HttpClient.MakeRequest(request);
-                if (_logLevel == "debug")
+                if (LogLevel == "debug")
                 {
                     Console.WriteLine("response.status: " + response.StatusCode);
                     Console.WriteLine("response.headers: " + response.Headers);
@@ -243,24 +238,25 @@ namespace Twilio.Clients
         /// </summary>
         ///
         /// <param name="request">HTTP request</param>
-        private static void LogRequest(Request request){
+        private static void LogRequest(Request request)
+        {
             Console.WriteLine("-- BEGIN Twilio API Request --");
             Console.WriteLine("request.method: " + request.Method);
-            Console.WriteLine("rquest.URI: " + request.Uri);
-            
+            Console.WriteLine("request.URI: " + request.Uri);
 
             if (request.QueryParams != null)
             {
-                request.QueryParams.ForEach(kpv => Console.WriteLine(kpv.Key+ ":"+ kpv.Value));
-            }  
+                request.QueryParams.ForEach(kpv => Console.WriteLine(kpv.Key + ":" + kpv.Value));
+            }
 
-            if (request.HeaderParams != null){
-                for(int i=0; i<request.HeaderParams.Count; i++)
+            if (request.HeaderParams != null)
+            {
+                for (int i = 0; i < request.HeaderParams.Count; i++)
                 {
                     var lowercaseHeader = request.HeaderParams[i].Key.ToLower();
-                    if(lowercaseHeader.Contains("authorization") == false)
+                    if (lowercaseHeader.Contains("authorization") == false)
                     {
-                        Console.WriteLine(request.HeaderParams[i].Key+":"+request.HeaderParams[i].Value);
+                        Console.WriteLine(request.HeaderParams[i].Key + ":" + request.HeaderParams[i].Value);
                     }
                 }
             }

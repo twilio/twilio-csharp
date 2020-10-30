@@ -83,7 +83,7 @@ This will result in the `hostname` transforming from `api.twilio.com` to `api.sy
 There are two ways to enable debug logging in the default HTTP client. You can create an environment variable called `TWILIO_LOG_LEVEL` and set it to `debug` or you can set the LogLevel variable on the client as debug:
 
 ```csharp
-TwilioClient.logLevel("debug");
+TwilioClient.SetLogLevel("debug");
 ```
 
 ## Handling Exceptions

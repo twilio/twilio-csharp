@@ -1,6 +1,6 @@
 ﻿using Twilio.Clients;
 using Twilio.Exceptions;
-using System;
+
 namespace Twilio
 {
     /// <summary>
@@ -14,7 +14,7 @@ namespace Twilio
         private static string _region;
         private static string _edge;
         private static ITwilioRestClient _restClient;
-        public static string logLevel { get; set; }
+        private static string _logLevel;
 
         private TwilioClient() { }
 
@@ -128,6 +128,20 @@ namespace Twilio
         }
 
         /// <summary>
+        /// Set the logging level
+        /// </summary>
+        /// <param name="loglevel">log level</param>
+        public static void SetLogLevel(string loglevel)
+        {
+            if (_restClient != null)
+            {
+                Invalidate();
+            }
+
+            _logLevel = loglevel;
+        }
+
+        /// <summary>
         /// Get the rest client
         /// </summary>
         /// <returns>The rest client</returns>
@@ -145,7 +159,10 @@ namespace Twilio
                 );
             }
 
-            _restClient = new TwilioRestClient(_username, _password, accountSid: _accountSid, region: _region, edge: _edge);
+            _restClient = new TwilioRestClient(_username, _password, accountSid: _accountSid, region: _region, edge: _edge)
+            {
+                LogLevel = _logLevel
+            };
             return _restClient;
         }
 
