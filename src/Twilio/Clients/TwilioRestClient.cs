@@ -246,7 +246,7 @@ namespace Twilio.Clients
 
             if (request.QueryParams != null)
             {
-                request.QueryParams.ForEach(kpv => Console.WriteLine(kpv.Key + ":" + kpv.Value));
+                request.QueryParams.ForEach(parameter => Console.WriteLine(parameter.Key + ":" + parameter.Value));
             }
 
             if (request.HeaderParams != null)
