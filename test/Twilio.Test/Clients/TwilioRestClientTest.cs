@@ -113,5 +113,15 @@ namespace Twilio.Tests.Clients
             TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", null, null, client);
             twilioClient.Request(request);
         }
+
+        [Test]
+        public void TestActivatingDebugLogging()
+        {
+            client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
+            Request request = new Request(HttpMethod.Get, "https://www.contoso.com");
+            TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", null, null, client);
+            twilioClient.LogLevel = "debug";
+            twilioClient.Request(request);
+        }
     }
 }
