@@ -7,7 +7,6 @@ using NUnit.Framework;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
-using Twilio.Rest.Api.V2010.Account;
 using System.IO;
 
 namespace Twilio.Tests.Clients
