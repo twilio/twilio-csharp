@@ -79,6 +79,13 @@ TwilioClient.SetEdge("sydney");
 
 This will result in the `hostname` transforming from `api.twilio.com` to `api.sydney.au1.twilio.com`.
 
+## Enable Debug Logging
+There are two ways to enable debug logging in the default HTTP client. You can create an environment variable called `TWILIO_LOG_LEVEL` and set it to `debug` or you can set the LogLevel variable on the client as debug:
+
+```csharp
+TwilioClient.SetLogLevel("debug");
+```
+
 ## Handling Exceptions
 
 For an example on how to handle exceptions in this helper library, please see the [Twilio documentation](https://www.twilio.com/docs/libraries/csharp-dotnet/usage-guide#handling-errors).
@@ -106,7 +113,7 @@ var response = new VoiceResponse()
     .Play(new Uri("http://demo.twilio.com/hellomonkey/monkey.mp3"))
     .Append(gather)
     .Append(dial);
-    
+
 // Serialize the TwiML objects to XML string
 Console.WriteLine(response);
 

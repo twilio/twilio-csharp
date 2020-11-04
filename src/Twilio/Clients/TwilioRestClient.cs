@@ -40,6 +40,10 @@ namespace Twilio.Clients
         /// </summary>
         public string Edge { get; set; }
 
+        /// <summary>
+        /// Log level for logging
+        /// </summary>
+        public string LogLevel { get; set; } = Environment.GetEnvironmentVariable("TWILIO_LOG_LEVEL");
         private readonly string _username;
         private readonly string _password;
 
@@ -82,6 +86,9 @@ namespace Twilio.Clients
         {
             request.SetAuth(_username, _password);
 
+            if (LogLevel == "debug")
+                LogRequest(request);
+
             if (Region != null)
                 request.Region = Region;
 
@@ -92,6 +99,11 @@ namespace Twilio.Clients
             try
             {
                 response = HttpClient.MakeRequest(request);
+                if (LogLevel == "debug")
+                {
+                    Console.WriteLine("response.status: " + response.StatusCode);
+                    Console.WriteLine("response.headers: " + response.Headers);
+                }
             }
             catch (Exception clientException)
             {
@@ -219,6 +231,37 @@ namespace Twilio.Clients
                     request
                 );
             }
+        }
+
+        /// <summary>
+        /// Format request information when LogLevel is set to debug
+        /// </summary>
+        ///
+        /// <param name="request">HTTP request</param>
+        private static void LogRequest(Request request)
+        {
+            Console.WriteLine("-- BEGIN Twilio API Request --");
+            Console.WriteLine("request.method: " + request.Method);
+            Console.WriteLine("request.URI: " + request.Uri);
+
+            if (request.QueryParams != null)
+            {
+                request.QueryParams.ForEach(parameter => Console.WriteLine(parameter.Key + ":" + parameter.Value));
+            }
+
+            if (request.HeaderParams != null)
+            {
+                for (int i = 0; i < request.HeaderParams.Count; i++)
+                {
+                    var lowercaseHeader = request.HeaderParams[i].Key.ToLower();
+                    if (lowercaseHeader.Contains("authorization") == false)
+                    {
+                        Console.WriteLine(request.HeaderParams[i].Key + ":" + request.HeaderParams[i].Value);
+                    }
+                }
+            }
+
+            Console.WriteLine("-- END Twilio API Request --");
         }
     }
 }
