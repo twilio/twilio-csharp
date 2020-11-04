@@ -7,6 +7,8 @@ using NUnit.Framework;
 using Twilio.Clients;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Rest.Api.V2010.Account;
+using System.IO;
 
 namespace Twilio.Tests.Clients
 {
@@ -117,11 +119,14 @@ namespace Twilio.Tests.Clients
         [Test]
         public void TestActivatingDebugLogging()
         {
+            var output = new StringWriter();
+            Console.SetOut(output);
             client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
             Request request = new Request(HttpMethod.Get, "https://www.contoso.com");
             TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", null, null, client);
             twilioClient.LogLevel = "debug";
             twilioClient.Request(request);
+            Assert.That(output.ToString(), Contains.Substring("request.URI: https://www.contoso.com/"));
         }
     }
 }
