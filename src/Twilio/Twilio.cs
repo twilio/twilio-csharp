@@ -133,7 +133,7 @@ namespace Twilio
         /// <param name="loglevel">log level</param>
         public static void SetLogLevel(string loglevel)
         {
-            if (_restClient != null)
+            if (loglevel != _logLevel)
             {
                 Invalidate();
             }
