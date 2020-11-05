@@ -90,9 +90,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the message to fetch belongs to </param>
-        /// <param name="pathSid"> The SID of the Message resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Fetch(string pathServiceSid,
@@ -108,9 +108,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the message to fetch belongs to </param>
-        /// <param name="pathSid"> The SID of the Message resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> FetchAsync(string pathServiceSid,
@@ -166,15 +166,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
-        /// <param name="from"> The Identity of the new message's author </param>
-        /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
-        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
-        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
-        /// <param name="lastUpdatedBy"> The Identity of the User who last updated the Message </param>
-        /// <param name="body"> The message to send to the channel </param>
-        /// <param name="mediaSid">  The Media Sid to be attached to the new Message </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="from"> The from </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="lastUpdatedBy"> The last_updated_by </param>
+        /// <param name="body"> The body </param>
+        /// <param name="mediaSid"> The media_sid </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -198,15 +198,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
-        /// <param name="from"> The Identity of the new message's author </param>
-        /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
-        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
-        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
-        /// <param name="lastUpdatedBy"> The Identity of the User who last updated the Message </param>
-        /// <param name="body"> The message to send to the channel </param>
-        /// <param name="mediaSid">  The Media Sid to be attached to the new Message </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="from"> The from </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="lastUpdatedBy"> The last_updated_by </param>
+        /// <param name="body"> The body </param>
+        /// <param name="mediaSid"> The media_sid </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -274,9 +274,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the message to read belongs to </param>
-        /// <param name="order"> The sort order of the returned messages </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="order"> The order </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -296,9 +296,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the message to read belongs to </param>
-        /// <param name="order"> The sort order of the returned messages </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="order"> The order </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -411,9 +411,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the message to delete belongs to </param>
-        /// <param name="pathSid"> The SID of the Message resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -431,9 +431,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the message to delete belongs to </param>
-        /// <param name="pathSid"> The SID of the Message resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -491,15 +491,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the message belongs to </param>
-        /// <param name="pathSid"> The SID of the Message resource to update </param>
-        /// <param name="body"> The message to send to the channel </param>
-        /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
-        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
-        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
-        /// <param name="lastUpdatedBy"> The Identity of the User who last updated the Message, if applicable </param>
-        /// <param name="from"> The Identity of the message's author </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="body"> The body </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="lastUpdatedBy"> The last_updated_by </param>
+        /// <param name="from"> The from </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
@@ -523,15 +523,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the message belongs to </param>
-        /// <param name="pathSid"> The SID of the Message resource to update </param>
-        /// <param name="body"> The message to send to the channel </param>
-        /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
-        /// <param name="dateCreated"> The ISO 8601 date and time in GMT when the resource was created </param>
-        /// <param name="dateUpdated"> The ISO 8601 date and time in GMT when the resource was updated </param>
-        /// <param name="lastUpdatedBy"> The Identity of the User who last updated the Message, if applicable </param>
-        /// <param name="from"> The Identity of the message's author </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="body"> The body </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="dateCreated"> The date_created </param>
+        /// <param name="dateUpdated"> The date_updated </param>
+        /// <param name="lastUpdatedBy"> The last_updated_by </param>
+        /// <param name="from"> The from </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
@@ -571,82 +571,82 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         }
 
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The SID of the Account that created the resource
+        /// The account_sid
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The JSON string that stores application-specific data
+        /// The attributes
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The service_sid
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The SID of the Channel that the message was sent to
+        /// The to
         /// </summary>
         [JsonProperty("to")]
         public string To { get; private set; }
         /// <summary>
-        /// The SID of the Channel the Message resource belongs to
+        /// The channel_sid
         /// </summary>
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
+        /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
+        /// The date_updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The Identity of the User who last updated the Message
+        /// The last_updated_by
         /// </summary>
         [JsonProperty("last_updated_by")]
         public string LastUpdatedBy { get; private set; }
         /// <summary>
-        /// Whether the message has been edited since  it was created
+        /// The was_edited
         /// </summary>
         [JsonProperty("was_edited")]
         public bool? WasEdited { get; private set; }
         /// <summary>
-        /// The Identity of the message's author
+        /// The from
         /// </summary>
         [JsonProperty("from")]
         public string From { get; private set; }
         /// <summary>
-        /// The content of the message
+        /// The body
         /// </summary>
         [JsonProperty("body")]
         public string Body { get; private set; }
         /// <summary>
-        /// The index of the message within the Channel
+        /// The index
         /// </summary>
         [JsonProperty("index")]
         public int? Index { get; private set; }
         /// <summary>
-        /// The Message type
+        /// The type
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; private set; }
         /// <summary>
-        /// A Media object that describes the Message's media if attached; otherwise, null
+        /// The media
         /// </summary>
         [JsonProperty("media")]
         public object Media { get; private set; }
         /// <summary>
-        /// The absolute URL of the Message resource
+        /// The url
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

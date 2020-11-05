@@ -59,14 +59,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// The type of communication – Messages, Calls
         /// </summary>
         public string PathResourceType { get; }
-        /// <summary>
-        /// The next_token
-        /// </summary>
-        public string NextToken { get; set; }
-        /// <summary>
-        /// The previous_token
-        /// </summary>
-        public string PreviousToken { get; set; }
 
         /// <summary>
         /// Construct a new ReadDayOptions
@@ -83,16 +75,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (NextToken != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NextToken", NextToken));
-            }
-
-            if (PreviousToken != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PreviousToken", PreviousToken));
-            }
-
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

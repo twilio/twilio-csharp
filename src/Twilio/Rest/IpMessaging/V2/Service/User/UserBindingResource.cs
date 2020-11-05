@@ -82,9 +82,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User with the User Bindings to read </param>
-        /// <param name="bindingType"> The push technology used by the User Binding resources to read </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="bindingType"> The binding_type </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -104,9 +104,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User with the User Bindings to read </param>
-        /// <param name="bindingType"> The push technology used by the User Binding resources to read </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="bindingType"> The binding_type </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -219,9 +219,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User with the binding </param>
-        /// <param name="pathSid"> The SID of the User Binding resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserBinding </returns>
         public static UserBindingResource Fetch(string pathServiceSid,
@@ -237,9 +237,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User with the binding </param>
-        /// <param name="pathSid"> The SID of the User Binding resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserBinding </returns>
         public static async System.Threading.Tasks.Task<UserBindingResource> FetchAsync(string pathServiceSid,
@@ -295,9 +295,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User of the User Bindings to delete </param>
-        /// <param name="pathSid"> The SID of the User Binding resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UserBinding </returns>
         public static bool Delete(string pathServiceSid, string pathUserSid, string pathSid, ITwilioRestClient client = null)
@@ -310,9 +310,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User of the User Bindings to delete </param>
-        /// <param name="pathSid"> The SID of the User Binding resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UserBinding </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -344,63 +344,63 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
         }
 
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The SID of the Account that created the resource
+        /// The account_sid
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The service_sid
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
+        /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
+        /// The date_updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The unique endpoint identifier for the User Binding
+        /// The endpoint
         /// </summary>
         [JsonProperty("endpoint")]
         public string Endpoint { get; private set; }
         /// <summary>
-        /// The string that identifies the resource's User
+        /// The identity
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The SID of the User with the binding
+        /// The user_sid
         /// </summary>
         [JsonProperty("user_sid")]
         public string UserSid { get; private set; }
         /// <summary>
-        /// The SID of the Credential for the binding
+        /// The credential_sid
         /// </summary>
         [JsonProperty("credential_sid")]
         public string CredentialSid { get; private set; }
         /// <summary>
-        /// The push technology to use for the binding
+        /// The binding_type
         /// </summary>
         [JsonProperty("binding_type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public UserBindingResource.BindingTypeEnum BindingType { get; private set; }
         /// <summary>
-        /// The Programmable Chat message types the binding is subscribed to
+        /// The message_types
         /// </summary>
         [JsonProperty("message_types")]
         public List<string> MessageTypes { get; private set; }
         /// <summary>
-        /// The absolute URL of the User Binding resource
+        /// The url
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -81,11 +81,14 @@ namespace Twilio.Tests.Rest.Bulkexports.V1.Export
                 "/v1/Exports/resource_type/Jobs",
                 ""
             );
+            request.AddPostParam("StartDay", Serialize("start_day"));
+            request.AddPostParam("EndDay", Serialize("end_day"));
+            request.AddPostParam("FriendlyName", Serialize("friendly_name"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                ExportCustomJobResource.Create("resource_type", client: twilioRestClient);
+                ExportCustomJobResource.Create("resource_type", "start_day", "end_day", "friendly_name", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -103,7 +106,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1.Export
                                          "{\"start_day\": \"start_day\",\"job_sid\": \"JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"webhook_method\": \"webhook_method\",\"details\": {},\"end_day\": \"end_day\",\"webhook_url\": \"webhook_url\",\"email\": \"email\",\"resource_type\": \"resource_type\"}"
                                      ));
 
-            var response = ExportCustomJobResource.Create("resource_type", client: twilioRestClient);
+            var response = ExportCustomJobResource.Create("resource_type", "start_day", "end_day", "friendly_name", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }
