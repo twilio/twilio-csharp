@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Twilio.Jwt;
@@ -16,14 +17,17 @@ namespace Twilio.Tests.Jwt.AccessToken
             string identity = null,
             DateTime? expiration = null,
             DateTime? nbf = null,
-            HashSet<IGrant> grants = null
-        ) : base(accountSid, signingKeySid, secret, identity, expiration, nbf, grants) {}
+            HashSet<IGrant> grants = null,
+            string region = null
+        ) : base(accountSid, signingKeySid, secret, identity, expiration, nbf, grants, region) {}
 
         public override Dictionary<string, object> Headers
         {
             get
             {
-                return new Dictionary<string, object>();
+                var headers = new Dictionary<string, object>();
+                //headers.Add("cty", "twilio-fpa;v=1");
+                return headers;
             }
         }
     }
@@ -51,6 +55,31 @@ namespace Twilio.Tests.Jwt.AccessToken
             Assert.AreEqual("AC456", payload["sub"]);
 
             Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+            Assert.AreEqual("{}", payload["grants"].ToString());
+        }
+
+        [Test]
+        public void TestHaveRegion()
+        {
+            var now = DateTime.UtcNow;
+            var token = new TestToken("AC456", "SK123", Secret, region: "us1").ToJwt();
+            Assert.IsNotNull(token);
+            Assert.IsNotEmpty(token);
+
+            var decoded = new DecodedJwt(token, Secret);
+            var payload = decoded.Payload;
+            var header = decoded.Header;
+            Assert.IsNotNull(payload);
+            Assert.IsNotNull(header);
+
+            NUnit.Framework.TestContext.Progress.WriteLine(header);
+            NUnit.Framework.TestContext.Progress.WriteLine(header["cty"]);
+
+            Assert.AreEqual("SK123", payload["iss"]);
+            Assert.AreEqual("AC456", payload["sub"]);
+            Assert.AreEqual("twilio-fpa;v=1", header["cty"]);
+            Assert.AreEqual("us1", header["twr"]);
+
             Assert.AreEqual("{}", payload["grants"].ToString());
         }
 

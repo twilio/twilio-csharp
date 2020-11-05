@@ -13,6 +13,7 @@ namespace Twilio.Jwt.AccessToken
         private readonly string _identity;
         private readonly DateTime? _nbf;
         private readonly HashSet<IGrant> _grants;
+        private readonly string _region;
 
         /// <summary>
         /// Create a new Access Token
@@ -24,6 +25,7 @@ namespace Twilio.Jwt.AccessToken
         /// <param name="expiration">Token expiration</param>
         /// <param name="nbf">Token nbf</param>
         /// <param name="grants">Token grants</param>
+        /// <param name="region">Token region</param>
         public Token(
             string accountSid,
             string signingKeySid,
@@ -31,7 +33,8 @@ namespace Twilio.Jwt.AccessToken
             string identity = null,
             DateTime? expiration = null,
             DateTime? nbf = null,
-            HashSet<IGrant> grants = null
+            HashSet<IGrant> grants = null,
+            string region = null
         ) : base(secret, signingKeySid, expiration.HasValue ? expiration.Value : DateTime.UtcNow.AddSeconds(3600))
         {
             var now = BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow);
@@ -40,6 +43,7 @@ namespace Twilio.Jwt.AccessToken
             this._identity = identity;
             this._nbf = nbf;
             this._grants = grants;
+            this._region = region;
         }
 
         /// <summary>
@@ -76,13 +80,27 @@ namespace Twilio.Jwt.AccessToken
         }
 
         /// <summary>
+        /// The region associated with this account
+        /// </summary>
+        public string Region
+        {
+            get
+            {
+                return _region;
+            }
+        }
+
+        /// <summary>
         /// Headers for an Access Token
         /// </summary>
         public override Dictionary<string, object> Headers
         {
             get
             {
-                return new Dictionary<string, object> { { "cty", "twilio-fpa;v=1" } };
+                var headers = new Dictionary<string, object> { { "cty", "twilio-fpa;v=1" } };
+
+
+                return headers;
             }
         }
 
