@@ -20,16 +20,6 @@ namespace Twilio.Tests.Jwt.AccessToken
             HashSet<IGrant> grants = null,
             string region = null
         ) : base(accountSid, signingKeySid, secret, identity, expiration, nbf, grants, region) {}
-
-        public override Dictionary<string, object> Headers
-        {
-            get
-            {
-                var headers = new Dictionary<string, object>();
-                //headers.Add("cty", "twilio-fpa;v=1");
-                return headers;
-            }
-        }
     }
 
     [TestFixture]
@@ -62,27 +52,37 @@ namespace Twilio.Tests.Jwt.AccessToken
         public void TestHaveRegion()
         {
             var now = DateTime.UtcNow;
-            var token = new TestToken("AC456", "SK123", Secret, region: "us1").ToJwt();
+            var token = new TestToken("AC456", "SK123", Secret, region: "foo").ToJwt();
             Assert.IsNotNull(token);
             Assert.IsNotEmpty(token);
 
             var decoded = new DecodedJwt(token, Secret);
-            var payload = decoded.Payload;
             var header = decoded.Header;
-            Assert.IsNotNull(payload);
             Assert.IsNotNull(header);
-
-            NUnit.Framework.TestContext.Progress.WriteLine(header);
-            NUnit.Framework.TestContext.Progress.WriteLine(header["cty"]);
-
-            Assert.AreEqual("SK123", payload["iss"]);
-            Assert.AreEqual("AC456", payload["sub"]);
             Assert.AreEqual("twilio-fpa;v=1", header["cty"]);
-            Assert.AreEqual("us1", header["twr"]);
-
-            Assert.AreEqual("{}", payload["grants"].ToString());
+            Assert.AreEqual("foo", header["twr"]);
         }
 
+        [Test]
+        public void TestEmptyRegion()
+        {
+            var now = DateTime.UtcNow;
+            var token = new TestToken("AC456", "SK123", Secret).ToJwt();
+            Assert.IsNotNull(token);
+            Assert.IsNotEmpty(token);
+
+            var decoded = new DecodedJwt(token, Secret);
+            var header = decoded.Header;
+            Assert.IsNotNull(header);
+            Assert.AreEqual("twilio-fpa;v=1", header["cty"]);
+            
+            try {
+                var twr = header["twr"];
+                Assert.Fail();
+            } catch (KeyNotFoundException) {
+                // Pass
+            }
+        }
 
         [Test]
         public void TestHaveNbf()

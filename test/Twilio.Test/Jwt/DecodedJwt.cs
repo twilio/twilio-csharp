@@ -1,44 +1,13 @@
-﻿#if !NET35
-using System.IdentityModel.Tokens.Jwt;
-#else
+﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
-#endif
-
-using System;
 using Newtonsoft.Json;
 
 namespace Twilio.Tests.Jwt
 {
     class DecodedJwt
     {
-#if !NET35
-
-        public JwtPayload Payload
-        {
-            get
-            {
-                return token.Payload;
-            }
-        }
-
-        public JwtHeader Header
-        {
-            get
-            {
-                return token.Header;
-            }
-        }
-
-        private readonly JwtSecurityToken token;
-
-        public DecodedJwt(string jwt, string secret)
-        {
-            token = new JwtSecurityToken(jwt);
-        }
-
-#else
         private static byte[] Base64UrlDecode(string input) => Convert.FromBase64String(UrlDecode(input));
 
         private static string UrlDecode(string input)
@@ -65,17 +34,20 @@ namespace Twilio.Tests.Jwt
             return output;
         }
 
+        private static IDictionary<string, object> DecodeJwtPart(string part)
+        {
+            var bytes = Base64UrlDecode(part);
+            var json = Encoding.UTF8.GetString(bytes);
+            var data = JsonConvert.DeserializeObject<Dictionary<string, object>>(json);
+
+            return data;
+        }
+
         public IDictionary<string, object> Header
         {
             get
             {
-                var parts = _jwt.Split('.');
-                var header = parts[0];
-                var headerBytes = Base64UrlDecode(header);
-                var headerJson = Encoding.UTF8.GetString(headerBytes);
-                var headerData = JsonConvert.DeserializeObject<Dictionary<string, object>>(headerJson);
-
-                return headerData;
+                return _header;
             }
         }
 
@@ -83,20 +55,18 @@ namespace Twilio.Tests.Jwt
         {
             get
             {
-                return JsonConvert.DeserializeObject<Dictionary<string, object>>(token);
+                return _payload;
             }
         }
 
-        private readonly string _jwt;
-        private readonly string token;
+        private readonly IDictionary<string, object> _header;
+        private readonly IDictionary<string, object> _payload;
 
         public DecodedJwt(string jwt, string secret)
         {
-            _jwt = jwt;
-            token = JWT.JsonWebToken.Decode(jwt, secret);
+            var parts = jwt.Split('.');
+            _header = DecodeJwtPart(parts[0]);
+            _payload = DecodeJwtPart(parts[1]);
         }
-
-#endif
-
     }
 }

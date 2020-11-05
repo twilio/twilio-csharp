@@ -99,6 +99,10 @@ namespace Twilio.Jwt.AccessToken
             {
                 var headers = new Dictionary<string, object> { { "cty", "twilio-fpa;v=1" } };
 
+                if (_region != null)
+                {
+                    headers.Add("twr", _region);
+                }
 
                 return headers;
             }
