@@ -18,24 +18,24 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
     public class FetchMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
-        /// The SID of the Service to fetch the resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique ID of the channel the member belongs to
+        /// The channel_sid
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public FetchMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -59,28 +59,28 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
     public class CreateMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
-        /// The SID of the Service to create the resource under
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique ID of the channel the new member belongs to
+        /// The channel_sid
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The `identity` value that identifies the new resource's User
+        /// The identity
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The SID of the Role to assign to the member
+        /// The role_sid
         /// </summary>
         public string RoleSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the new member belongs to </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="identity"> The identity </param>
         public CreateMemberOptions(string pathServiceSid, string pathChannelSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -114,23 +114,23 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
     public class ReadMemberOptions : ReadOptions<MemberResource>
     {
         /// <summary>
-        /// The SID of the Service to read the resources from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique ID of the channel the member belongs to
+        /// The channel_sid
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The `identity` value of the resources to read
+        /// The identity
         /// </summary>
         public List<string> Identity { get; set; }
 
         /// <summary>
         /// Construct a new ReadMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member belongs to </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         public ReadMemberOptions(string pathServiceSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -164,24 +164,24 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
     public class DeleteMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
-        /// The SID of the Service to delete the resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique ID of the channel the message to delete belongs to
+        /// The channel_sid
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the message to delete belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public DeleteMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -205,32 +205,32 @@ namespace Twilio.Rest.IpMessaging.V1.Service.Channel
     public class UpdateMemberOptions : IOptions<MemberResource>
     {
         /// <summary>
-        /// The SID of the Service to create the resource under
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique ID of the channel the member to update belongs to
+        /// The channel_sid
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The SID of the Role to assign to the member
+        /// The role_sid
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// The index of the last consumed Message for the Channel for the Member
+        /// The last_consumed_message_index
         /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMemberOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The unique ID of the channel the member to update belongs to </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public UpdateMemberOptions(string pathServiceSid, string pathChannelSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

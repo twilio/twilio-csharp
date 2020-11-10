@@ -31,12 +31,11 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                 ""
             );
             request.AddPostParam("Identity", Serialize("identity"));
-            request.AddHeaderParam("Twilio-Sandbox-Mode", Serialize("twilio_sandbox_mode"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                EntityResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", twilioSandboxMode: Serialize("twilio_sandbox_mode"), client: twilioRestClient);
+                EntityResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -54,7 +53,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                                          "{\"sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f\",\"links\": {\"factors\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors\",\"challenges\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges\"}}"
                                      ));
 
-            var response = EntityResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", twilioSandboxMode: Serialize("twilio_sandbox_mode"), client: twilioRestClient);
+            var response = EntityResource.Create("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -68,12 +67,11 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                 "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity",
                 ""
             );
-            request.AddHeaderParam("Twilio-Sandbox-Mode", Serialize("twilio_sandbox_mode"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                EntityResource.Delete("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", twilioSandboxMode: Serialize("twilio_sandbox_mode"), client: twilioRestClient);
+                EntityResource.Delete("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -91,7 +89,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                                          "null"
                                      ));
 
-            var response = EntityResource.Delete("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", twilioSandboxMode: Serialize("twilio_sandbox_mode"), client: twilioRestClient);
+            var response = EntityResource.Delete("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -105,12 +103,11 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                 "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities/identity",
                 ""
             );
-            request.AddHeaderParam("Twilio-Sandbox-Mode", Serialize("twilio_sandbox_mode"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                EntityResource.Fetch("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", twilioSandboxMode: Serialize("twilio_sandbox_mode"), client: twilioRestClient);
+                EntityResource.Fetch("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -128,7 +125,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                                          "{\"sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f\",\"links\": {\"factors\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors\",\"challenges\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges\"}}"
                                      ));
 
-            var response = EntityResource.Fetch("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", twilioSandboxMode: Serialize("twilio_sandbox_mode"), client: twilioRestClient);
+            var response = EntityResource.Fetch("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "identity", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -142,12 +139,11 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                 "/v2/Services/VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Entities",
                 ""
             );
-            request.AddHeaderParam("Twilio-Sandbox-Mode", Serialize("twilio_sandbox_mode"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                EntityResource.Read("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", twilioSandboxMode: Serialize("twilio_sandbox_mode"), client: twilioRestClient);
+                EntityResource.Read("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -165,7 +161,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                                          "{\"entities\": [],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"entities\"}}"
                                      ));
 
-            var response = EntityResource.Read("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", twilioSandboxMode: Serialize("twilio_sandbox_mode"), client: twilioRestClient);
+            var response = EntityResource.Read("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -180,7 +176,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service
                                          "{\"entities\": [{\"sid\": \"YEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"identity\": \"ff483d1ff591898a9942916050d2ca3f\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"service_sid\": \"VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f\",\"links\": {\"factors\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Factors\",\"challenges\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities/ff483d1ff591898a9942916050d2ca3f/Challenges\"}}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://verify.twilio.com/v2/Services/VAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Entities?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"entities\"}}"
                                      ));
 
-            var response = EntityResource.Read("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", twilioSandboxMode: Serialize("twilio_sandbox_mode"), client: twilioRestClient);
+            var response = EntityResource.Read("VAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

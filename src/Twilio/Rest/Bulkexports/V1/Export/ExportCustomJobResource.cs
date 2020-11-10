@@ -71,20 +71,16 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// read
         /// </summary>
         /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
-        /// <param name="nextToken"> The token for the next page of job results </param>
-        /// <param name="previousToken"> The token for the previous page of result </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExportCustomJob </returns>
         public static ResourceSet<ExportCustomJobResource> Read(string pathResourceType,
-                                                                string nextToken = null,
-                                                                string previousToken = null,
                                                                 int? pageSize = null,
                                                                 long? limit = null,
                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadExportCustomJobOptions(pathResourceType){NextToken = nextToken, PreviousToken = previousToken, PageSize = pageSize, Limit = limit};
+            var options = new ReadExportCustomJobOptions(pathResourceType){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -93,20 +89,16 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// read
         /// </summary>
         /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
-        /// <param name="nextToken"> The token for the next page of job results </param>
-        /// <param name="previousToken"> The token for the previous page of result </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportCustomJob </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<ExportCustomJobResource>> ReadAsync(string pathResourceType,
-                                                                                                        string nextToken = null,
-                                                                                                        string previousToken = null,
                                                                                                         int? pageSize = null,
                                                                                                         long? limit = null,
                                                                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadExportCustomJobOptions(pathResourceType){NextToken = nextToken, PreviousToken = previousToken, PageSize = pageSize, Limit = limit};
+            var options = new ReadExportCustomJobOptions(pathResourceType){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -208,25 +200,29 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="startDay"> The start_day </param>
-        /// <param name="endDay"> The end_day </param>
-        /// <param name="webhookUrl"> The webhook_url </param>
-        /// <param name="webhookMethod"> The webhook_method </param>
-        /// <param name="email"> The email </param>
+        /// <param name="pathResourceType"> The type of communication – Messages or Calls </param>
+        /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd
+        ///                </param>
+        /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day
+        ///              is inclusive and must be 2 days earlier than the current UTC day. </param>
+        /// <param name="friendlyName"> The friendly name specified when creating the job </param>
+        /// <param name="webhookUrl"> The optional webhook url called on completion of the job. If this is supplied,
+        ///                  `WebhookMethod` must also be supplied. </param>
+        /// <param name="webhookMethod"> This is the method used to call the webhook on completion of the job. If this is
+        ///                     supplied, `WebhookUrl` must also be supplied. </param>
+        /// <param name="email"> The optional email to send the completion notification to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExportCustomJob </returns>
         public static ExportCustomJobResource Create(string pathResourceType,
-                                                     string friendlyName = null,
-                                                     string startDay = null,
-                                                     string endDay = null,
+                                                     string startDay,
+                                                     string endDay,
+                                                     string friendlyName,
                                                      string webhookUrl = null,
                                                      string webhookMethod = null,
                                                      string email = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateExportCustomJobOptions(pathResourceType){FriendlyName = friendlyName, StartDay = startDay, EndDay = endDay, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email};
+            var options = new CreateExportCustomJobOptions(pathResourceType, startDay, endDay, friendlyName){WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email};
             return Create(options, client);
         }
 
@@ -234,25 +230,29 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="startDay"> The start_day </param>
-        /// <param name="endDay"> The end_day </param>
-        /// <param name="webhookUrl"> The webhook_url </param>
-        /// <param name="webhookMethod"> The webhook_method </param>
-        /// <param name="email"> The email </param>
+        /// <param name="pathResourceType"> The type of communication – Messages or Calls </param>
+        /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd
+        ///                </param>
+        /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day
+        ///              is inclusive and must be 2 days earlier than the current UTC day. </param>
+        /// <param name="friendlyName"> The friendly name specified when creating the job </param>
+        /// <param name="webhookUrl"> The optional webhook url called on completion of the job. If this is supplied,
+        ///                  `WebhookMethod` must also be supplied. </param>
+        /// <param name="webhookMethod"> This is the method used to call the webhook on completion of the job. If this is
+        ///                     supplied, `WebhookUrl` must also be supplied. </param>
+        /// <param name="email"> The optional email to send the completion notification to </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportCustomJob </returns>
         public static async System.Threading.Tasks.Task<ExportCustomJobResource> CreateAsync(string pathResourceType,
-                                                                                             string friendlyName = null,
-                                                                                             string startDay = null,
-                                                                                             string endDay = null,
+                                                                                             string startDay,
+                                                                                             string endDay,
+                                                                                             string friendlyName,
                                                                                              string webhookUrl = null,
                                                                                              string webhookMethod = null,
                                                                                              string email = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new CreateExportCustomJobOptions(pathResourceType){FriendlyName = friendlyName, StartDay = startDay, EndDay = endDay, WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email};
+            var options = new CreateExportCustomJobOptions(pathResourceType, startDay, endDay, friendlyName){WebhookUrl = webhookUrl, WebhookMethod = webhookMethod, Email = email};
             return await CreateAsync(options, client);
         }
         #endif
@@ -286,12 +286,12 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }
         /// <summary>
-        /// The start time for the export specified when creating the job
+        /// The start day for the custom export specified as a string in the format of yyyy-MM-dd
         /// </summary>
         [JsonProperty("start_day")]
         public string StartDay { get; private set; }
         /// <summary>
-        /// The end time for the export specified when creating the job
+        /// The end day for the custom export specified as a string in the format of yyyy-MM-dd. This will be the last day exported. For instance, to export a single day, choose the same day for start and end day. To export the first 4 days of July, you would set the start date to 2020-07-01 and the end date to 2020-07-04. The end date must be the UTC day before yesterday.
         /// </summary>
         [JsonProperty("end_day")]
         public string EndDay { get; private set; }
@@ -311,12 +311,12 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         [JsonProperty("email")]
         public string Email { get; private set; }
         /// <summary>
-        /// The job_sid returned when the export was created
+        /// The unique job_sid returned when the custom export was created. This can be used to look up the status of the job.
         /// </summary>
         [JsonProperty("job_sid")]
         public string JobSid { get; private set; }
         /// <summary>
-        /// The details
+        /// The details of a job state which is an object that contains a status string, a day count integer, and list of days in the job
         /// </summary>
         [JsonProperty("details")]
         public object Details { get; private set; }

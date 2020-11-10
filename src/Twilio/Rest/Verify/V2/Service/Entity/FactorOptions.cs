@@ -12,8 +12,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Create a new Factor for the Entity
     /// </summary>
@@ -59,10 +58,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The Verify Push SDK version used to configure the factor
         /// </summary>
         public string ConfigSdkVersion { get; set; }
-        /// <summary>
-        /// The Twilio-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new CreateFactorOptions
@@ -130,25 +125,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
             return p;
         }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TwilioSandboxMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
-            }
-
-            return p;
-        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Delete a specific Factor.
     /// </summary>
@@ -166,10 +146,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// A string that uniquely identifies this Factor.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The Twilio-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new DeleteFactorOptions
@@ -192,25 +168,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TwilioSandboxMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
-            }
-
-            return p;
-        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Fetch a specific Factor.
     /// </summary>
@@ -228,10 +189,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// A string that uniquely identifies this Factor.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The Twilio-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new FetchFactorOptions
@@ -254,25 +211,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TwilioSandboxMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
-            }
-
-            return p;
-        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Retrieve a list of all Factors for an Entity.
     /// </summary>
@@ -286,10 +228,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Unique external identifier of the Entity
         /// </summary>
         public string PathIdentity { get; }
-        /// <summary>
-        /// The Twilio-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new ReadFactorOptions
@@ -315,25 +253,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
             return p;
         }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TwilioSandboxMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
-            }
-
-            return p;
-        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Update a specific Factor. This endpoint can be used to Verify a Factor if passed an `AuthPayload` param.
     /// </summary>
@@ -367,10 +290,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The Verify Push SDK version used to configure the factor
         /// </summary>
         public string ConfigSdkVersion { get; set; }
-        /// <summary>
-        /// The Twilio-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFactorOptions
@@ -409,20 +328,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (ConfigSdkVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("Config.SdkVersion", ConfigSdkVersion));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TwilioSandboxMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
             }
 
             return p;

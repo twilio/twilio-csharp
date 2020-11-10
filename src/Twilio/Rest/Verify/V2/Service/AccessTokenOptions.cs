@@ -12,15 +12,14 @@ namespace Twilio.Rest.Verify.V2.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Create a new enrollment Access Token for the Entity
     /// </summary>
     public class CreateAccessTokenOptions : IOptions<AccessTokenResource>
     {
         /// <summary>
-        /// The service_sid
+        /// Service Sid.
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
@@ -35,7 +34,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <summary>
         /// Construct a new CreateAccessTokenOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
         public CreateAccessTokenOptions(string pathServiceSid,

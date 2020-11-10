@@ -63,9 +63,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
-        /// <param name="pathSid"> The SID of the Invite resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Invite </returns>
         public static InviteResource Fetch(string pathServiceSid,
@@ -81,9 +81,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
-        /// <param name="pathSid"> The SID of the Invite resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
         public static async System.Threading.Tasks.Task<InviteResource> FetchAsync(string pathServiceSid,
@@ -139,10 +139,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
-        /// <param name="roleSid"> The Role assigned to the new member </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="identity"> The identity </param>
+        /// <param name="roleSid"> The role_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Invite </returns>
         public static InviteResource Create(string pathServiceSid,
@@ -159,10 +159,10 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
-        /// <param name="roleSid"> The Role assigned to the new member </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="identity"> The identity </param>
+        /// <param name="roleSid"> The role_sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
         public static async System.Threading.Tasks.Task<InviteResource> CreateAsync(string pathServiceSid,
@@ -223,9 +223,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resources to read belong to </param>
-        /// <param name="identity"> The `identity` value of the resources to read </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="identity"> The identity </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -245,9 +245,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resources to read belong to </param>
-        /// <param name="identity"> The `identity` value of the resources to read </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="identity"> The identity </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -360,9 +360,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to delete belongs to </param>
-        /// <param name="pathSid"> The SID of the Invite resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Invite </returns>
         public static bool Delete(string pathServiceSid,
@@ -378,9 +378,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to delete belongs to </param>
-        /// <param name="pathSid"> The SID of the Invite resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Invite </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -412,52 +412,52 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         }
 
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The SID of the Account that created the resource
+        /// The account_sid
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Channel the new resource belongs to
+        /// The channel_sid
         /// </summary>
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The service_sid
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The string that identifies the resource's User
+        /// The identity
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
+        /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
+        /// The date_updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The SID of the Role assigned to the member
+        /// The role_sid
         /// </summary>
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }
         /// <summary>
-        /// The identity of the User that created the invite
+        /// The created_by
         /// </summary>
         [JsonProperty("created_by")]
         public string CreatedBy { get; private set; }
         /// <summary>
-        /// The absolute URL of the Invite resource
+        /// The url
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

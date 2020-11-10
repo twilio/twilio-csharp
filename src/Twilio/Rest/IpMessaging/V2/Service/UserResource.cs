@@ -77,8 +77,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The SID of the User resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Fetch(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -91,8 +91,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The SID of the User resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> FetchAsync(string pathServiceSid,
@@ -147,8 +147,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The SID of  the User resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
@@ -161,8 +161,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The SID of  the User resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -217,11 +217,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the new resource under </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
-        /// <param name="roleSid"> The SID of the Role assigned to this user </param>
-        /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
-        /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="identity"> The identity </param>
+        /// <param name="roleSid"> The role_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -241,11 +241,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the new resource under </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
-        /// <param name="roleSid"> The SID of the Role assigned to this user </param>
-        /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
-        /// <param name="friendlyName"> A string to describe the new resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="identity"> The identity </param>
+        /// <param name="roleSid"> The role_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -309,7 +309,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the User resources from </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -327,7 +327,7 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the User resources from </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -438,11 +438,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The SID of the User resource to update </param>
-        /// <param name="roleSid"> The SID id of the Role assigned to this user </param>
-        /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="roleSid"> The role_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
@@ -462,11 +462,11 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The SID of the User resource to update </param>
-        /// <param name="roleSid"> The SID id of the Role assigned to this user </param>
-        /// <param name="attributes"> A valid JSON string that contains application-specific data </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="roleSid"> The role_sid </param>
+        /// <param name="attributes"> The attributes </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
@@ -502,72 +502,72 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         }
 
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The SID of the Account that created the resource
+        /// The account_sid
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that the resource is associated with
+        /// The service_sid
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The JSON string that stores application-specific data
+        /// The attributes
         /// </summary>
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// The string that you assigned to describe the resource
+        /// The friendly_name
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The SID of the Role assigned to the user
+        /// The role_sid
         /// </summary>
         [JsonProperty("role_sid")]
         public string RoleSid { get; private set; }
         /// <summary>
-        /// The string that identifies the resource's User
+        /// The identity
         /// </summary>
         [JsonProperty("identity")]
         public string Identity { get; private set; }
         /// <summary>
-        /// Whether the User is actively connected to the Service instance and online
+        /// The is_online
         /// </summary>
         [JsonProperty("is_online")]
         public bool? IsOnline { get; private set; }
         /// <summary>
-        /// Whether the User has a potentially valid Push Notification registration for the Service instance
+        /// The is_notifiable
         /// </summary>
         [JsonProperty("is_notifiable")]
         public bool? IsNotifiable { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
+        /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
+        /// The date_updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The number of Channels the User is a Member of
+        /// The joined_channels_count
         /// </summary>
         [JsonProperty("joined_channels_count")]
         public int? JoinedChannelsCount { get; private set; }
         /// <summary>
-        /// The absolute URLs of the Channel and Binding resources related to the user
+        /// The links
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The absolute URL of the User resource
+        /// The url
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

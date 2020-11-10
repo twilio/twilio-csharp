@@ -12,24 +12,24 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
 {
 
     /// <summary>
-    /// List all Channels for a given User.
+    /// ReadUserChannelOptions
     /// </summary>
     public class ReadUserChannelOptions : ReadOptions<UserChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to read the resources from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the User to fetch the User Channel resources from
+        /// The user_sid
         /// </summary>
         public string PathUserSid { get; }
 
         /// <summary>
         /// Construct a new ReadUserChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
         public ReadUserChannelOptions(string pathServiceSid, string pathUserSid)
         {
             PathServiceSid = pathServiceSid;
@@ -57,24 +57,24 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     public class FetchUserChannelOptions : IOptions<UserChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to fetch the User Channel resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the User to fetch the User Channel resource from
+        /// The user_sid
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The SID of the Channel that has the User Channel to fetch
+        /// The channel_sid
         /// </summary>
         public string PathChannelSid { get; }
 
         /// <summary>
         /// Construct a new FetchUserChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the User Channel resource from </param>
-        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel that has the User Channel to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         public FetchUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -93,29 +93,29 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     }
 
     /// <summary>
-    /// Removes User from selected Channel.
+    /// DeleteUserChannelOptions
     /// </summary>
     public class DeleteUserChannelOptions : IOptions<UserChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to read the resources from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the User to fetch the User Channel resources from
+        /// The user_sid
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The SID of the Channel the resource belongs to
+        /// The channel_sid
         /// </summary>
         public string PathChannelSid { get; }
 
         /// <summary>
         /// Construct a new DeleteUserChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathUserSid"> The SID of the User to fetch the User Channel resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource belongs to </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         public DeleteUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;
@@ -139,36 +139,36 @@ namespace Twilio.Rest.IpMessaging.V2.Service.User
     public class UpdateUserChannelOptions : IOptions<UserChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to update the resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the User to update the User Channel resource from
+        /// The user_sid
         /// </summary>
         public string PathUserSid { get; }
         /// <summary>
-        /// The SID of the Channel with the User Channel resource to update
+        /// The channel_sid
         /// </summary>
         public string PathChannelSid { get; }
         /// <summary>
-        /// The push notification level to assign to the User Channel
+        /// The notification_level
         /// </summary>
         public UserChannelResource.NotificationLevelEnum NotificationLevel { get; set; }
         /// <summary>
-        /// The index of the last Message that the Member has read within the Channel
+        /// The last_consumed_message_index
         /// </summary>
         public int? LastConsumedMessageIndex { get; set; }
         /// <summary>
-        /// The ISO 8601 based timestamp string that represents the datetime of the last Message read event for the Member within the Channel
+        /// The last_consumption_timestamp
         /// </summary>
         public DateTime? LastConsumptionTimestamp { get; set; }
 
         /// <summary>
         /// Construct a new UpdateUserChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathUserSid"> The SID of the User to update the User Channel resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel with the User Channel resource to update </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathUserSid"> The user_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         public UpdateUserChannelOptions(string pathServiceSid, string pathUserSid, string pathChannelSid)
         {
             PathServiceSid = pathServiceSid;

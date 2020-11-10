@@ -17,19 +17,19 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     public class FetchUserOptions : IOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service to fetch the resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the User resource to fetch
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The SID of the User resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public FetchUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -52,19 +52,19 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     public class DeleteUserOptions : IOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service to delete the resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of  the User resource to delete
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The SID of  the User resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public DeleteUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -87,23 +87,23 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     public class CreateUserOptions : IOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service to create the new resource under
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The `identity` value that identifies the new resource's User
+        /// The identity
         /// </summary>
         public string Identity { get; }
         /// <summary>
-        /// The SID of the Role assigned to this user
+        /// The role_sid
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// A valid JSON string that contains application-specific data
+        /// The attributes
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// A string to describe the new resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
@@ -114,8 +114,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// Construct a new CreateUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the new resource under </param>
-        /// <param name="identity"> The `identity` value that identifies the new resource's User </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="identity"> The identity </param>
         public CreateUserOptions(string pathServiceSid, string identity)
         {
             PathServiceSid = pathServiceSid;
@@ -172,14 +172,14 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     public class ReadUserOptions : ReadOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service to read the User resources from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
 
         /// <summary>
         /// Construct a new ReadUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the User resources from </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
         public ReadUserOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -206,23 +206,23 @@ namespace Twilio.Rest.IpMessaging.V2.Service
     public class UpdateUserOptions : IOptions<UserResource>
     {
         /// <summary>
-        /// The SID of the Service to update the resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The SID of the User resource to update
+        /// The sid
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The SID id of the Role assigned to this user
+        /// The role_sid
         /// </summary>
         public string RoleSid { get; set; }
         /// <summary>
-        /// A valid JSON string that contains application-specific data
+        /// The attributes
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// A string to describe the resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
@@ -233,8 +233,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service
         /// <summary>
         /// Construct a new UpdateUserOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The SID of the User resource to update </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public UpdateUserOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

@@ -37,38 +37,38 @@ namespace Twilio.Rest.IpMessaging.V2
     public class CreateCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
-        /// The type of push-notification service the credential is for
+        /// The type
         /// </summary>
         public CredentialResource.PushServiceEnum Type { get; }
         /// <summary>
-        /// A string to describe the resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// [APN only] The URL encoded representation of the certificate
+        /// The certificate
         /// </summary>
         public string Certificate { get; set; }
         /// <summary>
-        /// [APN only] The URL encoded representation of the private key
+        /// The private_key
         /// </summary>
         public string PrivateKey { get; set; }
         /// <summary>
-        /// [APN only] Whether to send the credential to sandbox APNs
+        /// The sandbox
         /// </summary>
         public bool? Sandbox { get; set; }
         /// <summary>
-        /// [GCM only] The API key for the project that was obtained from the Google Developer console for your GCM Service application credential
+        /// The api_key
         /// </summary>
         public string ApiKey { get; set; }
         /// <summary>
-        /// [FCM only] The Server key of your project from Firebase console
+        /// The secret
         /// </summary>
         public string Secret { get; set; }
 
         /// <summary>
         /// Construct a new CreateCredentialOptions
         /// </summary>
-        /// <param name="type"> The type of push-notification service the credential is for </param>
+        /// <param name="type"> The type </param>
         public CreateCredentialOptions(CredentialResource.PushServiceEnum type)
         {
             Type = type;
@@ -125,14 +125,14 @@ namespace Twilio.Rest.IpMessaging.V2
     public class FetchCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
-        /// The SID of the Credential resource to fetch
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchCredentialOptions
         /// </summary>
-        /// <param name="pathSid"> The SID of the Credential resource to fetch </param>
+        /// <param name="pathSid"> The sid </param>
         public FetchCredentialOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -154,38 +154,38 @@ namespace Twilio.Rest.IpMessaging.V2
     public class UpdateCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
-        /// The SID of the Credential resource to update
+        /// The sid
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A string to describe the resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// [APN only] The URL encoded representation of the certificate
+        /// The certificate
         /// </summary>
         public string Certificate { get; set; }
         /// <summary>
-        /// [APN only] The URL encoded representation of the private key
+        /// The private_key
         /// </summary>
         public string PrivateKey { get; set; }
         /// <summary>
-        /// [APN only] Whether to send the credential to sandbox APNs
+        /// The sandbox
         /// </summary>
         public bool? Sandbox { get; set; }
         /// <summary>
-        /// [GCM only] The API key for the project that was obtained from the Google Developer console for your GCM Service application credential
+        /// The api_key
         /// </summary>
         public string ApiKey { get; set; }
         /// <summary>
-        /// [FCM only] The Server key of your project from Firebase console
+        /// The secret
         /// </summary>
         public string Secret { get; set; }
 
         /// <summary>
         /// Construct a new UpdateCredentialOptions
         /// </summary>
-        /// <param name="pathSid"> The SID of the Credential resource to update </param>
+        /// <param name="pathSid"> The sid </param>
         public UpdateCredentialOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -237,14 +237,14 @@ namespace Twilio.Rest.IpMessaging.V2
     public class DeleteCredentialOptions : IOptions<CredentialResource>
     {
         /// <summary>
-        /// The SID of the Credential resource to delete
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteCredentialOptions
         /// </summary>
-        /// <param name="pathSid"> The SID of the Credential resource to delete </param>
+        /// <param name="pathSid"> The sid </param>
         public DeleteCredentialOptions(string pathSid)
         {
             PathSid = pathSid;

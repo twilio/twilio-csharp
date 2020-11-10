@@ -18,14 +18,14 @@ namespace Twilio.Rest.IpMessaging.V1
     public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The sid </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -47,14 +47,14 @@ namespace Twilio.Rest.IpMessaging.V1
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The sid </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -76,14 +76,14 @@ namespace Twilio.Rest.IpMessaging.V1
     public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// A string to describe the resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         public CreateServiceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -130,230 +130,230 @@ namespace Twilio.Rest.IpMessaging.V1
     public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A string to describe the resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The service role assigned to users when they are added to the service
+        /// The default_service_role_sid
         /// </summary>
         public string DefaultServiceRoleSid { get; set; }
         /// <summary>
-        /// The channel role assigned to users when they are added to a channel
+        /// The default_channel_role_sid
         /// </summary>
         public string DefaultChannelRoleSid { get; set; }
         /// <summary>
-        /// The channel role assigned to a channel creator when they join a new channel
+        /// The default_channel_creator_role_sid
         /// </summary>
         public string DefaultChannelCreatorRoleSid { get; set; }
         /// <summary>
-        /// Whether to enable the Message Consumption Horizon feature
+        /// The read_status_enabled
         /// </summary>
         public bool? ReadStatusEnabled { get; set; }
         /// <summary>
-        /// Whether to enable the Reachability Indicator feature for this Service instance
+        /// The reachability_enabled
         /// </summary>
         public bool? ReachabilityEnabled { get; set; }
         /// <summary>
-        /// How long in seconds to wait before assuming the user is no longer typing
+        /// The typing_indicator_timeout
         /// </summary>
         public int? TypingIndicatorTimeout { get; set; }
         /// <summary>
-        /// DEPRECATED
+        /// The consumption_report_interval
         /// </summary>
         public int? ConsumptionReportInterval { get; set; }
         /// <summary>
-        /// Whether to send a notification when a new message is added to a channel
+        /// The notifications.new_message.enabled
         /// </summary>
         public bool? NotificationsNewMessageEnabled { get; set; }
         /// <summary>
-        /// The template to use to create the notification text displayed when a new message is added to a channel
+        /// The notifications.new_message.template
         /// </summary>
         public string NotificationsNewMessageTemplate { get; set; }
         /// <summary>
-        /// Whether to send a notification when a member is added to a channel
+        /// The notifications.added_to_channel.enabled
         /// </summary>
         public bool? NotificationsAddedToChannelEnabled { get; set; }
         /// <summary>
-        /// The template to use to create the notification text displayed when a member is added to a channel
+        /// The notifications.added_to_channel.template
         /// </summary>
         public string NotificationsAddedToChannelTemplate { get; set; }
         /// <summary>
-        /// Whether to send a notification to a user when they are removed from a channel
+        /// The notifications.removed_from_channel.enabled
         /// </summary>
         public bool? NotificationsRemovedFromChannelEnabled { get; set; }
         /// <summary>
-        /// The template to use to create the notification text displayed to a user when they are removed
+        /// The notifications.removed_from_channel.template
         /// </summary>
         public string NotificationsRemovedFromChannelTemplate { get; set; }
         /// <summary>
-        /// Whether to send a notification when a user is invited to a channel
+        /// The notifications.invited_to_channel.enabled
         /// </summary>
         public bool? NotificationsInvitedToChannelEnabled { get; set; }
         /// <summary>
-        /// The template to use to create the notification text displayed when a user is invited to a channel
+        /// The notifications.invited_to_channel.template
         /// </summary>
         public string NotificationsInvitedToChannelTemplate { get; set; }
         /// <summary>
-        /// The webhook URL for pre-event webhooks
+        /// The pre_webhook_url
         /// </summary>
         public Uri PreWebhookUrl { get; set; }
         /// <summary>
-        /// The URL for post-event webhooks
+        /// The post_webhook_url
         /// </summary>
         public Uri PostWebhookUrl { get; set; }
         /// <summary>
-        /// The HTTP method  to use for both PRE and POST webhooks
+        /// The webhook_method
         /// </summary>
         public Twilio.Http.HttpMethod WebhookMethod { get; set; }
         /// <summary>
-        /// The list of WebHook events that are enabled for this Service instance
+        /// The webhook_filters
         /// </summary>
         public List<string> WebhookFilters { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_message_send event
+        /// The webhooks.on_message_send.url
         /// </summary>
         public Uri WebhooksOnMessageSendUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_send.url
+        /// The webhooks.on_message_send.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageSendMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_message_update event
+        /// The webhooks.on_message_update.url
         /// </summary>
         public Uri WebhooksOnMessageUpdateUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_update.url
+        /// The webhooks.on_message_update.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageUpdateMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_message_remove event
+        /// The webhooks.on_message_remove.url
         /// </summary>
         public Uri WebhooksOnMessageRemoveUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_remove.url
+        /// The webhooks.on_message_remove.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageRemoveMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_add event
+        /// The webhooks.on_channel_add.url
         /// </summary>
         public Uri WebhooksOnChannelAddUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_add.url
+        /// The webhooks.on_channel_add.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelAddMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_destroy event
+        /// The webhooks.on_channel_destroy.url
         /// </summary>
         public Uri WebhooksOnChannelDestroyUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_destroy.url
+        /// The webhooks.on_channel_destroy.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelDestroyMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_update event
+        /// The webhooks.on_channel_update.url
         /// </summary>
         public Uri WebhooksOnChannelUpdateUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_update.url
+        /// The webhooks.on_channel_update.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelUpdateMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_member_add event
+        /// The webhooks.on_member_add.url
         /// </summary>
         public Uri WebhooksOnMemberAddUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_member_add.url
+        /// The webhooks.on_member_add.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMemberAddMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_member_remove event
+        /// The webhooks.on_member_remove.url
         /// </summary>
         public Uri WebhooksOnMemberRemoveUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_member_remove.url
+        /// The webhooks.on_member_remove.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMemberRemoveMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_message_sent event
+        /// The webhooks.on_message_sent.url
         /// </summary>
         public Uri WebhooksOnMessageSentUrl { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_message_sent event
+        /// The webhooks.on_message_sent.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageSentMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_message_updated event
+        /// The webhooks.on_message_updated.url
         /// </summary>
         public Uri WebhooksOnMessageUpdatedUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_updated.url
+        /// The webhooks.on_message_updated.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageUpdatedMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_message_removed event
+        /// The webhooks.on_message_removed.url
         /// </summary>
         public Uri WebhooksOnMessageRemovedUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_message_removed.url
+        /// The webhooks.on_message_removed.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMessageRemovedMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_added event
+        /// The webhooks.on_channel_added.url
         /// </summary>
         public Uri WebhooksOnChannelAddedUrl { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_added event
+        /// The webhooks.on_channel_added.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelAddedMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_added event
+        /// The webhooks.on_channel_destroyed.url
         /// </summary>
         public Uri WebhooksOnChannelDestroyedUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_destroyed.url
+        /// The webhooks.on_channel_destroyed.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelDestroyedMethod { get; set; }
         /// <summary>
-        /// he URL of the webhook to call in response to the on_channel_updated event
+        /// The webhooks.on_channel_updated.url
         /// </summary>
         public Uri WebhooksOnChannelUpdatedUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_channel_updated.url
+        /// The webhooks.on_channel_updated.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnChannelUpdatedMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_channel_updated event
+        /// The webhooks.on_member_added.url
         /// </summary>
         public Uri WebhooksOnMemberAddedUrl { get; set; }
         /// <summary>
-        /// he HTTP method to use when calling the webhooks.on_channel_updated.url
+        /// The webhooks.on_member_added.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMemberAddedMethod { get; set; }
         /// <summary>
-        /// The URL of the webhook to call in response to the on_member_removed event
+        /// The webhooks.on_member_removed.url
         /// </summary>
         public Uri WebhooksOnMemberRemovedUrl { get; set; }
         /// <summary>
-        /// The HTTP method to use when calling the webhooks.on_member_removed.url
+        /// The webhooks.on_member_removed.method
         /// </summary>
         public Twilio.Http.HttpMethod WebhooksOnMemberRemovedMethod { get; set; }
         /// <summary>
-        /// The maximum number of Members that can be added to Channels within this Service
+        /// The limits.channel_members
         /// </summary>
         public int? LimitsChannelMembers { get; set; }
         /// <summary>
-        /// The maximum number of Channels Users can be a Member of within this Service
+        /// The limits.user_channels
         /// </summary>
         public int? LimitsUserChannels { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The sid </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;
