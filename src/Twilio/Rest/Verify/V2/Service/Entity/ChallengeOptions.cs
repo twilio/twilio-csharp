@@ -32,7 +32,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string FactorSid { get; }
         /// <summary>
-        /// The future date in which this Challenge will expire
+        /// The date-time when this Challenge expires
         /// </summary>
         public DateTime? ExpirationDate { get; set; }
         /// <summary>

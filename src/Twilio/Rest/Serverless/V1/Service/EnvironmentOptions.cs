@@ -12,8 +12,7 @@ namespace Twilio.Rest.Serverless.V1.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Retrieve a list of all environments.
     /// </summary>
@@ -49,8 +48,7 @@ namespace Twilio.Rest.Serverless.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Retrieve a specific environment.
     /// </summary>
@@ -87,8 +85,7 @@ namespace Twilio.Rest.Serverless.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Create a new environment.
     /// </summary>
@@ -139,8 +136,7 @@ namespace Twilio.Rest.Serverless.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Delete a specific environment.
     /// </summary>

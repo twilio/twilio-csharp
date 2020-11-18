@@ -50,63 +50,6 @@ namespace Twilio.Rest.Insights.V1.Room
             public static readonly CodecEnum Vp9 = new CodecEnum("VP9");
         }
 
-        public sealed class EndReasonEnum : StringEnum
-        {
-            private EndReasonEnum(string value) : base(value) {}
-            public EndReasonEnum() {}
-            public static implicit operator EndReasonEnum(string value)
-            {
-                return new EndReasonEnum(value);
-            }
-
-            public static readonly EndReasonEnum DisconnectedViaApi = new EndReasonEnum("disconnected_via_api");
-            public static readonly EndReasonEnum SignalingConnectionError = new EndReasonEnum("signaling_connection_error");
-            public static readonly EndReasonEnum SignalingConnectionDisconnected = new EndReasonEnum("signaling_connection_disconnected");
-            public static readonly EndReasonEnum SignalingConnectionTimedOut = new EndReasonEnum("signaling_connection_timed_out");
-            public static readonly EndReasonEnum ClientReceivedAnInvalidSignalingMessage = new EndReasonEnum("client_received_an_invalid_signaling_message");
-            public static readonly EndReasonEnum ClientSentAnInvalidSignalingMessage = new EndReasonEnum("client_sent_an_invalid_signaling_message");
-            public static readonly EndReasonEnum RoomNameIsInvalid = new EndReasonEnum("room_name_is_invalid");
-            public static readonly EndReasonEnum RoomNameIsTooLong = new EndReasonEnum("room_name_is_too_long");
-            public static readonly EndReasonEnum RoomNameContainsInvalidCharacters = new EndReasonEnum("room_name_contains_invalid_characters");
-            public static readonly EndReasonEnum UnableToCreateRoom = new EndReasonEnum("unable_to_create_room");
-            public static readonly EndReasonEnum UnableToConnectToRoom = new EndReasonEnum("unable_to_connect_to_room");
-            public static readonly EndReasonEnum RoomContainsTooManyParticipants = new EndReasonEnum("room_contains_too_many_participants");
-            public static readonly EndReasonEnum RoomNotFound = new EndReasonEnum("room_not_found");
-            public static readonly EndReasonEnum MaxParticipantsIsOutOfRange = new EndReasonEnum("max_participants_is_out_of_range");
-            public static readonly EndReasonEnum RoomTypeIsNotValid = new EndReasonEnum("room_type_is_not_valid");
-            public static readonly EndReasonEnum TimeoutIsOutOfRange = new EndReasonEnum("timeout_is_out_of_range");
-            public static readonly EndReasonEnum StatusCallbackMethodIsInvalid = new EndReasonEnum("status_callback_method_is_invalid");
-            public static readonly EndReasonEnum StatusCallbackIsInvalid = new EndReasonEnum("status_callback_is_invalid");
-            public static readonly EndReasonEnum StatusIsInvalid = new EndReasonEnum("status_is_invalid");
-            public static readonly EndReasonEnum RoomCreationFailed = new EndReasonEnum("room_creation_failed");
-            public static readonly EndReasonEnum RoomCompletedError = new EndReasonEnum("room_completed_error");
-            public static readonly EndReasonEnum TheRoomAccountLimitWasExceeded = new EndReasonEnum("the_room_account_limit_was_exceeded");
-            public static readonly EndReasonEnum InvalidRecordingRule = new EndReasonEnum("invalid_recording_rule");
-            public static readonly EndReasonEnum ApproachingRoomOrParticipantConcurrencyLimits = new EndReasonEnum("approaching_room_or_participant_concurrency_limits");
-            public static readonly EndReasonEnum RecordingOperationRequestedIsNotSupportedForTheRoomType = new EndReasonEnum("recording_operation_requested_is_not_supported_for_the_Room_type");
-            public static readonly EndReasonEnum ParticipantIdentityIsInvalid = new EndReasonEnum("participant_identity_is_invalid");
-            public static readonly EndReasonEnum ParticipantIdentityIsTooLong = new EndReasonEnum("participant_identity_is_too_long");
-            public static readonly EndReasonEnum ParticipantIdentityContainsInvalidCharacters = new EndReasonEnum("participant_identity_contains_invalid_characters");
-            public static readonly EndReasonEnum ParticipantHasTooManyTracks = new EndReasonEnum("participant_has_too_many_tracks");
-            public static readonly EndReasonEnum ParticipantNotFound = new EndReasonEnum("participant_not_found");
-            public static readonly EndReasonEnum ParticipantDisconnectedBecauseOfDuplicateIdentity = new EndReasonEnum("participant_disconnected_because_of_duplicate_identity");
-            public static readonly EndReasonEnum ParticipantAccountLimitWasExceeded = new EndReasonEnum("participant_account_limit_was_exceeded");
-            public static readonly EndReasonEnum InvalidSubscribeRule = new EndReasonEnum("invalid_subscribe_rule");
-            public static readonly EndReasonEnum TrackIsInvalid = new EndReasonEnum("track_is_invalid");
-            public static readonly EndReasonEnum TrackNameIsInvalid = new EndReasonEnum("track_name_is_invalid");
-            public static readonly EndReasonEnum TrackNameIsTooLong = new EndReasonEnum("track_name_is_too_long");
-            public static readonly EndReasonEnum TrackNameContainsInvalidCharacters = new EndReasonEnum("track_name_contains_invalid_characters");
-            public static readonly EndReasonEnum TrackNameIsDuplicated = new EndReasonEnum("track_name_is_duplicated");
-            public static readonly EndReasonEnum ClientIsUnableToCreateOrApplyALocalMediaDescription = new EndReasonEnum("client_is_unable_to_create_or_apply_a_local_media_description");
-            public static readonly EndReasonEnum ServerIsUnableToCreateOrApplyALocalMediaDescription = new EndReasonEnum("server_is_unable_to_create_or_apply_a_local_media_description");
-            public static readonly EndReasonEnum ClientIsUnableToApplyARemoteMediaDescription = new EndReasonEnum("client_is_unable_to_apply_a_remote_media_description");
-            public static readonly EndReasonEnum ServerIsUnableToApplyARemoteMediaDescription = new EndReasonEnum("server_is_unable_to_apply_a_remote_media_description");
-            public static readonly EndReasonEnum NoSupportedCodec = new EndReasonEnum("no_supported_codec");
-            public static readonly EndReasonEnum MediaConnectionFailedOrMediaActivityCeased = new EndReasonEnum("media_connection_failed_or_media_activity_ceased");
-            public static readonly EndReasonEnum UnableToAcquireConfiguration = new EndReasonEnum("unable_to_acquire_configuration");
-            public static readonly EndReasonEnum UnableToAcquireTurnCredentials = new EndReasonEnum("unable_to_acquire_TURN_credentials");
-        }
-
         public sealed class TwilioRealmEnum : StringEnum
         {
             private TwilioRealmEnum(string value) : base(value) {}
@@ -126,18 +69,6 @@ namespace Twilio.Rest.Insights.V1.Room
             public static readonly TwilioRealmEnum In1 = new TwilioRealmEnum("in1");
             public static readonly TwilioRealmEnum De1 = new TwilioRealmEnum("de1");
             public static readonly TwilioRealmEnum Gll = new TwilioRealmEnum("gll");
-            public static readonly TwilioRealmEnum Outside = new TwilioRealmEnum("outside");
-            public static readonly TwilioRealmEnum StageUs1 = new TwilioRealmEnum("stage_us1");
-            public static readonly TwilioRealmEnum StageUs2 = new TwilioRealmEnum("stage_us2");
-            public static readonly TwilioRealmEnum StageAu1 = new TwilioRealmEnum("stage_au1");
-            public static readonly TwilioRealmEnum StageBr1 = new TwilioRealmEnum("stage_br1");
-            public static readonly TwilioRealmEnum StageIe1 = new TwilioRealmEnum("stage_ie1");
-            public static readonly TwilioRealmEnum StageJp1 = new TwilioRealmEnum("stage_jp1");
-            public static readonly TwilioRealmEnum StageSg1 = new TwilioRealmEnum("stage_sg1");
-            public static readonly TwilioRealmEnum StageIn1 = new TwilioRealmEnum("stage_in1");
-            public static readonly TwilioRealmEnum StageDe1 = new TwilioRealmEnum("stage_de1");
-            public static readonly TwilioRealmEnum DevUs1 = new TwilioRealmEnum("dev_us1");
-            public static readonly TwilioRealmEnum DevUs2 = new TwilioRealmEnum("dev_us2");
         }
 
         public sealed class EdgeLocationEnum : StringEnum
@@ -409,11 +340,6 @@ namespace Twilio.Rest.Insights.V1.Room
         [JsonProperty("duration_sec")]
         public long? DurationSec { get; private set; }
         /// <summary>
-        /// The call_sid
-        /// </summary>
-        [JsonProperty("call_sid")]
-        public string CallSid { get; private set; }
-        /// <summary>
         /// The account_sid
         /// </summary>
         [JsonProperty("account_sid")]
@@ -439,8 +365,7 @@ namespace Twilio.Rest.Insights.V1.Room
         /// The end_reason
         /// </summary>
         [JsonProperty("end_reason")]
-        [JsonConverter(typeof(StringEnumConverter))]
-        public ParticipantResource.EndReasonEnum EndReason { get; private set; }
+        public string EndReason { get; private set; }
         /// <summary>
         /// The error_code
         /// </summary>

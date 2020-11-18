@@ -209,6 +209,10 @@ namespace Twilio.Rest.Sync.V1.Service
         /// The SID of the Sync Service with the Sync List resources to read
         /// </summary>
         public string PathServiceSid { get; }
+        /// <summary>
+        /// Hide expired Sync Lists and show only active ones.
+        /// </summary>
+        public SyncListResource.HideExpiredTypeEnum HideExpired { get; set; }
 
         /// <summary>
         /// Construct a new ReadSyncListOptions
@@ -225,6 +229,11 @@ namespace Twilio.Rest.Sync.V1.Service
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (HideExpired != null)
+            {
+                p.Add(new KeyValuePair<string, string>("HideExpired", HideExpired.ToString()));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

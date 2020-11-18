@@ -49,6 +49,19 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
             public static readonly QueryFromBoundTypeEnum Exclusive = new QueryFromBoundTypeEnum("exclusive");
         }
 
+        public sealed class HideExpiredTypeEnum : StringEnum
+        {
+            private HideExpiredTypeEnum(string value) : base(value) {}
+            public HideExpiredTypeEnum() {}
+            public static implicit operator HideExpiredTypeEnum(string value)
+            {
+                return new HideExpiredTypeEnum(value);
+            }
+
+            public static readonly HideExpiredTypeEnum True = new HideExpiredTypeEnum("true");
+            public static readonly HideExpiredTypeEnum False = new HideExpiredTypeEnum("false");
+        }
+
         private static Request BuildFetchRequest(FetchSyncListItemOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -348,6 +361,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="order"> The order to return the List Items </param>
         /// <param name="from"> The index of the first Sync List Item resource to read </param>
         /// <param name="bounds"> Whether to include the List Item referenced by the from parameter </param>
+        /// <param name="hideExpired"> Hide expired Sync List items and show only active ones. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -357,11 +371,12 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                                                              SyncListItemResource.QueryResultOrderEnum order = null,
                                                              string from = null,
                                                              SyncListItemResource.QueryFromBoundTypeEnum bounds = null,
+                                                             SyncListItemResource.HideExpiredTypeEnum hideExpired = null,
                                                              int? pageSize = null,
                                                              long? limit = null,
                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadSyncListItemOptions(pathServiceSid, pathListSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
+            var options = new ReadSyncListItemOptions(pathServiceSid, pathListSid){Order = order, From = from, Bounds = bounds, HideExpired = hideExpired, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -374,6 +389,7 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// <param name="order"> The order to return the List Items </param>
         /// <param name="from"> The index of the first Sync List Item resource to read </param>
         /// <param name="bounds"> Whether to include the List Item referenced by the from parameter </param>
+        /// <param name="hideExpired"> Hide expired Sync List items and show only active ones. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -383,11 +399,12 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
                                                                                                      SyncListItemResource.QueryResultOrderEnum order = null,
                                                                                                      string from = null,
                                                                                                      SyncListItemResource.QueryFromBoundTypeEnum bounds = null,
+                                                                                                     SyncListItemResource.HideExpiredTypeEnum hideExpired = null,
                                                                                                      int? pageSize = null,
                                                                                                      long? limit = null,
                                                                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadSyncListItemOptions(pathServiceSid, pathListSid){Order = order, From = from, Bounds = bounds, PageSize = pageSize, Limit = limit};
+            var options = new ReadSyncListItemOptions(pathServiceSid, pathListSid){Order = order, From = from, Bounds = bounds, HideExpired = hideExpired, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

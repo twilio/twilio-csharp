@@ -16,12 +16,26 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Sync.V1.Service
 {
 
     public class SyncMapResource : Resource
     {
+        public sealed class HideExpiredTypeEnum : StringEnum
+        {
+            private HideExpiredTypeEnum(string value) : base(value) {}
+            public HideExpiredTypeEnum() {}
+            public static implicit operator HideExpiredTypeEnum(string value)
+            {
+                return new HideExpiredTypeEnum(value);
+            }
+
+            public static readonly HideExpiredTypeEnum True = new HideExpiredTypeEnum("true");
+            public static readonly HideExpiredTypeEnum False = new HideExpiredTypeEnum("false");
+        }
+
         private static Request BuildFetchRequest(FetchSyncMapOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -370,16 +384,18 @@ namespace Twilio.Rest.Sync.V1.Service
         /// read
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
+        /// <param name="hideExpired"> Hide expired Sync Maps and show only active ones. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SyncMap </returns>
         public static ResourceSet<SyncMapResource> Read(string pathServiceSid,
+                                                        SyncMapResource.HideExpiredTypeEnum hideExpired = null,
                                                         int? pageSize = null,
                                                         long? limit = null,
                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadSyncMapOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadSyncMapOptions(pathServiceSid){HideExpired = hideExpired, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -388,16 +404,18 @@ namespace Twilio.Rest.Sync.V1.Service
         /// read
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Sync Service with the Sync Map resources to read </param>
+        /// <param name="hideExpired"> Hide expired Sync Maps and show only active ones. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SyncMap </returns>
         public static async System.Threading.Tasks.Task<ResourceSet<SyncMapResource>> ReadAsync(string pathServiceSid,
+                                                                                                SyncMapResource.HideExpiredTypeEnum hideExpired = null,
                                                                                                 int? pageSize = null,
                                                                                                 long? limit = null,
                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadSyncMapOptions(pathServiceSid){PageSize = pageSize, Limit = limit};
+            var options = new ReadSyncMapOptions(pathServiceSid){HideExpired = hideExpired, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

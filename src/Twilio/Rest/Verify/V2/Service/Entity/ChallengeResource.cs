@@ -110,7 +110,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="factorSid"> Factor Sid. </param>
-        /// <param name="expirationDate"> The future date in which this Challenge will expire </param>
+        /// <param name="expirationDate"> The date-time when this Challenge expires </param>
         /// <param name="detailsMessage"> Shown to the user when the push notification arrives </param>
         /// <param name="detailsFields"> A list of objects that describe the Fields included in the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
@@ -136,7 +136,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="factorSid"> Factor Sid. </param>
-        /// <param name="expirationDate"> The future date in which this Challenge will expire </param>
+        /// <param name="expirationDate"> The date-time when this Challenge expires </param>
         /// <param name="detailsMessage"> Shown to the user when the push notification arrives </param>
         /// <param name="detailsFields"> A list of objects that describe the Fields included in the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
@@ -521,7 +521,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         [JsonProperty("date_responded")]
         public DateTime? DateResponded { get; private set; }
         /// <summary>
-        /// The date this Challenge is expired
+        /// The date-time when this Challenge expires
         /// </summary>
         [JsonProperty("expiration_date")]
         public DateTime? ExpirationDate { get; private set; }

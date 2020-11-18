@@ -228,6 +228,10 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
         /// Whether to include the Map Item referenced by the from parameter
         /// </summary>
         public SyncMapItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
+        /// <summary>
+        /// Hide expired Sync Map items and show only active ones.
+        /// </summary>
+        public SyncMapItemResource.HideExpiredTypeEnum HideExpired { get; set; }
 
         /// <summary>
         /// Construct a new ReadSyncMapItemOptions
@@ -259,6 +263,11 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
             if (Bounds != null)
             {
                 p.Add(new KeyValuePair<string, string>("Bounds", Bounds.ToString()));
+            }
+
+            if (HideExpired != null)
+            {
+                p.Add(new KeyValuePair<string, string>("HideExpired", HideExpired.ToString()));
             }
 
             if (PageSize != null)
