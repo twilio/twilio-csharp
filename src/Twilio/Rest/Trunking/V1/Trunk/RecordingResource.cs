@@ -160,12 +160,17 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk. </param>
+        /// <param name="mode"> The recording mode for the trunk. </param>
+        /// <param name="trim"> The recording trim setting for the trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Recording </returns>
-        public static RecordingResource Update(string pathTrunkSid, ITwilioRestClient client = null)
+        public static RecordingResource Update(string pathTrunkSid,
+                                               RecordingResource.RecordingModeEnum mode = null,
+                                               RecordingResource.RecordingTrimEnum trim = null,
+                                               ITwilioRestClient client = null)
         {
-            var options = new UpdateRecordingOptions(pathTrunkSid);
+            var options = new UpdateRecordingOptions(pathTrunkSid){Mode = mode, Trim = trim};
             return Update(options, client);
         }
 
@@ -173,13 +178,17 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk. </param>
+        /// <param name="mode"> The recording mode for the trunk. </param>
+        /// <param name="trim"> The recording trim setting for the trunk. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Recording </returns>
         public static async System.Threading.Tasks.Task<RecordingResource> UpdateAsync(string pathTrunkSid,
+                                                                                       RecordingResource.RecordingModeEnum mode = null,
+                                                                                       RecordingResource.RecordingTrimEnum trim = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new UpdateRecordingOptions(pathTrunkSid);
+            var options = new UpdateRecordingOptions(pathTrunkSid){Mode = mode, Trim = trim};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -214,16 +223,6 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         [JsonProperty("trim")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RecordingResource.RecordingTrimEnum Trim { get; private set; }
-        /// <summary>
-        /// The url
-        /// </summary>
-        [JsonProperty("url")]
-        public Uri Url { get; private set; }
-        /// <summary>
-        /// The trunk_sid
-        /// </summary>
-        [JsonProperty("trunk_sid")]
-        public string TrunkSid { get; private set; }
 
         private RecordingResource()
         {

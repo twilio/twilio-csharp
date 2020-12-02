@@ -141,7 +141,7 @@ namespace Twilio.Rest.Lookups.V1
         /// The name of the phone number's owner
         /// </summary>
         [JsonProperty("caller_name")]
-        public Dictionary<string, string> CallerName { get; private set; }
+        public object CallerName { get; private set; }
         /// <summary>
         /// The ISO country code for the phone number
         /// </summary>
@@ -162,7 +162,7 @@ namespace Twilio.Rest.Lookups.V1
         /// The telecom company that provides the phone number
         /// </summary>
         [JsonProperty("carrier")]
-        public Dictionary<string, string> Carrier { get; private set; }
+        public object Carrier { get; private set; }
         /// <summary>
         /// A JSON string with the results of the Add-ons you specified
         /// </summary>

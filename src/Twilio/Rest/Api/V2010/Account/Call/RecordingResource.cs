@@ -644,6 +644,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// </summary>
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
+        /// <summary>
+        /// The recorded track. Can be: `inbound`, `outbound`, or `both`.
+        /// </summary>
+        [JsonProperty("track")]
+        public string Track { get; private set; }
 
         private RecordingResource()
         {

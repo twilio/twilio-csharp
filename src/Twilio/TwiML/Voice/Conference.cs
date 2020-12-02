@@ -111,6 +111,21 @@ namespace Twilio.TwiML.Voice
             public static readonly RecordingEventEnum Absent = new RecordingEventEnum("absent");
         }
 
+        public sealed class JitterBufferSizeEnum : StringEnum
+        {
+            private JitterBufferSizeEnum(string value) : base(value) {}
+            public JitterBufferSizeEnum() {}
+            public static implicit operator JitterBufferSizeEnum(string value)
+            {
+                return new JitterBufferSizeEnum(value);
+            }
+
+            public static readonly JitterBufferSizeEnum Large = new JitterBufferSizeEnum("large");
+            public static readonly JitterBufferSizeEnum Medium = new JitterBufferSizeEnum("medium");
+            public static readonly JitterBufferSizeEnum Small = new JitterBufferSizeEnum("small");
+            public static readonly JitterBufferSizeEnum Off = new JitterBufferSizeEnum("off");
+        }
+
         /// <summary>
         /// Conference name
         /// </summary>
@@ -187,6 +202,14 @@ namespace Twilio.TwiML.Voice
         /// Event callback URL
         /// </summary>
         public Uri EventCallbackUrl { get; set; }
+        /// <summary>
+        /// Size of jitter buffer for participant
+        /// </summary>
+        public Conference.JitterBufferSizeEnum JitterBufferSize { get; set; }
+        /// <summary>
+        /// A label for participant
+        /// </summary>
+        public string ParticipantLabel { get; set; }
 
         /// <summary>
         /// Create a new Conference
@@ -210,6 +233,8 @@ namespace Twilio.TwiML.Voice
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="eventCallbackUrl"> Event callback URL </param>
+        /// <param name="jitterBufferSize"> Size of jitter buffer for participant </param>
+        /// <param name="participantLabel"> A label for participant </param>
         public Conference(string name = null,
                           bool? muted = null,
                           Conference.BeepEnum beep = null,
@@ -228,7 +253,9 @@ namespace Twilio.TwiML.Voice
                           Uri recordingStatusCallback = null,
                           Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
                           List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null,
-                          Uri eventCallbackUrl = null) : base("Conference")
+                          Uri eventCallbackUrl = null,
+                          Conference.JitterBufferSizeEnum jitterBufferSize = null,
+                          string participantLabel = null) : base("Conference")
         {
             this.Name = name;
             this.Muted = muted;
@@ -249,6 +276,8 @@ namespace Twilio.TwiML.Voice
             this.RecordingStatusCallbackMethod = recordingStatusCallbackMethod;
             this.RecordingStatusCallbackEvent = recordingStatusCallbackEvent;
             this.EventCallbackUrl = eventCallbackUrl;
+            this.JitterBufferSize = jitterBufferSize;
+            this.ParticipantLabel = participantLabel;
         }
 
         /// <summary>
@@ -336,6 +365,14 @@ namespace Twilio.TwiML.Voice
             if (this.EventCallbackUrl != null)
             {
                 attributes.Add(new XAttribute("eventCallbackUrl", Serializers.Url(this.EventCallbackUrl)));
+            }
+            if (this.JitterBufferSize != null)
+            {
+                attributes.Add(new XAttribute("jitterBufferSize", this.JitterBufferSize.ToString()));
+            }
+            if (this.ParticipantLabel != null)
+            {
+                attributes.Add(new XAttribute("participantLabel", this.ParticipantLabel));
             }
             return attributes;
         }

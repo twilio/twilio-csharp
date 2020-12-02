@@ -351,6 +351,8 @@ namespace Twilio.TwiML.Voice
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="eventCallbackUrl"> Event callback URL </param>
+        /// <param name="jitterBufferSize"> Size of jitter buffer for participant </param>
+        /// <param name="participantLabel"> A label for participant </param>
         public Dial Conference(string name = null,
                                bool? muted = null,
                                Conference.BeepEnum beep = null,
@@ -369,7 +371,9 @@ namespace Twilio.TwiML.Voice
                                Uri recordingStatusCallback = null,
                                Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
                                List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null,
-                               Uri eventCallbackUrl = null)
+                               Uri eventCallbackUrl = null,
+                               Conference.JitterBufferSizeEnum jitterBufferSize = null,
+                               string participantLabel = null)
         {
             var newChild = new Conference(
                 name,
@@ -390,7 +394,9 @@ namespace Twilio.TwiML.Voice
                 recordingStatusCallback,
                 recordingStatusCallbackMethod,
                 recordingStatusCallbackEvent,
-                eventCallbackUrl
+                eventCallbackUrl,
+                jitterBufferSize,
+                participantLabel
             );
             this.Append(newChild);
             return this;
