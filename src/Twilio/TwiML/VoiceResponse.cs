@@ -68,6 +68,7 @@ namespace Twilio.TwiML
         ///                      </param>
         /// <param name="ringTone"> Ringtone allows you to override the ringback tone that Twilio will play back to the caller
         ///                while executing the Dial </param>
+        /// <param name="recordingTrack"> To indicate which audio track should be recorded </param>
         public VoiceResponse Dial(string number = null,
                                   Uri action = null,
                                   Twilio.Http.HttpMethod method = null,
@@ -81,7 +82,8 @@ namespace Twilio.TwiML
                                   Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
                                   List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
                                   bool? answerOnBridge = null,
-                                  Dial.RingToneEnum ringTone = null)
+                                  Dial.RingToneEnum ringTone = null,
+                                  Dial.RecordingTrackEnum recordingTrack = null)
         {
             var newChild = new Dial(
                 number,
@@ -97,7 +99,8 @@ namespace Twilio.TwiML
                 recordingStatusCallbackMethod,
                 recordingStatusCallbackEvent,
                 answerOnBridge,
-                ringTone
+                ringTone,
+                recordingTrack
             );
             this.Append(newChild);
             return this;

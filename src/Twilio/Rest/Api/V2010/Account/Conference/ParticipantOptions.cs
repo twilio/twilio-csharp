@@ -359,6 +359,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// Reason for the call (Branded Calls Beta)
         /// </summary>
         public string CallReason { get; set; }
+        /// <summary>
+        /// The track to record
+        /// </summary>
+        public string RecordingTrack { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -567,6 +571,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (CallReason != null)
             {
                 p.Add(new KeyValuePair<string, string>("CallReason", CallReason));
+            }
+
+            if (RecordingTrack != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RecordingTrack", RecordingTrack));
             }
 
             return p;

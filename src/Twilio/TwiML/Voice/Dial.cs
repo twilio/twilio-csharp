@@ -114,6 +114,20 @@ namespace Twilio.TwiML.Voice
             public static readonly RingToneEnum Za = new RingToneEnum("za");
         }
 
+        public sealed class RecordingTrackEnum : StringEnum
+        {
+            private RecordingTrackEnum(string value) : base(value) {}
+            public RecordingTrackEnum() {}
+            public static implicit operator RecordingTrackEnum(string value)
+            {
+                return new RecordingTrackEnum(value);
+            }
+
+            public static readonly RecordingTrackEnum Both = new RecordingTrackEnum("both");
+            public static readonly RecordingTrackEnum Inbound = new RecordingTrackEnum("inbound");
+            public static readonly RecordingTrackEnum Outbound = new RecordingTrackEnum("outbound");
+        }
+
         /// <summary>
         /// Phone number to dial
         /// </summary>
@@ -170,6 +184,10 @@ namespace Twilio.TwiML.Voice
         /// Ringtone allows you to override the ringback tone that Twilio will play back to the caller while executing the Dial
         /// </summary>
         public Dial.RingToneEnum RingTone { get; set; }
+        /// <summary>
+        /// To indicate which audio track should be recorded
+        /// </summary>
+        public Dial.RecordingTrackEnum RecordingTrack { get; set; }
 
         /// <summary>
         /// Create a new Dial
@@ -190,6 +208,7 @@ namespace Twilio.TwiML.Voice
         ///                      </param>
         /// <param name="ringTone"> Ringtone allows you to override the ringback tone that Twilio will play back to the caller
         ///                while executing the Dial </param>
+        /// <param name="recordingTrack"> To indicate which audio track should be recorded </param>
         public Dial(string number = null,
                     Uri action = null,
                     Twilio.Http.HttpMethod method = null,
@@ -203,7 +222,8 @@ namespace Twilio.TwiML.Voice
                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
                     List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
                     bool? answerOnBridge = null,
-                    Dial.RingToneEnum ringTone = null) : base("Dial")
+                    Dial.RingToneEnum ringTone = null,
+                    Dial.RecordingTrackEnum recordingTrack = null) : base("Dial")
         {
             this.NumberAttribute = number;
             this.Action = action;
@@ -219,6 +239,7 @@ namespace Twilio.TwiML.Voice
             this.RecordingStatusCallbackEvent = recordingStatusCallbackEvent;
             this.AnswerOnBridge = answerOnBridge;
             this.RingTone = ringTone;
+            this.RecordingTrack = recordingTrack;
         }
 
         /// <summary>
@@ -286,6 +307,10 @@ namespace Twilio.TwiML.Voice
             if (this.RingTone != null)
             {
                 attributes.Add(new XAttribute("ringTone", this.RingTone.ToString()));
+            }
+            if (this.RecordingTrack != null)
+            {
+                attributes.Add(new XAttribute("recordingTrack", this.RecordingTrack.ToString()));
             }
             return attributes;
         }

@@ -1,6 +1,16 @@
 twilio-csharp Changelog
 =======================
 
+[2020-12-08] Version 5.52.0
+---------------------------
+**Api**
+- Added optional `RecordingTrack` parameter for create calls, create participants, and create call recordings
+- Removed deprecated Programmable Chat usage record categories **(breaking change)**
+
+**Twiml**
+- Add `recordingTrack` to `Dial`.
+
+
 [2020-12-02] Version 5.51.0
 ---------------------------
 **Api**
