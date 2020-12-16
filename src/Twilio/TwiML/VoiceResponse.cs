@@ -69,6 +69,8 @@ namespace Twilio.TwiML
         /// <param name="ringTone"> Ringtone allows you to override the ringback tone that Twilio will play back to the caller
         ///                while executing the Dial </param>
         /// <param name="recordingTrack"> To indicate which audio track should be recorded </param>
+        /// <param name="sequential"> Used to determine if child TwiML nouns should be dialed in order, one after the other
+        ///                  (sequential) or dial all at once (parallel). Default is false, parallel </param>
         public VoiceResponse Dial(string number = null,
                                   Uri action = null,
                                   Twilio.Http.HttpMethod method = null,
@@ -83,7 +85,8 @@ namespace Twilio.TwiML
                                   List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
                                   bool? answerOnBridge = null,
                                   Dial.RingToneEnum ringTone = null,
-                                  Dial.RecordingTrackEnum recordingTrack = null)
+                                  Dial.RecordingTrackEnum recordingTrack = null,
+                                  bool? sequential = null)
         {
             var newChild = new Dial(
                 number,
@@ -100,7 +103,8 @@ namespace Twilio.TwiML
                 recordingStatusCallbackEvent,
                 answerOnBridge,
                 ringTone,
-                recordingTrack
+                recordingTrack,
+                sequential
             );
             this.Append(newChild);
             return this;

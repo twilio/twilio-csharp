@@ -259,15 +259,15 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
         /// <param name="identity"> The identity value that identifies the new resource's chat User </param>
         /// <param name="chatUserFriendlyName"> The chat participant's friendly name </param>
         /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
         /// <param name="target"> The Target Contact Identity </param>
         /// <param name="chatUniqueName"> The chat channel's unique name </param>
         /// <param name="preEngagementData"> The pre-engagement data </param>
-        /// <param name="taskSid"> The SID of the TaskRouter task </param>
-        /// <param name="taskAttributes"> The task attributes to be added for the TaskRouter Task </param>
+        /// <param name="taskSid"> The SID of the TaskRouter Task </param>
+        /// <param name="taskAttributes"> The Task attributes to be added for the TaskRouter Task </param>
         /// <param name="longLived"> Whether to create the channel as long-lived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Channel </returns>
@@ -291,15 +291,15 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
         /// <param name="identity"> The identity value that identifies the new resource's chat User </param>
         /// <param name="chatUserFriendlyName"> The chat participant's friendly name </param>
         /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
         /// <param name="target"> The Target Contact Identity </param>
         /// <param name="chatUniqueName"> The chat channel's unique name </param>
         /// <param name="preEngagementData"> The pre-engagement data </param>
-        /// <param name="taskSid"> The SID of the TaskRouter task </param>
-        /// <param name="taskAttributes"> The task attributes to be added for the TaskRouter Task </param>
+        /// <param name="taskSid"> The SID of the TaskRouter Task </param>
+        /// <param name="taskAttributes"> The Task attributes to be added for the TaskRouter Task </param>
         /// <param name="longLived"> Whether to create the channel as long-lived </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Channel </returns>
@@ -410,7 +410,7 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the FlexFlow
+        /// The SID of the Flex Flow
         /// </summary>
         [JsonProperty("flex_flow_sid")]
         public string FlexFlowSid { get; private set; }
@@ -425,7 +425,7 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("user_sid")]
         public string UserSid { get; private set; }
         /// <summary>
-        /// The SID of the TaskRouter task
+        /// The SID of the TaskRouter Task
         /// </summary>
         [JsonProperty("task_sid")]
         public string TaskSid { get; private set; }

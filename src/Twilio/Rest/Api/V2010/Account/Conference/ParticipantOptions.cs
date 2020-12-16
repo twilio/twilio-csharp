@@ -360,7 +360,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// </summary>
         public string CallReason { get; set; }
         /// <summary>
-        /// The track to record
+        /// The track(s) to record
         /// </summary>
         public string RecordingTrack { get; set; }
 

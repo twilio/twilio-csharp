@@ -188,6 +188,10 @@ namespace Twilio.TwiML.Voice
         /// To indicate which audio track should be recorded
         /// </summary>
         public Dial.RecordingTrackEnum RecordingTrack { get; set; }
+        /// <summary>
+        /// Used to determine if child TwiML nouns should be dialed in order, one after the other (sequential) or dial all at once (parallel). Default is false, parallel
+        /// </summary>
+        public bool? Sequential { get; set; }
 
         /// <summary>
         /// Create a new Dial
@@ -209,6 +213,8 @@ namespace Twilio.TwiML.Voice
         /// <param name="ringTone"> Ringtone allows you to override the ringback tone that Twilio will play back to the caller
         ///                while executing the Dial </param>
         /// <param name="recordingTrack"> To indicate which audio track should be recorded </param>
+        /// <param name="sequential"> Used to determine if child TwiML nouns should be dialed in order, one after the other
+        ///                  (sequential) or dial all at once (parallel). Default is false, parallel </param>
         public Dial(string number = null,
                     Uri action = null,
                     Twilio.Http.HttpMethod method = null,
@@ -223,7 +229,8 @@ namespace Twilio.TwiML.Voice
                     List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
                     bool? answerOnBridge = null,
                     Dial.RingToneEnum ringTone = null,
-                    Dial.RecordingTrackEnum recordingTrack = null) : base("Dial")
+                    Dial.RecordingTrackEnum recordingTrack = null,
+                    bool? sequential = null) : base("Dial")
         {
             this.NumberAttribute = number;
             this.Action = action;
@@ -240,6 +247,7 @@ namespace Twilio.TwiML.Voice
             this.AnswerOnBridge = answerOnBridge;
             this.RingTone = ringTone;
             this.RecordingTrack = recordingTrack;
+            this.Sequential = sequential;
         }
 
         /// <summary>
@@ -311,6 +319,10 @@ namespace Twilio.TwiML.Voice
             if (this.RecordingTrack != null)
             {
                 attributes.Add(new XAttribute("recordingTrack", this.RecordingTrack.ToString()));
+            }
+            if (this.Sequential != null)
+            {
+                attributes.Add(new XAttribute("sequential", this.Sequential.Value.ToString().ToLower()));
             }
             return attributes;
         }

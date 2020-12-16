@@ -66,7 +66,7 @@ namespace Twilio.Rest.FlexApi.V1
     public class CreateWebChannelOptions : IOptions<WebChannelResource>
     {
         /// <summary>
-        /// The SID of the FlexFlow
+        /// The SID of the Flex Flow
         /// </summary>
         public string FlexFlowSid { get; }
         /// <summary>
@@ -93,7 +93,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// Construct a new CreateWebChannelOptions
         /// </summary>
-        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
         /// <param name="identity"> The chat identity </param>
         /// <param name="customerFriendlyName"> The chat participant's friendly name </param>
         /// <param name="chatFriendlyName"> The chat channel's friendly name </param>

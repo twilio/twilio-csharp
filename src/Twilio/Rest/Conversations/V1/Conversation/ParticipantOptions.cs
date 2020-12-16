@@ -172,6 +172,14 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// </summary>
         public string Identity { get; set; }
         /// <summary>
+        /// Index of last “read” message in the Conversation for the Participant.
+        /// </summary>
+        public long? LastReadMessageIndex { get; set; }
+        /// <summary>
+        /// Timestamp of last “read” message in the Conversation for the Participant.
+        /// </summary>
+        public string LastReadTimestamp { get; set; }
+        /// <summary>
         /// The X-Twilio-Webhook-Enabled HTTP request header
         /// </summary>
         public ParticipantResource.WebhookEnabledTypeEnum XTwilioWebhookEnabled { get; set; }
@@ -226,6 +234,16 @@ namespace Twilio.Rest.Conversations.V1.Conversation
             if (Identity != null)
             {
                 p.Add(new KeyValuePair<string, string>("Identity", Identity));
+            }
+
+            if (LastReadMessageIndex != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastReadMessageIndex", LastReadMessageIndex.Value.ToString()));
+            }
+
+            if (LastReadTimestamp != null)
+            {
+                p.Add(new KeyValuePair<string, string>("LastReadTimestamp", LastReadTimestamp));
             }
 
             return p;

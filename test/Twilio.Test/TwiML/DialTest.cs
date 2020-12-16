@@ -44,11 +44,12 @@ namespace Twilio.Tests.TwiML
                 Promoter.ListOfOne(Dial.RecordingEventEnum.InProgress),
                 true,
                 Dial.RingToneEnum.At,
-                Dial.RecordingTrackEnum.Both
+                Dial.RecordingTrackEnum.Both,
+                true
             );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\" recordingTrack=\"both\">number</Dial>",
+                "<Dial action=\"https://example.com\" method=\"GET\" timeout=\"1\" hangupOnStar=\"true\" timeLimit=\"1\" callerId=\"caller_id\" record=\"do-not-record\" trim=\"trim-silence\" recordingStatusCallback=\"https://example.com\" recordingStatusCallbackMethod=\"GET\" recordingStatusCallbackEvent=\"in-progress\" answerOnBridge=\"true\" ringTone=\"at\" recordingTrack=\"both\" sequential=\"true\">number</Dial>",
                 elem.ToString()
             );
         }

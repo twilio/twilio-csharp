@@ -272,7 +272,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
         /// <param name="identity"> The chat identity </param>
         /// <param name="customerFriendlyName"> The chat participant's friendly name </param>
         /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
@@ -296,7 +296,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
         /// <param name="identity"> The chat identity </param>
         /// <param name="customerFriendlyName"> The chat participant's friendly name </param>
         /// <param name="chatFriendlyName"> The chat channel's friendly name </param>
@@ -483,7 +483,7 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the FlexFlow
+        /// The SID of the Flex Flow
         /// </summary>
         [JsonProperty("flex_flow_sid")]
         public string FlexFlowSid { get; private set; }

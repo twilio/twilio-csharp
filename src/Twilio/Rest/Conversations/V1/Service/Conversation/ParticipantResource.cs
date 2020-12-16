@@ -201,6 +201,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         ///                                    contact with. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
         ///                                        </param>
+        /// <param name="lastReadMessageIndex"> Index of last “read” message in the Conversation for the Participant. </param>
+        /// <param name="lastReadTimestamp"> Timestamp of last “read” message in the Conversation for the Participant. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
@@ -214,10 +216,12 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                                  string roleSid = null,
                                                  string messagingBindingProxyAddress = null,
                                                  string messagingBindingProjectedAddress = null,
+                                                 long? lastReadMessageIndex = null,
+                                                 string lastReadTimestamp = null,
                                                  ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathChatServiceSid, pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Identity = identity, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
+            var options = new UpdateParticipantOptions(pathChatServiceSid, pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Identity = identity, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, LastReadMessageIndex = lastReadMessageIndex, LastReadTimestamp = lastReadTimestamp, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return Update(options, client);
         }
 
@@ -237,6 +241,8 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         ///                                    contact with. </param>
         /// <param name="messagingBindingProjectedAddress"> The address of the Twilio phone number that is used in Group MMS.
         ///                                        </param>
+        /// <param name="lastReadMessageIndex"> Index of last “read” message in the Conversation for the Participant. </param>
+        /// <param name="lastReadTimestamp"> Timestamp of last “read” message in the Conversation for the Participant. </param>
         /// <param name="xTwilioWebhookEnabled"> The X-Twilio-Webhook-Enabled HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
@@ -250,10 +256,12 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
                                                                                          string roleSid = null,
                                                                                          string messagingBindingProxyAddress = null,
                                                                                          string messagingBindingProjectedAddress = null,
+                                                                                         long? lastReadMessageIndex = null,
+                                                                                         string lastReadTimestamp = null,
                                                                                          ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new UpdateParticipantOptions(pathChatServiceSid, pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Identity = identity, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
+            var options = new UpdateParticipantOptions(pathChatServiceSid, pathConversationSid, pathSid){DateCreated = dateCreated, DateUpdated = dateUpdated, Identity = identity, Attributes = attributes, RoleSid = roleSid, MessagingBindingProxyAddress = messagingBindingProxyAddress, MessagingBindingProjectedAddress = messagingBindingProjectedAddress, LastReadMessageIndex = lastReadMessageIndex, LastReadTimestamp = lastReadTimestamp, XTwilioWebhookEnabled = xTwilioWebhookEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -624,6 +632,16 @@ namespace Twilio.Rest.Conversations.V1.Service.Conversation
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// Index of last “read” message in the Conversation for the Participant.
+        /// </summary>
+        [JsonProperty("last_read_message_index")]
+        public long? LastReadMessageIndex { get; private set; }
+        /// <summary>
+        /// Timestamp of last “read” message in the Conversation for the Participant.
+        /// </summary>
+        [JsonProperty("last_read_timestamp")]
+        public string LastReadTimestamp { get; private set; }
 
         private ParticipantResource()
         {

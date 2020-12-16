@@ -99,7 +99,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> The `friendly_name` of the FlexFlow resources to read </param>
+        /// <param name="friendlyName"> The `friendly_name` of the Flex Flow resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -117,7 +117,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="friendlyName"> The `friendly_name` of the FlexFlow resources to read </param>
+        /// <param name="friendlyName"> The `friendly_name` of the Flex Flow resources to read </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -299,16 +299,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="chatServiceSid"> The SID of the chat service </param>
         /// <param name="channelType"> The channel type </param>
         /// <param name="contactIdentity"> The channel contact's Identity </param>
-        /// <param name="enabled"> Whether the new FlexFlow is enabled </param>
+        /// <param name="enabled"> Whether the new Flex Flow is enabled </param>
         /// <param name="integrationType"> The integration type </param>
-        /// <param name="integrationFlowSid"> The SID of the Flow </param>
+        /// <param name="integrationFlowSid"> The SID of the Studio Flow </param>
         /// <param name="integrationUrl"> The External Webhook URL </param>
-        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new task </param>
-        /// <param name="integrationWorkflowSid"> The Workflow SID for a new task </param>
-        /// <param name="integrationChannel"> The task channel for a new task </param>
-        /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
-        /// <param name="integrationPriority"> The task priority of a new task </param>
-        /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
+        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new Task </param>
+        /// <param name="integrationWorkflowSid"> The Workflow SID for a new Task </param>
+        /// <param name="integrationChannel"> The Task Channel for a new Task </param>
+        /// <param name="integrationTimeout"> The Task timeout in seconds for a new Task </param>
+        /// <param name="integrationPriority"> The Task priority of a new Task </param>
+        /// <param name="integrationCreationOnMessage"> Whether to create a Task when the first message arrives </param>
         /// <param name="longLived"> Reuse this chat channel for future interactions with a contact </param>
         /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted </param>
         /// <param name="integrationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
@@ -345,16 +345,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="chatServiceSid"> The SID of the chat service </param>
         /// <param name="channelType"> The channel type </param>
         /// <param name="contactIdentity"> The channel contact's Identity </param>
-        /// <param name="enabled"> Whether the new FlexFlow is enabled </param>
+        /// <param name="enabled"> Whether the new Flex Flow is enabled </param>
         /// <param name="integrationType"> The integration type </param>
-        /// <param name="integrationFlowSid"> The SID of the Flow </param>
+        /// <param name="integrationFlowSid"> The SID of the Studio Flow </param>
         /// <param name="integrationUrl"> The External Webhook URL </param>
-        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new task </param>
-        /// <param name="integrationWorkflowSid"> The Workflow SID for a new task </param>
-        /// <param name="integrationChannel"> The task channel for a new task </param>
-        /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
-        /// <param name="integrationPriority"> The task priority of a new task </param>
-        /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
+        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new Task </param>
+        /// <param name="integrationWorkflowSid"> The Workflow SID for a new Task </param>
+        /// <param name="integrationChannel"> The Task Channel for a new Task </param>
+        /// <param name="integrationTimeout"> The Task timeout in seconds for a new Task </param>
+        /// <param name="integrationPriority"> The Task priority of a new Task </param>
+        /// <param name="integrationCreationOnMessage"> Whether to create a Task when the first message arrives </param>
         /// <param name="longLived"> Reuse this chat channel for future interactions with a contact </param>
         /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted </param>
         /// <param name="integrationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
@@ -432,18 +432,18 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="chatServiceSid"> The SID of the chat service </param>
         /// <param name="channelType"> The channel type </param>
         /// <param name="contactIdentity"> The channel contact's Identity </param>
-        /// <param name="enabled"> Whether the FlexFlow is enabled </param>
+        /// <param name="enabled"> Whether the new Flex Flow is enabled </param>
         /// <param name="integrationType"> The integration type </param>
-        /// <param name="integrationFlowSid"> The SID of the Flow </param>
+        /// <param name="integrationFlowSid"> The SID of the Studio Flow </param>
         /// <param name="integrationUrl"> The External Webhook URL </param>
-        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new task </param>
-        /// <param name="integrationWorkflowSid"> The Workflow SID for a new task </param>
-        /// <param name="integrationChannel"> task channel for a new task </param>
-        /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
-        /// <param name="integrationPriority"> The task priority of a new task </param>
-        /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
+        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new Task </param>
+        /// <param name="integrationWorkflowSid"> The Workflow SID for a new Task </param>
+        /// <param name="integrationChannel"> The Task Channel for a new Task </param>
+        /// <param name="integrationTimeout"> The Task timeout in seconds for a new Task </param>
+        /// <param name="integrationPriority"> The Task priority of a new Task </param>
+        /// <param name="integrationCreationOnMessage"> Whether to create a Task when the first message arrives </param>
         /// <param name="longLived"> Reuse this chat channel for future interactions with a contact </param>
-        /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted. </param>
+        /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted </param>
         /// <param name="integrationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlexFlow </returns>
@@ -480,18 +480,18 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="chatServiceSid"> The SID of the chat service </param>
         /// <param name="channelType"> The channel type </param>
         /// <param name="contactIdentity"> The channel contact's Identity </param>
-        /// <param name="enabled"> Whether the FlexFlow is enabled </param>
+        /// <param name="enabled"> Whether the new Flex Flow is enabled </param>
         /// <param name="integrationType"> The integration type </param>
-        /// <param name="integrationFlowSid"> The SID of the Flow </param>
+        /// <param name="integrationFlowSid"> The SID of the Studio Flow </param>
         /// <param name="integrationUrl"> The External Webhook URL </param>
-        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new task </param>
-        /// <param name="integrationWorkflowSid"> The Workflow SID for a new task </param>
-        /// <param name="integrationChannel"> task channel for a new task </param>
-        /// <param name="integrationTimeout"> The task timeout in seconds for a new task </param>
-        /// <param name="integrationPriority"> The task priority of a new task </param>
-        /// <param name="integrationCreationOnMessage"> Whether to create a task when the first message arrives </param>
+        /// <param name="integrationWorkspaceSid"> The Workspace SID for a new Task </param>
+        /// <param name="integrationWorkflowSid"> The Workflow SID for a new Task </param>
+        /// <param name="integrationChannel"> The Task Channel for a new Task </param>
+        /// <param name="integrationTimeout"> The Task timeout in seconds for a new Task </param>
+        /// <param name="integrationPriority"> The Task priority of a new Task </param>
+        /// <param name="integrationCreationOnMessage"> Whether to create a Task when the first message arrives </param>
         /// <param name="longLived"> Reuse this chat channel for future interactions with a contact </param>
-        /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted. </param>
+        /// <param name="janitorEnabled"> Remove active Proxy sessions if the corresponding Task is deleted </param>
         /// <param name="integrationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlexFlow </returns>
@@ -646,7 +646,7 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("contact_identity")]
         public string ContactIdentity { get; private set; }
         /// <summary>
-        /// Whether the FlexFlow is enabled
+        /// Whether the Flex Flow is enabled
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
@@ -672,7 +672,7 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("janitor_enabled")]
         public bool? JanitorEnabled { get; private set; }
         /// <summary>
-        /// The absolute URL of the FlexFlow resource
+        /// The absolute URL of the Flex Flow resource
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

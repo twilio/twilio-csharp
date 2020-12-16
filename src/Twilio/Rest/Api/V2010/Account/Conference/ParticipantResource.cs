@@ -336,7 +336,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="callerId"> The phone number, Client identifier, or username portion of SIP address that made this
         ///                call. </param>
         /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
-        /// <param name="recordingTrack"> The track to record </param>
+        /// <param name="recordingTrack"> The track(s) to record </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Create(string pathConferenceSid,
@@ -440,7 +440,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="callerId"> The phone number, Client identifier, or username portion of SIP address that made this
         ///                call. </param>
         /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
-        /// <param name="recordingTrack"> The track to record </param>
+        /// <param name="recordingTrack"> The track(s) to record </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConferenceSid,
