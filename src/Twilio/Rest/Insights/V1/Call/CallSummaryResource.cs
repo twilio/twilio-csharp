@@ -3,9 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-/// currently do not have developer preview access, please contact help@twilio.com.
-///
 /// CallSummaryResource
 /// </summary>
 
@@ -189,6 +186,11 @@ namespace Twilio.Rest.Insights.V1.Call
         [JsonProperty("processing_state")]
         [JsonConverter(typeof(StringEnumConverter))]
         public CallSummaryResource.ProcessingStateEnum ProcessingState { get; private set; }
+        /// <summary>
+        /// The created_time
+        /// </summary>
+        [JsonProperty("created_time")]
+        public DateTime? CreatedTime { get; private set; }
         /// <summary>
         /// The start_time
         /// </summary>

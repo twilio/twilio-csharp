@@ -19,14 +19,14 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     public class ReadExportCustomJobOptions : ReadOptions<ExportCustomJobResource>
     {
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
 
         /// <summary>
         /// Construct a new ReadExportCustomJobOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         public ReadExportCustomJobOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;
@@ -55,7 +55,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     public class CreateExportCustomJobOptions : IOptions<ExportCustomJobResource>
     {
         /// <summary>
-        /// The type of communication – Messages or Calls
+        /// The type of communication – Messages or Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
         /// <summary>
@@ -86,7 +86,8 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <summary>
         /// Construct a new CreateExportCustomJobOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages or Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages or Calls, Conferences, and Participants
+        ///                        </param>
         /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd
         ///                </param>
         /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day

@@ -210,7 +210,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                  string messagingBindingProxyAddress = null,
                                                  string messagingBindingProjectedAddress = null,
                                                  string identity = null,
-                                                 long? lastReadMessageIndex = null,
+                                                 int? lastReadMessageIndex = null,
                                                  string lastReadTimestamp = null,
                                                  ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                  ITwilioRestClient client = null)
@@ -248,7 +248,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
                                                                                          string messagingBindingProxyAddress = null,
                                                                                          string messagingBindingProjectedAddress = null,
                                                                                          string identity = null,
-                                                                                         long? lastReadMessageIndex = null,
+                                                                                         int? lastReadMessageIndex = null,
                                                                                          string lastReadTimestamp = null,
                                                                                          ParticipantResource.WebhookEnabledTypeEnum xTwilioWebhookEnabled = null,
                                                                                          ITwilioRestClient client = null)
@@ -609,7 +609,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// Index of last “read” message in the Conversation for the Participant.
         /// </summary>
         [JsonProperty("last_read_message_index")]
-        public long? LastReadMessageIndex { get; private set; }
+        public int? LastReadMessageIndex { get; private set; }
         /// <summary>
         /// Timestamp of last “read” message in the Conversation for the Participant.
         /// </summary>

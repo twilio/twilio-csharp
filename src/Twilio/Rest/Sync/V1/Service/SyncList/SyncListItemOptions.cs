@@ -218,10 +218,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
         /// Whether to include the List Item referenced by the from parameter
         /// </summary>
         public SyncListItemResource.QueryFromBoundTypeEnum Bounds { get; set; }
-        /// <summary>
-        /// Hide expired Sync List items and show only active ones.
-        /// </summary>
-        public SyncListItemResource.HideExpiredTypeEnum HideExpired { get; set; }
 
         /// <summary>
         /// Construct a new ReadSyncListItemOptions
@@ -253,11 +249,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
             if (Bounds != null)
             {
                 p.Add(new KeyValuePair<string, string>("Bounds", Bounds.ToString()));
-            }
-
-            if (HideExpired != null)
-            {
-                p.Add(new KeyValuePair<string, string>("HideExpired", HideExpired.ToString()));
             }
 
             if (PageSize != null)

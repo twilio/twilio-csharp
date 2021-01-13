@@ -66,7 +66,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// Fetch a specific Day.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="pathDay"> The date of the data in the file </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Day </returns>
@@ -80,7 +80,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// Fetch a specific Day.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="pathDay"> The date of the data in the file </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Day </returns>
@@ -140,7 +140,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// Retrieve a list of all Days for a resource.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -158,7 +158,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// Retrieve a list of all Days for a resource.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -270,7 +270,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }

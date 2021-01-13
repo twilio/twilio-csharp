@@ -66,7 +66,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <summary>
         /// Fetch a specific Export Configuration.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of ExportConfiguration </returns>
         public static ExportConfigurationResource Fetch(string pathResourceType, ITwilioRestClient client = null)
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <summary>
         /// Fetch a specific Export Configuration.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of ExportConfiguration </returns>
         public static async System.Threading.Tasks.Task<ExportConfigurationResource> FetchAsync(string pathResourceType,
@@ -134,7 +134,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <summary>
         /// Update a specific Export Configuration.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="enabled"> Whether files are automatically generated </param>
         /// <param name="webhookUrl"> URL targeted at export </param>
         /// <param name="webhookMethod"> Whether to GET or POST to the webhook url </param>
@@ -154,7 +154,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <summary>
         /// Update a specific Export Configuration.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="enabled"> Whether files are automatically generated </param>
         /// <param name="webhookUrl"> URL targeted at export </param>
         /// <param name="webhookMethod"> Whether to GET or POST to the webhook url </param>
@@ -205,7 +205,7 @@ namespace Twilio.Rest.Bulkexports.V1
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }

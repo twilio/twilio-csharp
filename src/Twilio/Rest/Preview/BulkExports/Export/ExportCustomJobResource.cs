@@ -71,7 +71,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -89,7 +89,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -201,7 +201,8 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages or Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages or Calls, Conferences, and Participants
+        ///                        </param>
         /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd
         ///                </param>
         /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day
@@ -231,7 +232,8 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages or Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages or Calls, Conferences, and Participants
+        ///                        </param>
         /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd
         ///                </param>
         /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day
@@ -282,7 +284,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }

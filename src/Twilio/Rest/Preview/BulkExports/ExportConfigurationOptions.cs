@@ -20,14 +20,14 @@ namespace Twilio.Rest.Preview.BulkExports
     public class FetchExportConfigurationOptions : IOptions<ExportConfigurationResource>
     {
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
 
         /// <summary>
         /// Construct a new FetchExportConfigurationOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         public FetchExportConfigurationOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Preview.BulkExports
     public class UpdateExportConfigurationOptions : IOptions<ExportConfigurationResource>
     {
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
         /// <summary>
@@ -71,7 +71,7 @@ namespace Twilio.Rest.Preview.BulkExports
         /// <summary>
         /// Construct a new UpdateExportConfigurationOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         public UpdateExportConfigurationOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;

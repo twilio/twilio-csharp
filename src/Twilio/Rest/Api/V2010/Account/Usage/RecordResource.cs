@@ -72,6 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly CategoryEnum GroupRoomsMediaStored = new CategoryEnum("group-rooms-media-stored");
             public static readonly CategoryEnum GroupRoomsParticipantMinutes = new CategoryEnum("group-rooms-participant-minutes");
             public static readonly CategoryEnum GroupRoomsRecordedMinutes = new CategoryEnum("group-rooms-recorded-minutes");
+            public static readonly CategoryEnum ImpV1Usage = new CategoryEnum("imp-v1-usage");
             public static readonly CategoryEnum Lookups = new CategoryEnum("lookups");
             public static readonly CategoryEnum Marketplace = new CategoryEnum("marketplace");
             public static readonly CategoryEnum MarketplaceAlgorithmiaNamedEntityRecognition = new CategoryEnum("marketplace-algorithmia-named-entity-recognition");

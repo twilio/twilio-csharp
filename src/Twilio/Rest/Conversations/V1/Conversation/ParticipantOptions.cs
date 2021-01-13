@@ -174,7 +174,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
         /// <summary>
         /// Index of last “read” message in the Conversation for the Participant.
         /// </summary>
-        public long? LastReadMessageIndex { get; set; }
+        public int? LastReadMessageIndex { get; set; }
         /// <summary>
         /// Timestamp of last “read” message in the Conversation for the Participant.
         /// </summary>
@@ -238,7 +238,7 @@ namespace Twilio.Rest.Conversations.V1.Conversation
 
             if (LastReadMessageIndex != null)
             {
-                p.Add(new KeyValuePair<string, string>("LastReadMessageIndex", LastReadMessageIndex.Value.ToString()));
+                p.Add(new KeyValuePair<string, string>("LastReadMessageIndex", LastReadMessageIndex.ToString()));
             }
 
             if (LastReadTimestamp != null)

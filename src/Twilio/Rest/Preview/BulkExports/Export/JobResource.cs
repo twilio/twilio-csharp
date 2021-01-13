@@ -66,7 +66,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathJobSid"> The job_sid </param>
+        /// <param name="pathJobSid"> The unique string that that we created to identify the Bulk Export job </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Job </returns>
         public static JobResource Fetch(string pathJobSid, ITwilioRestClient client = null)
@@ -79,7 +79,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathJobSid"> The job_sid </param>
+        /// <param name="pathJobSid"> The unique string that that we created to identify the Bulk Export job </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Job </returns>
         public static async System.Threading.Tasks.Task<JobResource> FetchAsync(string pathJobSid,
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Preview.BulkExports.Export
         }
 
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }

@@ -19,14 +19,14 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     public class FetchJobOptions : IOptions<JobResource>
     {
         /// <summary>
-        /// The job_sid
+        /// The unique string that that we created to identify the Bulk Export job
         /// </summary>
         public string PathJobSid { get; }
 
         /// <summary>
         /// Construct a new FetchJobOptions
         /// </summary>
-        /// <param name="pathJobSid"> The job_sid </param>
+        /// <param name="pathJobSid"> The unique string that that we created to identify the Bulk Export job </param>
         public FetchJobOptions(string pathJobSid)
         {
             PathJobSid = pathJobSid;

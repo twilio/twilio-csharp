@@ -19,7 +19,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     public class FetchDayOptions : IOptions<DayResource>
     {
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <summary>
         /// Construct a new FetchDayOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="pathDay"> The date of the data in the file </param>
         public FetchDayOptions(string pathResourceType, string pathDay)
         {
@@ -56,14 +56,14 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     public class ReadDayOptions : ReadOptions<DayResource>
     {
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
 
         /// <summary>
         /// Construct a new ReadDayOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         public ReadDayOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;
