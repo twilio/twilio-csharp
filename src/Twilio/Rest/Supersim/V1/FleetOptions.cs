@@ -12,8 +12,7 @@ namespace Twilio.Rest.Supersim.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Create a Fleet
     /// </summary>
@@ -40,7 +39,7 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public bool? CommandsEnabled { get; set; }
         /// <summary>
-        /// The URL that will receive a webhook when a SIM in the Fleet originates a machine-to-machine SMS via Commands
+        /// The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from your device (mobile originated) to the Commands number
         /// </summary>
         public Uri CommandsUrl { get; set; }
         /// <summary>
@@ -103,8 +102,7 @@ namespace Twilio.Rest.Supersim.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Fetch a Fleet instance from your account.
     /// </summary>
@@ -135,8 +133,7 @@ namespace Twilio.Rest.Supersim.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Retrieve a list of Fleets from your account.
     /// </summary>
@@ -168,8 +165,7 @@ namespace Twilio.Rest.Supersim.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Updates the given properties of a Super SIM Fleet instance from your account.
     /// </summary>
@@ -187,6 +183,14 @@ namespace Twilio.Rest.Supersim.V1
         /// The SID or unique name of the Network Access Profile of the Fleet
         /// </summary>
         public string NetworkAccessProfile { get; set; }
+        /// <summary>
+        /// The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from your device (mobile originated) to the Commands number
+        /// </summary>
+        public Uri CommandsUrl { get; set; }
+        /// <summary>
+        /// A string representing the HTTP method to use when making a request to `commands_url`
+        /// </summary>
+        public Twilio.Http.HttpMethod CommandsMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFleetOptions
@@ -211,6 +215,16 @@ namespace Twilio.Rest.Supersim.V1
             if (NetworkAccessProfile != null)
             {
                 p.Add(new KeyValuePair<string, string>("NetworkAccessProfile", NetworkAccessProfile.ToString()));
+            }
+
+            if (CommandsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CommandsUrl", Serializers.Url(CommandsUrl)));
+            }
+
+            if (CommandsMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
             }
 
             return p;

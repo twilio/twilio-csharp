@@ -13,21 +13,19 @@ namespace Twilio.Rest.Studio.V2.Flow
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// FetchFlowTestUserOptions
+    /// Fetch flow test users
     /// </summary>
     public class FetchFlowTestUserOptions : IOptions<FlowTestUserResource>
     {
         /// <summary>
-        /// The sid
+        /// Unique identifier of the flow.
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchFlowTestUserOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Unique identifier of the flow. </param>
         public FetchFlowTestUserOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -44,26 +42,24 @@ namespace Twilio.Rest.Studio.V2.Flow
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateFlowTestUserOptions
+    /// Update flow test users
     /// </summary>
     public class UpdateFlowTestUserOptions : IOptions<FlowTestUserResource>
     {
         /// <summary>
-        /// The sid
+        /// Unique identifier of the flow.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// The test_users
+        /// List of test user identities that can test draft versions of the flow.
         /// </summary>
         public List<string> TestUsers { get; }
 
         /// <summary>
         /// Construct a new UpdateFlowTestUserOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="testUsers"> The test_users </param>
+        /// <param name="pathSid"> Unique identifier of the flow. </param>
+        /// <param name="testUsers"> List of test user identities that can test draft versions of the flow. </param>
         public UpdateFlowTestUserOptions(string pathSid, List<string> testUsers)
         {
             PathSid = pathSid;

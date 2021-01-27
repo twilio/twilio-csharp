@@ -12,8 +12,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Retrieve a list of Network Access Profile resource's Network resource.
     /// </summary>
@@ -50,8 +49,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Add a Network resource to the Network Access Profile resource.
     /// </summary>
@@ -94,8 +92,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Remove a Network resource from the Network Access Profile resource's.
     /// </summary>
@@ -106,7 +103,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// </summary>
         public string PathNetworkAccessProfileSid { get; }
         /// <summary>
-        /// The sid
+        /// The SID that identifies the Network resource
         /// </summary>
         public string PathSid { get; }
 
@@ -115,7 +112,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// </summary>
         /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
         ///                                   </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID that identifies the Network resource </param>
         public DeleteNetworkAccessProfileNetworkOptions(string pathNetworkAccessProfileSid, string pathSid)
         {
             PathNetworkAccessProfileSid = pathNetworkAccessProfileSid;
@@ -133,8 +130,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Fetch a Network Access Profile resource's Network resource.
     /// </summary>

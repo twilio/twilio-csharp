@@ -3,8 +3,7 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-/// currently do not have developer preview access, please contact help@twilio.com.
+/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
 ///
 /// NetworkAccessProfileNetworkResource
 /// </summary>
@@ -281,7 +280,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// </summary>
         /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
         ///                                   </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID that identifies the Network resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of NetworkAccessProfileNetwork </returns>
         public static bool Delete(string pathNetworkAccessProfileSid, string pathSid, ITwilioRestClient client = null)
@@ -296,7 +295,7 @@ namespace Twilio.Rest.Supersim.V1.NetworkAccessProfile
         /// </summary>
         /// <param name="pathNetworkAccessProfileSid"> The unique string that identifies the Network Access Profile resource
         ///                                   </param>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> The SID that identifies the Network resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of NetworkAccessProfileNetwork </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathNetworkAccessProfileSid,

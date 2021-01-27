@@ -31,6 +31,19 @@ namespace Twilio.TwiML.Voice
             public static readonly TrackEnum BothTracks = new TrackEnum("both_tracks");
         }
 
+        public sealed class StatusCallbackMethodEnum : StringEnum
+        {
+            private StatusCallbackMethodEnum(string value) : base(value) {}
+            public StatusCallbackMethodEnum() {}
+            public static implicit operator StatusCallbackMethodEnum(string value)
+            {
+                return new StatusCallbackMethodEnum(value);
+            }
+
+            public static readonly StatusCallbackMethodEnum Get = new StatusCallbackMethodEnum("GET");
+            public static readonly StatusCallbackMethodEnum Post = new StatusCallbackMethodEnum("POST");
+        }
+
         /// <summary>
         /// Friendly name given to the Stream
         /// </summary>
@@ -47,6 +60,14 @@ namespace Twilio.TwiML.Voice
         /// Track to be streamed to remote service
         /// </summary>
         public Stream.TrackEnum Track { get; set; }
+        /// <summary>
+        /// Status Callback URL
+        /// </summary>
+        public string StatusCallback { get; set; }
+        /// <summary>
+        /// Status Callback URL method
+        /// </summary>
+        public Stream.StatusCallbackMethodEnum StatusCallbackMethod { get; set; }
 
         /// <summary>
         /// Create a new Stream
@@ -55,15 +76,21 @@ namespace Twilio.TwiML.Voice
         /// <param name="connectorName"> Unique name for Stream Connector </param>
         /// <param name="url"> URL of the remote service where the Stream is routed </param>
         /// <param name="track"> Track to be streamed to remote service </param>
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <param name="statusCallbackMethod"> Status Callback URL method </param>
         public Stream(string name = null,
                       string connectorName = null,
                       string url = null,
-                      Stream.TrackEnum track = null) : base("Stream")
+                      Stream.TrackEnum track = null,
+                      string statusCallback = null,
+                      Stream.StatusCallbackMethodEnum statusCallbackMethod = null) : base("Stream")
         {
             this.Name = name;
             this.ConnectorName = connectorName;
             this.Url = url;
             this.Track = track;
+            this.StatusCallback = statusCallback;
+            this.StatusCallbackMethod = statusCallbackMethod;
         }
 
         /// <summary>
@@ -87,6 +114,14 @@ namespace Twilio.TwiML.Voice
             if (this.Track != null)
             {
                 attributes.Add(new XAttribute("track", this.Track.ToString()));
+            }
+            if (this.StatusCallback != null)
+            {
+                attributes.Add(new XAttribute("statusCallback", this.StatusCallback));
+            }
+            if (this.StatusCallbackMethod != null)
+            {
+                attributes.Add(new XAttribute("statusCallbackMethod", this.StatusCallbackMethod.ToString()));
             }
             return attributes;
         }

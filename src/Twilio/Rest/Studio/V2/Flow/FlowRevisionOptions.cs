@@ -12,8 +12,6 @@ namespace Twilio.Rest.Studio.V2.Flow
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Flows revisions.
     /// </summary>
     public class ReadFlowRevisionOptions : ReadOptions<FlowRevisionResource>
@@ -48,8 +46,6 @@ namespace Twilio.Rest.Studio.V2.Flow
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a specific Flow revision.
     /// </summary>
     public class FetchFlowRevisionOptions : IOptions<FlowRevisionResource>

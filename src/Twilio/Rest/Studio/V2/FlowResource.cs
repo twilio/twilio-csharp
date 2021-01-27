@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// FlowResource
 /// </summary>
 
@@ -82,7 +80,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
         /// <param name="status"> The status of the Flow </param>
         /// <param name="definition"> JSON representation of flow definition </param>
-        /// <param name="commitMessage"> Description on change made in the revision </param>
+        /// <param name="commitMessage"> Description of change made in the revision </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Flow </returns>
         public static FlowResource Create(string friendlyName,
@@ -102,7 +100,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
         /// <param name="status"> The status of the Flow </param>
         /// <param name="definition"> JSON representation of flow definition </param>
-        /// <param name="commitMessage"> Description on change made in the revision </param>
+        /// <param name="commitMessage"> Description of change made in the revision </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<FlowResource> CreateAsync(string friendlyName,
@@ -163,7 +161,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="status"> The status of the Flow </param>
         /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
         /// <param name="definition"> JSON representation of flow definition </param>
-        /// <param name="commitMessage"> Description on change made in the revision </param>
+        /// <param name="commitMessage"> Description of change made in the revision </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Flow </returns>
         public static FlowResource Update(string pathSid,
@@ -185,7 +183,7 @@ namespace Twilio.Rest.Studio.V2
         /// <param name="status"> The status of the Flow </param>
         /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
         /// <param name="definition"> JSON representation of flow definition </param>
-        /// <param name="commitMessage"> Description on change made in the revision </param>
+        /// <param name="commitMessage"> Description of change made in the revision </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Flow </returns>
         public static async System.Threading.Tasks.Task<FlowResource> UpdateAsync(string pathSid,
@@ -512,7 +510,7 @@ namespace Twilio.Rest.Studio.V2
         [JsonProperty("revision")]
         public int? Revision { get; private set; }
         /// <summary>
-        /// Description on change made in the revision
+        /// Description of change made in the revision
         /// </summary>
         [JsonProperty("commit_message")]
         public string CommitMessage { get; private set; }

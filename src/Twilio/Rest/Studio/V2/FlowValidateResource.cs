@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// FlowValidateResource
 /// </summary>
 
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Studio.V2
         }
 
         /// <summary>
-        /// update
+        /// Validate flow JSON definition
         /// </summary>
         /// <param name="options"> Update FlowValidate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -62,7 +60,7 @@ namespace Twilio.Rest.Studio.V2
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Validate flow JSON definition
         /// </summary>
         /// <param name="options"> Update FlowValidate parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -77,12 +75,12 @@ namespace Twilio.Rest.Studio.V2
         #endif
 
         /// <summary>
-        /// update
+        /// Validate flow JSON definition
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="status"> The status </param>
-        /// <param name="definition"> The definition </param>
-        /// <param name="commitMessage"> The commit_message </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
+        /// <param name="status"> The status of the Flow </param>
+        /// <param name="definition"> JSON representation of flow definition </param>
+        /// <param name="commitMessage"> Description of change made in the revision </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlowValidate </returns>
         public static FlowValidateResource Update(string friendlyName,
@@ -97,12 +95,12 @@ namespace Twilio.Rest.Studio.V2
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Validate flow JSON definition
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="status"> The status </param>
-        /// <param name="definition"> The definition </param>
-        /// <param name="commitMessage"> The commit_message </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
+        /// <param name="status"> The status of the Flow </param>
+        /// <param name="definition"> JSON representation of flow definition </param>
+        /// <param name="commitMessage"> Description of change made in the revision </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowValidate </returns>
         public static async System.Threading.Tasks.Task<FlowValidateResource> UpdateAsync(string friendlyName,
@@ -135,7 +133,7 @@ namespace Twilio.Rest.Studio.V2
         }
 
         /// <summary>
-        /// The valid
+        /// Boolean if the flow definition is valid
         /// </summary>
         [JsonProperty("valid")]
         public bool? Valid { get; private set; }

@@ -1,6 +1,18 @@
 twilio-csharp Changelog
 =======================
 
+[2021-01-27] Version 5.53.1
+---------------------------
+**Studio**
+- Studio V2 API is now GA
+
+**Supersim**
+- Allow updating `CommandsUrl` and `CommandsMethod` on a Fleet
+
+**Twiml**
+- Add `status_callback` and `status_callback_method` to `Stream`.
+
+
 [2021-01-13] Version 5.53.0
 ---------------------------
 **Api**

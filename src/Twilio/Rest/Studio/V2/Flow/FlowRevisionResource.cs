@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// FlowRevisionResource
 /// </summary>
 
@@ -290,7 +288,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         [JsonProperty("revision")]
         public int? Revision { get; private set; }
         /// <summary>
-        /// Description on change made in the revision
+        /// Description of change made in the revision
         /// </summary>
         [JsonProperty("commit_message")]
         public string CommitMessage { get; private set; }

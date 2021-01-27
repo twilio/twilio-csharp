@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// FlowTestUserResource
 /// </summary>
 
@@ -34,7 +32,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         }
 
         /// <summary>
-        /// fetch
+        /// Fetch flow test users
         /// </summary>
         /// <param name="options"> Fetch FlowTestUser parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -48,7 +46,7 @@ namespace Twilio.Rest.Studio.V2.Flow
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch flow test users
         /// </summary>
         /// <param name="options"> Fetch FlowTestUser parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -63,9 +61,9 @@ namespace Twilio.Rest.Studio.V2.Flow
         #endif
 
         /// <summary>
-        /// fetch
+        /// Fetch flow test users
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Unique identifier of the flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlowTestUser </returns>
         public static FlowTestUserResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -76,9 +74,9 @@ namespace Twilio.Rest.Studio.V2.Flow
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Fetch flow test users
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> Unique identifier of the flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowTestUser </returns>
         public static async System.Threading.Tasks.Task<FlowTestUserResource> FetchAsync(string pathSid,
@@ -101,7 +99,7 @@ namespace Twilio.Rest.Studio.V2.Flow
         }
 
         /// <summary>
-        /// update
+        /// Update flow test users
         /// </summary>
         /// <param name="options"> Update FlowTestUser parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -115,7 +113,7 @@ namespace Twilio.Rest.Studio.V2.Flow
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update flow test users
         /// </summary>
         /// <param name="options"> Update FlowTestUser parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -130,10 +128,10 @@ namespace Twilio.Rest.Studio.V2.Flow
         #endif
 
         /// <summary>
-        /// update
+        /// Update flow test users
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="testUsers"> The test_users </param>
+        /// <param name="pathSid"> Unique identifier of the flow. </param>
+        /// <param name="testUsers"> List of test user identities that can test draft versions of the flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of FlowTestUser </returns>
         public static FlowTestUserResource Update(string pathSid, List<string> testUsers, ITwilioRestClient client = null)
@@ -144,10 +142,10 @@ namespace Twilio.Rest.Studio.V2.Flow
 
         #if !NET35
         /// <summary>
-        /// update
+        /// Update flow test users
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
-        /// <param name="testUsers"> The test_users </param>
+        /// <param name="pathSid"> Unique identifier of the flow. </param>
+        /// <param name="testUsers"> List of test user identities that can test draft versions of the flow. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of FlowTestUser </returns>
         public static async System.Threading.Tasks.Task<FlowTestUserResource> UpdateAsync(string pathSid,
@@ -178,17 +176,17 @@ namespace Twilio.Rest.Studio.V2.Flow
         }
 
         /// <summary>
-        /// The sid
+        /// Unique identifier of the flow.
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The test_users
+        /// List of test user identities that can test draft versions of the flow.
         /// </summary>
         [JsonProperty("test_users")]
         public List<string> TestUsers { get; private set; }
         /// <summary>
-        /// The url
+        /// The URL of this resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -12,8 +12,6 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution.ExecutionStep
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve the context for an Execution Step.
     /// </summary>
     public class FetchExecutionStepContextOptions : IOptions<ExecutionStepContextResource>

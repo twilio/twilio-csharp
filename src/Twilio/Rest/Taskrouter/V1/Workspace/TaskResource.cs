@@ -485,7 +485,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// create
         /// </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to </param>
-        /// <param name="timeout"> The amount of time in seconds the task is allowed to live </param>
+        /// <param name="timeout"> The amount of time in seconds the task can live before being assigned </param>
         /// <param name="priority"> The priority to assign the new task and override the default </param>
         /// <param name="taskChannel"> When MultiTasking is enabled specify the TaskChannel by passing either its unique_name
         ///                   or SID </param>
@@ -510,7 +510,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// create
         /// </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace that the new Task belongs to </param>
-        /// <param name="timeout"> The amount of time in seconds the task is allowed to live </param>
+        /// <param name="timeout"> The amount of time in seconds the task can live before being assigned </param>
         /// <param name="priority"> The priority to assign the new task and override the default </param>
         /// <param name="taskChannel"> When MultiTasking is enabled specify the TaskChannel by passing either its unique_name
         ///                   or SID </param>
@@ -626,7 +626,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         [JsonProperty("task_channel_unique_name")]
         public string TaskChannelUniqueName { get; private set; }
         /// <summary>
-        /// The amount of time in seconds that the Task is allowed to live
+        /// The amount of time in seconds that the Task can live before being assigned
         /// </summary>
         [JsonProperty("timeout")]
         public int? Timeout { get; private set; }
