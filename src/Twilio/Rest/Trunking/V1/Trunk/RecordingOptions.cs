@@ -46,14 +46,22 @@ namespace Twilio.Rest.Trunking.V1.Trunk
     public class UpdateRecordingOptions : IOptions<RecordingResource>
     {
         /// <summary>
-        /// The trunk_sid
+        /// The SID of the Trunk.
         /// </summary>
         public string PathTrunkSid { get; }
+        /// <summary>
+        /// The recording mode for the trunk.
+        /// </summary>
+        public RecordingResource.RecordingModeEnum Mode { get; set; }
+        /// <summary>
+        /// The recording trim setting for the trunk.
+        /// </summary>
+        public RecordingResource.RecordingTrimEnum Trim { get; set; }
 
         /// <summary>
         /// Construct a new UpdateRecordingOptions
         /// </summary>
-        /// <param name="pathTrunkSid"> The trunk_sid </param>
+        /// <param name="pathTrunkSid"> The SID of the Trunk. </param>
         public UpdateRecordingOptions(string pathTrunkSid)
         {
             PathTrunkSid = pathTrunkSid;
@@ -65,6 +73,16 @@ namespace Twilio.Rest.Trunking.V1.Trunk
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (Mode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Mode", Mode.ToString()));
+            }
+
+            if (Trim != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Trim", Trim.ToString()));
+            }
+
             return p;
         }
     }

@@ -21,11 +21,21 @@ namespace Twilio.Rest.Events.V1
     public class ReadSubscriptionOptions : ReadOptions<SubscriptionResource>
     {
         /// <summary>
+        /// Sink SID.
+        /// </summary>
+        public string SinkSid { get; set; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (SinkSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SinkSid", SinkSid.ToString()));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
@@ -135,7 +145,7 @@ namespace Twilio.Rest.Events.V1
     public class UpdateSubscriptionOptions : IOptions<SubscriptionResource>
     {
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies this Subscription.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -150,7 +160,7 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Construct a new UpdateSubscriptionOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
         public UpdateSubscriptionOptions(string pathSid)
         {
             PathSid = pathSid;

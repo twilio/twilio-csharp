@@ -19,22 +19,14 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     public class ReadExportCustomJobOptions : ReadOptions<ExportCustomJobResource>
     {
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
-        /// <summary>
-        /// The token for the next page of job results
-        /// </summary>
-        public string NextToken { get; set; }
-        /// <summary>
-        /// The token for the previous page of result
-        /// </summary>
-        public string PreviousToken { get; set; }
 
         /// <summary>
         /// Construct a new ReadExportCustomJobOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         public ReadExportCustomJobOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;
@@ -46,16 +38,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (NextToken != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NextToken", NextToken));
-            }
-
-            if (PreviousToken != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PreviousToken", PreviousToken));
-            }
-
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
@@ -73,41 +55,50 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     public class CreateExportCustomJobOptions : IOptions<ExportCustomJobResource>
     {
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages or Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
         /// <summary>
-        /// The friendly_name
+        /// The start day for the custom export specified as a string in the format of yyyy-mm-dd
         /// </summary>
-        public string FriendlyName { get; set; }
+        public string StartDay { get; }
         /// <summary>
-        /// The start_day
+        /// The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day is inclusive and must be 2 days earlier than the current UTC day.
         /// </summary>
-        public string StartDay { get; set; }
+        public string EndDay { get; }
         /// <summary>
-        /// The end_day
+        /// The friendly name specified when creating the job
         /// </summary>
-        public string EndDay { get; set; }
+        public string FriendlyName { get; }
         /// <summary>
-        /// The webhook_url
+        /// The optional webhook url called on completion of the job. If this is supplied, `WebhookMethod` must also be supplied.
         /// </summary>
         public string WebhookUrl { get; set; }
         /// <summary>
-        /// The webhook_method
+        /// This is the method used to call the webhook on completion of the job. If this is supplied, `WebhookUrl` must also be supplied.
         /// </summary>
         public string WebhookMethod { get; set; }
         /// <summary>
-        /// The email
+        /// The optional email to send the completion notification to
         /// </summary>
         public string Email { get; set; }
 
         /// <summary>
         /// Construct a new CreateExportCustomJobOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
-        public CreateExportCustomJobOptions(string pathResourceType)
+        /// <param name="pathResourceType"> The type of communication – Messages or Calls, Conferences, and Participants
+        ///                        </param>
+        /// <param name="startDay"> The start day for the custom export specified as a string in the format of yyyy-mm-dd
+        ///                </param>
+        /// <param name="endDay"> The end day for the custom export specified as a string in the format of yyyy-mm-dd. End day
+        ///              is inclusive and must be 2 days earlier than the current UTC day. </param>
+        /// <param name="friendlyName"> The friendly name specified when creating the job </param>
+        public CreateExportCustomJobOptions(string pathResourceType, string startDay, string endDay, string friendlyName)
         {
             PathResourceType = pathResourceType;
+            StartDay = startDay;
+            EndDay = endDay;
+            FriendlyName = friendlyName;
         }
 
         /// <summary>
@@ -116,11 +107,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (FriendlyName != null)
-            {
-                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
-            }
-
             if (StartDay != null)
             {
                 p.Add(new KeyValuePair<string, string>("StartDay", StartDay));
@@ -129,6 +115,11 @@ namespace Twilio.Rest.Bulkexports.V1.Export
             if (EndDay != null)
             {
                 p.Add(new KeyValuePair<string, string>("EndDay", EndDay));
+            }
+
+            if (FriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FriendlyName", FriendlyName));
             }
 
             if (WebhookUrl != null)

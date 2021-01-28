@@ -29,10 +29,17 @@ namespace Twilio.Tests.TwiML
         [Test]
         public void TestElementWithParams()
         {
-            var elem = new Stream("name", "connector_name", "url", Stream.TrackEnum.InboundTrack);
+            var elem = new Stream(
+                "name",
+                "connector_name",
+                "url",
+                Stream.TrackEnum.InboundTrack,
+                "status_callback",
+                Stream.StatusCallbackMethodEnum.Get
+            );
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
-                "<Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\"></Stream>",
+                "<Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>",
                 elem.ToString()
             );
         }

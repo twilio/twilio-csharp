@@ -288,7 +288,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         public string PathWorkspaceSid { get; }
         /// <summary>
-        /// The amount of time in seconds the task is allowed to live
+        /// The amount of time in seconds the task can live before being assigned
         /// </summary>
         public int? Timeout { get; set; }
         /// <summary>

@@ -3,8 +3,7 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-/// currently do not have developer preview access, please contact help@twilio.com.
+/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
 ///
 /// EnvironmentResource
 /// </summary>

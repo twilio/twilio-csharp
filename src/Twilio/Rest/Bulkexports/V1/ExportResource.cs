@@ -65,7 +65,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <summary>
         /// Fetch a specific Export.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Export </returns>
         public static ExportResource Fetch(string pathResourceType, ITwilioRestClient client = null)
@@ -78,7 +78,7 @@ namespace Twilio.Rest.Bulkexports.V1
         /// <summary>
         /// Fetch a specific Export.
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Export </returns>
         public static async System.Threading.Tasks.Task<ExportResource> FetchAsync(string pathResourceType,
@@ -108,7 +108,7 @@ namespace Twilio.Rest.Bulkexports.V1
         }
 
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         [JsonProperty("resource_type")]
         public string ResourceType { get; private set; }

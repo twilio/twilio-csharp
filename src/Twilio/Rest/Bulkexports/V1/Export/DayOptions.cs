@@ -19,7 +19,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     public class FetchDayOptions : IOptions<DayResource>
     {
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
         /// <summary>
@@ -30,7 +30,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// <summary>
         /// Construct a new FetchDayOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         /// <param name="pathDay"> The date of the data in the file </param>
         public FetchDayOptions(string pathResourceType, string pathDay)
         {
@@ -56,22 +56,14 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     public class ReadDayOptions : ReadOptions<DayResource>
     {
         /// <summary>
-        /// The type of communication – Messages, Calls
+        /// The type of communication – Messages, Calls, Conferences, and Participants
         /// </summary>
         public string PathResourceType { get; }
-        /// <summary>
-        /// The next_token
-        /// </summary>
-        public string NextToken { get; set; }
-        /// <summary>
-        /// The previous_token
-        /// </summary>
-        public string PreviousToken { get; set; }
 
         /// <summary>
         /// Construct a new ReadDayOptions
         /// </summary>
-        /// <param name="pathResourceType"> The type of communication – Messages, Calls </param>
+        /// <param name="pathResourceType"> The type of communication – Messages, Calls, Conferences, and Participants </param>
         public ReadDayOptions(string pathResourceType)
         {
             PathResourceType = pathResourceType;
@@ -83,16 +75,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (NextToken != null)
-            {
-                p.Add(new KeyValuePair<string, string>("NextToken", NextToken));
-            }
-
-            if (PreviousToken != null)
-            {
-                p.Add(new KeyValuePair<string, string>("PreviousToken", PreviousToken));
-            }
-
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

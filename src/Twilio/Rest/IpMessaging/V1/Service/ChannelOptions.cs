@@ -18,19 +18,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class FetchChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to fetch the resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to fetch the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public FetchChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -53,19 +53,19 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class DeleteChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to delete the resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to delete the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public DeleteChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;
@@ -88,30 +88,30 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class CreateChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to create the resource under
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// A string to describe the new resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// An application-defined string that uniquely identifies the resource
+        /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// A valid JSON string that contains application-specific data
+        /// The attributes
         /// </summary>
         public string Attributes { get; set; }
         /// <summary>
-        /// The visibility of the channel
+        /// The type
         /// </summary>
         public ChannelResource.ChannelTypeEnum Type { get; set; }
 
         /// <summary>
         /// Construct a new CreateChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to create the resource under </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
         public CreateChannelOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -153,18 +153,18 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class ReadChannelOptions : ReadOptions<ChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to read the resources from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The visibility of the channel to read
+        /// The type
         /// </summary>
         public List<ChannelResource.ChannelTypeEnum> Type { get; set; }
 
         /// <summary>
         /// Construct a new ReadChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
         public ReadChannelOptions(string pathServiceSid)
         {
             PathServiceSid = pathServiceSid;
@@ -197,31 +197,31 @@ namespace Twilio.Rest.IpMessaging.V1.Service
     public class UpdateChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
-        /// The SID of the Service to update the resource from
+        /// The service_sid
         /// </summary>
         public string PathServiceSid { get; }
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A string to describe the resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// An application-defined string that uniquely identifies the resource
+        /// The unique_name
         /// </summary>
         public string UniqueName { get; set; }
         /// <summary>
-        /// A valid JSON string that contains application-specific data
+        /// The attributes
         /// </summary>
         public string Attributes { get; set; }
 
         /// <summary>
         /// Construct a new UpdateChannelOptions
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to update the resource from </param>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathSid"> The sid </param>
         public UpdateChannelOptions(string pathServiceSid, string pathSid)
         {
             PathServiceSid = pathServiceSid;

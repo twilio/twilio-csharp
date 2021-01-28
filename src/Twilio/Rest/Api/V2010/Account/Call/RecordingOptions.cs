@@ -45,6 +45,10 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// The number of channels that the output recording will be configured with
         /// </summary>
         public string RecordingChannels { get; set; }
+        /// <summary>
+        /// Which track(s) to record
+        /// </summary>
+        public string RecordingTrack { get; set; }
 
         /// <summary>
         /// Construct a new CreateRecordingOptions
@@ -85,6 +89,11 @@ namespace Twilio.Rest.Api.V2010.Account.Call
             if (RecordingChannels != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingChannels", RecordingChannels));
+            }
+
+            if (RecordingTrack != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RecordingTrack", RecordingTrack));
             }
 
             return p;

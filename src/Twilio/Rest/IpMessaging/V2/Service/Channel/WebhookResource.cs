@@ -95,8 +95,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resources to read belong to </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -115,8 +115,8 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// read
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service to read the resources from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resources to read belong to </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -228,9 +228,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to fetch the Webhook resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
-        /// <param name="pathSid"> The SID of the Channel Webhook resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Fetch(string pathServiceSid,
@@ -246,9 +246,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to fetch the Webhook resource from </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to fetch belongs to </param>
-        /// <param name="pathSid"> The SID of the Channel Webhook resource to fetch </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<WebhookResource> FetchAsync(string pathServiceSid,
@@ -304,16 +304,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to create the resource under </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
-        /// <param name="type"> The type of webhook </param>
-        /// <param name="configurationUrl"> The URL of the webhook to call </param>
-        /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
-        /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
-        /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
-        ///                             body </param>
-        /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
-        /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="type"> The type </param>
+        /// <param name="configurationUrl"> The configuration.url </param>
+        /// <param name="configurationMethod"> The configuration.method </param>
+        /// <param name="configurationFilters"> The configuration.filters </param>
+        /// <param name="configurationTriggers"> The configuration.triggers </param>
+        /// <param name="configurationFlowSid"> The configuration.flow_sid </param>
+        /// <param name="configurationRetryCount"> The configuration.retry_count </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Create(string pathServiceSid,
@@ -335,16 +334,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to create the resource under </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the new resource belongs to </param>
-        /// <param name="type"> The type of webhook </param>
-        /// <param name="configurationUrl"> The URL of the webhook to call </param>
-        /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
-        /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
-        /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
-        ///                             body </param>
-        /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
-        /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="type"> The type </param>
+        /// <param name="configurationUrl"> The configuration.url </param>
+        /// <param name="configurationMethod"> The configuration.method </param>
+        /// <param name="configurationFilters"> The configuration.filters </param>
+        /// <param name="configurationTriggers"> The configuration.triggers </param>
+        /// <param name="configurationFlowSid"> The configuration.flow_sid </param>
+        /// <param name="configurationRetryCount"> The configuration.retry_count </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(string pathServiceSid,
@@ -406,17 +404,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel that has the Webhook resource to update
-        ///                      </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to update belongs to </param>
-        /// <param name="pathSid"> The SID of the resource </param>
-        /// <param name="configurationUrl"> The URL of the webhook to call </param>
-        /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
-        /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
-        /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
-        ///                             body </param>
-        /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
-        /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="configurationUrl"> The configuration.url </param>
+        /// <param name="configurationMethod"> The configuration.method </param>
+        /// <param name="configurationFilters"> The configuration.filters </param>
+        /// <param name="configurationTriggers"> The configuration.triggers </param>
+        /// <param name="configurationFlowSid"> The configuration.flow_sid </param>
+        /// <param name="configurationRetryCount"> The configuration.retry_count </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Update(string pathServiceSid,
@@ -438,17 +434,15 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel that has the Webhook resource to update
-        ///                      </param>
-        /// <param name="pathChannelSid"> The SID of the Channel the resource to update belongs to </param>
-        /// <param name="pathSid"> The SID of the resource </param>
-        /// <param name="configurationUrl"> The URL of the webhook to call </param>
-        /// <param name="configurationMethod"> The HTTP method used to call `configuration.url` </param>
-        /// <param name="configurationFilters"> The events that cause us to call the Channel Webhook </param>
-        /// <param name="configurationTriggers"> A string that will cause us to call the webhook when it is found in a message
-        ///                             body </param>
-        /// <param name="configurationFlowSid"> The SID of the Studio Flow to call when an event occurs </param>
-        /// <param name="configurationRetryCount"> The number of times to retry the webhook if the first attempt fails </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="configurationUrl"> The configuration.url </param>
+        /// <param name="configurationMethod"> The configuration.method </param>
+        /// <param name="configurationFilters"> The configuration.filters </param>
+        /// <param name="configurationTriggers"> The configuration.triggers </param>
+        /// <param name="configurationFlowSid"> The configuration.flow_sid </param>
+        /// <param name="configurationRetryCount"> The configuration.retry_count </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string pathServiceSid,
@@ -510,9 +504,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to delete the Webhook resource from </param>
-        /// <param name="pathChannelSid"> The SID of the channel the resource to delete belongs to </param>
-        /// <param name="pathSid"> The SID of the Channel Webhook resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
         public static bool Delete(string pathServiceSid,
@@ -528,9 +522,9 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathServiceSid"> The SID of the Service with the Channel to delete the Webhook resource from </param>
-        /// <param name="pathChannelSid"> The SID of the channel the resource to delete belongs to </param>
-        /// <param name="pathSid"> The SID of the Channel Webhook resource to delete </param>
+        /// <param name="pathServiceSid"> The service_sid </param>
+        /// <param name="pathChannelSid"> The channel_sid </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
@@ -562,47 +556,47 @@ namespace Twilio.Rest.IpMessaging.V2.Service.Channel
         }
 
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The SID of the Account that created the resource
+        /// The account_sid
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The SID of the Service that the Channel Webhook resource is associated with
+        /// The service_sid
         /// </summary>
         [JsonProperty("service_sid")]
         public string ServiceSid { get; private set; }
         /// <summary>
-        /// The SID of the Channel the Channel Webhook resource belongs to
+        /// The channel_sid
         /// </summary>
         [JsonProperty("channel_sid")]
         public string ChannelSid { get; private set; }
         /// <summary>
-        /// The type of webhook
+        /// The type
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; private set; }
         /// <summary>
-        /// The absolute URL of the Channel Webhook resource
+        /// The url
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The JSON string that describes the configuration object for the channel webhook
+        /// The configuration
         /// </summary>
         [JsonProperty("configuration")]
         public object Configuration { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was created
+        /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The ISO 8601 date and time in GMT when the resource was last updated
+        /// The date_updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Events.V1.Sink
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"result\": \"valid\"}"
+                                         "{\"result\": \"submitted\"}"
                                      ));
 
             var response = SinkTestResource.Create("DGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);

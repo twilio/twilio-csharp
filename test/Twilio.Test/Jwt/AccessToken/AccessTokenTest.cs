@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using NUnit.Framework;
 using Twilio.Jwt;
@@ -16,16 +17,9 @@ namespace Twilio.Tests.Jwt.AccessToken
             string identity = null,
             DateTime? expiration = null,
             DateTime? nbf = null,
-            HashSet<IGrant> grants = null
-        ) : base(accountSid, signingKeySid, secret, identity, expiration, nbf, grants) {}
-
-        public override Dictionary<string, object> Headers
-        {
-            get
-            {
-                return new Dictionary<string, object>();
-            }
-        }
+            HashSet<IGrant> grants = null,
+            string region = null
+        ) : base(accountSid, signingKeySid, secret, identity, expiration, nbf, grants, region) {}
     }
 
     [TestFixture]
@@ -54,6 +48,41 @@ namespace Twilio.Tests.Jwt.AccessToken
             Assert.AreEqual("{}", payload["grants"].ToString());
         }
 
+        [Test]
+        public void TestHaveRegion()
+        {
+            var now = DateTime.UtcNow;
+            var token = new TestToken("AC456", "SK123", Secret, region: "foo").ToJwt();
+            Assert.IsNotNull(token);
+            Assert.IsNotEmpty(token);
+
+            var decoded = new DecodedJwt(token, Secret);
+            var header = decoded.Header;
+            Assert.IsNotNull(header);
+            Assert.AreEqual("twilio-fpa;v=1", header["cty"]);
+            Assert.AreEqual("foo", header["twr"]);
+        }
+
+        [Test]
+        public void TestEmptyRegion()
+        {
+            var now = DateTime.UtcNow;
+            var token = new TestToken("AC456", "SK123", Secret).ToJwt();
+            Assert.IsNotNull(token);
+            Assert.IsNotEmpty(token);
+
+            var decoded = new DecodedJwt(token, Secret);
+            var header = decoded.Header;
+            Assert.IsNotNull(header);
+            Assert.AreEqual("twilio-fpa;v=1", header["cty"]);
+            
+            try {
+                var twr = header["twr"];
+                Assert.Fail();
+            } catch (KeyNotFoundException) {
+                // Pass
+            }
+        }
 
         [Test]
         public void TestHaveNbf()

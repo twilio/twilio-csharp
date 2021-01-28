@@ -12,8 +12,6 @@ namespace Twilio.Rest.Studio.V2.Flow.Execution
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve the most recent context for an Execution.
     /// </summary>
     public class FetchExecutionContextOptions : IOptions<ExecutionContextResource>

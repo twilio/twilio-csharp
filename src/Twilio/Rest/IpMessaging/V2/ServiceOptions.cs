@@ -18,14 +18,14 @@ namespace Twilio.Rest.IpMessaging.V2
     public class FetchServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The SID of the Service resource to fetch
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
+        /// <param name="pathSid"> The sid </param>
         public FetchServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -47,14 +47,14 @@ namespace Twilio.Rest.IpMessaging.V2
     public class DeleteServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The SID of the Service resource to delete
+        /// The sid
         /// </summary>
         public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to delete </param>
+        /// <param name="pathSid"> The sid </param>
         public DeleteServiceOptions(string pathSid)
         {
             PathSid = pathSid;
@@ -76,14 +76,14 @@ namespace Twilio.Rest.IpMessaging.V2
     public class CreateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// A string to describe the resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
         /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         public CreateServiceOptions(string friendlyName)
         {
             FriendlyName = friendlyName;
@@ -130,138 +130,138 @@ namespace Twilio.Rest.IpMessaging.V2
     public class UpdateServiceOptions : IOptions<ServiceResource>
     {
         /// <summary>
-        /// The SID of the Service resource to update
+        /// The sid
         /// </summary>
         public string PathSid { get; }
         /// <summary>
-        /// A string to describe the resource
+        /// The friendly_name
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The service role assigned to users when they are added to the service
+        /// The default_service_role_sid
         /// </summary>
         public string DefaultServiceRoleSid { get; set; }
         /// <summary>
-        /// The channel role assigned to users when they are added to a channel
+        /// The default_channel_role_sid
         /// </summary>
         public string DefaultChannelRoleSid { get; set; }
         /// <summary>
-        /// The channel role assigned to a channel creator when they join a new channel
+        /// The default_channel_creator_role_sid
         /// </summary>
         public string DefaultChannelCreatorRoleSid { get; set; }
         /// <summary>
-        /// Whether to enable the Message Consumption Horizon feature
+        /// The read_status_enabled
         /// </summary>
         public bool? ReadStatusEnabled { get; set; }
         /// <summary>
-        /// Whether to enable the Reachability Indicator feature for this Service instance
+        /// The reachability_enabled
         /// </summary>
         public bool? ReachabilityEnabled { get; set; }
         /// <summary>
-        /// How long in seconds to wait before assuming the user is no longer typing
+        /// The typing_indicator_timeout
         /// </summary>
         public int? TypingIndicatorTimeout { get; set; }
         /// <summary>
-        /// DEPRECATED
+        /// The consumption_report_interval
         /// </summary>
         public int? ConsumptionReportInterval { get; set; }
         /// <summary>
-        /// Whether to send a notification when a new message is added to a channel
+        /// The notifications.new_message.enabled
         /// </summary>
         public bool? NotificationsNewMessageEnabled { get; set; }
         /// <summary>
-        /// The template to use to create the notification text displayed when a new message is added to a channel
+        /// The notifications.new_message.template
         /// </summary>
         public string NotificationsNewMessageTemplate { get; set; }
         /// <summary>
-        /// The name of the sound to play when a new message is added to a channel
+        /// The notifications.new_message.sound
         /// </summary>
         public string NotificationsNewMessageSound { get; set; }
         /// <summary>
-        /// Whether the new message badge is enabled
+        /// The notifications.new_message.badge_count_enabled
         /// </summary>
         public bool? NotificationsNewMessageBadgeCountEnabled { get; set; }
         /// <summary>
-        /// Whether to send a notification when a member is added to a channel
+        /// The notifications.added_to_channel.enabled
         /// </summary>
         public bool? NotificationsAddedToChannelEnabled { get; set; }
         /// <summary>
-        /// The template to use to create the notification text displayed when a member is added to a channel
+        /// The notifications.added_to_channel.template
         /// </summary>
         public string NotificationsAddedToChannelTemplate { get; set; }
         /// <summary>
-        /// The name of the sound to play when a member is added to a channel
+        /// The notifications.added_to_channel.sound
         /// </summary>
         public string NotificationsAddedToChannelSound { get; set; }
         /// <summary>
-        /// Whether to send a notification to a user when they are removed from a channel
+        /// The notifications.removed_from_channel.enabled
         /// </summary>
         public bool? NotificationsRemovedFromChannelEnabled { get; set; }
         /// <summary>
-        /// The template to use to create the notification text displayed to a user when they are removed
+        /// The notifications.removed_from_channel.template
         /// </summary>
         public string NotificationsRemovedFromChannelTemplate { get; set; }
         /// <summary>
-        /// The name of the sound to play to a user when they are removed from a channel
+        /// The notifications.removed_from_channel.sound
         /// </summary>
         public string NotificationsRemovedFromChannelSound { get; set; }
         /// <summary>
-        /// Whether to send a notification when a user is invited to a channel
+        /// The notifications.invited_to_channel.enabled
         /// </summary>
         public bool? NotificationsInvitedToChannelEnabled { get; set; }
         /// <summary>
-        /// The template to use to create the notification text displayed when a user is invited to a channel
+        /// The notifications.invited_to_channel.template
         /// </summary>
         public string NotificationsInvitedToChannelTemplate { get; set; }
         /// <summary>
-        /// The name of the sound to play when a user is invited to a channel
+        /// The notifications.invited_to_channel.sound
         /// </summary>
         public string NotificationsInvitedToChannelSound { get; set; }
         /// <summary>
-        /// The webhook URL for pre-event webhooks
+        /// The pre_webhook_url
         /// </summary>
         public Uri PreWebhookUrl { get; set; }
         /// <summary>
-        /// The URL for post-event webhooks
+        /// The post_webhook_url
         /// </summary>
         public Uri PostWebhookUrl { get; set; }
         /// <summary>
-        /// The HTTP method  to use for both PRE and POST webhooks
+        /// The webhook_method
         /// </summary>
         public Twilio.Http.HttpMethod WebhookMethod { get; set; }
         /// <summary>
-        /// The list of webhook events that are enabled for this Service instance
+        /// The webhook_filters
         /// </summary>
         public List<string> WebhookFilters { get; set; }
         /// <summary>
-        /// The maximum number of Members that can be added to Channels within this Service
+        /// The limits.channel_members
         /// </summary>
         public int? LimitsChannelMembers { get; set; }
         /// <summary>
-        /// The maximum number of Channels Users can be a Member of within this Service
+        /// The limits.user_channels
         /// </summary>
         public int? LimitsUserChannels { get; set; }
         /// <summary>
-        /// The message to send when a media message has no text
+        /// The media.compatibility_message
         /// </summary>
         public string MediaCompatibilityMessage { get; set; }
         /// <summary>
-        /// Count of times webhook will be retried in case of timeout or 429/503/504 HTTP responses
+        /// The pre_webhook_retry_count
         /// </summary>
         public int? PreWebhookRetryCount { get; set; }
         /// <summary>
-        /// The number of times calls to the `post_webhook_url` will be retried
+        /// The post_webhook_retry_count
         /// </summary>
         public int? PostWebhookRetryCount { get; set; }
         /// <summary>
-        /// Whether to log notifications
+        /// The notifications.log_enabled
         /// </summary>
         public bool? NotificationsLogEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
         /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to update </param>
+        /// <param name="pathSid"> The sid </param>
         public UpdateServiceOptions(string pathSid)
         {
             PathSid = pathSid;

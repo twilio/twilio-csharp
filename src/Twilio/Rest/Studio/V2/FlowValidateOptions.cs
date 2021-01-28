@@ -12,35 +12,33 @@ namespace Twilio.Rest.Studio.V2
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
-    /// UpdateFlowValidateOptions
+    /// Validate flow JSON definition
     /// </summary>
     public class UpdateFlowValidateOptions : IOptions<FlowValidateResource>
     {
         /// <summary>
-        /// The friendly_name
+        /// The string that you assigned to describe the Flow
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The status
+        /// The status of the Flow
         /// </summary>
         public FlowValidateResource.StatusEnum Status { get; }
         /// <summary>
-        /// The definition
+        /// JSON representation of flow definition
         /// </summary>
         public object Definition { get; }
         /// <summary>
-        /// The commit_message
+        /// Description of change made in the revision
         /// </summary>
         public string CommitMessage { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFlowValidateOptions
         /// </summary>
-        /// <param name="friendlyName"> The friendly_name </param>
-        /// <param name="status"> The status </param>
-        /// <param name="definition"> The definition </param>
+        /// <param name="friendlyName"> The string that you assigned to describe the Flow </param>
+        /// <param name="status"> The status of the Flow </param>
+        /// <param name="definition"> JSON representation of flow definition </param>
         public UpdateFlowValidateOptions(string friendlyName, FlowValidateResource.StatusEnum status, object definition)
         {
             FriendlyName = friendlyName;

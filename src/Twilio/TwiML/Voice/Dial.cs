@@ -114,6 +114,20 @@ namespace Twilio.TwiML.Voice
             public static readonly RingToneEnum Za = new RingToneEnum("za");
         }
 
+        public sealed class RecordingTrackEnum : StringEnum
+        {
+            private RecordingTrackEnum(string value) : base(value) {}
+            public RecordingTrackEnum() {}
+            public static implicit operator RecordingTrackEnum(string value)
+            {
+                return new RecordingTrackEnum(value);
+            }
+
+            public static readonly RecordingTrackEnum Both = new RecordingTrackEnum("both");
+            public static readonly RecordingTrackEnum Inbound = new RecordingTrackEnum("inbound");
+            public static readonly RecordingTrackEnum Outbound = new RecordingTrackEnum("outbound");
+        }
+
         /// <summary>
         /// Phone number to dial
         /// </summary>
@@ -170,6 +184,14 @@ namespace Twilio.TwiML.Voice
         /// Ringtone allows you to override the ringback tone that Twilio will play back to the caller while executing the Dial
         /// </summary>
         public Dial.RingToneEnum RingTone { get; set; }
+        /// <summary>
+        /// To indicate which audio track should be recorded
+        /// </summary>
+        public Dial.RecordingTrackEnum RecordingTrack { get; set; }
+        /// <summary>
+        /// Used to determine if child TwiML nouns should be dialed in order, one after the other (sequential) or dial all at once (parallel). Default is false, parallel
+        /// </summary>
+        public bool? Sequential { get; set; }
 
         /// <summary>
         /// Create a new Dial
@@ -190,6 +212,9 @@ namespace Twilio.TwiML.Voice
         ///                      </param>
         /// <param name="ringTone"> Ringtone allows you to override the ringback tone that Twilio will play back to the caller
         ///                while executing the Dial </param>
+        /// <param name="recordingTrack"> To indicate which audio track should be recorded </param>
+        /// <param name="sequential"> Used to determine if child TwiML nouns should be dialed in order, one after the other
+        ///                  (sequential) or dial all at once (parallel). Default is false, parallel </param>
         public Dial(string number = null,
                     Uri action = null,
                     Twilio.Http.HttpMethod method = null,
@@ -203,7 +228,9 @@ namespace Twilio.TwiML.Voice
                     Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
                     List<Dial.RecordingEventEnum> recordingStatusCallbackEvent = null,
                     bool? answerOnBridge = null,
-                    Dial.RingToneEnum ringTone = null) : base("Dial")
+                    Dial.RingToneEnum ringTone = null,
+                    Dial.RecordingTrackEnum recordingTrack = null,
+                    bool? sequential = null) : base("Dial")
         {
             this.NumberAttribute = number;
             this.Action = action;
@@ -219,6 +246,8 @@ namespace Twilio.TwiML.Voice
             this.RecordingStatusCallbackEvent = recordingStatusCallbackEvent;
             this.AnswerOnBridge = answerOnBridge;
             this.RingTone = ringTone;
+            this.RecordingTrack = recordingTrack;
+            this.Sequential = sequential;
         }
 
         /// <summary>
@@ -287,6 +316,14 @@ namespace Twilio.TwiML.Voice
             {
                 attributes.Add(new XAttribute("ringTone", this.RingTone.ToString()));
             }
+            if (this.RecordingTrack != null)
+            {
+                attributes.Add(new XAttribute("recordingTrack", this.RecordingTrack.ToString()));
+            }
+            if (this.Sequential != null)
+            {
+                attributes.Add(new XAttribute("sequential", this.Sequential.Value.ToString().ToLower()));
+            }
             return attributes;
         }
 
@@ -351,6 +388,8 @@ namespace Twilio.TwiML.Voice
         /// <param name="recordingStatusCallbackMethod"> Recording status callback URL method </param>
         /// <param name="recordingStatusCallbackEvent"> Recording status callback events </param>
         /// <param name="eventCallbackUrl"> Event callback URL </param>
+        /// <param name="jitterBufferSize"> Size of jitter buffer for participant </param>
+        /// <param name="participantLabel"> A label for participant </param>
         public Dial Conference(string name = null,
                                bool? muted = null,
                                Conference.BeepEnum beep = null,
@@ -369,7 +408,9 @@ namespace Twilio.TwiML.Voice
                                Uri recordingStatusCallback = null,
                                Twilio.Http.HttpMethod recordingStatusCallbackMethod = null,
                                List<Conference.RecordingEventEnum> recordingStatusCallbackEvent = null,
-                               Uri eventCallbackUrl = null)
+                               Uri eventCallbackUrl = null,
+                               Conference.JitterBufferSizeEnum jitterBufferSize = null,
+                               string participantLabel = null)
         {
             var newChild = new Conference(
                 name,
@@ -390,7 +431,9 @@ namespace Twilio.TwiML.Voice
                 recordingStatusCallback,
                 recordingStatusCallbackMethod,
                 recordingStatusCallbackEvent,
-                eventCallbackUrl
+                eventCallbackUrl,
+                jitterBufferSize,
+                participantLabel
             );
             this.Append(newChild);
             return this;

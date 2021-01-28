@@ -71,15 +71,17 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
         /// </summary>
+        /// <param name="sinkSid"> Sink SID. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Subscription </returns>
-        public static ResourceSet<SubscriptionResource> Read(int? pageSize = null,
+        public static ResourceSet<SubscriptionResource> Read(string sinkSid = null,
+                                                             int? pageSize = null,
                                                              long? limit = null,
                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadSubscriptionOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadSubscriptionOptions(){SinkSid = sinkSid, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -87,15 +89,17 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Retrieve a paginated list of Subscriptions belonging to the account used to make the request.
         /// </summary>
+        /// <param name="sinkSid"> Sink SID. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SubscriptionResource>> ReadAsync(int? pageSize = null,
+        public static async System.Threading.Tasks.Task<ResourceSet<SubscriptionResource>> ReadAsync(string sinkSid = null,
+                                                                                                     int? pageSize = null,
                                                                                                      long? limit = null,
                                                                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadSubscriptionOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadSubscriptionOptions(){SinkSid = sinkSid, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -339,7 +343,7 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Update a Subscription.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
         /// <param name="description"> Subscription description. </param>
         /// <param name="sinkSid"> Sink SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -357,7 +361,7 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Update a Subscription.
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies this Subscription. </param>
         /// <param name="description"> Subscription description. </param>
         /// <param name="sinkSid"> Sink SID. </param>
         /// <param name="client"> Client to make requests to Twilio </param>

@@ -13,8 +13,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Create a new Challenge for the Factor
     /// </summary>
@@ -33,7 +32,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public string FactorSid { get; }
         /// <summary>
-        /// The future date in which this Challenge will expire
+        /// The date-time when this Challenge expires
         /// </summary>
         public DateTime? ExpirationDate { get; set; }
         /// <summary>
@@ -48,10 +47,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Hidden details provided to contextualize the Challenge
         /// </summary>
         public object HiddenDetails { get; set; }
-        /// <summary>
-        /// The Twilio-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new CreateChallengeOptions
@@ -100,25 +95,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
             return p;
         }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TwilioSandboxMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
-            }
-
-            return p;
-        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Fetch a specific Challenge.
     /// </summary>
@@ -136,10 +116,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// A string that uniquely identifies this Challenge.
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The Twilio-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new FetchChallengeOptions
@@ -162,25 +138,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TwilioSandboxMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
-            }
-
-            return p;
-        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Retrieve a list of all Challenges for a Factor.
     /// </summary>
@@ -202,10 +163,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The Status of theChallenges to fetch
         /// </summary>
         public ChallengeResource.ChallengeStatusesEnum Status { get; set; }
-        /// <summary>
-        /// The Twilio-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new ReadChallengeOptions
@@ -241,25 +198,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
             return p;
         }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TwilioSandboxMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
-            }
-
-            return p;
-        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Verify a specific Challenge.
     /// </summary>
@@ -281,10 +223,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Optional payload to verify the Challenge
         /// </summary>
         public string AuthPayload { get; set; }
-        /// <summary>
-        /// The Twilio-Sandbox-Mode HTTP request header
-        /// </summary>
-        public string TwilioSandboxMode { get; set; }
 
         /// <summary>
         /// Construct a new UpdateChallengeOptions
@@ -308,20 +246,6 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (AuthPayload != null)
             {
                 p.Add(new KeyValuePair<string, string>("AuthPayload", AuthPayload));
-            }
-
-            return p;
-        }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (TwilioSandboxMode != null)
-            {
-                p.Add(new KeyValuePair<string, string>("Twilio-Sandbox-Mode", TwilioSandboxMode));
             }
 
             return p;

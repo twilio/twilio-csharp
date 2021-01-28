@@ -72,6 +72,21 @@ namespace Twilio.Tests.Rest.Events.V1
         }
 
         [Test]
+        public void TestReadResultsFilteredBySinkSidResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"subscriptions\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:01:33Z\",\"sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"sink_sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"description\": \"A subscription\",\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"subscribed_events\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents\"}},{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"date_updated\": \"2015-07-30T20:01:33Z\",\"sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\",\"sink_sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"description\": \"Another subscription\",\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\",\"links\": {\"subscribed_events\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab/SubscribedEvents\"}}],\"meta\": {\"page\": 0,\"page_size\": 10,\"first_page_url\": \"https://events.twilio.com/v1/Subscriptions?SinkSid=DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=10&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Subscriptions?SinkSid=DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa&PageSize=10&Page=0\",\"next_page_url\": null,\"key\": \"subscriptions\"}}"
+                                     ));
+
+            var response = SubscriptionResource.Read(client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();

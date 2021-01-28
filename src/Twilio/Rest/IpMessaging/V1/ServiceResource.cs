@@ -63,7 +63,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -76,7 +76,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
@@ -130,7 +130,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -143,7 +143,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -196,7 +196,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName, ITwilioRestClient client = null)
@@ -209,7 +209,7 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
@@ -392,104 +392,61 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="defaultServiceRoleSid"> The service role assigned to users when they are added to the service </param>
-        /// <param name="defaultChannelRoleSid"> The channel role assigned to users when they are added to a channel </param>
-        /// <param name="defaultChannelCreatorRoleSid"> The channel role assigned to a channel creator when they join a new
-        ///                                    channel </param>
-        /// <param name="readStatusEnabled"> Whether to enable the Message Consumption Horizon feature </param>
-        /// <param name="reachabilityEnabled"> Whether to enable the Reachability Indicator feature for this Service instance
-        ///                           </param>
-        /// <param name="typingIndicatorTimeout"> How long in seconds to wait before assuming the user is no longer typing
-        ///                              </param>
-        /// <param name="consumptionReportInterval"> DEPRECATED </param>
-        /// <param name="notificationsNewMessageEnabled"> Whether to send a notification when a new message is added to a
-        ///                                      channel </param>
-        /// <param name="notificationsNewMessageTemplate"> The template to use to create the notification text displayed when a
-        ///                                       new message is added to a channel </param>
-        /// <param name="notificationsAddedToChannelEnabled"> Whether to send a notification when a member is added to a
-        ///                                          channel </param>
-        /// <param name="notificationsAddedToChannelTemplate"> The template to use to create the notification text displayed
-        ///                                           when a member is added to a channel </param>
-        /// <param name="notificationsRemovedFromChannelEnabled"> Whether to send a notification to a user when they are
-        ///                                              removed from a channel </param>
-        /// <param name="notificationsRemovedFromChannelTemplate"> The template to use to create the notification text
-        ///                                               displayed to a user when they are removed </param>
-        /// <param name="notificationsInvitedToChannelEnabled"> Whether to send a notification when a user is invited to a
-        ///                                            channel </param>
-        /// <param name="notificationsInvitedToChannelTemplate"> The template to use to create the notification text displayed
-        ///                                             when a user is invited to a channel </param>
-        /// <param name="preWebhookUrl"> The webhook URL for pre-event webhooks </param>
-        /// <param name="postWebhookUrl"> The URL for post-event webhooks </param>
-        /// <param name="webhookMethod"> The HTTP method  to use for both PRE and POST webhooks </param>
-        /// <param name="webhookFilters"> The list of WebHook events that are enabled for this Service instance </param>
-        /// <param name="webhooksOnMessageSendUrl"> The URL of the webhook to call in response to the on_message_send event
-        ///                                </param>
-        /// <param name="webhooksOnMessageSendMethod"> The HTTP method to use when calling the webhooks.on_message_send.url
-        ///                                   </param>
-        /// <param name="webhooksOnMessageUpdateUrl"> The URL of the webhook to call in response to the on_message_update event
-        ///                                  </param>
-        /// <param name="webhooksOnMessageUpdateMethod"> The HTTP method to use when calling the webhooks.on_message_update.url
-        ///                                     </param>
-        /// <param name="webhooksOnMessageRemoveUrl"> The URL of the webhook to call in response to the on_message_remove event
-        ///                                  </param>
-        /// <param name="webhooksOnMessageRemoveMethod"> The HTTP method to use when calling the webhooks.on_message_remove.url
-        ///                                     </param>
-        /// <param name="webhooksOnChannelAddUrl"> The URL of the webhook to call in response to the on_channel_add event
-        ///                               </param>
-        /// <param name="webhooksOnChannelAddMethod"> The HTTP method to use when calling the webhooks.on_channel_add.url
-        ///                                  </param>
-        /// <param name="webhooksOnChannelDestroyUrl"> The URL of the webhook to call in response to the on_channel_destroy
-        ///                                   event </param>
-        /// <param name="webhooksOnChannelDestroyMethod"> The HTTP method to use when calling the
-        ///                                      webhooks.on_channel_destroy.url </param>
-        /// <param name="webhooksOnChannelUpdateUrl"> The URL of the webhook to call in response to the on_channel_update event
-        ///                                  </param>
-        /// <param name="webhooksOnChannelUpdateMethod"> The HTTP method to use when calling the webhooks.on_channel_update.url
-        ///                                     </param>
-        /// <param name="webhooksOnMemberAddUrl"> The URL of the webhook to call in response to the on_member_add event </param>
-        /// <param name="webhooksOnMemberAddMethod"> The HTTP method to use when calling the webhooks.on_member_add.url </param>
-        /// <param name="webhooksOnMemberRemoveUrl"> The URL of the webhook to call in response to the on_member_remove event
-        ///                                 </param>
-        /// <param name="webhooksOnMemberRemoveMethod"> The HTTP method to use when calling the webhooks.on_member_remove.url
-        ///                                    </param>
-        /// <param name="webhooksOnMessageSentUrl"> The URL of the webhook to call in response to the on_message_sent event
-        ///                                </param>
-        /// <param name="webhooksOnMessageSentMethod"> The URL of the webhook to call in response to the on_message_sent event
-        ///                                   </param>
-        /// <param name="webhooksOnMessageUpdatedUrl"> The URL of the webhook to call in response to the on_message_updated
-        ///                                   event </param>
-        /// <param name="webhooksOnMessageUpdatedMethod"> The HTTP method to use when calling the
-        ///                                      webhooks.on_message_updated.url </param>
-        /// <param name="webhooksOnMessageRemovedUrl"> The URL of the webhook to call in response to the on_message_removed
-        ///                                   event </param>
-        /// <param name="webhooksOnMessageRemovedMethod"> The HTTP method to use when calling the
-        ///                                      webhooks.on_message_removed.url </param>
-        /// <param name="webhooksOnChannelAddedUrl"> The URL of the webhook to call in response to the on_channel_added event
-        ///                                 </param>
-        /// <param name="webhooksOnChannelAddedMethod"> The URL of the webhook to call in response to the on_channel_added
-        ///                                    event </param>
-        /// <param name="webhooksOnChannelDestroyedUrl"> The URL of the webhook to call in response to the on_channel_added
-        ///                                     event </param>
-        /// <param name="webhooksOnChannelDestroyedMethod"> The HTTP method to use when calling the
-        ///                                        webhooks.on_channel_destroyed.url </param>
-        /// <param name="webhooksOnChannelUpdatedUrl"> he URL of the webhook to call in response to the on_channel_updated
-        ///                                   event </param>
-        /// <param name="webhooksOnChannelUpdatedMethod"> The HTTP method to use when calling the
-        ///                                      webhooks.on_channel_updated.url </param>
-        /// <param name="webhooksOnMemberAddedUrl"> The URL of the webhook to call in response to the on_channel_updated event
-        ///                                </param>
-        /// <param name="webhooksOnMemberAddedMethod"> he HTTP method to use when calling the webhooks.on_channel_updated.url
-        ///                                   </param>
-        /// <param name="webhooksOnMemberRemovedUrl"> The URL of the webhook to call in response to the on_member_removed event
-        ///                                  </param>
-        /// <param name="webhooksOnMemberRemovedMethod"> The HTTP method to use when calling the webhooks.on_member_removed.url
-        ///                                     </param>
-        /// <param name="limitsChannelMembers"> The maximum number of Members that can be added to Channels within this Service
-        ///                            </param>
-        /// <param name="limitsUserChannels"> The maximum number of Channels Users can be a Member of within this Service
-        ///                          </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
+        /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
+        /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
+        /// <param name="readStatusEnabled"> The read_status_enabled </param>
+        /// <param name="reachabilityEnabled"> The reachability_enabled </param>
+        /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
+        /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
+        /// <param name="notificationsNewMessageEnabled"> The notifications.new_message.enabled </param>
+        /// <param name="notificationsNewMessageTemplate"> The notifications.new_message.template </param>
+        /// <param name="notificationsAddedToChannelEnabled"> The notifications.added_to_channel.enabled </param>
+        /// <param name="notificationsAddedToChannelTemplate"> The notifications.added_to_channel.template </param>
+        /// <param name="notificationsRemovedFromChannelEnabled"> The notifications.removed_from_channel.enabled </param>
+        /// <param name="notificationsRemovedFromChannelTemplate"> The notifications.removed_from_channel.template </param>
+        /// <param name="notificationsInvitedToChannelEnabled"> The notifications.invited_to_channel.enabled </param>
+        /// <param name="notificationsInvitedToChannelTemplate"> The notifications.invited_to_channel.template </param>
+        /// <param name="preWebhookUrl"> The pre_webhook_url </param>
+        /// <param name="postWebhookUrl"> The post_webhook_url </param>
+        /// <param name="webhookMethod"> The webhook_method </param>
+        /// <param name="webhookFilters"> The webhook_filters </param>
+        /// <param name="webhooksOnMessageSendUrl"> The webhooks.on_message_send.url </param>
+        /// <param name="webhooksOnMessageSendMethod"> The webhooks.on_message_send.method </param>
+        /// <param name="webhooksOnMessageUpdateUrl"> The webhooks.on_message_update.url </param>
+        /// <param name="webhooksOnMessageUpdateMethod"> The webhooks.on_message_update.method </param>
+        /// <param name="webhooksOnMessageRemoveUrl"> The webhooks.on_message_remove.url </param>
+        /// <param name="webhooksOnMessageRemoveMethod"> The webhooks.on_message_remove.method </param>
+        /// <param name="webhooksOnChannelAddUrl"> The webhooks.on_channel_add.url </param>
+        /// <param name="webhooksOnChannelAddMethod"> The webhooks.on_channel_add.method </param>
+        /// <param name="webhooksOnChannelDestroyUrl"> The webhooks.on_channel_destroy.url </param>
+        /// <param name="webhooksOnChannelDestroyMethod"> The webhooks.on_channel_destroy.method </param>
+        /// <param name="webhooksOnChannelUpdateUrl"> The webhooks.on_channel_update.url </param>
+        /// <param name="webhooksOnChannelUpdateMethod"> The webhooks.on_channel_update.method </param>
+        /// <param name="webhooksOnMemberAddUrl"> The webhooks.on_member_add.url </param>
+        /// <param name="webhooksOnMemberAddMethod"> The webhooks.on_member_add.method </param>
+        /// <param name="webhooksOnMemberRemoveUrl"> The webhooks.on_member_remove.url </param>
+        /// <param name="webhooksOnMemberRemoveMethod"> The webhooks.on_member_remove.method </param>
+        /// <param name="webhooksOnMessageSentUrl"> The webhooks.on_message_sent.url </param>
+        /// <param name="webhooksOnMessageSentMethod"> The webhooks.on_message_sent.method </param>
+        /// <param name="webhooksOnMessageUpdatedUrl"> The webhooks.on_message_updated.url </param>
+        /// <param name="webhooksOnMessageUpdatedMethod"> The webhooks.on_message_updated.method </param>
+        /// <param name="webhooksOnMessageRemovedUrl"> The webhooks.on_message_removed.url </param>
+        /// <param name="webhooksOnMessageRemovedMethod"> The webhooks.on_message_removed.method </param>
+        /// <param name="webhooksOnChannelAddedUrl"> The webhooks.on_channel_added.url </param>
+        /// <param name="webhooksOnChannelAddedMethod"> The webhooks.on_channel_added.method </param>
+        /// <param name="webhooksOnChannelDestroyedUrl"> The webhooks.on_channel_destroyed.url </param>
+        /// <param name="webhooksOnChannelDestroyedMethod"> The webhooks.on_channel_destroyed.method </param>
+        /// <param name="webhooksOnChannelUpdatedUrl"> The webhooks.on_channel_updated.url </param>
+        /// <param name="webhooksOnChannelUpdatedMethod"> The webhooks.on_channel_updated.method </param>
+        /// <param name="webhooksOnMemberAddedUrl"> The webhooks.on_member_added.url </param>
+        /// <param name="webhooksOnMemberAddedMethod"> The webhooks.on_member_added.method </param>
+        /// <param name="webhooksOnMemberRemovedUrl"> The webhooks.on_member_removed.url </param>
+        /// <param name="webhooksOnMemberRemovedMethod"> The webhooks.on_member_removed.method </param>
+        /// <param name="limitsChannelMembers"> The limits.channel_members </param>
+        /// <param name="limitsUserChannels"> The limits.user_channels </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -557,104 +514,61 @@ namespace Twilio.Rest.IpMessaging.V1
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="defaultServiceRoleSid"> The service role assigned to users when they are added to the service </param>
-        /// <param name="defaultChannelRoleSid"> The channel role assigned to users when they are added to a channel </param>
-        /// <param name="defaultChannelCreatorRoleSid"> The channel role assigned to a channel creator when they join a new
-        ///                                    channel </param>
-        /// <param name="readStatusEnabled"> Whether to enable the Message Consumption Horizon feature </param>
-        /// <param name="reachabilityEnabled"> Whether to enable the Reachability Indicator feature for this Service instance
-        ///                           </param>
-        /// <param name="typingIndicatorTimeout"> How long in seconds to wait before assuming the user is no longer typing
-        ///                              </param>
-        /// <param name="consumptionReportInterval"> DEPRECATED </param>
-        /// <param name="notificationsNewMessageEnabled"> Whether to send a notification when a new message is added to a
-        ///                                      channel </param>
-        /// <param name="notificationsNewMessageTemplate"> The template to use to create the notification text displayed when a
-        ///                                       new message is added to a channel </param>
-        /// <param name="notificationsAddedToChannelEnabled"> Whether to send a notification when a member is added to a
-        ///                                          channel </param>
-        /// <param name="notificationsAddedToChannelTemplate"> The template to use to create the notification text displayed
-        ///                                           when a member is added to a channel </param>
-        /// <param name="notificationsRemovedFromChannelEnabled"> Whether to send a notification to a user when they are
-        ///                                              removed from a channel </param>
-        /// <param name="notificationsRemovedFromChannelTemplate"> The template to use to create the notification text
-        ///                                               displayed to a user when they are removed </param>
-        /// <param name="notificationsInvitedToChannelEnabled"> Whether to send a notification when a user is invited to a
-        ///                                            channel </param>
-        /// <param name="notificationsInvitedToChannelTemplate"> The template to use to create the notification text displayed
-        ///                                             when a user is invited to a channel </param>
-        /// <param name="preWebhookUrl"> The webhook URL for pre-event webhooks </param>
-        /// <param name="postWebhookUrl"> The URL for post-event webhooks </param>
-        /// <param name="webhookMethod"> The HTTP method  to use for both PRE and POST webhooks </param>
-        /// <param name="webhookFilters"> The list of WebHook events that are enabled for this Service instance </param>
-        /// <param name="webhooksOnMessageSendUrl"> The URL of the webhook to call in response to the on_message_send event
-        ///                                </param>
-        /// <param name="webhooksOnMessageSendMethod"> The HTTP method to use when calling the webhooks.on_message_send.url
-        ///                                   </param>
-        /// <param name="webhooksOnMessageUpdateUrl"> The URL of the webhook to call in response to the on_message_update event
-        ///                                  </param>
-        /// <param name="webhooksOnMessageUpdateMethod"> The HTTP method to use when calling the webhooks.on_message_update.url
-        ///                                     </param>
-        /// <param name="webhooksOnMessageRemoveUrl"> The URL of the webhook to call in response to the on_message_remove event
-        ///                                  </param>
-        /// <param name="webhooksOnMessageRemoveMethod"> The HTTP method to use when calling the webhooks.on_message_remove.url
-        ///                                     </param>
-        /// <param name="webhooksOnChannelAddUrl"> The URL of the webhook to call in response to the on_channel_add event
-        ///                               </param>
-        /// <param name="webhooksOnChannelAddMethod"> The HTTP method to use when calling the webhooks.on_channel_add.url
-        ///                                  </param>
-        /// <param name="webhooksOnChannelDestroyUrl"> The URL of the webhook to call in response to the on_channel_destroy
-        ///                                   event </param>
-        /// <param name="webhooksOnChannelDestroyMethod"> The HTTP method to use when calling the
-        ///                                      webhooks.on_channel_destroy.url </param>
-        /// <param name="webhooksOnChannelUpdateUrl"> The URL of the webhook to call in response to the on_channel_update event
-        ///                                  </param>
-        /// <param name="webhooksOnChannelUpdateMethod"> The HTTP method to use when calling the webhooks.on_channel_update.url
-        ///                                     </param>
-        /// <param name="webhooksOnMemberAddUrl"> The URL of the webhook to call in response to the on_member_add event </param>
-        /// <param name="webhooksOnMemberAddMethod"> The HTTP method to use when calling the webhooks.on_member_add.url </param>
-        /// <param name="webhooksOnMemberRemoveUrl"> The URL of the webhook to call in response to the on_member_remove event
-        ///                                 </param>
-        /// <param name="webhooksOnMemberRemoveMethod"> The HTTP method to use when calling the webhooks.on_member_remove.url
-        ///                                    </param>
-        /// <param name="webhooksOnMessageSentUrl"> The URL of the webhook to call in response to the on_message_sent event
-        ///                                </param>
-        /// <param name="webhooksOnMessageSentMethod"> The URL of the webhook to call in response to the on_message_sent event
-        ///                                   </param>
-        /// <param name="webhooksOnMessageUpdatedUrl"> The URL of the webhook to call in response to the on_message_updated
-        ///                                   event </param>
-        /// <param name="webhooksOnMessageUpdatedMethod"> The HTTP method to use when calling the
-        ///                                      webhooks.on_message_updated.url </param>
-        /// <param name="webhooksOnMessageRemovedUrl"> The URL of the webhook to call in response to the on_message_removed
-        ///                                   event </param>
-        /// <param name="webhooksOnMessageRemovedMethod"> The HTTP method to use when calling the
-        ///                                      webhooks.on_message_removed.url </param>
-        /// <param name="webhooksOnChannelAddedUrl"> The URL of the webhook to call in response to the on_channel_added event
-        ///                                 </param>
-        /// <param name="webhooksOnChannelAddedMethod"> The URL of the webhook to call in response to the on_channel_added
-        ///                                    event </param>
-        /// <param name="webhooksOnChannelDestroyedUrl"> The URL of the webhook to call in response to the on_channel_added
-        ///                                     event </param>
-        /// <param name="webhooksOnChannelDestroyedMethod"> The HTTP method to use when calling the
-        ///                                        webhooks.on_channel_destroyed.url </param>
-        /// <param name="webhooksOnChannelUpdatedUrl"> he URL of the webhook to call in response to the on_channel_updated
-        ///                                   event </param>
-        /// <param name="webhooksOnChannelUpdatedMethod"> The HTTP method to use when calling the
-        ///                                      webhooks.on_channel_updated.url </param>
-        /// <param name="webhooksOnMemberAddedUrl"> The URL of the webhook to call in response to the on_channel_updated event
-        ///                                </param>
-        /// <param name="webhooksOnMemberAddedMethod"> he HTTP method to use when calling the webhooks.on_channel_updated.url
-        ///                                   </param>
-        /// <param name="webhooksOnMemberRemovedUrl"> The URL of the webhook to call in response to the on_member_removed event
-        ///                                  </param>
-        /// <param name="webhooksOnMemberRemovedMethod"> The HTTP method to use when calling the webhooks.on_member_removed.url
-        ///                                     </param>
-        /// <param name="limitsChannelMembers"> The maximum number of Members that can be added to Channels within this Service
-        ///                            </param>
-        /// <param name="limitsUserChannels"> The maximum number of Channels Users can be a Member of within this Service
-        ///                          </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
+        /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
+        /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
+        /// <param name="readStatusEnabled"> The read_status_enabled </param>
+        /// <param name="reachabilityEnabled"> The reachability_enabled </param>
+        /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
+        /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
+        /// <param name="notificationsNewMessageEnabled"> The notifications.new_message.enabled </param>
+        /// <param name="notificationsNewMessageTemplate"> The notifications.new_message.template </param>
+        /// <param name="notificationsAddedToChannelEnabled"> The notifications.added_to_channel.enabled </param>
+        /// <param name="notificationsAddedToChannelTemplate"> The notifications.added_to_channel.template </param>
+        /// <param name="notificationsRemovedFromChannelEnabled"> The notifications.removed_from_channel.enabled </param>
+        /// <param name="notificationsRemovedFromChannelTemplate"> The notifications.removed_from_channel.template </param>
+        /// <param name="notificationsInvitedToChannelEnabled"> The notifications.invited_to_channel.enabled </param>
+        /// <param name="notificationsInvitedToChannelTemplate"> The notifications.invited_to_channel.template </param>
+        /// <param name="preWebhookUrl"> The pre_webhook_url </param>
+        /// <param name="postWebhookUrl"> The post_webhook_url </param>
+        /// <param name="webhookMethod"> The webhook_method </param>
+        /// <param name="webhookFilters"> The webhook_filters </param>
+        /// <param name="webhooksOnMessageSendUrl"> The webhooks.on_message_send.url </param>
+        /// <param name="webhooksOnMessageSendMethod"> The webhooks.on_message_send.method </param>
+        /// <param name="webhooksOnMessageUpdateUrl"> The webhooks.on_message_update.url </param>
+        /// <param name="webhooksOnMessageUpdateMethod"> The webhooks.on_message_update.method </param>
+        /// <param name="webhooksOnMessageRemoveUrl"> The webhooks.on_message_remove.url </param>
+        /// <param name="webhooksOnMessageRemoveMethod"> The webhooks.on_message_remove.method </param>
+        /// <param name="webhooksOnChannelAddUrl"> The webhooks.on_channel_add.url </param>
+        /// <param name="webhooksOnChannelAddMethod"> The webhooks.on_channel_add.method </param>
+        /// <param name="webhooksOnChannelDestroyUrl"> The webhooks.on_channel_destroy.url </param>
+        /// <param name="webhooksOnChannelDestroyMethod"> The webhooks.on_channel_destroy.method </param>
+        /// <param name="webhooksOnChannelUpdateUrl"> The webhooks.on_channel_update.url </param>
+        /// <param name="webhooksOnChannelUpdateMethod"> The webhooks.on_channel_update.method </param>
+        /// <param name="webhooksOnMemberAddUrl"> The webhooks.on_member_add.url </param>
+        /// <param name="webhooksOnMemberAddMethod"> The webhooks.on_member_add.method </param>
+        /// <param name="webhooksOnMemberRemoveUrl"> The webhooks.on_member_remove.url </param>
+        /// <param name="webhooksOnMemberRemoveMethod"> The webhooks.on_member_remove.method </param>
+        /// <param name="webhooksOnMessageSentUrl"> The webhooks.on_message_sent.url </param>
+        /// <param name="webhooksOnMessageSentMethod"> The webhooks.on_message_sent.method </param>
+        /// <param name="webhooksOnMessageUpdatedUrl"> The webhooks.on_message_updated.url </param>
+        /// <param name="webhooksOnMessageUpdatedMethod"> The webhooks.on_message_updated.method </param>
+        /// <param name="webhooksOnMessageRemovedUrl"> The webhooks.on_message_removed.url </param>
+        /// <param name="webhooksOnMessageRemovedMethod"> The webhooks.on_message_removed.method </param>
+        /// <param name="webhooksOnChannelAddedUrl"> The webhooks.on_channel_added.url </param>
+        /// <param name="webhooksOnChannelAddedMethod"> The webhooks.on_channel_added.method </param>
+        /// <param name="webhooksOnChannelDestroyedUrl"> The webhooks.on_channel_destroyed.url </param>
+        /// <param name="webhooksOnChannelDestroyedMethod"> The webhooks.on_channel_destroyed.method </param>
+        /// <param name="webhooksOnChannelUpdatedUrl"> The webhooks.on_channel_updated.url </param>
+        /// <param name="webhooksOnChannelUpdatedMethod"> The webhooks.on_channel_updated.method </param>
+        /// <param name="webhooksOnMemberAddedUrl"> The webhooks.on_member_added.url </param>
+        /// <param name="webhooksOnMemberAddedMethod"> The webhooks.on_member_added.method </param>
+        /// <param name="webhooksOnMemberRemovedUrl"> The webhooks.on_member_removed.url </param>
+        /// <param name="webhooksOnMemberRemovedMethod"> The webhooks.on_member_removed.method </param>
+        /// <param name="limitsChannelMembers"> The limits.channel_members </param>
+        /// <param name="limitsUserChannels"> The limits.user_channels </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -738,107 +652,107 @@ namespace Twilio.Rest.IpMessaging.V1
         }
 
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The SID of the Account that created the resource
+        /// The account_sid
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The string that you assigned to describe the resource
+        /// The friendly_name
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
+        /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
+        /// The date_updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The service role assigned to users when they are added to the service
+        /// The default_service_role_sid
         /// </summary>
         [JsonProperty("default_service_role_sid")]
         public string DefaultServiceRoleSid { get; private set; }
         /// <summary>
-        /// The channel role assigned to users when they are added to a channel
+        /// The default_channel_role_sid
         /// </summary>
         [JsonProperty("default_channel_role_sid")]
         public string DefaultChannelRoleSid { get; private set; }
         /// <summary>
-        /// The channel role assigned to a channel creator when they join a new channel
+        /// The default_channel_creator_role_sid
         /// </summary>
         [JsonProperty("default_channel_creator_role_sid")]
         public string DefaultChannelCreatorRoleSid { get; private set; }
         /// <summary>
-        /// Whether the Message Consumption Horizon feature is enabled
+        /// The read_status_enabled
         /// </summary>
         [JsonProperty("read_status_enabled")]
         public bool? ReadStatusEnabled { get; private set; }
         /// <summary>
-        /// Whether the Reachability Indicator feature is enabled for this Service instance
+        /// The reachability_enabled
         /// </summary>
         [JsonProperty("reachability_enabled")]
         public bool? ReachabilityEnabled { get; private set; }
         /// <summary>
-        /// How long in seconds to wait before assuming the user is no longer typing
+        /// The typing_indicator_timeout
         /// </summary>
         [JsonProperty("typing_indicator_timeout")]
         public int? TypingIndicatorTimeout { get; private set; }
         /// <summary>
-        /// DEPRECATED
+        /// The consumption_report_interval
         /// </summary>
         [JsonProperty("consumption_report_interval")]
         public int? ConsumptionReportInterval { get; private set; }
         /// <summary>
-        /// An object that describes the limits of the service instance
+        /// The limits
         /// </summary>
         [JsonProperty("limits")]
         public object Limits { get; private set; }
         /// <summary>
-        /// An object that contains information about the webhooks configured for this service
+        /// The webhooks
         /// </summary>
         [JsonProperty("webhooks")]
         public object Webhooks { get; private set; }
         /// <summary>
-        /// The webhook URL for pre-event webhooks
+        /// The pre_webhook_url
         /// </summary>
         [JsonProperty("pre_webhook_url")]
         public string PreWebhookUrl { get; private set; }
         /// <summary>
-        /// The URL for post-event webhooks
+        /// The post_webhook_url
         /// </summary>
         [JsonProperty("post_webhook_url")]
         public string PostWebhookUrl { get; private set; }
         /// <summary>
-        /// The HTTP method  to use for both PRE and POST webhooks
+        /// The webhook_method
         /// </summary>
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
         /// <summary>
-        /// The list of WebHook events that are enabled for this Service instance
+        /// The webhook_filters
         /// </summary>
         [JsonProperty("webhook_filters")]
         public List<string> WebhookFilters { get; private set; }
         /// <summary>
-        /// The notification configuration for the Service instance
+        /// The notifications
         /// </summary>
         [JsonProperty("notifications")]
         public object Notifications { get; private set; }
         /// <summary>
-        /// The absolute URL of the Service resource
+        /// The url
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The absolute URLs of the Service's Channels, Roles, and Users
+        /// The links
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

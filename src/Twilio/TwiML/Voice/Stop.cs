@@ -29,9 +29,16 @@ namespace Twilio.TwiML.Voice
         /// <param name="connectorName"> Unique name for Stream Connector </param>
         /// <param name="url"> URL of the remote service where the Stream is routed </param>
         /// <param name="track"> Track to be streamed to remote service </param>
-        public Stop Stream(string name = null, string connectorName = null, string url = null, Stream.TrackEnum track = null)
+        /// <param name="statusCallback"> Status Callback URL </param>
+        /// <param name="statusCallbackMethod"> Status Callback URL method </param>
+        public Stop Stream(string name = null,
+                           string connectorName = null,
+                           string url = null,
+                           Stream.TrackEnum track = null,
+                           string statusCallback = null,
+                           Stream.StatusCallbackMethodEnum statusCallbackMethod = null)
         {
-            var newChild = new Stream(name, connectorName, url, track);
+            var newChild = new Stream(name, connectorName, url, track, statusCallback, statusCallbackMethod);
             this.Append(newChild);
             return this;
         }

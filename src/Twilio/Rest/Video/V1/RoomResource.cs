@@ -536,6 +536,11 @@ namespace Twilio.Rest.Video.V1
         [JsonProperty("max_participants")]
         public int? MaxParticipants { get; private set; }
         /// <summary>
+        /// The maximum number of published tracks allowed in the room at the same time
+        /// </summary>
+        [JsonProperty("max_concurrent_published_tracks")]
+        public int? MaxConcurrentPublishedTracks { get; private set; }
+        /// <summary>
         /// Whether to start recording when Participants connect
         /// </summary>
         [JsonProperty("record_participants_on_connect")]

@@ -63,7 +63,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Fetch(string pathSid, ITwilioRestClient client = null)
@@ -76,7 +76,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// fetch
         /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to fetch </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> FetchAsync(string pathSid,
@@ -130,7 +130,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to delete </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static bool Delete(string pathSid, ITwilioRestClient client = null)
@@ -143,7 +143,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// delete
         /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to delete </param>
+        /// <param name="pathSid"> The sid </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathSid, ITwilioRestClient client = null)
@@ -196,7 +196,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName, ITwilioRestClient client = null)
@@ -209,7 +209,7 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// create
         /// </summary>
-        /// <param name="friendlyName"> A string to describe the resource </param>
+        /// <param name="friendlyName"> The friendly_name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
@@ -392,56 +392,38 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to update </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="defaultServiceRoleSid"> The service role assigned to users when they are added to the service </param>
-        /// <param name="defaultChannelRoleSid"> The channel role assigned to users when they are added to a channel </param>
-        /// <param name="defaultChannelCreatorRoleSid"> The channel role assigned to a channel creator when they join a new
-        ///                                    channel </param>
-        /// <param name="readStatusEnabled"> Whether to enable the Message Consumption Horizon feature </param>
-        /// <param name="reachabilityEnabled"> Whether to enable the Reachability Indicator feature for this Service instance
-        ///                           </param>
-        /// <param name="typingIndicatorTimeout"> How long in seconds to wait before assuming the user is no longer typing
-        ///                              </param>
-        /// <param name="consumptionReportInterval"> DEPRECATED </param>
-        /// <param name="notificationsNewMessageEnabled"> Whether to send a notification when a new message is added to a
-        ///                                      channel </param>
-        /// <param name="notificationsNewMessageTemplate"> The template to use to create the notification text displayed when a
-        ///                                       new message is added to a channel </param>
-        /// <param name="notificationsNewMessageSound"> The name of the sound to play when a new message is added to a channel
-        ///                                    </param>
-        /// <param name="notificationsNewMessageBadgeCountEnabled"> Whether the new message badge is enabled </param>
-        /// <param name="notificationsAddedToChannelEnabled"> Whether to send a notification when a member is added to a
-        ///                                          channel </param>
-        /// <param name="notificationsAddedToChannelTemplate"> The template to use to create the notification text displayed
-        ///                                           when a member is added to a channel </param>
-        /// <param name="notificationsAddedToChannelSound"> The name of the sound to play when a member is added to a channel
-        ///                                        </param>
-        /// <param name="notificationsRemovedFromChannelEnabled"> Whether to send a notification to a user when they are
-        ///                                              removed from a channel </param>
-        /// <param name="notificationsRemovedFromChannelTemplate"> The template to use to create the notification text
-        ///                                               displayed to a user when they are removed </param>
-        /// <param name="notificationsRemovedFromChannelSound"> The name of the sound to play to a user when they are removed
-        ///                                            from a channel </param>
-        /// <param name="notificationsInvitedToChannelEnabled"> Whether to send a notification when a user is invited to a
-        ///                                            channel </param>
-        /// <param name="notificationsInvitedToChannelTemplate"> The template to use to create the notification text displayed
-        ///                                             when a user is invited to a channel </param>
-        /// <param name="notificationsInvitedToChannelSound"> The name of the sound to play when a user is invited to a channel
-        ///                                          </param>
-        /// <param name="preWebhookUrl"> The webhook URL for pre-event webhooks </param>
-        /// <param name="postWebhookUrl"> The URL for post-event webhooks </param>
-        /// <param name="webhookMethod"> The HTTP method  to use for both PRE and POST webhooks </param>
-        /// <param name="webhookFilters"> The list of webhook events that are enabled for this Service instance </param>
-        /// <param name="limitsChannelMembers"> The maximum number of Members that can be added to Channels within this Service
-        ///                            </param>
-        /// <param name="limitsUserChannels"> The maximum number of Channels Users can be a Member of within this Service
-        ///                          </param>
-        /// <param name="mediaCompatibilityMessage"> The message to send when a media message has no text </param>
-        /// <param name="preWebhookRetryCount"> Count of times webhook will be retried in case of timeout or 429/503/504 HTTP
-        ///                            responses </param>
-        /// <param name="postWebhookRetryCount"> The number of times calls to the `post_webhook_url` will be retried </param>
-        /// <param name="notificationsLogEnabled"> Whether to log notifications </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
+        /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
+        /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
+        /// <param name="readStatusEnabled"> The read_status_enabled </param>
+        /// <param name="reachabilityEnabled"> The reachability_enabled </param>
+        /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
+        /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
+        /// <param name="notificationsNewMessageEnabled"> The notifications.new_message.enabled </param>
+        /// <param name="notificationsNewMessageTemplate"> The notifications.new_message.template </param>
+        /// <param name="notificationsNewMessageSound"> The notifications.new_message.sound </param>
+        /// <param name="notificationsNewMessageBadgeCountEnabled"> The notifications.new_message.badge_count_enabled </param>
+        /// <param name="notificationsAddedToChannelEnabled"> The notifications.added_to_channel.enabled </param>
+        /// <param name="notificationsAddedToChannelTemplate"> The notifications.added_to_channel.template </param>
+        /// <param name="notificationsAddedToChannelSound"> The notifications.added_to_channel.sound </param>
+        /// <param name="notificationsRemovedFromChannelEnabled"> The notifications.removed_from_channel.enabled </param>
+        /// <param name="notificationsRemovedFromChannelTemplate"> The notifications.removed_from_channel.template </param>
+        /// <param name="notificationsRemovedFromChannelSound"> The notifications.removed_from_channel.sound </param>
+        /// <param name="notificationsInvitedToChannelEnabled"> The notifications.invited_to_channel.enabled </param>
+        /// <param name="notificationsInvitedToChannelTemplate"> The notifications.invited_to_channel.template </param>
+        /// <param name="notificationsInvitedToChannelSound"> The notifications.invited_to_channel.sound </param>
+        /// <param name="preWebhookUrl"> The pre_webhook_url </param>
+        /// <param name="postWebhookUrl"> The post_webhook_url </param>
+        /// <param name="webhookMethod"> The webhook_method </param>
+        /// <param name="webhookFilters"> The webhook_filters </param>
+        /// <param name="limitsChannelMembers"> The limits.channel_members </param>
+        /// <param name="limitsUserChannels"> The limits.user_channels </param>
+        /// <param name="mediaCompatibilityMessage"> The media.compatibility_message </param>
+        /// <param name="preWebhookRetryCount"> The pre_webhook_retry_count </param>
+        /// <param name="postWebhookRetryCount"> The post_webhook_retry_count </param>
+        /// <param name="notificationsLogEnabled"> The notifications.log_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -486,56 +468,38 @@ namespace Twilio.Rest.IpMessaging.V2
         /// <summary>
         /// update
         /// </summary>
-        /// <param name="pathSid"> The SID of the Service resource to update </param>
-        /// <param name="friendlyName"> A string to describe the resource </param>
-        /// <param name="defaultServiceRoleSid"> The service role assigned to users when they are added to the service </param>
-        /// <param name="defaultChannelRoleSid"> The channel role assigned to users when they are added to a channel </param>
-        /// <param name="defaultChannelCreatorRoleSid"> The channel role assigned to a channel creator when they join a new
-        ///                                    channel </param>
-        /// <param name="readStatusEnabled"> Whether to enable the Message Consumption Horizon feature </param>
-        /// <param name="reachabilityEnabled"> Whether to enable the Reachability Indicator feature for this Service instance
-        ///                           </param>
-        /// <param name="typingIndicatorTimeout"> How long in seconds to wait before assuming the user is no longer typing
-        ///                              </param>
-        /// <param name="consumptionReportInterval"> DEPRECATED </param>
-        /// <param name="notificationsNewMessageEnabled"> Whether to send a notification when a new message is added to a
-        ///                                      channel </param>
-        /// <param name="notificationsNewMessageTemplate"> The template to use to create the notification text displayed when a
-        ///                                       new message is added to a channel </param>
-        /// <param name="notificationsNewMessageSound"> The name of the sound to play when a new message is added to a channel
-        ///                                    </param>
-        /// <param name="notificationsNewMessageBadgeCountEnabled"> Whether the new message badge is enabled </param>
-        /// <param name="notificationsAddedToChannelEnabled"> Whether to send a notification when a member is added to a
-        ///                                          channel </param>
-        /// <param name="notificationsAddedToChannelTemplate"> The template to use to create the notification text displayed
-        ///                                           when a member is added to a channel </param>
-        /// <param name="notificationsAddedToChannelSound"> The name of the sound to play when a member is added to a channel
-        ///                                        </param>
-        /// <param name="notificationsRemovedFromChannelEnabled"> Whether to send a notification to a user when they are
-        ///                                              removed from a channel </param>
-        /// <param name="notificationsRemovedFromChannelTemplate"> The template to use to create the notification text
-        ///                                               displayed to a user when they are removed </param>
-        /// <param name="notificationsRemovedFromChannelSound"> The name of the sound to play to a user when they are removed
-        ///                                            from a channel </param>
-        /// <param name="notificationsInvitedToChannelEnabled"> Whether to send a notification when a user is invited to a
-        ///                                            channel </param>
-        /// <param name="notificationsInvitedToChannelTemplate"> The template to use to create the notification text displayed
-        ///                                             when a user is invited to a channel </param>
-        /// <param name="notificationsInvitedToChannelSound"> The name of the sound to play when a user is invited to a channel
-        ///                                          </param>
-        /// <param name="preWebhookUrl"> The webhook URL for pre-event webhooks </param>
-        /// <param name="postWebhookUrl"> The URL for post-event webhooks </param>
-        /// <param name="webhookMethod"> The HTTP method  to use for both PRE and POST webhooks </param>
-        /// <param name="webhookFilters"> The list of webhook events that are enabled for this Service instance </param>
-        /// <param name="limitsChannelMembers"> The maximum number of Members that can be added to Channels within this Service
-        ///                            </param>
-        /// <param name="limitsUserChannels"> The maximum number of Channels Users can be a Member of within this Service
-        ///                          </param>
-        /// <param name="mediaCompatibilityMessage"> The message to send when a media message has no text </param>
-        /// <param name="preWebhookRetryCount"> Count of times webhook will be retried in case of timeout or 429/503/504 HTTP
-        ///                            responses </param>
-        /// <param name="postWebhookRetryCount"> The number of times calls to the `post_webhook_url` will be retried </param>
-        /// <param name="notificationsLogEnabled"> Whether to log notifications </param>
+        /// <param name="pathSid"> The sid </param>
+        /// <param name="friendlyName"> The friendly_name </param>
+        /// <param name="defaultServiceRoleSid"> The default_service_role_sid </param>
+        /// <param name="defaultChannelRoleSid"> The default_channel_role_sid </param>
+        /// <param name="defaultChannelCreatorRoleSid"> The default_channel_creator_role_sid </param>
+        /// <param name="readStatusEnabled"> The read_status_enabled </param>
+        /// <param name="reachabilityEnabled"> The reachability_enabled </param>
+        /// <param name="typingIndicatorTimeout"> The typing_indicator_timeout </param>
+        /// <param name="consumptionReportInterval"> The consumption_report_interval </param>
+        /// <param name="notificationsNewMessageEnabled"> The notifications.new_message.enabled </param>
+        /// <param name="notificationsNewMessageTemplate"> The notifications.new_message.template </param>
+        /// <param name="notificationsNewMessageSound"> The notifications.new_message.sound </param>
+        /// <param name="notificationsNewMessageBadgeCountEnabled"> The notifications.new_message.badge_count_enabled </param>
+        /// <param name="notificationsAddedToChannelEnabled"> The notifications.added_to_channel.enabled </param>
+        /// <param name="notificationsAddedToChannelTemplate"> The notifications.added_to_channel.template </param>
+        /// <param name="notificationsAddedToChannelSound"> The notifications.added_to_channel.sound </param>
+        /// <param name="notificationsRemovedFromChannelEnabled"> The notifications.removed_from_channel.enabled </param>
+        /// <param name="notificationsRemovedFromChannelTemplate"> The notifications.removed_from_channel.template </param>
+        /// <param name="notificationsRemovedFromChannelSound"> The notifications.removed_from_channel.sound </param>
+        /// <param name="notificationsInvitedToChannelEnabled"> The notifications.invited_to_channel.enabled </param>
+        /// <param name="notificationsInvitedToChannelTemplate"> The notifications.invited_to_channel.template </param>
+        /// <param name="notificationsInvitedToChannelSound"> The notifications.invited_to_channel.sound </param>
+        /// <param name="preWebhookUrl"> The pre_webhook_url </param>
+        /// <param name="postWebhookUrl"> The post_webhook_url </param>
+        /// <param name="webhookMethod"> The webhook_method </param>
+        /// <param name="webhookFilters"> The webhook_filters </param>
+        /// <param name="limitsChannelMembers"> The limits.channel_members </param>
+        /// <param name="limitsUserChannels"> The limits.user_channels </param>
+        /// <param name="mediaCompatibilityMessage"> The media.compatibility_message </param>
+        /// <param name="preWebhookRetryCount"> The pre_webhook_retry_count </param>
+        /// <param name="postWebhookRetryCount"> The post_webhook_retry_count </param>
+        /// <param name="notificationsLogEnabled"> The notifications.log_enabled </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -596,117 +560,117 @@ namespace Twilio.Rest.IpMessaging.V2
         }
 
         /// <summary>
-        /// The unique string that identifies the resource
+        /// The sid
         /// </summary>
         [JsonProperty("sid")]
         public string Sid { get; private set; }
         /// <summary>
-        /// The SID of the Account that created the resource
+        /// The account_sid
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The string that you assigned to describe the resource
+        /// The friendly_name
         /// </summary>
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
+        /// The date_created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
+        /// The date_updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The service role assigned to users when they are added to the service
+        /// The default_service_role_sid
         /// </summary>
         [JsonProperty("default_service_role_sid")]
         public string DefaultServiceRoleSid { get; private set; }
         /// <summary>
-        /// The channel role assigned to users when they are added to a channel
+        /// The default_channel_role_sid
         /// </summary>
         [JsonProperty("default_channel_role_sid")]
         public string DefaultChannelRoleSid { get; private set; }
         /// <summary>
-        /// The channel role assigned to a channel creator when they join a new channel
+        /// The default_channel_creator_role_sid
         /// </summary>
         [JsonProperty("default_channel_creator_role_sid")]
         public string DefaultChannelCreatorRoleSid { get; private set; }
         /// <summary>
-        /// Whether the Message Consumption Horizon feature is enabled
+        /// The read_status_enabled
         /// </summary>
         [JsonProperty("read_status_enabled")]
         public bool? ReadStatusEnabled { get; private set; }
         /// <summary>
-        /// Whether the Reachability Indicator feature is enabled for this Service instance
+        /// The reachability_enabled
         /// </summary>
         [JsonProperty("reachability_enabled")]
         public bool? ReachabilityEnabled { get; private set; }
         /// <summary>
-        /// How long in seconds to wait before assuming the user is no longer typing
+        /// The typing_indicator_timeout
         /// </summary>
         [JsonProperty("typing_indicator_timeout")]
         public int? TypingIndicatorTimeout { get; private set; }
         /// <summary>
-        /// DEPRECATED
+        /// The consumption_report_interval
         /// </summary>
         [JsonProperty("consumption_report_interval")]
         public int? ConsumptionReportInterval { get; private set; }
         /// <summary>
-        /// An object that describes the limits of the service instance
+        /// The limits
         /// </summary>
         [JsonProperty("limits")]
         public object Limits { get; private set; }
         /// <summary>
-        /// The webhook URL for pre-event webhooks
+        /// The pre_webhook_url
         /// </summary>
         [JsonProperty("pre_webhook_url")]
         public string PreWebhookUrl { get; private set; }
         /// <summary>
-        /// The URL for post-event webhooks
+        /// The post_webhook_url
         /// </summary>
         [JsonProperty("post_webhook_url")]
         public string PostWebhookUrl { get; private set; }
         /// <summary>
-        /// The HTTP method  to use for both PRE and POST webhooks
+        /// The webhook_method
         /// </summary>
         [JsonProperty("webhook_method")]
         public string WebhookMethod { get; private set; }
         /// <summary>
-        /// The list of webhook events that are enabled for this Service instance
+        /// The webhook_filters
         /// </summary>
         [JsonProperty("webhook_filters")]
         public List<string> WebhookFilters { get; private set; }
         /// <summary>
-        /// Count of times webhook will be retried in case of timeout or 429/503/504 HTTP responses
+        /// The pre_webhook_retry_count
         /// </summary>
         [JsonProperty("pre_webhook_retry_count")]
         public int? PreWebhookRetryCount { get; private set; }
         /// <summary>
-        /// The number of times calls to the `post_webhook_url` will be retried
+        /// The post_webhook_retry_count
         /// </summary>
         [JsonProperty("post_webhook_retry_count")]
         public int? PostWebhookRetryCount { get; private set; }
         /// <summary>
-        /// The notification configuration for the Service instance
+        /// The notifications
         /// </summary>
         [JsonProperty("notifications")]
         public object Notifications { get; private set; }
         /// <summary>
-        /// The properties of the media that the service supports
+        /// The media
         /// </summary>
         [JsonProperty("media")]
         public object Media { get; private set; }
         /// <summary>
-        /// The absolute URL of the Service resource
+        /// The url
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The absolute URLs of the Service's Channels, Roles, and Users
+        /// The links
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

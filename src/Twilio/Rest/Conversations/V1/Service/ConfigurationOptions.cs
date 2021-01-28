@@ -61,6 +61,10 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// The service role assigned to users when they are added to the service
         /// </summary>
         public string DefaultChatServiceRoleSid { get; set; }
+        /// <summary>
+        /// Whether the Reachability Indicator feature is enabled for this Conversations Service
+        /// </summary>
+        public bool? ReachabilityEnabled { get; set; }
 
         /// <summary>
         /// Construct a new UpdateConfigurationOptions
@@ -90,6 +94,11 @@ namespace Twilio.Rest.Conversations.V1.Service
             if (DefaultChatServiceRoleSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("DefaultChatServiceRoleSid", DefaultChatServiceRoleSid.ToString()));
+            }
+
+            if (ReachabilityEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("ReachabilityEnabled", ReachabilityEnabled.Value.ToString().ToLower()));
             }
 
             return p;

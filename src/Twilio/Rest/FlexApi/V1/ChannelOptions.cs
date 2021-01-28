@@ -66,7 +66,7 @@ namespace Twilio.Rest.FlexApi.V1
     public class CreateChannelOptions : IOptions<ChannelResource>
     {
         /// <summary>
-        /// The SID of the FlexFlow
+        /// The SID of the Flex Flow
         /// </summary>
         public string FlexFlowSid { get; }
         /// <summary>
@@ -94,11 +94,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public string PreEngagementData { get; set; }
         /// <summary>
-        /// The SID of the TaskRouter task
+        /// The SID of the TaskRouter Task
         /// </summary>
         public string TaskSid { get; set; }
         /// <summary>
-        /// The task attributes to be added for the TaskRouter Task
+        /// The Task attributes to be added for the TaskRouter Task
         /// </summary>
         public string TaskAttributes { get; set; }
         /// <summary>
@@ -109,7 +109,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <summary>
         /// Construct a new CreateChannelOptions
         /// </summary>
-        /// <param name="flexFlowSid"> The SID of the FlexFlow </param>
+        /// <param name="flexFlowSid"> The SID of the Flex Flow </param>
         /// <param name="identity"> The identity value that identifies the new resource's chat User </param>
         /// <param name="chatUserFriendlyName"> The chat participant's friendly name </param>
         /// <param name="chatFriendlyName"> The chat channel's friendly name </param>

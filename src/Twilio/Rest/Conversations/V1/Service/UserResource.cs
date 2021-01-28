@@ -543,10 +543,15 @@ namespace Twilio.Rest.Conversations.V1.Service
         [JsonProperty("attributes")]
         public string Attributes { get; private set; }
         /// <summary>
-        /// Whether the User is actively connected to the Service instance and online
+        /// Whether the User is actively connected to this Conversations Service and online
         /// </summary>
         [JsonProperty("is_online")]
         public bool? IsOnline { get; private set; }
+        /// <summary>
+        /// Whether the User has a potentially valid Push Notification registration for this Conversations Service
+        /// </summary>
+        [JsonProperty("is_notifiable")]
+        public bool? IsNotifiable { get; private set; }
         /// <summary>
         /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>

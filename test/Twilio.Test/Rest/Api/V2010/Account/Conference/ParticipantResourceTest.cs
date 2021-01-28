@@ -299,6 +299,21 @@ namespace Twilio.Tests.Rest.Api.V2010.Account.Conference
         }
 
         [Test]
+        public void TestCreateWithFriendlyNameRecordingTrackResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.Created,
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"label\": null,\"conference_sid\": \"CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"date_updated\": \"Fri, 18 Feb 2011 21:07:19 +0000\",\"end_conference_on_exit\": false,\"muted\": false,\"hold\": false,\"status\": \"complete\",\"start_conference_on_enter\": true,\"coaching\": false,\"call_sid_to_coach\": null,\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Conferences/CFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Participants/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.json\"}"
+                                     ));
+
+            var response = ParticipantResource.Create("CFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", new Twilio.Types.PhoneNumber("+15017122661"), new Twilio.Types.PhoneNumber("+15558675310"), client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestDeleteRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();

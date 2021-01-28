@@ -17,7 +17,7 @@ namespace Twilio.Rest.FlexApi.V1
     public class ReadFlexFlowOptions : ReadOptions<FlexFlowResource>
     {
         /// <summary>
-        /// The `friendly_name` of the FlexFlow resources to read
+        /// The `friendly_name` of the Flex Flow resources to read
         /// </summary>
         public string FriendlyName { get; set; }
 
@@ -92,7 +92,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public string ContactIdentity { get; set; }
         /// <summary>
-        /// Whether the new FlexFlow is enabled
+        /// Whether the new Flex Flow is enabled
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
@@ -100,7 +100,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
         /// <summary>
-        /// The SID of the Flow
+        /// The SID of the Studio Flow
         /// </summary>
         public string IntegrationFlowSid { get; set; }
         /// <summary>
@@ -108,27 +108,27 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public Uri IntegrationUrl { get; set; }
         /// <summary>
-        /// The Workspace SID for a new task
+        /// The Workspace SID for a new Task
         /// </summary>
         public string IntegrationWorkspaceSid { get; set; }
         /// <summary>
-        /// The Workflow SID for a new task
+        /// The Workflow SID for a new Task
         /// </summary>
         public string IntegrationWorkflowSid { get; set; }
         /// <summary>
-        /// The task channel for a new task
+        /// The Task Channel for a new Task
         /// </summary>
         public string IntegrationChannel { get; set; }
         /// <summary>
-        /// The task timeout in seconds for a new task
+        /// The Task timeout in seconds for a new Task
         /// </summary>
         public int? IntegrationTimeout { get; set; }
         /// <summary>
-        /// The task priority of a new task
+        /// The Task priority of a new Task
         /// </summary>
         public int? IntegrationPriority { get; set; }
         /// <summary>
-        /// Whether to create a task when the first message arrives
+        /// Whether to create a Task when the first message arrives
         /// </summary>
         public bool? IntegrationCreationOnMessage { get; set; }
         /// <summary>
@@ -280,7 +280,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public string ContactIdentity { get; set; }
         /// <summary>
-        /// Whether the FlexFlow is enabled
+        /// Whether the new Flex Flow is enabled
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
@@ -288,7 +288,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
         /// <summary>
-        /// The SID of the Flow
+        /// The SID of the Studio Flow
         /// </summary>
         public string IntegrationFlowSid { get; set; }
         /// <summary>
@@ -296,27 +296,27 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public Uri IntegrationUrl { get; set; }
         /// <summary>
-        /// The Workspace SID for a new task
+        /// The Workspace SID for a new Task
         /// </summary>
         public string IntegrationWorkspaceSid { get; set; }
         /// <summary>
-        /// The Workflow SID for a new task
+        /// The Workflow SID for a new Task
         /// </summary>
         public string IntegrationWorkflowSid { get; set; }
         /// <summary>
-        /// task channel for a new task
+        /// The Task Channel for a new Task
         /// </summary>
         public string IntegrationChannel { get; set; }
         /// <summary>
-        /// The task timeout in seconds for a new task
+        /// The Task timeout in seconds for a new Task
         /// </summary>
         public int? IntegrationTimeout { get; set; }
         /// <summary>
-        /// The task priority of a new task
+        /// The Task priority of a new Task
         /// </summary>
         public int? IntegrationPriority { get; set; }
         /// <summary>
-        /// Whether to create a task when the first message arrives
+        /// Whether to create a Task when the first message arrives
         /// </summary>
         public bool? IntegrationCreationOnMessage { get; set; }
         /// <summary>
@@ -324,7 +324,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public bool? LongLived { get; set; }
         /// <summary>
-        /// Remove active Proxy sessions if the corresponding Task is deleted.
+        /// Remove active Proxy sessions if the corresponding Task is deleted
         /// </summary>
         public bool? JanitorEnabled { get; set; }
         /// <summary>

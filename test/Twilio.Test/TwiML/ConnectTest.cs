@@ -60,14 +60,21 @@ namespace Twilio.Tests.TwiML
 
             elem.Autopilot("name");
 
-            elem.Stream("name", "connector_name", "url", Stream.TrackEnum.InboundTrack);
+            elem.Stream(
+                "name",
+                "connector_name",
+                "url",
+                Stream.TrackEnum.InboundTrack,
+                "status_callback",
+                Stream.StatusCallbackMethodEnum.Get
+            );
 
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Connect>" + Environment.NewLine +
                 "  <Room participantIdentity=\"participant_identity\">name</Room>" + Environment.NewLine +
                 "  <Autopilot>name</Autopilot>" + Environment.NewLine +
-                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\"></Stream>" + Environment.NewLine +
+                "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
                 "</Connect>",
                 elem.ToString()
             );

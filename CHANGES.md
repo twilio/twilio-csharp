@@ -1,6 +1,135 @@
 twilio-csharp Changelog
 =======================
 
+[2021-01-27] Version 5.53.1
+---------------------------
+**Studio**
+- Studio V2 API is now GA
+
+**Supersim**
+- Allow updating `CommandsUrl` and `CommandsMethod` on a Fleet
+
+**Twiml**
+- Add `status_callback` and `status_callback_method` to `Stream`.
+
+
+[2021-01-13] Version 5.53.0
+---------------------------
+**Api**
+- Add 'Electric Imp v1 Usage' to usage categories
+
+**Conversations**
+- Changed `last_read_message_index` type in Participant's resource **(breaking change)**
+
+**Insights**
+- Added `created_time` to call summary.
+
+**Sync**
+- Remove HideExpired query parameter for filtering Sync Documents with expired **(breaking change)**
+
+**Video**
+- [Rooms] Expose maxConcurrentPublishedTracks property in Room resource
+
+
+[2020-12-16] Version 5.52.1
+---------------------------
+**Api**
+- Updated `call_event` default_output_properties to request and response.
+
+**Conversations**
+- Added `last_read_message_index` and `last_read_timestamp` to Participant's resource update operation
+- Added `is_notifiable` and `is_online` to User's resource
+- Added `reachability_enabled` parameters to update method for Conversation Service Configuration resource
+
+**Messaging**
+- Added WA template quick reply, URL, and phone number buttons
+
+**Twiml**
+- Add `sequential` to `Dial`.
+
+
+[2020-12-08] Version 5.52.0
+---------------------------
+**Api**
+- Added optional `RecordingTrack` parameter for create calls, create participants, and create call recordings
+- Removed deprecated Programmable Chat usage record categories **(breaking change)**
+
+**Twiml**
+- Add `recordingTrack` to `Dial`.
+
+
+[2020-12-02] Version 5.51.0
+---------------------------
+**Api**
+- Remove `RecordingTrack` parameter for create calls, create participants, and create call recordings **(breaking change)**
+- Added `RecordingTrack` parameter for create calls and create call recordings
+- Add optional property `recording_track` in the participant create request
+
+**Lookups**
+- Changed `caller_name` and `carrier` properties type to object **(breaking change)**
+
+**Trunking**
+- Added dual channel recording options for Trunks.
+
+**Twiml**
+- Add `jitterBufferSize` and `participantLabel` to `Conference`.
+
+
+[2020-11-18] Version 5.50.0
+---------------------------
+**Library - Feature**
+- [PR #546](https://github.com/twilio/twilio-csharp/pull/546): Add region to access token. Thanks to [@ryan-rowland](https://github.com/ryan-rowland)!
+
+**Api**
+- Add new call events resource - GET /2010-04-01/Accounts/{account_sid}/Calls/{call_sid}/Events.json
+
+**Conversations**
+- Fixed default response property issue for Service Notifications Configuration
+
+**Insights**
+- Removing call_sid from participant summary. **(breaking change)**
+
+**Serverless**
+- Allow Service unique name to be used in path (in place of SID) in Service update request
+
+**Sync**
+- Added HideExpired query parameter for filtering Sync Documents with expired
+
+**Verify**
+- Challenge `Details` and `HiddenDetails` properties are now marked as `PII`
+- Challenge `expiration_date` attribute updated to set a default value of five (5) minutes and to allow max dates of one (1) hour after creation.
+- Entity `identity` attribute updated to allow values between 8 and 64 characters.
+- Verify Service frinedly_name attribute updated from 64 max lenght to 30 characters.
+
+
+[2020-11-05] Version 5.49.0
+---------------------------
+**Library - Feature**
+- [PR #545](https://github.com/twilio/twilio-csharp/pull/545): add http logging for c#. Thanks to [@JenniferMah](https://github.com/JenniferMah)!
+
+**Api**
+- Added `verify-push` to `usage_record` API
+
+**Bulkexports**
+- When creating a custom export the StartDay, EndDay, and FriendlyName fields were required but this was not reflected in the API documentation.  The API itself failed the request without these fields. **(breaking change)**
+- Added property descriptions for Custom Export create method
+- Clarified WebhookUrl and WebhookMethod must be provided together for Custom Export
+
+**Insights**
+- Added video room and participant summary apis.
+
+**Ip_messaging**
+- Create separate definition for ip-messaging
+- Restore v2 endpoints for ip-messaging
+
+**Verify**
+- Verify Push madurity were updated from `preview` to `beta`
+- `twilio_sandbox_mode` header was removed from Verify Push resources **(breaking change)**
+
+**Video**
+- [Rooms] Add Recording Rules API
+
+
 [2020-10-14] Version 5.48.0
 ---------------------------
 **Library - Feature**

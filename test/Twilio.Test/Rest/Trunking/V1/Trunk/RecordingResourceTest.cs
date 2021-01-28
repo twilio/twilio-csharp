@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"mode\": \"do-not-record\",\"trim\": \"do-not-trim\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recording\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"mode\": \"do-not-record\",\"trim\": \"do-not-trim\"}"
                                      ));
 
             var response = RecordingResource.Fetch("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.Trunking.V1.Trunk
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"mode\": \"do-not-record\",\"trim\": \"do-not-trim\",\"url\": \"https://trunking.twilio.com/v1/Trunks/TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Recording\",\"trunk_sid\": \"TKaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"mode\": \"do-not-record\",\"trim\": \"do-not-trim\"}"
                                      ));
 
             var response = RecordingResource.Update("TKXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);

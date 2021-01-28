@@ -72,11 +72,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum GroupRoomsMediaStored = new UsageCategoryEnum("group-rooms-media-stored");
             public static readonly UsageCategoryEnum GroupRoomsParticipantMinutes = new UsageCategoryEnum("group-rooms-participant-minutes");
             public static readonly UsageCategoryEnum GroupRoomsRecordedMinutes = new UsageCategoryEnum("group-rooms-recorded-minutes");
-            public static readonly UsageCategoryEnum IpMessaging = new UsageCategoryEnum("ip-messaging");
-            public static readonly UsageCategoryEnum IpMessagingCommands = new UsageCategoryEnum("ip-messaging-commands");
-            public static readonly UsageCategoryEnum IpMessagingDataStorage = new UsageCategoryEnum("ip-messaging-data-storage");
-            public static readonly UsageCategoryEnum IpMessagingDataTransfer = new UsageCategoryEnum("ip-messaging-data-transfer");
-            public static readonly UsageCategoryEnum IpMessagingEndpointConnectivity = new UsageCategoryEnum("ip-messaging-endpoint-connectivity");
+            public static readonly UsageCategoryEnum ImpV1Usage = new UsageCategoryEnum("imp-v1-usage");
             public static readonly UsageCategoryEnum Lookups = new UsageCategoryEnum("lookups");
             public static readonly UsageCategoryEnum Marketplace = new UsageCategoryEnum("marketplace");
             public static readonly UsageCategoryEnum MarketplaceAlgorithmiaNamedEntityRecognition = new UsageCategoryEnum("marketplace-algorithmia-named-entity-recognition");
@@ -135,11 +131,6 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum NotifyChannels = new UsageCategoryEnum("notify-channels");
             public static readonly UsageCategoryEnum NumberFormatLookups = new UsageCategoryEnum("number-format-lookups");
             public static readonly UsageCategoryEnum Pchat = new UsageCategoryEnum("pchat");
-            public static readonly UsageCategoryEnum PchatActions = new UsageCategoryEnum("pchat-actions");
-            public static readonly UsageCategoryEnum PchatAps = new UsageCategoryEnum("pchat-aps");
-            public static readonly UsageCategoryEnum PchatMessages = new UsageCategoryEnum("pchat-messages");
-            public static readonly UsageCategoryEnum PchatNotifications = new UsageCategoryEnum("pchat-notifications");
-            public static readonly UsageCategoryEnum PchatReads = new UsageCategoryEnum("pchat-reads");
             public static readonly UsageCategoryEnum PchatUsers = new UsageCategoryEnum("pchat-users");
             public static readonly UsageCategoryEnum PeerToPeerRoomsParticipantMinutes = new UsageCategoryEnum("peer-to-peer-rooms-participant-minutes");
             public static readonly UsageCategoryEnum Pfax = new UsageCategoryEnum("pfax");
@@ -229,6 +220,7 @@ namespace Twilio.Rest.Api.V2010.Account.Usage
             public static readonly UsageCategoryEnum TurnmegabytesUseast = new UsageCategoryEnum("turnmegabytes-useast");
             public static readonly UsageCategoryEnum TurnmegabytesUswest = new UsageCategoryEnum("turnmegabytes-uswest");
             public static readonly UsageCategoryEnum TwilioInterconnect = new UsageCategoryEnum("twilio-interconnect");
+            public static readonly UsageCategoryEnum VerifyPush = new UsageCategoryEnum("verify-push");
             public static readonly UsageCategoryEnum VideoRecordings = new UsageCategoryEnum("video-recordings");
             public static readonly UsageCategoryEnum VoiceInsights = new UsageCategoryEnum("voice-insights");
             public static readonly UsageCategoryEnum VoiceInsightsClientInsightsOnDemandMinute = new UsageCategoryEnum("voice-insights-client-insights-on-demand-minute");

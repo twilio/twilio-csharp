@@ -136,15 +136,18 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="defaultConversationRoleSid"> The role assigned to users when they are added to a conversation </param>
         /// <param name="defaultChatServiceRoleSid"> The service role assigned to users when they are added to the service
         ///                                 </param>
+        /// <param name="reachabilityEnabled"> Whether the Reachability Indicator feature is enabled for this Conversations
+        ///                           Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Configuration </returns>
         public static ConfigurationResource Update(string pathChatServiceSid,
                                                    string defaultConversationCreatorRoleSid = null,
                                                    string defaultConversationRoleSid = null,
                                                    string defaultChatServiceRoleSid = null,
+                                                   bool? reachabilityEnabled = null,
                                                    ITwilioRestClient client = null)
         {
-            var options = new UpdateConfigurationOptions(pathChatServiceSid){DefaultConversationCreatorRoleSid = defaultConversationCreatorRoleSid, DefaultConversationRoleSid = defaultConversationRoleSid, DefaultChatServiceRoleSid = defaultChatServiceRoleSid};
+            var options = new UpdateConfigurationOptions(pathChatServiceSid){DefaultConversationCreatorRoleSid = defaultConversationCreatorRoleSid, DefaultConversationRoleSid = defaultConversationRoleSid, DefaultChatServiceRoleSid = defaultChatServiceRoleSid, ReachabilityEnabled = reachabilityEnabled};
             return Update(options, client);
         }
 
@@ -158,15 +161,18 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// <param name="defaultConversationRoleSid"> The role assigned to users when they are added to a conversation </param>
         /// <param name="defaultChatServiceRoleSid"> The service role assigned to users when they are added to the service
         ///                                 </param>
+        /// <param name="reachabilityEnabled"> Whether the Reachability Indicator feature is enabled for this Conversations
+        ///                           Service </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Configuration </returns>
         public static async System.Threading.Tasks.Task<ConfigurationResource> UpdateAsync(string pathChatServiceSid,
                                                                                            string defaultConversationCreatorRoleSid = null,
                                                                                            string defaultConversationRoleSid = null,
                                                                                            string defaultChatServiceRoleSid = null,
+                                                                                           bool? reachabilityEnabled = null,
                                                                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateConfigurationOptions(pathChatServiceSid){DefaultConversationCreatorRoleSid = defaultConversationCreatorRoleSid, DefaultConversationRoleSid = defaultConversationRoleSid, DefaultChatServiceRoleSid = defaultChatServiceRoleSid};
+            var options = new UpdateConfigurationOptions(pathChatServiceSid){DefaultConversationCreatorRoleSid = defaultConversationCreatorRoleSid, DefaultConversationRoleSid = defaultConversationRoleSid, DefaultChatServiceRoleSid = defaultChatServiceRoleSid, ReachabilityEnabled = reachabilityEnabled};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -219,6 +225,11 @@ namespace Twilio.Rest.Conversations.V1.Service
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+        /// <summary>
+        /// Whether the Reachability Indicator feature is enabled for this Conversations Service
+        /// </summary>
+        [JsonProperty("reachability_enabled")]
+        public bool? ReachabilityEnabled { get; private set; }
 
         private ConfigurationResource()
         {

@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Insights.V1.Call
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_type\": \"carrier\",\"call_state\": \"ringing\",\"processing_state\": \"complete\",\"start_time\": \"2015-07-30T20:00:00Z\",\"end_time\": \"2015-07-30T20:00:00Z\",\"duration\": 100,\"connect_duration\": 99,\"from\": {},\"to\": {},\"carrier_edge\": {},\"client_edge\": {},\"sdk_edge\": {},\"sip_edge\": {},\"tags\": [\"tags\"],\"attributes\": {},\"properties\": {},\"trust\": {},\"url\": \"https://insights.twilio.com/v1/Voice/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Summary\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_sid\": \"CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"call_type\": \"carrier\",\"call_state\": \"ringing\",\"processing_state\": \"complete\",\"created_time\": \"2015-07-30T20:00:00Z\",\"start_time\": \"2015-07-30T20:00:00Z\",\"end_time\": \"2015-07-30T20:00:00Z\",\"duration\": 100,\"connect_duration\": 99,\"from\": {},\"to\": {},\"carrier_edge\": {},\"client_edge\": {},\"sdk_edge\": {},\"sip_edge\": {},\"tags\": [\"tags\"],\"attributes\": {},\"properties\": {},\"trust\": {},\"url\": \"https://insights.twilio.com/v1/Voice/CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Summary\"}"
                                      ));
 
             var response = CallSummaryResource.Fetch("CAXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
