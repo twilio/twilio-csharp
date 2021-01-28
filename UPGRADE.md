@@ -1,7 +1,6 @@
 # Upgrade Guide
 
-_After `5.0.0` all `MINOR` and `MAJOR` version bumps will have upgrade notes
-posted here._
+_`MAJOR` version bumps will have upgrade notes posted here._
 
 [2017-11-XX] 5.8.x to 5.9.x
 ---------------------------
@@ -10,19 +9,19 @@ posted here._
 
 #### Rationale
 This was changed to add support for time-to-live to Sync objects. Users can now either provide either `data`, `ttl`, or both.
-This only affects users who pass the `twilioRestClient` parameter to the _Affected Resources_ below.  
+This only affects users who pass the `twilioRestClient` parameter to the _Affected Resources_ below.
 
 #### Affected Resources
 - DocumentResource.Update(...)
 - SyncListItemResource.Update(...)
 - SyncMapItemResource.Update(...)
-  
+
 #### 5.8.x
 ```cs
 using Twilio.Rest.Sync.V1.Service;
 using Twilio.Rest.Sync.V1.Service.SyncList;
 using Twilio.Rest.Sync.V1.Service.SyncMap;
-  
+
 DocumentResource.Update("IS123", "ET123", "{}", twilioRestClient);
 SyncListItemResource.Update("IS123", "ES123", 1, "{}", twilioRestClient);
 SyncMapItemResource.Update("IS123", "MP123", "myKey" "{}", twilioRestClient);
@@ -33,7 +32,7 @@ SyncMapItemResource.Update("IS123", "MP123", "myKey" "{}", twilioRestClient);
 using Twilio.Rest.Sync.V1.Service;
 using Twilio.Rest.Sync.V1.Service.SyncList;
 using Twilio.Rest.Sync.V1.Service.SyncMap;
-  
+
 DocumentResource.Update("IS123", "ET123", "{}", null, twilioRestClient);
 SyncListItemResource.Update("IS123", "ES123", 1, "{}", null, twilioRestClient);
 SyncMapItemResource.Update("IS123", "MP123", "myKey" "{}", null, twilioRestClient);
@@ -56,7 +55,7 @@ Previously all TwiML resources were under the `Twilio.TwiML` namespace.
   - Gather
 - Moved to `Twilio.TwiML.Messaging`
   - Message
-  
+
 #### 5.7.x
 ```cs
 using Twilio.TwiML;
