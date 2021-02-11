@@ -9,7 +9,8 @@ services:
 script:
   - make test
   - make release
-  - nuget sign /home/travis/build/twilio/twilio-csharp/src/Twilio/bin/Release/*.nupkg -CertificatePath $NUGET_CERT -Timestamper http://timestamp.digicert.com
+  - openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv -in twilio_inc.pfx.enc -out twilio_inc.pfx -d
+  - nuget sign /home/travis/build/twilio/twilio-csharp/src/Twilio/bin/Release/*.nupkg -CertificatePath twilio_inc.pfx -Timestamper http://timestamp.digicert.com
   - nuget verify -All /home/travis/build/twilio/twilio-csharp/src/Twilio/bin/Release/*.nupkg
 
 deploy:
