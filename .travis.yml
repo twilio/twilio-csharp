@@ -9,7 +9,7 @@ services:
 script:
   - make test
   - make release
-  - echo $NUGET_CERT | base64 -d > twilio_inc.cer
+  - echo $NUGET_CERT > twilio_inc.cer
   - nuget sign /home/travis/build/twilio/twilio-csharp/src/Twilio/bin/Release/*.nupkg -CertificatePath twilio_inc.cer -Timestamper http://timestamp.digicert.com
   - nuget verify -All /home/travis/build/twilio/twilio-csharp/src/Twilio/bin/Release/*.nupkg
 
