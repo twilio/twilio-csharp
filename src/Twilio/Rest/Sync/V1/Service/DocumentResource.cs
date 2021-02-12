@@ -3,8 +3,6 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-///
 /// DocumentResource
 /// </summary>
 
@@ -99,7 +97,7 @@ namespace Twilio.Rest.Sync.V1.Service
                 Rest.Domain.Sync,
                 "/v1/Services/" + options.PathServiceSid + "/Documents/" + options.PathSid + "",
                 queryParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
+                headerParams: null
             );
         }
 
@@ -137,15 +135,11 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to delete </param>
         /// <param name="pathSid"> The SID of the Document resource to delete </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns>
-        public static bool Delete(string pathServiceSid,
-                                  string pathSid,
-                                  string ifMatch = null,
-                                  ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteDocumentOptions(pathServiceSid, pathSid){IfMatch = ifMatch};
+            var options = new DeleteDocumentOptions(pathServiceSid, pathSid);
             return Delete(options, client);
         }
 
@@ -155,15 +149,13 @@ namespace Twilio.Rest.Sync.V1.Service
         /// </summary>
         /// <param name="pathServiceSid"> The SID of the Sync Service with the Document resource to delete </param>
         /// <param name="pathSid"> The SID of the Document resource to delete </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathSid,
-                                                                          string ifMatch = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteDocumentOptions(pathServiceSid, pathSid){IfMatch = ifMatch};
+            var options = new DeleteDocumentOptions(pathServiceSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif

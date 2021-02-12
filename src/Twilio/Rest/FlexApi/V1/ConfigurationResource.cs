@@ -430,6 +430,16 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("queue_stats_configuration")]
         public object QueueStatsConfiguration { get; private set; }
         /// <summary>
+        /// Configurable parameters for Notifications
+        /// </summary>
+        [JsonProperty("notifications")]
+        public object Notifications { get; private set; }
+        /// <summary>
+        /// Configurable parameters for Markdown
+        /// </summary>
+        [JsonProperty("markdown")]
+        public object Markdown { get; private set; }
+        /// <summary>
         /// The absolute URL of the Configuration resource
         /// </summary>
         [JsonProperty("url")]

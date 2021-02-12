@@ -12,8 +12,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Sync Document Permission.
     /// </summary>
     public class FetchDocumentPermissionOptions : IOptions<DocumentPermissionResource>
@@ -56,8 +54,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific Sync Document Permission.
     /// </summary>
     public class DeleteDocumentPermissionOptions : IOptions<DocumentPermissionResource>
@@ -100,8 +96,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Permissions applying to a Sync Document.
     /// </summary>
     public class ReadDocumentPermissionOptions : ReadOptions<DocumentPermissionResource>
@@ -142,8 +136,6 @@ namespace Twilio.Rest.Sync.V1.Service.Document
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update an identity's access to a specific Sync Document.
     /// </summary>
     public class UpdateDocumentPermissionOptions : IOptions<DocumentPermissionResource>

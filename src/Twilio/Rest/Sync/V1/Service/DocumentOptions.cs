@@ -12,8 +12,6 @@ namespace Twilio.Rest.Sync.V1.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// FetchDocumentOptions
     /// </summary>
     public class FetchDocumentOptions : IOptions<DocumentResource>
@@ -49,8 +47,6 @@ namespace Twilio.Rest.Sync.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// DeleteDocumentOptions
     /// </summary>
     public class DeleteDocumentOptions : IOptions<DocumentResource>
@@ -63,10 +59,6 @@ namespace Twilio.Rest.Sync.V1.Service
         /// The SID of the Document resource to delete
         /// </summary>
         public string PathSid { get; }
-        /// <summary>
-        /// The If-Match HTTP request header
-        /// </summary>
-        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new DeleteDocumentOptions
@@ -87,25 +79,9 @@ namespace Twilio.Rest.Sync.V1.Service
             var p = new List<KeyValuePair<string, string>>();
             return p;
         }
-
-        /// <summary>
-        /// Generate the necessary header parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetHeaderParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            if (IfMatch != null)
-            {
-                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
-            }
-
-            return p;
-        }
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// CreateDocumentOptions
     /// </summary>
     public class CreateDocumentOptions : IOptions<DocumentResource>
@@ -162,8 +138,6 @@ namespace Twilio.Rest.Sync.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// ReadDocumentOptions
     /// </summary>
     public class ReadDocumentOptions : ReadOptions<DocumentResource>
@@ -198,8 +172,6 @@ namespace Twilio.Rest.Sync.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// UpdateDocumentOptions
     /// </summary>
     public class UpdateDocumentOptions : IOptions<DocumentResource>

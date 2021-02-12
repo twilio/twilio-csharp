@@ -12,8 +12,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Sync Map Permission.
     /// </summary>
     public class FetchSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
@@ -56,8 +54,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific Sync Map Permission.
     /// </summary>
     public class DeleteSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>
@@ -100,8 +96,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Permissions applying to a Sync Map.
     /// </summary>
     public class ReadSyncMapPermissionOptions : ReadOptions<SyncMapPermissionResource>
@@ -142,8 +136,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update an identity's access to a specific Sync Map.
     /// </summary>
     public class UpdateSyncMapPermissionOptions : IOptions<SyncMapPermissionResource>

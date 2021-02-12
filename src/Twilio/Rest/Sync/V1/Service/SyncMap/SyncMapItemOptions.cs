@@ -12,8 +12,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// FetchSyncMapItemOptions
     /// </summary>
     public class FetchSyncMapItemOptions : IOptions<SyncMapItemResource>
@@ -55,8 +53,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// DeleteSyncMapItemOptions
     /// </summary>
     public class DeleteSyncMapItemOptions : IOptions<SyncMapItemResource>
@@ -116,8 +112,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// CreateSyncMapItemOptions
     /// </summary>
     public class CreateSyncMapItemOptions : IOptions<SyncMapItemResource>
@@ -202,8 +196,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// ReadSyncMapItemOptions
     /// </summary>
     public class ReadSyncMapItemOptions : ReadOptions<SyncMapItemResource>
@@ -271,8 +263,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncMap
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// UpdateSyncMapItemOptions
     /// </summary>
     public class UpdateSyncMapItemOptions : IOptions<SyncMapItemResource>

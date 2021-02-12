@@ -12,8 +12,6 @@ namespace Twilio.Rest.Sync.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// FetchServiceOptions
     /// </summary>
     public class FetchServiceOptions : IOptions<ServiceResource>
@@ -43,8 +41,6 @@ namespace Twilio.Rest.Sync.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// DeleteServiceOptions
     /// </summary>
     public class DeleteServiceOptions : IOptions<ServiceResource>
@@ -74,8 +70,6 @@ namespace Twilio.Rest.Sync.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// CreateServiceOptions
     /// </summary>
     public class CreateServiceOptions : IOptions<ServiceResource>
@@ -155,8 +149,6 @@ namespace Twilio.Rest.Sync.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// ReadServiceOptions
     /// </summary>
     public class ReadServiceOptions : ReadOptions<ServiceResource>
@@ -177,8 +169,6 @@ namespace Twilio.Rest.Sync.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// UpdateServiceOptions
     /// </summary>
     public class UpdateServiceOptions : IOptions<ServiceResource>

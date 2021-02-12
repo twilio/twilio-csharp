@@ -12,8 +12,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Sync List Permission.
     /// </summary>
     public class FetchSyncListPermissionOptions : IOptions<SyncListPermissionResource>
@@ -56,8 +54,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific Sync List Permission.
     /// </summary>
     public class DeleteSyncListPermissionOptions : IOptions<SyncListPermissionResource>
@@ -100,8 +96,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Permissions applying to a Sync List.
     /// </summary>
     public class ReadSyncListPermissionOptions : ReadOptions<SyncListPermissionResource>
@@ -142,8 +136,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update an identity's access to a specific Sync List.
     /// </summary>
     public class UpdateSyncListPermissionOptions : IOptions<SyncListPermissionResource>

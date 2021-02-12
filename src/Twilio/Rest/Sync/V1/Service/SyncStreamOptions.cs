@@ -12,8 +12,6 @@ namespace Twilio.Rest.Sync.V1.Service
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Stream.
     /// </summary>
     public class FetchSyncStreamOptions : IOptions<SyncStreamResource>
@@ -49,8 +47,6 @@ namespace Twilio.Rest.Sync.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Delete a specific Stream.
     /// </summary>
     public class DeleteSyncStreamOptions : IOptions<SyncStreamResource>
@@ -86,8 +82,6 @@ namespace Twilio.Rest.Sync.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new Stream.
     /// </summary>
     public class CreateSyncStreamOptions : IOptions<SyncStreamResource>
@@ -135,8 +129,6 @@ namespace Twilio.Rest.Sync.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update a specific Stream.
     /// </summary>
     public class UpdateSyncStreamOptions : IOptions<SyncStreamResource>
@@ -181,8 +173,6 @@ namespace Twilio.Rest.Sync.V1.Service
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Streams in a Service Instance.
     /// </summary>
     public class ReadSyncStreamOptions : ReadOptions<SyncStreamResource>

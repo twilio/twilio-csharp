@@ -40,6 +40,7 @@ namespace Twilio.Rest
         public static readonly Domain Sync = new Domain("sync");
         public static readonly Domain Taskrouter = new Domain("taskrouter");
         public static readonly Domain Trunking = new Domain("trunking");
+        public static readonly Domain Trusthub = new Domain("trusthub");
         public static readonly Domain Verify = new Domain("verify");
         public static readonly Domain Video = new Domain("video");
         public static readonly Domain Voice = new Domain("voice");

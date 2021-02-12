@@ -39,7 +39,7 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public bool? CommandsEnabled { get; set; }
         /// <summary>
-        /// The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from your device (mobile originated) to the Commands number
+        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
         /// </summary>
         public Uri CommandsUrl { get; set; }
         /// <summary>
@@ -184,7 +184,7 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         public string NetworkAccessProfile { get; set; }
         /// <summary>
-        /// The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from your device (mobile originated) to the Commands number
+        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
         /// </summary>
         public Uri CommandsUrl { get; set; }
         /// <summary>

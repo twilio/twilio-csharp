@@ -100,7 +100,7 @@ namespace Twilio.Rest.Preview.Sync.Service
                 Rest.Domain.Preview,
                 "/Sync/Services/" + options.PathServiceSid + "/Documents/" + options.PathSid + "",
                 queryParams: options.GetParams(),
-                headerParams: options.GetHeaderParams()
+                headerParams: null
             );
         }
 
@@ -138,15 +138,11 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Document </returns>
-        public static bool Delete(string pathServiceSid,
-                                  string pathSid,
-                                  string ifMatch = null,
-                                  ITwilioRestClient client = null)
+        public static bool Delete(string pathServiceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteDocumentOptions(pathServiceSid, pathSid){IfMatch = ifMatch};
+            var options = new DeleteDocumentOptions(pathServiceSid, pathSid);
             return Delete(options, client);
         }
 
@@ -156,15 +152,13 @@ namespace Twilio.Rest.Preview.Sync.Service
         /// </summary>
         /// <param name="pathServiceSid"> The service_sid </param>
         /// <param name="pathSid"> The sid </param>
-        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Document </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathServiceSid,
                                                                           string pathSid,
-                                                                          string ifMatch = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteDocumentOptions(pathServiceSid, pathSid){IfMatch = ifMatch};
+            var options = new DeleteDocumentOptions(pathServiceSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif

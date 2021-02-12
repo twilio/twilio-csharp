@@ -37,6 +37,20 @@ namespace Twilio.Rest.Serverless.V1.Service
             public static readonly StatusEnum Failed = new StatusEnum("failed");
         }
 
+        public sealed class RuntimeEnum : StringEnum
+        {
+            private RuntimeEnum(string value) : base(value) {}
+            public RuntimeEnum() {}
+            public static implicit operator RuntimeEnum(string value)
+            {
+                return new RuntimeEnum(value);
+            }
+
+            public static readonly RuntimeEnum Node8 = new RuntimeEnum("node8");
+            public static readonly RuntimeEnum Node10 = new RuntimeEnum("node10");
+            public static readonly RuntimeEnum Node12 = new RuntimeEnum("node12");
+        }
+
         private static Request BuildReadRequest(ReadBuildOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -357,15 +371,17 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the Build </param>
         /// <param name="functionVersions"> The list of the Function Version resource SIDs to include in the Build </param>
         /// <param name="dependencies"> A list of objects that describe the Dependencies included in the Build </param>
+        /// <param name="runtime"> The Runtime version that will be used to run the Build. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Build </returns>
         public static BuildResource Create(string pathServiceSid,
                                            List<string> assetVersions = null,
                                            List<string> functionVersions = null,
                                            string dependencies = null,
+                                           string runtime = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateBuildOptions(pathServiceSid){AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies};
+            var options = new CreateBuildOptions(pathServiceSid){AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies, Runtime = runtime};
             return Create(options, client);
         }
 
@@ -377,15 +393,17 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// <param name="assetVersions"> The list of Asset Version resource SIDs to include in the Build </param>
         /// <param name="functionVersions"> The list of the Function Version resource SIDs to include in the Build </param>
         /// <param name="dependencies"> A list of objects that describe the Dependencies included in the Build </param>
+        /// <param name="runtime"> The Runtime version that will be used to run the Build. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Build </returns>
         public static async System.Threading.Tasks.Task<BuildResource> CreateAsync(string pathServiceSid,
                                                                                    List<string> assetVersions = null,
                                                                                    List<string> functionVersions = null,
                                                                                    string dependencies = null,
+                                                                                   string runtime = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateBuildOptions(pathServiceSid){AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies};
+            var options = new CreateBuildOptions(pathServiceSid){AssetVersions = assetVersions, FunctionVersions = functionVersions, Dependencies = dependencies, Runtime = runtime};
             return await CreateAsync(options, client);
         }
         #endif
@@ -444,6 +462,12 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// </summary>
         [JsonProperty("dependencies")]
         public List<object> Dependencies { get; private set; }
+        /// <summary>
+        /// The Runtime version that will be used to run the Build.
+        /// </summary>
+        [JsonProperty("runtime")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BuildResource.RuntimeEnum Runtime { get; private set; }
         /// <summary>
         /// The ISO 8601 date and time in GMT when the Build resource was created
         /// </summary>

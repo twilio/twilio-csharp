@@ -12,8 +12,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncStream
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Create a new Stream Message.
     /// </summary>
     public class CreateStreamMessageOptions : IOptions<StreamMessageResource>

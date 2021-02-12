@@ -192,6 +192,14 @@ namespace Twilio.TwiML.Voice
         /// Used to determine if child TwiML nouns should be dialed in order, one after the other (sequential) or dial all at once (parallel). Default is false, parallel
         /// </summary>
         public bool? Sequential { get; set; }
+        /// <summary>
+        /// Webhook that will receive future SIP REFER requests
+        /// </summary>
+        public Uri ReferUrl { get; set; }
+        /// <summary>
+        /// The HTTP method to use for the refer Webhook
+        /// </summary>
+        public Twilio.Http.HttpMethod ReferMethod { get; set; }
 
         /// <summary>
         /// Create a new Dial
@@ -215,6 +223,8 @@ namespace Twilio.TwiML.Voice
         /// <param name="recordingTrack"> To indicate which audio track should be recorded </param>
         /// <param name="sequential"> Used to determine if child TwiML nouns should be dialed in order, one after the other
         ///                  (sequential) or dial all at once (parallel). Default is false, parallel </param>
+        /// <param name="referUrl"> Webhook that will receive future SIP REFER requests </param>
+        /// <param name="referMethod"> The HTTP method to use for the refer Webhook </param>
         public Dial(string number = null,
                     Uri action = null,
                     Twilio.Http.HttpMethod method = null,
@@ -230,7 +240,9 @@ namespace Twilio.TwiML.Voice
                     bool? answerOnBridge = null,
                     Dial.RingToneEnum ringTone = null,
                     Dial.RecordingTrackEnum recordingTrack = null,
-                    bool? sequential = null) : base("Dial")
+                    bool? sequential = null,
+                    Uri referUrl = null,
+                    Twilio.Http.HttpMethod referMethod = null) : base("Dial")
         {
             this.NumberAttribute = number;
             this.Action = action;
@@ -248,6 +260,8 @@ namespace Twilio.TwiML.Voice
             this.RingTone = ringTone;
             this.RecordingTrack = recordingTrack;
             this.Sequential = sequential;
+            this.ReferUrl = referUrl;
+            this.ReferMethod = referMethod;
         }
 
         /// <summary>
@@ -323,6 +337,14 @@ namespace Twilio.TwiML.Voice
             if (this.Sequential != null)
             {
                 attributes.Add(new XAttribute("sequential", this.Sequential.Value.ToString().ToLower()));
+            }
+            if (this.ReferUrl != null)
+            {
+                attributes.Add(new XAttribute("referUrl", Serializers.Url(this.ReferUrl)));
+            }
+            if (this.ReferMethod != null)
+            {
+                attributes.Add(new XAttribute("referMethod", this.ReferMethod.ToString()));
             }
             return attributes;
         }

@@ -71,6 +71,8 @@ namespace Twilio.TwiML
         /// <param name="recordingTrack"> To indicate which audio track should be recorded </param>
         /// <param name="sequential"> Used to determine if child TwiML nouns should be dialed in order, one after the other
         ///                  (sequential) or dial all at once (parallel). Default is false, parallel </param>
+        /// <param name="referUrl"> Webhook that will receive future SIP REFER requests </param>
+        /// <param name="referMethod"> The HTTP method to use for the refer Webhook </param>
         public VoiceResponse Dial(string number = null,
                                   Uri action = null,
                                   Twilio.Http.HttpMethod method = null,
@@ -86,7 +88,9 @@ namespace Twilio.TwiML
                                   bool? answerOnBridge = null,
                                   Dial.RingToneEnum ringTone = null,
                                   Dial.RecordingTrackEnum recordingTrack = null,
-                                  bool? sequential = null)
+                                  bool? sequential = null,
+                                  Uri referUrl = null,
+                                  Twilio.Http.HttpMethod referMethod = null)
         {
             var newChild = new Dial(
                 number,
@@ -104,7 +108,9 @@ namespace Twilio.TwiML
                 answerOnBridge,
                 ringTone,
                 recordingTrack,
-                sequential
+                sequential,
+                referUrl,
+                referMethod
             );
             this.Append(newChild);
             return this;

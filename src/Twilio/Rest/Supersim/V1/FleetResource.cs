@@ -85,8 +85,8 @@ namespace Twilio.Rest.Supersim.V1
         ///                 assigned to the Fleet resource can consume </param>
         /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
         ///                       machine-to-machine SMS via Commands </param>
-        /// <param name="commandsUrl"> The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from
-        ///                   your device (mobile originated) to the Commands number </param>
+        /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
+        ///                   from your device to the Commands number </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -115,8 +115,8 @@ namespace Twilio.Rest.Supersim.V1
         ///                 assigned to the Fleet resource can consume </param>
         /// <param name="commandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
         ///                       machine-to-machine SMS via Commands </param>
-        /// <param name="commandsUrl"> The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from
-        ///                   your device (mobile originated) to the Commands number </param>
+        /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
+        ///                   from your device to the Commands number </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -381,8 +381,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="pathSid"> The SID that identifies the resource to update </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
-        /// <param name="commandsUrl"> The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from
-        ///                   your device (mobile originated) to the Commands number </param>
+        /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
+        ///                   from your device to the Commands number </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -405,8 +405,8 @@ namespace Twilio.Rest.Supersim.V1
         /// <param name="pathSid"> The SID that identifies the resource to update </param>
         /// <param name="uniqueName"> An application-defined string that uniquely identifies the resource </param>
         /// <param name="networkAccessProfile"> The SID or unique name of the Network Access Profile of the Fleet </param>
-        /// <param name="commandsUrl"> The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from
-        ///                   your device (mobile originated) to the Commands number </param>
+        /// <param name="commandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS
+        ///                   from your device to the Commands number </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -493,7 +493,7 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("commands_enabled")]
         public bool? CommandsEnabled { get; private set; }
         /// <summary>
-        /// The URL that will receive a webhook when a SIM in the Fleet is used to send an SMS from your device (mobile originated) to the Commands number
+        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the Commands number
         /// </summary>
         [JsonProperty("commands_url")]
         public Uri CommandsUrl { get; private set; }

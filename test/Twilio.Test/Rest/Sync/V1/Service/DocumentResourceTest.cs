@@ -66,12 +66,11 @@ namespace Twilio.Tests.Rest.Sync.V1.Service
                 "/v1/Services/ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Documents/ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
-            request.AddHeaderParam("If-Match", Serialize("if_match"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                DocumentResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ifMatch: Serialize("if_match"), client: twilioRestClient);
+                DocumentResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -89,7 +88,7 @@ namespace Twilio.Tests.Rest.Sync.V1.Service
                                          "null"
                                      ));
 
-            var response = DocumentResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ifMatch: Serialize("if_match"), client: twilioRestClient);
+            var response = DocumentResource.Delete("ISXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "ETXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 

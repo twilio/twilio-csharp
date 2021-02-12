@@ -145,6 +145,10 @@ namespace Twilio.Rest.Serverless.V1.Service
         /// A list of objects that describe the Dependencies included in the Build
         /// </summary>
         public string Dependencies { get; set; }
+        /// <summary>
+        /// The Runtime version that will be used to run the Build.
+        /// </summary>
+        public string Runtime { get; set; }
 
         /// <summary>
         /// Construct a new CreateBuildOptions
@@ -176,6 +180,11 @@ namespace Twilio.Rest.Serverless.V1.Service
             if (Dependencies != null)
             {
                 p.Add(new KeyValuePair<string, string>("Dependencies", Dependencies));
+            }
+
+            if (Runtime != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Runtime", Runtime));
             }
 
             return p;

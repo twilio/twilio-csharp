@@ -12,8 +12,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// FetchSyncListItemOptions
     /// </summary>
     public class FetchSyncListItemOptions : IOptions<SyncListItemResource>
@@ -55,8 +53,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// DeleteSyncListItemOptions
     /// </summary>
     public class DeleteSyncListItemOptions : IOptions<SyncListItemResource>
@@ -116,8 +112,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// CreateSyncListItemOptions
     /// </summary>
     public class CreateSyncListItemOptions : IOptions<SyncListItemResource>
@@ -192,8 +186,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// ReadSyncListItemOptions
     /// </summary>
     public class ReadSyncListItemOptions : ReadOptions<SyncListItemResource>
@@ -261,8 +253,6 @@ namespace Twilio.Rest.Sync.V1.Service.SyncList
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// UpdateSyncListItemOptions
     /// </summary>
     public class UpdateSyncListItemOptions : IOptions<SyncListItemResource>
