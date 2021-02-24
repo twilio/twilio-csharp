@@ -1,6 +1,23 @@
 twilio-csharp Changelog
 =======================
 
+[2021-02-24] Version 5.55.0
+---------------------------
+**Library - Fix**
+- [PR #559](https://github.com/twilio/twilio-csharp/pull/559): Revert "Remove deploy to nuget". Thanks to [@eshanholtz](https://github.com/eshanholtz)!
+
+**Events**
+- Update description of types in the create sink resource
+
+**Messaging**
+- Add WA template header and footer
+- Remove A2P campaign and use cases API **(breaking change)**
+- Add number_registration_status field to read and fetch campaign responses
+
+**Verify**
+- Verify List Attempts API endpoints added.
+
+
 [2021-02-12] Version 5.54.0
 ---------------------------
 **Library - Chore**

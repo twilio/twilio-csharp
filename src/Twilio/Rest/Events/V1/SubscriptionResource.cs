@@ -269,7 +269,7 @@ namespace Twilio.Rest.Events.V1
         /// </summary>
         /// <param name="description"> Subscription description </param>
         /// <param name="sinkSid"> Sink SID. </param>
-        /// <param name="types"> Nested resource URLs. </param>
+        /// <param name="types"> Subscribed Event Types </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Subscription </returns>
         public static SubscriptionResource Create(string description,
@@ -287,7 +287,7 @@ namespace Twilio.Rest.Events.V1
         /// </summary>
         /// <param name="description"> Subscription description </param>
         /// <param name="sinkSid"> Sink SID. </param>
-        /// <param name="types"> Nested resource URLs. </param>
+        /// <param name="types"> Subscribed Event Types </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Subscription </returns>
         public static async System.Threading.Tasks.Task<SubscriptionResource> CreateAsync(string description,

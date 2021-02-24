@@ -51,7 +51,7 @@ namespace Twilio.Tests.Rest.Trusthub.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"sid\": \"ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"type\": \"individual\",\"attributes\": {\"email\": \"foobar@twilio.com\"},\"date_created\": \"2019-07-30T21:57:45Z\",\"date_updated\": \"2019-07-30T21:57:45Z\",\"url\": \"https://trusthub.twilio.com/v1/EndUsers/ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"date_updated\": \"2021-02-16T20:40:57Z\",\"sid\": \"ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"auth_rep_1\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/EndUsers/ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-16T20:40:57Z\",\"attributes\": {\"phone_number\": \"+11234567890\",\"job_position\": \"CEO\",\"first_name\": \"rep1\",\"last_name\": \"test\",\"business_title\": \"ceo\",\"email\": \"foobar@test.com\"},\"type\": \"authorized_representative_1\"}"
                                      ));
 
             var response = EndUserResource.Create("friendly_name", "type", client: twilioRestClient);
@@ -102,7 +102,7 @@ namespace Twilio.Tests.Rest.Trusthub.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"results\": [{\"sid\": \"ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"type\": \"individual\",\"attributes\": {\"email\": \"foobar@twilio.com\"},\"date_created\": \"2019-07-30T21:57:45Z\",\"date_updated\": \"2019-07-30T21:57:45Z\",\"url\": \"https://trusthub.twilio.com/v1/EndUsers/ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trusthub.twilio.com/v1/EndUsers?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trusthub.twilio.com/v1/EndUsers?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"results\"}}"
+                                         "{\"results\": [{\"date_updated\": \"2021-02-16T20:40:57Z\",\"sid\": \"ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"auth_rep_1\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/EndUsers/ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-16T20:40:57Z\",\"attributes\": {\"phone_number\": \"+11234567890\",\"job_position\": \"CEO\",\"first_name\": \"rep1\",\"last_name\": \"test\",\"business_title\": \"ceo\",\"email\": \"foobar@test.com\"},\"type\": \"authorized_representative_1\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trusthub.twilio.com/v1/EndUsers?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trusthub.twilio.com/v1/EndUsers?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"results\"}}"
                                      ));
 
             var response = EndUserResource.Read(client: twilioRestClient);
@@ -138,7 +138,7 @@ namespace Twilio.Tests.Rest.Trusthub.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"sid\": \"ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"type\": \"individual\",\"attributes\": {\"email\": \"foobar@twilio.com\"},\"date_created\": \"2019-07-30T21:57:45Z\",\"date_updated\": \"2019-07-30T21:57:45Z\",\"url\": \"https://trusthub.twilio.com/v1/EndUsers/ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"date_updated\": \"2021-02-16T20:40:57Z\",\"sid\": \"ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"auth_rep_1\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/EndUsers/ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-16T20:40:57Z\",\"attributes\": {\"phone_number\": \"+11234567890\",\"job_position\": \"CEO\",\"first_name\": \"rep1\",\"last_name\": \"test\",\"business_title\": \"ceo\",\"email\": \"foobar@test.com\"},\"type\": \"authorized_representative_1\"}"
                                      ));
 
             var response = EndUserResource.Fetch("ITXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -174,7 +174,7 @@ namespace Twilio.Tests.Rest.Trusthub.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"sid\": \"ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"type\": \"individual\",\"attributes\": {\"email\": \"foobar@twilio.com\"},\"date_created\": \"2019-07-30T21:57:45Z\",\"date_updated\": \"2019-07-30T21:57:45Z\",\"url\": \"https://trusthub.twilio.com/v1/EndUsers/ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"}"
+                                         "{\"date_updated\": \"2021-02-16T20:40:57Z\",\"sid\": \"ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/EndUsers/ITaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-16T20:40:57Z\",\"attributes\": {\"phone_number\": \"+11234567890\",\"job_position\": \"CEO\",\"first_name\": \"rep1\",\"last_name\": \"test\",\"business_title\": \"ceo\",\"email\": \"foobar@test.com\"},\"type\": \"authorized_representative_1\"}"
                                      ));
 
             var response = EndUserResource.Update("ITXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);

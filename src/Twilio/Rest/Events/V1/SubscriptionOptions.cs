@@ -94,7 +94,7 @@ namespace Twilio.Rest.Events.V1
         /// </summary>
         public string SinkSid { get; }
         /// <summary>
-        /// Nested resource URLs.
+        /// Subscribed Event Types
         /// </summary>
         public List<object> Types { get; }
 
@@ -103,7 +103,7 @@ namespace Twilio.Rest.Events.V1
         /// </summary>
         /// <param name="description"> Subscription description </param>
         /// <param name="sinkSid"> Sink SID. </param>
-        /// <param name="types"> Nested resource URLs. </param>
+        /// <param name="types"> Subscribed Event Types </param>
         public CreateSubscriptionOptions(string description, string sinkSid, List<object> types)
         {
             Description = description;
