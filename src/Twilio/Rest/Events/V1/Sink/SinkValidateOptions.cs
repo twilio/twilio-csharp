@@ -12,15 +12,14 @@ namespace Twilio.Rest.Events.V1.Sink
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
     /// Validate that a test event for a Sink was received.
     /// </summary>
     public class CreateSinkValidateOptions : IOptions<SinkValidateResource>
     {
         /// <summary>
-        /// The sid
+        /// A string that uniquely identifies the Sink being validated.
         /// </summary>
         public string PathSid { get; }
         /// <summary>
@@ -31,7 +30,7 @@ namespace Twilio.Rest.Events.V1.Sink
         /// <summary>
         /// Construct a new CreateSinkValidateOptions
         /// </summary>
-        /// <param name="pathSid"> The sid </param>
+        /// <param name="pathSid"> A string that uniquely identifies the Sink being validated. </param>
         /// <param name="testId"> A string that uniquely identifies the test event for a Sink being validated. </param>
         public CreateSinkValidateOptions(string pathSid, string testId)
         {

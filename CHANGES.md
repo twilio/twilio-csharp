@@ -1,6 +1,24 @@
 twilio-csharp Changelog
 =======================
 
+[2021-03-15] Version 5.56.0
+---------------------------
+**Events**
+- Set maturity to beta
+
+**Messaging**
+- Adjust A2P brand registration status enum **(breaking change)**
+
+**Studio**
+- Remove internal safeguards for Studio V2 API usage now that it's GA
+
+**Verify**
+- Add support for creating and verifying totp factors. Support for totp factors is behind the `api.verify.totp` beta feature.
+
+**Twiml**
+- Add support for `<VirtualAgent>` noun
+
+
 [2021-02-24] Version 5.55.0
 ---------------------------
 **Library - Fix**

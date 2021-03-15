@@ -46,6 +46,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             }
 
             public static readonly FactorTypesEnum Push = new FactorTypesEnum("push");
+            public static readonly FactorTypesEnum Totp = new FactorTypesEnum("totp");
         }
 
         public sealed class NotificationPlatformsEnum : StringEnum
@@ -59,6 +60,20 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
             public static readonly NotificationPlatformsEnum Apn = new NotificationPlatformsEnum("apn");
             public static readonly NotificationPlatformsEnum Fcm = new NotificationPlatformsEnum("fcm");
+        }
+
+        public sealed class TotpAlgorithmsEnum : StringEnum
+        {
+            private TotpAlgorithmsEnum(string value) : base(value) {}
+            public TotpAlgorithmsEnum() {}
+            public static implicit operator TotpAlgorithmsEnum(string value)
+            {
+                return new TotpAlgorithmsEnum(value);
+            }
+
+            public static readonly TotpAlgorithmsEnum Sha1 = new TotpAlgorithmsEnum("sha1");
+            public static readonly TotpAlgorithmsEnum Sha256 = new TotpAlgorithmsEnum("sha256");
+            public static readonly TotpAlgorithmsEnum Sha512 = new TotpAlgorithmsEnum("sha512");
         }
 
         private static Request BuildCreateRequest(CreateFactorOptions options, ITwilioRestClient client)
@@ -114,6 +129,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="configNotificationPlatform"> The transport technology used to generate the Notification Token </param>
         /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
         /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
+        /// <param name="bindingSecret"> The shared secret in Base32 </param>
+        /// <param name="configTimeStep"> How often, in seconds, are TOTP codes generated </param>
+        /// <param name="configSkew"> The number of past and future time-steps valid at a given time </param>
+        /// <param name="configCodeLength"> Number of digits for generated TOTP codes </param>
+        /// <param name="configAlg"> The algorithm used to derive the TOTP codes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static FactorResource Create(string pathServiceSid,
@@ -126,9 +146,14 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                             FactorResource.NotificationPlatformsEnum configNotificationPlatform = null,
                                             string configNotificationToken = null,
                                             string configSdkVersion = null,
+                                            string bindingSecret = null,
+                                            int? configTimeStep = null,
+                                            int? configSkew = null,
+                                            int? configCodeLength = null,
+                                            FactorResource.TotpAlgorithmsEnum configAlg = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion};
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg};
             return Create(options, client);
         }
 
@@ -146,6 +171,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="configNotificationPlatform"> The transport technology used to generate the Notification Token </param>
         /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
         /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
+        /// <param name="bindingSecret"> The shared secret in Base32 </param>
+        /// <param name="configTimeStep"> How often, in seconds, are TOTP codes generated </param>
+        /// <param name="configSkew"> The number of past and future time-steps valid at a given time </param>
+        /// <param name="configCodeLength"> Number of digits for generated TOTP codes </param>
+        /// <param name="configAlg"> The algorithm used to derive the TOTP codes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<FactorResource> CreateAsync(string pathServiceSid,
@@ -158,9 +188,14 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                     FactorResource.NotificationPlatformsEnum configNotificationPlatform = null,
                                                                                     string configNotificationToken = null,
                                                                                     string configSdkVersion = null,
+                                                                                    string bindingSecret = null,
+                                                                                    int? configTimeStep = null,
+                                                                                    int? configSkew = null,
+                                                                                    int? configCodeLength = null,
+                                                                                    FactorResource.TotpAlgorithmsEnum configAlg = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion};
+            var options = new CreateFactorOptions(pathServiceSid, pathIdentity, friendlyName, factorType){BindingAlg = bindingAlg, BindingPublicKey = bindingPublicKey, ConfigAppId = configAppId, ConfigNotificationPlatform = configNotificationPlatform, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, BindingSecret = bindingSecret, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg};
             return await CreateAsync(options, client);
         }
         #endif
@@ -504,6 +539,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
         /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
+        /// <param name="configTimeStep"> How often, in seconds, are TOTP codes generated </param>
+        /// <param name="configSkew"> The number of past and future time-steps valid at a given time </param>
+        /// <param name="configCodeLength"> Number of digits for generated TOTP codes </param>
+        /// <param name="configAlg"> The algorithm used to derive the TOTP codes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Factor </returns>
         public static FactorResource Update(string pathServiceSid,
@@ -513,9 +552,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                             string friendlyName = null,
                                             string configNotificationToken = null,
                                             string configSdkVersion = null,
+                                            int? configTimeStep = null,
+                                            int? configSkew = null,
+                                            int? configCodeLength = null,
+                                            FactorResource.TotpAlgorithmsEnum configAlg = null,
                                             ITwilioRestClient client = null)
         {
-            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion};
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg};
             return Update(options, client);
         }
 
@@ -530,6 +573,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="friendlyName"> The friendly name of this Factor </param>
         /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
         /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
+        /// <param name="configTimeStep"> How often, in seconds, are TOTP codes generated </param>
+        /// <param name="configSkew"> The number of past and future time-steps valid at a given time </param>
+        /// <param name="configCodeLength"> Number of digits for generated TOTP codes </param>
+        /// <param name="configAlg"> The algorithm used to derive the TOTP codes </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Factor </returns>
         public static async System.Threading.Tasks.Task<FactorResource> UpdateAsync(string pathServiceSid,
@@ -539,9 +586,13 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                     string friendlyName = null,
                                                                                     string configNotificationToken = null,
                                                                                     string configSdkVersion = null,
+                                                                                    int? configTimeStep = null,
+                                                                                    int? configSkew = null,
+                                                                                    int? configCodeLength = null,
+                                                                                    FactorResource.TotpAlgorithmsEnum configAlg = null,
                                                                                     ITwilioRestClient client = null)
         {
-            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion};
+            var options = new UpdateFactorOptions(pathServiceSid, pathIdentity, pathSid){AuthPayload = authPayload, FriendlyName = friendlyName, ConfigNotificationToken = configNotificationToken, ConfigSdkVersion = configSdkVersion, ConfigTimeStep = configTimeStep, ConfigSkew = configSkew, ConfigCodeLength = configCodeLength, ConfigAlg = configAlg};
             return await UpdateAsync(options, client);
         }
         #endif

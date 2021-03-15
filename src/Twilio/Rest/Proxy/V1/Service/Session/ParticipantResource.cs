@@ -457,7 +457,7 @@ namespace Twilio.Rest.Proxy.V1.Service.Session
         [JsonProperty("friendly_name")]
         public string FriendlyName { get; private set; }
         /// <summary>
-        /// The phone number of the Participant
+        /// The phone number or channel identifier of the Participant
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; private set; }

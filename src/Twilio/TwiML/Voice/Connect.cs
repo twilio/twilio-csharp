@@ -133,6 +133,34 @@ namespace Twilio.TwiML.Voice
         }
 
         /// <summary>
+        /// Create a new <VirtualAgent/> element and append it as a child of this element.
+        /// </summary>
+        /// <param name="connectorName"> Defines the conversation profile Dialogflow needs to use </param>
+        /// <param name="language"> Language to be used by Dialogflow to transcribe speech </param>
+        /// <param name="sentimentAnalysis"> Whether sentiment analysis needs to be enabled or not </param>
+        /// <param name="statusCallback"> URL to post status callbacks from Twilio </param>
+        public Connect VirtualAgent(string connectorName = null,
+                                    string language = null,
+                                    bool? sentimentAnalysis = null,
+                                    string statusCallback = null)
+        {
+            var newChild = new VirtualAgent(connectorName, language, sentimentAnalysis, statusCallback);
+            this.Append(newChild);
+            return this;
+        }
+
+        /// <summary>
+        /// Append a <VirtualAgent/> element as a child of this element
+        /// </summary>
+        /// <param name="virtualAgent"> A VirtualAgent instance. </param>
+        [System.Obsolete("This method is deprecated, use .Append() instead.")]
+        public Connect VirtualAgent(VirtualAgent virtualAgent)
+        {
+            this.Append(virtualAgent);
+            return this;
+        }
+
+        /// <summary>
         /// Append a child TwiML element to this element returning this element to allow chaining.
         /// </summary>
         /// <param name="childElem"> Child TwiML element to add </param>

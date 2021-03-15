@@ -158,7 +158,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         /// <summary>
-        /// fetch
+        /// Get Video Log Analyzer data for a Room.
         /// </summary>
         /// <param name="options"> Fetch Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -172,7 +172,7 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Get Video Log Analyzer data for a Room.
         /// </summary>
         /// <param name="options"> Fetch Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -187,9 +187,9 @@ namespace Twilio.Rest.Insights.V1
         #endif
 
         /// <summary>
-        /// fetch
+        /// Get Video Log Analyzer data for a Room.
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns>
         public static RoomResource Fetch(string pathRoomSid, ITwilioRestClient client = null)
@@ -200,9 +200,9 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Get Video Log Analyzer data for a Room.
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
         public static async System.Threading.Tasks.Task<RoomResource> FetchAsync(string pathRoomSid,
@@ -225,7 +225,7 @@ namespace Twilio.Rest.Insights.V1
         }
 
         /// <summary>
-        /// read
+        /// Get a list of Programmable Video Rooms.
         /// </summary>
         /// <param name="options"> Read Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Get a list of Programmable Video Rooms.
         /// </summary>
         /// <param name="options"> Read Room parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -258,13 +258,13 @@ namespace Twilio.Rest.Insights.V1
         #endif
 
         /// <summary>
-        /// read
+        /// Get a list of Programmable Video Rooms.
         /// </summary>
-        /// <param name="roomType"> The room_type </param>
-        /// <param name="codec"> The codec </param>
-        /// <param name="roomName"> The room_name </param>
-        /// <param name="createdAfter"> The created_after </param>
-        /// <param name="createdBefore"> The created_before </param>
+        /// <param name="roomType"> Type of room. </param>
+        /// <param name="codec"> Codecs used by participants in the room. </param>
+        /// <param name="roomName"> Room friendly name. </param>
+        /// <param name="createdAfter"> Only read rooms that started on or after this ISO 8601 timestamp. </param>
+        /// <param name="createdBefore"> Only read rooms that started before this ISO 8601 timestamp. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -284,13 +284,13 @@ namespace Twilio.Rest.Insights.V1
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Get a list of Programmable Video Rooms.
         /// </summary>
-        /// <param name="roomType"> The room_type </param>
-        /// <param name="codec"> The codec </param>
-        /// <param name="roomName"> The room_name </param>
-        /// <param name="createdAfter"> The created_after </param>
-        /// <param name="createdBefore"> The created_before </param>
+        /// <param name="roomType"> Type of room. </param>
+        /// <param name="codec"> Codecs used by participants in the room. </param>
+        /// <param name="roomName"> Room friendly name. </param>
+        /// <param name="createdAfter"> Only read rooms that started on or after this ISO 8601 timestamp. </param>
+        /// <param name="createdBefore"> Only read rooms that started before this ISO 8601 timestamp. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -381,141 +381,141 @@ namespace Twilio.Rest.Insights.V1
         }
 
         /// <summary>
-        /// The account_sid
+        /// Account SID associated with this room.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The room_sid
+        /// Unique identifier for the room.
         /// </summary>
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
         /// <summary>
-        /// The room_name
+        /// room friendly name.
         /// </summary>
         [JsonProperty("room_name")]
         public string RoomName { get; private set; }
         /// <summary>
-        /// The create_time
+        /// Creation time of the room.
         /// </summary>
         [JsonProperty("create_time")]
         public DateTime? CreateTime { get; private set; }
         /// <summary>
-        /// The end_time
+        /// End time for the room.
         /// </summary>
         [JsonProperty("end_time")]
         public DateTime? EndTime { get; private set; }
         /// <summary>
-        /// The room_type
+        /// Type of room.
         /// </summary>
         [JsonProperty("room_type")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomResource.RoomTypeEnum RoomType { get; private set; }
         /// <summary>
-        /// The room_status
+        /// Status of the room.
         /// </summary>
         [JsonProperty("room_status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomResource.RoomStatusEnum RoomStatus { get; private set; }
         /// <summary>
-        /// The status_callback
+        /// Webhook provided for status callbacks.
         /// </summary>
         [JsonProperty("status_callback")]
         public Uri StatusCallback { get; private set; }
         /// <summary>
-        /// The status_callback_method
+        /// HTTP method provided for status callback URL.
         /// </summary>
         [JsonProperty("status_callback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod StatusCallbackMethod { get; private set; }
         /// <summary>
-        /// The created_method
+        /// How the room was created.
         /// </summary>
         [JsonProperty("created_method")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomResource.CreatedMethodEnum CreatedMethod { get; private set; }
         /// <summary>
-        /// The end_reason
+        /// Reason the room ended.
         /// </summary>
         [JsonProperty("end_reason")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomResource.EndReasonEnum EndReason { get; private set; }
         /// <summary>
-        /// The max_participants
+        /// Max number of total participants allowed by the application settings.
         /// </summary>
         [JsonProperty("max_participants")]
         public int? MaxParticipants { get; private set; }
         /// <summary>
-        /// The unique_participants
+        /// Number of participants. May include duplicate identities for participants who left and rejoined.
         /// </summary>
         [JsonProperty("unique_participants")]
         public int? UniqueParticipants { get; private set; }
         /// <summary>
-        /// The unique_participant_identities
+        /// Unique number of participant identities.
         /// </summary>
         [JsonProperty("unique_participant_identities")]
         public int? UniqueParticipantIdentities { get; private set; }
         /// <summary>
-        /// The concurrent_participants
+        /// Actual number of concurrent participants.
         /// </summary>
         [JsonProperty("concurrent_participants")]
         public int? ConcurrentParticipants { get; private set; }
         /// <summary>
-        /// The max_concurrent_participants
+        /// Maximum number of participants allowed in the room at the same time allowed by the application settings.
         /// </summary>
         [JsonProperty("max_concurrent_participants")]
         public int? MaxConcurrentParticipants { get; private set; }
         /// <summary>
-        /// The codecs
+        /// Codecs used by participants in the room.
         /// </summary>
         [JsonProperty("codecs")]
         [JsonConverter(typeof(StringEnumConverter))]
         public List<RoomResource.CodecEnum> Codecs { get; private set; }
         /// <summary>
-        /// The media_region
+        /// Region of Twilio media servers for the room.
         /// </summary>
         [JsonProperty("media_region")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomResource.TwilioRealmEnum MediaRegion { get; private set; }
         /// <summary>
-        /// The duration_sec
+        /// Total room duration from create time to end time.
         /// </summary>
         [JsonProperty("duration_sec")]
         public long? DurationSec { get; private set; }
         /// <summary>
-        /// The total_participant_duration_sec
+        /// Combined amount of participant time in the room.
         /// </summary>
         [JsonProperty("total_participant_duration_sec")]
         public long? TotalParticipantDurationSec { get; private set; }
         /// <summary>
-        /// The total_recording_duration_sec
+        /// Combined amount of recorded seconds for participants in the room.
         /// </summary>
         [JsonProperty("total_recording_duration_sec")]
         public long? TotalRecordingDurationSec { get; private set; }
         /// <summary>
-        /// The processing_state
+        /// Video Log Analyzer resource state. Will be either `in-progress` or `complete`.
         /// </summary>
         [JsonProperty("processing_state")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomResource.ProcessingStateEnum ProcessingState { get; private set; }
         /// <summary>
-        /// The recording_enabled
+        /// Boolean indicating if recording is enabled for the room.
         /// </summary>
         [JsonProperty("recording_enabled")]
         public bool? RecordingEnabled { get; private set; }
         /// <summary>
-        /// The edge_location
+        /// Edge location of Twilio media servers for the room.
         /// </summary>
         [JsonProperty("edge_location")]
         [JsonConverter(typeof(StringEnumConverter))]
         public RoomResource.EdgeLocationEnum EdgeLocation { get; private set; }
         /// <summary>
-        /// The url
+        /// URL for the room resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
         /// <summary>
-        /// The links
+        /// Room subresources.
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }

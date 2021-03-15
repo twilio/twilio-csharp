@@ -14,24 +14,24 @@ namespace Twilio.Rest.Insights.V1.Room
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// FetchParticipantOptions
+    /// Get Video Log Analyzer data for a Room Participant.
     /// </summary>
     public class FetchParticipantOptions : IOptions<ParticipantResource>
     {
         /// <summary>
-        /// The room_sid
+        /// The SID of the Room resource.
         /// </summary>
         public string PathRoomSid { get; }
         /// <summary>
-        /// The participant_sid
+        /// The SID of the Participant resource.
         /// </summary>
         public string PathParticipantSid { get; }
 
         /// <summary>
         /// Construct a new FetchParticipantOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathParticipantSid"> The participant_sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource. </param>
         public FetchParticipantOptions(string pathRoomSid, string pathParticipantSid)
         {
             PathRoomSid = pathRoomSid;
@@ -51,19 +51,19 @@ namespace Twilio.Rest.Insights.V1.Room
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// ReadParticipantOptions
+    /// Get a list of room participants.
     /// </summary>
     public class ReadParticipantOptions : ReadOptions<ParticipantResource>
     {
         /// <summary>
-        /// The room_sid
+        /// The SID of the Room resource.
         /// </summary>
         public string PathRoomSid { get; }
 
         /// <summary>
         /// Construct a new ReadParticipantOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
         public ReadParticipantOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;

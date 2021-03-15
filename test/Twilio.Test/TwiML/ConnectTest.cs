@@ -69,12 +69,15 @@ namespace Twilio.Tests.TwiML
                 Stream.StatusCallbackMethodEnum.Get
             );
 
+            elem.VirtualAgent("connector_name", "language", true, "status_callback");
+
             Assert.AreEqual(
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<Connect>" + Environment.NewLine +
                 "  <Room participantIdentity=\"participant_identity\">name</Room>" + Environment.NewLine +
                 "  <Autopilot>name</Autopilot>" + Environment.NewLine +
                 "  <Stream name=\"name\" connectorName=\"connector_name\" url=\"url\" track=\"inbound_track\" statusCallback=\"status_callback\" statusCallbackMethod=\"GET\"></Stream>" + Environment.NewLine +
+                "  <VirtualAgent connectorName=\"connector_name\" language=\"language\" sentimentAnalysis=\"true\" statusCallback=\"status_callback\"></VirtualAgent>" + Environment.NewLine +
                 "</Connect>",
                 elem.ToString()
             );

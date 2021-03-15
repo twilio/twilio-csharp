@@ -15,19 +15,19 @@ namespace Twilio.Rest.Insights.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// FetchRoomOptions
+    /// Get Video Log Analyzer data for a Room.
     /// </summary>
     public class FetchRoomOptions : IOptions<RoomResource>
     {
         /// <summary>
-        /// The room_sid
+        /// The SID of the Room resource.
         /// </summary>
         public string PathRoomSid { get; }
 
         /// <summary>
         /// Construct a new FetchRoomOptions
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
         public FetchRoomOptions(string pathRoomSid)
         {
             PathRoomSid = pathRoomSid;
@@ -46,28 +46,28 @@ namespace Twilio.Rest.Insights.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
-    /// ReadRoomOptions
+    /// Get a list of Programmable Video Rooms.
     /// </summary>
     public class ReadRoomOptions : ReadOptions<RoomResource>
     {
         /// <summary>
-        /// The room_type
+        /// Type of room.
         /// </summary>
         public List<RoomResource.RoomTypeEnum> RoomType { get; set; }
         /// <summary>
-        /// The codec
+        /// Codecs used by participants in the room.
         /// </summary>
         public List<RoomResource.CodecEnum> Codec { get; set; }
         /// <summary>
-        /// The room_name
+        /// Room friendly name.
         /// </summary>
         public string RoomName { get; set; }
         /// <summary>
-        /// The created_after
+        /// Only read rooms that started on or after this ISO 8601 timestamp.
         /// </summary>
         public DateTime? CreatedAfter { get; set; }
         /// <summary>
-        /// The created_before
+        /// Only read rooms that started before this ISO 8601 timestamp.
         /// </summary>
         public DateTime? CreatedBefore { get; set; }
 

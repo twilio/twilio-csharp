@@ -32,8 +32,8 @@ namespace Twilio.Rest.Messaging.V1
                 return new StatusEnum(value);
             }
 
-            public static readonly StatusEnum InProgress = new StatusEnum("IN_PROGRESS");
-            public static readonly StatusEnum Verified = new StatusEnum("VERIFIED");
+            public static readonly StatusEnum Pending = new StatusEnum("PENDING");
+            public static readonly StatusEnum Approved = new StatusEnum("APPROVED");
             public static readonly StatusEnum Failed = new StatusEnum("FAILED");
         }
 

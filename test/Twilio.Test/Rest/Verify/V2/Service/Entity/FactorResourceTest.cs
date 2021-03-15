@@ -44,7 +44,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service.Entity
         }
 
         [Test]
-        public void TestCreateResponse()
+        public void TestCreatePushResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
@@ -116,7 +116,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service.Entity
         }
 
         [Test]
-        public void TestFetchResponse()
+        public void TestFetchPushResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
@@ -203,7 +203,7 @@ namespace Twilio.Tests.Rest.Verify.V2.Service.Entity
         }
 
         [Test]
-        public void TestVerifyResponse()
+        public void TestVerifyPushResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");

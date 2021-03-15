@@ -103,7 +103,7 @@ namespace Twilio.Rest.Insights.V1.Room
         }
 
         /// <summary>
-        /// fetch
+        /// Get Video Log Analyzer data for a Room Participant.
         /// </summary>
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -117,7 +117,7 @@ namespace Twilio.Rest.Insights.V1.Room
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Get Video Log Analyzer data for a Room Participant.
         /// </summary>
         /// <param name="options"> Fetch Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -132,10 +132,10 @@ namespace Twilio.Rest.Insights.V1.Room
         #endif
 
         /// <summary>
-        /// fetch
+        /// Get Video Log Analyzer data for a Room Participant.
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathParticipantSid"> The participant_sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Fetch(string pathRoomSid,
@@ -148,10 +148,10 @@ namespace Twilio.Rest.Insights.V1.Room
 
         #if !NET35
         /// <summary>
-        /// fetch
+        /// Get Video Log Analyzer data for a Room Participant.
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
-        /// <param name="pathParticipantSid"> The participant_sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
+        /// <param name="pathParticipantSid"> The SID of the Participant resource. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> FetchAsync(string pathRoomSid,
@@ -175,7 +175,7 @@ namespace Twilio.Rest.Insights.V1.Room
         }
 
         /// <summary>
-        /// read
+        /// Get a list of room participants.
         /// </summary>
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -191,7 +191,7 @@ namespace Twilio.Rest.Insights.V1.Room
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Get a list of room participants.
         /// </summary>
         /// <param name="options"> Read Participant parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -208,9 +208,9 @@ namespace Twilio.Rest.Insights.V1.Room
         #endif
 
         /// <summary>
-        /// read
+        /// Get a list of room participants.
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -226,9 +226,9 @@ namespace Twilio.Rest.Insights.V1.Room
 
         #if !NET35
         /// <summary>
-        /// read
+        /// Get a list of room participants.
         /// </summary>
-        /// <param name="pathRoomSid"> The room_sid </param>
+        /// <param name="pathRoomSid"> The SID of the Room resource. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -315,91 +315,91 @@ namespace Twilio.Rest.Insights.V1.Room
         }
 
         /// <summary>
-        /// The participant_sid
+        /// Unique identifier for the participant.
         /// </summary>
         [JsonProperty("participant_sid")]
         public string ParticipantSid { get; private set; }
         /// <summary>
-        /// The participant_identity
+        /// The application-defined string that uniquely identifies the participant within a Room.
         /// </summary>
         [JsonProperty("participant_identity")]
         public string ParticipantIdentity { get; private set; }
         /// <summary>
-        /// The join_time
+        /// When the participant joined the room.
         /// </summary>
         [JsonProperty("join_time")]
         public DateTime? JoinTime { get; private set; }
         /// <summary>
-        /// The leave_time
+        /// When the participant left the room
         /// </summary>
         [JsonProperty("leave_time")]
         public DateTime? LeaveTime { get; private set; }
         /// <summary>
-        /// The duration_sec
+        /// Amount of time in seconds the participant was in the room.
         /// </summary>
         [JsonProperty("duration_sec")]
         public long? DurationSec { get; private set; }
         /// <summary>
-        /// The account_sid
+        /// Account SID associated with the room.
         /// </summary>
         [JsonProperty("account_sid")]
         public string AccountSid { get; private set; }
         /// <summary>
-        /// The room_sid
+        /// Unique identifier for the room.
         /// </summary>
         [JsonProperty("room_sid")]
         public string RoomSid { get; private set; }
         /// <summary>
-        /// The status
+        /// Status of the room.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ParticipantResource.RoomStatusEnum Status { get; private set; }
         /// <summary>
-        /// The codecs
+        /// Codecs detected from the participant.
         /// </summary>
         [JsonProperty("codecs")]
         [JsonConverter(typeof(StringEnumConverter))]
         public List<ParticipantResource.CodecEnum> Codecs { get; private set; }
         /// <summary>
-        /// The end_reason
+        /// Reason the participant left the room.
         /// </summary>
         [JsonProperty("end_reason")]
         public string EndReason { get; private set; }
         /// <summary>
-        /// The error_code
+        /// Errors encountered by the participant.
         /// </summary>
         [JsonProperty("error_code")]
         public int? ErrorCode { get; private set; }
         /// <summary>
-        /// The error_code_url
+        /// Twilio error code dictionary link.
         /// </summary>
         [JsonProperty("error_code_url")]
         public string ErrorCodeUrl { get; private set; }
         /// <summary>
-        /// The media_region
+        /// Twilio media region the participant connected to.
         /// </summary>
         [JsonProperty("media_region")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ParticipantResource.TwilioRealmEnum MediaRegion { get; private set; }
         /// <summary>
-        /// The properties
+        /// Object containing information about the participant's data from the room.
         /// </summary>
         [JsonProperty("properties")]
         public object Properties { get; private set; }
         /// <summary>
-        /// The edge_location
+        /// Name of the edge location the participant connected to.
         /// </summary>
         [JsonProperty("edge_location")]
         [JsonConverter(typeof(StringEnumConverter))]
         public ParticipantResource.EdgeLocationEnum EdgeLocation { get; private set; }
         /// <summary>
-        /// The publisher_info
+        /// Object containing information about the SDK name and version.
         /// </summary>
         [JsonProperty("publisher_info")]
         public object PublisherInfo { get; private set; }
         /// <summary>
-        /// The url
+        /// URL of the participant resource.
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }

@@ -58,6 +58,26 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The Verify Push SDK version used to configure the factor
         /// </summary>
         public string ConfigSdkVersion { get; set; }
+        /// <summary>
+        /// The shared secret in Base32
+        /// </summary>
+        public string BindingSecret { get; set; }
+        /// <summary>
+        /// How often, in seconds, are TOTP codes generated
+        /// </summary>
+        public int? ConfigTimeStep { get; set; }
+        /// <summary>
+        /// The number of past and future time-steps valid at a given time
+        /// </summary>
+        public int? ConfigSkew { get; set; }
+        /// <summary>
+        /// Number of digits for generated TOTP codes
+        /// </summary>
+        public int? ConfigCodeLength { get; set; }
+        /// <summary>
+        /// The algorithm used to derive the TOTP codes
+        /// </summary>
+        public FactorResource.TotpAlgorithmsEnum ConfigAlg { get; set; }
 
         /// <summary>
         /// Construct a new CreateFactorOptions
@@ -121,6 +141,31 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (ConfigSdkVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("Config.SdkVersion", ConfigSdkVersion));
+            }
+
+            if (BindingSecret != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Binding.Secret", BindingSecret));
+            }
+
+            if (ConfigTimeStep != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.TimeStep", ConfigTimeStep.ToString()));
+            }
+
+            if (ConfigSkew != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.Skew", ConfigSkew.ToString()));
+            }
+
+            if (ConfigCodeLength != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.CodeLength", ConfigCodeLength.ToString()));
+            }
+
+            if (ConfigAlg != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.Alg", ConfigAlg.ToString()));
             }
 
             return p;
@@ -290,6 +335,22 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The Verify Push SDK version used to configure the factor
         /// </summary>
         public string ConfigSdkVersion { get; set; }
+        /// <summary>
+        /// How often, in seconds, are TOTP codes generated
+        /// </summary>
+        public int? ConfigTimeStep { get; set; }
+        /// <summary>
+        /// The number of past and future time-steps valid at a given time
+        /// </summary>
+        public int? ConfigSkew { get; set; }
+        /// <summary>
+        /// Number of digits for generated TOTP codes
+        /// </summary>
+        public int? ConfigCodeLength { get; set; }
+        /// <summary>
+        /// The algorithm used to derive the TOTP codes
+        /// </summary>
+        public FactorResource.TotpAlgorithmsEnum ConfigAlg { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFactorOptions
@@ -328,6 +389,26 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (ConfigSdkVersion != null)
             {
                 p.Add(new KeyValuePair<string, string>("Config.SdkVersion", ConfigSdkVersion));
+            }
+
+            if (ConfigTimeStep != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.TimeStep", ConfigTimeStep.ToString()));
+            }
+
+            if (ConfigSkew != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.Skew", ConfigSkew.ToString()));
+            }
+
+            if (ConfigCodeLength != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.CodeLength", ConfigCodeLength.ToString()));
+            }
+
+            if (ConfigAlg != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Config.Alg", ConfigAlg.ToString()));
             }
 
             return p;
