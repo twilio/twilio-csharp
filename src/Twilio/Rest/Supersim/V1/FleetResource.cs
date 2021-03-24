@@ -89,6 +89,12 @@ namespace Twilio.Rest.Supersim.V1
         ///                   from your device to the Commands number </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
+        /// <param name="smsCommandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
+        ///                          machine-to-machine SMS via Commands </param>
+        /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
+        ///                      SMS from your device to the SMS Commands number </param>
+        /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
+        ///                         `sms_commands_url` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fleet </returns>
         public static FleetResource Create(string networkAccessProfile,
@@ -98,9 +104,12 @@ namespace Twilio.Rest.Supersim.V1
                                            bool? commandsEnabled = null,
                                            Uri commandsUrl = null,
                                            Twilio.Http.HttpMethod commandsMethod = null,
+                                           bool? smsCommandsEnabled = null,
+                                           Uri smsCommandsUrl = null,
+                                           Twilio.Http.HttpMethod smsCommandsMethod = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new CreateFleetOptions(networkAccessProfile){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod};
+            var options = new CreateFleetOptions(networkAccessProfile){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
             return Create(options, client);
         }
 
@@ -119,6 +128,12 @@ namespace Twilio.Rest.Supersim.V1
         ///                   from your device to the Commands number </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
+        /// <param name="smsCommandsEnabled"> Defines whether SIMs in the Fleet are capable of sending and receiving
+        ///                          machine-to-machine SMS via Commands </param>
+        /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
+        ///                      SMS from your device to the SMS Commands number </param>
+        /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
+        ///                         `sms_commands_url` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<FleetResource> CreateAsync(string networkAccessProfile,
@@ -128,9 +143,12 @@ namespace Twilio.Rest.Supersim.V1
                                                                                    bool? commandsEnabled = null,
                                                                                    Uri commandsUrl = null,
                                                                                    Twilio.Http.HttpMethod commandsMethod = null,
+                                                                                   bool? smsCommandsEnabled = null,
+                                                                                   Uri smsCommandsUrl = null,
+                                                                                   Twilio.Http.HttpMethod smsCommandsMethod = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new CreateFleetOptions(networkAccessProfile){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod};
+            var options = new CreateFleetOptions(networkAccessProfile){UniqueName = uniqueName, DataEnabled = dataEnabled, DataLimit = dataLimit, CommandsEnabled = commandsEnabled, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsEnabled = smsCommandsEnabled, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
             return await CreateAsync(options, client);
         }
         #endif
@@ -385,6 +403,10 @@ namespace Twilio.Rest.Supersim.V1
         ///                   from your device to the Commands number </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
+        /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
+        ///                      SMS from your device to the SMS Commands number </param>
+        /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
+        ///                         `sms_commands_url` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Fleet </returns>
         public static FleetResource Update(string pathSid,
@@ -392,9 +414,11 @@ namespace Twilio.Rest.Supersim.V1
                                            string networkAccessProfile = null,
                                            Uri commandsUrl = null,
                                            Twilio.Http.HttpMethod commandsMethod = null,
+                                           Uri smsCommandsUrl = null,
+                                           Twilio.Http.HttpMethod smsCommandsMethod = null,
                                            ITwilioRestClient client = null)
         {
-            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod};
+            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
             return Update(options, client);
         }
 
@@ -409,6 +433,10 @@ namespace Twilio.Rest.Supersim.V1
         ///                   from your device to the Commands number </param>
         /// <param name="commandsMethod"> A string representing the HTTP method to use when making a request to `commands_url`
         ///                      </param>
+        /// <param name="smsCommandsUrl"> The URL that will receive a webhook when a Super SIM in the Fleet is used to send an
+        ///                      SMS from your device to the SMS Commands number </param>
+        /// <param name="smsCommandsMethod"> A string representing the HTTP method to use when making a request to
+        ///                         `sms_commands_url` </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Fleet </returns>
         public static async System.Threading.Tasks.Task<FleetResource> UpdateAsync(string pathSid,
@@ -416,9 +444,11 @@ namespace Twilio.Rest.Supersim.V1
                                                                                    string networkAccessProfile = null,
                                                                                    Uri commandsUrl = null,
                                                                                    Twilio.Http.HttpMethod commandsMethod = null,
+                                                                                   Uri smsCommandsUrl = null,
+                                                                                   Twilio.Http.HttpMethod smsCommandsMethod = null,
                                                                                    ITwilioRestClient client = null)
         {
-            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod};
+            var options = new UpdateFleetOptions(pathSid){UniqueName = uniqueName, NetworkAccessProfile = networkAccessProfile, CommandsUrl = commandsUrl, CommandsMethod = commandsMethod, SmsCommandsUrl = smsCommandsUrl, SmsCommandsMethod = smsCommandsMethod};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -503,6 +533,22 @@ namespace Twilio.Rest.Supersim.V1
         [JsonProperty("commands_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod CommandsMethod { get; private set; }
+        /// <summary>
+        /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
+        /// </summary>
+        [JsonProperty("sms_commands_enabled")]
+        public bool? SmsCommandsEnabled { get; private set; }
+        /// <summary>
+        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
+        /// </summary>
+        [JsonProperty("sms_commands_url")]
+        public Uri SmsCommandsUrl { get; private set; }
+        /// <summary>
+        /// A string representing the HTTP method to use when making a request to `sms_commands_url`
+        /// </summary>
+        [JsonProperty("sms_commands_method")]
+        [JsonConverter(typeof(HttpMethodConverter))]
+        public Twilio.Http.HttpMethod SmsCommandsMethod { get; private set; }
         /// <summary>
         /// The SID of the Network Access Profile of the Fleet
         /// </summary>

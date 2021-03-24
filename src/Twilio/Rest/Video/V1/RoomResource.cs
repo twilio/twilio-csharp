@@ -183,6 +183,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room
         ///                   </param>
         /// <param name="mediaRegion"> The region for the media server in Group Rooms </param>
+        /// <param name="recordingRules"> A collection of Recording Rules </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns>
         public static RoomResource Create(bool? enableTurn = null,
@@ -194,9 +195,10 @@ namespace Twilio.Rest.Video.V1
                                           bool? recordParticipantsOnConnect = null,
                                           List<RoomResource.VideoCodecEnum> videoCodecs = null,
                                           string mediaRegion = null,
+                                          object recordingRules = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion};
+            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules};
             return Create(options, client);
         }
 
@@ -214,6 +216,7 @@ namespace Twilio.Rest.Video.V1
         /// <param name="videoCodecs"> An array of the video codecs that are supported when publishing a track in the room
         ///                   </param>
         /// <param name="mediaRegion"> The region for the media server in Group Rooms </param>
+        /// <param name="recordingRules"> A collection of Recording Rules </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
         public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null,
@@ -225,9 +228,10 @@ namespace Twilio.Rest.Video.V1
                                                                                   bool? recordParticipantsOnConnect = null,
                                                                                   List<RoomResource.VideoCodecEnum> videoCodecs = null,
                                                                                   string mediaRegion = null,
+                                                                                  object recordingRules = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion};
+            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules};
             return await CreateAsync(options, client);
         }
         #endif

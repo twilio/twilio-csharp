@@ -151,9 +151,17 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string CallReason { get; set; }
         /// <summary>
+        /// A token string needed to invoke a forwarded call with a caller-id recieved on a previous incoming call
+        /// </summary>
+        public string CallToken { get; set; }
+        /// <summary>
         /// Which track(s) to record
         /// </summary>
         public string RecordingTrack { get; set; }
+        /// <summary>
+        /// The maximum duration of the call in seconds.
+        /// </summary>
+        public int? TimeLimit { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -334,9 +342,19 @@ namespace Twilio.Rest.Api.V2010.Account
                 p.Add(new KeyValuePair<string, string>("CallReason", CallReason));
             }
 
+            if (CallToken != null)
+            {
+                p.Add(new KeyValuePair<string, string>("CallToken", CallToken));
+            }
+
             if (RecordingTrack != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingTrack", RecordingTrack));
+            }
+
+            if (TimeLimit != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TimeLimit", TimeLimit.ToString()));
             }
 
             return p;

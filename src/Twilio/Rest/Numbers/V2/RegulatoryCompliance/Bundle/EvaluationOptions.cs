@@ -12,19 +12,19 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 {
 
     /// <summary>
-    /// CreateEvaluationOptions
+    /// Creates an evaluation for a bundle
     /// </summary>
     public class CreateEvaluationOptions : IOptions<EvaluationResource>
     {
         /// <summary>
-        /// The bundle_sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathBundleSid { get; }
 
         /// <summary>
         /// Construct a new CreateEvaluationOptions
         /// </summary>
-        /// <param name="pathBundleSid"> The bundle_sid </param>
+        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
         public CreateEvaluationOptions(string pathBundleSid)
         {
             PathBundleSid = pathBundleSid;
@@ -46,14 +46,14 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
     public class ReadEvaluationOptions : ReadOptions<EvaluationResource>
     {
         /// <summary>
-        /// The bundle_sid
+        /// The unique string that identifies the resource
         /// </summary>
         public string PathBundleSid { get; }
 
         /// <summary>
         /// Construct a new ReadEvaluationOptions
         /// </summary>
-        /// <param name="pathBundleSid"> The bundle_sid </param>
+        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
         public ReadEvaluationOptions(string pathBundleSid)
         {
             PathBundleSid = pathBundleSid;

@@ -46,6 +46,18 @@ namespace Twilio.Rest.Supersim.V1
         /// A string representing the HTTP method to use when making a request to `commands_url`
         /// </summary>
         public Twilio.Http.HttpMethod CommandsMethod { get; set; }
+        /// <summary>
+        /// Defines whether SIMs in the Fleet are capable of sending and receiving machine-to-machine SMS via Commands
+        /// </summary>
+        public bool? SmsCommandsEnabled { get; set; }
+        /// <summary>
+        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
+        /// </summary>
+        public Uri SmsCommandsUrl { get; set; }
+        /// <summary>
+        /// A string representing the HTTP method to use when making a request to `sms_commands_url`
+        /// </summary>
+        public Twilio.Http.HttpMethod SmsCommandsMethod { get; set; }
 
         /// <summary>
         /// Construct a new CreateFleetOptions
@@ -95,6 +107,21 @@ namespace Twilio.Rest.Supersim.V1
             if (CommandsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
+            }
+
+            if (SmsCommandsEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsCommandsEnabled", SmsCommandsEnabled.Value.ToString().ToLower()));
+            }
+
+            if (SmsCommandsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsCommandsUrl", Serializers.Url(SmsCommandsUrl)));
+            }
+
+            if (SmsCommandsMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsCommandsMethod", SmsCommandsMethod.ToString()));
             }
 
             return p;
@@ -191,6 +218,14 @@ namespace Twilio.Rest.Supersim.V1
         /// A string representing the HTTP method to use when making a request to `commands_url`
         /// </summary>
         public Twilio.Http.HttpMethod CommandsMethod { get; set; }
+        /// <summary>
+        /// The URL that will receive a webhook when a Super SIM in the Fleet is used to send an SMS from your device to the SMS Commands number
+        /// </summary>
+        public Uri SmsCommandsUrl { get; set; }
+        /// <summary>
+        /// A string representing the HTTP method to use when making a request to `sms_commands_url`
+        /// </summary>
+        public Twilio.Http.HttpMethod SmsCommandsMethod { get; set; }
 
         /// <summary>
         /// Construct a new UpdateFleetOptions
@@ -225,6 +260,16 @@ namespace Twilio.Rest.Supersim.V1
             if (CommandsMethod != null)
             {
                 p.Add(new KeyValuePair<string, string>("CommandsMethod", CommandsMethod.ToString()));
+            }
+
+            if (SmsCommandsUrl != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsCommandsUrl", Serializers.Url(SmsCommandsUrl)));
+            }
+
+            if (SmsCommandsMethod != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SmsCommandsMethod", SmsCommandsMethod.ToString()));
             }
 
             return p;

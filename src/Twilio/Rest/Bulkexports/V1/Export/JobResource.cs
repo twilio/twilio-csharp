@@ -223,6 +223,16 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// This is the job position from the 1st in line. Your queue position will never increase. As jobs ahead of yours in the queue are processed, the queue position number will decrease
+        /// </summary>
+        [JsonProperty("job_queue_position")]
+        public string JobQueuePosition { get; private set; }
+        /// <summary>
+        /// this is the time estimated until your job is complete. This is calculated each time you request the job list. The time is calculated based on the current rate of job completion (which may vary) and your job queue position
+        /// </summary>
+        [JsonProperty("estimated_completion_time")]
+        public string EstimatedCompletionTime { get; private set; }
 
         private JobResource()
         {

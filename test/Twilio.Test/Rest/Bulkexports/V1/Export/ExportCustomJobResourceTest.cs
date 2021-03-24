@@ -64,7 +64,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1.Export
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"meta\": {\"previous_page_url\": null,\"url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Jobs?PageSize=50&Page=0\",\"page_size\": 50,\"key\": \"jobs\",\"first_page_url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Jobs?PageSize=50&Page=0\",\"next_page_url\": null,\"page\": 0},\"jobs\": [{\"start_day\": \"start_day\",\"job_sid\": \"JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"webhook_method\": \"webhook_method\",\"details\": {},\"end_day\": \"end_day\",\"webhook_url\": \"webhook_url\",\"email\": \"email\",\"resource_type\": \"resource_type\"}]}"
+                                         "{\"meta\": {\"previous_page_url\": null,\"url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Jobs?PageSize=50&Page=0\",\"page_size\": 50,\"key\": \"jobs\",\"first_page_url\": \"https://bulkexports.twilio.com/v1/Exports/Messages/Jobs?PageSize=50&Page=0\",\"next_page_url\": null,\"page\": 0},\"jobs\": [{\"start_day\": \"start_day\",\"job_sid\": \"JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"webhook_method\": \"webhook_method\",\"details\": {},\"end_day\": \"end_day\",\"webhook_url\": \"webhook_url\",\"email\": \"email\",\"resource_type\": \"resource_type\",\"job_queue_position\": \"1\",\"estimated_completion_time\": \"2021-03-15T20:20:14.547\"}]}"
                                      ));
 
             var response = ExportCustomJobResource.Read("resource_type", client: twilioRestClient);
@@ -103,7 +103,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1.Export
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"start_day\": \"start_day\",\"job_sid\": \"JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"webhook_method\": \"webhook_method\",\"details\": {},\"end_day\": \"end_day\",\"webhook_url\": \"webhook_url\",\"email\": \"email\",\"resource_type\": \"resource_type\"}"
+                                         "{\"start_day\": \"start_day\",\"job_sid\": \"JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"webhook_method\": \"webhook_method\",\"details\": {},\"end_day\": \"end_day\",\"webhook_url\": \"webhook_url\",\"email\": \"email\",\"resource_type\": \"resource_type\",\"job_queue_position\": \"1\",\"estimated_completion_time\": \"2021-03-15T20:20:14.547\"}"
                                      ));
 
             var response = ExportCustomJobResource.Create("resource_type", "start_day", "end_day", "friendly_name", client: twilioRestClient);

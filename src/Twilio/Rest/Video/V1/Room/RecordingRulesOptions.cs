@@ -12,8 +12,6 @@ namespace Twilio.Rest.Video.V1.Room
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Returns a list of Recording Rules for the Room.
     /// </summary>
     public class FetchRecordingRulesOptions : IOptions<RecordingRulesResource>
@@ -43,8 +41,6 @@ namespace Twilio.Rest.Video.V1.Room
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update the Recording Rules for the Room
     /// </summary>
     public class UpdateRecordingRulesOptions : IOptions<RecordingRulesResource>

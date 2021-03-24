@@ -115,7 +115,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathSid + "",
                 postParams: options.GetParams(),
-                headerParams: null
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -158,6 +158,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="reason"> The reason that the Task was canceled or complete </param>
         /// <param name="priority"> The Task's new priority value </param>
         /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns>
         public static TaskResource Update(string pathWorkspaceSid,
@@ -167,9 +168,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                           string reason = null,
                                           int? priority = null,
                                           string taskChannel = null,
+                                          string ifMatch = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid){Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel};
+            var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid){Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel, IfMatch = ifMatch};
             return Update(options, client);
         }
 
@@ -184,6 +186,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// <param name="reason"> The reason that the Task was canceled or complete </param>
         /// <param name="priority"> The Task's new priority value </param>
         /// <param name="taskChannel"> When MultiTasking is enabled, specify the TaskChannel with the task to update </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
         public static async System.Threading.Tasks.Task<TaskResource> UpdateAsync(string pathWorkspaceSid,
@@ -193,9 +196,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                                                                                   string reason = null,
                                                                                   int? priority = null,
                                                                                   string taskChannel = null,
+                                                                                  string ifMatch = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid){Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel};
+            var options = new UpdateTaskOptions(pathWorkspaceSid, pathSid){Attributes = attributes, AssignmentStatus = assignmentStatus, Reason = reason, Priority = priority, TaskChannel = taskChannel, IfMatch = ifMatch};
             return await UpdateAsync(options, client);
         }
         #endif

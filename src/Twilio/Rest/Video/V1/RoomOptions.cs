@@ -82,6 +82,10 @@ namespace Twilio.Rest.Video.V1
         /// The region for the media server in Group Rooms
         /// </summary>
         public string MediaRegion { get; set; }
+        /// <summary>
+        /// A collection of Recording Rules
+        /// </summary>
+        public object RecordingRules { get; set; }
 
         /// <summary>
         /// Construct a new CreateRoomOptions
@@ -140,6 +144,11 @@ namespace Twilio.Rest.Video.V1
             if (MediaRegion != null)
             {
                 p.Add(new KeyValuePair<string, string>("MediaRegion", MediaRegion));
+            }
+
+            if (RecordingRules != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RecordingRules", Serializers.JsonObject(RecordingRules)));
             }
 
             return p;

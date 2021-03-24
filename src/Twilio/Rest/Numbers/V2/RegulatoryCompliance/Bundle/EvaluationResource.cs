@@ -46,7 +46,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         }
 
         /// <summary>
-        /// create
+        /// Creates an evaluation for a bundle
         /// </summary>
         /// <param name="options"> Create Evaluation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -60,7 +60,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Creates an evaluation for a bundle
         /// </summary>
         /// <param name="options"> Create Evaluation parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -75,9 +75,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         #endif
 
         /// <summary>
-        /// create
+        /// Creates an evaluation for a bundle
         /// </summary>
-        /// <param name="pathBundleSid"> The bundle_sid </param>
+        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Evaluation </returns>
         public static EvaluationResource Create(string pathBundleSid, ITwilioRestClient client = null)
@@ -88,9 +88,9 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
 
         #if !NET35
         /// <summary>
-        /// create
+        /// Creates an evaluation for a bundle
         /// </summary>
-        /// <param name="pathBundleSid"> The bundle_sid </param>
+        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Evaluation </returns>
         public static async System.Threading.Tasks.Task<EvaluationResource> CreateAsync(string pathBundleSid,
@@ -148,7 +148,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <summary>
         /// Retrieve a list of Evaluations associated to the Bundle resource.
         /// </summary>
-        /// <param name="pathBundleSid"> The bundle_sid </param>
+        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -166,7 +166,7 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance.Bundle
         /// <summary>
         /// Retrieve a list of Evaluations associated to the Bundle resource.
         /// </summary>
-        /// <param name="pathBundleSid"> The bundle_sid </param>
+        /// <param name="pathBundleSid"> The unique string that identifies the resource </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>

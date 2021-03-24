@@ -80,6 +80,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// When MultiTasking is enabled, specify the TaskChannel with the task to update
         /// </summary>
         public string TaskChannel { get; set; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTaskOptions
@@ -121,6 +125,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
             if (TaskChannel != null)
             {
                 p.Add(new KeyValuePair<string, string>("TaskChannel", TaskChannel));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
             }
 
             return p;

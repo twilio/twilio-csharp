@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Bulkexports.V1.Export
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"start_day\": \"start_day\",\"job_sid\": \"JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://bulkexports.twilio.com/v1/Exports/Jobs/JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"end_day\": \"end_day\",\"details\": {},\"webhook_url\": \"webhook_url\",\"webhook_method\": \"webhook_method\",\"email\": \"email\",\"resource_type\": \"resource_type\"}"
+                                         "{\"start_day\": \"start_day\",\"job_sid\": \"JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://bulkexports.twilio.com/v1/Exports/Jobs/JSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"friendly_name\",\"end_day\": \"end_day\",\"details\": {},\"webhook_url\": \"webhook_url\",\"webhook_method\": \"webhook_method\",\"email\": \"email\",\"resource_type\": \"resource_type\",\"job_queue_position\": \"1\",\"estimated_completion_time\": \"2021-03-15T20:20:14.547\"}"
                                      ));
 
             var response = JobResource.Fetch("JSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
