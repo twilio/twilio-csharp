@@ -14,6 +14,54 @@ namespace Twilio.Rest.Supersim.V1
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
+    /// Register a Super SIM to your Account
+    /// </summary>
+    public class CreateSimOptions : IOptions<SimResource>
+    {
+        /// <summary>
+        /// The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM to be added to your Account
+        /// </summary>
+        public string Iccid { get; }
+        /// <summary>
+        /// The 10 digit code required to claim the Super SIM for your Account
+        /// </summary>
+        public string RegistrationCode { get; }
+
+        /// <summary>
+        /// Construct a new CreateSimOptions
+        /// </summary>
+        /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
+        ///             to be added to your Account </param>
+        /// <param name="registrationCode"> The 10 digit code required to claim the Super SIM for your Account </param>
+        public CreateSimOptions(string iccid, string registrationCode)
+        {
+            Iccid = iccid;
+            RegistrationCode = registrationCode;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (Iccid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Iccid", Iccid));
+            }
+
+            if (RegistrationCode != null)
+            {
+                p.Add(new KeyValuePair<string, string>("RegistrationCode", RegistrationCode));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
     /// Fetch a Super SIM instance from your account.
     /// </summary>
     public class FetchSimOptions : IOptions<SimResource>

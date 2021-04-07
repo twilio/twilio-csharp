@@ -53,6 +53,78 @@ namespace Twilio.Rest.Supersim.V1
             public static readonly StatusUpdateEnum Inactive = new StatusUpdateEnum("inactive");
         }
 
+        private static Request BuildCreateRequest(CreateSimOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Supersim,
+                "/v1/Sims",
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// Register a Super SIM to your Account
+        /// </summary>
+        /// <param name="options"> Create Sim parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sim </returns>
+        public static SimResource Create(CreateSimOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Register a Super SIM to your Account
+        /// </summary>
+        /// <param name="options"> Create Sim parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sim </returns>
+        public static async System.Threading.Tasks.Task<SimResource> CreateAsync(CreateSimOptions options,
+                                                                                 ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildCreateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Register a Super SIM to your Account
+        /// </summary>
+        /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
+        ///             to be added to your Account </param>
+        /// <param name="registrationCode"> The 10 digit code required to claim the Super SIM for your Account </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sim </returns>
+        public static SimResource Create(string iccid, string registrationCode, ITwilioRestClient client = null)
+        {
+            var options = new CreateSimOptions(iccid, registrationCode);
+            return Create(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Register a Super SIM to your Account
+        /// </summary>
+        /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
+        ///             to be added to your Account </param>
+        /// <param name="registrationCode"> The 10 digit code required to claim the Super SIM for your Account </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sim </returns>
+        public static async System.Threading.Tasks.Task<SimResource> CreateAsync(string iccid,
+                                                                                 string registrationCode,
+                                                                                 ITwilioRestClient client = null)
+        {
+            var options = new CreateSimOptions(iccid, registrationCode);
+            return await CreateAsync(options, client);
+        }
+        #endif
+
         private static Request BuildFetchRequest(FetchSimOptions options, ITwilioRestClient client)
         {
             return new Request(
