@@ -189,7 +189,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                              bool? forceDelivery = null,
                                              MessageResource.ContentRetentionEnum contentRetention = null,
                                              MessageResource.AddressRetentionEnum addressRetention = null,
-                                             bool? smartEncoded = null,
+                                             bool? smartEncoded = true,
                                              List<string> persistentAction = null,
                                              ITwilioRestClient client = null)
         {
@@ -239,7 +239,7 @@ namespace Twilio.Rest.Api.V2010.Account
                                                                                      bool? forceDelivery = null,
                                                                                      MessageResource.ContentRetentionEnum contentRetention = null,
                                                                                      MessageResource.AddressRetentionEnum addressRetention = null,
-                                                                                     bool? smartEncoded = null,
+                                                                                     bool? smartEncoded = true,
                                                                                      List<string> persistentAction = null,
                                                                                      ITwilioRestClient client = null)
         {
