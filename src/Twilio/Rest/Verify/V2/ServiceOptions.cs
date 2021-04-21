@@ -64,6 +64,22 @@ namespace Twilio.Rest.Verify.V2
         /// Optional. Set FCM Credential for this service.
         /// </summary>
         public string PushFcmCredentialSid { get; set; }
+        /// <summary>
+        /// Optional. Set TOTP Issuer for this service.
+        /// </summary>
+        public string TotpIssuer { get; set; }
+        /// <summary>
+        /// Optional. How often, in seconds, are TOTP codes generated
+        /// </summary>
+        public int? TotpTimeStep { get; set; }
+        /// <summary>
+        /// Optional. Number of digits for generated TOTP codes
+        /// </summary>
+        public int? TotpCodeLength { get; set; }
+        /// <summary>
+        /// Optional. The number of past and future time-steps valid at a given time
+        /// </summary>
+        public int? TotpSkew { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -138,6 +154,26 @@ namespace Twilio.Rest.Verify.V2
             if (PushFcmCredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid.ToString()));
+            }
+
+            if (TotpIssuer != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Totp.Issuer", TotpIssuer));
+            }
+
+            if (TotpTimeStep != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Totp.TimeStep", TotpTimeStep.ToString()));
+            }
+
+            if (TotpCodeLength != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Totp.CodeLength", TotpCodeLength.ToString()));
+            }
+
+            if (TotpSkew != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
             }
 
             return p;
@@ -279,6 +315,22 @@ namespace Twilio.Rest.Verify.V2
         /// Optional. Set FCM Credential for this service.
         /// </summary>
         public string PushFcmCredentialSid { get; set; }
+        /// <summary>
+        /// Optional. Set TOTP Issuer for this service.
+        /// </summary>
+        public string TotpIssuer { get; set; }
+        /// <summary>
+        /// Optional. How often, in seconds, are TOTP codes generated
+        /// </summary>
+        public int? TotpTimeStep { get; set; }
+        /// <summary>
+        /// Optional. Number of digits for generated TOTP codes
+        /// </summary>
+        public int? TotpCodeLength { get; set; }
+        /// <summary>
+        /// Optional. The number of past and future time-steps valid at a given time
+        /// </summary>
+        public int? TotpSkew { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -353,6 +405,26 @@ namespace Twilio.Rest.Verify.V2
             if (PushFcmCredentialSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("Push.FcmCredentialSid", PushFcmCredentialSid.ToString()));
+            }
+
+            if (TotpIssuer != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Totp.Issuer", TotpIssuer));
+            }
+
+            if (TotpTimeStep != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Totp.TimeStep", TotpTimeStep.ToString()));
+            }
+
+            if (TotpCodeLength != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Totp.CodeLength", TotpCodeLength.ToString()));
+            }
+
+            if (TotpSkew != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
             }
 
             return p;

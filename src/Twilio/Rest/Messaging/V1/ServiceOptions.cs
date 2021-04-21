@@ -23,7 +23,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         public string FriendlyName { get; }
         /// <summary>
-        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service
+        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
         /// </summary>
         public Uri InboundRequestUrl { get; set; }
         /// <summary>
@@ -31,7 +31,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         public Twilio.Http.HttpMethod InboundMethod { get; set; }
         /// <summary>
-        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL
+        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
         /// </summary>
         public Uri FallbackUrl { get; set; }
         /// <summary>
@@ -74,6 +74,10 @@ namespace Twilio.Rest.Messaging.V1
         /// Reserved
         /// </summary>
         public bool? SynchronousValidation { get; set; }
+        /// <summary>
+        /// If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received.
+        /// </summary>
+        public bool? UseInboundWebhookOnNumber { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -160,6 +164,11 @@ namespace Twilio.Rest.Messaging.V1
                 p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
             }
 
+            if (UseInboundWebhookOnNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UseInboundWebhookOnNumber", UseInboundWebhookOnNumber.Value.ToString().ToLower()));
+            }
+
             return p;
         }
     }
@@ -180,7 +189,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         public string FriendlyName { get; set; }
         /// <summary>
-        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service
+        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
         /// </summary>
         public Uri InboundRequestUrl { get; set; }
         /// <summary>
@@ -188,7 +197,7 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         public Twilio.Http.HttpMethod InboundMethod { get; set; }
         /// <summary>
-        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL
+        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
         /// </summary>
         public Uri FallbackUrl { get; set; }
         /// <summary>
@@ -231,6 +240,10 @@ namespace Twilio.Rest.Messaging.V1
         /// Reserved
         /// </summary>
         public bool? SynchronousValidation { get; set; }
+        /// <summary>
+        /// If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received.
+        /// </summary>
+        public bool? UseInboundWebhookOnNumber { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -315,6 +328,11 @@ namespace Twilio.Rest.Messaging.V1
             if (SynchronousValidation != null)
             {
                 p.Add(new KeyValuePair<string, string>("SynchronousValidation", SynchronousValidation.Value.ToString().ToLower()));
+            }
+
+            if (UseInboundWebhookOnNumber != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UseInboundWebhookOnNumber", UseInboundWebhookOnNumber.Value.ToString().ToLower()));
             }
 
             return p;

@@ -16,12 +16,32 @@ using Twilio.Clients;
 using Twilio.Converters;
 using Twilio.Exceptions;
 using Twilio.Http;
+using Twilio.Types;
 
 namespace Twilio.Rest.Bulkexports.V1.Export
 {
 
     public class ExportCustomJobResource : Resource
     {
+        public sealed class StatusEnum : StringEnum
+        {
+            private StatusEnum(string value) : base(value) {}
+            public StatusEnum() {}
+            public static implicit operator StatusEnum(string value)
+            {
+                return new StatusEnum(value);
+            }
+
+            public static readonly StatusEnum Errorduringrun = new StatusEnum("ErrorDuringRun");
+            public static readonly StatusEnum Submitted = new StatusEnum("Submitted");
+            public static readonly StatusEnum Running = new StatusEnum("Running");
+            public static readonly StatusEnum Completedemptyrecords = new StatusEnum("CompletedEmptyRecords");
+            public static readonly StatusEnum Completed = new StatusEnum("Completed");
+            public static readonly StatusEnum Failed = new StatusEnum("Failed");
+            public static readonly StatusEnum Runningtobedeleted = new StatusEnum("RunningToBeDeleted");
+            public static readonly StatusEnum Deletedbyuserrequest = new StatusEnum("DeletedByUserRequest");
+        }
+
         private static Request BuildReadRequest(ReadExportCustomJobOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -318,7 +338,7 @@ namespace Twilio.Rest.Bulkexports.V1.Export
         [JsonProperty("job_sid")]
         public string JobSid { get; private set; }
         /// <summary>
-        /// The details of a job state which is an object that contains a status string, a day count integer, and list of days in the job
+        /// The details of a job state which is an object that contains a `status` string, a day count integer, and list of days in the job
         /// </summary>
         [JsonProperty("details")]
         public object Details { get; private set; }

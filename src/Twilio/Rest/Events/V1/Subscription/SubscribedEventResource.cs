@@ -202,15 +202,15 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// </summary>
         /// <param name="pathSubscriptionSid"> Subscription SID. </param>
         /// <param name="type"> Type of event being subscribed to. </param>
-        /// <param name="version"> The schema version that the subscription should use. </param>
+        /// <param name="schemaVersion"> The schema version that the subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
         public static SubscribedEventResource Create(string pathSubscriptionSid,
                                                      string type,
-                                                     int? version = null,
+                                                     int? schemaVersion = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateSubscribedEventOptions(pathSubscriptionSid, type){Version = version};
+            var options = new CreateSubscribedEventOptions(pathSubscriptionSid, type){SchemaVersion = schemaVersion};
             return Create(options, client);
         }
 
@@ -220,15 +220,15 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// </summary>
         /// <param name="pathSubscriptionSid"> Subscription SID. </param>
         /// <param name="type"> Type of event being subscribed to. </param>
-        /// <param name="version"> The schema version that the subscription should use. </param>
+        /// <param name="schemaVersion"> The schema version that the subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<SubscribedEventResource> CreateAsync(string pathSubscriptionSid,
                                                                                              string type,
-                                                                                             int? version = null,
+                                                                                             int? schemaVersion = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new CreateSubscribedEventOptions(pathSubscriptionSid, type){Version = version};
+            var options = new CreateSubscribedEventOptions(pathSubscriptionSid, type){SchemaVersion = schemaVersion};
             return await CreateAsync(options, client);
         }
         #endif
@@ -350,15 +350,15 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// </summary>
         /// <param name="pathSubscriptionSid"> Subscription SID. </param>
         /// <param name="pathType"> Type of event being subscribed to. </param>
-        /// <param name="version"> The schema version that the subscription should use. </param>
+        /// <param name="schemaVersion"> The schema version that the subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of SubscribedEvent </returns>
         public static SubscribedEventResource Update(string pathSubscriptionSid,
                                                      string pathType,
-                                                     int? version = null,
+                                                     int? schemaVersion = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateSubscribedEventOptions(pathSubscriptionSid, pathType){Version = version};
+            var options = new UpdateSubscribedEventOptions(pathSubscriptionSid, pathType){SchemaVersion = schemaVersion};
             return Update(options, client);
         }
 
@@ -368,15 +368,15 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// </summary>
         /// <param name="pathSubscriptionSid"> Subscription SID. </param>
         /// <param name="pathType"> Type of event being subscribed to. </param>
-        /// <param name="version"> The schema version that the subscription should use. </param>
+        /// <param name="schemaVersion"> The schema version that the subscription should use. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of SubscribedEvent </returns>
         public static async System.Threading.Tasks.Task<SubscribedEventResource> UpdateAsync(string pathSubscriptionSid,
                                                                                              string pathType,
-                                                                                             int? version = null,
+                                                                                             int? schemaVersion = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateSubscribedEventOptions(pathSubscriptionSid, pathType){Version = version};
+            var options = new UpdateSubscribedEventOptions(pathSubscriptionSid, pathType){SchemaVersion = schemaVersion};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -482,8 +482,8 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <summary>
         /// The schema version that the subscription should use.
         /// </summary>
-        [JsonProperty("version")]
-        public int? Version { get; private set; }
+        [JsonProperty("schema_version")]
+        public int? SchemaVersion { get; private set; }
         /// <summary>
         /// Subscription SID.
         /// </summary>

@@ -158,6 +158,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// The SID of the resource to delete
         /// </summary>
         public string PathSid { get; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new DeleteTaskOptions
@@ -176,6 +180,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
+            }
+
             return p;
         }
     }

@@ -76,6 +76,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
         /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
         /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
+        /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
+        /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
+        /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
+        /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName,
@@ -90,9 +94,13 @@ namespace Twilio.Rest.Verify.V2
                                              bool? pushIncludeDate = null,
                                              string pushApnCredentialSid = null,
                                              string pushFcmCredentialSid = null,
+                                             string totpIssuer = null,
+                                             int? totpTimeStep = null,
+                                             int? totpCodeLength = null,
+                                             int? totpSkew = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew};
             return Create(options, client);
         }
 
@@ -113,6 +121,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
         /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
         /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
+        /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
+        /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
+        /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
+        /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
@@ -127,9 +139,13 @@ namespace Twilio.Rest.Verify.V2
                                                                                      bool? pushIncludeDate = null,
                                                                                      string pushApnCredentialSid = null,
                                                                                      string pushFcmCredentialSid = null,
+                                                                                     string totpIssuer = null,
+                                                                                     int? totpTimeStep = null,
+                                                                                     int? totpCodeLength = null,
+                                                                                     int? totpSkew = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew};
             return await CreateAsync(options, client);
         }
         #endif
@@ -453,6 +469,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
         /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
         /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
+        /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
+        /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
+        /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
+        /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -468,9 +488,13 @@ namespace Twilio.Rest.Verify.V2
                                              bool? pushIncludeDate = null,
                                              string pushApnCredentialSid = null,
                                              string pushFcmCredentialSid = null,
+                                             string totpIssuer = null,
+                                             int? totpTimeStep = null,
+                                             int? totpCodeLength = null,
+                                             int? totpSkew = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew};
             return Update(options, client);
         }
 
@@ -492,6 +516,10 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="pushIncludeDate"> Optional. Include the date in the Challenge's reponse. Default: true </param>
         /// <param name="pushApnCredentialSid"> Optional. Set APN Credential for this service. </param>
         /// <param name="pushFcmCredentialSid"> Optional. Set FCM Credential for this service. </param>
+        /// <param name="totpIssuer"> Optional. Set TOTP Issuer for this service. </param>
+        /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
+        /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
+        /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -507,9 +535,13 @@ namespace Twilio.Rest.Verify.V2
                                                                                      bool? pushIncludeDate = null,
                                                                                      string pushApnCredentialSid = null,
                                                                                      string pushFcmCredentialSid = null,
+                                                                                     string totpIssuer = null,
+                                                                                     int? totpTimeStep = null,
+                                                                                     int? totpCodeLength = null,
+                                                                                     int? totpSkew = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -592,6 +624,11 @@ namespace Twilio.Rest.Verify.V2
         /// </summary>
         [JsonProperty("push")]
         public object Push { get; private set; }
+        /// <summary>
+        /// The service level configuration of factor TOTP type.
+        /// </summary>
+        [JsonProperty("totp")]
+        public object Totp { get; private set; }
         /// <summary>
         /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>

@@ -103,11 +103,12 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                 "/v1/Workspaces/WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Tasks/WTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
+            request.AddHeaderParam("If-Match", Serialize("if_match"));
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                TaskResource.Delete("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "WTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                TaskResource.Delete("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "WTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ifMatch: Serialize("if_match"), client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -125,7 +126,7 @@ namespace Twilio.Tests.Rest.Taskrouter.V1.Workspace
                                          "null"
                                      ));
 
-            var response = TaskResource.Delete("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "WTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = TaskResource.Delete("WSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "WTXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", ifMatch: Serialize("if_match"), client: twilioRestClient);
             Assert.NotNull(response);
         }
 

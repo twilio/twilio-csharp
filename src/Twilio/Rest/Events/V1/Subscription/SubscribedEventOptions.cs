@@ -65,7 +65,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <summary>
         /// The schema version that the subscription should use.
         /// </summary>
-        public int? Version { get; set; }
+        public int? SchemaVersion { get; set; }
 
         /// <summary>
         /// Construct a new CreateSubscribedEventOptions
@@ -89,9 +89,9 @@ namespace Twilio.Rest.Events.V1.Subscription
                 p.Add(new KeyValuePair<string, string>("Type", Type));
             }
 
-            if (Version != null)
+            if (SchemaVersion != null)
             {
-                p.Add(new KeyValuePair<string, string>("Version", Version.ToString()));
+                p.Add(new KeyValuePair<string, string>("SchemaVersion", SchemaVersion.ToString()));
             }
 
             return p;
@@ -153,7 +153,7 @@ namespace Twilio.Rest.Events.V1.Subscription
         /// <summary>
         /// The schema version that the subscription should use.
         /// </summary>
-        public int? Version { get; set; }
+        public int? SchemaVersion { get; set; }
 
         /// <summary>
         /// Construct a new UpdateSubscribedEventOptions
@@ -172,9 +172,9 @@ namespace Twilio.Rest.Events.V1.Subscription
         public List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
-            if (Version != null)
+            if (SchemaVersion != null)
             {
-                p.Add(new KeyValuePair<string, string>("Version", Version.ToString()));
+                p.Add(new KeyValuePair<string, string>("SchemaVersion", SchemaVersion.ToString()));
             }
 
             return p;

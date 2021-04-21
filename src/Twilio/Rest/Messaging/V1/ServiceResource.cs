@@ -82,10 +82,12 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="inboundRequestUrl"> The URL we call using inbound_method when a message is received by any phone
-        ///                         number or short code in the Service </param>
+        ///                         number or short code in the Service. This field will be overridden if the
+        ///                         `use_inbound_webhook_on_number` field is enabled. </param>
         /// <param name="inboundMethod"> The HTTP method we should use to call inbound_request_url </param>
         /// <param name="fallbackUrl"> The URL that we call using fallback_method if an error occurs while retrieving or
-        ///                   executing the TwiML from the Inbound Request URL </param>
+        ///                   executing the TwiML from the Inbound Request URL. This field will be overridden if the
+        ///                   `use_inbound_webhook_on_number` field is enabled. </param>
         /// <param name="fallbackMethod"> The HTTP method we should use to call fallback_url </param>
         /// <param name="statusCallback"> The URL we should call to pass status updates about message delivery </param>
         /// <param name="stickySender"> Whether to enable Sticky Sender on the Service instance </param>
@@ -98,6 +100,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="areaCodeGeomatch"> Whether to enable Area Code Geomatch on the Service Instance </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid </param>
         /// <param name="synchronousValidation"> Reserved </param>
+        /// <param name="useInboundWebhookOnNumber"> If enabled, the webhook url configured on the phone number will be used
+        ///                                 and will override the `inbound_request_url`/`fallback_url` url called when an
+        ///                                 inbound message is received. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName,
@@ -114,9 +119,10 @@ namespace Twilio.Rest.Messaging.V1
                                              bool? areaCodeGeomatch = null,
                                              int? validityPeriod = null,
                                              bool? synchronousValidation = null,
+                                             bool? useInboundWebhookOnNumber = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation};
+            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation, UseInboundWebhookOnNumber = useInboundWebhookOnNumber};
             return Create(options, client);
         }
 
@@ -126,10 +132,12 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="inboundRequestUrl"> The URL we call using inbound_method when a message is received by any phone
-        ///                         number or short code in the Service </param>
+        ///                         number or short code in the Service. This field will be overridden if the
+        ///                         `use_inbound_webhook_on_number` field is enabled. </param>
         /// <param name="inboundMethod"> The HTTP method we should use to call inbound_request_url </param>
         /// <param name="fallbackUrl"> The URL that we call using fallback_method if an error occurs while retrieving or
-        ///                   executing the TwiML from the Inbound Request URL </param>
+        ///                   executing the TwiML from the Inbound Request URL. This field will be overridden if the
+        ///                   `use_inbound_webhook_on_number` field is enabled. </param>
         /// <param name="fallbackMethod"> The HTTP method we should use to call fallback_url </param>
         /// <param name="statusCallback"> The URL we should call to pass status updates about message delivery </param>
         /// <param name="stickySender"> Whether to enable Sticky Sender on the Service instance </param>
@@ -142,6 +150,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="areaCodeGeomatch"> Whether to enable Area Code Geomatch on the Service Instance </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid </param>
         /// <param name="synchronousValidation"> Reserved </param>
+        /// <param name="useInboundWebhookOnNumber"> If enabled, the webhook url configured on the phone number will be used
+        ///                                 and will override the `inbound_request_url`/`fallback_url` url called when an
+        ///                                 inbound message is received. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
@@ -158,9 +169,10 @@ namespace Twilio.Rest.Messaging.V1
                                                                                      bool? areaCodeGeomatch = null,
                                                                                      int? validityPeriod = null,
                                                                                      bool? synchronousValidation = null,
+                                                                                     bool? useInboundWebhookOnNumber = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation};
+            var options = new CreateServiceOptions(friendlyName){InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation, UseInboundWebhookOnNumber = useInboundWebhookOnNumber};
             return await CreateAsync(options, client);
         }
         #endif
@@ -211,10 +223,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pathSid"> The SID that identifies the resource to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="inboundRequestUrl"> The URL we call using inbound_method when a message is received by any phone
-        ///                         number or short code in the Service </param>
+        ///                         number or short code in the Service. This field will be overridden if the
+        ///                         `use_inbound_webhook_on_number` field is enabled. </param>
         /// <param name="inboundMethod"> The HTTP method we should use to call inbound_request_url </param>
         /// <param name="fallbackUrl"> The URL that we call using fallback_method if an error occurs while retrieving or
-        ///                   executing the TwiML from the Inbound Request URL </param>
+        ///                   executing the TwiML from the Inbound Request URL. This field will be overridden if the
+        ///                   `use_inbound_webhook_on_number` field is enabled. </param>
         /// <param name="fallbackMethod"> The HTTP method we should use to call fallback_url </param>
         /// <param name="statusCallback"> The URL we should call to pass status updates about message delivery </param>
         /// <param name="stickySender"> Whether to enable Sticky Sender on the Service instance </param>
@@ -227,6 +241,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="areaCodeGeomatch"> Whether to enable Area Code Geomatch on the Service Instance </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid </param>
         /// <param name="synchronousValidation"> Reserved </param>
+        /// <param name="useInboundWebhookOnNumber"> If enabled, the webhook url configured on the phone number will be used
+        ///                                 and will override the `inbound_request_url`/`fallback_url` url called when an
+        ///                                 inbound message is received. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -244,9 +261,10 @@ namespace Twilio.Rest.Messaging.V1
                                              bool? areaCodeGeomatch = null,
                                              int? validityPeriod = null,
                                              bool? synchronousValidation = null,
+                                             bool? useInboundWebhookOnNumber = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation, UseInboundWebhookOnNumber = useInboundWebhookOnNumber};
             return Update(options, client);
         }
 
@@ -257,10 +275,12 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="pathSid"> The SID that identifies the resource to update </param>
         /// <param name="friendlyName"> A string to describe the resource </param>
         /// <param name="inboundRequestUrl"> The URL we call using inbound_method when a message is received by any phone
-        ///                         number or short code in the Service </param>
+        ///                         number or short code in the Service. This field will be overridden if the
+        ///                         `use_inbound_webhook_on_number` field is enabled. </param>
         /// <param name="inboundMethod"> The HTTP method we should use to call inbound_request_url </param>
         /// <param name="fallbackUrl"> The URL that we call using fallback_method if an error occurs while retrieving or
-        ///                   executing the TwiML from the Inbound Request URL </param>
+        ///                   executing the TwiML from the Inbound Request URL. This field will be overridden if the
+        ///                   `use_inbound_webhook_on_number` field is enabled. </param>
         /// <param name="fallbackMethod"> The HTTP method we should use to call fallback_url </param>
         /// <param name="statusCallback"> The URL we should call to pass status updates about message delivery </param>
         /// <param name="stickySender"> Whether to enable Sticky Sender on the Service instance </param>
@@ -273,6 +293,9 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="areaCodeGeomatch"> Whether to enable Area Code Geomatch on the Service Instance </param>
         /// <param name="validityPeriod"> How long, in seconds, messages sent from the Service are valid </param>
         /// <param name="synchronousValidation"> Reserved </param>
+        /// <param name="useInboundWebhookOnNumber"> If enabled, the webhook url configured on the phone number will be used
+        ///                                 and will override the `inbound_request_url`/`fallback_url` url called when an
+        ///                                 inbound message is received. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -290,9 +313,10 @@ namespace Twilio.Rest.Messaging.V1
                                                                                      bool? areaCodeGeomatch = null,
                                                                                      int? validityPeriod = null,
                                                                                      bool? synchronousValidation = null,
+                                                                                     bool? useInboundWebhookOnNumber = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, InboundRequestUrl = inboundRequestUrl, InboundMethod = inboundMethod, FallbackUrl = fallbackUrl, FallbackMethod = fallbackMethod, StatusCallback = statusCallback, StickySender = stickySender, MmsConverter = mmsConverter, SmartEncoding = smartEncoding, ScanMessageContent = scanMessageContent, FallbackToLongCode = fallbackToLongCode, AreaCodeGeomatch = areaCodeGeomatch, ValidityPeriod = validityPeriod, SynchronousValidation = synchronousValidation, UseInboundWebhookOnNumber = useInboundWebhookOnNumber};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -603,7 +627,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
-        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service
+        /// The URL we call using inbound_method when a message is received by any phone number or short code in the Service. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
         /// </summary>
         [JsonProperty("inbound_request_url")]
         public Uri InboundRequestUrl { get; private set; }
@@ -614,7 +638,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod InboundMethod { get; private set; }
         /// <summary>
-        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL
+        /// The URL that we call using fallback_method if an error occurs while retrieving or executing the TwiML from the Inbound Request URL. This field will be overridden if the `use_inbound_webhook_on_number` field is enabled.
         /// </summary>
         [JsonProperty("fallback_url")]
         public Uri FallbackUrl { get; private set; }
@@ -680,6 +704,11 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+        /// <summary>
+        /// If enabled, the webhook url configured on the phone number will be used and will override the `inbound_request_url`/`fallback_url` url called when an inbound message is received.
+        /// </summary>
+        [JsonProperty("use_inbound_webhook_on_number")]
+        public bool? UseInboundWebhookOnNumber { get; private set; }
 
         private ServiceResource()
         {

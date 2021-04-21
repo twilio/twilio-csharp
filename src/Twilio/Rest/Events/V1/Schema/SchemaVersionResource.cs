@@ -5,7 +5,7 @@
 /// <summary>
 /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
 ///
-/// VersionResource
+/// SchemaVersionResource
 /// </summary>
 
 using Newtonsoft.Json;
@@ -20,9 +20,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Events.V1.Schema
 {
 
-    public class VersionResource : Resource
+    public class SchemaVersionResource : Resource
     {
-        private static Request BuildReadRequest(ReadVersionOptions options, ITwilioRestClient client)
+        private static Request BuildReadRequest(ReadSchemaVersionOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Get,
@@ -36,33 +36,34 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <summary>
         /// Retrieve a paginated list of versions of the schema.
         /// </summary>
-        /// <param name="options"> Read Version parameters </param>
+        /// <param name="options"> Read SchemaVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Version </returns>
-        public static ResourceSet<VersionResource> Read(ReadVersionOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of SchemaVersion </returns>
+        public static ResourceSet<SchemaVersionResource> Read(ReadSchemaVersionOptions options,
+                                                              ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
 
-            var page = Page<VersionResource>.FromJson("schema_versions", response.Content);
-            return new ResourceSet<VersionResource>(page, options, client);
+            var page = Page<SchemaVersionResource>.FromJson("schema_versions", response.Content);
+            return new ResourceSet<SchemaVersionResource>(page, options, client);
         }
 
         #if !NET35
         /// <summary>
         /// Retrieve a paginated list of versions of the schema.
         /// </summary>
-        /// <param name="options"> Read Version parameters </param>
+        /// <param name="options"> Read SchemaVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Version </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<VersionResource>> ReadAsync(ReadVersionOptions options,
-                                                                                                ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of SchemaVersion </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SchemaVersionResource>> ReadAsync(ReadSchemaVersionOptions options,
+                                                                                                      ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
 
-            var page = Page<VersionResource>.FromJson("schema_versions", response.Content);
-            return new ResourceSet<VersionResource>(page, options, client);
+            var page = Page<SchemaVersionResource>.FromJson("schema_versions", response.Content);
+            return new ResourceSet<SchemaVersionResource>(page, options, client);
         }
         #endif
 
@@ -73,13 +74,13 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Version </returns>
-        public static ResourceSet<VersionResource> Read(string pathId,
-                                                        int? pageSize = null,
-                                                        long? limit = null,
-                                                        ITwilioRestClient client = null)
+        /// <returns> A single instance of SchemaVersion </returns>
+        public static ResourceSet<SchemaVersionResource> Read(string pathId,
+                                                              int? pageSize = null,
+                                                              long? limit = null,
+                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadVersionOptions(pathId){PageSize = pageSize, Limit = limit};
+            var options = new ReadSchemaVersionOptions(pathId){PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -91,13 +92,13 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Version </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<VersionResource>> ReadAsync(string pathId,
-                                                                                                int? pageSize = null,
-                                                                                                long? limit = null,
-                                                                                                ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of SchemaVersion </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<SchemaVersionResource>> ReadAsync(string pathId,
+                                                                                                      int? pageSize = null,
+                                                                                                      long? limit = null,
+                                                                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadVersionOptions(pathId){PageSize = pageSize, Limit = limit};
+            var options = new ReadSchemaVersionOptions(pathId){PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -108,7 +109,7 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns>
-        public static Page<VersionResource> GetPage(string targetUrl, ITwilioRestClient client)
+        public static Page<SchemaVersionResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
 
@@ -118,7 +119,7 @@ namespace Twilio.Rest.Events.V1.Schema
             );
 
             var response = client.Request(request);
-            return Page<VersionResource>.FromJson("schema_versions", response.Content);
+            return Page<SchemaVersionResource>.FromJson("schema_versions", response.Content);
         }
 
         /// <summary>
@@ -127,7 +128,7 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns>
-        public static Page<VersionResource> NextPage(Page<VersionResource> page, ITwilioRestClient client)
+        public static Page<SchemaVersionResource> NextPage(Page<SchemaVersionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -135,7 +136,7 @@ namespace Twilio.Rest.Events.V1.Schema
             );
 
             var response = client.Request(request);
-            return Page<VersionResource>.FromJson("schema_versions", response.Content);
+            return Page<SchemaVersionResource>.FromJson("schema_versions", response.Content);
         }
 
         /// <summary>
@@ -144,7 +145,7 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns>
-        public static Page<VersionResource> PreviousPage(Page<VersionResource> page, ITwilioRestClient client)
+        public static Page<SchemaVersionResource> PreviousPage(Page<SchemaVersionResource> page, ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -152,10 +153,10 @@ namespace Twilio.Rest.Events.V1.Schema
             );
 
             var response = client.Request(request);
-            return Page<VersionResource>.FromJson("schema_versions", response.Content);
+            return Page<SchemaVersionResource>.FromJson("schema_versions", response.Content);
         }
 
-        private static Request BuildFetchRequest(FetchVersionOptions options, ITwilioRestClient client)
+        private static Request BuildFetchRequest(FetchSchemaVersionOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Get,
@@ -169,10 +170,10 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <summary>
         /// Fetch a specific schema and version.
         /// </summary>
-        /// <param name="options"> Fetch Version parameters </param>
+        /// <param name="options"> Fetch SchemaVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Version </returns>
-        public static VersionResource Fetch(FetchVersionOptions options, ITwilioRestClient client = null)
+        /// <returns> A single instance of SchemaVersion </returns>
+        public static SchemaVersionResource Fetch(FetchSchemaVersionOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildFetchRequest(options, client));
@@ -183,11 +184,11 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <summary>
         /// Fetch a specific schema and version.
         /// </summary>
-        /// <param name="options"> Fetch Version parameters </param>
+        /// <param name="options"> Fetch SchemaVersion parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Version </returns>
-        public static async System.Threading.Tasks.Task<VersionResource> FetchAsync(FetchVersionOptions options,
-                                                                                    ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of SchemaVersion </returns>
+        public static async System.Threading.Tasks.Task<SchemaVersionResource> FetchAsync(FetchSchemaVersionOptions options,
+                                                                                          ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildFetchRequest(options, client));
@@ -201,10 +202,10 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <param name="pathId"> The unique identifier of the schema. </param>
         /// <param name="pathSchemaVersion"> The version of the schema </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of Version </returns>
-        public static VersionResource Fetch(string pathId, int? pathSchemaVersion, ITwilioRestClient client = null)
+        /// <returns> A single instance of SchemaVersion </returns>
+        public static SchemaVersionResource Fetch(string pathId, int? pathSchemaVersion, ITwilioRestClient client = null)
         {
-            var options = new FetchVersionOptions(pathId, pathSchemaVersion);
+            var options = new FetchSchemaVersionOptions(pathId, pathSchemaVersion);
             return Fetch(options, client);
         }
 
@@ -215,27 +216,27 @@ namespace Twilio.Rest.Events.V1.Schema
         /// <param name="pathId"> The unique identifier of the schema. </param>
         /// <param name="pathSchemaVersion"> The version of the schema </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of Version </returns>
-        public static async System.Threading.Tasks.Task<VersionResource> FetchAsync(string pathId,
-                                                                                    int? pathSchemaVersion,
-                                                                                    ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of SchemaVersion </returns>
+        public static async System.Threading.Tasks.Task<SchemaVersionResource> FetchAsync(string pathId,
+                                                                                          int? pathSchemaVersion,
+                                                                                          ITwilioRestClient client = null)
         {
-            var options = new FetchVersionOptions(pathId, pathSchemaVersion);
+            var options = new FetchSchemaVersionOptions(pathId, pathSchemaVersion);
             return await FetchAsync(options, client);
         }
         #endif
 
         /// <summary>
-        /// Converts a JSON string into a VersionResource object
+        /// Converts a JSON string into a SchemaVersionResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> VersionResource object represented by the provided JSON </returns>
-        public static VersionResource FromJson(string json)
+        /// <returns> SchemaVersionResource object represented by the provided JSON </returns>
+        public static SchemaVersionResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime
             try
             {
-                return JsonConvert.DeserializeObject<VersionResource>(json);
+                return JsonConvert.DeserializeObject<SchemaVersionResource>(json);
             }
             catch (JsonException e)
             {
@@ -269,7 +270,7 @@ namespace Twilio.Rest.Events.V1.Schema
         [JsonProperty("raw")]
         public Uri Raw { get; private set; }
 
-        private VersionResource()
+        private SchemaVersionResource()
         {
 
         }

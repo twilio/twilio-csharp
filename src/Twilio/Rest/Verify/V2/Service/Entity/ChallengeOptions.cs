@@ -47,6 +47,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// Hidden details provided to contextualize the Challenge
         /// </summary>
         public object HiddenDetails { get; set; }
+        /// <summary>
+        /// Optional payload to verify the Challenge
+        /// </summary>
+        public string AuthPayload { get; set; }
 
         /// <summary>
         /// Construct a new CreateChallengeOptions
@@ -91,6 +95,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (HiddenDetails != null)
             {
                 p.Add(new KeyValuePair<string, string>("HiddenDetails", Serializers.JsonObject(HiddenDetails)));
+            }
+
+            if (AuthPayload != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AuthPayload", AuthPayload));
             }
 
             return p;

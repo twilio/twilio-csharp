@@ -102,6 +102,8 @@ namespace Twilio.TwiML.Voice
             public static readonly VoiceEnum PollyMatthewNeural = new VoiceEnum("Polly.Matthew-Neural");
             public static readonly VoiceEnum PollyCamilaNeural = new VoiceEnum("Polly.Camila-Neural");
             public static readonly VoiceEnum PollyLupeNeural = new VoiceEnum("Polly.Lupe-Neural");
+            public static readonly VoiceEnum PollyOliviaNeural = new VoiceEnum("Polly.Olivia-Neural");
+            public static readonly VoiceEnum PollyKevinNeural = new VoiceEnum("Polly.Kevin-Neural");
         }
 
         public sealed class LanguageEnum : StringEnum

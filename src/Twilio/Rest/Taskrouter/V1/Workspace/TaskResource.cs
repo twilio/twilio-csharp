@@ -211,7 +211,7 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
                 Rest.Domain.Taskrouter,
                 "/v1/Workspaces/" + options.PathWorkspaceSid + "/Tasks/" + options.PathSid + "",
                 queryParams: options.GetParams(),
-                headerParams: null
+                headerParams: options.GetHeaderParams()
             );
         }
 
@@ -249,11 +249,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete </param>
         /// <param name="pathSid"> The SID of the resource to delete </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Task </returns>
-        public static bool Delete(string pathWorkspaceSid, string pathSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathWorkspaceSid,
+                                  string pathSid,
+                                  string ifMatch = null,
+                                  ITwilioRestClient client = null)
         {
-            var options = new DeleteTaskOptions(pathWorkspaceSid, pathSid);
+            var options = new DeleteTaskOptions(pathWorkspaceSid, pathSid){IfMatch = ifMatch};
             return Delete(options, client);
         }
 
@@ -263,13 +267,15 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace
         /// </summary>
         /// <param name="pathWorkspaceSid"> The SID of the Workspace with the Task to delete </param>
         /// <param name="pathSid"> The SID of the resource to delete </param>
+        /// <param name="ifMatch"> The If-Match HTTP request header </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Task </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathWorkspaceSid,
                                                                           string pathSid,
+                                                                          string ifMatch = null,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteTaskOptions(pathWorkspaceSid, pathSid);
+            var options = new DeleteTaskOptions(pathWorkspaceSid, pathSid){IfMatch = ifMatch};
             return await DeleteAsync(options, client);
         }
         #endif

@@ -123,15 +123,15 @@ namespace Twilio.Rest.Events.V1
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
         /// <summary>
-        /// The date that the last schema version was created.
+        /// The date that the latest schema version was created.
         /// </summary>
-        [JsonProperty("last_created")]
-        public DateTime? LastCreated { get; private set; }
+        [JsonProperty("latest_version_date_created")]
+        public DateTime? LatestVersionDateCreated { get; private set; }
         /// <summary>
-        /// Last schema version.
+        /// Latest schema version.
         /// </summary>
-        [JsonProperty("last_version")]
-        public int? LastVersion { get; private set; }
+        [JsonProperty("latest_version")]
+        public int? LatestVersion { get; private set; }
 
         private SchemaResource()
         {

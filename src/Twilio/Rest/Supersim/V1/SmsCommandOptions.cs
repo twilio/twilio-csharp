@@ -115,7 +115,7 @@ namespace Twilio.Rest.Supersim.V1
     public class ReadSmsCommandOptions : ReadOptions<SmsCommandResource>
     {
         /// <summary>
-        /// The SID or unique name of the Sim that SMS Command was sent to or from.
+        /// The SID or unique name of the Sim resource that SMS Command was sent to or from.
         /// </summary>
         public string Sim { get; set; }
         /// <summary>

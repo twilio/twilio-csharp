@@ -115,6 +115,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="detailsMessage"> Shown to the user when the push notification arrives </param>
         /// <param name="detailsFields"> A list of objects that describe the Fields included in the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
+        /// <param name="authPayload"> Optional payload to verify the Challenge </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Challenge </returns>
         public static ChallengeResource Create(string pathServiceSid,
@@ -124,9 +125,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                string detailsMessage = null,
                                                List<object> detailsFields = null,
                                                object hiddenDetails = null,
+                                               string authPayload = null,
                                                ITwilioRestClient client = null)
         {
-            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails};
+            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails, AuthPayload = authPayload};
             return Create(options, client);
         }
 
@@ -141,6 +143,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="detailsMessage"> Shown to the user when the push notification arrives </param>
         /// <param name="detailsFields"> A list of objects that describe the Fields included in the Challenge </param>
         /// <param name="hiddenDetails"> Hidden details provided to contextualize the Challenge </param>
+        /// <param name="authPayload"> Optional payload to verify the Challenge </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Challenge </returns>
         public static async System.Threading.Tasks.Task<ChallengeResource> CreateAsync(string pathServiceSid,
@@ -150,9 +153,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
                                                                                        string detailsMessage = null,
                                                                                        List<object> detailsFields = null,
                                                                                        object hiddenDetails = null,
+                                                                                       string authPayload = null,
                                                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails};
+            var options = new CreateChallengeOptions(pathServiceSid, pathIdentity, factorSid){ExpirationDate = expirationDate, DetailsMessage = detailsMessage, DetailsFields = detailsFields, HiddenDetails = hiddenDetails, AuthPayload = authPayload};
             return await CreateAsync(options, client);
         }
         #endif
@@ -559,6 +563,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// Nested resource URLs.
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private ChallengeResource()
         {

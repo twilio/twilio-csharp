@@ -16,7 +16,7 @@ namespace Twilio.Rest.Events.V1.Schema
     ///
     /// Retrieve a paginated list of versions of the schema.
     /// </summary>
-    public class ReadVersionOptions : ReadOptions<VersionResource>
+    public class ReadSchemaVersionOptions : ReadOptions<SchemaVersionResource>
     {
         /// <summary>
         /// The unique identifier of the schema.
@@ -24,10 +24,10 @@ namespace Twilio.Rest.Events.V1.Schema
         public string PathId { get; }
 
         /// <summary>
-        /// Construct a new ReadVersionOptions
+        /// Construct a new ReadSchemaVersionOptions
         /// </summary>
         /// <param name="pathId"> The unique identifier of the schema. </param>
-        public ReadVersionOptions(string pathId)
+        public ReadSchemaVersionOptions(string pathId)
         {
             PathId = pathId;
         }
@@ -52,7 +52,7 @@ namespace Twilio.Rest.Events.V1.Schema
     ///
     /// Fetch a specific schema and version.
     /// </summary>
-    public class FetchVersionOptions : IOptions<VersionResource>
+    public class FetchSchemaVersionOptions : IOptions<SchemaVersionResource>
     {
         /// <summary>
         /// The unique identifier of the schema.
@@ -64,11 +64,11 @@ namespace Twilio.Rest.Events.V1.Schema
         public int? PathSchemaVersion { get; }
 
         /// <summary>
-        /// Construct a new FetchVersionOptions
+        /// Construct a new FetchSchemaVersionOptions
         /// </summary>
         /// <param name="pathId"> The unique identifier of the schema. </param>
         /// <param name="pathSchemaVersion"> The version of the schema </param>
-        public FetchVersionOptions(string pathId, int? pathSchemaVersion)
+        public FetchSchemaVersionOptions(string pathId, int? pathSchemaVersion)
         {
             PathId = pathId;
             PathSchemaVersion = pathSchemaVersion;

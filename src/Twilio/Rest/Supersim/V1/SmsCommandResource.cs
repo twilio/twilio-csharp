@@ -246,7 +246,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// Retrieve a list of SMS Commands from your account.
         /// </summary>
-        /// <param name="sim"> The SID or unique name of the Sim that SMS Command was sent to or from. </param>
+        /// <param name="sim"> The SID or unique name of the Sim resource that SMS Command was sent to or from. </param>
         /// <param name="status"> The status of the SMS Command </param>
         /// <param name="direction"> The direction of the SMS Command </param>
         /// <param name="pageSize"> Page size </param>
@@ -268,7 +268,7 @@ namespace Twilio.Rest.Supersim.V1
         /// <summary>
         /// Retrieve a list of SMS Commands from your account.
         /// </summary>
-        /// <param name="sim"> The SID or unique name of the Sim that SMS Command was sent to or from. </param>
+        /// <param name="sim"> The SID or unique name of the Sim resource that SMS Command was sent to or from. </param>
         /// <param name="status"> The status of the SMS Command </param>
         /// <param name="direction"> The direction of the SMS Command </param>
         /// <param name="pageSize"> Page size </param>

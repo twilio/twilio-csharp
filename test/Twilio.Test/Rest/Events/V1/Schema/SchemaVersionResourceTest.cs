@@ -18,7 +18,7 @@ namespace Twilio.Tests.Rest.Events.V1.Schema
 {
 
     [TestFixture]
-    public class VersionTest : TwilioTest
+    public class SchemaVersionTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()
@@ -34,7 +34,7 @@ namespace Twilio.Tests.Rest.Events.V1.Schema
 
             try
             {
-                VersionResource.Read("id", client: twilioRestClient);
+                SchemaVersionResource.Read("id", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Events.V1.Schema
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"schema_versions\": [],\"meta\": {\"page\": 0,\"page_size\": 10,\"first_page_url\": \"https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions?PageSize=10&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions?PageSize=10&Page=0\",\"next_page_url\": null,\"key\": \"schema_versions\"}}"
+                                         "{\"schema_versions\": [],\"meta\": {\"page\": 0,\"page_size\": 10,\"first_page_url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=10&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=10&Page=0\",\"next_page_url\": null,\"key\": \"schema_versions\"}}"
                                      ));
 
-            var response = VersionResource.Read("id", client: twilioRestClient);
+            var response = SchemaVersionResource.Read("id", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -64,10 +64,10 @@ namespace Twilio.Tests.Rest.Events.V1.Schema
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"schema_versions\": [{\"id\": \"DataTaps.TestEventSchema\",\"schema_version\": 1,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions/1\",\"raw\": \"https://events-schemas.twilio.com/DataTaps.TestEventSchema/1\"},{\"id\": \"DataTaps.TestEventSchema\",\"schema_version\": 2,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions/2\",\"raw\": \"https://events-schemas.twilio.com/DataTaps.TestEventSchema/2\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"schema_versions\"}}"
+                                         "{\"schema_versions\": [{\"id\": \"Messaging.MessageStatus\",\"schema_version\": 1,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/1\",\"raw\": \"https://events-schemas.twilio.com/Messaging.MessageStatus/1\"},{\"id\": \"Messaging.MessageStatus\",\"schema_version\": 2,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/2\",\"raw\": \"https://events-schemas.twilio.com/Messaging.MessageStatus/2\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"schema_versions\"}}"
                                      ));
 
-            var response = VersionResource.Read("id", client: twilioRestClient);
+            var response = SchemaVersionResource.Read("id", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
@@ -85,7 +85,7 @@ namespace Twilio.Tests.Rest.Events.V1.Schema
 
             try
             {
-                VersionResource.Fetch("id", 1, client: twilioRestClient);
+                SchemaVersionResource.Fetch("id", 1, client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -100,10 +100,10 @@ namespace Twilio.Tests.Rest.Events.V1.Schema
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"id\": \"DataTaps.TestEventSchema\",\"schema_version\": 1,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions/1\",\"raw\": \"https://events-schemas.twilio.com/DataTaps.TestEventSchema/1\"}"
+                                         "{\"id\": \"Messaging.MessageStatus\",\"schema_version\": 1,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/1\",\"raw\": \"https://events-schemas.twilio.com/Messaging.MessageStatus/1\"}"
                                      ));
 
-            var response = VersionResource.Fetch("id", 1, client: twilioRestClient);
+            var response = SchemaVersionResource.Fetch("id", 1, client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

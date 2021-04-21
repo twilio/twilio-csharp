@@ -64,7 +64,7 @@ namespace Twilio.Tests.Rest.Events.V1.Subscription
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"types\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"Voice.Calls\",\"version\": 2,\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/Voice.Calls\"},{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"Video.Rooms\",\"version\": 15,\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/Video.Rooms\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"types\"}}"
+                                         "{\"types\": [{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"com.twilio.messaging.message.delivered\",\"schema_version\": 2,\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.delivered\"},{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"com.twilio.messaging.message.failed\",\"schema_version\": 15,\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.failed\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"types\"}}"
                                      ));
 
             var response = SubscribedEventResource.Read("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -101,7 +101,7 @@ namespace Twilio.Tests.Rest.Events.V1.Subscription
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"event.type\",\"version\": 2,\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/event.type\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"com.twilio.messaging.message.delivered\",\"schema_version\": 2,\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.delivered\"}"
                                      ));
 
             var response = SubscribedEventResource.Create("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "type", client: twilioRestClient);
@@ -137,7 +137,7 @@ namespace Twilio.Tests.Rest.Events.V1.Subscription
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"event.type\",\"version\": 2,\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/event.type\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"com.twilio.messaging.message.delivered\",\"schema_version\": 2,\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.delivered\"}"
                                      ));
 
             var response = SubscribedEventResource.Fetch("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "type", client: twilioRestClient);
@@ -173,7 +173,7 @@ namespace Twilio.Tests.Rest.Events.V1.Subscription
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"event.type\",\"version\": 2,\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/event.type\"}"
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"subscription_sid\": \"DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"type\": \"com.twilio.messaging.message.delivered\",\"schema_version\": 2,\"url\": \"https://events.twilio.com/v1/Subscriptions/DFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/SubscribedEvents/com.twilio.messaging.message.delivered\"}"
                                      ));
 
             var response = SubscribedEventResource.Update("DFXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "type", client: twilioRestClient);

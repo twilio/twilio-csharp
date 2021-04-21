@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Events.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"id\": \"DataTaps.TestEventSchema\",\"url\": \"https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema\",\"last_created\": \"2018-07-30T20:00:00Z\",\"last_version\": 1,\"links\": {\"versions\": \"https://events.twilio.com/v1/Schemas/DataTaps.TestEventSchema/Versions\"}}"
+                                         "{\"id\": \"Messaging.MessageStatus\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus\",\"latest_version_date_created\": \"2020-07-30T20:00:00Z\",\"latest_version\": 1,\"links\": {\"versions\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions\"}}"
                                      ));
 
             var response = SchemaResource.Fetch("id", client: twilioRestClient);
