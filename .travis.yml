@@ -2,28 +2,24 @@ language: csharp
 solution: Twilio.sln
 mono: latest
 dotnet: 3.1
-
 services:
-  - docker
-
+- docker
 script:
-  - make test
-  - make release
-
+- make test
+- make release
 deploy:
-  - provider: script
-    script: make docker-build && make docker-push
-    skip_cleanup: true
-    on:
-      branch: main
-      tags: true
-  - provider: script
-    script: dotnet nuget push **/*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
-    skip_cleanup: true
-    on:
-      branch: main
-      tags: true
-
+- provider: script
+  script: make docker-build && make docker-push
+  skip_cleanup: true
+  on:
+    branch: main
+    tags: true
+- provider: script
+  script: dotnet nuget push **/*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
+  skip_cleanup: true
+  on:
+    branch: main
+    tags: true
 notifications:
   slack:
     if: branch = main
@@ -31,4 +27,4 @@ notifications:
     on_success: never
     on_failure: change
     rooms:
-      - secure: VvnsqrTi9RKxxlZtOL3fAXlXCcKTGbXo6UrB9AGtYRx8xjFgwnKt+RONthbiYXr8auk8XbX5JKyyFB6Vzuc8zzu3a15BlXMtgaiPcRd2KKR4J8RzJbfNw2Ncx+M27mB+/8gXh+4XedjjsurXbJsNj2AUAz/oW4LPgjdURj/H6M0=
+      secure: lV1xMzJ7M266w3KR6ansd7k88/WtAUyQcf2kUQ3lliK1GU5LHUjJJnSxqrix82njNz/ykvSDuD5O9p7RM7IXrs+R3QKCwxOuJHpHTp4e858peHeWZz4az+3ctQKsRV6nkufWf9Z4Mamizj23QW/hmrvudX9qQowIou8rSp2vCpU=
