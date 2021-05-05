@@ -49,7 +49,7 @@ namespace Twilio.Tests.Rest.Events.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"status\": \"initialized\",\"sink_configuration\": {},\"description\": \"description\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"kinesis\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate\"}}"
+                                         "{\"status\": \"initialized\",\"sink_configuration\": {\"arn\": \"arn:aws:kinesis:us-east-1:111111111:stream/test\",\"role_arn\": \"arn:aws:iam::111111111:role/Role\",\"external_id\": \"1234567890\"},\"description\": \"A Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"kinesis\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate\"}}"
                                      ));
 
             var response = SinkResource.Fetch("DGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -88,7 +88,7 @@ namespace Twilio.Tests.Rest.Events.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"status\": \"initialized\",\"sink_configuration\": {\"arn\": \"4242\",\"role_arn\": \"abc123\",\"external_id\": \"010101\"},\"description\": \"description\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"kinesis\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate\"}}"
+                                         "{\"status\": \"initialized\",\"sink_configuration\": {\"arn\": \"arn:aws:kinesis:us-east-1:111111111:stream/test\",\"role_arn\": \"arn:aws:iam::111111111:role/Role\",\"external_id\": \"1234567890\"},\"description\": \"My Kinesis Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"kinesis\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate\"}}"
                                      ));
 
             var response = SinkResource.Create("description", "{}", SinkResource.SinkTypeEnum.Kinesis, client: twilioRestClient);
@@ -175,10 +175,47 @@ namespace Twilio.Tests.Rest.Events.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"sinks\": [{\"status\": \"initialized\",\"sink_configuration\": {},\"description\": \"A Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"kinesis\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate\"}},{\"status\": \"initialized\",\"sink_configuration\": {},\"description\": \"ANOTHER Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"kinesis\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab/Validate\"}},{\"status\": \"active\",\"sink_configuration\": {},\"description\": \"A webhook Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"webhook\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac/Validate\"}}],\"meta\": {\"page\": 0,\"page_size\": 20,\"first_page_url\": \"https://events.twilio.com/v1/Sinks?PageSize=20&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Sinks?PageSize=20&Page=0\",\"next_page_url\": null,\"key\": \"sinks\"}}"
+                                         "{\"sinks\": [{\"status\": \"initialized\",\"sink_configuration\": {\"arn\": \"arn:aws:kinesis:us-east-1:111111111:stream/test\",\"role_arn\": \"arn:aws:iam::111111111:role/Role\",\"external_id\": \"1234567890\"},\"description\": \"A Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T19:00:00Z\",\"sink_type\": \"kinesis\",\"date_updated\": \"2015-07-30T19:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate\"}},{\"status\": \"initialized\",\"sink_configuration\": {\"arn\": \"arn:aws:kinesis:us-east-1:222222222:stream/test\",\"role_arn\": \"arn:aws:iam::111111111:role/Role\",\"external_id\": \"1234567890\"},\"description\": \"ANOTHER Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"kinesis\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab/Validate\"}},{\"status\": \"active\",\"sink_configuration\": {\"destination\": \"http://example.org/webhook\",\"method\": \"POST\",\"batch_events\": true},\"description\": \"A webhook Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac\",\"date_created\": \"2015-07-30T21:00:00Z\",\"sink_type\": \"webhook\",\"date_updated\": \"2015-07-30T21:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaac/Validate\"}}],\"meta\": {\"page\": 0,\"page_size\": 20,\"first_page_url\": \"https://events.twilio.com/v1/Sinks?PageSize=20&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Sinks?PageSize=20&Page=0\",\"next_page_url\": null,\"key\": \"sinks\"}}"
                                      ));
 
             var response = SinkResource.Read(client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestUpdateRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Post,
+                Twilio.Rest.Domain.Events,
+                "/v1/Sinks/DGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                ""
+            );
+            request.AddPostParam("Description", Serialize("description"));
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                SinkResource.Update("DGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "description", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestUpdateResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"status\": \"initialized\",\"sink_configuration\": {\"arn\": \"arn:aws:kinesis:us-east-1:111111111:stream/test\",\"role_arn\": \"arn:aws:iam::111111111:role/Role\",\"external_id\": \"1234567890\"},\"description\": \"My Kinesis Sink\",\"sid\": \"DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2015-07-30T20:00:00Z\",\"sink_type\": \"kinesis\",\"date_updated\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"links\": {\"sink_test\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Test\",\"sink_validate\": \"https://events.twilio.com/v1/Sinks/DGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Validate\"}}"
+                                     ));
+
+            var response = SinkResource.Update("DGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "description", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

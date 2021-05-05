@@ -153,4 +153,46 @@ namespace Twilio.Rest.Events.V1
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
+    /// Update a specific Sink
+    /// </summary>
+    public class UpdateSinkOptions : IOptions<SinkResource>
+    {
+        /// <summary>
+        /// A string that uniquely identifies this Sink.
+        /// </summary>
+        public string PathSid { get; }
+        /// <summary>
+        /// Sink Description
+        /// </summary>
+        public string Description { get; }
+
+        /// <summary>
+        /// Construct a new UpdateSinkOptions
+        /// </summary>
+        /// <param name="pathSid"> A string that uniquely identifies this Sink. </param>
+        /// <param name="description"> Sink Description </param>
+        public UpdateSinkOptions(string pathSid, string description)
+        {
+            PathSid = pathSid;
+            Description = description;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (Description != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Description", Description));
+            }
+
+            return p;
+        }
+    }
+
 }

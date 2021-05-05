@@ -323,7 +323,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Issues experienced during the call
         /// </summary>
         [JsonProperty("issues")]
-        public List<FeedbackIssue> Issues { get; private set; }
+        public List<object> Issues { get; private set; }
         /// <summary>
         /// The average QualityScore of the feedback entries
         /// </summary>

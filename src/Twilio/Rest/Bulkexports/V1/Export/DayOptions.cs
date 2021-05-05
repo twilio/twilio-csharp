@@ -12,8 +12,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Day.
     /// </summary>
     public class FetchDayOptions : IOptions<DayResource>
@@ -49,8 +47,6 @@ namespace Twilio.Rest.Bulkexports.V1.Export
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Retrieve a list of all Days for a resource.
     /// </summary>
     public class ReadDayOptions : ReadOptions<DayResource>

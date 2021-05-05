@@ -389,6 +389,76 @@ namespace Twilio.Rest.Events.V1
             return Page<SinkResource>.FromJson("sinks", response.Content);
         }
 
+        private static Request BuildUpdateRequest(UpdateSinkOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Post,
+                Rest.Domain.Events,
+                "/v1/Sinks/" + options.PathSid + "",
+                postParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// Update a specific Sink
+        /// </summary>
+        /// <param name="options"> Update Sink parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sink </returns>
+        public static SinkResource Update(UpdateSinkOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a specific Sink
+        /// </summary>
+        /// <param name="options"> Update Sink parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sink </returns>
+        public static async System.Threading.Tasks.Task<SinkResource> UpdateAsync(UpdateSinkOptions options,
+                                                                                  ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildUpdateRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// Update a specific Sink
+        /// </summary>
+        /// <param name="pathSid"> A string that uniquely identifies this Sink. </param>
+        /// <param name="description"> Sink Description </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of Sink </returns>
+        public static SinkResource Update(string pathSid, string description, ITwilioRestClient client = null)
+        {
+            var options = new UpdateSinkOptions(pathSid, description);
+            return Update(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// Update a specific Sink
+        /// </summary>
+        /// <param name="pathSid"> A string that uniquely identifies this Sink. </param>
+        /// <param name="description"> Sink Description </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of Sink </returns>
+        public static async System.Threading.Tasks.Task<SinkResource> UpdateAsync(string pathSid,
+                                                                                  string description,
+                                                                                  ITwilioRestClient client = null)
+        {
+            var options = new UpdateSinkOptions(pathSid, description);
+            return await UpdateAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a SinkResource object
         /// </summary>

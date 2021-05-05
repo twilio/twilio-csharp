@@ -340,8 +340,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Participant </returns>
         public static ParticipantResource Create(string pathConferenceSid,
-                                                 Types.PhoneNumber from,
-                                                 Types.PhoneNumber to,
+                                                 IEndpoint from,
+                                                 IEndpoint to,
                                                  string pathAccountSid = null,
                                                  Uri statusCallback = null,
                                                  Twilio.Http.HttpMethod statusCallbackMethod = null,
@@ -444,8 +444,8 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Participant </returns>
         public static async System.Threading.Tasks.Task<ParticipantResource> CreateAsync(string pathConferenceSid,
-                                                                                         Types.PhoneNumber from,
-                                                                                         Types.PhoneNumber to,
+                                                                                         IEndpoint from,
+                                                                                         IEndpoint to,
                                                                                          string pathAccountSid = null,
                                                                                          Uri statusCallback = null,
                                                                                          Twilio.Http.HttpMethod statusCallbackMethod = null,

@@ -13,6 +13,39 @@ namespace Twilio.Rest.Api.V2010.Account.Call
 {
 
     /// <summary>
+    /// Fetch a Feedback resource from a call
+    /// </summary>
+    public class FetchFeedbackOptions : IOptions<FeedbackResource>
+    {
+        /// <summary>
+        /// The unique sid that identifies this account
+        /// </summary>
+        public string PathAccountSid { get; set; }
+        /// <summary>
+        /// The call sid that uniquely identifies the call
+        /// </summary>
+        public string PathCallSid { get; }
+
+        /// <summary>
+        /// Construct a new FetchFeedbackOptions
+        /// </summary>
+        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
+        public FetchFeedbackOptions(string pathCallSid)
+        {
+            PathCallSid = pathCallSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
+    /// <summary>
     /// Create a Feedback resource for a call
     /// </summary>
     public class CreateFeedbackOptions : IOptions<FeedbackResource>
@@ -67,39 +100,6 @@ namespace Twilio.Rest.Api.V2010.Account.Call
     }
 
     /// <summary>
-    /// Fetch a Feedback resource from a call
-    /// </summary>
-    public class FetchFeedbackOptions : IOptions<FeedbackResource>
-    {
-        /// <summary>
-        /// The unique sid that identifies this account
-        /// </summary>
-        public string PathAccountSid { get; set; }
-        /// <summary>
-        /// The call sid that uniquely identifies the call
-        /// </summary>
-        public string PathCallSid { get; }
-
-        /// <summary>
-        /// Construct a new FetchFeedbackOptions
-        /// </summary>
-        /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
-        public FetchFeedbackOptions(string pathCallSid)
-        {
-            PathCallSid = pathCallSid;
-        }
-
-        /// <summary>
-        /// Generate the necessary parameters
-        /// </summary>
-        public List<KeyValuePair<string, string>> GetParams()
-        {
-            var p = new List<KeyValuePair<string, string>>();
-            return p;
-        }
-    }
-
-    /// <summary>
     /// Update a Feedback resource for a call
     /// </summary>
     public class UpdateFeedbackOptions : IOptions<FeedbackResource>
@@ -115,7 +115,7 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// <summary>
         /// The call quality expressed as an integer from 1 to 5
         /// </summary>
-        public int? QualityScore { get; }
+        public int? QualityScore { get; set; }
         /// <summary>
         /// Issues experienced during the call
         /// </summary>
@@ -125,11 +125,9 @@ namespace Twilio.Rest.Api.V2010.Account.Call
         /// Construct a new UpdateFeedbackOptions
         /// </summary>
         /// <param name="pathCallSid"> The call sid that uniquely identifies the call </param>
-        /// <param name="qualityScore"> The call quality expressed as an integer from 1 to 5 </param>
-        public UpdateFeedbackOptions(string pathCallSid, int? qualityScore)
+        public UpdateFeedbackOptions(string pathCallSid)
         {
             PathCallSid = pathCallSid;
-            QualityScore = qualityScore;
             Issue = new List<FeedbackResource.IssuesEnum>();
         }
 

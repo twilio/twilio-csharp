@@ -311,8 +311,8 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// <summary>
         /// Campaign status
         /// </summary>
-        [JsonProperty("status")]
-        public string Status { get; private set; }
+        [JsonProperty("campaign_status")]
+        public string CampaignStatus { get; private set; }
         /// <summary>
         /// The Campaign Registry (TCR) Campaign ID.
         /// </summary>

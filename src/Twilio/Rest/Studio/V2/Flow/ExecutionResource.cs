@@ -290,8 +290,8 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// </summary>
         /// <param name="pathFlowSid"> The SID of the Flow </param>
         /// <param name="to"> The Contact phone number to start a Studio Flow Execution </param>
-        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Execution
-        ///            </param>
+        /// <param name="from"> The Twilio phone number or Messaging Service SID to send messages or initiate calls from during
+        ///            the Flow Execution </param>
         /// <param name="parameters"> JSON data that will be added to the Flow's context </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Execution </returns>
@@ -311,8 +311,8 @@ namespace Twilio.Rest.Studio.V2.Flow
         /// </summary>
         /// <param name="pathFlowSid"> The SID of the Flow </param>
         /// <param name="to"> The Contact phone number to start a Studio Flow Execution </param>
-        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Execution
-        ///            </param>
+        /// <param name="from"> The Twilio phone number or Messaging Service SID to send messages or initiate calls from during
+        ///            the Flow Execution </param>
         /// <param name="parameters"> JSON data that will be added to the Flow's context </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Execution </returns>

@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
+using Twilio.Types;
 
 namespace Twilio.Rest.Api.V2010.Account.Conference
 {
@@ -214,11 +215,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <summary>
         /// The phone number, Client identifier, or username portion of SIP address that made this call.
         /// </summary>
-        public Types.PhoneNumber From { get; }
+        public IEndpoint From { get; }
         /// <summary>
         /// The phone number, SIP address or Client identifier that received this call.
         /// </summary>
-        public Types.PhoneNumber To { get; }
+        public IEndpoint To { get; }
         /// <summary>
         /// The URL we should call to send status information to your application
         /// </summary>
@@ -371,7 +372,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// <param name="from"> The phone number, Client identifier, or username portion of SIP address that made this call.
         ///            </param>
         /// <param name="to"> The phone number, SIP address or Client identifier that received this call. </param>
-        public CreateParticipantOptions(string pathConferenceSid, Types.PhoneNumber from, Types.PhoneNumber to)
+        public CreateParticipantOptions(string pathConferenceSid, IEndpoint from, IEndpoint to)
         {
             PathConferenceSid = pathConferenceSid;
             From = from;

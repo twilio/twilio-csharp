@@ -64,7 +64,7 @@ namespace Twilio.Tests.Rest.Events.V1.Schema
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"schema_versions\": [{\"id\": \"Messaging.MessageStatus\",\"schema_version\": 1,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/1\",\"raw\": \"https://events-schemas.twilio.com/Messaging.MessageStatus/1\"},{\"id\": \"Messaging.MessageStatus\",\"schema_version\": 2,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/2\",\"raw\": \"https://events-schemas.twilio.com/Messaging.MessageStatus/2\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"schema_versions\"}}"
+                                         "{\"schema_versions\": [{\"id\": \"Messaging.MessageStatus\",\"schema_version\": 1,\"public\": true,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/1\",\"raw\": \"https://events-schemas.twilio.com/Messaging.MessageStatus/1\"},{\"id\": \"Messaging.MessageStatus\",\"schema_version\": 2,\"public\": true,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/2\",\"raw\": \"https://events-schemas.twilio.com/Messaging.MessageStatus/2\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"schema_versions\"}}"
                                      ));
 
             var response = SchemaVersionResource.Read("id", client: twilioRestClient);
@@ -100,7 +100,7 @@ namespace Twilio.Tests.Rest.Events.V1.Schema
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"id\": \"Messaging.MessageStatus\",\"schema_version\": 1,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/1\",\"raw\": \"https://events-schemas.twilio.com/Messaging.MessageStatus/1\"}"
+                                         "{\"id\": \"Messaging.MessageStatus\",\"schema_version\": 1,\"public\": true,\"date_created\": \"2015-07-30T20:00:00Z\",\"url\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions/1\",\"raw\": \"https://events-schemas.twilio.com/Messaging.MessageStatus/1\"}"
                                      ));
 
             var response = SchemaVersionResource.Fetch("id", 1, client: twilioRestClient);

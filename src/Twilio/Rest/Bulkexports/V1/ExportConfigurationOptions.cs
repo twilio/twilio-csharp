@@ -12,8 +12,6 @@ namespace Twilio.Rest.Bulkexports.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Export Configuration.
     /// </summary>
     public class FetchExportConfigurationOptions : IOptions<ExportConfigurationResource>
@@ -43,8 +41,6 @@ namespace Twilio.Rest.Bulkexports.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Update a specific Export Configuration.
     /// </summary>
     public class UpdateExportConfigurationOptions : IOptions<ExportConfigurationResource>

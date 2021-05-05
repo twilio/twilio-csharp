@@ -112,7 +112,7 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         public Types.PhoneNumber To { get; }
         /// <summary>
-        /// The Twilio phone number to send messages or initiate calls from during the Flow Execution
+        /// The Twilio phone number or Messaging Service SID to send messages or initiate calls from during the Flow Execution
         /// </summary>
         public Types.PhoneNumber From { get; }
         /// <summary>
@@ -125,8 +125,8 @@ namespace Twilio.Rest.Studio.V1.Flow
         /// </summary>
         /// <param name="pathFlowSid"> The SID of the Flow </param>
         /// <param name="to"> The Contact phone number to start a Studio Flow Execution </param>
-        /// <param name="from"> The Twilio phone number to send messages or initiate calls from during the Flow Execution
-        ///            </param>
+        /// <param name="from"> The Twilio phone number or Messaging Service SID to send messages or initiate calls from during
+        ///            the Flow Execution </param>
         public CreateExecutionOptions(string pathFlowSid, Types.PhoneNumber to, Types.PhoneNumber from)
         {
             PathFlowSid = pathFlowSid;

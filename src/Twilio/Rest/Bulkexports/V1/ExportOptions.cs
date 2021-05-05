@@ -12,8 +12,6 @@ namespace Twilio.Rest.Bulkexports.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
-    ///
     /// Fetch a specific Export.
     /// </summary>
     public class FetchExportOptions : IOptions<ExportResource>
