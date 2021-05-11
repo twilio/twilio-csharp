@@ -1,7 +1,11 @@
 using System;
 using System.Net;
 using System.Collections.Generic;
+
+#if !NET35
 using System.Threading.Tasks;
+#endif
+
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
@@ -143,6 +147,7 @@ namespace Twilio.Tests.Clients
             Assert.AreEqual(request.Region, "us1");
         }
 
+#if !NET35
         [Test]
         public async Task RequestAsyncPropagatesEdgeAndRegion()
         {
@@ -156,5 +161,6 @@ namespace Twilio.Tests.Clients
             Assert.AreEqual(request.Edge, "frankfurt");
             Assert.AreEqual(request.Region, "us1");
         }
+#endif
     }
 }
