@@ -125,6 +125,13 @@ namespace Twilio.Clients
         public async Task<Response> RequestAsync(Request request)
         {
             request.SetAuth(_username, _password);
+
+            if (Region != null)
+                request.Region = Region;
+
+            if (Edge != null)
+                request.Edge = Edge;
+
             Response response;
             try
             {

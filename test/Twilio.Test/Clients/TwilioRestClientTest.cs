@@ -1,6 +1,11 @@
 using System;
 using System.Net;
 using System.Collections.Generic;
+
+#if !NET35
+using System.Threading.Tasks;
+#endif
+
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
 using NUnit.Framework;
@@ -127,5 +132,35 @@ namespace Twilio.Tests.Clients
             twilioClient.Request(request);
             Assert.That(output.ToString(), Contains.Substring("request.URI: https://www.contoso.com/"));
         }
+
+        [Test]
+        public void RequestPropagatesEdgeAndRegion()
+        {
+            client.MakeRequest(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
+            Request request = new Request(HttpMethod.Get, "https://verify.twilio.com/");
+            TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", region: "us1", httpClient: client);
+            twilioClient.Edge = "frankfurt";
+
+            twilioClient.Request(request);
+
+            Assert.AreEqual(request.Edge, "frankfurt");
+            Assert.AreEqual(request.Region, "us1");
+        }
+
+#if !NET35
+        [Test]
+        public async Task RequestAsyncPropagatesEdgeAndRegion()
+        {
+            client.MakeRequestAsync(Arg.Any<Request>()).Returns(new Response(HttpStatusCode.OK, "OK"));
+            Request request = new Request(HttpMethod.Get, "https://verify.twilio.com/");
+            TwilioRestClient twilioClient = new TwilioRestClient("foo", "bar", region: "us1", httpClient: client);
+            twilioClient.Edge = "frankfurt";
+
+            await twilioClient.RequestAsync(request);
+
+            Assert.AreEqual(request.Edge, "frankfurt");
+            Assert.AreEqual(request.Region, "us1");
+        }
+#endif
     }
 }
