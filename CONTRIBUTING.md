@@ -164,7 +164,7 @@ you are working:
 
 ```bash
 docker build -f ./Dockerfile.dev -t twilio-csharp .
-docker run --name twilio-csharp -v /Users/ethomas/di/jiras/1369/twilio-csharp:/twilio -it -d twilio-csharp
+docker run --name twilio-csharp -v <path-to>/twilio-csharp:/twilio -it -d twilio-csharp
 docker exec -it twilio-csharp /bin/bash
 dotnet test
 ```
