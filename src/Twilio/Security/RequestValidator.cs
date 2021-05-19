@@ -129,17 +129,17 @@ namespace Twilio.Security
             // UriBuilder.ToString() will not display the port 
             // if the Port property is set to -1
             uri.Port = -1;
-            return uri.ToString();
+            return uri.Uri.OriginalString;
         }
 
         private string AddPort(UriBuilder uri)
         {
             if (uri.Port != -1)
             {
-                return uri.ToString();
+                return uri.Uri.OriginalString;
             }
             uri.Port = uri.Scheme == "https" ? 443 : 80;
-            return uri.ToString();
+            return uri.Uri.OriginalString;
         }
 
     }

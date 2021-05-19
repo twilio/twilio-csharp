@@ -159,3 +159,18 @@ you are working:
 [docs-link]: https://www.twilio.com/docs/libraries/csharp
 [issue-link]: https://github.com/twilio/twilio-csharp/issues/new
 [github]: https://github.com/twilio/twilio-csharp
+
+## Testing locally with Docker
+
+```bash
+docker build -f ./Dockerfile.dev -t twilio-csharp .
+docker run --name twilio-csharp -v /Users/ethomas/di/jiras/1369/twilio-csharp:/twilio -it -d twilio-csharp
+docker exec -it twilio-csharp /bin/bash
+dotnet test
+```
+
+Make changes to files locally ...
+
+```bash
+dotnet test
+```
