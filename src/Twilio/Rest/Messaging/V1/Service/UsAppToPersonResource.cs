@@ -121,7 +121,7 @@ namespace Twilio.Rest.Messaging.V1.Service
             return new Request(
                 HttpMethod.Delete,
                 Rest.Domain.Messaging,
-                "/v1/Services/" + options.PathMessagingServiceSid + "/Compliance/Usa2p",
+                "/v1/Services/" + options.PathMessagingServiceSid + "/Compliance/Usa2p/" + options.PathSid + "",
                 queryParams: options.GetParams(),
                 headerParams: null
             );
@@ -160,11 +160,12 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// delete
         /// </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to delete the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the US A2P Compliance resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPerson </returns>
-        public static bool Delete(string pathMessagingServiceSid, ITwilioRestClient client = null)
+        public static bool Delete(string pathMessagingServiceSid, string pathSid, ITwilioRestClient client = null)
         {
-            var options = new DeleteUsAppToPersonOptions(pathMessagingServiceSid);
+            var options = new DeleteUsAppToPersonOptions(pathMessagingServiceSid, pathSid);
             return Delete(options, client);
         }
 
@@ -173,22 +174,158 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// delete
         /// </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to delete the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the US A2P Compliance resource to delete </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<bool> DeleteAsync(string pathMessagingServiceSid,
+                                                                          string pathSid,
                                                                           ITwilioRestClient client = null)
         {
-            var options = new DeleteUsAppToPersonOptions(pathMessagingServiceSid);
+            var options = new DeleteUsAppToPersonOptions(pathMessagingServiceSid, pathSid);
             return await DeleteAsync(options, client);
         }
         #endif
+
+        private static Request BuildReadRequest(ReadUsAppToPersonOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Messaging,
+                "/v1/Services/" + options.PathMessagingServiceSid + "/Compliance/Usa2p",
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// read
+        /// </summary>
+        /// <param name="options"> Read UsAppToPerson parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UsAppToPerson </returns>
+        public static ResourceSet<UsAppToPersonResource> Read(ReadUsAppToPersonOptions options,
+                                                              ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildReadRequest(options, client));
+
+            var page = Page<UsAppToPersonResource>.FromJson("compliance", response.Content);
+            return new ResourceSet<UsAppToPersonResource>(page, options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// read
+        /// </summary>
+        /// <param name="options"> Read UsAppToPerson parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UsAppToPersonResource>> ReadAsync(ReadUsAppToPersonOptions options,
+                                                                                                      ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildReadRequest(options, client));
+
+            var page = Page<UsAppToPersonResource>.FromJson("compliance", response.Content);
+            return new ResourceSet<UsAppToPersonResource>(page, options, client);
+        }
+        #endif
+
+        /// <summary>
+        /// read
+        /// </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of UsAppToPerson </returns>
+        public static ResourceSet<UsAppToPersonResource> Read(string pathMessagingServiceSid,
+                                                              int? pageSize = null,
+                                                              long? limit = null,
+                                                              ITwilioRestClient client = null)
+        {
+            var options = new ReadUsAppToPersonOptions(pathMessagingServiceSid){PageSize = pageSize, Limit = limit};
+            return Read(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// read
+        /// </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        /// <param name="pageSize"> Page size </param>
+        /// <param name="limit"> Record limit </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<UsAppToPersonResource>> ReadAsync(string pathMessagingServiceSid,
+                                                                                                      int? pageSize = null,
+                                                                                                      long? limit = null,
+                                                                                                      ITwilioRestClient client = null)
+        {
+            var options = new ReadUsAppToPersonOptions(pathMessagingServiceSid){PageSize = pageSize, Limit = limit};
+            return await ReadAsync(options, client);
+        }
+        #endif
+
+        /// <summary>
+        /// Fetch the target page of records
+        /// </summary>
+        /// <param name="targetUrl"> API-generated URL for the requested results page </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The target page of records </returns>
+        public static Page<UsAppToPersonResource> GetPage(string targetUrl, ITwilioRestClient client)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+
+            var request = new Request(
+                HttpMethod.Get,
+                targetUrl
+            );
+
+            var response = client.Request(request);
+            return Page<UsAppToPersonResource>.FromJson("compliance", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the next page of records
+        /// </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The next page of records </returns>
+        public static Page<UsAppToPersonResource> NextPage(Page<UsAppToPersonResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetNextPageUrl(Rest.Domain.Messaging)
+            );
+
+            var response = client.Request(request);
+            return Page<UsAppToPersonResource>.FromJson("compliance", response.Content);
+        }
+
+        /// <summary>
+        /// Fetch the previous page of records
+        /// </summary>
+        /// <param name="page"> current page of records </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> The previous page of records </returns>
+        public static Page<UsAppToPersonResource> PreviousPage(Page<UsAppToPersonResource> page, ITwilioRestClient client)
+        {
+            var request = new Request(
+                HttpMethod.Get,
+                page.GetPreviousPageUrl(Rest.Domain.Messaging)
+            );
+
+            var response = client.Request(request);
+            return Page<UsAppToPersonResource>.FromJson("compliance", response.Content);
+        }
 
         private static Request BuildFetchRequest(FetchUsAppToPersonOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Get,
                 Rest.Domain.Messaging,
-                "/v1/Services/" + options.PathMessagingServiceSid + "/Compliance/Usa2p",
+                "/v1/Services/" + options.PathMessagingServiceSid + "/Compliance/Usa2p/" + options.PathSid + "",
                 queryParams: options.GetParams(),
                 headerParams: null
             );
@@ -227,11 +364,14 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// fetch
         /// </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the US A2P Compliance resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of UsAppToPerson </returns>
-        public static UsAppToPersonResource Fetch(string pathMessagingServiceSid, ITwilioRestClient client = null)
+        public static UsAppToPersonResource Fetch(string pathMessagingServiceSid,
+                                                  string pathSid,
+                                                  ITwilioRestClient client = null)
         {
-            var options = new FetchUsAppToPersonOptions(pathMessagingServiceSid);
+            var options = new FetchUsAppToPersonOptions(pathMessagingServiceSid, pathSid);
             return Fetch(options, client);
         }
 
@@ -240,12 +380,14 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// fetch
         /// </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        /// <param name="pathSid"> The SID that identifies the US A2P Compliance resource to fetch </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of UsAppToPerson </returns>
         public static async System.Threading.Tasks.Task<UsAppToPersonResource> FetchAsync(string pathMessagingServiceSid,
+                                                                                          string pathSid,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new FetchUsAppToPersonOptions(pathMessagingServiceSid);
+            var options = new FetchUsAppToPersonOptions(pathMessagingServiceSid, pathSid);
             return await FetchAsync(options, client);
         }
         #endif
@@ -268,6 +410,11 @@ namespace Twilio.Rest.Messaging.V1.Service
             }
         }
 
+        /// <summary>
+        /// The unique string that identifies a US A2P Compliance resource
+        /// </summary>
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
         /// <summary>
         /// The SID of the Account that created the resource
         /// </summary>

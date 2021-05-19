@@ -13,9 +13,6 @@ namespace Twilio.Rest.Video.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// Returns a single CompositionHook resource identified by a CompositionHook SID.
     /// </summary>
     public class FetchCompositionHookOptions : IOptions<CompositionHookResource>
@@ -45,9 +42,6 @@ namespace Twilio.Rest.Video.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// List of all Recording CompositionHook resources.
     /// </summary>
     public class ReadCompositionHookOptions : ReadOptions<CompositionHookResource>
@@ -105,9 +99,6 @@ namespace Twilio.Rest.Video.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// Delete a Recording CompositionHook resource identified by a `CompositionHook SID`.
     /// </summary>
     public class DeleteCompositionHookOptions : IOptions<CompositionHookResource>
@@ -137,9 +128,6 @@ namespace Twilio.Rest.Video.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// CreateCompositionHookOptions
     /// </summary>
     public class CreateCompositionHookOptions : IOptions<CompositionHookResource>
@@ -257,9 +245,6 @@ namespace Twilio.Rest.Video.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// UpdateCompositionHookOptions
     /// </summary>
     public class UpdateCompositionHookOptions : IOptions<CompositionHookResource>

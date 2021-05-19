@@ -72,6 +72,21 @@ namespace Twilio.Tests.Rest.Events.V1
         }
 
         [Test]
+        public void TestReadResultsWithSchemaIdResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"types\": [{\"date_created\": \"2020-08-13T13:28:20Z\",\"date_updated\": \"2020-08-13T13:28:20Z\",\"type\": \"com.twilio.messaging.message.delivered\",\"schema_id\": \"Messaging.MessageStatus\",\"public\": true,\"description\": \"Messaging- delivered message\",\"url\": \"https://events.twilio.com/v1/Types/com.twilio.messaging.message.delivered\",\"links\": {\"schema\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions\"}},{\"date_created\": \"2020-08-13T13:28:19Z\",\"date_updated\": \"2020-08-13T13:28:19Z\",\"type\": \"com.twilio.messaging.message.failed\",\"schema_id\": \"Messaging.MessageStatus\",\"public\": true,\"description\": \"Messaging- failed message\",\"url\": \"https://events.twilio.com/v1/Types/com.twilio.messaging.message.failed\",\"links\": {\"schema\": \"https://events.twilio.com/v1/Schemas/Messaging.MessageStatus/Versions\"}}],\"meta\": {\"page\": 0,\"page_size\": 20,\"first_page_url\": \"https://events.twilio.com/v1/Types?SchemaId=Messaging.MessageStatus&PageSize=20&Page=0\",\"previous_page_url\": null,\"url\": \"https://events.twilio.com/v1/Types?SchemaId=Messaging.MessageStatus&PageSize=20&Page=0\",\"next_page_url\": null,\"key\": \"types\"}}"
+                                     ));
+
+            var response = EventTypeResource.Read(client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
         public void TestFetchRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
