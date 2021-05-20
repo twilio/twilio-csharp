@@ -8,7 +8,7 @@ namespace Twilio.Tests.Security
     [TestFixture]
     public class RequestValidatorTest
     {
-        private const string Url = "https://MyCompany.com/myapp.php?foo=1&bar=2";
+        private const string Url = "https://mycompany.com/myapp.php?foo=1&bar=2";
         private const string Body = "{\"property\": \"value\", \"boolean\": true}";
         private const string BodyHash = "0a1ff7634d9ab3b95db5c9a2dfe9416e41502b283a80c7cf19632632f96e6620";
         private readonly NameValueCollection _parameters = new NameValueCollection();
@@ -29,6 +29,14 @@ namespace Twilio.Tests.Security
         {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
             Assert.IsTrue(_validator.Validate(Url, _parameters, signature), "Request does not match provided signature");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCase()
+        {
+            const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
+            const string url = "https://MyCompany.com:1234/MyApp.PHP?foo=1&bar=2";
+            Assert.IsFalse(_validator.Validate(url, _parameters, signature), "Request should have failed validation but didn't");
         }
 
         [Test]
