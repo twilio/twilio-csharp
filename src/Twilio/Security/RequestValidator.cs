@@ -85,7 +85,7 @@ namespace Twilio.Security
             return dict;
         }
 
-        public string GetValidationSignature(string url, IDictionary<string, string> parameters)
+        private string GetValidationSignature(string url, IDictionary<string, string> parameters)
         {
             var b = new StringBuilder(url);
             if (parameters != null)
