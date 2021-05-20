@@ -155,11 +155,6 @@ you are working:
 * All features or bug fixes **must be tested** by one or more tests.
 * All classes and methods **must be documented**.
 
-
-[docs-link]: https://www.twilio.com/docs/libraries/csharp
-[issue-link]: https://github.com/twilio/twilio-csharp/issues/new
-[github]: https://github.com/twilio/twilio-csharp
-
 ## Testing locally with Docker
 
 ```bash
@@ -174,3 +169,9 @@ Make changes to files locally ...
 ```bash
 dotnet test
 ```
+
+If you need to start over, you may want to use the `--no-cache=true` flag when running `docker build`.
+
+[docs-link]: https://www.twilio.com/docs/libraries/csharp
+[issue-link]: https://github.com/twilio/twilio-csharp/issues/new
+[github]: https://github.com/twilio/twilio-csharp
