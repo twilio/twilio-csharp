@@ -55,7 +55,7 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"brand_registration_sid\": \"BNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"description\": \"Send marketing messages about sales and offers to opted in customers.\",\"message_samples\": [\"EXPRESS: Denim Days Event is ON\",\"LAST CHANCE: Book your next flight for just 1 (ONE) EUR\"],\"us_app_to_person_usecase\": \"MARKETING\",\"has_embedded_links\": true,\"has_embedded_phone\": false,\"campaign_status\": \"PENDING\",\"campaign_id\": \"CXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_externally_registered\": false,\"rate_limits\": {\"att\": {\"mps\": 600,\"msg_class\": \"A\"},\"tmobile\": {\"brand_tier\": \"TOP\"}},\"date_created\": \"2021-02-18T14:48:52Z\",\"date_updated\": \"2021-02-18T14:48:52Z\",\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Compliance/Usa2p\"}"
+                                         "{\"sid\": \"QE2c6890da8086d771620e9b13fadeba0b\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"brand_registration_sid\": \"BNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"description\": \"Send marketing messages about sales to opted in customers.\",\"message_samples\": [\"EXPRESS: Denim Days Event is ON\",\"LAST CHANCE: Book your next flight for just 1 (ONE) EUR\"],\"us_app_to_person_usecase\": \"MARKETING\",\"has_embedded_links\": true,\"has_embedded_phone\": false,\"campaign_status\": \"PENDING\",\"campaign_id\": \"CXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_externally_registered\": false,\"rate_limits\": {\"att\": {\"mps\": 600,\"msg_class\": \"A\"},\"tmobile\": {\"brand_tier\": \"TOP\"}},\"date_created\": \"2021-02-18T14:48:52Z\",\"date_updated\": \"2021-02-18T14:48:52Z\",\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Compliance/Usa2p/QE2c6890da8086d771620e9b13fadeba0b\"}"
                                      ));
 
             var response = UsAppToPersonResource.Create("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "BNXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "description", Promoter.ListOfOne("message_samples"), "us_app_to_person_usecase", true, true, client: twilioRestClient);
@@ -69,14 +69,14 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
             var request = new Request(
                 HttpMethod.Delete,
                 Twilio.Rest.Domain.Messaging,
-                "/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Compliance/Usa2p",
+                "/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Compliance/Usa2p/QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
                 ""
             );
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                UsAppToPersonResource.Delete("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                UsAppToPersonResource.Delete("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -94,12 +94,12 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
                                          "null"
                                      ));
 
-            var response = UsAppToPersonResource.Delete("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = UsAppToPersonResource.Delete("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
 
         [Test]
-        public void TestFetchRequest()
+        public void TestReadRequest()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             var request = new Request(
@@ -112,7 +112,43 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
 
             try
             {
-                UsAppToPersonResource.Fetch("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                UsAppToPersonResource.Read("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+                Assert.Fail("Expected TwilioException to be thrown for 500");
+            }
+            catch (ApiException) {}
+            twilioRestClient.Received().Request(request);
+        }
+
+        [Test]
+        public void TestReadFullResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"compliance\": [{\"sid\": \"QE2c6890da8086d771620e9b13fadeba0b\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"brand_registration_sid\": \"BNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"description\": \"Send marketing messages about sales to opted in customers.\",\"message_samples\": [\"EXPRESS: Denim Days Event is ON\",\"LAST CHANCE: Book your next flight for just 1 (ONE) EUR\"],\"us_app_to_person_usecase\": \"MARKETING\",\"has_embedded_links\": true,\"has_embedded_phone\": false,\"campaign_status\": \"PENDING\",\"campaign_id\": \"CXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_externally_registered\": false,\"rate_limits\": {\"att\": {\"mps\": 600,\"msg_class\": \"A\"},\"tmobile\": {\"brand_tier\": \"TOP\"}},\"date_created\": \"2021-02-18T14:48:52Z\",\"date_updated\": \"2021-02-18T14:48:52Z\",\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Compliance/Usa2p/QE2c6890da8086d771620e9b13fadeba0b\"}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Compliance/Usa2p?PageSize=50&Page=0\",\"previous_page_url\": null,\"next_page_url\": null,\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Compliance/Usa2p?PageSize=50&Page=0\",\"key\": \"compliance\"}}"
+                                     ));
+
+            var response = UsAppToPersonResource.Read("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestFetchRequest()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            var request = new Request(
+                HttpMethod.Get,
+                Twilio.Rest.Domain.Messaging,
+                "/v1/Services/MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Compliance/Usa2p/QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+                ""
+            );
+            twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
+
+            try
+            {
+                UsAppToPersonResource.Fetch("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -127,10 +163,10 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"brand_registration_sid\": \"BNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"description\": \"Send marketing messages about sales and offers to opted in customers.\",\"message_samples\": [\"EXPRESS: Denim Days Event is ON\",\"LAST CHANCE: Book your next flight for just 1 (ONE) EUR\"],\"us_app_to_person_usecase\": \"MARKETING\",\"has_embedded_links\": true,\"has_embedded_phone\": false,\"campaign_status\": \"PENDING\",\"campaign_id\": \"CXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_externally_registered\": false,\"rate_limits\": {\"att\": {\"mps\": 600,\"msg_class\": \"A\"},\"tmobile\": {\"brand_tier\": \"TOP\"}},\"date_created\": \"2021-02-18T14:48:52Z\",\"date_updated\": \"2021-02-18T14:48:52Z\",\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Compliance/Usa2p\"}"
+                                         "{\"sid\": \"QE2c6890da8086d771620e9b13fadeba0b\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"brand_registration_sid\": \"BNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"messaging_service_sid\": \"MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"description\": \"Send marketing messages about sales to opted in customers.\",\"message_samples\": [\"EXPRESS: Denim Days Event is ON\",\"LAST CHANCE: Book your next flight for just 1 (ONE) EUR\"],\"us_app_to_person_usecase\": \"MARKETING\",\"has_embedded_links\": true,\"has_embedded_phone\": false,\"campaign_status\": \"PENDING\",\"campaign_id\": \"CXaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"is_externally_registered\": false,\"rate_limits\": {\"att\": {\"mps\": 600,\"msg_class\": \"A\"},\"tmobile\": {\"brand_tier\": \"TOP\"}},\"date_created\": \"2021-02-18T14:48:52Z\",\"date_updated\": \"2021-02-18T14:48:52Z\",\"url\": \"https://messaging.twilio.com/v1/Services/MGaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Compliance/Usa2p/QE2c6890da8086d771620e9b13fadeba0b\"}"
                                      ));
 
-            var response = UsAppToPersonResource.Fetch("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            var response = UsAppToPersonResource.Fetch("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "QEXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

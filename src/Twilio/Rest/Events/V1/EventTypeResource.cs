@@ -69,15 +69,17 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Retrieve a paginated list of all the available Event Types.
         /// </summary>
+        /// <param name="schemaId"> A string to filter Event Types by schema. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of EventType </returns>
-        public static ResourceSet<EventTypeResource> Read(int? pageSize = null,
+        public static ResourceSet<EventTypeResource> Read(string schemaId = null,
+                                                          int? pageSize = null,
                                                           long? limit = null,
                                                           ITwilioRestClient client = null)
         {
-            var options = new ReadEventTypeOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadEventTypeOptions(){SchemaId = schemaId, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -85,15 +87,17 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Retrieve a paginated list of all the available Event Types.
         /// </summary>
+        /// <param name="schemaId"> A string to filter Event Types by schema. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of EventType </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(int? pageSize = null,
+        public static async System.Threading.Tasks.Task<ResourceSet<EventTypeResource>> ReadAsync(string schemaId = null,
+                                                                                                  int? pageSize = null,
                                                                                                   long? limit = null,
                                                                                                   ITwilioRestClient client = null)
         {
-            var options = new ReadEventTypeOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadEventTypeOptions(){SchemaId = schemaId, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

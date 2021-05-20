@@ -113,6 +113,11 @@ namespace Twilio.Rest.Messaging.V1
         }
 
         /// <summary>
+        /// The unique string that identifies a US A2P Compliance resource
+        /// </summary>
+        [JsonProperty("sid")]
+        public string Sid { get; private set; }
+        /// <summary>
         /// The SID of the Account that created the resource
         /// </summary>
         [JsonProperty("account_sid")]

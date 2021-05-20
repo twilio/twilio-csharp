@@ -127,14 +127,20 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// The SID of the Messaging Service to delete the resource from
         /// </summary>
         public string PathMessagingServiceSid { get; }
+        /// <summary>
+        /// The SID that identifies the US A2P Compliance resource to delete
+        /// </summary>
+        public string PathSid { get; }
 
         /// <summary>
         /// Construct a new DeleteUsAppToPersonOptions
         /// </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to delete the resource from </param>
-        public DeleteUsAppToPersonOptions(string pathMessagingServiceSid)
+        /// <param name="pathSid"> The SID that identifies the US A2P Compliance resource to delete </param>
+        public DeleteUsAppToPersonOptions(string pathMessagingServiceSid, string pathSid)
         {
             PathMessagingServiceSid = pathMessagingServiceSid;
+            PathSid = pathSid;
         }
 
         /// <summary>
@@ -150,6 +156,42 @@ namespace Twilio.Rest.Messaging.V1.Service
     /// <summary>
     /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
     ///
+    /// ReadUsAppToPersonOptions
+    /// </summary>
+    public class ReadUsAppToPersonOptions : ReadOptions<UsAppToPersonResource>
+    {
+        /// <summary>
+        /// The SID of the Messaging Service to fetch the resource from
+        /// </summary>
+        public string PathMessagingServiceSid { get; }
+
+        /// <summary>
+        /// Construct a new ReadUsAppToPersonOptions
+        /// </summary>
+        /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
+        public ReadUsAppToPersonOptions(string pathMessagingServiceSid)
+        {
+            PathMessagingServiceSid = pathMessagingServiceSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public override List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (PageSize != null)
+            {
+                p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));
+            }
+
+            return p;
+        }
+    }
+
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
     /// FetchUsAppToPersonOptions
     /// </summary>
     public class FetchUsAppToPersonOptions : IOptions<UsAppToPersonResource>
@@ -158,14 +200,20 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// The SID of the Messaging Service to fetch the resource from
         /// </summary>
         public string PathMessagingServiceSid { get; }
+        /// <summary>
+        /// The SID that identifies the US A2P Compliance resource to fetch
+        /// </summary>
+        public string PathSid { get; }
 
         /// <summary>
         /// Construct a new FetchUsAppToPersonOptions
         /// </summary>
         /// <param name="pathMessagingServiceSid"> The SID of the Messaging Service to fetch the resource from </param>
-        public FetchUsAppToPersonOptions(string pathMessagingServiceSid)
+        /// <param name="pathSid"> The SID that identifies the US A2P Compliance resource to fetch </param>
+        public FetchUsAppToPersonOptions(string pathMessagingServiceSid, string pathSid)
         {
             PathMessagingServiceSid = pathMessagingServiceSid;
+            PathSid = pathSid;
         }
 
         /// <summary>

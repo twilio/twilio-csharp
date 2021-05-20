@@ -300,7 +300,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="channelType"> The channel type </param>
         /// <param name="contactIdentity"> The channel contact's Identity </param>
         /// <param name="enabled"> Whether the new Flex Flow is enabled </param>
-        /// <param name="integrationType"> The integration type </param>
+        /// <param name="integrationType"> The software that will handle inbound messages. </param>
         /// <param name="integrationFlowSid"> The SID of the Studio Flow </param>
         /// <param name="integrationUrl"> The External Webhook URL </param>
         /// <param name="integrationWorkspaceSid"> The Workspace SID for a new Task </param>
@@ -346,7 +346,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="channelType"> The channel type </param>
         /// <param name="contactIdentity"> The channel contact's Identity </param>
         /// <param name="enabled"> Whether the new Flex Flow is enabled </param>
-        /// <param name="integrationType"> The integration type </param>
+        /// <param name="integrationType"> The software that will handle inbound messages. </param>
         /// <param name="integrationFlowSid"> The SID of the Studio Flow </param>
         /// <param name="integrationUrl"> The External Webhook URL </param>
         /// <param name="integrationWorkspaceSid"> The Workspace SID for a new Task </param>
@@ -433,7 +433,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="channelType"> The channel type </param>
         /// <param name="contactIdentity"> The channel contact's Identity </param>
         /// <param name="enabled"> Whether the new Flex Flow is enabled </param>
-        /// <param name="integrationType"> The integration type </param>
+        /// <param name="integrationType"> The software that will handle inbound messages. </param>
         /// <param name="integrationFlowSid"> The SID of the Studio Flow </param>
         /// <param name="integrationUrl"> The External Webhook URL </param>
         /// <param name="integrationWorkspaceSid"> The Workspace SID for a new Task </param>
@@ -481,7 +481,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// <param name="channelType"> The channel type </param>
         /// <param name="contactIdentity"> The channel contact's Identity </param>
         /// <param name="enabled"> Whether the new Flex Flow is enabled </param>
-        /// <param name="integrationType"> The integration type </param>
+        /// <param name="integrationType"> The software that will handle inbound messages. </param>
         /// <param name="integrationFlowSid"> The SID of the Studio Flow </param>
         /// <param name="integrationUrl"> The External Webhook URL </param>
         /// <param name="integrationWorkspaceSid"> The Workspace SID for a new Task </param>
@@ -651,7 +651,7 @@ namespace Twilio.Rest.FlexApi.V1
         [JsonProperty("enabled")]
         public bool? Enabled { get; private set; }
         /// <summary>
-        /// The integration type
+        /// The software that will handle inbound messages.
         /// </summary>
         [JsonProperty("integration_type")]
         [JsonConverter(typeof(StringEnumConverter))]
