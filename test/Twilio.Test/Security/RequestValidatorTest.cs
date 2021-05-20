@@ -35,13 +35,37 @@ namespace Twilio.Tests.Security
         [Test]
         public void TestValidateDictionaryMixedCase()
         {
+            const string signature = "g9IN/x4Cft2g517EjYvEvM/W7LU=";
+            const string url = "https://MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCaseWithPort()
+        {
+            const string signature = "g9IN/x4Cft2g517EjYvEvM/W7LU=";
+            const string url = "https://MyCompany.com:1234/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCaseAddsPortHttp()
+        {
+            const string signature = "XY7AlKOKL6im4yWyX84gldUrtis=";
+            const string url = "http://MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCaseWithIncorrectSignature()
+        {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
             const string url = "https://MyCompany.com/myapp.php?foo=1&bar=2";
             Assert.IsFalse(_validator.Validate(url, _parameters, signature), "Request should have failed validation but didn't");
         }
 
         [Test]
-        public void TestValidateDictionaryMixedCaseWithPort()
+        public void TestValidateDictionaryMixedCaseWithPortWithIncorrectSignature()
         {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
             const string url = "https://MyCompany.com:1234/myapp.php?foo=1&bar=2";
@@ -49,7 +73,7 @@ namespace Twilio.Tests.Security
         }
 
         [Test]
-        public void TestValidateDictionaryMixedCaseAddsPortHttp()
+        public void TestValidateDictionaryMixedCaseAddsPortHttpWithIncorrectSignature()
         {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
             const string url = "http://MyCompany.com/myapp.php?foo=1&bar=2";
