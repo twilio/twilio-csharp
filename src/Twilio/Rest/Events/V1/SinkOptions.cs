@@ -50,7 +50,7 @@ namespace Twilio.Rest.Events.V1
     public class CreateSinkOptions : IOptions<SinkResource>
     {
         /// <summary>
-        /// Sink Description
+        /// Sink Description.
         /// </summary>
         public string Description { get; }
         /// <summary>
@@ -65,7 +65,7 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Construct a new CreateSinkOptions
         /// </summary>
-        /// <param name="description"> Sink Description </param>
+        /// <param name="description"> Sink Description. </param>
         /// <param name="sinkConfiguration"> JSON Sink configuration. </param>
         /// <param name="sinkType"> Sink type. </param>
         public CreateSinkOptions(string description, object sinkConfiguration, SinkResource.SinkTypeEnum sinkType)
@@ -139,11 +139,30 @@ namespace Twilio.Rest.Events.V1
     public class ReadSinkOptions : ReadOptions<SinkResource>
     {
         /// <summary>
+        /// A boolean to return sinks used/not used by a subscription.
+        /// </summary>
+        public bool? InUse { get; set; }
+        /// <summary>
+        /// A string to filter sinks by status.
+        /// </summary>
+        public string Status { get; set; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (InUse != null)
+            {
+                p.Add(new KeyValuePair<string, string>("InUse", InUse.Value.ToString().ToLower()));
+            }
+
+            if (Status != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Status", Status));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

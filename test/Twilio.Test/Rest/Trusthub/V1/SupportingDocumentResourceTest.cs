@@ -51,7 +51,7 @@ namespace Twilio.Tests.Rest.Trusthub.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.Created,
-                                         "{\"status\": \"DRAFT\",\"date_updated\": \"2021-02-11T17:23:00Z\",\"friendly_name\": \"Business-profile-physical-address\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments/RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-11T17:23:00Z\",\"sid\": \"RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"attributes\": {\"address_sids\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"type\": \"customer_profile_address\",\"mime_type\": null}"
+                                         "{\"status\": \"draft\",\"date_updated\": \"2021-02-11T17:23:00Z\",\"friendly_name\": \"Business-profile-physical-address\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments/RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-11T17:23:00Z\",\"sid\": \"RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"attributes\": {\"address_sids\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"type\": \"customer_profile_address\",\"mime_type\": null}"
                                      ));
 
             var response = SupportingDocumentResource.Create("friendly_name", "type", client: twilioRestClient);
@@ -102,7 +102,7 @@ namespace Twilio.Tests.Rest.Trusthub.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"results\": [{\"status\": \"DRAFT\",\"date_updated\": \"2021-02-11T17:23:00Z\",\"friendly_name\": \"Business-profile-physical-address\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments/RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-11T17:23:00Z\",\"sid\": \"RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"attributes\": {\"address_sids\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"type\": \"customer_profile_address\",\"mime_type\": null}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trusthub.twilio.com/v1/SupportingDocuments?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"results\"}}"
+                                         "{\"results\": [{\"status\": \"draft\",\"date_updated\": \"2021-02-11T17:23:00Z\",\"friendly_name\": \"Business-profile-physical-address\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments/RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-11T17:23:00Z\",\"sid\": \"RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"attributes\": {\"address_sids\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"type\": \"customer_profile_address\",\"mime_type\": null}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://trusthub.twilio.com/v1/SupportingDocuments?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"results\"}}"
                                      ));
 
             var response = SupportingDocumentResource.Read(client: twilioRestClient);
@@ -138,7 +138,7 @@ namespace Twilio.Tests.Rest.Trusthub.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"status\": \"DRAFT\",\"date_updated\": \"2021-02-11T17:23:00Z\",\"friendly_name\": \"Business-profile-physical-address\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments/RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-11T17:23:00Z\",\"sid\": \"RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"attributes\": {\"address_sids\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"type\": \"customer_profile_address\",\"mime_type\": null}"
+                                         "{\"status\": \"draft\",\"date_updated\": \"2021-02-11T17:23:00Z\",\"friendly_name\": \"Business-profile-physical-address\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments/RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-11T17:23:00Z\",\"sid\": \"RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"attributes\": {\"address_sids\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"type\": \"customer_profile_address\",\"mime_type\": null}"
                                      ));
 
             var response = SupportingDocumentResource.Fetch("RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
@@ -174,7 +174,7 @@ namespace Twilio.Tests.Rest.Trusthub.V1
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"status\": \"DRAFT\",\"date_updated\": \"2021-02-11T17:23:00Z\",\"friendly_name\": \"friendly_name\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments/RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-11T17:23:00Z\",\"sid\": \"RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"attributes\": {\"address_sids\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"type\": \"customer_profile_address\",\"mime_type\": null}"
+                                         "{\"status\": \"draft\",\"date_updated\": \"2021-02-11T17:23:00Z\",\"friendly_name\": \"friendly_name\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"url\": \"https://trusthub.twilio.com/v1/SupportingDocuments/RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"date_created\": \"2021-02-11T17:23:00Z\",\"sid\": \"RDaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"attributes\": {\"address_sids\": \"ADaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"},\"type\": \"customer_profile_address\",\"mime_type\": null}"
                                      ));
 
             var response = SupportingDocumentResource.Update("RDXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);

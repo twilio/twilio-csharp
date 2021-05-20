@@ -13,9 +13,6 @@ namespace Twilio.Rest.Video.V1
 {
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// Returns a single Composition resource identified by a Composition SID.
     /// </summary>
     public class FetchCompositionOptions : IOptions<CompositionResource>
@@ -45,9 +42,6 @@ namespace Twilio.Rest.Video.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// List of all Recording compositions.
     /// </summary>
     public class ReadCompositionOptions : ReadOptions<CompositionResource>
@@ -105,9 +99,6 @@ namespace Twilio.Rest.Video.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// Delete a Recording Composition resource identified by a Composition SID.
     /// </summary>
     public class DeleteCompositionOptions : IOptions<CompositionResource>
@@ -137,9 +128,6 @@ namespace Twilio.Rest.Video.V1
     }
 
     /// <summary>
-    /// PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you
-    /// currently do not have developer preview access, please contact help@twilio.com.
-    ///
     /// CreateCompositionOptions
     /// </summary>
     public class CreateCompositionOptions : IOptions<CompositionResource>

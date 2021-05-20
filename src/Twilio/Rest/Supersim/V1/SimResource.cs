@@ -98,7 +98,7 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
         ///             to be added to your Account </param>
-        /// <param name="registrationCode"> The 10 digit code required to claim the Super SIM for your Account </param>
+        /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sim </returns>
         public static SimResource Create(string iccid, string registrationCode, ITwilioRestClient client = null)
@@ -113,7 +113,7 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         /// <param name="iccid"> The [ICCID](https://en.wikipedia.org/wiki/Subscriber_identity_module#ICCID) of the Super SIM
         ///             to be added to your Account </param>
-        /// <param name="registrationCode"> The 10 digit code required to claim the Super SIM for your Account </param>
+        /// <param name="registrationCode"> The 10-digit code required to claim the Super SIM for your Account </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sim </returns>
         public static async System.Threading.Tasks.Task<SimResource> CreateAsync(string iccid,

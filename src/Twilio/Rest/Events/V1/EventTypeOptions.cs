@@ -19,11 +19,21 @@ namespace Twilio.Rest.Events.V1
     public class ReadEventTypeOptions : ReadOptions<EventTypeResource>
     {
         /// <summary>
+        /// A string to filter Event Types by schema.
+        /// </summary>
+        public string SchemaId { get; set; }
+
+        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public override List<KeyValuePair<string, string>> GetParams()
         {
             var p = new List<KeyValuePair<string, string>>();
+            if (SchemaId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SchemaId", SchemaId));
+            }
+
             if (PageSize != null)
             {
                 p.Add(new KeyValuePair<string, string>("PageSize", PageSize.ToString()));

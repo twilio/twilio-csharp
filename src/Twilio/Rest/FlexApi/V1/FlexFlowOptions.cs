@@ -96,7 +96,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// The integration type
+        /// The software that will handle inbound messages.
         /// </summary>
         public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
         /// <summary>
@@ -284,7 +284,7 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         public bool? Enabled { get; set; }
         /// <summary>
-        /// The integration type
+        /// The software that will handle inbound messages.
         /// </summary>
         public FlexFlowResource.IntegrationTypeEnum IntegrationType { get; set; }
         /// <summary>

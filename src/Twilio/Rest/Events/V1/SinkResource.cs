@@ -161,7 +161,7 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Create a new Sink
         /// </summary>
-        /// <param name="description"> Sink Description </param>
+        /// <param name="description"> Sink Description. </param>
         /// <param name="sinkConfiguration"> JSON Sink configuration. </param>
         /// <param name="sinkType"> Sink type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -179,7 +179,7 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Create a new Sink
         /// </summary>
-        /// <param name="description"> Sink Description </param>
+        /// <param name="description"> Sink Description. </param>
         /// <param name="sinkConfiguration"> JSON Sink configuration. </param>
         /// <param name="sinkType"> Sink type. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -307,15 +307,19 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Retrieve a paginated list of Sinks belonging to the account used to make the request.
         /// </summary>
+        /// <param name="inUse"> A boolean to return sinks used/not used by a subscription. </param>
+        /// <param name="status"> A string to filter sinks by status. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Sink </returns>
-        public static ResourceSet<SinkResource> Read(int? pageSize = null,
+        public static ResourceSet<SinkResource> Read(bool? inUse = null,
+                                                     string status = null,
+                                                     int? pageSize = null,
                                                      long? limit = null,
                                                      ITwilioRestClient client = null)
         {
-            var options = new ReadSinkOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadSinkOptions(){InUse = inUse, Status = status, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -323,15 +327,19 @@ namespace Twilio.Rest.Events.V1
         /// <summary>
         /// Retrieve a paginated list of Sinks belonging to the account used to make the request.
         /// </summary>
+        /// <param name="inUse"> A boolean to return sinks used/not used by a subscription. </param>
+        /// <param name="status"> A string to filter sinks by status. </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Sink </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<SinkResource>> ReadAsync(int? pageSize = null,
+        public static async System.Threading.Tasks.Task<ResourceSet<SinkResource>> ReadAsync(bool? inUse = null,
+                                                                                             string status = null,
+                                                                                             int? pageSize = null,
                                                                                              long? limit = null,
                                                                                              ITwilioRestClient client = null)
         {
-            var options = new ReadSinkOptions(){PageSize = pageSize, Limit = limit};
+            var options = new ReadSinkOptions(){InUse = inUse, Status = status, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
