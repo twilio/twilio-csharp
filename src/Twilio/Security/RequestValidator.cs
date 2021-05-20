@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Twilio.Security
 {
@@ -46,8 +47,8 @@ namespace Twilio.Security
         public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
             // check signature of url with and without port, since sig generation on back end is inconsistent
-            var signatureWithoutPort = GetValidationSignature(RemovePort(new UriBuilder(url)), parameters);
-            var signatureWithPort = GetValidationSignature(AddPort(new UriBuilder(url)), parameters);
+            var signatureWithoutPort = GetValidationSignature(RemovePort(url), parameters);
+            var signatureWithPort = GetValidationSignature(AddPort(url), parameters);
             // If either url produces a valid signature, we accept the request as valid
             return SecureCompare(signatureWithoutPort, expected) || SecureCompare(signatureWithPort, expected);
         }
@@ -84,7 +85,7 @@ namespace Twilio.Security
             return dict;
         }
 
-        private string GetValidationSignature(string url, IDictionary<string, string> parameters)
+        public string GetValidationSignature(string url, IDictionary<string, string> parameters)
         {
             var b = new StringBuilder(url);
             if (parameters != null)
@@ -124,16 +125,27 @@ namespace Twilio.Security
             return mismatch == 0;
         }
 
-        private string RemovePort(UriBuilder uri)
+        private string PreserveHostnameCasing(string url)
         {
-            // UriBuilder.ToString() will not display the port 
-            // if the Port property is set to -1
+            // Preserve host name casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
+            Match m = Regex.Match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?");
+            var hostName = m.Groups[4].ToString();
+            return hostName.Split(':')[0];
+            
+        }
+
+        private string RemovePort(string url)
+        {
+            var uri = new UriBuilder(url);
+            uri.Host = PreserveHostnameCasing(url);
             uri.Port = -1;
             return uri.Uri.OriginalString;
         }
 
-        private string AddPort(UriBuilder uri)
+        private string AddPort(string url)
         {
+            var uri = new UriBuilder(url);
+            uri.Host = PreserveHostnameCasing(url);
             if (uri.Port != -1)
             {
                 return uri.Uri.OriginalString;

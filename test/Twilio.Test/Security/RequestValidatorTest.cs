@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using NUnit.Framework;
 using Twilio.Security;
@@ -36,7 +37,7 @@ namespace Twilio.Tests.Security
         {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
             const string url = "https://MyCompany.com/myapp.php?foo=1&bar=2";
-            Assert.IsTrue(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
+            Assert.IsFalse(_validator.Validate(url, _parameters, signature), "Request should have failed validation but didn't");
         }
 
         [Test]
@@ -44,7 +45,15 @@ namespace Twilio.Tests.Security
         {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
             const string url = "https://MyCompany.com:1234/myapp.php?foo=1&bar=2";
-            Assert.IsTrue(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
+            Assert.IsFalse(_validator.Validate(url, _parameters, signature), "Request should have failed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCaseAddsPortHttp()
+        {
+            const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
+            const string url = "http://MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsFalse(_validator.Validate(url, _parameters, signature), "Request should have failed validation but didn't");
         }
 
         [Test]
