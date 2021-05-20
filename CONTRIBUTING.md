@@ -157,6 +157,8 @@ you are working:
 
 ## Testing locally with Docker
 
+Remove any `./obj` or `./bin` files on the host machine, if applicable.
+
 ```bash
 docker build -f ./Dockerfile.dev -t twilio-csharp .
 docker run --name twilio-csharp -v <path-to>/twilio-csharp:/twilio -it -d twilio-csharp
@@ -170,7 +172,7 @@ Make changes to files locally ...
 dotnet test
 ```
 
-If you need to start over, you may want to use the `--no-cache=true` flag when running `docker build`.
+If you need to start over, you may want to use the `--no-cache=true` flag when running `docker build`. 
 
 [docs-link]: https://www.twilio.com/docs/libraries/csharp
 [issue-link]: https://github.com/twilio/twilio-csharp/issues/new
