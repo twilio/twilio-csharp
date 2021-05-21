@@ -14,6 +14,7 @@ namespace Twilio.Security
     {
         private readonly HMACSHA1 _hmac;
         private readonly SHA256 _sha;
+        // regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
         private const string URL_REGEX = "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?";
 
         /// <summary>
@@ -150,7 +151,6 @@ namespace Twilio.Security
 
         private string PreserveHostnameCasing(string url)
         {
-            // Preserve host name casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
             var m = Regex.Match(url, URL_REGEX);
             var hostName = m.Groups[4].ToString();
             var preservedHostName = System.String.Empty;
@@ -166,10 +166,9 @@ namespace Twilio.Security
 
         private string PreserveSchemeCasing(string url)
         {
-            // Preserve scheme casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
             var m = Regex.Match(url, URL_REGEX);
-            var scheme = m.Groups[2].ToString();
-            return scheme;
+            var preservedScheme = m.Groups[2].ToString();
+            return preservedScheme;
         }
     }
 }
