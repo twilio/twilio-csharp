@@ -167,7 +167,7 @@ namespace Twilio.Security
         private string PreserveSchemeCasing(string url)
         {
             // Preserve scheme casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
-            Match m = Regex.Match(url, URL_REGEX);
+            var m = Regex.Match(url, URL_REGEX);
             var scheme = m.Groups[2].ToString();
             return scheme;
         }
