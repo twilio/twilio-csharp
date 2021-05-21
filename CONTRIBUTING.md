@@ -155,25 +155,6 @@ you are working:
 * All features or bug fixes **must be tested** by one or more tests.
 * All classes and methods **must be documented**.
 
-## Testing locally with Docker
-
-Remove any `./obj` or `./bin` files on the host machine, if applicable.
-
-```bash
-docker build -f ./Dockerfile.dev -t twilio-csharp .
-docker run --name twilio-csharp -v <path-to>/twilio-csharp:/twilio -it -d twilio-csharp
-docker exec -it twilio-csharp /bin/bash
-dotnet test
-```
-
-Make changes to files locally ...
-
-```bash
-dotnet test
-```
-
-If you need to start over, you may want to use the `--no-cache=true` flag when running `docker build`. 
-
 [docs-link]: https://www.twilio.com/docs/libraries/csharp
 [issue-link]: https://github.com/twilio/twilio-csharp/issues/new
 [github]: https://github.com/twilio/twilio-csharp
