@@ -125,15 +125,6 @@ namespace Twilio.Security
             return mismatch == 0;
         }
 
-        private string PreserveHostnameCasing(string url)
-        {
-            // Preserve host name casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
-            Match m = Regex.Match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?");
-            var hostName = m.Groups[4].ToString();
-            return hostName.Split(':')[0];
-            
-        }
-
         private string RemovePort(string url)
         {
             var uri = new UriBuilder(url);
@@ -154,5 +145,13 @@ namespace Twilio.Security
             return uri.Uri.OriginalString;
         }
 
+        private string PreserveHostnameCasing(string url)
+        {
+            // Preserve host name casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
+            Match m = Regex.Match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?");
+            var hostName = m.Groups[4].ToString();
+            return hostName.Split(':')[0];
+            
+        }
     }
 }
