@@ -57,6 +57,14 @@ namespace Twilio.Tests.Security
         }
 
         [Test]
+        public void TestValidateCredentialsArePreserved()
+        {
+            const string signature = "PJ08CxXr7KLPjEQCTc8LkUSMwSM=";
+            const string url = "http://username:password@MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsFalse(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
+        }
+
+        [Test]
         public void TestValidateDictionaryMixedCaseWithIncorrectSignature()
         {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
