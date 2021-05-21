@@ -129,20 +129,22 @@ namespace Twilio.Security
         {
             var uri = new UriBuilder(url);
             uri.Host = PreserveHostnameCasing(url);
+            var scheme = PreserveSchemeCasing(url);
             uri.Port = -1;
-            return uri.Uri.OriginalString;
+            return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
 
         private string AddPort(string url)
         {
             var uri = new UriBuilder(url);
             uri.Host = PreserveHostnameCasing(url);
+            var scheme = PreserveSchemeCasing(url);
             if (uri.Port != -1)
             {
                 return uri.Uri.OriginalString;
             }
             uri.Port = uri.Scheme == "https" ? 443 : 80;
-            return uri.Uri.OriginalString;
+            return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
 
         private string PreserveHostnameCasing(string url)
@@ -150,8 +152,21 @@ namespace Twilio.Security
             // Preserve host name casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
             Match m = Regex.Match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?");
             var hostName = m.Groups[4].ToString();
-            return hostName.Split(':')[0];
-            
+            string preservedHostName = System.String.Empty;
+            if (hostName.Split('@').Length == 2) { // we have user credentials
+                preservedHostName = hostName.Split('@')[1].Split(':')[0];
+            } else {
+                preservedHostName = hostName.Split(':')[0];
+            }
+            return preservedHostName;
+        }
+
+        private string PreserveSchemeCasing(string url)
+        {
+            // Preserve scheme casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
+            Match m = Regex.Match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?");
+            var scheme = m.Groups[2].ToString();
+            return scheme;
         }
     }
 }
