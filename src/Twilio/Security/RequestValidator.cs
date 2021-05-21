@@ -14,6 +14,7 @@ namespace Twilio.Security
     {
         private readonly HMACSHA1 _hmac;
         private readonly SHA256 _sha;
+        private const string URL_REGEX = "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?";
 
         /// <summary>
         /// Create a new RequestValidator
@@ -129,8 +130,8 @@ namespace Twilio.Security
         {
             var uri = new UriBuilder(url);
             uri.Host = PreserveHostnameCasing(url);
-            var scheme = PreserveSchemeCasing(url);
             uri.Port = -1;
+            var scheme = PreserveSchemeCasing(url);
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
 
@@ -138,11 +139,11 @@ namespace Twilio.Security
         {
             var uri = new UriBuilder(url);
             uri.Host = PreserveHostnameCasing(url);
-            var scheme = PreserveSchemeCasing(url);
             if (uri.Port != -1)
             {
                 return uri.Uri.OriginalString;
             }
+            var scheme = PreserveSchemeCasing(url);
             uri.Port = uri.Scheme == "https" ? 443 : 80;
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
@@ -150,10 +151,12 @@ namespace Twilio.Security
         private string PreserveHostnameCasing(string url)
         {
             // Preserve host name casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
-            Match m = Regex.Match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?");
+            var m = Regex.Match(url, URL_REGEX);
             var hostName = m.Groups[4].ToString();
-            string preservedHostName = System.String.Empty;
-            if (hostName.Split('@').Length == 2) { // we have user credentials
+            var preservedHostName = System.String.Empty;
+            // Do we have credentials in the URL?
+            if (hostName.Split('@').Length == 2)
+            {
                 preservedHostName = hostName.Split('@')[1].Split(':')[0];
             } else {
                 preservedHostName = hostName.Split(':')[0];
@@ -164,7 +167,7 @@ namespace Twilio.Security
         private string PreserveSchemeCasing(string url)
         {
             // Preserve scheme casing, regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
-            Match m = Regex.Match(url, "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?");
+            Match m = Regex.Match(url, URL_REGEX);
             var scheme = m.Groups[2].ToString();
             return scheme;
         }
