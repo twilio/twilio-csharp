@@ -166,9 +166,9 @@ namespace Twilio.Security
 
         private string PreserveSchemeCasing(string url)
         {
-            var m = Regex.Match(url, URL_REGEX);
-            var preservedScheme = m.Groups[2].ToString();
-            return preservedScheme;
+            var parsedUrl = new UriBuilder(url);
+            var startIndex = url.IndexOf(parsedUrl.Scheme, StringComparison.OrdinalIgnoreCase);
+            return url.Substring(startIndex, parsedUrl.Scheme.Length);
         }
     }
 }
