@@ -14,8 +14,6 @@ namespace Twilio.Security
     {
         private readonly HMACSHA1 _hmac;
         private readonly SHA256 _sha;
-        // regex source: https://datatracker.ietf.org/doc/html/rfc3986#appendix-B
-        private const string URL_REGEX = "^(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?";
 
         /// <summary>
         /// Create a new RequestValidator
@@ -132,6 +130,7 @@ namespace Twilio.Security
             var uri = new UriBuilder(url);
             uri.Host = PreserveHostnameCasing(url);
             uri.Port = -1;
+            // uri.Scheme will lowercase the output
             var scheme = PreserveSchemeCasing(url);
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
@@ -144,6 +143,7 @@ namespace Twilio.Security
             {
                 return uri.Uri.OriginalString;
             }
+            // uri.Scheme will lowercase the output
             var scheme = PreserveSchemeCasing(url);
             uri.Port = uri.Scheme == "https" ? 443 : 80;
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
@@ -151,17 +151,9 @@ namespace Twilio.Security
 
         private string PreserveHostnameCasing(string url)
         {
-            var m = Regex.Match(url, URL_REGEX);
-            var hostName = m.Groups[4].ToString();
-            var preservedHostName = System.String.Empty;
-            // Do we have credentials in the URL?
-            if (hostName.Split('@').Length == 2)
-            {
-                preservedHostName = hostName.Split('@')[1].Split(':')[0];
-            } else {
-                preservedHostName = hostName.Split(':')[0];
-            }
-            return preservedHostName;
+            var parsedUrl = new UriBuilder(url);
+            var startIndex = url.IndexOf(parsedUrl.Host, StringComparison.OrdinalIgnoreCase);
+            return url.Substring(startIndex, parsedUrl.Host.Length);
         }
 
         private string PreserveSchemeCasing(string url)
