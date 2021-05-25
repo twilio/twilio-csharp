@@ -128,8 +128,7 @@ namespace Twilio.Security
         {
             var uri = new UriBuilder(url);
             uri.Host = PreserveHostnameCasing(url);
-            uri.Port = -1;
-            // uri.Scheme will lowercase the output
+            uri.Port = SetPort(uri, -1);
             var scheme = PreserveSchemeCasing(url);
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
@@ -138,28 +137,34 @@ namespace Twilio.Security
         {
             var uri = new UriBuilder(url);
             uri.Host = PreserveHostnameCasing(url);
-            if (uri.Port != -1)
-            {
-                return uri.Uri.OriginalString;
-            }
-            // uri.Scheme will lowercase the output
+            uri.Port = SetPort(uri, uri.Port);
             var scheme = PreserveSchemeCasing(url);
-            uri.Port = uri.Scheme == "https" ? 443 : 80;
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
 
         private string PreserveHostnameCasing(string url)
         {
-            var parsedUrl = new UriBuilder(url);
-            var startIndex = url.IndexOf(parsedUrl.Host, StringComparison.OrdinalIgnoreCase);
-            return url.Substring(startIndex, parsedUrl.Host.Length);
+            var uri = new UriBuilder(url);
+            var startIndex = url.IndexOf(uri.Host, StringComparison.OrdinalIgnoreCase);
+            return url.Substring(startIndex, uri.Host.Length);
         }
 
+        private int SetPort(UriBuilder uri, int port)
+        {
+            if (port == -1)
+            {
+                return -1;
+            }
+            return uri.Scheme == "https" ? 443 : 80;
+        }
+
+        // uri.Scheme will lowercase the output
         private string PreserveSchemeCasing(string url)
         {
-            var parsedUrl = new UriBuilder(url);
-            var startIndex = url.IndexOf(parsedUrl.Scheme, StringComparison.OrdinalIgnoreCase);
-            return url.Substring(startIndex, parsedUrl.Scheme.Length);
+            var uri = new UriBuilder(url);
+            var startIndex = url.IndexOf(uri.Scheme, StringComparison.OrdinalIgnoreCase);
+            var preservedScheme = url.Substring(startIndex, uri.Scheme.Length);
+            return preservedScheme;
         }
     }
 }
