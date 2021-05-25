@@ -126,18 +126,25 @@ namespace Twilio.Security
 
         private string RemovePort(string url)
         {
-            var uri = new UriBuilder(url);
-            uri.Host = PreserveHostnameCasing(url);
-            uri.Port = SetPort(uri, -1);
-            var scheme = PreserveSchemeCasing(url);
-            return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
+            return SetPort(url, -1);
         }
 
         private string AddPort(string url)
         {
             var uri = new UriBuilder(url);
+            return SetPort(url, uri.Port);
+        }
+
+        private string SetPort(string url, int port)
+        {
+            var uri = new UriBuilder(url);
             uri.Host = PreserveHostnameCasing(url);
-            uri.Port = SetPort(uri, uri.Port);
+            if (port == -1)
+            {
+                uri.Port = port;
+            } else {
+                uri.Port = uri.Scheme == "https" ? 443 : 80;
+            }
             var scheme = PreserveSchemeCasing(url);
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
@@ -147,15 +154,6 @@ namespace Twilio.Security
             var uri = new UriBuilder(url);
             var startIndex = url.IndexOf(uri.Host, StringComparison.OrdinalIgnoreCase);
             return url.Substring(startIndex, uri.Host.Length);
-        }
-
-        private int SetPort(UriBuilder uri, int port)
-        {
-            if (port == -1)
-            {
-                return -1;
-            }
-            return uri.Scheme == "https" ? 443 : 80;
         }
 
         // uri.Scheme will lowercase the output
