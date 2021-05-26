@@ -138,31 +138,21 @@ namespace Twilio.Security
         private string SetPort(string url, int port)
         {
             var uri = new UriBuilder(url);
-            uri.Host = PreserveHostnameCasing(url);
+            uri.Host = PreserveCase(url, uri.Host);
             if (port == -1)
             {
                 uri.Port = port;
             } else {
                 uri.Port = uri.Scheme == "https" ? 443 : 80;
             }
-            var scheme = PreserveSchemeCasing(url);
+            var scheme = PreserveCase(url, uri.Scheme);
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
 
-        private string PreserveHostnameCasing(string url)
+        private string PreserveCase(string url, string replacementString)
         {
-            var uri = new UriBuilder(url);
-            var startIndex = url.IndexOf(uri.Host, StringComparison.OrdinalIgnoreCase);
-            return url.Substring(startIndex, uri.Host.Length);
-        }
-
-        // uri.Scheme will lowercase the output
-        private string PreserveSchemeCasing(string url)
-        {
-            var uri = new UriBuilder(url);
-            var startIndex = url.IndexOf(uri.Scheme, StringComparison.OrdinalIgnoreCase);
-            var preservedScheme = url.Substring(startIndex, uri.Scheme.Length);
-            return preservedScheme;
+            var startIndex = url.IndexOf(replacementString, StringComparison.OrdinalIgnoreCase);
+            return url.Substring(startIndex, replacementString.Length);
         }
     }
 }
