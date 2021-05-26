@@ -171,5 +171,18 @@ namespace Twilio.Tests.Security
             Assert.IsTrue(_validator.Validate(url, _parameters, "0ZXoZLH/DfblKGATFgpif+LLRf4="), "Request does not match provided signature");
         }
 
+        [Test]
+        public void TestValidateAddsCustomPortHttps()
+        {
+            const string url = "https://mycompany.com:1234/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, "CYn1h0gLBdNxDGkKJg6hYohgeD8="), "Request does not match provided signature");
+        }
+
+        [Test]
+        public void TestValidateAddsCustomPortHttp()
+        {
+            const string url = "http://mycompany.com:1234/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, "Zmvh+3yNM1Phv2jhDCwEM3q5ebU="), "Request does not match provided signature");
+        }
     }
 }
