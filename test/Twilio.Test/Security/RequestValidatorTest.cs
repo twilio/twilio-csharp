@@ -43,7 +43,7 @@ namespace Twilio.Tests.Security
         [Test]
         public void TestValidateDictionaryMixedCaseWithPort()
         {
-            const string signature = "g9IN/x4Cft2g517EjYvEvM/W7LU=";
+            const string signature = "PCqOZm8cnu/L6+u5i5fuEd+Iac4=";
             const string url = "https://MyCompany.com:1234/myapp.php?foo=1&bar=2";
             Assert.IsTrue(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
         }
