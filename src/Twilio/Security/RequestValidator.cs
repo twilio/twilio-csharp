@@ -142,13 +142,10 @@ namespace Twilio.Security
             if (port == -1)
             {
                 uri.Port = port;
+            } else if ( port != 443 || port != 80 ) {
+                uri.Port = port;
             } else {
-                if ( port != 443 || port != 80 )
-                {
-                    uri.Port = port;
-                } else {
-                    uri.Port = uri.Scheme == "https" ? 443 : 80;
-                }
+                uri.Port = uri.Scheme == "https" ? 443 : 80;
             }
             var scheme = PreserveCase(url, uri.Scheme);
             return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
