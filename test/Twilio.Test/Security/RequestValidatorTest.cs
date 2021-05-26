@@ -61,7 +61,7 @@ namespace Twilio.Tests.Security
         {
             const string signature = "PJ08CxXr7KLPjEQCTc8LkUSMwSM=";
             const string url = "http://username:password@MyCompany.com/myapp.php?foo=1&bar=2";
-            Assert.IsTrue(_validator.Validate(url, _parameters, signature), $"Request should have passed validation but didn't: {url}");
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), $"Request should have passed validation but didn't");
         }
 
         [Test]
@@ -69,7 +69,7 @@ namespace Twilio.Tests.Security
         {
             const string signature = "hy/l8pca+LFms4cvRdv8uiP6NGc=";
             const string url = "HTTP://username:password@MyCompany.com/myapp.php?foo=1&bar=2";
-            Assert.IsTrue(_validator.Validate(url, _parameters, signature), $"Request should have passed validation but didn't: {url}");
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), $"Request should have passed validation but didn't");
         }
 
         [Test]
@@ -77,7 +77,7 @@ namespace Twilio.Tests.Security
         {
             const string signature = "SkTSKyDJH9kUlhItI0slbgZ1UsI=";
             const string url = "http://Username:Password@MyCompany.com/myapp.php?foo=1&bar=2";
-            Assert.IsTrue(_validator.Validate(url, _parameters, signature), $"Request should have passed validation but didn't: {url}");
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), $"Request should have passed validation but didn't");
         }
 
         [Test]
