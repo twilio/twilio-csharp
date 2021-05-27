@@ -155,7 +155,7 @@ namespace Twilio.Tests.Security
         public void TestValidateRemovesPortHttp()
         {
             const string url = "http://mycompany.com:1234/myapp.php?foo=1&bar=2";
-            Assert.IsTrue(_validator.Validate(url, _parameters, "OyGYPqTF6ztdbRNCvuQO/oPvqQ4="), "Request does not match provided signature");
+            Assert.IsTrue(_validator.Validate(url, _parameters, "Zmvh+3yNM1Phv2jhDCwEM3q5ebU="), "Request does not match provided signature");
         }
 
         [Test]
