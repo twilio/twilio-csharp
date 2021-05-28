@@ -142,9 +142,13 @@ namespace Twilio.Security
             if (port == -1)
             {
                 uri.Port = port;
-            } else if ( port != 443 && port != 80 ) { // we have a custom port
+            }
+            else if ((port != 443) && (port != 80))
+            {
                 uri.Port = port;
-            } else {
+            }
+            else
+            {
                 uri.Port = uri.Scheme == "https" ? 443 : 80;
             }
             var scheme = PreserveCase(url, uri.Scheme);
