@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using NUnit.Framework;
 using Twilio.Security;
@@ -29,6 +30,78 @@ namespace Twilio.Tests.Security
         {
             const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
             Assert.IsTrue(_validator.Validate(Url, _parameters, signature), "Request does not match provided signature");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCase()
+        {
+            const string signature = "g9IN/x4Cft2g517EjYvEvM/W7LU=";
+            const string url = "https://MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCaseWithPort()
+        {
+            const string signature = "PCqOZm8cnu/L6+u5i5fuEd+Iac4=";
+            const string url = "https://MyCompany.com:1234/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCaseAddsPortHttp()
+        {
+            const string signature = "XY7AlKOKL6im4yWyX84gldUrtis=";
+            const string url = "http://MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), "Request should have passed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateCredentialsArePreserved()
+        {
+            const string signature = "PJ08CxXr7KLPjEQCTc8LkUSMwSM=";
+            const string url = "http://username:password@MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), $"Request should have passed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateCredentialsArePreservedUpperCaseScheme()
+        {
+            const string signature = "hy/l8pca+LFms4cvRdv8uiP6NGc=";
+            const string url = "HTTP://username:password@MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), $"Request should have passed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateCredentialsArePreservedMixedCaseCreds()
+        {
+            const string signature = "SkTSKyDJH9kUlhItI0slbgZ1UsI=";
+            const string url = "http://Username:Password@MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, signature), $"Request should have passed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCaseWithIncorrectSignature()
+        {
+            const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
+            const string url = "https://MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsFalse(_validator.Validate(url, _parameters, signature), "Request should have failed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCaseWithPortWithIncorrectSignature()
+        {
+            const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
+            const string url = "https://MyCompany.com:1234/myapp.php?foo=1&bar=2";
+            Assert.IsFalse(_validator.Validate(url, _parameters, signature), "Request should have failed validation but didn't");
+        }
+
+        [Test]
+        public void TestValidateDictionaryMixedCaseAddsPortHttpWithIncorrectSignature()
+        {
+            const string signature = "RSOYDt4T1cUTdK1PDd93/VVr8B8=";
+            const string url = "http://MyCompany.com/myapp.php?foo=1&bar=2";
+            Assert.IsFalse(_validator.Validate(url, _parameters, signature), "Request should have failed validation but didn't");
         }
 
         [Test]
@@ -84,7 +157,7 @@ namespace Twilio.Tests.Security
             const string url = "http://mycompany.com:1234/myapp.php?foo=1&bar=2";
             Assert.IsTrue(_validator.Validate(url, _parameters, "Zmvh+3yNM1Phv2jhDCwEM3q5ebU="), "Request does not match provided signature");
         }
-        
+
         [Test]
         public void TestValidateAddsPortHttps()
         {
@@ -98,5 +171,18 @@ namespace Twilio.Tests.Security
             Assert.IsTrue(_validator.Validate(url, _parameters, "0ZXoZLH/DfblKGATFgpif+LLRf4="), "Request does not match provided signature");
         }
 
+        [Test]
+        public void TestValidateAddsCustomPortHttps()
+        {
+            const string url = "https://mycompany.com:1234/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, "CYn1h0gLBdNxDGkKJg6hYohgeD8="), "Request does not match provided signature");
+        }
+
+        [Test]
+        public void TestValidateAddsCustomPortHttp()
+        {
+            const string url = "http://mycompany.com:1234/myapp.php?foo=1&bar=2";
+            Assert.IsTrue(_validator.Validate(url, _parameters, "Zmvh+3yNM1Phv2jhDCwEM3q5ebU="), "Request does not match provided signature");
+        }
     }
 }

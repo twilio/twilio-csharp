@@ -46,8 +46,8 @@ namespace Twilio.Security
         public bool Validate(string url, IDictionary<string, string> parameters, string expected)
         {
             // check signature of url with and without port, since sig generation on back end is inconsistent
-            var signatureWithoutPort = GetValidationSignature(RemovePort(new UriBuilder(url)), parameters);
-            var signatureWithPort = GetValidationSignature(AddPort(new UriBuilder(url)), parameters);
+            var signatureWithoutPort = GetValidationSignature(RemovePort(url), parameters);
+            var signatureWithPort = GetValidationSignature(AddPort(url), parameters);
             // If either url produces a valid signature, we accept the request as valid
             return SecureCompare(signatureWithoutPort, expected) || SecureCompare(signatureWithPort, expected);
         }
@@ -124,23 +124,41 @@ namespace Twilio.Security
             return mismatch == 0;
         }
 
-        private string RemovePort(UriBuilder uri)
+        private string RemovePort(string url)
         {
-            // UriBuilder.ToString() will not display the port 
-            // if the Port property is set to -1
-            uri.Port = -1;
-            return uri.ToString();
+            return SetPort(url, -1);
         }
 
-        private string AddPort(UriBuilder uri)
+        private string AddPort(string url)
         {
-            if (uri.Port != -1)
+            var uri = new UriBuilder(url);
+            return SetPort(url, uri.Port);
+        }
+
+        private string SetPort(string url, int port)
+        {
+            var uri = new UriBuilder(url);
+            uri.Host = PreserveCase(url, uri.Host);
+            if (port == -1)
             {
-                return uri.ToString();
+                uri.Port = port;
             }
-            uri.Port = uri.Scheme == "https" ? 443 : 80;
-            return uri.ToString();
+            else if ((port != 443) && (port != 80))
+            {
+                uri.Port = port;
+            }
+            else
+            {
+                uri.Port = uri.Scheme == "https" ? 443 : 80;
+            }
+            var scheme = PreserveCase(url, uri.Scheme);
+            return uri.Uri.OriginalString.Replace(uri.Scheme, scheme);
         }
 
+        private string PreserveCase(string url, string replacementString)
+        {
+            var startIndex = url.IndexOf(replacementString, StringComparison.OrdinalIgnoreCase);
+            return url.Substring(startIndex, replacementString.Length);
+        }
     }
 }

@@ -155,7 +155,6 @@ you are working:
 * All features or bug fixes **must be tested** by one or more tests.
 * All classes and methods **must be documented**.
 
-
 [docs-link]: https://www.twilio.com/docs/libraries/csharp
 [issue-link]: https://github.com/twilio/twilio-csharp/issues/new
 [github]: https://github.com/twilio/twilio-csharp
