@@ -1,6 +1,19 @@
 twilio-csharp Changelog
 =======================
 
+[2021-06-02] Version 5.61.1
+---------------------------
+**Library - Fix**
+- [PR #567](https://github.com/twilio/twilio-csharp/pull/567): requestValidation when hostname URL has any uppercase letters. Thanks to [@thinkingserious](https://github.com/thinkingserious)!
+
+**Events**
+- join Sinks and Subscriptions service
+
+**Verify**
+- Improved the documentation of `challenge` adding the maximum and minimum expected lengths of some fields.
+- Improve documentation regarding `notification` by updating the documentation of the field `ttl`.
+
+
 [2021-05-19] Version 5.61.0
 ---------------------------
 **Library - Fix**

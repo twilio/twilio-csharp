@@ -68,7 +68,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathChallengeSid"> Challenge Sid. </param>
-        /// <param name="ttl"> How long, in seconds, the Notification is valid. </param>
+        /// <param name="ttl"> How long, in seconds, the notification is valid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Notification </returns>
         public static NotificationResource Create(string pathServiceSid,
@@ -88,7 +88,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="pathIdentity"> Unique external identifier of the Entity </param>
         /// <param name="pathChallengeSid"> Challenge Sid. </param>
-        /// <param name="ttl"> How long, in seconds, the Notification is valid. </param>
+        /// <param name="ttl"> How long, in seconds, the notification is valid. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Notification </returns>
         public static async System.Threading.Tasks.Task<NotificationResource> CreateAsync(string pathServiceSid,
@@ -151,12 +151,12 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
         [JsonProperty("challenge_sid")]
         public string ChallengeSid { get; private set; }
         /// <summary>
-        /// The priority of the Notification.
+        /// The priority of the notification.
         /// </summary>
         [JsonProperty("priority")]
         public string Priority { get; private set; }
         /// <summary>
-        /// How long, in seconds, the Notification is valid.
+        /// How long, in seconds, the notification is valid.
         /// </summary>
         [JsonProperty("ttl")]
         public int? Ttl { get; private set; }

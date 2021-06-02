@@ -31,7 +31,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity.Challenge
         /// </summary>
         public string PathChallengeSid { get; }
         /// <summary>
-        /// How long, in seconds, the Notification is valid.
+        /// How long, in seconds, the notification is valid.
         /// </summary>
         public int? Ttl { get; set; }
 
