@@ -42,6 +42,19 @@ namespace Twilio.Rest.Api.V2010.Account
             public static readonly StatusEnum Scheduled = new StatusEnum("scheduled");
             public static readonly StatusEnum Read = new StatusEnum("read");
             public static readonly StatusEnum PartiallyDelivered = new StatusEnum("partially_delivered");
+            public static readonly StatusEnum Canceled = new StatusEnum("canceled");
+        }
+
+        public sealed class UpdateStatusEnum : StringEnum
+        {
+            private UpdateStatusEnum(string value) : base(value) {}
+            public UpdateStatusEnum() {}
+            public static implicit operator UpdateStatusEnum(string value)
+            {
+                return new UpdateStatusEnum(value);
+            }
+
+            public static readonly UpdateStatusEnum Canceled = new UpdateStatusEnum("canceled");
         }
 
         public sealed class DirectionEnum : StringEnum
