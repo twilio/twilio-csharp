@@ -613,6 +613,11 @@ namespace Twilio.Rest.Conversations.V1
         /// </summary>
         [JsonProperty("links")]
         public Dictionary<string, string> Links { get; private set; }
+        /// <summary>
+        /// The bindings
+        /// </summary>
+        [JsonProperty("bindings")]
+        public object Bindings { get; private set; }
 
         private ConversationResource()
         {

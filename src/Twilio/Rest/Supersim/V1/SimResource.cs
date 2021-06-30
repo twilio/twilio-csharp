@@ -489,6 +489,11 @@ namespace Twilio.Rest.Supersim.V1
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private SimResource()
         {

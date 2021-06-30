@@ -341,17 +341,15 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <summary>
         /// The text of the message you want to send
         /// </summary>
-        public string Body { get; }
+        public string Body { get; set; }
 
         /// <summary>
         /// Construct a new UpdateMessageOptions
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="body"> The text of the message you want to send </param>
-        public UpdateMessageOptions(string pathSid, string body)
+        public UpdateMessageOptions(string pathSid)
         {
             PathSid = pathSid;
-            Body = body;
         }
 
         /// <summary>

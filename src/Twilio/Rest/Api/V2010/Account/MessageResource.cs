@@ -598,16 +598,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="body"> The text of the message you want to send </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
+        /// <param name="body"> The text of the message you want to send </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Message </returns>
         public static MessageResource Update(string pathSid,
-                                             string body,
                                              string pathAccountSid = null,
+                                             string body = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathSid, body){PathAccountSid = pathAccountSid};
+            var options = new UpdateMessageOptions(pathSid){PathAccountSid = pathAccountSid, Body = body};
             return Update(options, client);
         }
 
@@ -616,16 +616,16 @@ namespace Twilio.Rest.Api.V2010.Account
         /// To redact a message-body from a post-flight message record, post to the message instance resource with an empty body
         /// </summary>
         /// <param name="pathSid"> The unique string that identifies the resource </param>
-        /// <param name="body"> The text of the message you want to send </param>
         /// <param name="pathAccountSid"> The SID of the Account that created the resources to update </param>
+        /// <param name="body"> The text of the message you want to send </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Message </returns>
         public static async System.Threading.Tasks.Task<MessageResource> UpdateAsync(string pathSid,
-                                                                                     string body,
                                                                                      string pathAccountSid = null,
+                                                                                     string body = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateMessageOptions(pathSid, body){PathAccountSid = pathAccountSid};
+            var options = new UpdateMessageOptions(pathSid){PathAccountSid = pathAccountSid, Body = body};
             return await UpdateAsync(options, client);
         }
         #endif

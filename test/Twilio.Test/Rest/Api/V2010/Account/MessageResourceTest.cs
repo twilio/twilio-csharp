@@ -314,13 +314,12 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                 "/2010-04-01/Accounts/ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX/Messages/MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.json",
                 ""
             );
-            request.AddPostParam("Body", Serialize("body"));
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
             twilioRestClient.Request(request).Throws(new ApiException("Server Error, no content"));
 
             try
             {
-                MessageResource.Update("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "body", client: twilioRestClient);
+                MessageResource.Update("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -338,7 +337,22 @@ namespace Twilio.Tests.Rest.Api.V2010.Account
                                          "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"body\": \"\",\"date_created\": \"Fri, 24 May 2019 17:18:27 +0000\",\"date_sent\": \"Fri, 24 May 2019 17:18:28 +0000\",\"date_updated\": \"Fri, 24 May 2019 17:18:28 +0000\",\"direction\": \"outbound-api\",\"error_code\": 30007,\"error_message\": \"Carrier violation\",\"from\": \"+12019235161\",\"messaging_service_sid\": \"MGdeadbeefdeadbeefdeadbeefdeadbeef\",\"num_media\": \"0\",\"num_segments\": \"1\",\"price\": \"-0.00750\",\"price_unit\": \"USD\",\"sid\": \"SMb7c0a2ce80504485a6f653a7110836f5\",\"status\": \"sent\",\"subresource_uris\": {\"media\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5/Media.json\",\"feedback\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5/Feedback.json\"},\"to\": \"+18182008801\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5.json\"}"
                                      ));
 
-            var response = MessageResource.Update("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "body", client: twilioRestClient);
+            var response = MessageResource.Update("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestCancelMessageResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"api_version\": \"2010-04-01\",\"body\": \"\",\"date_created\": \"Fri, 24 May 2019 17:18:27 +0000\",\"date_sent\": \"Fri, 24 May 2019 17:18:28 +0000\",\"date_updated\": \"Fri, 24 May 2019 17:18:28 +0000\",\"direction\": \"outbound-api\",\"error_code\": 30007,\"error_message\": \"Carrier violation\",\"from\": \"+12019235161\",\"messaging_service_sid\": \"MGdeadbeefdeadbeefdeadbeefdeadbeef\",\"num_media\": \"0\",\"num_segments\": \"1\",\"price\": \"-0.00750\",\"price_unit\": \"USD\",\"sid\": \"SMb7c0a2ce80504485a6f653a7110836f5\",\"status\": \"canceled\",\"subresource_uris\": {\"media\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5/Media.json\",\"feedback\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5/Feedback.json\"},\"to\": \"+18182008801\",\"uri\": \"/2010-04-01/Accounts/ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/Messages/SMb7c0a2ce80504485a6f653a7110836f5.json\"}"
+                                     ));
+
+            var response = MessageResource.Update("MMXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

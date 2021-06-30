@@ -81,6 +81,7 @@ namespace Twilio.TwiML.Voice
             public static readonly EventEnum Leave = new EventEnum("leave");
             public static readonly EventEnum Mute = new EventEnum("mute");
             public static readonly EventEnum Hold = new EventEnum("hold");
+            public static readonly EventEnum Modify = new EventEnum("modify");
             public static readonly EventEnum Speaker = new EventEnum("speaker");
             public static readonly EventEnum Announcement = new EventEnum("announcement");
         }
