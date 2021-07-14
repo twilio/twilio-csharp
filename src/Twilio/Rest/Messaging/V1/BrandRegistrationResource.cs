@@ -378,6 +378,11 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// Brand score
+        /// </summary>
+        [JsonProperty("brand_score")]
+        public int? BrandScore { get; private set; }
 
         private BrandRegistrationResource()
         {
