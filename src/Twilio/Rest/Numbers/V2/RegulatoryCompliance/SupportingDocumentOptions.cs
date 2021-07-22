@@ -6,6 +6,7 @@
 using System;
 using System.Collections.Generic;
 using Twilio.Base;
+using Twilio.Types;
 using Twilio.Converters;
 
 namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
@@ -28,6 +29,10 @@ namespace Twilio.Rest.Numbers.V2.RegulatoryCompliance
         /// The set of parameters that compose the Supporting Documents resource
         /// </summary>
         public object Attributes { get; set; }
+
+#if !NET35
+        public IUploadFile File { get; set; }
+#endif
 
         /// <summary>
         /// Construct a new CreateSupportingDocumentOptions
