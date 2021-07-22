@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Twilio.Rest;
+using Twilio.Types;
 
 #if !NET35
 using System.Net;
@@ -61,6 +62,13 @@ namespace Twilio.Http
         /// </summary>
         public List<KeyValuePair<string, string>> HeaderParams { get; private set; }
 
+#if !NET35
+        /// <summary>
+        /// Files to upload
+        /// </summary>
+        public List<KeyValuePair<string, IUploadFile>> Files { get; private set; }
+#endif
+
         /// <summary>
         /// Create a new Twilio request
         /// </summary>
@@ -73,6 +81,9 @@ namespace Twilio.Http
             QueryParams = new List<KeyValuePair<string, string>>();
             PostParams = new List<KeyValuePair<string, string>>();
             HeaderParams = new List<KeyValuePair<string, string>>();
+#if !NET35
+            Files = new List<KeyValuePair<string, IUploadFile>>();
+#endif
         }
 
         /// <summary>
@@ -86,6 +97,7 @@ namespace Twilio.Http
         /// <param name="postParams">Post data</param>
         /// <param name="edge">Twilio edge</param>
         /// <param name="headerParams">Custom header data</param>
+        /// <param name="files">List of files to upload</param>
         public Request(
             HttpMethod method,
             Domain domain,
@@ -95,6 +107,9 @@ namespace Twilio.Http
             List<KeyValuePair<string, string>> postParams = null,
             string edge = null,
             List<KeyValuePair<string, string>> headerParams = null
+#if !NET35
+            , List<KeyValuePair<string, IUploadFile>> files = null
+#endif
         )
         {
             Method = method;
@@ -105,6 +120,9 @@ namespace Twilio.Http
             QueryParams = queryParams ?? new List<KeyValuePair<string, string>>();
             PostParams = postParams ?? new List<KeyValuePair<string, string>>();
             HeaderParams = headerParams ?? new List<KeyValuePair<string, string>>();
+#if !NET35
+            Files = files ?? new List<KeyValuePair<string, IUploadFile>>();
+#endif
         }
 
         /// <summary>

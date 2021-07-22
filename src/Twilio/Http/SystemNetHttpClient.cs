@@ -61,7 +61,31 @@ namespace Twilio.Http
             var httpRequest = BuildHttpRequest(request);
             if (!Equals(request.Method, HttpMethod.Get))
             {
-                httpRequest.Content = new FormUrlEncodedContent(request.PostParams);
+                if (request.Files.Count > 0)
+                {
+                    var boundary = "---------" + Guid.NewGuid().ToString().ToLower();
+                    var multiPartContent = new MultipartFormDataContent(boundary);
+                    multiPartContent.Headers.ContentType = new MediaTypeHeaderValue("multipart/form-data")
+                    {
+                        Parameters = { new NameValueHeaderValue("boundary", boundary) }
+                    };
+
+                    foreach (var postParam in request.PostParams)
+                    {
+                        multiPartContent.Add(new StringContent(postParam.Value), postParam.Key);
+                    }
+
+                    foreach (var file in request.Files)
+                    {
+                        multiPartContent.Add(new StreamContent(file.Value.Stream), file.Key, file.Value.FileName);
+                    }
+
+                    httpRequest.Content = multiPartContent;
+                }
+                else
+                {
+                    httpRequest.Content = new FormUrlEncodedContent(request.PostParams);
+                }
             }
 
             this.LastRequest = request;
