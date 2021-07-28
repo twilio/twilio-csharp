@@ -36,6 +36,19 @@ namespace Twilio.Rest.Verify.V2.Service
             public static readonly StatusEnum Disabled = new StatusEnum("disabled");
         }
 
+        public sealed class VersionEnum : StringEnum
+        {
+            private VersionEnum(string value) : base(value) {}
+            public VersionEnum() {}
+            public static implicit operator VersionEnum(string value)
+            {
+                return new VersionEnum(value);
+            }
+
+            public static readonly VersionEnum V1 = new VersionEnum("v1");
+            public static readonly VersionEnum V2 = new VersionEnum("v2");
+        }
+
         public sealed class MethodsEnum : StringEnum
         {
             private MethodsEnum(string value) : base(value) {}
@@ -97,6 +110,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="eventTypes"> The array of events that this Webhook is subscribed to. </param>
         /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
         /// <param name="status"> The webhook status </param>
+        /// <param name="version"> The webhook version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Create(string pathServiceSid,
@@ -104,9 +118,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                              List<string> eventTypes,
                                              string webhookUrl,
                                              WebhookResource.StatusEnum status = null,
+                                             WebhookResource.VersionEnum version = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateWebhookOptions(pathServiceSid, friendlyName, eventTypes, webhookUrl){Status = status};
+            var options = new CreateWebhookOptions(pathServiceSid, friendlyName, eventTypes, webhookUrl){Status = status, Version = version};
             return Create(options, client);
         }
 
@@ -119,6 +134,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="eventTypes"> The array of events that this Webhook is subscribed to. </param>
         /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
         /// <param name="status"> The webhook status </param>
+        /// <param name="version"> The webhook version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<WebhookResource> CreateAsync(string pathServiceSid,
@@ -126,9 +142,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                      List<string> eventTypes,
                                                                                      string webhookUrl,
                                                                                      WebhookResource.StatusEnum status = null,
+                                                                                     WebhookResource.VersionEnum version = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateWebhookOptions(pathServiceSid, friendlyName, eventTypes, webhookUrl){Status = status};
+            var options = new CreateWebhookOptions(pathServiceSid, friendlyName, eventTypes, webhookUrl){Status = status, Version = version};
             return await CreateAsync(options, client);
         }
         #endif
@@ -182,6 +199,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="eventTypes"> The array of events that this Webhook is subscribed to. </param>
         /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
         /// <param name="status"> The webhook status </param>
+        /// <param name="version"> The webhook version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Webhook </returns>
         public static WebhookResource Update(string pathServiceSid,
@@ -190,9 +208,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                              List<string> eventTypes = null,
                                              string webhookUrl = null,
                                              WebhookResource.StatusEnum status = null,
+                                             WebhookResource.VersionEnum version = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateWebhookOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, EventTypes = eventTypes, WebhookUrl = webhookUrl, Status = status};
+            var options = new UpdateWebhookOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, EventTypes = eventTypes, WebhookUrl = webhookUrl, Status = status, Version = version};
             return Update(options, client);
         }
 
@@ -206,6 +225,7 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="eventTypes"> The array of events that this Webhook is subscribed to. </param>
         /// <param name="webhookUrl"> The URL associated with this Webhook. </param>
         /// <param name="status"> The webhook status </param>
+        /// <param name="version"> The webhook version </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Webhook </returns>
         public static async System.Threading.Tasks.Task<WebhookResource> UpdateAsync(string pathServiceSid,
@@ -214,9 +234,10 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                      List<string> eventTypes = null,
                                                                                      string webhookUrl = null,
                                                                                      WebhookResource.StatusEnum status = null,
+                                                                                     WebhookResource.VersionEnum version = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateWebhookOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, EventTypes = eventTypes, WebhookUrl = webhookUrl, Status = status};
+            var options = new UpdateWebhookOptions(pathServiceSid, pathSid){FriendlyName = friendlyName, EventTypes = eventTypes, WebhookUrl = webhookUrl, Status = status, Version = version};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -544,6 +565,12 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonConverter(typeof(StringEnumConverter))]
         public WebhookResource.StatusEnum Status { get; private set; }
         /// <summary>
+        /// The webhook version
+        /// </summary>
+        [JsonProperty("version")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public WebhookResource.VersionEnum Version { get; private set; }
+        /// <summary>
         /// The URL associated with this Webhook.
         /// </summary>
         [JsonProperty("webhook_url")]
@@ -555,12 +582,12 @@ namespace Twilio.Rest.Verify.V2.Service
         [JsonConverter(typeof(StringEnumConverter))]
         public WebhookResource.MethodsEnum WebhookMethod { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was created
+        /// The ISO 8601 date and time in GMT when the resource was created
         /// </summary>
         [JsonProperty("date_created")]
         public DateTime? DateCreated { get; private set; }
         /// <summary>
-        /// The RFC 2822 date and time in GMT when the resource was last updated
+        /// The ISO 8601 date and time in GMT when the resource was last updated
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }

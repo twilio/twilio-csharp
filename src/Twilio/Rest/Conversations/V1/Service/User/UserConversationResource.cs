@@ -456,7 +456,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         [JsonProperty("chat_service_sid")]
         public string ChatServiceSid { get; private set; }
         /// <summary>
-        /// The unique ID of the Conversation for this message.
+        /// The unique ID of the Conversation for this User Conversation.
         /// </summary>
         [JsonProperty("conversation_sid")]
         public string ConversationSid { get; private set; }
@@ -523,7 +523,7 @@ namespace Twilio.Rest.Conversations.V1.Service.User
         [JsonConverter(typeof(StringEnumConverter))]
         public UserConversationResource.NotificationLevelEnum NotificationLevel { get; private set; }
         /// <summary>
-        /// An application-defined string that uniquely identifies the resource
+        /// An application-defined string that uniquely identifies the Conversation resource.
         /// </summary>
         [JsonProperty("unique_name")]
         public string UniqueName { get; private set; }
