@@ -424,6 +424,11 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
         /// <summary>
+        /// The unique string that identifies the SipDomain resource.
+        /// </summary>
+        [JsonProperty("domain_sid")]
+        public string DomainSid { get; private set; }
+        /// <summary>
         /// A human readable descriptive text for this resource, up to 64 characters long.
         /// </summary>
         [JsonProperty("friendly_name")]
@@ -438,11 +443,6 @@ namespace Twilio.Rest.Api.V2010.Account.Sip.Domain
         /// </summary>
         [JsonProperty("uri")]
         public string Uri { get; private set; }
-        /// <summary>
-        /// The list of IP addresses associated with this domain.
-        /// </summary>
-        [JsonProperty("subresource_uris")]
-        public Dictionary<string, string> SubresourceUris { get; private set; }
 
         private IpAccessControlListMappingResource()
         {

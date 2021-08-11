@@ -282,13 +282,15 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid </param>
         /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid </param>
+        /// <param name="brandType"> Type of brand being created. One of: "STANDARD", "STARTER". </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandRegistration </returns>
         public static BrandRegistrationResource Create(string customerProfileBundleSid,
                                                        string a2PProfileBundleSid,
+                                                       string brandType = null,
                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid);
+            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType};
             return Create(options, client);
         }
 
@@ -298,13 +300,15 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid </param>
         /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid </param>
+        /// <param name="brandType"> Type of brand being created. One of: "STANDARD", "STARTER". </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(string customerProfileBundleSid,
                                                                                                string a2PProfileBundleSid,
+                                                                                               string brandType = null,
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid);
+            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType};
             return await CreateAsync(options, client);
         }
         #endif
@@ -357,6 +361,11 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("date_updated")]
         public DateTime? DateUpdated { get; private set; }
+        /// <summary>
+        /// Type of brand. One of: "STANDARD", "STARTER".
+        /// </summary>
+        [JsonProperty("brand_type")]
+        public string BrandType { get; private set; }
         /// <summary>
         /// Brand Registration status
         /// </summary>

@@ -79,6 +79,10 @@ namespace Twilio.Rest.Messaging.V1
         /// A2P Messaging Profile Bundle Sid
         /// </summary>
         public string A2PProfileBundleSid { get; }
+        /// <summary>
+        /// Type of brand being created. One of: "STANDARD", "STARTER".
+        /// </summary>
+        public string BrandType { get; set; }
 
         /// <summary>
         /// Construct a new CreateBrandRegistrationOptions
@@ -105,6 +109,11 @@ namespace Twilio.Rest.Messaging.V1
             if (A2PProfileBundleSid != null)
             {
                 p.Add(new KeyValuePair<string, string>("A2PProfileBundleSid", A2PProfileBundleSid.ToString()));
+            }
+
+            if (BrandType != null)
+            {
+                p.Add(new KeyValuePair<string, string>("BrandType", BrandType));
             }
 
             return p;

@@ -364,6 +364,10 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// The track(s) to record
         /// </summary>
         public string RecordingTrack { get; set; }
+        /// <summary>
+        /// The maximum duration of the call in seconds.
+        /// </summary>
+        public int? TimeLimit { get; set; }
 
         /// <summary>
         /// Construct a new CreateParticipantOptions
@@ -577,6 +581,11 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
             if (RecordingTrack != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingTrack", RecordingTrack));
+            }
+
+            if (TimeLimit != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TimeLimit", TimeLimit.ToString()));
             }
 
             return p;

@@ -512,7 +512,7 @@ namespace Twilio.Rest.Api.V2010.Account.Conference
         /// The one-time cost of creating the recording.
         /// </summary>
         [JsonProperty("price")]
-        public decimal? Price { get; private set; }
+        public string Price { get; private set; }
         /// <summary>
         /// The currency used in the price property.
         /// </summary>
