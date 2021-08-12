@@ -158,6 +158,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// Which track(s) to record
         /// </summary>
         public string RecordingTrack { get; set; }
+        /// <summary>
+        /// The maximum duration of the call in seconds.
+        /// </summary>
+        public int? TimeLimit { get; set; }
 
         /// <summary>
         /// Construct a new CreateCallOptions
@@ -346,6 +350,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (RecordingTrack != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingTrack", RecordingTrack));
+            }
+
+            if (TimeLimit != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TimeLimit", TimeLimit.ToString()));
             }
 
             return p;
@@ -583,6 +592,10 @@ namespace Twilio.Rest.Api.V2010.Account
         /// TwiML instructions for the call
         /// </summary>
         public Types.Twiml Twiml { get; set; }
+        /// <summary>
+        /// The maximum duration of the call in seconds.
+        /// </summary>
+        public int? TimeLimit { get; set; }
 
         /// <summary>
         /// Construct a new UpdateCallOptions
@@ -637,6 +650,11 @@ namespace Twilio.Rest.Api.V2010.Account
             if (Twiml != null)
             {
                 p.Add(new KeyValuePair<string, string>("Twiml", Twiml.ToString()));
+            }
+
+            if (TimeLimit != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TimeLimit", TimeLimit.ToString()));
             }
 
             return p;
