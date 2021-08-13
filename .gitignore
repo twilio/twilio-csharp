@@ -231,3 +231,6 @@ Testrig
 Twilio/project.lock.json
 testrunner/
 html/
+
+# sonar cloud stuff
+.sonarqube
