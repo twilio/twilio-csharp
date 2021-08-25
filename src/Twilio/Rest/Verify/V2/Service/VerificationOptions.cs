@@ -68,10 +68,6 @@ namespace Twilio.Rest.Verify.V2.Service
         /// Your App Hash to be appended at the end of an SMS.
         /// </summary>
         public string AppHash { get; set; }
-        /// <summary>
-        /// The SID of the custom template to be used.
-        /// </summary>
-        public string TemplateSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateVerificationOptions
@@ -150,11 +146,6 @@ namespace Twilio.Rest.Verify.V2.Service
             if (AppHash != null)
             {
                 p.Add(new KeyValuePair<string, string>("AppHash", AppHash));
-            }
-
-            if (TemplateSid != null)
-            {
-                p.Add(new KeyValuePair<string, string>("TemplateSid", TemplateSid.ToString()));
             }
 
             return p;

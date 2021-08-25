@@ -108,6 +108,7 @@ namespace Twilio.Rest.Insights.V1
 
             public static readonly ProcessingStateRequestEnum Completed = new ProcessingStateRequestEnum("completed");
             public static readonly ProcessingStateRequestEnum Started = new ProcessingStateRequestEnum("started");
+            public static readonly ProcessingStateRequestEnum Partial = new ProcessingStateRequestEnum("partial");
             public static readonly ProcessingStateRequestEnum All = new ProcessingStateRequestEnum("all");
         }
 
@@ -176,6 +177,7 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="processingState"> The processing_state </param>
         /// <param name="sortBy"> The sort_by </param>
         /// <param name="subaccount"> The subaccount </param>
+        /// <param name="abnormalSession"> The abnormal_session </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -197,11 +199,12 @@ namespace Twilio.Rest.Insights.V1
                                                               CallSummariesResource.ProcessingStateRequestEnum processingState = null,
                                                               CallSummariesResource.SortByEnum sortBy = null,
                                                               string subaccount = null,
+                                                              bool? abnormalSession = null,
                                                               int? pageSize = null,
                                                               long? limit = null,
                                                               ITwilioRestClient client = null)
         {
-            var options = new ReadCallSummariesOptions(){From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallSummariesOptions(){From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -226,6 +229,7 @@ namespace Twilio.Rest.Insights.V1
         /// <param name="processingState"> The processing_state </param>
         /// <param name="sortBy"> The sort_by </param>
         /// <param name="subaccount"> The subaccount </param>
+        /// <param name="abnormalSession"> The abnormal_session </param>
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
@@ -247,11 +251,12 @@ namespace Twilio.Rest.Insights.V1
                                                                                                       CallSummariesResource.ProcessingStateRequestEnum processingState = null,
                                                                                                       CallSummariesResource.SortByEnum sortBy = null,
                                                                                                       string subaccount = null,
+                                                                                                      bool? abnormalSession = null,
                                                                                                       int? pageSize = null,
                                                                                                       long? limit = null,
                                                                                                       ITwilioRestClient client = null)
         {
-            var options = new ReadCallSummariesOptions(){From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, PageSize = pageSize, Limit = limit};
+            var options = new ReadCallSummariesOptions(){From = from, To = to, FromCarrier = fromCarrier, ToCarrier = toCarrier, FromCountryCode = fromCountryCode, ToCountryCode = toCountryCode, Branded = branded, VerifiedCaller = verifiedCaller, HasTag = hasTag, StartTime = startTime, EndTime = endTime, CallType = callType, CallState = callState, Direction = direction, ProcessingState = processingState, SortBy = sortBy, Subaccount = subaccount, AbnormalSession = abnormalSession, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif

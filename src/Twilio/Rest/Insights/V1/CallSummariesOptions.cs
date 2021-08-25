@@ -85,6 +85,10 @@ namespace Twilio.Rest.Insights.V1
         /// The subaccount
         /// </summary>
         public string Subaccount { get; set; }
+        /// <summary>
+        /// The abnormal_session
+        /// </summary>
+        public bool? AbnormalSession { get; set; }
 
         /// <summary>
         /// Construct a new ReadCallSummariesOptions
@@ -190,6 +194,11 @@ namespace Twilio.Rest.Insights.V1
             if (Subaccount != null)
             {
                 p.Add(new KeyValuePair<string, string>("Subaccount", Subaccount.ToString()));
+            }
+
+            if (AbnormalSession != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AbnormalSession", AbnormalSession.Value.ToString().ToLower()));
             }
 
             if (PageSize != null)

@@ -172,6 +172,10 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// The Status of theChallenges to fetch
         /// </summary>
         public ChallengeResource.ChallengeStatusesEnum Status { get; set; }
+        /// <summary>
+        /// The sort order of the Challenges list
+        /// </summary>
+        public ChallengeResource.ListOrdersEnum Order { get; set; }
 
         /// <summary>
         /// Construct a new ReadChallengeOptions
@@ -198,6 +202,11 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
             if (Status != null)
             {
                 p.Add(new KeyValuePair<string, string>("Status", Status.ToString()));
+            }
+
+            if (Order != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Order", Order.ToString()));
             }
 
             if (PageSize != null)

@@ -42,7 +42,22 @@ namespace Twilio.Tests.Rest.Messaging.V1.Service
         }
 
         [Test]
-        public void TestFetchResponse()
+        public void TestFetchWithBrandRegistrationSidResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"us_app_to_person_usecases\": [{\"code\": \"MARKETING\",\"name\": \"Marketing\",\"description\": \"Send marketing messages about sales and offers to opted in customers.\"},{\"code\": \"DELIVERY_NOTIFICATION\",\"name\": \"Delivery Notification\",\"description\": \"Information about the status of the delivery of a product or service.\"}]}"
+                                     ));
+
+            var response = UsAppToPersonUsecaseResource.Fetch("MGXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestFetchWithoutBrandRegistrationSidResponse()
         {
             var twilioRestClient = Substitute.For<ITwilioRestClient>();
             twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
