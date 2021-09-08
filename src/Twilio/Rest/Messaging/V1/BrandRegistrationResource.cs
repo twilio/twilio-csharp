@@ -283,14 +283,17 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid </param>
         /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid </param>
         /// <param name="brandType"> Type of brand being created. One of: "STANDARD", "STARTER". </param>
+        /// <param name="mock"> A boolean that specifies whether brand should be a mock or not. If true, brand will be
+        ///            registered as a mock brand. Defaults to false if no value is provided. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandRegistration </returns>
         public static BrandRegistrationResource Create(string customerProfileBundleSid,
                                                        string a2PProfileBundleSid,
                                                        string brandType = null,
+                                                       bool? mock = null,
                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType};
+            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType, Mock = mock};
             return Create(options, client);
         }
 
@@ -301,14 +304,17 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="customerProfileBundleSid"> Customer Profile Bundle Sid </param>
         /// <param name="a2PProfileBundleSid"> A2P Messaging Profile Bundle Sid </param>
         /// <param name="brandType"> Type of brand being created. One of: "STANDARD", "STARTER". </param>
+        /// <param name="mock"> A boolean that specifies whether brand should be a mock or not. If true, brand will be
+        ///            registered as a mock brand. Defaults to false if no value is provided. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(string customerProfileBundleSid,
                                                                                                string a2PProfileBundleSid,
                                                                                                string brandType = null,
+                                                                                               bool? mock = null,
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType};
+            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType, Mock = mock};
             return await CreateAsync(options, client);
         }
         #endif
@@ -392,6 +398,11 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("brand_score")]
         public int? BrandScore { get; private set; }
+        /// <summary>
+        /// A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
+        /// </summary>
+        [JsonProperty("mock")]
+        public bool? Mock { get; private set; }
 
         private BrandRegistrationResource()
         {

@@ -64,15 +64,15 @@ namespace Twilio.Rest.Insights.V1
         /// <summary>
         /// The call_type
         /// </summary>
-        public List<string> CallType { get; set; }
+        public List<CallSummariesResource.CallTypeEnum> CallType { get; set; }
         /// <summary>
         /// The call_state
         /// </summary>
-        public List<string> CallState { get; set; }
+        public List<CallSummariesResource.CallStateEnum> CallState { get; set; }
         /// <summary>
         /// The direction
         /// </summary>
-        public CallSummariesResource.CallDirectionEnum Direction { get; set; }
+        public List<CallSummariesResource.CallDirectionEnum> Direction { get; set; }
         /// <summary>
         /// The processing_state
         /// </summary>
@@ -101,8 +101,9 @@ namespace Twilio.Rest.Insights.V1
             ToCarrier = new List<string>();
             FromCountryCode = new List<string>();
             ToCountryCode = new List<string>();
-            CallType = new List<string>();
-            CallState = new List<string>();
+            CallType = new List<CallSummariesResource.CallTypeEnum>();
+            CallState = new List<CallSummariesResource.CallStateEnum>();
+            Direction = new List<CallSummariesResource.CallDirectionEnum>();
         }
 
         /// <summary>
@@ -168,17 +169,17 @@ namespace Twilio.Rest.Insights.V1
 
             if (CallType != null)
             {
-                p.AddRange(CallType.Select(prop => new KeyValuePair<string, string>("CallType", prop)));
+                p.AddRange(CallType.Select(prop => new KeyValuePair<string, string>("CallType", prop.ToString())));
             }
 
             if (CallState != null)
             {
-                p.AddRange(CallState.Select(prop => new KeyValuePair<string, string>("CallState", prop)));
+                p.AddRange(CallState.Select(prop => new KeyValuePair<string, string>("CallState", prop.ToString())));
             }
 
             if (Direction != null)
             {
-                p.Add(new KeyValuePair<string, string>("Direction", Direction.ToString()));
+                p.AddRange(Direction.Select(prop => new KeyValuePair<string, string>("Direction", prop.ToString())));
             }
 
             if (ProcessingState != null)

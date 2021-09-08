@@ -49,7 +49,22 @@ namespace Twilio.Tests.Rest.Pricing.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"country\": \"United States\",\"destination_number\": \"+18001234567\",\"originating_call_price\": {\"base_price\": null,\"current_price\": null,\"number_type\": null},\"iso_country\": \"US\",\"origination_number\": \"+987654321\",\"terminating_prefix_prices\": [{\"base_price\": \"\",\"current_price\": \"0.013\",\"destination_prefixes\": [\"1800\"],\"friendly_name\": \"Trunking Outbound Minute - United States Zone 1b\",\"origination_prefixes\": [\"ALL\"]}],\"price_unit\": \"USD\",\"url\": \"https://pricing.twilio.com/v2/Trunking/Numbers/+18001234567\"}"
+                                         "{\"country\": \"United States\",\"destination_number\": \"+18001234567\",\"originating_call_price\": {\"base_price\": null,\"current_price\": null,\"number_type\": null},\"iso_country\": \"US\",\"origination_number\": null,\"terminating_prefix_prices\": [{\"base_price\": null,\"current_price\": \"0.013\",\"destination_prefixes\": [\"1800\"],\"friendly_name\": \"Trunking Outbound Minute - United States Zone 1b\",\"origination_prefixes\": [\"ALL\"]}],\"price_unit\": \"USD\",\"url\": \"https://pricing.twilio.com/v2/Trunking/Numbers/+18001234567\"}"
+                                     ));
+
+            var response = NumberResource.Fetch(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);
+            Assert.NotNull(response);
+        }
+
+        [Test]
+        public void TestFetchWithOriginationResponse()
+        {
+            var twilioRestClient = Substitute.For<ITwilioRestClient>();
+            twilioRestClient.AccountSid.Returns("ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+            twilioRestClient.Request(Arg.Any<Request>())
+                            .Returns(new Response(
+                                         System.Net.HttpStatusCode.OK,
+                                         "{\"country\": \"United States\",\"destination_number\": \"+18001234567\",\"originating_call_price\": {\"base_price\": null,\"current_price\": \"0.013\",\"number_type\": \"tollfree\"},\"iso_country\": \"US\",\"origination_number\": \"+15105556789\",\"terminating_prefix_prices\": [{\"base_price\": null,\"current_price\": \"0.001\",\"destination_prefixes\": [\"1800\"],\"friendly_name\": \"Trunking Outbound Minute - United States - Toll Free\",\"origination_prefixes\": [\"ALL\"]}],\"price_unit\": \"USD\",\"url\": \"https://pricing.twilio.com/v2/Trunking/Numbers/+18001234567\"}"
                                      ));
 
             var response = NumberResource.Fetch(new Twilio.Types.PhoneNumber("+15017122661"), client: twilioRestClient);

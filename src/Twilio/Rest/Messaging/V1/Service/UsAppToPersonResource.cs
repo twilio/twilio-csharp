@@ -490,6 +490,11 @@ namespace Twilio.Rest.Messaging.V1.Service
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// A boolean that specifies whether campaign is a mock or not.
+        /// </summary>
+        [JsonProperty("mock")]
+        public bool? Mock { get; private set; }
 
         private UsAppToPersonResource()
         {

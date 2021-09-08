@@ -83,6 +83,10 @@ namespace Twilio.Rest.Messaging.V1
         /// Type of brand being created. One of: "STANDARD", "STARTER".
         /// </summary>
         public string BrandType { get; set; }
+        /// <summary>
+        /// A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
+        /// </summary>
+        public bool? Mock { get; set; }
 
         /// <summary>
         /// Construct a new CreateBrandRegistrationOptions
@@ -114,6 +118,11 @@ namespace Twilio.Rest.Messaging.V1
             if (BrandType != null)
             {
                 p.Add(new KeyValuePair<string, string>("BrandType", BrandType));
+            }
+
+            if (Mock != null)
+            {
+                p.Add(new KeyValuePair<string, string>("Mock", Mock.Value.ToString().ToLower()));
             }
 
             return p;
