@@ -87,6 +87,10 @@ namespace Twilio.Rest.Messaging.V1
         /// A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
         /// </summary>
         public bool? Mock { get; set; }
+        /// <summary>
+        /// Skip Automatic Secondary Vetting
+        /// </summary>
+        public bool? SkipAutomaticSecVet { get; set; }
 
         /// <summary>
         /// Construct a new CreateBrandRegistrationOptions
@@ -123,6 +127,11 @@ namespace Twilio.Rest.Messaging.V1
             if (Mock != null)
             {
                 p.Add(new KeyValuePair<string, string>("Mock", Mock.Value.ToString().ToLower()));
+            }
+
+            if (SkipAutomaticSecVet != null)
+            {
+                p.Add(new KeyValuePair<string, string>("SkipAutomaticSecVet", SkipAutomaticSecVet.Value.ToString().ToLower()));
             }
 
             return p;

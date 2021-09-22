@@ -37,6 +37,21 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly StatusEnum Failed = new StatusEnum("FAILED");
         }
 
+        public sealed class IdentityStatusEnum : StringEnum
+        {
+            private IdentityStatusEnum(string value) : base(value) {}
+            public IdentityStatusEnum() {}
+            public static implicit operator IdentityStatusEnum(string value)
+            {
+                return new IdentityStatusEnum(value);
+            }
+
+            public static readonly IdentityStatusEnum SelfDeclared = new IdentityStatusEnum("SELF_DECLARED");
+            public static readonly IdentityStatusEnum Unverified = new IdentityStatusEnum("UNVERIFIED");
+            public static readonly IdentityStatusEnum Verified = new IdentityStatusEnum("VERIFIED");
+            public static readonly IdentityStatusEnum VettedVerified = new IdentityStatusEnum("VETTED_VERIFIED");
+        }
+
         private static Request BuildFetchRequest(FetchBrandRegistrationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -285,15 +300,17 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="brandType"> Type of brand being created. One of: "STANDARD", "STARTER". </param>
         /// <param name="mock"> A boolean that specifies whether brand should be a mock or not. If true, brand will be
         ///            registered as a mock brand. Defaults to false if no value is provided. </param>
+        /// <param name="skipAutomaticSecVet"> Skip Automatic Secondary Vetting </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of BrandRegistration </returns>
         public static BrandRegistrationResource Create(string customerProfileBundleSid,
                                                        string a2PProfileBundleSid,
                                                        string brandType = null,
                                                        bool? mock = null,
+                                                       bool? skipAutomaticSecVet = null,
                                                        ITwilioRestClient client = null)
         {
-            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType, Mock = mock};
+            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet};
             return Create(options, client);
         }
 
@@ -306,15 +323,17 @@ namespace Twilio.Rest.Messaging.V1
         /// <param name="brandType"> Type of brand being created. One of: "STANDARD", "STARTER". </param>
         /// <param name="mock"> A boolean that specifies whether brand should be a mock or not. If true, brand will be
         ///            registered as a mock brand. Defaults to false if no value is provided. </param>
+        /// <param name="skipAutomaticSecVet"> Skip Automatic Secondary Vetting </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of BrandRegistration </returns>
         public static async System.Threading.Tasks.Task<BrandRegistrationResource> CreateAsync(string customerProfileBundleSid,
                                                                                                string a2PProfileBundleSid,
                                                                                                string brandType = null,
                                                                                                bool? mock = null,
+                                                                                               bool? skipAutomaticSecVet = null,
                                                                                                ITwilioRestClient client = null)
         {
-            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType, Mock = mock};
+            var options = new CreateBrandRegistrationOptions(customerProfileBundleSid, a2PProfileBundleSid){BrandType = brandType, Mock = mock, SkipAutomaticSecVet = skipAutomaticSecVet};
             return await CreateAsync(options, client);
         }
         #endif
@@ -398,6 +417,27 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("brand_score")]
         public int? BrandScore { get; private set; }
+        /// <summary>
+        /// Identity Status
+        /// </summary>
+        [JsonProperty("identity_status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public BrandRegistrationResource.IdentityStatusEnum IdentityStatus { get; private set; }
+        /// <summary>
+        /// Russell 3000
+        /// </summary>
+        [JsonProperty("russell_3000")]
+        public bool? Russell3000 { get; private set; }
+        /// <summary>
+        /// Tax Exempt Status
+        /// </summary>
+        [JsonProperty("tax_exempt_status")]
+        public string TaxExemptStatus { get; private set; }
+        /// <summary>
+        /// Skip Automatic Secondary Vetting
+        /// </summary>
+        [JsonProperty("skip_automatic_sec_vet")]
+        public bool? SkipAutomaticSecVet { get; private set; }
         /// <summary>
         /// A boolean that specifies whether brand should be a mock or not. If true, brand will be registered as a mock brand. Defaults to false if no value is provided.
         /// </summary>
