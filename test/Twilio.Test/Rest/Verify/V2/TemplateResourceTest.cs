@@ -18,7 +18,7 @@ namespace Twilio.Tests.Rest.Verify.V2
 {
 
     [TestFixture]
-    public class VerificationTemplateTest : TwilioTest
+    public class TemplateTest : TwilioTest
     {
         [Test]
         public void TestReadRequest()
@@ -34,7 +34,7 @@ namespace Twilio.Tests.Rest.Verify.V2
 
             try
             {
-                VerificationTemplateResource.Read(client: twilioRestClient);
+                TemplateResource.Read(client: twilioRestClient);
                 Assert.Fail("Expected TwilioException to be thrown for 500");
             }
             catch (ApiException) {}
@@ -49,10 +49,10 @@ namespace Twilio.Tests.Rest.Verify.V2
             twilioRestClient.Request(Arg.Any<Request>())
                             .Returns(new Response(
                                          System.Net.HttpStatusCode.OK,
-                                         "{\"templates\": [{\"sid\": \"HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Friendly Template\",\"translations\": {\"en\": {\"text\": \"Hello, your code is {code}.\",\"locale\": \"es\",\"status\": \"approved\",\"date_created\": \"2021-07-26T22:30:13.003505841Z\",\"date_updated\": \"2021-07-26T22:31:08.750971289Z\"}}}],\"meta\": {\"key\": \"templates\",\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://verify.twilio.com/v2/Templates?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://verify.twilio.com/v2/Templates?PageSize=50&Page=0\",\"next_page_url\": null}}"
+                                         "{\"templates\": [{\"sid\": \"HJaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"account_sid\": \"ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"friendly_name\": \"Friendly Template\",\"translations\": {\"en\": {\"text\": \"Hello, your code is {code}.\",\"locale\": \"en\",\"status\": \"approved\",\"date_created\": \"2021-07-26T22:30:13.003505841Z\",\"date_updated\": \"2021-07-26T22:31:08.750971289Z\"}}}],\"meta\": {\"page\": 0,\"page_size\": 50,\"first_page_url\": \"https://verify.twilio.com/v2/Templates?PageSize=50&Page=0\",\"previous_page_url\": null,\"url\": \"https://verify.twilio.com/v2/Templates?PageSize=50&Page=0\",\"next_page_url\": null,\"key\": \"templates\"}}"
                                      ));
 
-            var response = VerificationTemplateResource.Read(client: twilioRestClient);
+            var response = TemplateResource.Read(client: twilioRestClient);
             Assert.NotNull(response);
         }
     }

@@ -5,7 +5,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using Twilio.Base;
 using Twilio.Converters;
 
@@ -20,27 +19,27 @@ namespace Twilio.Rest.Insights.V1
         /// <summary>
         /// The from
         /// </summary>
-        public List<string> From { get; set; }
+        public string From { get; set; }
         /// <summary>
         /// The to
         /// </summary>
-        public List<string> To { get; set; }
+        public string To { get; set; }
         /// <summary>
         /// The from_carrier
         /// </summary>
-        public List<string> FromCarrier { get; set; }
+        public string FromCarrier { get; set; }
         /// <summary>
         /// The to_carrier
         /// </summary>
-        public List<string> ToCarrier { get; set; }
+        public string ToCarrier { get; set; }
         /// <summary>
         /// The from_country_code
         /// </summary>
-        public List<string> FromCountryCode { get; set; }
+        public string FromCountryCode { get; set; }
         /// <summary>
         /// The to_country_code
         /// </summary>
-        public List<string> ToCountryCode { get; set; }
+        public string ToCountryCode { get; set; }
         /// <summary>
         /// The branded
         /// </summary>
@@ -64,15 +63,15 @@ namespace Twilio.Rest.Insights.V1
         /// <summary>
         /// The call_type
         /// </summary>
-        public List<CallSummariesResource.CallTypeEnum> CallType { get; set; }
+        public string CallType { get; set; }
         /// <summary>
         /// The call_state
         /// </summary>
-        public List<CallSummariesResource.CallStateEnum> CallState { get; set; }
+        public string CallState { get; set; }
         /// <summary>
         /// The direction
         /// </summary>
-        public List<CallSummariesResource.CallDirectionEnum> Direction { get; set; }
+        public string Direction { get; set; }
         /// <summary>
         /// The processing_state
         /// </summary>
@@ -91,22 +90,6 @@ namespace Twilio.Rest.Insights.V1
         public bool? AbnormalSession { get; set; }
 
         /// <summary>
-        /// Construct a new ReadCallSummariesOptions
-        /// </summary>
-        public ReadCallSummariesOptions()
-        {
-            From = new List<string>();
-            To = new List<string>();
-            FromCarrier = new List<string>();
-            ToCarrier = new List<string>();
-            FromCountryCode = new List<string>();
-            ToCountryCode = new List<string>();
-            CallType = new List<CallSummariesResource.CallTypeEnum>();
-            CallState = new List<CallSummariesResource.CallStateEnum>();
-            Direction = new List<CallSummariesResource.CallDirectionEnum>();
-        }
-
-        /// <summary>
         /// Generate the necessary parameters
         /// </summary>
         public override List<KeyValuePair<string, string>> GetParams()
@@ -114,32 +97,32 @@ namespace Twilio.Rest.Insights.V1
             var p = new List<KeyValuePair<string, string>>();
             if (From != null)
             {
-                p.AddRange(From.Select(prop => new KeyValuePair<string, string>("From", prop)));
+                p.Add(new KeyValuePair<string, string>("From", From));
             }
 
             if (To != null)
             {
-                p.AddRange(To.Select(prop => new KeyValuePair<string, string>("To", prop)));
+                p.Add(new KeyValuePair<string, string>("To", To));
             }
 
             if (FromCarrier != null)
             {
-                p.AddRange(FromCarrier.Select(prop => new KeyValuePair<string, string>("FromCarrier", prop)));
+                p.Add(new KeyValuePair<string, string>("FromCarrier", FromCarrier));
             }
 
             if (ToCarrier != null)
             {
-                p.AddRange(ToCarrier.Select(prop => new KeyValuePair<string, string>("ToCarrier", prop)));
+                p.Add(new KeyValuePair<string, string>("ToCarrier", ToCarrier));
             }
 
             if (FromCountryCode != null)
             {
-                p.AddRange(FromCountryCode.Select(prop => new KeyValuePair<string, string>("FromCountryCode", prop)));
+                p.Add(new KeyValuePair<string, string>("FromCountryCode", FromCountryCode));
             }
 
             if (ToCountryCode != null)
             {
-                p.AddRange(ToCountryCode.Select(prop => new KeyValuePair<string, string>("ToCountryCode", prop)));
+                p.Add(new KeyValuePair<string, string>("ToCountryCode", ToCountryCode));
             }
 
             if (Branded != null)
@@ -169,17 +152,17 @@ namespace Twilio.Rest.Insights.V1
 
             if (CallType != null)
             {
-                p.AddRange(CallType.Select(prop => new KeyValuePair<string, string>("CallType", prop.ToString())));
+                p.Add(new KeyValuePair<string, string>("CallType", CallType));
             }
 
             if (CallState != null)
             {
-                p.AddRange(CallState.Select(prop => new KeyValuePair<string, string>("CallState", prop.ToString())));
+                p.Add(new KeyValuePair<string, string>("CallState", CallState));
             }
 
             if (Direction != null)
             {
-                p.AddRange(Direction.Select(prop => new KeyValuePair<string, string>("Direction", prop.ToString())));
+                p.Add(new KeyValuePair<string, string>("Direction", Direction));
             }
 
             if (ProcessingState != null)

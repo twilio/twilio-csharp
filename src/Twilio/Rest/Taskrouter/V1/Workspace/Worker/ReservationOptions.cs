@@ -325,6 +325,10 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
         /// Whether to play a notification beep when the customer joins
         /// </summary>
         public bool? BeepOnCustomerEntrance { get; set; }
+        /// <summary>
+        /// The If-Match HTTP request header
+        /// </summary>
+        public string IfMatch { get; set; }
 
         /// <summary>
         /// Construct a new UpdateReservationOptions
@@ -602,6 +606,20 @@ namespace Twilio.Rest.Taskrouter.V1.Workspace.Worker
             if (BeepOnCustomerEntrance != null)
             {
                 p.Add(new KeyValuePair<string, string>("BeepOnCustomerEntrance", BeepOnCustomerEntrance.Value.ToString().ToLower()));
+            }
+
+            return p;
+        }
+
+        /// <summary>
+        /// Generate the necessary header parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetHeaderParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            if (IfMatch != null)
+            {
+                p.Add(new KeyValuePair<string, string>("If-Match", IfMatch));
             }
 
             return p;

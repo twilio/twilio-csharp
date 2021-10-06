@@ -89,7 +89,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// Whether the phone number is enabled for emergency calling
+        /// Displays if emergency calling is enabled for this number.
         /// </summary>
         public IncomingPhoneNumberResource.EmergencyStatusEnum EmergencyStatus { get; set; }
         /// <summary>
@@ -456,7 +456,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>
-        /// Status determining whether the new phone number is enabled for emergency calling
+        /// Displays if emergency calling is enabled for this number.
         /// </summary>
         public IncomingPhoneNumberResource.EmergencyStatusEnum EmergencyStatus { get; set; }
         /// <summary>

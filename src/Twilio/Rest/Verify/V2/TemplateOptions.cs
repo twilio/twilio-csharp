@@ -14,7 +14,7 @@ namespace Twilio.Rest.Verify.V2
     /// <summary>
     /// List all the available templates for a given Account.
     /// </summary>
-    public class ReadVerificationTemplateOptions : ReadOptions<VerificationTemplateResource>
+    public class ReadTemplateOptions : ReadOptions<TemplateResource>
     {
         /// <summary>
         /// Filter templates using friendly name

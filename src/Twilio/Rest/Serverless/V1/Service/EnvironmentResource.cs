@@ -420,7 +420,7 @@ namespace Twilio.Rest.Serverless.V1.Service
         [JsonProperty("domain_suffix")]
         public string DomainSuffix { get; private set; }
         /// <summary>
-        /// The base domain name for all Functions and Assets deployed in the Environment
+        /// The domain name for all Functions and Assets deployed in the Environment
         /// </summary>
         [JsonProperty("domain_name")]
         public string DomainName { get; private set; }

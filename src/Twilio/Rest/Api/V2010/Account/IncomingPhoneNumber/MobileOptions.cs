@@ -154,7 +154,7 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         public string AddressSid { get; set; }
         /// <summary>
-        /// Status determining whether the new phone number is enabled for emergency calling
+        /// Displays if emergency calling is enabled for this number.
         /// </summary>
         public MobileResource.EmergencyStatusEnum EmergencyStatus { get; set; }
         /// <summary>

@@ -3,7 +3,7 @@
 ///  | (_)\/(_)(_|\/| |(/_  v1.0.0
 ///       /       /
 /// <summary>
-/// VerificationTemplateResource
+/// TemplateResource
 /// </summary>
 
 using Newtonsoft.Json;
@@ -18,9 +18,9 @@ using Twilio.Http;
 namespace Twilio.Rest.Verify.V2
 {
 
-    public class VerificationTemplateResource : Resource
+    public class TemplateResource : Resource
     {
-        private static Request BuildReadRequest(ReadVerificationTemplateOptions options, ITwilioRestClient client)
+        private static Request BuildReadRequest(ReadTemplateOptions options, ITwilioRestClient client)
         {
             return new Request(
                 HttpMethod.Get,
@@ -34,34 +34,33 @@ namespace Twilio.Rest.Verify.V2
         /// <summary>
         /// List all the available templates for a given Account.
         /// </summary>
-        /// <param name="options"> Read VerificationTemplate parameters </param>
+        /// <param name="options"> Read Template parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of VerificationTemplate </returns>
-        public static ResourceSet<VerificationTemplateResource> Read(ReadVerificationTemplateOptions options,
-                                                                     ITwilioRestClient client = null)
+        /// <returns> A single instance of Template </returns>
+        public static ResourceSet<TemplateResource> Read(ReadTemplateOptions options, ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = client.Request(BuildReadRequest(options, client));
 
-            var page = Page<VerificationTemplateResource>.FromJson("templates", response.Content);
-            return new ResourceSet<VerificationTemplateResource>(page, options, client);
+            var page = Page<TemplateResource>.FromJson("templates", response.Content);
+            return new ResourceSet<TemplateResource>(page, options, client);
         }
 
         #if !NET35
         /// <summary>
         /// List all the available templates for a given Account.
         /// </summary>
-        /// <param name="options"> Read VerificationTemplate parameters </param>
+        /// <param name="options"> Read Template parameters </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of VerificationTemplate </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<VerificationTemplateResource>> ReadAsync(ReadVerificationTemplateOptions options,
-                                                                                                             ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of Template </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TemplateResource>> ReadAsync(ReadTemplateOptions options,
+                                                                                                 ITwilioRestClient client = null)
         {
             client = client ?? TwilioClient.GetRestClient();
             var response = await client.RequestAsync(BuildReadRequest(options, client));
 
-            var page = Page<VerificationTemplateResource>.FromJson("templates", response.Content);
-            return new ResourceSet<VerificationTemplateResource>(page, options, client);
+            var page = Page<TemplateResource>.FromJson("templates", response.Content);
+            return new ResourceSet<TemplateResource>(page, options, client);
         }
         #endif
 
@@ -72,13 +71,13 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> A single instance of VerificationTemplate </returns>
-        public static ResourceSet<VerificationTemplateResource> Read(string friendlyName = null,
-                                                                     int? pageSize = null,
-                                                                     long? limit = null,
-                                                                     ITwilioRestClient client = null)
+        /// <returns> A single instance of Template </returns>
+        public static ResourceSet<TemplateResource> Read(string friendlyName = null,
+                                                         int? pageSize = null,
+                                                         long? limit = null,
+                                                         ITwilioRestClient client = null)
         {
-            var options = new ReadVerificationTemplateOptions(){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
+            var options = new ReadTemplateOptions(){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return Read(options, client);
         }
 
@@ -90,13 +89,13 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="pageSize"> Page size </param>
         /// <param name="limit"> Record limit </param>
         /// <param name="client"> Client to make requests to Twilio </param>
-        /// <returns> Task that resolves to A single instance of VerificationTemplate </returns>
-        public static async System.Threading.Tasks.Task<ResourceSet<VerificationTemplateResource>> ReadAsync(string friendlyName = null,
-                                                                                                             int? pageSize = null,
-                                                                                                             long? limit = null,
-                                                                                                             ITwilioRestClient client = null)
+        /// <returns> Task that resolves to A single instance of Template </returns>
+        public static async System.Threading.Tasks.Task<ResourceSet<TemplateResource>> ReadAsync(string friendlyName = null,
+                                                                                                 int? pageSize = null,
+                                                                                                 long? limit = null,
+                                                                                                 ITwilioRestClient client = null)
         {
-            var options = new ReadVerificationTemplateOptions(){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
+            var options = new ReadTemplateOptions(){FriendlyName = friendlyName, PageSize = pageSize, Limit = limit};
             return await ReadAsync(options, client);
         }
         #endif
@@ -107,7 +106,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="targetUrl"> API-generated URL for the requested results page </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The target page of records </returns>
-        public static Page<VerificationTemplateResource> GetPage(string targetUrl, ITwilioRestClient client)
+        public static Page<TemplateResource> GetPage(string targetUrl, ITwilioRestClient client)
         {
             client = client ?? TwilioClient.GetRestClient();
 
@@ -117,7 +116,7 @@ namespace Twilio.Rest.Verify.V2
             );
 
             var response = client.Request(request);
-            return Page<VerificationTemplateResource>.FromJson("templates", response.Content);
+            return Page<TemplateResource>.FromJson("templates", response.Content);
         }
 
         /// <summary>
@@ -126,8 +125,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The next page of records </returns>
-        public static Page<VerificationTemplateResource> NextPage(Page<VerificationTemplateResource> page,
-                                                                  ITwilioRestClient client)
+        public static Page<TemplateResource> NextPage(Page<TemplateResource> page, ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -135,7 +133,7 @@ namespace Twilio.Rest.Verify.V2
             );
 
             var response = client.Request(request);
-            return Page<VerificationTemplateResource>.FromJson("templates", response.Content);
+            return Page<TemplateResource>.FromJson("templates", response.Content);
         }
 
         /// <summary>
@@ -144,8 +142,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="page"> current page of records </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> The previous page of records </returns>
-        public static Page<VerificationTemplateResource> PreviousPage(Page<VerificationTemplateResource> page,
-                                                                      ITwilioRestClient client)
+        public static Page<TemplateResource> PreviousPage(Page<TemplateResource> page, ITwilioRestClient client)
         {
             var request = new Request(
                 HttpMethod.Get,
@@ -153,20 +150,20 @@ namespace Twilio.Rest.Verify.V2
             );
 
             var response = client.Request(request);
-            return Page<VerificationTemplateResource>.FromJson("templates", response.Content);
+            return Page<TemplateResource>.FromJson("templates", response.Content);
         }
 
         /// <summary>
-        /// Converts a JSON string into a VerificationTemplateResource object
+        /// Converts a JSON string into a TemplateResource object
         /// </summary>
         /// <param name="json"> Raw JSON string </param>
-        /// <returns> VerificationTemplateResource object represented by the provided JSON </returns>
-        public static VerificationTemplateResource FromJson(string json)
+        /// <returns> TemplateResource object represented by the provided JSON </returns>
+        public static TemplateResource FromJson(string json)
         {
             // Convert all checked exceptions to Runtime
             try
             {
-                return JsonConvert.DeserializeObject<VerificationTemplateResource>(json);
+                return JsonConvert.DeserializeObject<TemplateResource>(json);
             }
             catch (JsonException e)
             {
@@ -195,7 +192,7 @@ namespace Twilio.Rest.Verify.V2
         [JsonProperty("translations")]
         public object Translations { get; private set; }
 
-        private VerificationTemplateResource()
+        private TemplateResource()
         {
 
         }

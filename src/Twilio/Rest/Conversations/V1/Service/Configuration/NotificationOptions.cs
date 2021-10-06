@@ -64,6 +64,14 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
         /// The name of the sound to play to a user when they are removed from a conversation.
         /// </summary>
         public string RemovedFromConversationSound { get; set; }
+        /// <summary>
+        /// Whether to send a notification when a new message with media/file attachments is added to a conversation.
+        /// </summary>
+        public bool? NewMessageWithMediaEnabled { get; set; }
+        /// <summary>
+        /// The template to use to create the notification text displayed when a new message with media/file attachments is added to a conversation.
+        /// </summary>
+        public string NewMessageWithMediaTemplate { get; set; }
 
         /// <summary>
         /// Construct a new UpdateNotificationOptions
@@ -133,6 +141,16 @@ namespace Twilio.Rest.Conversations.V1.Service.Configuration
             if (RemovedFromConversationSound != null)
             {
                 p.Add(new KeyValuePair<string, string>("RemovedFromConversation.Sound", RemovedFromConversationSound));
+            }
+
+            if (NewMessageWithMediaEnabled != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NewMessage.WithMedia.Enabled", NewMessageWithMediaEnabled.Value.ToString().ToLower()));
+            }
+
+            if (NewMessageWithMediaTemplate != null)
+            {
+                p.Add(new KeyValuePair<string, string>("NewMessage.WithMedia.Template", NewMessageWithMediaTemplate));
             }
 
             return p;

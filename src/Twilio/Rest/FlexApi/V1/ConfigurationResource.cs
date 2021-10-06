@@ -444,6 +444,11 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         [JsonProperty("url")]
         public Uri Url { get; private set; }
+        /// <summary>
+        /// Object that controls workspace reporting
+        /// </summary>
+        [JsonProperty("flex_insights_hr")]
+        public object FlexInsightsHr { get; private set; }
 
         private ConfigurationResource()
         {

@@ -102,6 +102,10 @@ namespace Twilio.Rest.Trunking.V1
         /// Whether Caller ID Name (CNAM) lookup should be enabled for the trunk
         /// </summary>
         public bool? CnamLookupEnabled { get; set; }
+        /// <summary>
+        /// Caller Id for transfer target
+        /// </summary>
+        public TrunkResource.TransferCallerIdEnum TransferCallerId { get; set; }
 
         /// <summary>
         /// Generate the necessary parameters
@@ -142,6 +146,11 @@ namespace Twilio.Rest.Trunking.V1
             if (CnamLookupEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("CnamLookupEnabled", CnamLookupEnabled.Value.ToString().ToLower()));
+            }
+
+            if (TransferCallerId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TransferCallerId", TransferCallerId.ToString()));
             }
 
             return p;
@@ -205,6 +214,10 @@ namespace Twilio.Rest.Trunking.V1
         /// Whether Caller ID Name (CNAM) lookup should be enabled for the trunk
         /// </summary>
         public bool? CnamLookupEnabled { get; set; }
+        /// <summary>
+        /// Caller Id for transfer target
+        /// </summary>
+        public TrunkResource.TransferCallerIdEnum TransferCallerId { get; set; }
 
         /// <summary>
         /// Construct a new UpdateTrunkOptions
@@ -254,6 +267,11 @@ namespace Twilio.Rest.Trunking.V1
             if (CnamLookupEnabled != null)
             {
                 p.Add(new KeyValuePair<string, string>("CnamLookupEnabled", CnamLookupEnabled.Value.ToString().ToLower()));
+            }
+
+            if (TransferCallerId != null)
+            {
+                p.Add(new KeyValuePair<string, string>("TransferCallerId", TransferCallerId.ToString()));
             }
 
             return p;
