@@ -287,5 +287,41 @@ namespace Twilio.Tests.Jwt.AccessToken
             Assert.AreEqual("RM123", decodedVg["room"]);
         }
 
+        [Test]
+        public void TestCreatePlaybackGrant()
+        {
+            var grants = new HashSet<IGrant>
+            {
+                {
+                    new PlaybackGrant {
+                        Grant =  new Dictionary<string, object> {
+                            { "requestCredentials", null },
+                            { "playbackUrl", "https://000.us-east-1.playback.live-video.net/api/video/v1/us-east-000.channel.000?token=xxxxx" },
+                            { "playerStreamerSid", "VJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" },
+                        }
+                    }
+                }
+            };
+            var token = new TestToken("AC456", "SK123", Secret, grants: grants).ToJwt();
+            Assert.IsNotNull(token);
+            Assert.IsNotEmpty(token);
+
+            var decoded = new DecodedJwt(token, Secret);
+            var payload = decoded.Payload;
+            Assert.IsNotNull(payload);
+
+            Assert.AreEqual("SK123", payload["iss"]);
+            Assert.AreEqual("AC456", payload["sub"]);
+            Assert.Greater(Convert.ToInt64(payload["exp"]), BaseJwt.ConvertToUnixTimestamp(DateTime.UtcNow));
+
+            var decodedGrants = ToDict(payload["grants"]);
+            Assert.AreEqual(1, decodedGrants.Count);
+
+            var decodedVg = ToDict(decodedGrants["player"]);
+            Assert.AreEqual(null, decodedVg["requestCredentials"]);
+            Assert.AreEqual("https://000.us-east-1.playback.live-video.net/api/video/v1/us-east-000.channel.000?token=xxxxx", decodedVg["playbackUrl"]);
+            Assert.AreEqual("VJXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", decodedVg["playerStreamerSid"]);
+        }
+
     }
 }
