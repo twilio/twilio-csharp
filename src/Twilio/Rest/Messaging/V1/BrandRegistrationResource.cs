@@ -52,6 +52,22 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly IdentityStatusEnum VettedVerified = new IdentityStatusEnum("VETTED_VERIFIED");
         }
 
+        public sealed class BrandFeedbackEnum : StringEnum
+        {
+            private BrandFeedbackEnum(string value) : base(value) {}
+            public BrandFeedbackEnum() {}
+            public static implicit operator BrandFeedbackEnum(string value)
+            {
+                return new BrandFeedbackEnum(value);
+            }
+
+            public static readonly BrandFeedbackEnum TaxId = new BrandFeedbackEnum("TAX_ID");
+            public static readonly BrandFeedbackEnum StockSymbol = new BrandFeedbackEnum("STOCK_SYMBOL");
+            public static readonly BrandFeedbackEnum Nonprofit = new BrandFeedbackEnum("NONPROFIT");
+            public static readonly BrandFeedbackEnum GovernmentEntity = new BrandFeedbackEnum("GOVERNMENT_ENTITY");
+            public static readonly BrandFeedbackEnum Others = new BrandFeedbackEnum("OTHERS");
+        }
+
         private static Request BuildFetchRequest(FetchBrandRegistrationOptions options, ITwilioRestClient client)
         {
             return new Request(
@@ -418,6 +434,12 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("brand_score")]
         public int? BrandScore { get; private set; }
         /// <summary>
+        /// Brand feedback
+        /// </summary>
+        [JsonProperty("brand_feedback")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public List<BrandRegistrationResource.BrandFeedbackEnum> BrandFeedback { get; private set; }
+        /// <summary>
         /// Identity Status
         /// </summary>
         [JsonProperty("identity_status")]
@@ -443,6 +465,11 @@ namespace Twilio.Rest.Messaging.V1
         /// </summary>
         [JsonProperty("mock")]
         public bool? Mock { get; private set; }
+        /// <summary>
+        /// The links
+        /// </summary>
+        [JsonProperty("links")]
+        public Dictionary<string, string> Links { get; private set; }
 
         private BrandRegistrationResource()
         {

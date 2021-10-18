@@ -184,6 +184,8 @@ namespace Twilio.Rest.Video.V1
         ///                   </param>
         /// <param name="mediaRegion"> The region for the media server in Group Rooms </param>
         /// <param name="recordingRules"> A collection of Recording Rules </param>
+        /// <param name="audioOnly"> Indicates whether the room will only contain audio track participants for group rooms.
+        ///                 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Room </returns>
         public static RoomResource Create(bool? enableTurn = null,
@@ -196,9 +198,10 @@ namespace Twilio.Rest.Video.V1
                                           List<RoomResource.VideoCodecEnum> videoCodecs = null,
                                           string mediaRegion = null,
                                           object recordingRules = null,
+                                          bool? audioOnly = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules};
+            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly};
             return Create(options, client);
         }
 
@@ -217,6 +220,8 @@ namespace Twilio.Rest.Video.V1
         ///                   </param>
         /// <param name="mediaRegion"> The region for the media server in Group Rooms </param>
         /// <param name="recordingRules"> A collection of Recording Rules </param>
+        /// <param name="audioOnly"> Indicates whether the room will only contain audio track participants for group rooms.
+        ///                 </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Room </returns>
         public static async System.Threading.Tasks.Task<RoomResource> CreateAsync(bool? enableTurn = null,
@@ -229,9 +234,10 @@ namespace Twilio.Rest.Video.V1
                                                                                   List<RoomResource.VideoCodecEnum> videoCodecs = null,
                                                                                   string mediaRegion = null,
                                                                                   object recordingRules = null,
+                                                                                  bool? audioOnly = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules};
+            var options = new CreateRoomOptions(){EnableTurn = enableTurn, Type = type, UniqueName = uniqueName, StatusCallback = statusCallback, StatusCallbackMethod = statusCallbackMethod, MaxParticipants = maxParticipants, RecordParticipantsOnConnect = recordParticipantsOnConnect, VideoCodecs = videoCodecs, MediaRegion = mediaRegion, RecordingRules = recordingRules, AudioOnly = audioOnly};
             return await CreateAsync(options, client);
         }
         #endif
@@ -560,6 +566,11 @@ namespace Twilio.Rest.Video.V1
         /// </summary>
         [JsonProperty("media_region")]
         public string MediaRegion { get; private set; }
+        /// <summary>
+        /// Indicates whether the room will only contain audio track participants for group rooms.
+        /// </summary>
+        [JsonProperty("audio_only")]
+        public bool? AudioOnly { get; private set; }
         /// <summary>
         /// The absolute URL of the resource
         /// </summary>

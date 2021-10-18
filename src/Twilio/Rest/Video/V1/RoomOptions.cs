@@ -86,6 +86,10 @@ namespace Twilio.Rest.Video.V1
         /// A collection of Recording Rules
         /// </summary>
         public object RecordingRules { get; set; }
+        /// <summary>
+        /// Indicates whether the room will only contain audio track participants for group rooms.
+        /// </summary>
+        public bool? AudioOnly { get; set; }
 
         /// <summary>
         /// Construct a new CreateRoomOptions
@@ -149,6 +153,11 @@ namespace Twilio.Rest.Video.V1
             if (RecordingRules != null)
             {
                 p.Add(new KeyValuePair<string, string>("RecordingRules", Serializers.JsonObject(RecordingRules)));
+            }
+
+            if (AudioOnly != null)
+            {
+                p.Add(new KeyValuePair<string, string>("AudioOnly", AudioOnly.Value.ToString().ToLower()));
             }
 
             return p;

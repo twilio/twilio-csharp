@@ -49,6 +49,23 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
             public static readonly EmergencyStatusEnum Inactive = new EmergencyStatusEnum("Inactive");
         }
 
+        public sealed class EmergencyAddressStatusEnum : StringEnum
+        {
+            private EmergencyAddressStatusEnum(string value) : base(value) {}
+            public EmergencyAddressStatusEnum() {}
+            public static implicit operator EmergencyAddressStatusEnum(string value)
+            {
+                return new EmergencyAddressStatusEnum(value);
+            }
+
+            public static readonly EmergencyAddressStatusEnum Registered = new EmergencyAddressStatusEnum("registered");
+            public static readonly EmergencyAddressStatusEnum Unregistered = new EmergencyAddressStatusEnum("unregistered");
+            public static readonly EmergencyAddressStatusEnum PendingRegistration = new EmergencyAddressStatusEnum("pending-registration");
+            public static readonly EmergencyAddressStatusEnum RegistrationFailure = new EmergencyAddressStatusEnum("registration-failure");
+            public static readonly EmergencyAddressStatusEnum PendingUnregistration = new EmergencyAddressStatusEnum("pending-unregistration");
+            public static readonly EmergencyAddressStatusEnum UnregistrationFailure = new EmergencyAddressStatusEnum("unregistration-failure");
+        }
+
         public sealed class VoiceReceiveModeEnum : StringEnum
         {
             private VoiceReceiveModeEnum(string value) : base(value) {}
@@ -555,6 +572,12 @@ namespace Twilio.Rest.Api.V2010.Account.IncomingPhoneNumber
         /// </summary>
         [JsonProperty("emergency_address_sid")]
         public string EmergencyAddressSid { get; private set; }
+        /// <summary>
+        /// State of the emergency address configuration for the phone number
+        /// </summary>
+        [JsonProperty("emergency_address_status")]
+        [JsonConverter(typeof(StringEnumConverter))]
+        public LocalResource.EmergencyAddressStatusEnum EmergencyAddressStatus { get; private set; }
         /// <summary>
         /// The SID of the Bundle resource associated with number
         /// </summary>
