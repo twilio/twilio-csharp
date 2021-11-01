@@ -32,7 +32,7 @@ jobs:
           dotnet-version: '3.1.x'
 
       - name: Publish package to NuGet
-        run: dotnet nuget push **/*.nupkg -k ${{ secrets.$NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
+        run: dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
 
   notify-on-failure:
     name: Slack notify on failure
