@@ -80,6 +80,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
         /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
         /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
+        /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Create(string friendlyName,
@@ -98,9 +99,10 @@ namespace Twilio.Rest.Verify.V2
                                              int? totpTimeStep = null,
                                              int? totpCodeLength = null,
                                              int? totpSkew = null,
+                                             string defaultTemplateSid = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid};
             return Create(options, client);
         }
 
@@ -125,6 +127,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
         /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
         /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
+        /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> CreateAsync(string friendlyName,
@@ -143,9 +146,10 @@ namespace Twilio.Rest.Verify.V2
                                                                                      int? totpTimeStep = null,
                                                                                      int? totpCodeLength = null,
                                                                                      int? totpSkew = null,
+                                                                                     string defaultTemplateSid = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew};
+            var options = new CreateServiceOptions(friendlyName){CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid};
             return await CreateAsync(options, client);
         }
         #endif
@@ -473,6 +477,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
         /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
         /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
+        /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Service </returns>
         public static ServiceResource Update(string pathSid,
@@ -492,9 +497,10 @@ namespace Twilio.Rest.Verify.V2
                                              int? totpTimeStep = null,
                                              int? totpCodeLength = null,
                                              int? totpSkew = null,
+                                             string defaultTemplateSid = null,
                                              ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid};
             return Update(options, client);
         }
 
@@ -520,6 +526,7 @@ namespace Twilio.Rest.Verify.V2
         /// <param name="totpTimeStep"> Optional. How often, in seconds, are TOTP codes generated </param>
         /// <param name="totpCodeLength"> Optional. Number of digits for generated TOTP codes </param>
         /// <param name="totpSkew"> Optional. The number of past and future time-steps valid at a given time </param>
+        /// <param name="defaultTemplateSid"> The verification template SMS messages. </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Service </returns>
         public static async System.Threading.Tasks.Task<ServiceResource> UpdateAsync(string pathSid,
@@ -539,9 +546,10 @@ namespace Twilio.Rest.Verify.V2
                                                                                      int? totpTimeStep = null,
                                                                                      int? totpCodeLength = null,
                                                                                      int? totpSkew = null,
+                                                                                     string defaultTemplateSid = null,
                                                                                      ITwilioRestClient client = null)
         {
-            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew};
+            var options = new UpdateServiceOptions(pathSid){FriendlyName = friendlyName, CodeLength = codeLength, LookupEnabled = lookupEnabled, SkipSmsToLandlines = skipSmsToLandlines, DtmfInputRequired = dtmfInputRequired, TtsName = ttsName, Psd2Enabled = psd2Enabled, DoNotShareWarningEnabled = doNotShareWarningEnabled, CustomCodeEnabled = customCodeEnabled, PushIncludeDate = pushIncludeDate, PushApnCredentialSid = pushApnCredentialSid, PushFcmCredentialSid = pushFcmCredentialSid, TotpIssuer = totpIssuer, TotpTimeStep = totpTimeStep, TotpCodeLength = totpCodeLength, TotpSkew = totpSkew, DefaultTemplateSid = defaultTemplateSid};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -629,6 +637,11 @@ namespace Twilio.Rest.Verify.V2
         /// </summary>
         [JsonProperty("totp")]
         public object Totp { get; private set; }
+        /// <summary>
+        /// The default_template_sid
+        /// </summary>
+        [JsonProperty("default_template_sid")]
+        public string DefaultTemplateSid { get; private set; }
         /// <summary>
         /// The RFC 2822 date and time in GMT when the resource was created
         /// </summary>

@@ -80,6 +80,10 @@ namespace Twilio.Rest.Verify.V2
         /// Optional. The number of past and future time-steps valid at a given time
         /// </summary>
         public int? TotpSkew { get; set; }
+        /// <summary>
+        /// The verification template SMS messages.
+        /// </summary>
+        public string DefaultTemplateSid { get; set; }
 
         /// <summary>
         /// Construct a new CreateServiceOptions
@@ -174,6 +178,11 @@ namespace Twilio.Rest.Verify.V2
             if (TotpSkew != null)
             {
                 p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
+            }
+
+            if (DefaultTemplateSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid.ToString()));
             }
 
             return p;
@@ -331,6 +340,10 @@ namespace Twilio.Rest.Verify.V2
         /// Optional. The number of past and future time-steps valid at a given time
         /// </summary>
         public int? TotpSkew { get; set; }
+        /// <summary>
+        /// The verification template SMS messages.
+        /// </summary>
+        public string DefaultTemplateSid { get; set; }
 
         /// <summary>
         /// Construct a new UpdateServiceOptions
@@ -425,6 +438,11 @@ namespace Twilio.Rest.Verify.V2
             if (TotpSkew != null)
             {
                 p.Add(new KeyValuePair<string, string>("Totp.Skew", TotpSkew.ToString()));
+            }
+
+            if (DefaultTemplateSid != null)
+            {
+                p.Add(new KeyValuePair<string, string>("DefaultTemplateSid", DefaultTemplateSid.ToString()));
             }
 
             return p;

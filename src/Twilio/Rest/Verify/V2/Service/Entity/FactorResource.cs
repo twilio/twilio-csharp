@@ -413,7 +413,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
-        /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
+        /// <param name="configNotificationToken"> For APN, the device token. For FCM, the registration token </param>
         /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
         /// <param name="configTimeStep"> How often, in seconds, are TOTP codes generated </param>
         /// <param name="configSkew"> The number of past and future time-steps valid at a given time </param>
@@ -447,7 +447,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="pathSid"> A string that uniquely identifies this Factor. </param>
         /// <param name="authPayload"> Optional payload to verify the Factor for the first time </param>
         /// <param name="friendlyName"> The friendly name of this Factor </param>
-        /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
+        /// <param name="configNotificationToken"> For APN, the device token. For FCM, the registration token </param>
         /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
         /// <param name="configTimeStep"> How often, in seconds, are TOTP codes generated </param>
         /// <param name="configSkew"> The number of past and future time-steps valid at a given time </param>

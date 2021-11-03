@@ -164,19 +164,19 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public Uri SmsUrl { get; set; }
         /// <summary>
-        /// The HTTP method we should use to call voice_fallback_url
+        /// Deprecated
         /// </summary>
         public Twilio.Http.HttpMethod VoiceFallbackMethod { get; set; }
         /// <summary>
-        /// The URL we should call when an error occurs while retrieving or executing the TwiML requested from voice_url
+        /// Deprecated
         /// </summary>
         public Uri VoiceFallbackUrl { get; set; }
         /// <summary>
-        /// The HTTP method we should use when we call voice_url
+        /// Deprecated
         /// </summary>
         public Twilio.Http.HttpMethod VoiceMethod { get; set; }
         /// <summary>
-        /// The URL we should call when the SIM-connected device makes a voice call
+        /// Deprecated
         /// </summary>
         public Uri VoiceUrl { get; set; }
         /// <summary>

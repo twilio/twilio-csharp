@@ -91,7 +91,7 @@ namespace Twilio.Rest.Wireless.V1
         /// </summary>
         public bool? MessagingEnabled { get; set; }
         /// <summary>
-        /// Whether SIMs can make and receive voice calls
+        /// Deprecated
         /// </summary>
         public bool? VoiceEnabled { get; set; }
         /// <summary>

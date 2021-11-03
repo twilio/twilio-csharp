@@ -127,7 +127,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="bindingPublicKey"> The public key encoded in Base64 </param>
         /// <param name="configAppId"> The ID that uniquely identifies your app in the Google or Apple store </param>
         /// <param name="configNotificationPlatform"> The transport technology used to generate the Notification Token </param>
-        /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
+        /// <param name="configNotificationToken"> For APN, the device token. For FCM, the registration token </param>
         /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
         /// <param name="bindingSecret"> The shared secret in Base32 </param>
         /// <param name="configTimeStep"> How often, in seconds, are TOTP codes generated </param>
@@ -169,7 +169,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// <param name="bindingPublicKey"> The public key encoded in Base64 </param>
         /// <param name="configAppId"> The ID that uniquely identifies your app in the Google or Apple store </param>
         /// <param name="configNotificationPlatform"> The transport technology used to generate the Notification Token </param>
-        /// <param name="configNotificationToken"> For APN, the device token. For FCM the registration token </param>
+        /// <param name="configNotificationToken"> For APN, the device token. For FCM, the registration token </param>
         /// <param name="configSdkVersion"> The Verify Push SDK version used to configure the factor </param>
         /// <param name="bindingSecret"> The shared secret in Base32 </param>
         /// <param name="configTimeStep"> How often, in seconds, are TOTP codes generated </param>

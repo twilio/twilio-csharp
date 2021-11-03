@@ -51,7 +51,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
         /// </summary>
         public NewFactorResource.NotificationPlatformsEnum ConfigNotificationPlatform { get; set; }
         /// <summary>
-        /// For APN, the device token. For FCM the registration token
+        /// For APN, the device token. For FCM, the registration token
         /// </summary>
         public string ConfigNotificationToken { get; set; }
         /// <summary>

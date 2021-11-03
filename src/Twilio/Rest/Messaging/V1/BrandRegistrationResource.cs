@@ -35,6 +35,8 @@ namespace Twilio.Rest.Messaging.V1
             public static readonly StatusEnum Pending = new StatusEnum("PENDING");
             public static readonly StatusEnum Approved = new StatusEnum("APPROVED");
             public static readonly StatusEnum Failed = new StatusEnum("FAILED");
+            public static readonly StatusEnum InReview = new StatusEnum("IN_REVIEW");
+            public static readonly StatusEnum Deleted = new StatusEnum("DELETED");
         }
 
         public sealed class IdentityStatusEnum : StringEnum
@@ -408,7 +410,7 @@ namespace Twilio.Rest.Messaging.V1
         [JsonProperty("brand_type")]
         public string BrandType { get; private set; }
         /// <summary>
-        /// Brand Registration status
+        /// Brand Registration status.
         /// </summary>
         [JsonProperty("status")]
         [JsonConverter(typeof(StringEnumConverter))]

@@ -1,6 +1,31 @@
 twilio-csharp Changelog
 =======================
 
+[2021-11-03] Version 5.68.0
+---------------------------
+**Library - Fix**
+- [PR #584](https://github.com/twilio/twilio-csharp/pull/584): nuget deploy script. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Library - Chore**
+- [PR #583](https://github.com/twilio/twilio-csharp/pull/583): migrate to using gh actions. Thanks to [@shwetha-manvinkurke](https://github.com/shwetha-manvinkurke)!
+
+**Api**
+- Updated `media_url` property to be treated as PII
+
+**Messaging**
+- Added a new enum for brand registration status named DELETED **(breaking change)**
+- Add a new K12_EDUCATION use case in us_app_to_person_usecase api transaction
+- Added a new enum for brand registration status named IN_REVIEW
+
+**Serverless**
+- Add node14 as a valid Build runtime
+
+**Verify**
+- Fix typos in Verify Push Factor documentation for the `config.notification_token` parameter.
+- Added `TemplateCustomSubstitutions` on verification creation
+- Make `TemplateSid` parameter public for Verification resource and `DefaultTemplateSid` parameter public for Service resource. **(breaking change)**
+
+
 [2021-10-18] Version 5.67.0
 ---------------------------
 **Library - Feature**

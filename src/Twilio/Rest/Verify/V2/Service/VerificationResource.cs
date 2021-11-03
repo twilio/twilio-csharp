@@ -105,6 +105,9 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
         /// <param name="appHash"> Your App Hash to be appended at the end of an SMS. </param>
+        /// <param name="templateSid"> The verification template SMS messages. </param>
+        /// <param name="templateCustomSubstitutions"> The values of the special variables declared on the message template.
+        ///                                   </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of Verification </returns>
         public static VerificationResource Create(string pathServiceSid,
@@ -120,9 +123,11 @@ namespace Twilio.Rest.Verify.V2.Service
                                                   object rateLimits = null,
                                                   object channelConfiguration = null,
                                                   string appHash = null,
+                                                  string templateSid = null,
+                                                  string templateCustomSubstitutions = null,
                                                   ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions};
             return Create(options, client);
         }
 
@@ -143,6 +148,9 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="rateLimits"> The custom key-value pairs of Programmable Rate Limits. </param>
         /// <param name="channelConfiguration"> Channel specific configuration in json format. </param>
         /// <param name="appHash"> Your App Hash to be appended at the end of an SMS. </param>
+        /// <param name="templateSid"> The verification template SMS messages. </param>
+        /// <param name="templateCustomSubstitutions"> The values of the special variables declared on the message template.
+        ///                                   </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of Verification </returns>
         public static async System.Threading.Tasks.Task<VerificationResource> CreateAsync(string pathServiceSid,
@@ -158,9 +166,11 @@ namespace Twilio.Rest.Verify.V2.Service
                                                                                           object rateLimits = null,
                                                                                           object channelConfiguration = null,
                                                                                           string appHash = null,
+                                                                                          string templateSid = null,
+                                                                                          string templateCustomSubstitutions = null,
                                                                                           ITwilioRestClient client = null)
         {
-            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash};
+            var options = new CreateVerificationOptions(pathServiceSid, to, channel){CustomFriendlyName = customFriendlyName, CustomMessage = customMessage, SendDigits = sendDigits, Locale = locale, CustomCode = customCode, Amount = amount, Payee = payee, RateLimits = rateLimits, ChannelConfiguration = channelConfiguration, AppHash = appHash, TemplateSid = templateSid, TemplateCustomSubstitutions = templateCustomSubstitutions};
             return await CreateAsync(options, client);
         }
         #endif

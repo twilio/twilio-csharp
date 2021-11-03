@@ -280,7 +280,7 @@ namespace Twilio.Rest.Wireless.V1
         ///                 network </param>
         /// <param name="dataMetering"> The model used to meter data usage </param>
         /// <param name="messagingEnabled"> Whether SIMs can make, send, and receive SMS using Commands </param>
-        /// <param name="voiceEnabled"> Whether SIMs can make and receive voice calls </param>
+        /// <param name="voiceEnabled"> Deprecated </param>
         /// <param name="nationalRoamingEnabled"> Whether SIMs can roam on networks other than the home network in the United
         ///                              States </param>
         /// <param name="internationalRoaming"> The services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can
@@ -320,7 +320,7 @@ namespace Twilio.Rest.Wireless.V1
         ///                 network </param>
         /// <param name="dataMetering"> The model used to meter data usage </param>
         /// <param name="messagingEnabled"> Whether SIMs can make, send, and receive SMS using Commands </param>
-        /// <param name="voiceEnabled"> Whether SIMs can make and receive voice calls </param>
+        /// <param name="voiceEnabled"> Deprecated </param>
         /// <param name="nationalRoamingEnabled"> Whether SIMs can roam on networks other than the home network in the United
         ///                              States </param>
         /// <param name="internationalRoaming"> The services that SIMs capable of using GPRS/3G/4G/LTE data connectivity can
@@ -551,7 +551,7 @@ namespace Twilio.Rest.Wireless.V1
         [JsonProperty("messaging_enabled")]
         public bool? MessagingEnabled { get; private set; }
         /// <summary>
-        /// Whether SIMs can make and receive voice calls
+        /// Deprecated. Whether SIMs can make and receive voice calls
         /// </summary>
         [JsonProperty("voice_enabled")]
         public bool? VoiceEnabled { get; private set; }
