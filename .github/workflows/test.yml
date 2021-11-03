@@ -24,7 +24,7 @@ jobs:
           dotnet-version: '3.1.x'
 
       - name: Build & Test
-        run: make test release
+        run: make test
 
   notify-on-failure:
     name: Slack notify on failure
