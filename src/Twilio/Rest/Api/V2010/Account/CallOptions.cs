@@ -151,7 +151,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// </summary>
         public string CallReason { get; set; }
         /// <summary>
-        /// A token string needed to invoke a forwarded call with a caller-id recieved on a previous incoming call
+        /// A token string needed to invoke a forwarded call with a CallerId recieved on a previous incoming call
         /// </summary>
         public string CallToken { get; set; }
         /// <summary>

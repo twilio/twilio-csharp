@@ -52,6 +52,37 @@ namespace Twilio.Tests.TwiML
         }
 
         [Test]
+        public void TestElementWithChildren()
+        {
+            var elem = new SsmlW();
+
+            elem.Break(SsmlBreak.StrengthEnum.None, "time");
+
+            elem.Emphasis("words", SsmlEmphasis.LevelEnum.Strong);
+
+            elem.Phoneme("words", SsmlPhoneme.AlphabetEnum.Ipa, "ph");
+
+            elem.Prosody("words", "volume", "rate", "pitch");
+
+            elem.SayAs("words", SsmlSayAs.InterpretAsEnum.Character, SsmlSayAs.RoleEnum.Mdy);
+
+            elem.Sub("words", "alias");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<w>" + Environment.NewLine +
+                "  <break strength=\"none\" time=\"time\"></break>" + Environment.NewLine +
+                "  <emphasis level=\"strong\">words</emphasis>" + Environment.NewLine +
+                "  <phoneme alphabet=\"ipa\" ph=\"ph\">words</phoneme>" + Environment.NewLine +
+                "  <prosody volume=\"volume\" rate=\"rate\" pitch=\"pitch\">words</prosody>" + Environment.NewLine +
+                "  <say-as interpret-as=\"character\" role=\"mdy\">words</say-as>" + Environment.NewLine +
+                "  <sub alias=\"alias\">words</sub>" + Environment.NewLine +
+                "</w>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
         public void TestElementWithTextNode()
         {
             var elem = new SsmlW();
@@ -75,6 +106,24 @@ namespace Twilio.Tests.TwiML
                 "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
                 "<w>" + Environment.NewLine +
                 "  <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "</w>",
+                elem.ToString()
+            );
+        }
+
+        [Test]
+        public void TestAllowGenericChildrenOfChildNodes()
+        {
+            var elem = new SsmlW();
+            var child = new SsmlBreak();
+            elem.Nest(child).AddChild("generic-tag").SetOption("tag", true).AddText("Content");
+
+            Assert.AreEqual(
+                "<?xml version=\"1.0\" encoding=\"utf-8\"?>" + Environment.NewLine +
+                "<w>" + Environment.NewLine +
+                "  <break>" + Environment.NewLine +
+                "    <generic-tag tag=\"True\">Content</generic-tag>" + Environment.NewLine +
+                "  </break>" + Environment.NewLine +
                 "</w>",
                 elem.ToString()
             );

@@ -249,6 +249,78 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
             return Page<BrandVettingResource>.FromJson("data", response.Content);
         }
 
+        private static Request BuildFetchRequest(FetchBrandVettingOptions options, ITwilioRestClient client)
+        {
+            return new Request(
+                HttpMethod.Get,
+                Rest.Domain.Messaging,
+                "/v1/a2p/BrandRegistrations/" + options.PathBrandSid + "/Vettings/" + options.PathBrandVettingSid + "",
+                queryParams: options.GetParams(),
+                headerParams: null
+            );
+        }
+
+        /// <summary>
+        /// fetch
+        /// </summary>
+        /// <param name="options"> Fetch BrandVetting parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BrandVetting </returns>
+        public static BrandVettingResource Fetch(FetchBrandVettingOptions options, ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = client.Request(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// fetch
+        /// </summary>
+        /// <param name="options"> Fetch BrandVetting parameters </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BrandVetting </returns>
+        public static async System.Threading.Tasks.Task<BrandVettingResource> FetchAsync(FetchBrandVettingOptions options,
+                                                                                         ITwilioRestClient client = null)
+        {
+            client = client ?? TwilioClient.GetRestClient();
+            var response = await client.RequestAsync(BuildFetchRequest(options, client));
+            return FromJson(response.Content);
+        }
+        #endif
+
+        /// <summary>
+        /// fetch
+        /// </summary>
+        /// <param name="pathBrandSid"> A2P BrandRegistration Sid </param>
+        /// <param name="pathBrandVettingSid"> SID for third-party vetting record </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> A single instance of BrandVetting </returns>
+        public static BrandVettingResource Fetch(string pathBrandSid,
+                                                 string pathBrandVettingSid,
+                                                 ITwilioRestClient client = null)
+        {
+            var options = new FetchBrandVettingOptions(pathBrandSid, pathBrandVettingSid);
+            return Fetch(options, client);
+        }
+
+        #if !NET35
+        /// <summary>
+        /// fetch
+        /// </summary>
+        /// <param name="pathBrandSid"> A2P BrandRegistration Sid </param>
+        /// <param name="pathBrandVettingSid"> SID for third-party vetting record </param>
+        /// <param name="client"> Client to make requests to Twilio </param>
+        /// <returns> Task that resolves to A single instance of BrandVetting </returns>
+        public static async System.Threading.Tasks.Task<BrandVettingResource> FetchAsync(string pathBrandSid,
+                                                                                         string pathBrandVettingSid,
+                                                                                         ITwilioRestClient client = null)
+        {
+            var options = new FetchBrandVettingOptions(pathBrandSid, pathBrandVettingSid);
+            return await FetchAsync(options, client);
+        }
+        #endif
+
         /// <summary>
         /// Converts a JSON string into a BrandVettingResource object
         /// </summary>

@@ -150,7 +150,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="asyncAmdStatusCallbackMethod"> HTTP Method to use with async_amd_status_callback </param>
         /// <param name="byoc"> BYOC trunk SID (Beta) </param>
         /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
-        /// <param name="callToken"> A token string needed to invoke a forwarded call with a caller-id recieved on a previous
+        /// <param name="callToken"> A token string needed to invoke a forwarded call with a CallerId recieved on a previous
         ///                 incoming call </param>
         /// <param name="recordingTrack"> Which track(s) to record </param>
         /// <param name="timeLimit"> The maximum duration of the call in seconds. </param>
@@ -241,7 +241,7 @@ namespace Twilio.Rest.Api.V2010.Account
         /// <param name="asyncAmdStatusCallbackMethod"> HTTP Method to use with async_amd_status_callback </param>
         /// <param name="byoc"> BYOC trunk SID (Beta) </param>
         /// <param name="callReason"> Reason for the call (Branded Calls Beta) </param>
-        /// <param name="callToken"> A token string needed to invoke a forwarded call with a caller-id recieved on a previous
+        /// <param name="callToken"> A token string needed to invoke a forwarded call with a CallerId recieved on a previous
         ///                 incoming call </param>
         /// <param name="recordingTrack"> Which track(s) to record </param>
         /// <param name="timeLimit"> The maximum duration of the call in seconds. </param>

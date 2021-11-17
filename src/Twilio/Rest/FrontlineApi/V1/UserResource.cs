@@ -150,15 +150,17 @@ namespace Twilio.Rest.FrontlineApi.V1
         /// <param name="friendlyName"> The string that you assigned to describe the User </param>
         /// <param name="avatar"> The avatar URL which will be shown in Frontline application </param>
         /// <param name="state"> Current state of this user </param>
+        /// <param name="isAvailable"> Whether the User is available for new conversations </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of User </returns>
         public static UserResource Update(string pathSid,
                                           string friendlyName = null,
                                           string avatar = null,
                                           UserResource.StateTypeEnum state = null,
+                                          bool? isAvailable = null,
                                           ITwilioRestClient client = null)
         {
-            var options = new UpdateUserOptions(pathSid){FriendlyName = friendlyName, Avatar = avatar, State = state};
+            var options = new UpdateUserOptions(pathSid){FriendlyName = friendlyName, Avatar = avatar, State = state, IsAvailable = isAvailable};
             return Update(options, client);
         }
 
@@ -170,15 +172,17 @@ namespace Twilio.Rest.FrontlineApi.V1
         /// <param name="friendlyName"> The string that you assigned to describe the User </param>
         /// <param name="avatar"> The avatar URL which will be shown in Frontline application </param>
         /// <param name="state"> Current state of this user </param>
+        /// <param name="isAvailable"> Whether the User is available for new conversations </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of User </returns>
         public static async System.Threading.Tasks.Task<UserResource> UpdateAsync(string pathSid,
                                                                                   string friendlyName = null,
                                                                                   string avatar = null,
                                                                                   UserResource.StateTypeEnum state = null,
+                                                                                  bool? isAvailable = null,
                                                                                   ITwilioRestClient client = null)
         {
-            var options = new UpdateUserOptions(pathSid){FriendlyName = friendlyName, Avatar = avatar, State = state};
+            var options = new UpdateUserOptions(pathSid){FriendlyName = friendlyName, Avatar = avatar, State = state, IsAvailable = isAvailable};
             return await UpdateAsync(options, client);
         }
         #endif
@@ -227,6 +231,11 @@ namespace Twilio.Rest.FrontlineApi.V1
         [JsonProperty("state")]
         [JsonConverter(typeof(StringEnumConverter))]
         public UserResource.StateTypeEnum State { get; private set; }
+        /// <summary>
+        /// Whether the User is available for new conversations
+        /// </summary>
+        [JsonProperty("is_available")]
+        public bool? IsAvailable { get; private set; }
         /// <summary>
         /// An absolute URL for this user.
         /// </summary>

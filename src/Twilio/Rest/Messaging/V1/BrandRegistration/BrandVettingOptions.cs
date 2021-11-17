@@ -107,4 +107,41 @@ namespace Twilio.Rest.Messaging.V1.BrandRegistration
         }
     }
 
+    /// <summary>
+    /// PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
+    ///
+    /// FetchBrandVettingOptions
+    /// </summary>
+    public class FetchBrandVettingOptions : IOptions<BrandVettingResource>
+    {
+        /// <summary>
+        /// A2P BrandRegistration Sid
+        /// </summary>
+        public string PathBrandSid { get; }
+        /// <summary>
+        /// SID for third-party vetting record
+        /// </summary>
+        public string PathBrandVettingSid { get; }
+
+        /// <summary>
+        /// Construct a new FetchBrandVettingOptions
+        /// </summary>
+        /// <param name="pathBrandSid"> A2P BrandRegistration Sid </param>
+        /// <param name="pathBrandVettingSid"> SID for third-party vetting record </param>
+        public FetchBrandVettingOptions(string pathBrandSid, string pathBrandVettingSid)
+        {
+            PathBrandSid = pathBrandSid;
+            PathBrandVettingSid = pathBrandVettingSid;
+        }
+
+        /// <summary>
+        /// Generate the necessary parameters
+        /// </summary>
+        public List<KeyValuePair<string, string>> GetParams()
+        {
+            var p = new List<KeyValuePair<string, string>>();
+            return p;
+        }
+    }
+
 }

@@ -60,6 +60,7 @@ namespace Twilio.Rest.Verify.V2.Service.Entity
 
             public static readonly NotificationPlatformsEnum Apn = new NotificationPlatformsEnum("apn");
             public static readonly NotificationPlatformsEnum Fcm = new NotificationPlatformsEnum("fcm");
+            public static readonly NotificationPlatformsEnum None = new NotificationPlatformsEnum("none");
         }
 
         public sealed class TotpAlgorithmsEnum : StringEnum

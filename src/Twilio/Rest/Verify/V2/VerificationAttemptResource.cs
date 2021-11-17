@@ -33,6 +33,7 @@ namespace Twilio.Rest.Verify.V2
             public static readonly ChannelsEnum Sms = new ChannelsEnum("sms");
             public static readonly ChannelsEnum Call = new ChannelsEnum("call");
             public static readonly ChannelsEnum Email = new ChannelsEnum("email");
+            public static readonly ChannelsEnum Whatsapp = new ChannelsEnum("whatsapp");
         }
 
         public sealed class ConversionStatusEnum : StringEnum

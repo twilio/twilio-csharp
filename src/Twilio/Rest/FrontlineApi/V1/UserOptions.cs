@@ -65,6 +65,10 @@ namespace Twilio.Rest.FrontlineApi.V1
         /// Current state of this user
         /// </summary>
         public UserResource.StateTypeEnum State { get; set; }
+        /// <summary>
+        /// Whether the User is available for new conversations
+        /// </summary>
+        public bool? IsAvailable { get; set; }
 
         /// <summary>
         /// Construct a new UpdateUserOptions
@@ -94,6 +98,11 @@ namespace Twilio.Rest.FrontlineApi.V1
             if (State != null)
             {
                 p.Add(new KeyValuePair<string, string>("State", State.ToString()));
+            }
+
+            if (IsAvailable != null)
+            {
+                p.Add(new KeyValuePair<string, string>("IsAvailable", IsAvailable.Value.ToString().ToLower()));
             }
 
             return p;
