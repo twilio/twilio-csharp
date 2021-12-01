@@ -81,14 +81,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
+        /// <param name="factorFriendlyName"> The factor friendly name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> A single instance of AccessToken </returns>
         public static AccessTokenResource Create(string pathServiceSid,
                                                  string identity,
                                                  AccessTokenResource.FactorTypesEnum factorType,
+                                                 string factorFriendlyName = null,
                                                  ITwilioRestClient client = null)
         {
-            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType);
+            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){FactorFriendlyName = factorFriendlyName};
             return Create(options, client);
         }
 
@@ -99,14 +101,16 @@ namespace Twilio.Rest.Verify.V2.Service
         /// <param name="pathServiceSid"> Service Sid. </param>
         /// <param name="identity"> Unique external identifier of the Entity </param>
         /// <param name="factorType"> The Type of this Factor </param>
+        /// <param name="factorFriendlyName"> The factor friendly name </param>
         /// <param name="client"> Client to make requests to Twilio </param>
         /// <returns> Task that resolves to A single instance of AccessToken </returns>
         public static async System.Threading.Tasks.Task<AccessTokenResource> CreateAsync(string pathServiceSid,
                                                                                          string identity,
                                                                                          AccessTokenResource.FactorTypesEnum factorType,
+                                                                                         string factorFriendlyName = null,
                                                                                          ITwilioRestClient client = null)
         {
-            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType);
+            var options = new CreateAccessTokenOptions(pathServiceSid, identity, factorType){FactorFriendlyName = factorFriendlyName};
             return await CreateAsync(options, client);
         }
         #endif

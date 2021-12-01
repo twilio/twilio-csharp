@@ -90,6 +90,10 @@ namespace Twilio.Rest.Video.V1
         /// Indicates whether the room will only contain audio track participants for group rooms.
         /// </summary>
         public bool? AudioOnly { get; set; }
+        /// <summary>
+        /// The maximum number of seconds a Participant can be connected to the room
+        /// </summary>
+        public int? MaxParticipantDuration { get; set; }
 
         /// <summary>
         /// Construct a new CreateRoomOptions
@@ -158,6 +162,11 @@ namespace Twilio.Rest.Video.V1
             if (AudioOnly != null)
             {
                 p.Add(new KeyValuePair<string, string>("AudioOnly", AudioOnly.Value.ToString().ToLower()));
+            }
+
+            if (MaxParticipantDuration != null)
+            {
+                p.Add(new KeyValuePair<string, string>("MaxParticipantDuration", MaxParticipantDuration.ToString()));
             }
 
             return p;

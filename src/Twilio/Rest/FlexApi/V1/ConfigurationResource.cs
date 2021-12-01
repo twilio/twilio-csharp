@@ -449,6 +449,16 @@ namespace Twilio.Rest.FlexApi.V1
         /// </summary>
         [JsonProperty("flex_insights_hr")]
         public object FlexInsightsHr { get; private set; }
+        /// <summary>
+        /// Setting to enable Flex UI redirection
+        /// </summary>
+        [JsonProperty("flex_insights_drilldown")]
+        public bool? FlexInsightsDrilldown { get; private set; }
+        /// <summary>
+        /// URL to redirect to in case drilldown is enabled.
+        /// </summary>
+        [JsonProperty("flex_url")]
+        public Uri FlexUrl { get; private set; }
 
         private ConfigurationResource()
         {

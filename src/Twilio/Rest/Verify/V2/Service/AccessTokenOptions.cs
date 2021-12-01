@@ -30,6 +30,10 @@ namespace Twilio.Rest.Verify.V2.Service
         /// The Type of this Factor
         /// </summary>
         public AccessTokenResource.FactorTypesEnum FactorType { get; }
+        /// <summary>
+        /// The factor friendly name
+        /// </summary>
+        public string FactorFriendlyName { get; set; }
 
         /// <summary>
         /// Construct a new CreateAccessTokenOptions
@@ -60,6 +64,11 @@ namespace Twilio.Rest.Verify.V2.Service
             if (FactorType != null)
             {
                 p.Add(new KeyValuePair<string, string>("FactorType", FactorType.ToString()));
+            }
+
+            if (FactorFriendlyName != null)
+            {
+                p.Add(new KeyValuePair<string, string>("FactorFriendlyName", FactorFriendlyName));
             }
 
             return p;
