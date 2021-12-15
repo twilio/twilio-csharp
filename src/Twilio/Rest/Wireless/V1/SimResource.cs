@@ -557,24 +557,24 @@ namespace Twilio.Rest.Wireless.V1
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod CommandsCallbackMethod { get; private set; }
         /// <summary>
-        /// Deprecated. The HTTP method we use to call sms_fallback_url
+        /// Deprecated
         /// </summary>
         [JsonProperty("sms_fallback_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsFallbackMethod { get; private set; }
         /// <summary>
-        /// Deprecated. The URL we call when an error occurs while retrieving or executing the TwiML requested from the sms_url
+        /// Deprecated
         /// </summary>
         [JsonProperty("sms_fallback_url")]
         public Uri SmsFallbackUrl { get; private set; }
         /// <summary>
-        /// Deprecated. The HTTP method we use to call sms_url
+        /// Deprecated
         /// </summary>
         [JsonProperty("sms_method")]
         [JsonConverter(typeof(HttpMethodConverter))]
         public Twilio.Http.HttpMethod SmsMethod { get; private set; }
         /// <summary>
-        /// Deprecated. The URL we call when the SIM-connected device sends an SMS message that is not a Command
+        /// Deprecated
         /// </summary>
         [JsonProperty("sms_url")]
         public Uri SmsUrl { get; private set; }

@@ -1,6 +1,31 @@
 twilio-csharp Changelog
 =======================
 
+[2021-12-15] Version 5.69.0
+---------------------------
+**Library - Feature**
+- [PR #588](https://github.com/twilio/twilio-csharp/pull/588): run tests before deploying. Thanks to [@childish-sambino](https://github.com/childish-sambino)!
+
+**Api**
+- Add optional boolean send_as_mms parameter to the create action of Message resource **(breaking change)**
+- Change team ownership for `call` delete
+
+**Conversations**
+- Change wording for `Service Webhook Configuration` resource fields
+
+**Insights**
+- Added new APIs for updating and getting voice insights flags by accountSid.
+
+**Media**
+- Add max_duration param to MediaProcessor
+
+**Video**
+- Add `EmptyRoomTimeout` and `UnusedRoomTimeout` properties to a room; add corresponding parameters to room creation
+
+**Voice**
+- Add endpoint to delete archived Calls
+
+
 [2021-12-01] Version 5.68.2
 ---------------------------
 **Conversations**

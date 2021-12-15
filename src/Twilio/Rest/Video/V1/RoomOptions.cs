@@ -94,6 +94,14 @@ namespace Twilio.Rest.Video.V1
         /// The maximum number of seconds a Participant can be connected to the room
         /// </summary>
         public int? MaxParticipantDuration { get; set; }
+        /// <summary>
+        /// Configures the time a room will remain active after last participant leaves.
+        /// </summary>
+        public int? EmptyRoomTimeout { get; set; }
+        /// <summary>
+        /// Configures the time a room will remain active when no one joins.
+        /// </summary>
+        public int? UnusedRoomTimeout { get; set; }
 
         /// <summary>
         /// Construct a new CreateRoomOptions
@@ -167,6 +175,16 @@ namespace Twilio.Rest.Video.V1
             if (MaxParticipantDuration != null)
             {
                 p.Add(new KeyValuePair<string, string>("MaxParticipantDuration", MaxParticipantDuration.ToString()));
+            }
+
+            if (EmptyRoomTimeout != null)
+            {
+                p.Add(new KeyValuePair<string, string>("EmptyRoomTimeout", EmptyRoomTimeout.ToString()));
+            }
+
+            if (UnusedRoomTimeout != null)
+            {
+                p.Add(new KeyValuePair<string, string>("UnusedRoomTimeout", UnusedRoomTimeout.ToString()));
             }
 
             return p;
