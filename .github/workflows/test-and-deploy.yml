@@ -61,20 +61,20 @@ jobs:
   #         make release
   #         dotnet nuget push **/*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
 
-  notify-on-failure:
-    name: Slack notify on failure
-    if: failure() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref_type == 'tag')
-    needs: [ test, deploy ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_COLOR: failure
-          SLACK_ICON_EMOJI: ':github:'
-          SLACK_MESSAGE: ${{ format('Tests *{0}*, Deploy *{1}*, {2}/{3}/actions/runs/{4}', needs.test.result, needs.deploy.result, github.server_url, github.repository, github.run_id) }}
-          SLACK_TITLE: Action Failure - ${{ github.repository }}
-          SLACK_USERNAME: GitHub Actions
-          SLACK_MSG_AUTHOR: twilio-dx
-          SLACK_FOOTER: Posted automatically using GitHub Actions
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-          MSG_MINIMAL: true
+  # notify-on-failure:
+  #   name: Slack notify on failure
+  #   if: failure() && github.event_name != 'pull_request' && (github.ref == 'refs/heads/main' || github.ref_type == 'tag')
+  #   needs: [ test, deploy ]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: rtCamp/action-slack-notify@v2
+  #       env:
+  #         SLACK_COLOR: failure
+  #         SLACK_ICON_EMOJI: ':github:'
+  #         SLACK_MESSAGE: ${{ format('Tests *{0}*, Deploy *{1}*, {2}/{3}/actions/runs/{4}', needs.test.result, needs.deploy.result, github.server_url, github.repository, github.run_id) }}
+  #         SLACK_TITLE: Action Failure - ${{ github.repository }}
+  #         SLACK_USERNAME: GitHub Actions
+  #         SLACK_MSG_AUTHOR: twilio-dx
+  #         SLACK_FOOTER: Posted automatically using GitHub Actions
+  #         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+  #         MSG_MINIMAL: true
