@@ -27,6 +27,59 @@ jobs:
       - name: Build & Test
         run: make test
 
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout twilio-csharp
+        uses: actions/checkout@v2
+        with:
+          # Shallow clones should be disabled for a better relevancy of analysis
+          fetch-depth: 0
+
+      # Speed-up analysis by caching the scanner workspace
+      - name: Cache SonarCloud workspace
+        uses: actions/cache@v1
+        with:
+          path: ~\.sonar\cache
+          key: ${{ runner.os }}-sonar-cache
+          restore-keys: ${{ runner.os }}-sonar-cache
+
+      # Speed-up analysis by caching the scanner installation
+      - name: Cache SonarCloud scanner
+        id: cache-sonar-scanner
+        uses: actions/cache@v1
+        with:
+          path: .\.sonar\scanner
+          key: ${{ runner.os }}-sonar-scanner
+          restore-keys: ${{ runner.os }}-sonar-scanner
+
+      - name: Install SonarCloud scanner
+        if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
+        shell: powershell
+        run: |
+          New-Item -Path .\.sonar\scanner -ItemType Directory
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
+
+      - name: Run SonarCloud Scanner
+        run: make cover
+
+      # - name: Run SonarCloud Scanner
+      #   shell: powershell
+      #   env:
+      #     # Needed to get some information about the pull request, if any
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     # The secret referenced in the command-line by SONAR_TOKEN should be generated
+      #     # from https://sonarcloud.io/account/security/
+      #     # The organization and project arguments (see /o and /k) are displayed
+      #     # on the project dashboard in SonarCloud.
+      #   run: |
+      #     .\.sonar\scanner\dotnet-sonarscanner begin /k:"twilio_twilio-csharp" /o:"twilio" /d:sonar.exclusions="src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.*" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+      #     dotnet build Twilio.sln
+      #     .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+    
+
+
   # deploy:
   #   name: Deploy
   #   if: success() && github.ref_type == 'tag'
