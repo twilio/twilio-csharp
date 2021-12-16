@@ -31,20 +31,22 @@ jobs:
     name: SonarCloud
     runs-on: windows-latest
     steps:
+      - name: Set up JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+
       - uses: actions/checkout@v2
         with:
-          # Shallow clones should be disabled for a better relevancy of analysis
-          fetch-depth: 0
+          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      # Speed-up analysis by caching the scanner workspace
-      - name: Cache SonarCloud workspace
+      - name: Cache SonarCloud packages
         uses: actions/cache@v1
         with:
-          path: ~\.sonar\cache
-          key: ${{ runner.os }}-sonar-cache
-          restore-keys: ${{ runner.os }}-sonar-cache
+          path: ~\sonar\cache
+          key: ${{ runner.os }}-sonar
+          restore-keys: ${{ runner.os }}-sonar
 
-      # Speed-up analysis by caching the scanner installation
       - name: Cache SonarCloud scanner
         id: cache-sonar-scanner
         uses: actions/cache@v1
@@ -56,16 +58,19 @@ jobs:
       - name: Install SonarCloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
-        # The --version argument is optional. If it is omitted the latest version will be installed.
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
-          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner --version 4.8.0
+          dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
 
-      - name: Build
+      - name: Build and analyze
+        env:
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         shell: powershell
         run: |
-          .\.sonar\scanner\dotnet-sonarscanner begin /k:"twilio_twilio-csharp" /o:"twilio" /d:sonar.exclusions="src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.*" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          dotnet build Twilio.sln
+          .\.sonar\scanner\dotnet-sonarscanner begin /k:"twilio_twilio-csharp" /o:"twilio" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.language="cs" /d:sonar.exclusions="src/Twilio/Rest/**/*.*,test/Twilio.Test/**/*.*" /d:sonar.cs.opencover.reportsPaths="test/lcov.net451.opencover.xml"
+          dotnet build Twilio.sln > buildsonar.log
+	        dotnet test test/Twilio.Test/Twilio.Test.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
     
 
