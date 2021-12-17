@@ -55,7 +55,7 @@ jobs:
           dotnet test test/Twilio.Test/Twilio.Test.csproj --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:CoverletOutput=../lcov 
 
       - name: End Scanner
-        run: dotnet sonarscanner end
+        run: dotnet sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
     
 
 
